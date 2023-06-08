@@ -96,11 +96,50 @@ two common algorithms are:
 1. clustering
 2. dimension reduction
 
-## CLUSTERING
+### CLUSTERING
 
 this is about discovering natural groups/clusters in the unlabeled data so that the degree of similarity between samples of the same cluster and the degree of dissimilarity between samples of different clusters are maximized.
 
 the similarity between data points is determined using distance function
 
-## DIMENSION REDUCTION
+### DIMENSION REDUCTION
+
+this is transformation of data from high-dimensional space to low-dimensional space.
+
+this technique can be used to reduce features or variables in a dataset while retaining the most important features and information
+
+## Reinforcement Machine Learning
+
+there exist situations where there is no instant feedback or feedback or the feedback is delayed
+
+small small wins leads to much more/long term wins - delayed gratification
+
+Consider the game of chess where the objective of the task is to win the match. There do not exist feedback about every move. Feedback is delayed to the end of the game. There do exist partial feedback during the game when a piece is captured. Capturing opponent’s piece is positive sign but doesn’t
+guarantee the win.
+
+When rewards or feedback is received from the game/environment, it must be recorded, and the path taken to reach the present state must be rewarding accordingly.
+
+This approach of utilizing partial or delayed rewards/feedback to learn actions for various situations/states is called Reinforcement Learning (RL). The objective of the RL algorithm is to find optimal action for each state that would result in maximum cumulative long-term reward.
+
+### components of a RL Problem
+
+1. Agent  - this is the entity that takes/interact with the environment. it takes/perceive the environment.
+          - it takes action based on the current state and receive feedback from the environment in form of rewards and penalities.
+
+2. Environment - this is the environment that the agent perceives. where the agent interacts with
+3. State - current condition of the environment
+4. Action - move taken by the agent
+5. Policy - mapping from states to actions, this refers to the behavior of the agent in choosing the actions to take. The policy can be deterministic, where it directly maps states to actions, or stochastic, where it provides a probability distribution over actions.
+
+## Supervised Machine Learning
+
+learning parameters here are based on labelled data.
+
+in labelled data, desired output for each data sample is provided.
+
+this labelled data can be either categorical/discrete or continuous
+
+if the desired output is to be discrete and of a class number, then it is called `classification`
+
+if the desired output is to be continuous then it is called `regression`
 
