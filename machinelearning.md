@@ -142,4 +142,3 @@ this labelled data can be either categorical/discrete or continuous
 if the desired output is to be discrete and of a class number, then it is called `classification`
 
 if the desired output is to be continuous then it is called `regression`
-
