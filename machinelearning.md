@@ -142,3 +142,26 @@ this labelled data can be either categorical/discrete or continuous
 if the desired output is to be discrete and of a class number, then it is called `classification`
 
 if the desired output is to be continuous then it is called `regression`
+
+## SPLITTING DATA
+
+you need to split the high level data into:
+
+1. Training data
+   1. training data
+   2. evaluation data
+2. test data
+
+### TECHNIQUES OF DIVING TRAINING DATA
+
+While selecting the validation set out of the training set, we can take either a fixed validation set or randomly take out few examples from the training set in each training iteration and use these examples as validation.
+
+The latter technique is called **cross-validation**
+
+#### cross-validation techniques
+
+##### **k-fold cross validation**
+
+Training samples are randomly partitioned into k equal-sized sets. In an iteration of training, one set is selected as validation set and remaining k-1 sets are considered for training.
+
+This is repeated k times where a set is considered as validation set only one. here you continue changing the validation data over the iteration.
