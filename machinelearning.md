@@ -165,3 +165,20 @@ The latter technique is called **cross-validation**
 Training samples are randomly partitioned into k equal-sized sets. In an iteration of training, one set is selected as validation set and remaining k-1 sets are considered for training.
 
 This is repeated k times where a set is considered as validation set only one. here you continue changing the validation data over the iteration.
+
+#### **Leave-p-out cross validation**
+
+out of n training set samples, this method uses p observation as validation set and remaining n-p observations as training set for one iteration of training. This is repeated on all possible combination
+sets. p can be any value. The most popular value is p=1, which is called Leave-one-out cross validation.
+
+#### **Repeated Random sub-sampling method**
+
+this method is also known as Monte-Carlo cross-validation.Here, sample set is randomly split into training and validation set. Split set is used for one iteration of training. For each iteration of training, sample set is randomly split every time. Results are then averaged to produce single estimation. Number of iterations will not depend on sample set size. In this method, it may happen that a few samples may never be selected for validation set, and a few samples may end up being selected more than once.
+
+### Data Augumentation
+
+this is a technique used to make a dataset roboust.
+
+this adds more samples to the datasets by imparting slight modification to the existing dataset or synethesize new samples from the existing dataset.
+
+we can apply rotation, translation, shear, flipping techniques on the existing images.
