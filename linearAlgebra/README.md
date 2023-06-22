@@ -30,4 +30,3 @@ topics to be covered at linear algebra?
 5. Linear Transformation
 6. Eigen Values and Eigen Vectors
 7. Matrix Decomposition
-
