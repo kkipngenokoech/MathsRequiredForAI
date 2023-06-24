@@ -24,7 +24,7 @@ an abstract object as a vector is called feature engineering
 topics to be covered at linear algebra?
 
 1. [Linear Equation](./linearEquations.md)
-2. Matrices
+2. [Matrices](./matrix.md)
 3. Euclidean space
 4. Vector Spaces
 5. Linear Transformation
