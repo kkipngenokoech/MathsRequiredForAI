@@ -50,3 +50,7 @@ a `reduced` acheleon form is:
 2. Leading entry in all non-zero rows is 1
 3. Each column containing leading 1 has zeros in all other entries
 
+Application of row operations on the matrix to convert it to row echelon form is called `forward substitution`, where rx row is used to modify row ry such that x < y.
+
+Further reduction of rows can be performed through row operation where rx row is used to modify row ry such that x > y to obtain matrix in reduced row echelon form. This operation is called `back substitution`
+
