@@ -27,3 +27,13 @@ print(X)
 X = torch.arange(16).reshape(4, 4)
 print(X.T)
 print(X == X.T)
+
+# TENSORS - array with more than 2 axes (they are denoted by calligraphic boldface variables i.e X, Y, Z)
+X = torch.arange(24, dtype=torch.int).reshape(2, 3, 4)
+print(X)
+
+x = torch.arange(48).reshape(2, 3, 4, 2)
+print(x)
+
+X = torch.arange(6, dtype=torch.float32).reshape(2, 3, 1)
+print(X)
