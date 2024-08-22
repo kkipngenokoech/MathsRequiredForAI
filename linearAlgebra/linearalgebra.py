@@ -33,7 +33,42 @@ X = torch.arange(24, dtype=torch.int).reshape(2, 3, 4)
 print(X)
 
 x = torch.arange(48).reshape(2, 3, 4, 2)
-print(x)
+print(x.sum(axis=0))
 
 X = torch.arange(6, dtype=torch.float32).reshape(2, 3, 1)
 print(X)
+
+y = 2
+print(X.sum())
+print(X + y)
+
+# ELEMENTWISE OPERATIONS
+X = torch.tensor([1.0, 2, 4, 8])
+Y = torch.tensor([2, 2, 2, 2])
+print(X + Y)
+print(X - Y)
+print(X * Y)
+print(X / Y)
+print(X ** Y)
+print(torch.exp(X))
+
+# DOT PRODUCTS
+print(torch.dot(X, Y.to(torch.float32)))
+
+# MATRIX-VECTOR PRODUCTS
+print("Matrix-Vector Products")
+A = torch.arange(6).reshape(2, 3)
+x = torch.arange(3)
+print(A)
+print(x)
+print(A@x)
+print(torch.mv(A, x))
+
+# MATRIX-MATRIX MULTIPLICATION
+print("Matrix-Matrix Multiplication")
+B = torch.arange(6).reshape(3, 2)
+print(torch.mm(A, B))
+print(A@B)
+
+# NORMS
+print("Norms")
