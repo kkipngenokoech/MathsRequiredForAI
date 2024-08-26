@@ -62,7 +62,6 @@ x = torch.arange(3)
 print(A)
 print(x)
 print(A@x)
-
 print(torch.mv(A, x))
 
 # MATRIX-MATRIX MULTIPLICATION
