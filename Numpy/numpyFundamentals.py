@@ -47,3 +47,6 @@ print(A.T)
 print(A.T.shape)
 print(A.T @ A)
 print((A.T @ A).T ==  A.T @ A)
+
+A = np.array([[0,1, 1], [1,0,-1],[-2,1,0],[-1,1,1]])
+print(A.T @ A)
