@@ -40,6 +40,7 @@ Q = np.ones((3, 4))
 print(Q)
 print(torch.tensor(Q))
 
+
 A = np.array([[0,1, 1], [1,0,-1],[-2,1,0],[-1,1,1]])
 print(A)
 print(A.shape)
