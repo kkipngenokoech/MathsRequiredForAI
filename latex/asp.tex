@@ -1,0 +1,182 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{ulem}
+\usepackage{amssymb}
+\usepackage{listings}
+
+
+\title{Applied Stochastic Processes}
+\author{Kipngeno Koech (bkoech - andrew ID)}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{center}
+    \large \textbf{Question 2: Eigenvalues and Eigenvectors}
+\end{center}
+You are analyzing a system modeled by a 3x3 state transition matrix, which represents the interaction
+of three interconnected features in a neural network, given by:
+
+\[
+B =
+\begin{pmatrix}
+4 & 2 & 1 \\
+1 & 3 & 2 \\
+0 & 1 & 2
+\end{pmatrix}
+\]
+
+To get the eigenvectors, you use the formula \(\det(B - \lambda I) = 0\) where \(I\) is the identity matrix.
+
+\section{Eigen Values}
+The eigenvalues of the matrix \(B\) are given by the roots of the equation \(\det(B - \lambda I) = 0\).
+\(\det(B - \lambda I) = 0\) is given by:
+
+\[
+\det\begin{vmatrix}
+4-\lambda & 2 & 1 \\
+1 & 3-\lambda & 2 \\
+0 & 1 & 2-\lambda
+\end{vmatrix} = 0
+\]
+
+\[(4-\lambda)\uline{((3-\lambda)(2-\lambda) - 2)} - 2(2-\lambda) + 1  = 0\]
+\[(4-\lambda)(6 - 5\lambda + \lambda^2 - 2) - \uline{2(2-\lambda)} + 1 = 0\]
+\[(4-\lambda)(4 - 5\lambda + \lambda^2) -\uline{4} + 2\lambda + \uline{1} = 0\]
+\[\uline{(4-\lambda)(4 - 5\lambda + \lambda^2)} + 2\lambda - 3 = 0\]
+\[4(4 - 5\lambda + \lambda^2) - \lambda(4 - 5\lambda + \lambda^2) + 2\lambda - 3 = 0\]
+\[16 - 20\lambda + 4\lambda^2 - 4\lambda + 5\lambda^2 - \lambda^3 + 2\lambda - 3 = 0\]
+\[-\lambda^3 + 9\lambda^2 - 18\lambda + 13 = 0\]
+\[\lambda^3 - 9\lambda^2 + 18\lambda - 13 = 0\]
+
+The roots of the equation \(\lambda^3 - 9\lambda^2 + 18\lambda - 13 = 0\) are the eigenvalues of the matrix \(B\):
+\[\lambda_1 \approx 5.33005874, \quad \lambda_2 \approx 2.79836032, \quad \lambda_3 \approx 0.87158094\]
+
+since all the three eigen values are positive, the system is unstable
+
+\section{Modification of the off diagonal elements of the matrix}
+
+let us say the off-diagonal elements of the matrix are modified to be \(0.5\) as follows:
+\[\begin{pmatrix}
+4 & 0.5 & 0.5 \\
+0.5 & 3 & 0.5 \\
+0.5 & 0.5 & 2
+\end{pmatrix}\]
+
+The eigenvalues of the matrix \(B\) are given by the roots of the equation \(\det(B - \lambda I) = 0\). which is given by:
+
+the matrix \(B\) is given by:
+\[\begin{vmatrix}
+4-\lambda & 0.5 & 0.5 \\
+0.5 & 3-\lambda & 0.5 \\
+0.5 & 0.5 & 2-\lambda
+\end{vmatrix} = 0\]
+\[4-\lambda\uline{((3-\lambda)(2-\lambda) - 0.5^2)} - \uline{0.5((0.5(2-\lambda) - 0.5(0.5)))} + 0.5(\uline{(0.5)(0.5)-0.5(3-\lambda)}) = 0\]
+\[(4-\lambda)(6 - 5\lambda + \lambda^2 - 0.5^2) - 0.5(0.75-0.5\lambda) + 0.5(0.5\lambda -1.25) = 0\]
+\[4(6 - 5\lambda + \lambda^2 - 0.25) -\lambda(6-5\lambda + \lambda^2 - 0.25) - 0.375 + 0.25\lambda + 0.25\lambda - 1.25 = 0\]
+\[24 - 20\lambda + 4\lambda^2 - 1 - 6\lambda + 5\lambda^2 - \lambda^3 + 0.25\lambda - 0.375 + 0.25\lambda - 1.25 = 0\]
+\[-\lambda^3 + 9\lambda^2 - 18\lambda + 13 = 0\]
+
+The roots of the equation \(\lambda^3 - 9\lambda^2 + 18\lambda - 13 = 0\) are the eigenvalues of the matrix \(B\):
+\[\lambda_1 \approx 5.33005874, \quad \lambda_2 \approx 2.79836032, \quad \lambda_3 \approx 0.87158094\]
+
+the eigen values still remain the same, hence the system is still unstable
+
+\begin{center}
+    \large \textbf{Question 3: Markov Chains}
+\end{center}
+
+The transition matrix for a Markov chain is given by:
+\[Q=\begin{pmatrix}
+0.7 & 0.2 & 0.1 \\
+0.3 & 0.4 & 0.3 \\
+0.2 & 0.5 & 0.3
+\end{pmatrix}\]
+
+It is modelling the transition of a system between three states high performance, medium performance, low performance, for employees respectively.
+
+
+initial state is given by: \(\pi_0 = \begin{pmatrix} 0.5 & 0.3 & 0.2 \end{pmatrix}\)
+
+\section{find the state of the system after 1 step}
+The state of the system after 1 step is given by:
+\[\pi_1 = \pi_0Q\]
+\[\pi_1 = \begin{pmatrix} 0.5 & 0.3 & 0.2 \end{pmatrix}\begin{pmatrix}0.7 & 0.2 & 0.1 \\ 0.3 & 0.4 & 0.3 \\ 0.2 & 0.5 & 0.3\end{pmatrix}\]
+\[\pi_1 = \begin{pmatrix}
+0.5(0.7) + 0.3(0.3) + 0.2(0.2) & 0.5(0.2) + 0.3(0.4) + 0.2(0.5) & 0.5(0.1) + 0.3(0.3) + 0.2(0.3)
+\end{pmatrix}\]
+
+\[\pi_1 = \begin{pmatrix}0.48 & 0.32 & 0.2\end{pmatrix}\]
+
+\section{steady state distribution}
+The steady state distribution is given by:
+\[\pi Q= \pi\]
+\[\begin{pmatrix}
+\pi_a & \pi_b & \pi_c
+\end{pmatrix}\begin{pmatrix}07 & 0.2 & 0.1 \\ 0.3 & 0.4 & 0.3 \\ 0.2 & 0.5 & 0.3\end{pmatrix} = \begin{pmatrix} \pi_a & \pi_b & \pi_c \end{pmatrix}\]
+also:
+\[\pi_a + \pi_b + \pi_c = 1 -\text{ since the sum of the probabilities must be 1 }\]
+The  above matrix equation can be written as:
+\[\pi_a(0.7) + \pi_b(0.3) + \pi_c(0.2) = \pi_a \ldots \text{equation 1}\]
+\[\pi_a(0.2) + \pi_b(0.4) + \pi_c(0.5) = \pi_b \ldots\text{equation 2}\]
+\[\pi_a(0.1) + \pi_b(0.3) + \pi_c(0.3) = \pi_c \ldots\text{equation 3}\]
+\[\pi_a + \pi_b + \pi_c = 1 \ldots\text{equation 4}\]
+
+with this system of equations, we can solve for the steady state distribution. The solution is given by:
+
+step 1: we can rewrite the equations as:
+\[\pi_a(0.7 - 1) + \pi_b(0.3) + \pi_c(0.2) = 0 \ldots\text{equation 1}\]
+\[\pi_a(0.2) + \pi_b(0.4 - 1) + \pi_c(0.5) = 0 \ldots\text{equation 2}\]
+\[\pi_a(0.1) + \pi_b(0.3) + \pi_c(0.3 - 1) = 0 \ldots\text{equation 3}\]
+\[\pi_a + \pi_b + \pi_c = 1 \ldots\text{equation 4}\]
+
+this is equivalent to:
+\[-(0.3)\pi_a + (0.3)\pi_b + (0.2)\pi_c = 0 \ldots\text{equation 1}\]
+\[0.2\pi_a + -(0.3)\pi_b + (0.5)\pi_c = 0 \ldots\text{equation 2}\]
+\[0.1\pi_a + (0.3)\pi_b + -(0.7)\pi_c = 0 \ldots\text{equation 3}\]
+
+multiply equation 1 by 10, equation 2 by 10 and equation 3 by 10:
+\[-3\pi_a + 3\pi_b + 2\pi_c = 0 \ldots\text{equation 1}\]
+\[2\pi_a - 3\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
+\[\pi_a + 3\pi_b - 7\pi_c = 0 \ldots\text{equation 3}\]
+\[\pi_a + \pi_b + \pi_c = 1 \ldots\text{equation 4}\]
+
+we can write \[\pi_a = 1 - \pi_b - \pi_c\] and substitute in the above equations to get:
+\[-3(1 - \pi_b - \pi_c) + 3\pi_b + 2\pi_c = 0 \ldots\text{equation 1}\]
+\[2(1 - \pi_b - \pi_c) - 3\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
+\[1 - \pi_b - \pi_c + 3\pi_b - 7\pi_c = 0 \ldots\text{equation 3}\]
+
+let us expand equation 1:
+\[-3 + 3\pi_b + 3\pi_c + 3\pi_b + 2\pi_c = 0\]
+\[-3 + 6\pi_b + 5\pi_c = 0\]
+\[6\pi_b + 5\pi_c = 3 \ldots\text{equation 5}\]
+
+let us expand equation 2:
+\[2 - 2\pi_b - 2\pi_c - 3\pi_b + 5\pi_c = 0\]
+\[2 - 5\pi_b + 3\pi_c = 0\]
+\[-5\pi_b + 3\pi_c = -2 \ldots\text{equation 6}\]
+
+the above equation 5 and 6 can be written as:
+\[\begin{pmatrix}6&5\\-5&3\end{pmatrix}\begin{pmatrix}\pi_b\\\pi_c\end{pmatrix} = \begin{pmatrix}3\\-2\end{pmatrix}\]
+its argumented matrix is:
+\[\begin{pmatrix}6&5&|&3\\-5&3&|&-2\end{pmatrix}\]
+by row reduction, we get:
+\[R_1 => \frac{1}{6}R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\-5&3&|&-2\end{pmatrix}\]
+\[R_2 => R_2 + 5R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&\frac{43}{6}&|&\frac{1}{2}\end{pmatrix}\]
+\[R_2 => \frac{6}{43}R_2 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&1&|&\frac{3}{43}\end{pmatrix}\]
+\[R_1 => R_1 - \frac{5}{6}R_2 => \begin{pmatrix}1&0&|&\frac{19}{43}\\0&1&|&\frac{9}{43}\end{pmatrix}\]
+
+this gives us:
+\[\pi_b = \frac{19}{43}, \quad \pi_c = \frac{9}{43}\]
+\[\Pi_a = 1 - \frac{19}{43} - \frac{9}{43} = \frac{15}{43}\]
+
+therefore the steady state distribution is given by:
+\[\pi = \begin{pmatrix}\frac{15}{43}&\frac{19}{43}&\frac{9}{43}\end{pmatrix}\]
+
+
+A lot of employees are in the medium performance state, while the least number of employees are in the low performance state. The high performance state has the second highest number of employees. So the company might introduce Initiatives to push the medium performance employees to high performance state and the low performance employees to medium performance state.
+
+
+\end{document}
