@@ -3,6 +3,7 @@
 \usepackage{ulem}
 \usepackage{amssymb}
 \usepackage{listings}
+\usepackage{forest}
 
 
 \title{Applied Stochastic Processes}
@@ -177,6 +178,179 @@ therefore the steady state distribution is given by:
 
 
 A lot of employees are in the medium performance state, while the least number of employees are in the low performance state. The high performance state has the second highest number of employees. So the company might introduce Initiatives to push the medium performance employees to high performance state and the low performance employees to medium performance state.
+
+\begin{center}
+    \large \textbf{Question 6: Conditional Probability}
+\end{center}
+\section{storyline}
+An insurance company examines its pool of auto insurance customers and makes the following observations:
+\begin{itemize}
+    \item All customers insure at least one car
+    \item 70\% of the customers insure more than one car
+    \item 20\% of the customers insure a sports car
+    \item of those customers who insure more than one car, 15\% insure a sports car
+\end{itemize}
+
+\section{find the probability that a randomly chosen customer insures one car and it is not a sports car}
+
+for Conditional probability, the formula is:
+\[P(A|B) = \frac{P(A \cap B)}{P(B)}\]
+
+let \(A\) be the event that a customer insures one car and \(B\) be the event that the customer insure a sports car.
+
+let us list out the probability of the events we have:
+
+\begin{itemize}
+    \item \(P(A) = 0.3\) = probability that a customer insures one car
+    \item \(P(A^c) = 0.7\) = probability that a customer insures more than one car
+    \item \(P(B) = 0.2\) = probability that a customer insures a sports car
+    \item \(P(B^c = 0.8)\) = probability that a customer does not insure a sports car
+    \item \(P(A^c \cap B) = 0.105\) = probability that a customer insures more than one car and it is a sports car
+    \item \(P(A^c \cap B^c ) = 0.595\) = probability that a customer insures more than one car and it is not a sports car
+\end{itemize}
+
+this is how the tree diagram looks like:
+
+\begin{forest}
+    for tree={grow=east,
+    edge={-latex, line width=1pt},
+    parent anchor=east,
+    child anchor=west,
+    align=center,
+    anchor=west,
+    l sep+=10pt,
+    s sep+=10pt,
+    inner sep=2pt,}
+    [Customer
+    [One Car, edge label={node[midway,left]{0.3}}
+    [Not a sports car, edge label={{node[midway,left]{0.8}}}, label=right:{= \(P(A \cap B^c) = 0.24\)}]
+    [Sports car, edge label={{node[midway,left]{0.2}}}, label=right:{= \(P(A \cap B) = 0.06\)}]
+]
+        [More than one car, edge label={node[midway,left]{0.7}}
+            [Not a sports car, edge label={node[midway,left]{0.85}}, label=right:{= \(P(A^c \cap B^c) = 0.595\)}]
+            [Sports car, edge label={node[midway,left]{0.15}}, label=right:{= \(P(A^c \cap B) = 0.105\)}]
+        ]
+    ]
+\end{forest}
+
+
+so, let us do the calculations:
+
+
+What is the probability that a customer insures one car and it is a sports car? this are dependent events
+\begin{itemize}
+   \item \(P(B^c = 0.8)\) = probability that a customer does not insure a sports car
+   \item \(P(B^c|A) = \frac{P(B^c \cap A)}{P(A)}\) = probability that a customer insures one car and it is not a sports car
+   \item \(P(B^c \cap A) = P(A) - P(A \cap B) = 0.3 - (0.3 \times 0.2) = 0.24\) = probability that a customer insures one car and it is not a sports car
+   \item \(P(A \cap B) = P(A) \times P(B) = 0.3 \times 0.2 = 0.06\) = probability that a customer insures one car and it is a sports car
+\end{itemize}
+
+Therefore the probability that a randomly chosen customer insures one car and it is not a sports car is \(\mathbf{0.24}\)
+
+\begin{center}
+    \large \textbf{Question 7: Bayes Theorem}
+\end{center}
+
+\section{storyline}
+
+Bayes Theorem = \(P(A|B) = \frac{P(B|A)P(A)}{P(B)}\)
+
+(a) (4 points) A medical test for a new strain of a viral respiratory disease has a 98\% sensitivity and
+a 97\% specificity. If 0.5\% of the population has the disease, calculate the probability that a person
+has the disease given they tested positive.
+
+\begin{itemize}
+    \item \(P(D) = 0.005\) = probability that a person has the disease
+    \item \(P(D^c) = 0.995\) = probability that a person does not have the disease
+    \item \(P(T|D) = 0.98\) = probability that a person tests positive given they have the disease
+    \item \(P(T|D^c) = 0.03\) = probability that a person tests positive given they do not have the disease
+    \item \(P(T) = P(T|D)P(D) + P(T|D^c)P(D^c) = (0.98 \times 0.005) + (0.03 \times 0.995) = 0.03475\) = probability that a person tests positive
+    \item \(P(D/T) = \frac{P(T|D)P(D)}{P(T)} = \frac{0.98 \times 0.005}{0.03475} \approx 0.141\)
+\end{itemize}
+
+
+(b) (4 points) A financial credit scoring model is 95 percent effective in identifying individuals who
+are likely to default on their loans when they actually will default. However, the model also yields a
+“false positive” result for 1 percent of individuals who are creditworthy. (That is, if a creditworthy
+individual is tested, then, with probability 0.01, the model will incorrectly classify them as likely
+to default.) If 0.5 percent of the population actually defaults on their loans, what is the probability
+that an individual will default given that the model predicts they are likely to default?
+
+\begin{itemize}
+    \item \(P(E) = 0.005\) = probability that an individual will default on their loans
+    \item \(P(E|D) = 0.95\) = probability that an individual will default on their loans given they actually will default
+    \item \(P(D) = P(E|D) \cdot P(D) + P(E|D^c) \cdot P(D^c)\) = probability that an individual will default on their loans
+    \item \(P(E|D^c) = 0.01\) = probability that an individual will default on their loans given they are creditworthy
+    \item \(P(E) = (0.95)(0.005) + (0.01)(0.995)\)
+    \item \(P(D) = 0.0147\) = probability that an individual will default on their loans
+\end{itemize}
+
+Bayes Theorem = \(P(D|E) = \frac{P(E|D)P(D)}{P(E)} = \frac{0.95 \times 0.005}{0.0147} \approx 0.323\)
+
+\begin{center}
+    \large \textbf{Question 8: Independence of Events, Inclusion-Exclusion Principle \& Mutual Exclusivity}
+\end{center}
+
+\section{Positive probabilities \& Independent events}
+show that if A \& B are events with positive probabilities, then so are:
+
+1. \(A^c\) and B 
+
+for indepedent events: \(P(A \cap B) = P(A) \cdot P(B)\)
+
+\begin{center}
+    \large \textbf{Question 9: Combinatorics}
+\end{center}
+
+\section{storyline}
+
+1. calculate the number of ways to arrange the letters in the word "ALGORITHM" such that the vowels are together.
+
+permutations: \(P(n) = \frac{n!}{(n-r)!}\)
+
+the number of letters in the word "ALGORITHM" is 8, with 3 vowels and 5 consonants.
+
+the number of ways to arrange the vowels is \(P(3) = \frac{8!}{(8-3)!} = 336\) \newline
+
+2. (4 points) Every fall semester, elections are held at CMU-Africa to choose members of the student
+guild and other club representatives. After, the elections were held, the elected members conducted
+a survey on students problems and it was revealed that tuition funding and housing ranked first.
+The guild decided on decentralized task forces to address specific issues from a group of 5 females
+and 7 males, how many different committees consisting of 2 females and 3 males can be formed?
+What if 2 of the males are feuding and refuse to serve on the committee together?
+
+Combinations to choose 2 females in a group of 5(here order doesn't matter): \(C(n,r) = \frac{n!}{r!(n-r)!}\)
+
+Combinations
+
+\(C\binom{5}{2} = \frac{5!}{2!(5-2)!} = \frac{120}{12} = 10\)
+
+Combinations to choose 3 males in a group of 7(here order doesn't matter):
+
+\(C\binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{5040}{144} = 35\)
+
+Therefore the number of different committees: \(10 \times 35 = 350\)\newline
+
+If 2 of the males refuse to work together:
+
+\begin{center}
+    \large \textbf{Question 10: LAW OF TOTAL PROBABILITY}
+\end{center}
+
+\section{For my own revision}
+
+This helps us to calculate the probability of an event by considering all the possible outcomes it could take. let us say: it could rain whether it is cloudy or clear. The probability of rain is the sum of the probability of rain given it is cloudy and the probability of rain given it is clear.\newline
+
+Another example is that a student can pass a test if they study or not. The probability of passing the test is the sum of the probability of passing the test given they studied and the probability of passing the test given they did not study.\newline
+
+so in general the law of total probability is given by: \(P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \ldots + P(A|B_n)P(B_n)\) \newline
+
+as in 
+
+\textbf{Questions}
+
+
+
 
 
 \end{document}
