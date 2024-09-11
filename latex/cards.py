@@ -26,9 +26,10 @@ class Card:
         return self.__str__()
     
 deck = DeckCard()
-print(deck.cards)
-card = Card("A", "Hearts")
-print(card)
-print(len(deck.cards))
-print(deck.draw())
-print(len(deck.cards))
+
+'''
+drawing 10 cards from the deck, without replacement
+'''
+drawn_cards = [deck.draw() for _ in range(10) if deck.cards] or print("No more cards to draw")
+print(drawn_cards)
+
