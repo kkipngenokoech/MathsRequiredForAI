@@ -1,3 +1,4 @@
+import random
 class DeckCard:
     shapes = [ "Hearts", "Diamonds", "Clubs", "Spades" ]
     numbers = [ "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" ]
@@ -9,6 +10,10 @@ class DeckCard:
         return ', '.join(str(card) for card in self.cards)
     def __repr__(self):
         return self.__str__()
+    def shuffle(self):
+        random.shuffle(self.cards)
+    def draw(self):
+        return self.cards.pop() if len(self.cards) > 0 else None
         
 class Card:
     def __init__(self, number, shape):
@@ -24,4 +29,6 @@ deck = DeckCard()
 print(deck.cards)
 card = Card("A", "Hearts")
 print(card)
+print(len(deck.cards))
+print(deck.draw())
 print(len(deck.cards))
