@@ -13,6 +13,20 @@
 \begin{document}
 
 \maketitle
+\begin{center}
+    \large \textbf{Question 1: Probability Desntiy Function}
+\end{center}
+
+1. Consider the PDF of a continuous random variable Y that models the duration (in hours) of a
+sudden electrical outage in a city, described by the function:
+\[g(y) = \lambda^2ye^{-\lambda y} \quad \text{for} \quad y > 0\]
+
+(a) (2 points): Prove that g(y) is a valid probability density function by verifying the normalization
+condition:\newline
+
+normalization condition: \(\int_{-\infty}^{\infty}\lambda^2ye^{-\lambda y}dy = 1\)
+
+
 
 \begin{center}
     \large \textbf{Question 2: Eigenvalues and Eigenvectors}
@@ -251,7 +265,7 @@ Therefore the probability that a randomly chosen customer insures one car and it
     \large \textbf{Question 7: Bayes Theorem}
 \end{center}
 
-\section{storyline}
+\section{questions}
 
 Bayes Theorem = \(P(A|B) = \frac{P(B|A)P(A)}{P(B)}\)
 
@@ -292,17 +306,55 @@ Bayes Theorem = \(P(D|E) = \frac{P(E|D)P(D)}{P(E)} = \frac{0.95 \times 0.005}{0.
 \end{center}
 
 \section{Positive probabilities \& Independent events}
-show that if A \& B are events with positive probabilities, then so are:
+1. show that if A \& B are events with positive probabilities, then so are:
 
 1. \(A^c\) and B 
 
-for indepedent events: \(P(A \cap B) = P(A) \cdot P(B)\)
+for indepedent events: \(P(A \cap B) = P(A) \cdot P(B)\)\newline
+
+\(A^c = 1-P(A)\)
+
+(b) (2 points) A and Bc
+
+(c) (2 points) Ac and Bc\newline
+
+2. (3 points) In the ECE class of 2026 consisting of 25 students, 15 take Robotics, 10 take Introduction
+to Systems Software Engineering, and 5 take both. Calculate the number of students who
+take either Robotics or Intro. to Systems Software Engineering or both.\newline\newline
+total population = 25\newline
+students who take Robotics = 15\newline
+students who take Introduction to Systems Software Engineering = 10\newline
+students who take both = 5 \(P(R \cap E)\)\newline
+we are trying to find the number of students who take either Robotics or Intro. to Systems Software Engineering or both.\newline
+
+\(P(R \cup E ) = P(R) + P(E) - P(R \cap E)\)\newline
+\(P(R \cup E ) = 15 + 10 - 5 = 20\)\newline
+
+therefore the number of students who take either Robotics or Intro. to Systems Software Engineering or both is 20\newline
+
+3. You are at Nyandungu amusement park with your friends and you want to play a game where you
+roll a fair six-sided die. There are prizes for rolling specific numbers:\newline
+• If you roll a 1 or a 2, you win a small prize (Event A).\newline
+• If you roll a 3, 4, or 5, you win a medium prize (Event B).\newline
+• If you roll a 6, you win a large prize (Event C).\newline
+
+(a) (2 points) Are Events A and B mutually exclusive? Why or why not?
+
+Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 3, 4, or 5. Therefore, the events are mutually exclusive.\newline
+(b) (2 points) Are Events A and C mutually exclusive? Why or why not?
+Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 6. Therefore, the events are mutually exclusive.\newline
+(c) (2 points) What is the probability of winning either a small or a medium prize?
+Probability of winning a small prize = \(P(A) = \frac{2}{6} = \frac{1}{3}\)\newline
+Probability of winning a medium prize = \(P(B) = \frac{3}{6} = \frac{1}{2}\)\newline
+Probability of winning either a small or a medium prize = \(P(A \cup B) = P(A) + P(B) = \frac{1}{3} + \frac{1}{2} = \frac{5}{6}\)\newline
+
+answer = \(\mathbf{\frac{5}{6}}\)\newline
 
 \begin{center}
     \large \textbf{Question 9: Combinatorics}
 \end{center}
 
-\section{storyline}
+\section{questions}
 
 1. calculate the number of ways to arrange the letters in the word "ALGORITHM" such that the vowels are together.
 
@@ -317,21 +369,35 @@ guild and other club representatives. After, the elections were held, the electe
 a survey on students problems and it was revealed that tuition funding and housing ranked first.
 The guild decided on decentralized task forces to address specific issues from a group of 5 females
 and 7 males, how many different committees consisting of 2 females and 3 males can be formed?
-What if 2 of the males are feuding and refuse to serve on the committee together?
+What if 2 of the males are feuding and refuse to serve on the committee together?\newline
 
-Combinations to choose 2 females in a group of 5(here order doesn't matter): \(C(n,r) = \frac{n!}{r!(n-r)!}\)
+Combinations to choose 2 females in a group of 5(here order doesn't matter): \(C(n,r) = \frac{n!}{r!(n-r)!}\)\newline
 
-Combinations
+Combinations\newline
 
-\(C\binom{5}{2} = \frac{5!}{2!(5-2)!} = \frac{120}{12} = 10\)
+\(C\binom{5}{2} = \frac{5!}{2!(5-2)!} = \frac{120}{12} = 10\)\newline
 
-Combinations to choose 3 males in a group of 7(here order doesn't matter):
+Combinations to choose 3 males in a group of 7(here order doesn't matter):\newline
 
-\(C\binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{5040}{144} = 35\)
+\(C\binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{5040}{144} = 35\)\newline
 
-Therefore the number of different committees: \(10 \times 35 = 350\)\newline
+Therefore the number of different committees without restrictions: \(10 \times 35 = 350\)\newline
 
-If 2 of the males refuse to work together:
+If 2 of the males refuse to work together, then the number of different committees is given by:
+
+we need three males from the 7\newline
+
+let us say we are forced to choose the two of them, as in the C(2,2) = 1\newline
+
+we need an extra male from the remaining 5 males so that we fill up the committee slots for males\newline
+
+this means C(5,1) = 5, there are five different ways to form the committee since this two male can be paired up with any of the remaining gents\newline
+
+this means the number of invalid committees (ones with the two feuding male) is  \(1 \times 5 = 5\)\newline
+
+so the total number of valid committees is 350 - 5 = 345\newline
+
+answer = \(\mathbf{345}\)\newline
 
 
 3. A recent census summary reveals that there are about 1.75 million people in Kigali, of which approximately 55\% are females. A survey conducted by a major exchange student in cosmetics reveals an alarming balding rate among men. The survey reports that the average hair count for people in Kigali is 150, 000 hairs. Men aged 35 years and above have about 35\% of the average
