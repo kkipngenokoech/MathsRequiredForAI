@@ -337,20 +337,91 @@ If 2 of the males refuse to work together:
     \large \textbf{Question 10: LAW OF TOTAL PROBABILITY}
 \end{center}
 
-\section{For my own revision}
-
-This helps us to calculate the probability of an event by considering all the possible outcomes it could take. let us say: it could rain whether it is cloudy or clear. The probability of rain is the sum of the probability of rain given it is cloudy and the probability of rain given it is clear.\newline
-
-Another example is that a student can pass a test if they study or not. The probability of passing the test is the sum of the probability of passing the test given they studied and the probability of passing the test given they did not study.\newline
-
-so in general the law of total probability is given by: \(P(A) = P(A|B_1)P(B_1) + P(A|B_2)P(B_2) + \ldots + P(A|B_n)P(B_n)\) \newline
-
-as in 
-
 \textbf{Questions}
 
+1. A factory produces three types of gadgets. Type A constitutes 50\%, Type B constitutes 30\%, and Type C constitutes 20\% of the total production. The defect rates for these gadgets are 1\%, 2\%, and 3\% respectively. Calculate the probability that a randomly selected gadget is defective
 
+this is what we have:
+\begin{itemize}
+    \item \(P(A) = 0.5\), \(P(D) = 0.01\)
+    \item \(P(B) = 0.3\), \(P(D) = 0.02\)
+    \item \(p(c) = 0.2\), \(P(D) = 0.03\)
+\end{itemize}
 
+\begin{forest}
+    for tree={grow=east,
+    edge={-latex, line width=1pt},
+    parent anchor=east,
+    child anchor=west,
+    align=center,
+    anchor=west,
+    l sep+=10pt,
+    s sep+=10pt,
+    inner sep=2pt,}
+    [Gadgets
+    [A, edge label={node[midway,left]{0.5}}
+        [Not  Defective, edge label={{node[midway,left]{0.99}}}]
+        [Defective, edge label={{node[midway,left]{0.03}}}]
+    ]
+    [B, edge label={node[midway,left]{0.2}}
+        [Not  Defective, edge label={node[midway,left]{0.98}}]
+        [Defective, edge label={node[midway,left]{0.02}}]
+    ]
+    [C, edge label={node[midway,left]{0.3}}
+        [Not  Defective, edge label={node[midway,left]{0.97}}]
+        [Defective, edge label={node[midway,left]{0.03}}]
+    ]
+    ]
+\end{forest}
 
+a probability that a randomly selected gadget is defective is given by:
+
+\[P(D) = P(D|A)P(A) + P(D|B)P(B) + P(D|C)P(C)\] = \[0.5 \times 0.01 + 0.3 \times 0.02 + 0.2 \times 0.03 = 0.017\]
+
+2. (4 marks) Samsung has three factories—Factory Korea, Factory Japan, and Factory USA that produce the same type of electronic component. The factory in Korea produces 50\% of the components, 30\% are produced in Japan, and the factory in the USA is responsible for 20\% of production.
+The probability of a component being defective is 2\% for Factory Korea, 4\% for Factory Japan, and 5\% for Factory USA. Suppose a randomly selected component from the company’s entire production is found to be
+defective. What is the probability that it was produced by Factory Japan?
+
+This is what we have so far:
+
+\begin{itemize}
+    \item \(P(K) = 0.5\), \(P(D) = 0.02\) - Korea
+    \item \(P(J) = 0.3\), \(P(D) = 0.04\) - Japan
+    \item \(P(U) = 0.2\), \(P(D) = 0.05\) - USA
+\end{itemize}
+
+\begin{forest}
+    for tree={grow=east,
+    edge={-latex, line width=1pt},
+    parent anchor=east,
+    child anchor=west,
+    align=center,
+    anchor=west,
+    l sep+=10pt,
+    s sep+=10pt,
+    inner sep=2pt,}
+    [Factories
+    [Korea, edge label={node[midway,left]{0.5}}
+        [Not  Defective, edge label={{node[midway,left]{0.98}}}]
+        [Defective, edge label={{node[midway,left]{0.02}}}]
+    ]
+    [Japan, edge label={node[midway,left]{0.3}}
+        [Not  Defective, edge label={node[midway,left]{0.96}}]
+        [Defective, edge label={node[midway,left]{0.04}}]
+    ]
+    [USA, edge label={node[midway,left]{0.2}}
+        [Not  Defective, edge label={node[midway,left]{0.95}}]
+        [Defective, edge label={node[midway,left]{0.05}}]
+    ]
+    ]
+\end{forest}
+
+the probability that a component was produced by Factory Japan given that it is defective is given by:
+
+we first need to calculate the probability that a component is defective using law of total probability:
+
+\[P(D) = P(D|K)P(K) + P(D|J)P(J) + P(D|U)P(U)\] = \[0.5 \times 0.02 + 0.3 \times 0.04 + 0.2 \times 0.05 = 0.032\]
+
+\[P(J|D) = \frac{P(D|J)P(J)}{P(D)} = \frac{0.04 \times 0.3}{0.032} = \frac{0.012}{0.032} \approx 0.375\]
 
 \end{document}

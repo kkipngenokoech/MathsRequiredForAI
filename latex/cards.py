@@ -62,4 +62,3 @@ print(theory_heart_probability)
 suit_diamonds_3_theoritical = 1
 theory_diamonds_of_three_probability = suit_diamonds_3_theoritical / len(deck.cards)
 print(theory_diamonds_of_three_probability)
-
