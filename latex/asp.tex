@@ -194,6 +194,35 @@ therefore the steady state distribution is given by:
 A lot of employees are in the medium performance state, while the least number of employees are in the low performance state. The high performance state has the second highest number of employees. So the company might introduce Initiatives to push the medium performance employees to high performance state and the low performance employees to medium performance state.
 
 \begin{center}
+    \large \textbf{Question 5: Matrix and Vector Manipulation Operations}
+\end{center}
+
+Given a matrix M that represents a quadratic form xTMx, discuss under what conditions the function is
+concave or convex. Connect this to how concavity affects the optimization landscape in machine learning
+models, such as in support vector machines or neural network loss surfaces
+
+\textbf{solution:}
+
+A quadtratic form \(x^T M  x\) is convex if and only if:\newline
+
+\begin{itemize}
+    \item \(M\) it is positive semidefinite. A positive semidefinite matrix is a symmetric matrix where all the eigenvalues are non-negative.\newline
+\end{itemize}
+
+A quadratic form \(x^T M  x\) is concave if and only if:\newline
+\begin{itemize}
+    \item \(M\) is negative semidefinite. A negative semidefinite matrix is a symmetric matrix where all the eigenvalues are non-positive.\newline
+\end{itemize}
+
+In machine learning, the optimization landscape is the surface that is formed by the loss function. The loss function is a function that measures the difference between the predicted value and the actual value. The optimization landscape is the surface that is formed by the loss function. The optimization landscape can be convex or concave.\newline A convex optimization landscape is one where the loss function is convex. A concave optimization landscape is one where the loss function is concave. Convex optimization landscapes are easier to optimize because they have a single global minimum. Concave optimization landscapes are harder to optimize because they have multiple local minima. 
+
+
+\begin{center}
+    \large \textbf{Question 5: Conditional Probability}
+\end{center}
+
+
+\begin{center}
     \large \textbf{Question 6: Conditional Probability}
 \end{center}
 \section{storyline}
