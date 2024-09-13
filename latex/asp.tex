@@ -24,7 +24,122 @@ sudden electrical outage in a city, described by the function:
 (a) (2 points): Prove that g(y) is a valid probability density function by verifying the normalization
 condition:\newline
 
-normalization condition: \(\int_{-\infty}^{\infty}\lambda^2ye^{-\lambda y}dy = 1\)
+normalization condition: \(\int_{0}^{\infty}\lambda^2ye^{-\lambda y}dy = 1\)
+
+\[\int_{0}^{\infty}\lambda^2ye^{-\lambda y}dy = \lambda^2\int_{0}^{\infty}ye^{-\lambda y}dy\]
+
+let \(u = y\), \(dv = e^{-\lambda y}dy\), \(du = dy\), \(v = -\frac{1}{\lambda}e^{-\lambda y}\)
+
+\[\lambda^2\left[-\frac{1}{\lambda}ye^{-\lambda y}\Big|_{0}^{\infty} + \frac{1}{\lambda}\int_{0}^{\infty}e^{-\lambda y}dy\right]\]
+
+\[\lambda^2\left[0 + \frac{1}{\lambda}\left(-\frac{1}{\lambda}e^{-\lambda y}\Big|_{0}^{\infty}\right)\right]\]
+
+\[\lambda^2\left[\frac{1}{\lambda^2}e^{-\lambda y}\Big|_{0}^{\infty}\right]\]
+
+\[\lambda^2\left[\frac{1}{\lambda^2}e^{-\infty} - \frac{1}{\lambda^2}e^{0}\right]\]
+
+\[\lambda^2\left[0 - \frac{1}{\lambda^2}\right]\]
+
+\[\lambda^2\left[-\frac{1}{\lambda^2}\right]\]
+
+\[\lambda^2\left[-\frac{1}{\lambda^2}\right] = -1\]
+
+(b) (4 points): Show whether g(y) is concave or convex over its domain by analyzing its second
+derivative. Discuss the practical implications of this concavity in predicting the likelihood of
+prolonged outages.
+
+The second derivative of the function is given by:
+
+\[\frac{d^2}{dy^2}(\lambda^2ye^{-\lambda y}) = \frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y})\]
+
+\[\frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y}) = \lambda^3e^{-\lambda y} - \lambda^4ye^{-\lambda y} - \lambda^3e^{-\lambda y}\]
+
+\[\lambda^3e^{-\lambda y} - \lambda^4ye^{-\lambda y} - \lambda^3e^{-\lambda y} = -\lambda^4ye^{-\lambda y}\]
+
+The second derivative of the function is negative, which means that the function is concave over its domain. This means that the function is decreasing over its domain. This has practical implications in predicting the likelihood of prolonged outages. If the function is concave, it means that the likelihood of prolonged outages is decreasing over time. This means that the likelihood of prolonged outages is decreasing as time goes on. This can be useful in predicting the likelihood of prolonged outages and taking appropriate action to prevent them.
+
+(c) (4 points): Find the mode of the distribution g(y) by solving for the critical points of the
+function and determining which point corresponds to the maximum or minimum value. Using \(\lambda = [\text{0.5 2}]\) relate the mode to real-life scenarios where outages are frequent and brief or infrequent but prolonged.\newline
+
+The mode of the distribution is given by the point where the first derivative of the function is equal to zero. The first derivative of the function is given by:
+
+\[\frac{d}{dy}(\lambda^2ye^{-\lambda y}) = \lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y}\]
+
+Setting the first derivative equal to zero:
+
+\[\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y} = 0\]
+
+\[\lambda^2e^{-\lambda y}(1 - \lambda y) = 0\]
+
+\[\lambda^2e^{-\lambda y} = 0 \quad \text{or} \quad 1 - \lambda y = 0\]
+
+\[\lambda^2e^{-\lambda y} = 0\] is not possible because the exponential function is always positive. Therefore, the mode of the distribution is given by:
+
+\[1 - \lambda y = 0\]
+
+\[1 = \lambda y\]
+
+\[y = \frac{1}{\lambda}\]
+
+The mode of the distribution is given by \(y = \frac{1}{\lambda}\). The mode of the distribution is the point where the likelihood of an outage is the highest. If the outages are frequent and brief, the mode of the distribution will be closer to zero. If the outages are infrequent but prolonged, the mode of the distribution will be further from zero.
+
+Two manufacturing plants, Plant A and Plant B, produce goods with daily outputs X (in tons) and Y (in tons) respectively. The production efficiency between the two plants can be modeled by the joint probability density function:
+\[f(x, y) = e^{-(x+y)} \text{ for } x > 0 \text{ and } y > 0.\]
+
+(a) (2 points): Show that f(x, y) is a valid joint probability density function by verifying the
+normalization condition:
+\[\iint_{x > 0, y > 0} e^{-(x+y)} \, dx \, dy = 1.\]
+
+\[\int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)} \, dx \, dy = \int_{0}^{\infty}e^{-y} \, dy \int_{0}^{\infty}e^{-x} \, dx\]
+
+\[\int_{0}^{\infty}e^{-y} \, dy = -e^{-y}\Big|_{0}^{\infty} = -e^{-\infty} + e^{0} = 1\]
+
+\[\int_{0}^{\infty}e^{-x} \, dx = -e^{-x}\Big|_{0}^{\infty} = -e^{-\infty} + e^{0} = 1\]
+
+\[\int_{0}^{\infty}\int_{0}^{\infty}e^{-(x+y)} \, dx \, dy = 1 \times 1 = 1\]
+
+Therefore, the joint probability density function is valid.
+
+(b) (4 points): Find the probability that both plants produce more than 1 ton of goods in a day
+by calculating:
+\[
+P(X > 1, Y > 1) =
+\iint_{x > 1, y > 1} e^{-(x+y)} \, dx \, dy.
+\]
+
+\[\int_{1}^{\infty}\int_{1}^{\infty}e^{-(x+y)} \, dx \, dy = \int_{1}^{\infty}e^{-y} \, dy \int_{1}^{\infty}e^{-x} \, dx\]
+
+\[\int_{1}^{\infty}e^{-y} \, dy = -e^{-y}\Big|_{1}^{\infty} = -e^{-\infty} + e^{-1} = e^{-1}\]
+
+\[\int_{1}^{\infty}e^{-x} \, dx = -e^{-x}\Big|_{1}^{\infty} = -e^{-\infty} + e^{-1} = e^{-1}\]
+
+\[\int_{1}^{\infty}\int_{1}^{\infty}e^{-(x+y)} \, dx \, dy = e^{-1} \times e^{-1} = e^{-2}\]
+
+Therefore, the probability that both plants produce more than 1 ton of goods in a day is \(e^{-2}\).
+
+Discuss the practical interpretation of this result for plant managers who are aiming to maintain
+high production levels.
+
+The probability that both plants produce more than 1 ton of goods in a day is \(e^{-2}\). This means that the likelihood of both plants producing more than 1 ton of goods in a day is \(e^{-2}\). This can be interpreted as the likelihood of both plants maintaining high production levels. If the probability is high, it means that the likelihood of both plants maintaining high production levels is high. If the probability is low, it means that the likelihood of both plants maintaining high production levels is low. Plant managers can use this information to make decisions about how to maintain high production levels. They can use this information to make decisions about how to improve production efficiency and increase output.\newline
+
+(c) (4 points): Calculate the probability that Plant A produces more than 2 tons and Plant B
+produces less than 2 tons:
+
+\[P(X > 2, Y < 2) =\iint_{x > 2, 0 < y < 2} e^{-(x+y)} \, dx \, dy.\]
+
+\[\int_{2}^{\infty}\int_{0}^{2}e^{-(x+y)} \, dx \, dy = \int_{2}^{\infty}e^{-y} \, dy \int_{0}^{2}e^{-x} \, dx\]
+
+\[\int_{2}^{\infty}e^{-y} \, dy = -e^{-y}\Big|_{2}^{\infty} = -e^{-\infty} + e^{-2} = e^{-2}\]
+
+\[\int_{0}^{2}e^{-x} \, dx = -e^{-x}\Big|_{0}^{2} = -e^{-2} + e^{0} = 1 - e^{-2}\]
+
+\[\int_{2}^{\infty}\int_{0}^{2}e^{-(x+y)} \, dx \, dy = e^{-2} \times (1 - e^{-2}) = e^{-2} - e^{-4}\]
+
+Therefore, the probability that Plant A produces more than 2 tons and Plant B produces less than 2 tons is \(e^{-2} - e^{-4}\).
+
+Explain how this information might be useful for balancing production targets between the twoplants.
+
+The probability that Plant A produces more than 2 tons and Plant B produces less than 2 tons is \(e^{-2} - e^{-4}\). This information can be useful for balancing production targets between the two plants. Plant managers can use this information to set production targets for each plant. They can use this information to determine how much each plant should produce in order to meet overall production targets. They can use this information to balance production levels between the two plants and ensure that production targets are met. This information can be useful for optimizing production efficiency and increasing output.
 
 
 
@@ -335,18 +450,79 @@ Bayes Theorem = \(P(D|E) = \frac{P(E|D)P(D)}{P(E)} = \frac{0.95 \times 0.005}{0.
 \end{center}
 
 \section{Positive probabilities \& Independent events}
-1. show that if A \& B are events with positive probabilities, then so are:
+1. show that if A \& B are events with positive probabilities and are indepedent, then so are:
 
 1. \(A^c\) and B 
 
-for indepedent events: \(P(A \cap B) = P(A) \cdot P(B)\)\newline
+let us show that \(A^c\) and B are independent events:
 
-\(A^c = 1-P(A)\)
+\(P(A \cap B) = P(A)P(B)\) = since A and B are independent events
 
+\(P(A^c \cap B) = P(B) - P(A \cap B)\) = by the definition of the complement of A
+
+\(P(A^c \cap B) = P(B) - P(A)P(B)\) = since A and B are independent events
+
+\(P(A^c \cap B) = P(B)(1 - P(A))\) = factor out P(B)
+
+\(P(A^c \cap B) = P(B)P(A^c)\) = by the definition of the complement of A
+
+Therefore, \(A^c\) and B are independent events\newline
+
+to show that they have positive probabilities, we can use the fact that the probability of the complement of an event is 1 minus the probability of the event:
+
+\(P(A^c) = 1 - P(A)\) = by the definition of the complement of A
+
+since A has a positive probability, then \(P(A) > 0\)
+
+therefore, \(P(A^c) = 1 - P(A) > 0\)
+
+since B has a positive probability, then \(P(B) > 0\)
+
+therefore, \(P(A^c \cap B) = P(B)P(A^c) > 0\)   \newline
 (b) (2 points) A and Bc
 
+to show that A and Bc are independent events, we can use the fact that the probability of the complement of an event is 1 minus the probability of the event:
+
+\(P(A \cap Bc) = P(A) - P(A \cap B)\) = by the definition of the complement of B
+
+\(P(A \cap Bc) = P(A) - P(A)P(B)\) = since A and B are independent events
+
+\(P(A \cap Bc) = P(A)(1 - P(B))\) = factor out P(A)
+
+\(P(A \cap Bc) = P(A)P(Bc)\) = by the definition of the complement of B
+
+Therefore, A and Bc are independent events\newline
+
+to show that they have positive probabilities, we can use the fact that the probability of the complement of an event is 1 minus the probability of the event:
+
+\(P(Bc) = 1 - P(B)\) = by the definition of the complement of B
+
+since B has a positive probability, then \(P(B) > 0\)
+
+therefore, \(P(A \cap Bc) = P(A)P(Bc) > 0\)   \newline
 (c) (2 points) Ac and Bc\newline
 
+to show that Ac and Bc are independent events, we can use the fact that the probability of the complement of an event is 1 minus the probability of the event:
+
+\(P(Ac \cap Bc) = P(Ac) - P(Ac \cap B)\) = by the definition of the complement of B
+
+\(P(Ac \cap Bc) = P(Ac) - P(Ac \cap B)\) = by the definition of the complement of A
+
+\(P(Ac \cap Bc) = P(Ac) - P(Ac)P(B)\) = since A and B are independent events
+
+\(P(Ac \cap Bc) = P(Ac)(1 - P(B))\) = factor out P(Ac)
+
+\(P(Ac \cap Bc) = P(Ac)P(Bc)\) = by the definition of the complement of B
+
+Therefore, Ac and Bc are independent events\newline\newline
+
+to show that they have positive probabilities, we can use the fact that the probability of the complement of an event is 1 minus the probability of the event:
+
+\(P(Bc) = 1 - P(B)\) = by the definition of the complement of B
+
+since B has a positive probability, then \(P(B) > 0\)
+
+therefore, \(P(Ac \cap Bc) = P(Ac)P(Bc) > 0\)   \newline \newline
 2. (3 points) In the ECE class of 2026 consisting of 25 students, 15 take Robotics, 10 take Introduction
 to Systems Software Engineering, and 5 take both. Calculate the number of students who
 take either Robotics or Intro. to Systems Software Engineering or both.\newline\newline
