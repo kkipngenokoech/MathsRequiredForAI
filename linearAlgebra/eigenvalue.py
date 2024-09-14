@@ -19,3 +19,11 @@ eigenvalues, eigenvectors = np.linalg.eig(B)
 
 # Output the results
 print(eigenvalues)
+
+off_diagonal_B = np.array([
+    [4, 0.5, 0.5],
+    [0.5, 3, 0.5],
+    [0.5, 0.5, 2]
+])
+print("modified B")
+print(np.linalg.eig(off_diagonal_B)[0])
