@@ -264,18 +264,18 @@ step 1: we can rewrite the equations as:
 
 this is equivalent to:
 \[-(0.3)\pi_a + (0.3)\pi_b + (0.2)\pi_c = 0 \ldots\text{equation 1}\]
-\[0.2\pi_a + -(0.3)\pi_b + (0.5)\pi_c = 0 \ldots\text{equation 2}\]
+\[0.2\pi_a + -(0.6)\pi_b + (0.5)\pi_c = 0 \ldots\text{equation 2}\]
 \[0.1\pi_a + (0.3)\pi_b + -(0.7)\pi_c = 0 \ldots\text{equation 3}\]
 
 multiply equation 1 by 10, equation 2 by 10 and equation 3 by 10:
 \[-3\pi_a + 3\pi_b + 2\pi_c = 0 \ldots\text{equation 1}\]
-\[2\pi_a - 3\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
+\[2\pi_a - 6\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
 \[\pi_a + 3\pi_b - 7\pi_c = 0 \ldots\text{equation 3}\]
 \[\pi_a + \pi_b + \pi_c = 1 \ldots\text{equation 4}\]
 
 we can write \[\pi_a = 1 - \pi_b - \pi_c\] and substitute in the above equations to get:
 \[-3(1 - \pi_b - \pi_c) + 3\pi_b + 2\pi_c = 0 \ldots\text{equation 1}\]
-\[2(1 - \pi_b - \pi_c) - 3\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
+\[2(1 - \pi_b - \pi_c) - 6\pi_b + 5\pi_c = 0 \ldots\text{equation 2}\]
 \[1 - \pi_b - \pi_c + 3\pi_b - 7\pi_c = 0 \ldots\text{equation 3}\]
 
 let us expand equation 1:
@@ -284,26 +284,26 @@ let us expand equation 1:
 \[6\pi_b + 5\pi_c = 3 \ldots\text{equation 5}\]
 
 let us expand equation 2:
-\[2 - 2\pi_b - 2\pi_c - 3\pi_b + 5\pi_c = 0\]
-\[2 - 5\pi_b + 3\pi_c = 0\]
-\[-5\pi_b + 3\pi_c = -2 \ldots\text{equation 6}\]
+\[2 - 2\pi_b - 2\pi_c - 6\pi_b + 5\pi_c = 0\]
+\[2 - 8\pi_b + 3\pi_c = 0\]
+\[8\pi_b - 3\pi_c = 2 \ldots\text{equation 6}\]
 
 the above equation 5 and 6 can be written as:
-\[\begin{pmatrix}6&5\\-5&3\end{pmatrix}\begin{pmatrix}\pi_b\\\pi_c\end{pmatrix} = \begin{pmatrix}3\\-2\end{pmatrix}\]
+\[\begin{pmatrix}6&5\\8&-3\end{pmatrix}\begin{pmatrix}\pi_b\\\pi_c\end{pmatrix} = \begin{pmatrix}3\\2\end{pmatrix}\]
 its argumented matrix is:
-\[\begin{pmatrix}6&5&|&3\\-5&3&|&-2\end{pmatrix}\]
+\[\begin{pmatrix}6&5&|&3\\8&-3&|&2\end{pmatrix}\]
 by row reduction, we get:
-\[R_1 => \frac{1}{6}R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\-5&3&|&-2\end{pmatrix}\]
-\[R_2 => R_2 + 5R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&\frac{43}{6}&|&\frac{1}{2}\end{pmatrix}\]
-\[R_2 => \frac{6}{43}R_2 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&1&|&\frac{3}{43}\end{pmatrix}\]
-\[R_1 => R_1 - \frac{5}{6}R_2 => \begin{pmatrix}1&0&|&\frac{19}{43}\\0&1&|&\frac{9}{43}\end{pmatrix}\]
+\[R_1 => \frac{1}{6}R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\8&-3&|&2\end{pmatrix}\]
+\[R_2 => -R_2 + 8R_1 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&\frac{29}{3}&|&2\end{pmatrix}\]
+\[R_2 => \frac{3}{29}R_2 => \begin{pmatrix}1&\frac{5}{6}&|&\frac{1}{2}\\0&1&|&\frac{6}{29}\end{pmatrix}\]
+\[R_1 => R_1 - \frac{5}{6}R_2 => \begin{pmatrix}1&0&|&\frac{19}{58}\\0&1&|&\frac{6}{29}\end{pmatrix}\]
 
 this gives us:
-\[\pi_b = \frac{19}{43}, \quad \pi_c = \frac{9}{43}\]
-\[\Pi_a = 1 - \frac{19}{43} - \frac{9}{43} = \frac{15}{43}\]
+\[\pi_b = \frac{19}{58}, \quad \pi_c = \frac{6}{29}\]
+\[\pi_a = 1 - \frac{19}{58} - \frac{6}{29} = \frac{27}{58}\]
 
 therefore the steady state distribution is given by:
-\[\pi = \begin{pmatrix}\frac{15}{43}&\frac{19}{43}&\frac{9}{43}\end{pmatrix}\]
+\[\pi = \begin{pmatrix}\frac{27}{58}&\frac{19}{58}&\frac{6}{29}\end{pmatrix}\]
 
 
 A lot of employees are in the medium performance state, while the least number of employees are in the low performance state. The high performance state has the second highest number of employees. So the company might introduce Initiatives to push the medium performance employees to high performance state and the low performance employees to medium performance state.
@@ -330,11 +330,6 @@ A quadratic form \(x^T M  x\) is concave if and only if:\newline
 \end{itemize}
 
 In machine learning, the optimization landscape is the surface that is formed by the loss function. The loss function is a function that measures the difference between the predicted value and the actual value. The optimization landscape is the surface that is formed by the loss function. The optimization landscape can be convex or concave.\newline A convex optimization landscape is one where the loss function is convex. A concave optimization landscape is one where the loss function is concave. Convex optimization landscapes are easier to optimize because they have a single global minimum. Concave optimization landscapes are harder to optimize because they have multiple local minima. 
-
-
-\begin{center}
-    \large \textbf{Question 5: Conditional Probability}
-\end{center}
 
 
 \begin{center}
@@ -435,15 +430,15 @@ to default.) If 0.5 percent of the population actually defaults on their loans, 
 that an individual will default given that the model predicts they are likely to default?
 
 \begin{itemize}
-    \item \(P(E) = 0.005\) = probability that an individual will default on their loans
+    \item \(P(D) = 0.005\) = probability that an individual will default on their loans
     \item \(P(E|D) = 0.95\) = probability that an individual will default on their loans given they actually will default
-    \item \(P(D) = P(E|D) \cdot P(D) + P(E|D^c) \cdot P(D^c)\) = probability that an individual will default on their loans
+    \item \(P(E) = P(E|D) \cdot P(D) + P(E|D^c) \cdot P(D^c)\) = probability that an individual will default on their loans (law of total probability)
     \item \(P(E|D^c) = 0.01\) = probability that an individual will default on their loans given they are creditworthy
     \item \(P(E) = (0.95)(0.005) + (0.01)(0.995)\)
-    \item \(P(D) = 0.0147\) = probability that an individual will default on their loans
+    \item \(P(E) = 0.0147\) = probability that an individual will default on their loans
 \end{itemize}
 
-Bayes Theorem = \(P(D|E) = \frac{P(E|D)P(D)}{P(E)} = \frac{0.95 \times 0.005}{0.0147} \approx 0.323\)
+Bayes Theorem = \(P(D|E) = \frac{P(E|D)P(D)}{P(E)} = \frac{0.95 \times 0.005}{0.0147} \approx \textbf{0.323}\)
 
 \begin{center}
     \large \textbf{Question 8: Independence of Events, Inclusion-Exclusion Principle \& Mutual Exclusivity}
