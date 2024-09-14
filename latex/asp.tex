@@ -28,21 +28,21 @@ normalization condition: \(\int_{0}^{\infty}\lambda^2ye^{-\lambda y}dy = 1\)
 
 \[\int_{0}^{\infty}\lambda^2ye^{-\lambda y}dy = \lambda^2\int_{0}^{\infty}ye^{-\lambda y}dy\]
 
-let \(u = y\), \(dv = e^{-\lambda y}dy\), \(du = dy\), \(v = -\frac{1}{\lambda}e^{-\lambda y}\)
+let \(u = y\) and \(dv = e^{-\lambda y}dy\), then \(du = dy\) and \(v = -\frac{1}{\lambda}e^{-\lambda y}\)
 
-\[\lambda^2\left[-\frac{1}{\lambda}ye^{-\lambda y}\Big|_{0}^{\infty} + \frac{1}{\lambda}\int_{0}^{\infty}e^{-\lambda y}dy\right]\]
+\[\lambda^2\int_{0}^{\infty}ye^{-\lambda y}dy = \lambda^2\left[-\frac{1}{\lambda}ye^{-\lambda y}\Big|_{0}^{\infty} + \frac{1}{\lambda}\int_{0}^{\infty}e^{-\lambda y}dy\right]\]
 
-\[\lambda^2\left[0 + \frac{1}{\lambda}\left(-\frac{1}{\lambda}e^{-\lambda y}\Big|_{0}^{\infty}\right)\right]\]
+\[\lambda^2\left[-\frac{1}{\lambda}ye^{-\lambda y}\Big|_{0}^{\infty} + \frac{1}{\lambda}\int_{0}^{\infty}e^{-\lambda y}dy\right] = \lambda^2\left[0 + \frac{1}{\lambda}\left(-\frac{1}{\lambda}e^{-\lambda y}\Big|_{0}^{\infty}\right)\right]\]
 
-\[\lambda^2\left[\frac{1}{\lambda^2}e^{-\lambda y}\Big|_{0}^{\infty}\right]\]
+\[\lambda^2\left[0 + \frac{1}{\lambda}\left(-\frac{1}{\lambda}e^{-\lambda y}\Big|_{0}^{\infty}\right)\right] = \lambda^2\left[0 + \frac{1}{\lambda}\left(0 - (-\frac{1}{\lambda})\right)\right]\]
 
-\[\lambda^2\left[\frac{1}{\lambda^2}e^{-\infty} - \frac{1}{\lambda^2}e^{0}\right]\]
+\[\lambda^2\left[0 + \frac{1}{\lambda}\left(0 - (-\frac{1}{\lambda})\right)\right] = \lambda^2\left[0 + \frac{1}{\lambda}\left(\frac{1}{\lambda}\right)\right]\]
 
-\[\lambda^2\left[0 - \frac{1}{\lambda^2}\right]\]
+\[\lambda^2\left[0 + \frac{1}{\lambda}\left(\frac{1}{\lambda}\right)\right] = \lambda^2\left[0 + \frac{1}{\lambda^2}\right]\]
 
-\[\lambda^2\left[-\frac{1}{\lambda^2}\right]\]
+\[\lambda^2\left[0 + \frac{1}{\lambda^2}\right] = \lambda^2\left[\frac{1}{\lambda^2}\right]\]
 
-\[\lambda^2\left[-\frac{1}{\lambda^2}\right] = -1\]
+\[\lambda^2\left[\frac{1}{\lambda^2}\right] = 1\]
 
 (b) (4 points): Show whether g(y) is concave or convex over its domain by analyzing its second
 derivative. Discuss the practical implications of this concavity in predicting the likelihood of
@@ -52,9 +52,11 @@ The second derivative of the function is given by:
 
 \[\frac{d^2}{dy^2}(\lambda^2ye^{-\lambda y}) = \frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y})\]
 
-\[\frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y}) = \lambda^3e^{-\lambda y} - \lambda^4ye^{-\lambda y} - \lambda^3e^{-\lambda y}\]
+\[\frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y}) = -\lambda^3e^{-\lambda y} - \lambda^3ye^{-\lambda y}\]
 
-\[\lambda^3e^{-\lambda y} - \lambda^4ye^{-\lambda y} - \lambda^3e^{-\lambda y} = -\lambda^4ye^{-\lambda y}\]
+\[\frac{d}{dy}(\lambda^2e^{-\lambda y} - \lambda^3ye^{-\lambda y}) = -\lambda^3e^{-\lambda y}(1 + y)\]
+
+
 
 The second derivative of the function is negative, which means that the function is concave over its domain. This means that the function is decreasing over its domain. This has practical implications in predicting the likelihood of prolonged outages. If the function is concave, it means that the likelihood of prolonged outages is decreasing over time. This means that the likelihood of prolonged outages is decreasing as time goes on. This can be useful in predicting the likelihood of prolonged outages and taking appropriate action to prevent them.
 
