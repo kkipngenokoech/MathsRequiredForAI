@@ -543,12 +543,11 @@ roll a fair six-sided die. There are prizes for rolling specific numbers:\newlin
 • If you roll a 3, 4, or 5, you win a medium prize (Event B).\newline
 • If you roll a 6, you win a large prize (Event C).\newline
 
-(a) (2 points) Are Events A and B mutually exclusive? Why or why not?
-
-Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 3, 4, or 5. Therefore, the events are mutually exclusive.\newline
-(b) (2 points) Are Events A and C mutually exclusive? Why or why not?
-Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 6. Therefore, the events are mutually exclusive.\newline
-(c) (2 points) What is the probability of winning either a small or a medium prize?
+(a) (2 points) Are Events A and B mutually exclusive? Why or why not?\newline
+Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 3, 4, or 5. Therefore, the events are mutually exclusive.\newline\newline
+(b) (2 points) Are Events A and C mutually exclusive? Why or why not?\newline
+Yes they are mutually exclusive because the events do not have any outcomes in common. If you roll a 1 or 2, you cannot roll a 6. Therefore, the events are mutually exclusive.\newline\newline
+(c) (2 points) What is the probability of winning either a small or a medium prize?\newline
 Probability of winning a small prize = \(P(A) = \frac{2}{6} = \frac{1}{3}\)\newline
 Probability of winning a medium prize = \(P(B) = \frac{3}{6} = \frac{1}{2}\)\newline
 Probability of winning either a small or a medium prize = \(P(A \cup B) = P(A) + P(B) = \frac{1}{3} + \frac{1}{2} = \frac{5}{6}\)\newline
@@ -565,9 +564,9 @@ answer = \(\mathbf{\frac{5}{6}}\)\newline
 
 permutations: \(P(n) = \frac{n!}{(n-r)!}\)
 
-the number of letters in the word "ALGORITHM" is 8, with 3 vowels and 5 consonants.
+the number of letters in the word "ALGORITHM" is 9, with 3 vowels and 6 consonants.
 
-the number of ways to arrange the vowels is \(P(3) = \frac{8!}{(8-3)!} = 336\) \newline
+the number of ways to arrange the vowels is \(P(3) = \frac{9!}{(9-3)!} = \textbf{504}\) \newline
 
 2. (4 points) Every fall semester, elections are held at CMU-Africa to choose members of the student
 guild and other club representatives. After, the elections were held, the elected members conducted
@@ -586,7 +585,7 @@ Combinations to choose 3 males in a group of 7(here order doesn't matter):\newli
 
 \(C\binom{7}{3} = \frac{7!}{3!(7-3)!} = \frac{5040}{144} = 35\)\newline
 
-Therefore the number of different committees without restrictions: \(10 \times 35 = 350\)\newline
+Therefore the number of different committees without restrictions: \(10 \times 35 = \textbf{350}\)\newline
 
 If 2 of the males refuse to work together, then the number of different committees is given by:
 
@@ -598,11 +597,10 @@ we need an extra male from the remaining 5 males so that we fill up the committe
 
 this means C(5,1) = 5, there are five different ways to form the committee since this two male can be paired up with any of the remaining gents\newline
 
-this means the number of invalid committees (ones with the two feuding male) is  \(1 \times 5 = 5\)\newline
+to get the total number of invalid committees, we multiply the number of ways to form the committee for the male and the female: \(5 \times 10 = 50\)\newline
 
-so the total number of valid committees is 350 - 5 = 345\newline
+so the number of different committees(minus the invalid ones) = 350 - 50 = \(\mathbf{300}\)\newline
 
-answer = \(\mathbf{345}\)\newline
 
 
 3. A recent census summary reveals that there are about 1.75 million people in Kigali, of which approximately 55\% are females. A survey conducted by a major exchange student in cosmetics reveals an alarming balding rate among men. The survey reports that the average hair count for people in Kigali is 150, 000 hairs. Men aged 35 years and above have about 35\% of the average
@@ -629,7 +627,7 @@ This is what we have so far:
     \item \(\sigma = 10,000\)
     \item 68\% of the hair counts lie within 1 standard deviation from the mean
     \item the range is given by: \(\mu \pm \sigma\)
-    \item the range is given by: \(52,500 \pm 10,000 = 42,500 \text{ and } 62,500\)
+    \item the range is given by: \(52,500 \pm 10,000 = \textbf{42,500} \text{ and } \textbf{62,500}\)
 \end{itemize}
 
 3. (2 points) Considering the calculated range, use the pigeonhole principle to show that at
@@ -637,13 +635,12 @@ least 2 men will have the same hair count within this range. Assume hair counts 
 values.\newline\newline
 the range is given by: \(42,500 \text{ and } 62,500\)\newline
 men in kigali each 35 and above = 472,500\newline
-the range is 20,000 + 1 = the range is inclusive\newline
-men in kigali that are likely to fall within this range = 0.86 of 472,500 = 321,300\newline
+range width =  20,000 + 1 = distinct hair count\newline
+men in kigali that are likely to fall within this range = 0.68 of 472,500 = 321,300\newline
 
-since the range is 20,000 and the number of men is 321,300, then by the pigeonhole principle, at least 2 men will have the same hair count within this range.\newline
+so we have 321,300 hair counts (pigeons) and 20,000 distinct hair counts 'holes' (pigeon holes)\newline
 
-
-
+since the number of men is greater than the number of distinct hair counts, then at least 2 men will have the same hair count within this range\newline
 
 \begin{center}
     \large \textbf{Question 10: LAW OF TOTAL PROBABILITY}
