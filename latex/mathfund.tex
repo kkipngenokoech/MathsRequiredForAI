@@ -3,6 +3,10 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
 
+\usepackage{geometry}
+\geometry{a3paper, margin=0.5in} % Adjust the margin as needed
+
+
 \setlength{\topmargin}{-.5in} \setlength{\textheight}{9.25in}
 \setlength{\oddsidemargin}{0in} \setlength{\textwidth}{6.8in}
 
@@ -250,39 +254,518 @@
     The system has no solution since the last row of the matrix is all zeros with the last element being 1, this means that the system is inconsistent.
 \end{enumerate}
 
-\item The following represents the average life span of  smokers according to the average number of cigars they smoke in a day:
-\begin{center}
-$%
-\begin{array}{ccccc}
-\text{No. of cigars} & 5 & 10 & 15 & 20
-\\
-\text{Life span} & 65 & 56 & 48 & 40 %
-\end{array}%
-$
-\end{center}
-Let $x$ represent the number of cigars and $y$ the life span.
+\item Given the matrix A:
+\[
+    A = \begin{bmatrix}
+        0 & 1 & 1 \\
+        1 & 0 & -1 \\
+        -2 & 1 & 0 \\
+        -1 & 1 & 1
+    \end{bmatrix}
+\]
 \begin{enumerate}
-\item Find the least squares line for the data set (use two decimal places).\hfill[20]
+\item Compute \(A^\top A\) and show that it is symmetric
+\[
+    A^\top A = \begin{bmatrix}
+        0 & 1 & -2 & -1 \\
+        1 & 0 & 1 & 1 \\
+        1 & -1 & 0 & 1
+    \end{bmatrix}
+    \begin{bmatrix}
+        0 & 1 & 1 \\
+        1 & 0 & -1 \\
+        -2 & 1 & 0 \\
+        -1 & 1 & 1
+    \end{bmatrix}
+    = \begin{bmatrix}
+        6 & -1 & -1 \\
+        -1 & 4 & 0 \\
+        -1 & 0 & 4
+    \end{bmatrix}
+\]
 
-\item Use this model to predict the average life span of a person who smokes 25 cigars daily (round-off to the nearest year).\hfill[5]
+To show that it is symmetric: \(A^\top A = (A^\top A)^\top\)
+\[
+    \begin{bmatrix}
+        6 & -1 & -1 \\
+        -1 & 4 & 0 \\
+        -1 & 0 & 4
+    \end{bmatrix}
+    = \begin{bmatrix}
+        6 & -1 & -1 \\
+        -1 & 4 & 0 \\
+        -1 & 0 & 4
+    \end{bmatrix}
+\]
 
-    \end{enumerate}
+\item Compute \((A^\top A)^{-1}\) using Gaussian Elimination
+\[
+    \begin{bmatrix}
+        6 & -1 & -1 &|& 1 & 0 & 0 \\
+        -1 & 4 & 0 &|& 0 & 1 & 0 \\
+        -1 & 0 & 4 &|& 0 & 0 & 1
+    \end{bmatrix}
+    R_1 = \frac{1}{6}R_1
+    \begin{bmatrix}
+        1 & -\frac{1}{6} & -\frac{1}{6} &|& \frac{1}{6} & 0 & 0 \\
+        -1 & 4 & 0 &|& 0 & 1 & 0 \\
+        -1 & 0 & 4 &|& 0 & 0 & 1
+    \end{bmatrix}
+\]
+\[
+    R_2 = R_2 + R_1
+    \begin{bmatrix}
+        1 & -\frac{1}{6} & -\frac{1}{6} &|& \frac{1}{6} & 0 & 0 \\
+        0 & \frac{23}{6} & -\frac{1}{6} &|& \frac{1}{6} & 1 & 0 \\
+        -1 & 0 & 4 &|& 0 & 0 & 1
+    \end{bmatrix}
+    R_3 = R_3 + R_1
+    \begin{bmatrix}
+        1 & -\frac{1}{6} & -\frac{1}{6} &|& \frac{1}{6} & 0 & 0 \\
+        0 & \frac{23}{6} & -\frac{1}{6} &|& \frac{1}{6} & 1 & 0 \\
+        0 & -\frac{1}{6} & \frac{17}{6} &|& \frac{1}{6} & 0 & 1
+    \end{bmatrix}
+\]
 
-\item The following data gives the number of bacteria in a culture  (in billions):
-   \begin{center}
-    $%
-\begin{array}{ccccc}
-\text{Time (in minutes)} & 0 & 1 & 2 & 3 \\
-\text{Population} & 7.4 & 8.2 & 30.1 & 50.8%
-\end{array}%
-$
-\end{center}
+\[
+    R_2 = \frac{6}{23}R_2
+    \begin{bmatrix}
+        1 & -\frac{1}{6} & -\frac{1}{6} &|& \frac{1}{6} & 0 & 0 \\
+        0 & 1 & -\frac{1}{23} &|& \frac{1}{23} & \frac{6}{23} & 0 \\
+        0 & -\frac{1}{6} & \frac{17}{6} &|& \frac{1}{6} & 0 & 1
+    \end{bmatrix}
+    R_1 = R_1 + \frac{1}{6}R_2
+    \begin{bmatrix}
+        1 & 0 & -\frac{1}{23} &|& \frac{1}{23} & \frac{1}{6} & 0 \\
+        0 & 1 & -\frac{1}{23} &|& \frac{1}{23} & \frac{6}{23} & 0 \\
+        0 & -\frac{1}{6} & \frac{17}{6} &|& \frac{1}{6} & 0 & 1
+    \end{bmatrix}
+\]
 
-Let $x$ be the number of minutes  and $y$ the bacteria population:
+\[
+    R_3 = R_3 + \frac{1}{6}R_2
+    \begin{bmatrix}
+        1 & 0 & -\frac{1}{23} &|& \frac{1}{23} & \frac{1}{6} & 0 \\
+        0 & 1 & -\frac{1}{23} &|& \frac{1}{23} & \frac{6}{23} & 0 \\
+        0 & 0 & \frac{17}{23} &|& \frac{1}{23} & \frac{1}{6} & 1
+    \end{bmatrix}
+    R_3 = \frac{23}{17}R_3
+    \begin{bmatrix}
+        1 & 0 & -\frac{1}{23} &|& \frac{1}{23} & \frac{1}{6} & 0 \\
+        0 & 1 & -\frac{1}{23} &|& \frac{1}{23} & \frac{6}{23} & 0 \\
+        0 & 0 & 1 &|& \frac{1}{17} & \frac{3}{17} & \frac{23}{17}
+    \end{bmatrix}
+\]
+
+\[
+    R_1 = R_1 + \frac{1}{23}R_3
+    \begin{bmatrix}
+        1 & 0 & 0 &|& \frac{1}{17} & \frac{5}{17} & \frac{23}{17} \\
+        0 & 1 & -\frac{1}{23} &|& \frac{1}{23} & \frac{6}{23} & 0 \\
+        0 & 0 & 1 &|& \frac{1}{17} & \frac{3}{17} & \frac{23}{17}
+    \end{bmatrix}
+    R_2 = R_2 + \frac{1}{23}R_3
+    \begin{bmatrix}
+        1 & 0 & 0 &|& \frac{1}{17} & \frac{5}{17} & \frac{23}{17} \\
+        0 & 1 & 0 &|& \frac{2}{17} & \frac{9}{17} & \frac{23}{17} \\
+        0 & 0 & 1 &|& \frac{1}{17} & \frac{3}{17} & \frac{23}{17}
+    \end{bmatrix}
+\]
+
+\[
+    (A^\top A)^{-1} = \begin{bmatrix}
+        \frac{1}{17} & \frac{5}{17} & \frac{23}{17} \\
+        \frac{2}{17} & \frac{9}{17} & \frac{23}{17} \\
+        \frac{1}{17} & \frac{3}{17} & \frac{23}{17}
+    \end{bmatrix}
+\]
+
+\item  Let \( b = \begin{bmatrix}
+    1 \\
+    0 \\
+    1 \\
+    0
+\end{bmatrix} \). If \( Ax = b \), show that \( x = (A^\top A)^{-1}A^\top b \) and obtain the value of \( x \). [Note: \( x = (A^\top A)^{-1}A^\top b \) is called the Normal equation]
+
+\[
+    Ax = b, 
+    where, A = A^\top A = \begin{bmatrix}
+        6 & -1 & -1 \\
+        -1 & 4 & 0 \\
+        -1 & 0 & 4
+    \end{bmatrix}
+    b = \begin{bmatrix}
+        1 \\
+        0 \\
+        1 \\
+        0
+    \end{bmatrix}
+\]
+
+\[
+    Ax=b, (A^\top A)x =  b
+\]
+\[
+    (A^\top A)^{-1}(A^\top A)x = (A^\top A)^{-1}b
+\]
+\[
+    x = (A^\top A)^{-1}b
+\]
+\[
+    x = \begin{bmatrix}
+        \frac{1}{17} & \frac{5}{17} & \frac{23}{17} \\
+        \frac{2}{17} & \frac{9}{17} & \frac{23}{17} \\
+        \frac{1}{17} & \frac{3}{17} & \frac{23}{17}
+    \end{bmatrix}
+    \begin{bmatrix}
+        1 \\
+        0 \\
+        1
+    \end{bmatrix}
+\]
+\[
+    x =
+    \begin{bmatrix}
+        24/17 \\
+        25/17 \\
+        24/17
+    \end{bmatrix}
+\]
+
+\end{enumerate}
+
+\item CMU-Africa is trying to understand the pricing strategy used by Delight Canteen. The Canteen sells various types of food, each with a different price, but only charges a total price for all food types on a student’s plate. As a machine learning engineer, you want to help students determine the price of their food based on the quantity (measured in Grams) of each foot type they add to their plate. In other to achieve this, you collect data from 6 of your friends on the quantity of each food type they served and the total price. The observations from your friends are recorded below.
+
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline
+    Transaction & Food a (g) & Food b (g) & Food c (g) & Food d (g) & Total Cost (RWF) \\
+    \hline
+    1 & 100 & 50 & 150 & 200 & 2500 \\
+    2 & 50 & 50 & 100 & 300 & 2300 \\
+    3 & 100 & 150 & 200 & 100 & 3000 \\
+    4 & 50 & 200 & 300 & 50 & 2900 \\
+    5 & 200 & 50 & 250 & 50 & 3100 \\
+    6 & 300 & 50 & 50 & 200 & 4300 \\
+    \hline
+\end{tabular}
+
+From the observations in the table above, you are expected to obtain the price per quantity of each food
+type (mearsured in RWF/g).
+
 \begin{enumerate}
-\item Construct a scatter plot for the data set.\hfill[12]
-\item Does the data follow a linear trend?
-\item Linearize the data set
+\item Describe the above using a system of linear equations
+\[
+    \begin{aligned}
+        100a + 50b + 150c + 200d &= 2500 \\
+        50a + 50b + 100c + 300d &= 2300 \\
+        100a + 150b + 200c + 100d &= 3000 \\
+        50a + 200b + 300c + 50d &= 2900 \\
+        200a + 50b + 250c + 50d &= 3100 \\
+        300a + 50b + 50c + 200d &= 4300
+    \end{aligned}
+\]
+\item Write the system of linear equations in a compact matrix form, Ax = b
+\[
+    A = \begin{bmatrix}
+        100 & 50 & 150 & 200 \\
+        50 & 50 & 100 & 300 \\
+        100 & 150 & 200 & 100 \\
+        50 & 200 & 300 & 50 \\
+        200 & 50 & 250 & 50 \\
+        300 & 50 & 50 & 200
+    \end{bmatrix}
+    x = \begin{bmatrix}
+        a \\
+        b \\
+        c \\
+        d
+    \end{bmatrix}
+    b = \begin{bmatrix}
+        2500 \\
+        2300 \\
+        3000 \\
+        2900 \\
+        3100 \\
+        4300
+    \end{bmatrix}
+\]
+\[
+    Ax = b = \begin{bmatrix}
+        100 & 50 & 150 & 200 \\
+        50 & 50 & 100 & 300 \\
+        100 & 150 & 200 & 100 \\
+        50 & 200 & 300 & 50 \\
+        200 & 50 & 250 & 50 \\
+        300 & 50 & 50 & 200
+    \end{bmatrix}
+    \begin{bmatrix}
+        a \\
+        b \\
+        c \\
+        d
+    \end{bmatrix}
+    = \begin{bmatrix}
+        2500 \\
+        2300 \\
+        3000 \\
+        2900 \\
+        3100 \\
+        4300
+    \end{bmatrix}
+\]
+\item Use Gaussian elimination to obtain a solution for the system.
+\[
+    \begin{bmatrix}
+        100 & 50 & 150 & 200 &|& 2500 \\
+        50 & 50 & 100 & 300 &|& 2300 \\
+        100 & 150 & 200 & 100 &|& 3000 \\
+        50 & 200 & 300 & 50 &|& 2900 \\
+        200 & 50 & 250 & 50 &|& 3100 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+    R_1 = \frac{1}{100}R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        50 & 50 & 100 & 300 &|& 2300 \\
+        100 & 150 & 200 & 100 &|& 3000 \\
+        50 & 200 & 300 & 50 &|& 2900 \\
+        200 & 50 & 250 & 50 &|& 3100 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+\]
+
+\[
+    R_2 = R_2 - 50R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        100 & 150 & 200 & 100 &|& 3000 \\
+        50 & 200 & 300 & 50 &|& 2900 \\
+        200 & 50 & 250 & 50 &|& 3100 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+    R_3 = R_3 - 100R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        50 & 200 & 300 & 50 &|& 2900 \\
+        200 & 50 & 250 & 50 &|& 3100 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+\]
+
+\[
+    R_4 = R_4 - 50R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        200 & 50 & 250 & 50 &|& 3100 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+    R_5 = R_5 - 200R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & -350 &|& 2600 \\
+        300 & 50 & 50 & 200 &|& 4300
+    \end{bmatrix}
+\]
+
+\[
+    R_6 = R_6 - 300R_1
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & -350 &|& 2600 \\
+        0 & -100 & -350 & -400 &|& 3550
+    \end{bmatrix}
+    R_6 = R_6 + R_2
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & -350 &|& 2600 \\
+        0 & 0 & -325 & -200 &|& 4600
+    \end{bmatrix}
+\]
+
+\[
+    R_6 = R_6 + 4R_3
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & -350 &|& 2600 \\
+        0 & 0 & 0 & -800 &|& 6600
+    \end{bmatrix}
+    R_6 = \frac{1}{-800}R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & -350 &|& 2600 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_5 = R_5 + 2R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & -100 &|& 1650 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_4 = R_4 + 2R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & -100 &|& 2000 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_3 = R_3 + R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 200 &|& 1050 \\
+        0 & 100 & 50 & 0 &|& 2782.5 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_2 = R_2 - R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 2 &|& 25 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 100 & 50 & 0 &|& 2782.5 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_1 = R_1 - 2R_6
+    \begin{bmatrix}
+        1 & 0.5 & 1.5 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 100 & 50 & 0 &|& 2782.5 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_1 = R_1 - 0.5R_2
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 100 & 50 & 0 &|& 2782.5 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_3 = R_3 - 4R_2
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 0 & -50 & 0 &|& 1778.5 \\
+        0 & 150 & 225 & 0 &|& 2782.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_4 = R_4 - 6R_2
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 0 & -50 & 0 &|& 1778.5 \\
+        0 & 0 & 75 & 0 &|& 1738.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_3 = -\frac{1}{50}R_3
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 75 & 0 &|& 1738.5 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_4 = R_4 - 75R_3
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 0 & 0 &|& -1.25 \\
+        0 & 0 & -200 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_5 = R_5 + 200R_3
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 25 & 0 &|& 1041.75 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 0 & 0 &|& -1.25 \\
+        0 & 0 & 0 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_2 = R_2 - 25R_3
+    \begin{bmatrix}
+        1 & 0 & 1 & 0 &|& 8.5 \\
+        0 & 25 & 0 & 0 &|& 963.18 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 0 & 0 &|& -1.25 \\
+        0 & 0 & 0 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+\[
+    R_1 = R_1 - R_3
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 &|& -27.07 \\
+        0 & 25 & 0 & 0 &|& 963.18 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 0 & 0 &|& -1.25 \\
+        0 & 0 & 0 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+    R_1 = R_1 + R_2
+    \begin{bmatrix}
+        1 & 0 & 0 & 0 &|& 935.11 \\
+        0 & 25 & 0 & 0 &|& 963.18 \\
+        0 & 0 & 1 & 0 &|& 35.57 \\
+        0 & 0 & 0 & 0 &|& -1.25 \\
+        0 & 0 & 0 & 0 &|& 2766.5 \\
+        0 & 0 & 0 & 1 &|& 8.25
+    \end{bmatrix}
+\]
+
+
 
 \item Find the least squares line for the linearized data set \hfill[8]
 
@@ -307,5 +790,6 @@ $b=\dfrac{\sum x^2\sum y - \sum x\sum xy}{n\sum x^2 -(\sum x)^2}$
 
 
 \end{enumerate}
+\vspace{0.5cm} % Add some vertical space after the text
 
 \end{document} 
