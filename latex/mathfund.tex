@@ -1,0 +1,311 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+
+\setlength{\topmargin}{-.5in} \setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0in} \setlength{\textwidth}{6.8in}
+
+
+\begin{document}
+
+\Large
+
+
+\noindent{\bf Kipngeno koech - bkoech  Assignment 1\hfill 18 September 2024}
+
+
+\medskip\hrule
+\begin{enumerate}
+
+\item Consider the system of linear equations below:
+\[
+\begin{aligned}
+    3x + y &= 6 \\
+    -2x + 2y + 8z &= -8 \\
+    4x + 4y + 8z &= 4
+\end{aligned}
+\]
+
+\begin{enumerate}
+    \item Express the system in a compact matrix form, Ax = b 
+    \[
+        A = \begin{bmatrix}
+            3 & 1 & 0 \\
+            -2 & 2 & 8 \\
+            4 & 4 & 8
+        \end{bmatrix}
+        x = \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix}
+        b = \begin{bmatrix}
+            6 \\
+            -8 \\
+            4
+        \end{bmatrix}\newline
+    \]  
+    \text{To represent the system in a compact matrix form:}
+    \[
+        \begin{bmatrix}
+            3 & 1 & 0 \\
+            -2 & 2 & 8 \\
+            4 & 4 & 8
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y \\
+            z
+        \end{bmatrix}
+        = \begin{bmatrix}
+            6 \\
+            -8 \\
+            4
+        \end{bmatrix}
+    \]
+    \item \textbf{Use Gaussian elimination to determine if the system has no solution, one unique solution or infinitely many solutions and justify your answer}
+    \[
+        \begin{bmatrix}
+            3 & 1 & 0 &|& 6 \\
+            -2 & 2 & 8 &|& -8 \\
+            4 & 4 & 8 & |&4
+        \end{bmatrix}
+        R_1 \leftrightarrow R_2
+        \begin{bmatrix}
+            -2 & 2 & 8 &|& -8 \\
+            3 & 1 & 0 &|& 6 \\
+            4 & 4 & 8 & |&4
+        \end{bmatrix}
+        R_1 = R_1 + R_2
+        \begin{bmatrix}
+            1 & 3 & 8 &|& -2 \\
+            3 & 1 & 0 &|& 6 \\
+            4 & 4 & 8 & |&4
+        \end{bmatrix}
+    \]
+    \[
+        R_2 = R_2 - 3R_1
+        \begin{bmatrix}
+            1 & 3 & 8 &|& -2 \\
+            0 & -8 & -24 &|& 12 \\
+            4 & 4 & 8 & |&4
+        \end{bmatrix}
+        R_3 = R_3 - 4R_1
+        \begin{bmatrix}
+            1 & 3 & 8 &|& -2 \\
+            0 & -8 & -24 &|& 12 \\
+            0 & -8 & -24 & |&12
+        \end{bmatrix}
+    \]
+
+    \[
+        R_3 = R_3 - R_2
+        \begin{bmatrix}
+            1 & 3 & 8 &|& -2 \\
+            0 & -8 & -24 &|& 12 \\
+            0 & 0 & 0 & |&0
+        \end{bmatrix}
+        R_2 = -\dfrac{1}{8}R_2
+        \begin{bmatrix}
+            1 & 3 & 8 &|& -2 \\
+            0 & 1 & 3 &|& -1.5 \\
+            0 & 0 & 0 & |&0
+        \end{bmatrix}
+    \]
+    This system has infinitely many solutions since the last row of the matrix is all zeros. The system is consistent.
+    \item \textbf{If the system has a solution, what is the solution?}
+    \[
+        \begin{aligned}
+            x + 3y + 8z &= -2 \\
+            y + 3z &= -1.5
+        \end{aligned}
+    \]
+    \[
+        \begin{aligned}
+            x &= -2 - 3y - 8z \\
+            y &= -1.5 - 3z
+        \end{aligned}
+    \]
+    \[
+        \begin{aligned}
+            x &= -2 - 3(-1.5 - 3z) - 8z \\
+            x &= -2 + 4.5 + 9z - 8z \\
+            x &= 2.5 + z
+        \end{aligned}
+    \]
+    The solution to the system is:
+    \[
+        \begin{aligned}
+            x &= 2.5 + z \\
+            y &= -1.5 - 3z \\
+            z &= z
+        \end{aligned}
+    \]
+    where Z is a free variable and can take any value.
+\end{enumerate}
+
+\item \textbf{Determine whether the following systems of equations (or matrix equations) described below have no solution, one unique solution, or infinitely many solutions, and justify your answer.}
+
+\begin{enumerate}
+    \item \textbf{}
+    \[
+        \begin{aligned}
+            ax + by &= c \\
+            dx + ey &= f
+        \end{aligned}
+    \]
+    where \(a, b, c, d, e, f\) are scalars satisfying \(\frac{a}{d} = \frac{b}{e} = \frac{c}{f}\)
+    \[
+        \begin{aligned}
+            \frac{a}{d} = \frac{b}{c} = \frac{c}{f} \\
+            e = \frac{bd}{a}
+        \end{aligned}
+    \]
+    \[
+        \begin{bmatrix}
+            a & b \\
+            d & e
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y
+        \end{bmatrix}
+        = \begin{bmatrix}
+            c \\
+            f
+        \end{bmatrix}
+    \]
+
+    \[
+        \begin{bmatrix}
+            a & b \\
+            d & \frac{bd}{a}
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y
+        \end{bmatrix}
+        = \begin{bmatrix}
+            c \\
+            f
+        \end{bmatrix}
+    \]
+    in matrix argumented form:
+    \[
+        \begin{bmatrix}
+            a & b &|& c \\
+            d & \frac{bd}{a} &|& f
+        \end{bmatrix}
+        R_1 = \frac{1}{a}R_1
+        \begin{bmatrix}
+            1 & \frac{b}{a} &|& \frac{c}{a} \\
+            d & \frac{bd}{a} &|& f
+        \end{bmatrix}
+        R_2 = R_2 - dR_1
+        \begin{bmatrix}
+            1 & \frac{b}{a} &|& \frac{c}{a} \\
+            0 & 0 &|& f - d\frac{c}{a}
+        \end{bmatrix}
+    \]
+
+    The system has no solution if \(f - d\frac{c}{a} \neq 0\), or infinitely many solutions if \(f - d\frac{c}{a} = 0\)
+  
+        
+    \item A homogeneous system of 3 equations in 4 unknowns
+    \[
+        \begin{aligned}
+            ax + by + cz + dw &= 0 \\
+            ex + fy + gz + hw &= 0 \\
+            ix + jy + kz + lw &= 0
+        \end{aligned}
+    \]
+    \[
+        \begin{bmatrix}
+            a & b & c & d \\
+            e & f & g & h \\
+            i & j & k & l
+        \end{bmatrix}
+        \begin{bmatrix}
+            x \\
+            y \\
+            z \\
+            w
+        \end{bmatrix}
+        = \begin{bmatrix}
+            0 \\
+            0 \\
+            0
+        \end{bmatrix}
+    \]
+    The system has infinitely many solutions since there will be a lot of free variables.
+    \item \textbf{Ax = b, where the row-reduced echelon form of the augmented matrix [A | b] looks as follows:}
+    \[
+        \begin{bmatrix}
+            1 & 0 & -1 &|& 0 \\
+            0 & 1 & 2 &|& 0 \\
+            0 & 0 & 0 &|& 1
+        \end{bmatrix}
+    \]
+    The system has no solution since the last row of the matrix is all zeros with the last element being 1, this means that the system is inconsistent.
+\end{enumerate}
+
+\item The following represents the average life span of  smokers according to the average number of cigars they smoke in a day:
+\begin{center}
+$%
+\begin{array}{ccccc}
+\text{No. of cigars} & 5 & 10 & 15 & 20
+\\
+\text{Life span} & 65 & 56 & 48 & 40 %
+\end{array}%
+$
+\end{center}
+Let $x$ represent the number of cigars and $y$ the life span.
+\begin{enumerate}
+\item Find the least squares line for the data set (use two decimal places).\hfill[20]
+
+\item Use this model to predict the average life span of a person who smokes 25 cigars daily (round-off to the nearest year).\hfill[5]
+
+    \end{enumerate}
+
+\item The following data gives the number of bacteria in a culture  (in billions):
+   \begin{center}
+    $%
+\begin{array}{ccccc}
+\text{Time (in minutes)} & 0 & 1 & 2 & 3 \\
+\text{Population} & 7.4 & 8.2 & 30.1 & 50.8%
+\end{array}%
+$
+\end{center}
+
+Let $x$ be the number of minutes  and $y$ the bacteria population:
+\begin{enumerate}
+\item Construct a scatter plot for the data set.\hfill[12]
+\item Does the data follow a linear trend?
+\item Linearize the data set
+
+\item Find the least squares line for the linearized data set \hfill[8]
+
+\item Predict the bacteria population after 10 minutes.\hfill[5]
+
+
+Note: Answers should be correct to four decimal places for this item.
+
+\end{enumerate}
+
+\begin{center}
+$m=\dfrac{n\sum xy -\sum x\sum y}{n\sum x^2 -(\sum x)^2}$
+
+$b=\dfrac{\sum x^2\sum y - \sum x\sum xy}{n\sum x^2 -(\sum x)^2}$
+
+\end{center}
+
+
+
+
+
+
+
+\end{enumerate}
+
+\end{document} 
