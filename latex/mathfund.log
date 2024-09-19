@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  19 SEP 2024 20:00
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  19 SEP 2024 22:16
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -252,126 +252,91 @@ Overfull \hbox (55.7449pt too wide) in paragraph at lines 439--451
  []
 
 [5]
-Overfull \hbox (11.80664pt too wide) detected at line 535
-[] \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (241.86775pt too wide) detected at line 563
+\OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 $ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (143.40182pt too wide) detected at line 556
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 50\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 100\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (73.75388pt too wide) detected at line 583
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 4\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (174.10211pt too wide) detected at line 577
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 50\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 200\OML/cmm/m/it/14.4 R[] []
- []
-
-
-Overfull \hbox (186.31897pt too wide) detected at line 598
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 300\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + 2\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (78.67139pt too wide) detected at line 603
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 6\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] []
  []
 
 [6]
-Overfull \hbox (161.3546pt too wide) detected at line 618
-\OML/cmm/m/it/14.4 R[] < \OMS/cmsy/m/n/14.4 ^^@^^@ \OML/cmm/m/it/14.4 > R[] [] R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (94.90361pt too wide) detected at line 623
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (168.57011pt too wide) detected at line 638
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 100\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (83.2366pt too wide) detected at line 643
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + 5\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (200.18529pt too wide) detected at line 658
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 175\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + 100\OML/cmm/m/it/14.4 R[] []
+Overfull \hbox (35.1216pt too wide) detected at line 663
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] []
  []
 
-
-Overfull \hbox (127.32027pt too wide) detected at line 678
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + \OML/cmm/m/it/14.4 R[] []
- []
-
-
-Overfull \hbox (165.20331pt too wide) detected at line 699
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 50\OML/cmm/m/it/14.4 R[] []
- []
-
-[7]
-Overfull \hbox (139.20296pt too wide) detected at line 719
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + 250\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] []
- []
-
-
-Overfull \hbox (21.23743pt too wide) detected at line 739
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@[]\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 8\OML/cmm/m/it/14.4 R[] []
- []
-
-
-Overfull \hbox (14.15343pt too wide) detected at line 759
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 1\OML/cmm/m/it/14.4 :\OT1/cmr/m/n/14.4 5\OML/cmm/m/it/14.4 R[] []
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 761--762
-
- []
-
-[8]
-Overfull \hbox (138.07465pt too wide) detected at line 856
+[7] [8]
+Overfull \hbox (138.07465pt too wide) detected at line 812
 [][]
  []
 
-[9]
-Overfull \hbox (250.64291pt too wide) detected at line 896
+
+Overfull \hbox (250.64291pt too wide) detected at line 852
 [][]
  []
 
-[10] [11] [12]
-Overfull \hbox (68.16724pt too wide) detected at line 1070
+[9] [10] [11]
+Overfull \hbox (68.16724pt too wide) detected at line 1026
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (63.13504pt too wide) detected at line 1090
+Overfull \hbox (63.13504pt too wide) detected at line 1046
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
  []
 
-[13]
-Overfull \hbox (141.71703pt too wide) detected at line 1169
+[12]
+Overfull \hbox (141.71703pt too wide) detected at line 1125
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (102.20267pt too wide) detected at line 1189
+Overfull \hbox (102.20267pt too wide) detected at line 1145
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (103.96683pt too wide) detected at line 1209
+Overfull \hbox (103.96683pt too wide) detected at line 1165
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
+ []
+
+[13]
+Overfull \hbox (115.16685pt too wide) detected at line 1283
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
  []
 
 [14]
-Overfull \hbox (115.16685pt too wide) detected at line 1327
-\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 1393--1394
+Underfull \hbox (badness 10000) in paragraph at lines 1349--1350
 
  []
 
 
-Overfull \hbox (3.15417pt too wide) detected at line 1493
+Overfull \hbox (3.15417pt too wide) detected at line 1449
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
  []
 
-
-Overfull \hbox (143.53532pt too wide) detected at line 1513
+[15]
+Overfull \hbox (143.53532pt too wide) detected at line 1469
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
  []
 
-[16] [17] (./mathfund.aux)
+[16] (./mathfund.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -386,10 +351,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,13n,65p,673b,422s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on mathfund.pdf (17 pages, 125210 bytes).
+Output written on mathfund.pdf (16 pages, 123684 bytes).
 PDF statistics:
- 99 PDF objects out of 1000 (max. 8388607)
- 63 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
