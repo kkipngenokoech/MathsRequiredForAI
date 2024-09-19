@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{codegray}{gray}{0.9}
+
+\lstset{
+    backgroundcolor=\color{codegray},
+    basicstyle=\ttfamily,
+    frame=single,
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+}
+
+\begin{document}
+
+\begin{enumerate}
+    \item Using Python and NumPy, show that the solution obtained using Gaussian Elimination is the same as that of the normal equation. Note that the normal equation is expressed as \( \mathbf{x} = (A^\top A)^{-1} A^\top \mathbf{b} \). Use the function \texttt{numpy.linalg.inv} to compute the inverse of a matrix.
+\begin{lstlisting}[language=Python]
+import numpy as np
+
+# Define the matrix A and vector b
+A = np.array([
+    [1000, 50, 150, 200],
+    [50, 50, 100, 300],
+    [100, 150, 200, 100],
+    [50, 200, 300, 50],
+    [200, 50, 250, 50],
+    [300, 50, 50, 200]
+
+])
+
+b = np.array([2500, 2300, 3000, 2900, 3100, 4300])
+
+# Gaussian Elimination (using numpy's solve function)
+x_gaussian = np.linalg.solve(A.T @ A, A.T @ b)
+
+
+# Print both solutions
+print("Solution using Gaussian Elimination:", x_gaussian)
+print("Solution using Normal Equation:", x_normal)
+
+\end{lstlisting}
+
+
+\end{enumerate}
+\end{document}
