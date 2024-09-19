@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  18 SEP 2024 21:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  19 SEP 2024 19:03
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -262,12 +262,12 @@ Overfull \hbox (143.40182pt too wide) detected at line 556
  []
 
 
-Overfull \hbox (165.80188pt too wide) detected at line 577
+Overfull \hbox (174.10211pt too wide) detected at line 577
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 50\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 200\OML/cmm/m/it/14.4 R[] []
  []
 
 
-Overfull \hbox (145.66898pt too wide) detected at line 598
+Overfull \hbox (156.869pt too wide) detected at line 598
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 300\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + \OML/cmm/m/it/14.4 R[] []
  []
 
@@ -311,25 +311,80 @@ Overfull \hbox (24.10315pt too wide) detected at line 766
 \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 + \OML/cmm/m/it/14.4 R[] []
  []
 
-[8] (./mathfund.aux)
+[8]
+Overfull \hbox (138.07465pt too wide) detected at line 849
+[][]
+ []
+
+[9]
+Overfull \hbox (250.64291pt too wide) detected at line 889
+[][]
+ []
+
+[10] [11]
+Overfull \hbox (68.16724pt too wide) detected at line 1063
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
+ []
+
+
+Overfull \hbox (63.13504pt too wide) detected at line 1083
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
+ []
+
+[12]
+Overfull \hbox (141.71703pt too wide) detected at line 1162
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
+ []
+
+
+Overfull \hbox (102.20267pt too wide) detected at line 1182
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] []
+ []
+
+
+Overfull \hbox (103.96683pt too wide) detected at line 1202
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
+ []
+
+[13]
+Overfull \hbox (115.16685pt too wide) detected at line 1320
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
+ []
+
+[14]
+Underfull \hbox (badness 10000) in paragraph at lines 1386--1387
+
+ []
+
+[15]
+Overfull \hbox (3.15417pt too wide) detected at line 1486
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 2\OML/cmm/m/it/14.4 R[] []
+ []
+
+
+Overfull \hbox (143.53532pt too wide) detected at line 1506
+\OML/cmm/m/it/14.4 R[] \OT1/cmr/m/n/14.4 = []\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OMS/cmsy/m/n/14.4 ^^@\OML/cmm/m/it/14.4 R[] [] R[] \OT1/cmr/m/n/14.4 = \OML/cmm/m/it/14.4 R[] \OMS/cmsy/m/n/14.4 ^^@ \OT1/cmr/m/n/14.4 3\OML/cmm/m/it/14.4 R[] []
+ []
+
+[16] (./mathfund.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3068 strings out of 474222
- 44654 string characters out of 5748733
- 1969975 words of memory out of 5000000
- 25322 multiletter control sequences out of 15000+600000
- 561275 words of font info for 49 fonts, out of 8000000 for 9000
+ 3072 strings out of 474222
+ 44694 string characters out of 5748733
+ 1970975 words of memory out of 5000000
+ 25324 multiletter control sequences out of 15000+600000
+ 561893 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,8n,65p,673b,286s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on mathfund.pdf (8 pages, 104329 bytes).
+ 57i,13n,65p,673b,422s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on mathfund.pdf (16 pages, 125713 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
- 41 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 61 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
