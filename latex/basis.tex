@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 2 - FALL 2024 MATH 2250}
+\maketitle
+
+\medskip
+
+\begin{enumerate}
+
+\item Let \(\{\mathbf{v}_1, \mathbf{v}_2\}\) be a basis of the vector space \(\mathbb{R}^2\), where
+\[
+\mathbf{v}_1 = \begin{bmatrix} 1 \\ 1 \end{bmatrix} \quad \text{and} \quad \mathbf{v}_2 = \begin{bmatrix} 1 \\ -1 \end{bmatrix}.
+\]
+The action of a linear transformation \(T : \mathbb{R}^2 \to \mathbb{R}^3\) on the basis \(\{\mathbf{v}_1, \mathbf{v}_2\}\) is given by
+\[
+T(\mathbf{v}_1) = \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix} \quad \text{and} \quad T(\mathbf{v}_2) = \begin{bmatrix} 0 \\ 8 \\ 10 \end{bmatrix}.
+\]
+Find the formula for \(T(\mathbf{x})\), where \(\mathbf{x} = \begin{bmatrix} x \\ y \end{bmatrix} \in \mathbb{R}^2\).
+
+Solution:
+
+Given \(\mathbf{x} = \begin{bmatrix} x \\ y \end{bmatrix}\), we can express \(\mathbf{x}\) as a linear combination of the basis vectors \(\mathbf{v}_1\) and \(\mathbf{v}_2\):
+\[
+\mathbf{x} = a \mathbf{v}_1 + b \mathbf{v}_2
+\]
+where \(a\) and \(b\) are scalars. To find \(a\) and \(b\), we solve the system:
+\[
+\begin{bmatrix} x \\ y \end{bmatrix} = a \begin{bmatrix} 1 \\ 1 \end{bmatrix} + b \begin{bmatrix} 1 \\ -1 \end{bmatrix}
+\]
+
+This gives us the equations:
+\[
+x = a + b \quad \text{and} \quad y = a - b
+\]
+
+Solving for \(a\) and \(b\):
+\[
+a = \frac{x + y}{2} \quad \text{and} \quad b = \frac{x - y}{2}
+\]
+
+Now, we can find \(T(\mathbf{x})\):
+\[
+T(\mathbf{x}) = T(a \mathbf{v}_1 + b \mathbf{v}_2) = a T(\mathbf{v}_1) + b T(\mathbf{v}_2)
+\]
+
+Substitute \(a\) and \(b\) into the equation:
+\[
+T(\mathbf{x}) = \frac{x + y}{2} \begin{bmatrix} 2 \\ 4 \\ 6 \end{bmatrix} + \frac{x - y}{2} \begin{bmatrix} 0 \\ 8 \\ 10 \end{bmatrix}
+\]
+
+Simplify the expression:
+\[
+T(\mathbf{x}) = \begin{bmatrix} (x + y) \\ 2(x + y) + 4(x - y) \\ 3(x + y) + 5(x - y) \end{bmatrix}
+\]
+
+Therefore, the formula for \(T(\mathbf{x})\) is:
+\[
+T(\mathbf{x}) = \begin{bmatrix} x + y \\ 6x - 2y \\ 8x - 2y \end{bmatrix}
+\]
+
+\end{enumerate}
+
+\end{document}
