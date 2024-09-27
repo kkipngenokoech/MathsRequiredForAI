@@ -1,0 +1,53 @@
+\documentclass[a3paper,12pt]{article} % Specify A3 paper size and font size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 2 - Applied Stochastic Processes}
+\maketitle
+
+\medskip
+
+\begin{enumerate}
+    \item Discrete Random Variables and Real Life Applications (16 Points)
+    \begin{enumerate}
+        \item A factory produces electronic components, with each component either passing a quality check or being rejected. Let X represent the number of components that pass out of 5 tested components in a day, where the probability of each component passing the quality check is p = 0.8.
+        \begin{enumerate}
+            \item (a) (2 points): Define the probability mass function (PMF) for X as a binomial distribution. Show that the total probability is 1 by summing the PMF over all possible values of X.
+            PMF for X as a binomial distribution is given by:
+            \[
+            P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k}
+            \]
+            where \(n = 5\) and \(p = 0.8\). The total probability is 1:
+            \[
+            \sum_{k = 0}^{5} P(X = k) = \sum_{k = 0}^{5} \binom{5}{k} 0.8^k (1 - 0.8)^{5 - k} = 1
+            \]
+            \[
+            \sum_{k = 0}^{5} P(X = k) = 1
+            \]
+            \[
+            \binom{5}{0} 0.8^0 (1 - 0.8)^5 + \binom{5}{1} 0.8^1 (1 - 0.8)^4 + \binom{5}{2} 0.8^2 (1 - 0.8)^3 + \binom{5}{3} 0.8^3 (1 - 0.8)^2 + \binom{5}{4} 0.8^4 (1 - 0.8)^1 + \binom{5}{5} 0.8^5 (1 - 0.8)^0 = 1
+            \]
+            \item (3 points): Suppose the factory wants to predict the likelihood of a specific number of components passing the quality check. Find the expected value and variance of X, and explain how the factory can use this information to estimate daily production quality.
+            The expected value of X is given by:
+            \[
+                E(x)= np = \text{number of trials} \times \text{probability of success}
+            \]
+            \[
+            E(X) = np = 5 \times 0.8 = 4
+            \]
+            The variance of X is given by:
+            \[
+                Var(X) = np(1 - p) = \text{number of trials} \times \text{probability of success} \times \text{probability of failure}
+            \]
+            \[
+                Var(X) = np(1 - p) = 5 \times 0.8 \times 0.2 = 0.8
+            \]
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\end{document}
