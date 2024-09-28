@@ -435,8 +435,254 @@
         \[
             x = e^{0.001 + 1.645 \times 0.02} = \textbf{1.034}
         \]
-        
     \end{enumerate}
+    \newpage
+    \item \textbf{Joint Probability Distributions and Covariance (32 points)}
+    \begin{enumerate}
+        \item In a certain suburb, each household reported the number of cars and the number of television sets
+        that they own. Let X represent the number of cars, and Y represent the number of television sets
+        owned by a randomly selected household. The table below gives the joint probability distribution
+        for X and Y :
+    \begin{center}
+        \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            & Y = 1 & Y = 2 & Y = 3 & Y = 4 \\
+            \hline
+            X = 1 & 0.1 & 0 & 0.1 & 0 \\
+            \hline
+            X = 2 & 0.3 & 0 & 0.1 & 0.2  \\
+            \hline
+            X = 3 & 0 & 0.2 & 0 & 0 \\
+            \hline
+        \end{tabular}
+    \end{center}
+    \begin{enumerate}
+        \item (2 points) Find the probability that a randomly selected household owns at most two cars
+        and at most two television sets. That is, compute:
+        \[
+            P(X \leq 2 \text{ and } Y \leq 2)
+        \]
+        Provide an explanation of how the probabilities from the table contribute to this total probability.
+        \[
+            P(X \leq 2 \text{ and } Y \leq 2) = P(X = 1, Y = 1) + P(X = 1, Y = 2) + P(X = 2, Y = 1) + P(X = 2, Y = 2)
+        \]
+        \[
+            P(X \leq 2 \text{ and } Y \leq 2) = 0.1 + 0 + 0.3 + 0 = \textbf{0.4}
+        \]
+        The probabilities from the table contribute to this total probability by providing the likelihood of each combination of cars and television sets owned by a household.
+        \item (3 points) Using the joint probability distribution, determine the marginal distribution
+        for the number of cars X owned by a household. In other words, compute the probabilities
+        P(X = x) for each possible value of X. Specifically:
+        \[
+            P(X = 1), P(X = 2), P(X = 3)
+        \]
+        Summarize these values in a clear format and provide an interpretation of what the marginal
+        distribution of cars tells us about car ownership in the suburb.
+        \[
+            P(X = 1) = 0.1 + 0 + 0.1 = \textbf{0.2}
+        \]
+        \[
+            P(X = 2) = 0.3 + 0 + 0.1 + 0.2 = \textbf{0.6}
+        \]
+        \[
+            P(X = 3) = 0 + 0.2 + 0 + 0 = \textbf{0.2}
+        \]
+        \textbf{Marginal Distribution of cars:}
+        \[
+            \begin{tabular}{|c|c|}
+                \hline
+                X & P(X) \\
+                \hline
+                1 & 0.2 \\
+                \hline
+                2 & 0.6 \\
+                \hline
+                3 & 0.2 \\
+                \hline
+            \end{tabular}
+        \]
+        The marginal distribution of cars tells us about car ownership in the suburb by providing the probability of households owning a certain number of cars, regardless of the number of television sets they own.
+        \item (3 points) Similarly, determine the marginal distribution for the number of television sets
+        Y owned by a household. Compute the probabilities P(Y = y) for each possible value of Y .
+        Specifically:
+        \[
+            P(Y = 1), P(Y = 2), P(Y = 3), P(Y = 4)
+        \]
+        Present the results in a clear format and discuss what the marginal distribution reveals about
+        television set ownership in the suburb.
+        \[
+            P(Y = 1) = 0.1 + 0.3 + 0  = \textbf{0.4}
+        \]
+        \[
+            P(Y = 2) = 0 + 0 +  0.2 = \textbf{0.2}
+        \]
+        \[
+            P(Y = 3) = 0.1 + 0.1 + 0 = \textbf{0.2}
+        \]
+        \[
+            P(Y = 4) = 0 + 0.2 + 0 = \textbf{0.2}
+        \]
+        The marginal distribution of  television sets tells us about television ownership in the suburb by providing the probability of households owning a certain number of televisions, regardless of the number of cars they own.
+        \\ \textbf{Marginal Distribution of televisions:}
+        \begin{center}
+            \begin{tabular}{|c|c|}
+                \hline
+                Y & P(Y) \\
+                \hline
+                1 & 0.4 \\
+                \hline
+                2 & 0.2 \\
+                \hline
+                3 & 0.2 \\
+                \hline
+                4 & 0.2 \\
+                \hline
+            \end{tabular}
+        \end{center}
+        \item (3 points) Are the number of cars X and the number of television sets Y owned by a
+        household independent? Recall that X and Y are independent if and only if:
+        \[
+            P(X = x, Y = y) = P(X = x)P(Y = y) \text{ for all } x, y
+        \]
+        For this part, verify whether this condition holds for any pair of values of X and Y . Show
+        your calculations and state whether X and Y are independent or not.
+        \\ take \(X = 1, Y = 1\):
+        \[
+            P(X = 1, Y = 1) = 0.1
+        \]
+        \[
+            P(X = 1)P(Y = 1) = 0.2 \times 0.4 = 0.08 \text{ (marginal probabilities) }
+        \]
+        \[
+            P(X = 1, Y = 1) \neq P(X = 1)P(Y = 1)
+        \]
+        The number of cars X and the number of television sets Y owned by a household are not independent.
+        \item (2 points) Find the conditional probability that a randomly selected household owns
+        exactly two television sets given that they own exactly two cars. That is, calculate:
+        \[
+            P(Y = 2 |X = 2)
+        \]
+        Explain the result and provide insight into how owning two cars may affect the likelihood of
+        owning two television sets.
+        \[
+            P(Y = 2 |X = 2) = \frac{P(X = 2, Y = 2)}{P(X = 2)}
+        \]
+        \[
+            P(X = 2, Y = 2) = 0
+        \]
+        \[
+            P(X = 2) = 0.6
+        \]
+        \[
+            P(Y = 2 |X = 2) = \frac{0}{0.6} = \textbf{0}
+        \]
+        The result indicates that the conditional probability of owning exactly two television sets given that a household owns exactly two cars is 0. This suggests that owning two cars does not affect the likelihood of owning two television sets, as there are no households in the sample that own two cars and two television sets.
+        \item (3 points) Using the marginal distributions, compute the expected number of cars E[X]
+        and the expected number of television sets E[Y ] a randomly selected household owns. Use
+        the formulas for the expected value of a discrete random variable:
+        \[
+            E[X] = \sum_{x} xP(X = x)
+        \]
+        \[
+            E[X] = 1 \times 0.2 + 2 \times 0.6 + 3 \times 0.2 = \textbf{2}
+        \]
+        \[
+            E[X] = \textbf{2}
+        \]
+        \[
+            E[Y] = \sum_{y} yP(Y = y)
+        \]
+        \[
+            E[Y] = 1 \times 0.4 + 2 \times 0.2 + 3 \times 0.2 + 4 \times 0.2 = \textbf{2.2}
+        \]
+        \[
+            E[Y] = \textbf{2.2}
+        \]
+
+        \[
+            \text{E[X] = \textbf{2.0}, E[Y] = \textbf{2.2}}
+        \]
+    The expected number of cars owned by a household is 2, while the expected number of television sets owned is 2.2, indicating that households in the suburb are more likely to own more television sets than cars.
+    \end{enumerate}
+    \item The daily returns of two correlated stocks, X and Y , follow a joint lognormal distribution with the
+    following parameters:
+    \[
+        \mu_X = 0.001, \mu_Y = 0.002, \sigma_X = 0.02, \sigma_Y = 0.03, \rho_{X,Y} = 0.8
+    \]
+    \begin{enumerate}
+        \item (2 points) Write the joint PDF for the lognormal distribution of  X and Y.
+        \[
+            f_{X,Y}(x, y) = \frac{1}{2\pi \sigma_X \sigma_Y \sqrt{1 - \rho_{X,Y}^2}} \exp\left(-\frac{1}{2(1 - \rho_{X,Y}^2)}\left[\frac{(x - \mu_X)^2}{\sigma_X^2} - 2\rho_{X,Y}\frac{(x - \mu_X)(y - \mu_Y)}{\sigma_X \sigma_Y} + \frac{(y - \mu_Y)^2}{\sigma_Y^2}\right]\right)
+        \]
+        \[
+            f_{X,Y}(x, y) = \frac{1}{2\pi \times 0.02 \times 0.03 \times \sqrt{1 - 0.8^2}} \exp\left(-\frac{1}{2(1 - 0.8^2)}\left[\frac{(x - 0.001)^2}{0.02^2} - 2 \times 0.8 \times \frac{(x - 0.001)(y - 0.002)}{0.02 \times 0.03} + \frac{(y - 0.002)^2}{0.03^2}\right]\right)
+        \]
+        \item (3 points) Calculate the marginal distributions of X and Y.
+        \[
+            f_X(x) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dy
+        \]
+        \[
+            f_X(x) = \int_{-\infty}^{\infty} \frac{1}{2\pi \times 0.02 \times 0.03 \times \sqrt{1 - 0.8^2}} \exp\left(-\frac{1}{2(1 - 0.8^2)}\left[\frac{(x - 0.001)^2}{0.02^2} - 2 \times 0.8 \times \frac{(x - 0.001)(y - 0.002)}{0.02 \times 0.03} + \frac{(y - 0.002)^2}{0.03^2}\right]\right) dy
+        \]
+        \[
+            f_Y(y) = \int_{-\infty}^{\infty} f_{X,Y}(x, y) dx
+        \]
+        \[
+            f_Y(y) = \int_{-\infty}^{\infty} \frac{1}{2\pi \times 0.02 \times 0.03 \times \sqrt{1 - 0.8^2}} \exp\left(-\frac{1}{2(1 - 0.8^2)}\left[\frac{(x - 0.001)^2}{0.02^2} - 2 \times 0.8 \times \frac{(x - 0.001)(y - 0.002)}{0.02 \times 0.03} + \frac{(y - 0.002)^2}{0.03^2}\right]\right) dx
+        \]
+        \item (4 points) Simulate 1,000 days of returns for both stocks using the joint lognormal distribution.
+        Plot the scatter plot and calculate the empirical correlation.
+        \item (2 points) Using the simulated data, calculate the percentage of days where both stocks have
+        positive returns. Compare this to the theoretical correlation.
+    \end{enumerate}
+    \item (5 points) Let X be the size of a surgical claim and let Y denote the size of the associate hospital
+    claim. A risk analyst uses a model in which E(X) = 5, E(X2) = 27.4, E(Y ) = 7, E(Y 2) = 51.4
+    and Var(X+Y ) = 8. Let C1 = X+Y denote the size of the combined claims before the application
+    of a 20\% surcharge on the hospital claim and C2 denote the size of the combined claim after the
+    application of the surcharge. Calculate Cov(C1,C2).
+    \[
+        Cov(C1, C2) = E[C1C2] - E[C1]E[C2]
+    \]
+    \[
+        Cov(C1, C2) = E[(X + Y)(X + 1.2Y)] - E[X + Y]E[X + 1.2Y]
+    \]
+    \[
+        Cov(C1, C2) = E[X^2 + 1.2XY + XY + 1.44Y^2] - (E[X] + E[Y])(E[X] + 1.2E[Y])
+    \]
+    \end{enumerate}
+    \[
+        Cov(C1, C2) = E[X^2] + 2.2E[XY] + 1.44E[Y^2] - (E[X] + E[Y])(E[X] + 1.2E[Y])
+    \]
+    \[
+        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 1.44 \times 51.4 - (5 + 7)(5 + 1.2 \times 7)
+    \]
+    \[
+        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 1.44 \times 51.4 - 12 \times 12.4
+    \]
+    \[
+        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 74.016 - 148.8
+    \]
+    \[
+        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) - 74.784
+    \]
+    \[
+        Cov(C1, C2) = 2.2 \times Cov(X, Y) - 47.384
+    \]
+    \[
+        8 = Var(X + Y) = Var(X) + Var(Y) + 2Cov(X, Y)
+    \]
+    \[
+        8 = 27.4 + 51.4 + 2Cov(X, Y)
+    \]
+    \[
+        8 = 78.8 + 2Cov(X, Y)
+    \]
+    \[
+        2Cov(X, Y) = -70.8
+    \]
+    \[
+        Cov(X, Y) = \textbf{-35.4}
+    \]
 \end{enumerate}
 
 \end{document}
