@@ -20,8 +20,441 @@
     \[
     T(\mathbf{v}_1) = \begin{pmatrix} 2 \\ 4 \\ 6 \end{pmatrix} \quad \text{and} \quad T(\mathbf{v}_2) = \begin{pmatrix} 0 \\ 8 \\ 10 \end{pmatrix}.
     \]
-    Find the formula for \(T(\mathbf{x})\), where \(\mathbf{x} = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^2\)..+
+    Find the formula for \(T(\mathbf{x})\), where \(\mathbf{x} = \begin{pmatrix} x \\ y \end{pmatrix} \in \mathbb{R}^2\)
+
+    \[
+        A = \begin{pmatrix} 2 & 0 \\ 4 & 8 \\ 6 & 10 \end{pmatrix}
+    \]
+    This is because the transformation is linear and the transformation of a vector is a linear combination of the transformation of the basis vectors. Therefore, the transformation of a vector \(\mathbf{x} = \begin{pmatrix} x \\ y \end{pmatrix}\) is given by:
+    \[
+        Ax = \begin{pmatrix} 2 & 0 \\ 4 & 8 \\ 6 & 10 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 2x \\ 4x + 8y \\ 6x + 10y \end{pmatrix}
+    \]
+    so the formula for \(T(\mathbf{x})\) is:
+    \[
+        T(\mathbf{x}) = \begin{pmatrix} 2x \\ 4x + 8y \\ 6x + 10y \end{pmatrix}
+    \]
+    \item For an integer \( n \geq 0 \), let \( P_n \) be the vector space of polynomials of degree at most \( n \). The set \( B = \{1, x, x^2, \ldots, x^n\} \) is a basis of \( P_n \) called the standard basis. Let \( T : P_n \to P_{n+1} \) be the map defined by, for \( f \in P_n \),
+    \[
+    T(f)(x) = x f(x).
+    \]
+    Prove that \( T \) is a linear transformation, and find its range and nullspace.
+    \[
+        \text{let} \quad f(x) = a_0 + a_1x + a_2x^2 + \ldots + a_nx^n, \text{ this is a polynomial of degree at most } n
+    \]
+    Then the transformation of \( f \) to \( T(f) \) is:   
+    \[
+        T(f)(x) = x(a_0 + a_1x + a_2x^2 + \ldots + a_nx^n) = a_0x + a_1x^2 + a_2x^3 + \ldots + a_nx^{n+1} 
+    \]
+    This is a polynomial of degree at most \( n+1 \), therefore \( T \) is a linear transformation. The range of \( T \) is the set of all polynomials of degree at most \( n+1 \), and the nullspace of \( T \) is the set of all polynomials of degree at most \( n \) such that \( f(x) = 0 \). Therefore, the range of \( T \) is \( P_{n+1} \) and the nullspace of \( T \) is \( P_n \).
+    \item Let \( C[0, 3] \) be the vector space of real functions on the interval \([0, 3]\). Let \( P_3 \) denote the set of real polynomials of degree 3 or less. Define the map \( T : C[0, 3] \to P_3 \) by
+    \[
+    T(f)(x) = f(0) + f(1)x + f(2)x^2 + f(3)x^3.
+    \]
+    Determine if \( T \) is a linear transformation.
+    \[
+        \text{let} \quad f(x) = a_0 + a_1x + a_2x^2 + a_3x^3, \text{ this is a polynomial of degree at most } 3
+    \]
+    Then the transformation of \( f \) to \( T(f) \) is:
+    \[
+        T(f)(x) = a_0 + a_1x + a_2x^2 + a_3x^3 = a_0 + a_1x + a_2x^2 + a_3x^3
+    \]
+    This is a polynomial of degree at most \( 3 \), therefore \( T \) is a linear transformation.
+    \item Let \( B = \{ \mathbf{b}_1, \mathbf{b}_2 \} \) be a basis of the vector space \(\mathbb{R}^2\) where
+    \[
+    \mathbf{b}_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix}, \quad \text{and} \quad \mathbf{b}_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix}.
+    \]
+    Let \( C = \{ \mathbf{c}_1, \mathbf{c}_2, \mathbf{c}_3 \} \) be a basis of the vector space \(\mathbb{R}^3\) where
+    \[
+    \mathbf{c}_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \quad \mathbf{c}_2 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix}, \quad \mathbf{c}_3 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}.
+    \]
+    Consider the linear transformation \( T : \mathbb{R}^2 \to \mathbb{R}^3 \) on the basis \( B \) given by:
+    \[
+    T(\mathbf{b}_1) = \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix} \quad \text{and} \quad T(\mathbf{b}_2) = \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix}.
+    \]
+    \begin{enumerate}
+        \item Find the transformation matrix \(A_T\) of the linear transformation T
+        \[
+            A_T = \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix}
+        \]
+        \item Consider a new basis \(\tilde{B} = \left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix} \right\}\) of \(\mathbb{R}^2\) and \(\tilde{C} = \left\{ \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix} \right\}\) of \(\mathbb{R}^3\). Under the basis change, what is the transformation matrix \(\tilde{A}_T\)?
+        \[
+            \text{let} \quad P = \begin{pmatrix} 1 & 1 \\ -1 & 0 \end{pmatrix} \quad \text{and} \quad Q = \begin{pmatrix} 1 & 1 & 0 \\ -1 & 0 & 1 \\ 1 & 1 & -1 \end{pmatrix}
+        \]
+        Then the transformation matrix under the basis change is:
+        \[
+            \tilde{A}_T = Q^{-1}A_TP = \begin{pmatrix} 1 & 1 & 0 \\ -1 & 0 & 1 \\ 1 & 1 & -1 \end{pmatrix}^{-1} \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & 3 \\ 1 & 1 \\ 1 & 1 \end{pmatrix}
+        \]
+        \[
+            \tilde{A}_T = \begin{pmatrix} 2 & 3 \\ 1 & 1 \\ 1 & 1 \end{pmatrix}
+        \]
+        \item What is the image and kernel of T
+        \[
+            \text{The image of } T \text{ is the span of the columns of } A_T \text{, and the kernel of } T \text{ is the nullspace of } A_T
+        \]
+        \[
+            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
+        \]
+        \[
+            \text{The kernel of } T = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\}
+        \]
+        \[
+            \text{The kernel of } T = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\} = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\} = \text{nullspace}\left\{ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \right\} = \{ \mathbf{0} \}
+        \]
+        \[
+            \text{The kernel of } T = \{ \mathbf{0} \}
+        \]
+        \[
+            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\} = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
+        \]
+        \[
+            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
+        \]  
+    \end{enumerate}
+    \item A rotation in 3-D space (whose Cartesian coordinates we will call \(x\), \(y\), and \(z\) as usual) is characterized by three angles. We will characterize them as a rotation around the \(x\)-axis, a rotation around the \(y\)-axis, and a rotation around the \(z\)-axis.
+
+    \begin{enumerate}
+        \item[(a)] Derive the rotation matrix \(R_1\) that transforms a vector \(\begin{pmatrix} x \\ y \\ z \end{pmatrix}\) to a new vector \(\begin{pmatrix} \hat{x} \\ \hat{y} \\ \hat{z} \end{pmatrix}\) by rotating it counterclockwise by angle \(\theta\) around the \(x\)-axis, then an angle \(\delta\) around the \(y\)-axis, and finally an angle \(\phi\) around the \(z\)-axis.
+        \[
+            R_1 = R_z(\phi)R_y(\delta)R_x(\theta)
+        \]
+        \[
+            R_x(\theta) = \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos(\theta) & -\sin(\theta) \\ 0 & \sin(\theta) & \cos(\theta) \end{pmatrix}
+        \]
+        \[
+            R_y(\delta) = \begin{pmatrix} \cos(\delta) & 0 & \sin(\delta) \\ 0 & 1 & 0 \\ -\sin(\delta) & 0 & \cos(\delta) \end{pmatrix}
+        \]
+        \[
+            R_z(\phi) = \begin{pmatrix} \cos(\phi) & -\sin(\phi) & 0 \\ \sin(\phi) & \cos(\phi) & 0 \\ 0 & 0 & 1 \end{pmatrix}
+        \]
+        \[
+            R_1 = \begin{pmatrix} \cos(\phi) & -\sin(\phi) & 0 \\ \sin(\phi) & \cos(\phi) & 0 \\ 0 & 0 & 1 \end{pmatrix} \begin{pmatrix} \cos(\delta) & 0 & \sin(\delta) \\ 0 & 1 & 0 \\ -\sin(\delta) & 0 & \cos(\delta) \end{pmatrix} \begin{pmatrix} 1 & 0 & 0 \\ 0 & \cos(\theta) & -\sin(\theta) \\ 0 & \sin(\theta) & \cos(\theta) \end{pmatrix}
+        \]
+        \[
+            R_1 = \begin{pmatrix} \cos(\phi)\cos(\delta) & \cos(\phi)\sin(\delta)\sin(\theta) - \sin(\phi)\cos(\theta) & \cos(\phi)\sin(\delta)\cos(\theta) + \sin(\phi)\sin(\theta) \\ \sin(\phi)\cos(\delta) & \sin(\phi)\sin(\delta)\sin(\theta) + \cos(\phi)\cos(\theta) & \sin(\phi)\sin(\delta)\cos(\theta) - \cos(\phi)\sin(\theta) \\ -\sin(\delta) & \cos(\delta)\sin(\theta) & \cos(\delta)\cos(\theta) \end{pmatrix}
+        \]
+        \item[(b)] Derive the rotation matrix \(R_2\) that transforms a vector \(\begin{pmatrix} x \\ y \\ z \end{pmatrix}\) to a new vector \(\begin{pmatrix} \hat{x} \\ \hat{y} \\ \hat{z} \end{pmatrix}\) by rotating it counterclockwise by an angle \(\delta\) around the \(y\)-axis, then an angle \(\theta\) around the \(x\)-axis, and finally an angle \(\phi\) around the \(z\)-axis.
+        \[
+            R_2 = R_z(\phi)R_x(\theta)R_y(\delta)
+        \]
+        \[
+            R_2 = \begin{pmatrix} \cos(\phi)\cos(\theta) & -\sin(\phi)\cos(\delta) + \cos(\phi)\sin(\theta)\sin(\delta) & \sin(\phi)\sin(\delta) + \cos(\phi)\sin(\theta)\cos(\delta) \\ \sin(\phi)\cos(\theta) & \cos(\phi)\cos(\delta) + \sin(\phi)\sin(\theta)\sin(\delta) & -\cos(\phi)\sin(\delta) + \sin(\phi)\sin(\theta)\cos(\delta) \\ -\sin(\theta) & \cos(\theta)\sin(\delta) & \cos(\theta)\cos(\delta) \end{pmatrix}
+        \]
+        
+        \item[(c)] Confirm that \(R_1 R_1^\top = R_2 R_2^\top = I\) (Hint: Do not directly multiply the matrices from part 1 above but write down the matrices you need to multiply and multiply them in pairs).
+        \[
+            R_1 R_1^\top = R_z(\phi)R_y(\delta)R_x(\theta)R_x^\top(\theta)R_y^\top(\delta)R_z^\top(\phi)
+        \]
+        \[
+            R_1 R_1^\top = R_z(\phi)R_y(\delta)R_x(\theta)R_x(\theta)R_y(\delta)R_z(\phi)
+        \]
+        \[
+            R_1 R_1^\top = R_z(\phi)R_y(\delta)R_y(\delta)R_z(\phi)
+        \]
+        \[
+            R_1 R_1^\top = R_z(\phi)R_z(\phi)
+        \]
+        \[
+            R_1 R_1^\top = R_z(\phi)R_z(\phi) = I
+        \]
+        \[
+            R_2 R_2^\top = R_z(\phi)R_x(\theta)R_y(\delta)R_y^\top(\delta)R_x^\top(\theta)R_z^\top(\phi)
+        \]
+        \[
+            R_2 R_2^\top = R_z(\phi)R_x(\theta)R_y(\delta)R_y(\delta)R_x(\theta)R_z(\phi)
+        \]
+        \[
+            R_2 R_2^\top = R_z(\phi)R_x(\theta)R_x(\theta)R_z(\phi)
+        \]
+        \[
+            R_2 R_2^\top = R_z(\phi)R_z(\phi) = I
+        \]
+        \[
+            R_2 R_2^\top = I
+        \]
+        \[
+            R_1 R_1^\top = R_2 R_2^\top = I
+        \]
+        \[
+            \text{Therefore, } R_1 R_1^\top = R_2 R_2^\top = I
+        \]
+    \end{enumerate}
+    \item Let
+    \[
+    A = \begin{pmatrix} a & -1 \\ 1 & 4 \end{pmatrix}
+    \]
+    be a \(2 \times 2\) matrix, where \(a\) is some real number. Suppose that the matrix \(A\) has an eigenvalue 3.
+    \begin{enumerate}
+        \item[(a)] Determine the value of \(a\).
+        \[
+            \text{The eigenvalues of } A \text{ are the roots of the characteristic polynomial } \text{det}(A - \lambda I) = 0
+        \]
+        \[
+            \text{det}(A - \lambda I) = \text{det}\left( \begin{pmatrix} a & -1 \\ 1 & 4 \end{pmatrix} - \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \right) = \text{det}\left( \begin{pmatrix} a - \lambda & -1 \\ 1 & 4 - \lambda \end{pmatrix} \right) = (a - \lambda)(4 - \lambda) - (-1)(1)
+        \]
+        \[
+            (a - \lambda)(4 - \lambda) - (-1)(1) = \lambda^2 - 4\lambda - a\lambda + 4a + 1 
+        \]
+        \[
+            \lambda^2 - 4\lambda - a\lambda + 4a + 1 = \lambda^2 - (4 + a)\lambda + 4a + 1
+        \]
+        \[
+            \text{The eigenvalues of } A \text{ are the roots of } \lambda^2 - (4 + a)\lambda + 4a + 1 = 0
+        \]
+        \[
+            \text{Given that the matrix } A \text{ has an eigenvalue of 3, then } 3^2 - (4 + a)3 + 4a + 1 = 0
+        \]
+        \[
+            9 - 3(4 + a) + 4a + 1 = 0
+        \]
+        \[
+            9 - 12 - 3a + 4a + 1 = 0
+        \]
+        \[
+            -3a + 4a - 2 = 0 = a = 2
+        \]
+        \[
+            \text{Therefore, the value of } a \text{ is } a = \textbf{2}
+        \]
+        \item[(b)] Does the matrix \(A\) have eigenvalues other than 3?
+        \[
+            \text{ our matrix A is } A = \begin{pmatrix} 2 & -1 \\ 1 & 4 \end{pmatrix} 
+        \]
+        \[
+            \text{The eigenvalues of } A \text{ are the roots of } \lambda^2 - (4 + 2)\lambda + 4(2) + 1 = 0
+        \]
+        \[
+            \lambda^2 - 6\lambda + 9 = 0
+        \]
+        \[
+            \text{we expand the equation } (\lambda - 3)(\lambda - 3) = 0
+        \]
+        \[
+            \text{Therefore, the matrix } A \text{ has only one eigenvalue of } \textbf{3}
+        \]
+    \end{enumerate}
+    \item Suppose \( G_{k+2} \) is the average of the two previous numbers \( G_{k+1} \) and \( G_k \). That is:
+    \[
+    G_{k+2} = \frac{1}{2} G_{k+1} + \frac{1}{2} G_k.
+    \]
+    Let:
+    \[
+    \begin{pmatrix} G_{k+2} \\ G_{k+1} \end{pmatrix} = A \begin{pmatrix} G_{k+1} \\ G_k \end{pmatrix},
+    \]
     
+    \begin{enumerate}
+        \item[(a)] Find the eigenvalues and eigenvectors of \(A\).
+        \[
+            \text{The eigenvalues of } A \text{ are the roots of the characteristic polynomial } \text{det}(A - \lambda I) = 0
+        \]
+        \[
+            A = \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix}.
+        \]
+        \[
+            \text{det}(A - \lambda I) = \text{det}\left( \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix} - \begin{pmatrix} \lambda & 0 \\ 0 & \lambda \end{pmatrix} \right) = \text{det}\left( \begin{pmatrix} \frac{1}{2} - \lambda & \frac{1}{2} \\ 1 & -\lambda \end{pmatrix} \right) = \left( \frac{1}{2} - \lambda \right)(-\lambda) - \left( \frac{1}{2} \right)
+        \]
+        \[
+            \left( \frac{1}{2} - \lambda \right)(-\lambda) - \left( \frac{1}{2} \right) = \lambda^2 - \frac{1}{2}\lambda - \frac{1}{2}
+        \]
+        \[
+            \text{The eigenvalues of } A \text{ are the roots of } \lambda^2 - \frac{1}{2}\lambda - \frac{1}{2} = 0
+        \]
+        multiplying by 2 to clear the fractions:
+        \[
+            2\lambda^2 - \lambda - 1 = 0
+        \]
+        \[
+            \text{we expand the equation } (2\lambda + 1)(\lambda - 1) = 0
+        \]
+        \[
+            \text{Therefore, the eigenvalues of } A \text{ are } \lambda = -\frac{1}{2} \text{ and } \lambda = 1
+        \]
+        \[
+            \text{The matrix } A \text{ has two eigenvalues } \lambda_1 = -\frac{1}{2} \text{ and } \lambda_2 = 1
+        \]
+        \[
+            \text{The eigenvectors of } A \text{ are the solutions to the equation } (A - \lambda I)\mathbf{v} = \mathbf{0}
+        \]
+        \[
+            \text{For } \lambda = -\frac{1}{2} \text{, the eigenvector is }:
+        \]
+        \[
+            \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix}. \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = -\frac{1}{2} \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}
+        \]
+        \[
+            \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix}. \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2}v_1 \\ -\frac{1}{2}v_2 \end{pmatrix}
+        \]
+        \[
+            \frac{1}{2}v_1 + \frac{1}{2}v_2 = -\frac{1}{2}v_1
+        \]
+        multiplying by 2 to clear the fractions:
+        \[
+            v_1 + v_2 = -v_1
+        \]
+        \[
+            v_1 + v_2 + v_1 = 0
+        \]
+        \[
+            2v_1 + v_2 = 0
+        \]
+        \[
+            v_2 = -2v_1
+        \]
+        lets represent \(V_1\) in terms of \(v_2\):
+        \[
+            v_1 = -\frac{1}{2}v_2
+        \]
+        so, the eigenvector for \(\lambda = -\frac{1}{2}\) is:
+        \[
+            \begin{pmatrix} -\frac{1}{2} \\ 1 \end{pmatrix}
+        \]
+        \[
+            \text{For } \lambda = 1 \text{, the eigenvector is }:
+        \]
+        \[
+            \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix}. \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = 1 \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}
+        \]
+        \[
+            \begin{pmatrix} \frac{1}{2} & \frac{1}{2} \\ 1 & 0 \end{pmatrix}. \begin{pmatrix} v_1 \\ v_2 \end{pmatrix} = \begin{pmatrix} v_1 \\ v_2 \end{pmatrix}
+        \]
+        \[
+            \frac{1}{2}v_1 + \frac{1}{2}v_2 = v_1
+        \]
+        \[
+            v_1 + v_2 = 2v_1
+        \]
+        \[
+            v_1 + v_2 - 2v_1 = 0
+        \]
+        \[
+            -v_1 + v_2 = 0
+        \]
+        \[
+            v_1 = v_2
+        \]
+        so, the eigenvector for \(\lambda = 1\) is:
+        \[
+            \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+        \]
+        \item[(b)] Find the limit as \(n \to \infty\) of the matrices \(A^n\).
+        \[
+            \text{The matrix } A \text{ has two eigenvalues } \lambda_1 = -\frac{1}{2} \text{ and } \lambda_2 = 1
+        \]
+        \[
+            \text{The eigenvectors of } A \text{ are } \begin{pmatrix} -\frac{1}{2} \\ 1 \end{pmatrix} \text{ and } \begin{pmatrix} 1 \\ 1 \end{pmatrix}
+        \]
+        \[
+            \text{The matrix } A \text{ can be diagonalized as } A = PDP^{-1}
+        \]
+        \[
+            \text{where } P = \begin{pmatrix} -\frac{1}{2} & 1 \\ 1 & 1 \end{pmatrix} \text{ and } D = \begin{pmatrix} -\frac{1}{2} & 0 \\ 0 & 1 \end{pmatrix}
+        \]
+        \[
+            \text{The limit as } n \to \infty \text{ of the matrices } A^n \text{ is } \lim_{n \to \infty} A^n = P \lim_{n \to \infty} D^n P^{-1}
+        \]
+        \[
+            \text{The limit as } n \to \infty \text{ of the matrix } D^n \text{ is } \lim_{n \to \infty} D^n = \begin{pmatrix} -\frac{1}{2} & 0 \\ 0 & 1 \end{pmatrix}^n = \begin{pmatrix} \left( -\frac{1}{2} \right)^n & 0 \\ 0 & 1^n \end{pmatrix}
+        \]
+        \[
+            \text{The limit as } n \to \infty \text{ of the matrix } D^n \text{ is } \lim_{n \to \infty} D^n = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix}
+        \]
+        \[
+            \text{The limit as } n \to \infty \text{ of the matrices } A^n \text{ is } \lim_{n \to \infty} A^n = P \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} P^{-1}
+        \]
+        \[
+            \text{The limit as } n \to \infty \text{ of the matrices } A^n \text{ is } \lim_{n \to \infty} A^n = \begin{pmatrix} -\frac{1}{2} & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} \begin{pmatrix} -\frac{1}{2} & 1 \\ 1 & 1 \end{pmatrix}^{-1}
+        \]
+    \end{enumerate}
+    \item You are given bases in \(\mathbb{R}^3\). Apply the Gram-Schmidt process on each of them to obtain the orthogonal bases. Transform the orthogonal bases to orthonormal bases.
+    \begin{enumerate}
+        \item[(a)] \(\left\{ \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}, \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} \right\}\)
+        \[
+            \text{Let } \mathbf{v}_1 = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_1 = \mathbf{v}_1 = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_2 = \mathbf{v}_2 - \frac{\mathbf{v}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} - \frac{\begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}}{\begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} - \frac{0}{12} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \mathbf{v}_3 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_2}{\mathbf{u}_2 \cdot \mathbf{u}_2} \mathbf{u}_2 = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} - \frac{\begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}}{\begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \cdot \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} - \frac{\begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}}{\begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} - \frac{8}{12} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} - (-)\frac{1}{2} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} - \frac{2}{3} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} + \frac{1}{2} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{4}{3} \\ \frac{4}{3} \\ \frac{4}{3} \end{pmatrix} + \begin{pmatrix} \frac{1}{2} \\ 0 \\ -\frac{1}{2} \end{pmatrix} = \begin{pmatrix} 0 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{4}{3} \\ \frac{4}{3} \\ \frac{4}{3} \end{pmatrix} + \begin{pmatrix} \frac{1}{2} \\ 0 \\ -\frac{1}{2} \end{pmatrix} = \begin{pmatrix} 0 - \frac{4}{3} + \frac{1}{2} \\ 3 - \frac{4}{3} + 0 \\ 1 - \frac{4}{3} - \frac{1}{2} \end{pmatrix} = \begin{pmatrix} -\frac{5}{6} \\ \frac{5}{3} \\ -\frac{5}{6} \end{pmatrix}
+        \]
+        \[
+            \text{The orthogonal basis is } \left\{ \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix}, \begin{pmatrix} -\frac{5}{6} \\ \frac{5}{3} \\ -\frac{5}{6} \end{pmatrix} \right\}
+        \]
+        To make them orthonormal, we divide each vector by its norm:
+        \[
+            \mathbf{u}_1 = \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} \quad \text{norm} = \sqrt{2^2 + 2^2 + 2^2} = \sqrt{12} = 2\sqrt{3}
+        \]
+        \[
+            \mathbf{u}_1 = \frac{1}{2\sqrt{3}} \begin{pmatrix} 2 \\ 2 \\ 2 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_2 = \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} \quad \text{norm} = \sqrt{1^2 + 0^2 + (-1)^2} = \sqrt{2}
+        \]
+        \[
+            \mathbf{u}_2 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \\ -1 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} -\frac{5}{6} \\ \frac{5}{3} \\ -\frac{5}{6} \end{pmatrix} \quad \text{norm} = \sqrt{\left( -\frac{5}{6} \right)^2 + \left( \frac{5}{3} \right)^2 + \left( -\frac{5}{6} \right)^2} = \sqrt{\frac{25}{36} + \frac{25}{9} + \frac{25}{36}} = \sqrt{\frac{25}{36} + \frac{100}{36} + \frac{25}{36}} = \sqrt{\frac{150}{36}} = \sqrt{\frac{25}{6}} = \frac{5}{\sqrt{6}}
+        \]
+        \[
+            \mathbf{u}_3 = \frac{1}{5\sqrt{6}} \begin{pmatrix} -\frac{5}{6} \\ \frac{5}{3} \\ -\frac{5}{6} \end{pmatrix} = \begin{pmatrix} -\frac{1}{\sqrt{6}} \\ \frac{2}{\sqrt{6}} \\ -\frac{1}{\sqrt{6}} \end{pmatrix}
+        \]
+        \[
+            \text{The orthonormal basis is } \left\{ \begin{pmatrix} \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \\ \frac{1}{\sqrt{3}} \end{pmatrix}, \begin{pmatrix} \frac{1}{\sqrt{2}} \\ 0 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}, \begin{pmatrix} -\frac{1}{\sqrt{6}} \\ \frac{2}{\sqrt{6}} \\ -\frac{1}{\sqrt{6}} \end{pmatrix} \right\}
+        \]
+        \item[(b)] \(\left\{ \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \right\}\)
+        \[
+            \text{Let } \mathbf{v}_1 = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \mathbf{v}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \mathbf{v}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_1 = \mathbf{v}_1 = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_2 = \mathbf{v}_2 - \frac{\mathbf{v}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - \frac{0}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \mathbf{v}_3 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_2}{\mathbf{u}_2 \cdot \mathbf{u}_2} \mathbf{u}_2 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{5}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - \frac{3}{1} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ -\frac{5}{2} \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 3 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ -\frac{5}{2} \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 3 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 - \frac{5}{2} - 0 \\ 3 + \frac{5}{2} - 3 \\ 1 - 0 - 0 \end{pmatrix} = \begin{pmatrix} \frac{4}{2} - \frac{5}{2} \\ \frac{6}{2} + \frac{5}{2} - \frac{6}{2} \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix}
+        \]
+        \[
+            \text{The orthogonal basis is } \left\{ \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} \right\}
+        \]
+        To make them orthonormal, we divide each vector by its norm:
+        \[
+            \mathbf{u}_1 = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \quad \text{norm} = \sqrt{1^2 + (-1)^2 + 0^2} = \sqrt{2}
+        \]
+        \[
+            \mathbf{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad \text{norm} = \sqrt{0^2 + 1^2 + 0^2} = \sqrt{1} = 1
+        \]
+        \[
+            \mathbf{u}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+        \]
+        \[
+            \mathbf{u}_3 = \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} \quad \text{norm} = \sqrt{\left( -\frac{1}{2} \right)^2 + \left( \frac{5}{2} \right)^2 + 1^2} = \sqrt{\frac{1}{4} + \frac{25}{4} + 1} = \sqrt{\frac{26}{4} + 1} = \sqrt{\frac{26}{4} + \frac{4}{4}} = \sqrt{\frac{30}{4}} = \sqrt{\frac{15}{2}} = \frac{\sqrt{15}}{\sqrt{2}} = \frac{\sqrt{30}}{2}
+        \]
+        \[
+            \mathbf{u}_3 = \frac{1}{\frac{\sqrt{30}}{2}} \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{\sqrt{30}} \\ \frac{5}{\sqrt{30}} \\ \frac{2}{\sqrt{30}} \end{pmatrix}
+        \]
+        \[
+            \text{The orthonormal basis is } \left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -\frac{1}{\sqrt{30}} \\ \frac{5}{\sqrt{30}} \\ \frac{2}{\sqrt{30}} \end{pmatrix} \right\}
+        \]
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}
