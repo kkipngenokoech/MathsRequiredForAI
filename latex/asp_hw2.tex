@@ -23,7 +23,7 @@
             \]
             where \(n = 5\) and \(p = 0.8\). The total probability is 1:
             \[
-            \sum_{k = 0}^{5} P(X = k) = \sum_{k = 0}^{5} \binom{5}{k} 0.8^k (1 - 0.8)^{5 - k} = 1
+            \sum_{k = 0}^{5} P(X = x) = \sum_{x = 0}^{5} \binom{5}{x} 0.8^x (1 - 0.8)^{5 - x} = 1
             \]
             \[
             \binom{5}{0} 0.8^0 (1 - 0.8)^5 + \binom{5}{1} 0.8^1 (1 - 0.8)^4 + \binom{5}{2} 0.8^2 (1 - 0.8)^3 + \binom{5}{3} 0.8^3 (1 - 0.8)^2 + \binom{5}{4} 0.8^4 (1 - 0.8)^1 + \binom{5}{5} 0.8^5 (1 - 0.8)^0 = 1
@@ -74,6 +74,7 @@
             \[
             e^{-4} \sum_{k = 0}^{\infty} \frac{4^k}{k!} = 1
             \]
+            an infinite sum of the Poisson distribution is equal to e raised to the power of the parameter \(\lambda\):
             \[
             e^{-4} \times e^{4} = 1
             \]
@@ -105,26 +106,26 @@
             \item (2 points) Let \( X \) be the number of defective components in a batch of \( n = 100 \) components, where each component has a defect probability \( p = 0.01 \). Show that as \( n \) becomes large and \( p \) becomes small such that \( \lambda = np \) remains constant, the binomial distribution \( X \sim B(n, p) \) approaches a Poisson distribution with parameter \( \lambda = np \).
             \\ for a binomial distribution  \( X \sim B(n, p) \), the PMF is given by:
             \[
-                P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k} \text{ where } n = 100 \text{ and } p = 0.01
+                P(X = x) = \binom{n}{x} p^x (1 - p)^{n - x} \text{ where } n = 100 \text{ and } p = 0.01
             \]
             \[
-                P(X = k) = \binom{100}{k} 0.01^k (1 - 0.01)^{100 - k}
+                P(X = x) = \binom{100}{x} 0.01^x (1 - 0.01)^{100 - x}
             \]
             \[
-                P(X = k) = \frac{100!}{k!(100 - k)!} 0.01^k 0.99^{100 - k}
+                P(X = x) = \frac{100!}{x!(100 - x)!} 0.01^x 0.99^{100 - x}
             \]
             \[
-                P(X = k) = \frac{100!}{k!(100 - k)!} 0.01^k 0.99^{100} 0.99^{-k}
+                P(X = x) = \frac{100!}{x!(100 - x)!} 0.01^x 0.99^{100} 0.99^{-x}
             \]
-            let K be zero:
+            let x be zero:
             \[
                 P(X = 0) = \frac{100!}{0!(100 - 0)!} 0.01^0 0.99^{100} 0.99^{-0} = \frac{100!}{100!} 0.99^{100} = \textbf{0.3660}
             \]
             for poisson distribution  \( X \sim Poisson(\lambda) \), the PMF is given by:
             \[
-                P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!} \text{ where } \lambda = np = 100 \times 0.01 = 1
+                P(X = x) = \frac{e^{-\lambda} \lambda^x}{x!} \text{ where } \lambda = np = 100 \times 0.01 = 1
             \]
-            let K be zero:
+            let x be zero:
             \[
                 P(X = 0) = \frac{e^{-1} 1^0}{0!} = e^{-1} = \textbf{0.3679}
             \]
@@ -137,7 +138,33 @@
                 \lim_{n \to \infty, p \to 0} P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!}
             \]
             where \(\lambda = np\) is fixed.
+            \\ for a binomial distribution  \( X \sim B(n, p) \), the PMF is given by:
+            \[
+                P(X = k) = \binom{n}{k} p^k (1 - p)^{n - k} \text{ where } n = 100 \text{ and } p = 0.01
+            \]
+            \[
+                P(X = k) = \frac{100!}{k!(100 - k)!} 0.01^k 0.99^{100 - k}
+            \]
+            \[
+                P(X = k) = \frac{100!}{k!(100 - k)!} 0.01^k 0.99^{100} 0.99^{-k}
+            \]
+            let k be zero:
+            \[
+                P(X = 0) = \frac{100!}{0!(100 - 0)!} 0.01^0 0.99^{100} = \frac{100!}{100!} 0.99^{100} = 0.3660
+            \]
+            for poisson distribution  \( X \sim Poisson(\lambda) \), the PMF is given by:
+            \[
+                P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!} \text{ where } \lambda = np = 100 \times 0.01 = 1
+            \]
+            let k be zero:
+            \[
+                P(X = 0) = \frac{e^{-1} 1^0}{0!} = e^{-1} = 0.3679
+            \]
+            \[
+                \lim_{n \to \infty, p \to 0} P(X = k) = \frac{\lambda^k e^{-\lambda}}{k!} = \frac{1^k e^{-1}}{k!} = \frac{e^{-1}}{k!} = 0.3679
+            \]
             \item (2 points) Provide a detailed explanation of why the Poisson distribution is a good approximation for the binomial distribution in this context.
+            \\ As the number of trials becomes large and the probability of success becomes small, the binomial distribution approaches the Poisson distribution with a fixed rate parameter.. Therefore, the Poisson distribution is a good approximation for the binomial distribution in this context because it is difficult to calculate the binomial distribution for a large number of trials and a small probability of success. The Poisson distribution provides a simpler and more efficient way to calculate probabilities and make decisions based on the expected number of successes.
         \end{enumerate}  
         \item \textbf{Poisson Approximation for Defect Probability (4 points)}
         \begin{enumerate}
@@ -156,7 +183,8 @@
                 0.3679 + 0.3679 + 0.1839 + 0.0613 + 0.0153 + 0.0031 = \textbf{0.9994}
             \]
             \item (2 points) Explain the implications of these probabilities for quality control in the factory, and discuss how this approximation simplifies the analysis
-            \\ The probability of finding exactly 3 defective components in a batch of 100 is \textbf{0.0613}, while the probability of finding at most 5 defective components is \textbf{0.9994}. These probabilities provide insights into the expected number of defects in a batch and can be used to set quality control targets. The Poisson approximation simplifies the analysis by providing a more straightforward method to calculate probabilities and make decisions based on the expected number of defects.
+            \\ The probability of finding exactly 3 defective components in a batch of 100 is \textbf{0.0613 - 6.13\%}, while the probability of finding at most 5 defective components is \textbf{0.9994 - 99.4\%}. These probabilities provide insights into the expected number of defects in a batch and can be used to set quality control targets. 
+            \\ The Poisson approximation simplifies the analysis as it is more easier to calculate probabilities using the Poisson distribution than the binomial distribution for a large number of trials and a small probability of success
         \end{enumerate}
     \end{enumerate}
     \newpage
@@ -201,7 +229,7 @@
             \item (2 points) Calculate the expected revenue per minute before and after the tariff reduction based on the expected number of calls and the given tariffs.
             \\ \textbf{Before reduction:}
             \[
-                \text{Expected revenue per minute} = 3.5 \times 70 + 1.5 \times 90 = \textbf{385}
+                \text{Expected revenue per minute} = 3.5 \times 70 + 1.5 \times 90 = \textbf{380}
             \]
             \textbf{After reduction:}
             \[
@@ -221,35 +249,62 @@
     \item \textbf{Expectation, Variance, and Moments of Discrete Random Variables (13 points)}
     \begin{enumerate}
         \item A programming problem set has three tasks to solve for an interview of interns. For each task solved, a dollar is awarded to the prospective intern. Let X represent the amount of money earned by an intern, which depends on how many tasks they solve. The distribution of solving the problems is such that it is twice as likely to solve one task as it is to solve no task. It is four times and three times as likely to solve two tasks and three tasks, respectively, as it is to solve no task. If a candidate does not solve any task in 2 out of 5 attempts, answer the following:
+        \\ the probability distribution is:
+        \[
+            P(X = 0) = P
+        \]
+        \[
+            P(X = 1) = 2p
+        \]
+        \[
+        P(X = 2) = 4p
+        \]
+        \[
+        P(X = 3) = 3p
+        \]
         \begin{enumerate}
             \item (2 points) What is the average amount of money a candidate can be rewarded with? (Hint: Use the probabilities for solving 0, 1, 2, and 3 tasks to compute the expectation)
             \[
                 E(X) = 0 \times P(X = 0) + 1 \times P(X = 1) + 2 \times P(X = 2) + 3 \times P(X = 3)
             \]
+            But we know the probabilities are in terms of \( p \), so we need to find \( p \) first:
             \[
-                P(X = 0) = \frac{2}{5}, P(X = 1) = \frac{4}{5}, P(X = 2) = \frac{8}{5}, P(X = 3) = \frac{6}{5}
+                P(X = 0) = \frac{2}{5} = p = 0.4
             \]
             \[
-                E(X) = 0 \times \frac{2}{5} + 1 \times \frac{4}{5} + 2 \times \frac{8}{5} + 3 \times \frac{6}{5}
+                P(X = 1) = 2 \times 0.4 = 0.8
             \]
             \[
-                E(X) = 0 + 0.8 + 3.2 + 3.6 = \textbf{7.6}
+                P(X = 2) = 4 \times 0.4 = 1.6
+            \]
+            \[
+                P(X = 3) = 3 \times 0.4 = 1.2
+            \]
+            we need to normalize the probabilities so that they sum to 1 we divide by the sum of the probabilities:
+            \[
+                    P(X = 0) = \frac{2}{5} = 0.4 / 4 = 0.1
+            \]
+            \[
+                    P(X = 1) = 0.8 / \text{4} = 0.2
+            \]
+            \[
+                    P(X = 2) = 1.6 / \text{4} = 0.4
+            \]
+            \[
+                    P(X = 3) = 1.2 / \text{4} = 0.3
+            \]
+            \[
+                E(X) = 0 \times 0.1 + 1 \times 0.2 + 2 \times 0.4 + 3 \times 0.3 = \textbf{2}
             \]
             \item (3 points) How would the amount of money earned vary with respect to the number of tasks solved? (Hint: Calculate the variance of X to assess the variability in rewards)
             \[
                 Var(X) = E(X^2) - E(X)^2
             \]
             \[
-                E(X^2) = 0^2 \times P(X = 0) + 1^2 \times P(X = 1) + 2^2 \times P(X = 2) + 3^2 \times P(X = 3)
+                E(X^2) = 0^2 \times 0.1 + 1^2 \times 0.2 + 2^2 \times 0.4 + 3^2 \times 0.3 = 0 + 0.2 + 1.6 + 2.7 = \textbf{4.5}
             \]
             \[
-                E(X^2) = 0^2 \times \frac{2}{5} + 1^2 \times \frac{4}{5} + 2^2 \times \frac{8}{5} + 3^2 \times \frac{6}{5}
-            \]
-            \[
-                E(X^2) = 0 + 0.8 + 6.4 + 10.8 = \textbf{18}
-            \]
-            \[
-                Var(X) = 18 - 7.6^2 = \textbf{6.24}
+                Var(X) = 4.5 - 2^2 = 4.5 - 4 = \textbf{0.5}
             \]
         \end{enumerate}
         \item In a series of independent trials with probability 0.3 of success, we want to calculate the probability that the first success occurs on the 4th trial. Let \(X_1\) be a random variable representing the number of trials until the first success.
@@ -302,6 +357,9 @@
             \item (2 points) Find \(E[X_6]\), the expected number of casts to catch 6 fish. (Hint: Use the
             fact that the sum of independent geometric random variables follows a negative binomial
             distribution.)
+            \[
+                E[X_6] = \frac{r}{p} = \frac{6}{0.1} = \textbf{60}
+            \]
             \end{enumerate}
         \end{enumerate}
     \end{enumerate}
@@ -315,11 +373,15 @@
             \[
                 f_X(x) = \lambda e^{-\lambda x} \text{ for } x \geq 0
             \]
+            our rate parameter is:
             \[
                 \lambda = \frac{1}{\mu} = \frac{1}{10} = 0.1
             \]
             \[
                 f_X(x) = \frac{1}{10} e^{-\frac{x}{10}} \text{ for } x \geq 0   
+            \]
+            \[
+                E[X] = \frac{1}{\lambda} = \frac{1}{0.1} = \textbf{10}
             \]
             \item (3 points): Derive the variance of X. Interpret what this variance means in terms of the variability  of failure times.
             \[

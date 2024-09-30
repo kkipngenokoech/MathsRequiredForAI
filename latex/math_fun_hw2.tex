@@ -78,14 +78,29 @@
         \]
         \item Consider a new basis \(\tilde{B} = \left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix} \right\}\) of \(\mathbb{R}^2\) and \(\tilde{C} = \left\{ \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix} \right\}\) of \(\mathbb{R}^3\). Under the basis change, what is the transformation matrix \(\tilde{A}_T\)?
         \[
-            \text{let} \quad P = \begin{pmatrix} 1 & 1 \\ -1 & 0 \end{pmatrix} \quad \text{and} \quad Q = \begin{pmatrix} 1 & 1 & 0 \\ -1 & 0 & 1 \\ 1 & 1 & -1 \end{pmatrix}
+            \text{The transformation matrix } \tilde{A}_T \text{ is given by } \tilde{A}_T = P^{-1}A_TS
         \]
-        Then the transformation matrix under the basis change is:
+        let us get the transformation matrix \( S \) from the basis \( \tilde{B} \) to the basis \( B \):
         \[
-            \tilde{A}_T = Q^{-1}A_TP = \begin{pmatrix} 1 & 1 & 0 \\ -1 & 0 & 1 \\ 1 & 1 & -1 \end{pmatrix}^{-1} \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \begin{pmatrix} 1 & 1 \\ -1 & 0 \end{pmatrix} = \begin{pmatrix} 2 & 3 \\ 1 & 1 \\ 1 & 1 \end{pmatrix}
+            B_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} = -1 \begin{pmatrix} 1 \\ -1 \end{pmatrix} + 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
         \]
         \[
-            \tilde{A}_T = \begin{pmatrix} 2 & 3 \\ 1 & 1 \\ 1 & 1 \end{pmatrix}
+            B_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix} = -1 \begin{pmatrix} 1 \\ -1 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+        \]
+        so:
+        \[
+            S = \begin{pmatrix} -1 & 1 \\ 2 & 0 \end{pmatrix}
+        \]
+        we have the transformation matrix \( A_T \) as:
+        \[
+            A_T = \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix}
+        \]
+         we need to find the transformation matrix \( P \) from the basis \( C \) to the basis \( \tilde{C} \):
+        \[
+            C_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} = 0 \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + 1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}    
+        \]
+        \[
+            C_2 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = -\frac{2}{3} \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
         \]
         \item What is the image and kernel of T
         \[
@@ -418,19 +433,22 @@
             \mathbf{u}_1 = \mathbf{v}_1 = \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_2 = \mathbf{v}_2 - \frac{\mathbf{v}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - \frac{0}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+            \mathbf{u}_2 = \mathbf{v}_2 - \frac{\mathbf{v}_2 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} - (-)\frac{1}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + \frac{1}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} + \begin{pmatrix} \frac{1}{2} \\ -\frac{1}{2} \\ 0 \end{pmatrix} = \begin{pmatrix} 0 + \frac{1}{2} \\ 1 - \frac{1}{2} \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_3 = \mathbf{v}_3 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_2}{\mathbf{u}_2 \cdot \mathbf{u}_2} \mathbf{u}_2 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+            \mathbf{u}_2 = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{5}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - \frac{3}{1} \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+            \mathbf{u}_3 = \mathbf{v}_3 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_1}{\mathbf{u}_1 \cdot \mathbf{u}_1} \mathbf{u}_1 - \frac{\mathbf{v}_3 \cdot \mathbf{u}_2}{\mathbf{u}_2 \cdot \mathbf{u}_2} \mathbf{u}_2 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}}{\begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} \cdot \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - \frac{\begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} \cdot \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}}{\begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix} \cdot \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}} \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ -\frac{5}{2} \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 3 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ -\frac{5}{2} \\ 0 \end{pmatrix} - \begin{pmatrix} 0 \\ 3 \\ 0 \end{pmatrix} = \begin{pmatrix} 2 - \frac{5}{2} - 0 \\ 3 + \frac{5}{2} - 3 \\ 1 - 0 - 0 \end{pmatrix} = \begin{pmatrix} \frac{4}{2} - \frac{5}{2} \\ \frac{6}{2} + \frac{5}{2} - \frac{6}{2} \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix}
+            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - (-) \frac{1}{2} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} - 5 \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}
         \]
         \[
-            \text{The orthogonal basis is } \left\{ \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} \right\}
+            \mathbf{u}_3 = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \frac{1}{2} \begin{pmatrix} -1 \\ 1 \\ 0 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ \frac{5}{2} \\ 0 \end{pmatrix} = \begin{pmatrix} 2 \\ 3 \\ 1 \end{pmatrix} - \begin{pmatrix} -\frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix} - \begin{pmatrix} \frac{5}{2} \\ \frac{5}{2} \\ 0 \end{pmatrix} = \begin{pmatrix} 2 + \frac{1}{2} - \frac{5}{2} \\ 3 - \frac{1}{2} - \frac{5}{2} \\ 1 - 0 \end{pmatrix} = \begin{pmatrix} 2 - 2 \\ 3 - 3 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
+        \]
+        \[
+            \text{The orthogonal basis is } \left\{ \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix}, \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
         \]
         To make them orthonormal, we divide each vector by its norm:
         \[
@@ -440,19 +458,19 @@
             \mathbf{u}_1 = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix} \quad \text{norm} = \sqrt{0^2 + 1^2 + 0^2} = \sqrt{1} = 1
+            \mathbf{u}_2 = \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix} \quad \text{norm} = \sqrt{\left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^2 + 0^2} = \sqrt{\frac{1}{4} + \frac{1}{4}} = \sqrt{\frac{2}{4}} = \frac{\sqrt{2}}{2}
         \]
         \[
-            \mathbf{u}_2 = \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}
+            \mathbf{u}_2 = \frac{1}{\frac{\sqrt{2}}{2}} \begin{pmatrix} \frac{1}{2} \\ \frac{1}{2} \\ 0 \end{pmatrix} = \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}
         \]
         \[
-            \mathbf{u}_3 = \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} \quad \text{norm} = \sqrt{\left( -\frac{1}{2} \right)^2 + \left( \frac{5}{2} \right)^2 + 1^2} = \sqrt{\frac{1}{4} + \frac{25}{4} + 1} = \sqrt{\frac{26}{4} + 1} = \sqrt{\frac{26}{4} + \frac{4}{4}} = \sqrt{\frac{30}{4}} = \sqrt{\frac{15}{2}} = \frac{\sqrt{15}}{\sqrt{2}} = \frac{\sqrt{30}}{2}
+            \mathbf{u}_3 = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \quad \text{norm} = \sqrt{0^2 + 0^2 + 1^2} = \sqrt{1} = 1
         \]
         \[
-            \mathbf{u}_3 = \frac{1}{\frac{\sqrt{30}}{2}} \begin{pmatrix} -\frac{1}{2} \\ \frac{5}{2} \\ 1 \end{pmatrix} = \begin{pmatrix} -\frac{1}{\sqrt{30}} \\ \frac{5}{\sqrt{30}} \\ \frac{2}{\sqrt{30}} \end{pmatrix}
+            \mathbf{u}_3 = \frac{1}{1} \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix}
         \]
         \[
-            \text{The orthonormal basis is } \left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -\frac{1}{\sqrt{30}} \\ \frac{5}{\sqrt{30}} \\ \frac{2}{\sqrt{30}} \end{pmatrix} \right\}
+            \text{The orthonormal basis is } \left\{ \begin{pmatrix} \frac{1}{\sqrt{2}} \\ -\frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}, \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 0 \\ 1 \end{pmatrix} \right\}
         \]
     \end{enumerate}
 \end{enumerate}
