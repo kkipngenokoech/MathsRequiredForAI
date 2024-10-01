@@ -504,7 +504,7 @@
         \item In a certain suburb, each household reported the number of cars and the number of television sets
         that they own. Let X represent the number of cars, and Y represent the number of television sets
         owned by a randomly selected household. The table below gives the joint probability distribution
-        for X and Y :
+        for X and Y:
     \begin{center}
         \begin{tabular}{|c|c|c|c|c|}
             \hline
@@ -531,7 +531,7 @@
         \[
             P(X \leq 2 \text{ and } Y \leq 2) = 0.1 + 0 + 0.3 + 0 = \textbf{0.4}
         \]
-        The probabilities from the table contribute to this total probability by providing the likelihood of each combination of cars and television sets owned by a household.
+        The probabilities from the table contribute to this total probability by providing the joint probabilities of households owning \(y\) amount of cars and \(z\) amount of  television sets. By summing these probabilities, we can determine the overall probability of a household owning at most two cars and at most two television sets.
         \item (3 points) Using the joint probability distribution, determine the marginal distribution
         for the number of cars X owned by a household. In other words, compute the probabilities
         P(X = x) for each possible value of X. Specifically:
@@ -563,7 +563,7 @@
                 \hline
             \end{tabular}
         \]
-        The marginal distribution of cars tells us about car ownership in the suburb by providing the probability of households owning a certain number of cars, regardless of the number of television sets they own.
+        The marginal distribution of cars tells us the probability of households owning a certain number of cars, regardless of the number of television sets they own.
         \item (3 points) Similarly, determine the marginal distribution for the number of television sets
         Y owned by a household. Compute the probabilities P(Y = y) for each possible value of Y .
         Specifically:
@@ -584,7 +584,7 @@
         \[
             P(Y = 4) = 0 + 0.2 + 0 = \textbf{0.2}
         \]
-        The marginal distribution of  television sets tells us about television ownership in the suburb by providing the probability of households owning a certain number of televisions, regardless of the number of cars they own.
+        The marginal distribution of  television sets tells us the probability of households owning a certain number of televisions, regardless of the number of cars they own.
         \\ \textbf{Marginal Distribution of televisions:}
         \begin{center}
             \begin{tabular}{|c|c|}
@@ -613,7 +613,10 @@
             P(X = 1, Y = 1) = 0.1
         \]
         \[
-            P(X = 1)P(Y = 1) = 0.2 \times 0.4 = 0.08 \text{ (marginal probabilities) }
+            P(X = 1)P(Y = 1) = 0.2 \times 0.4 = \textbf{0.08} \text{ (marginal probabilities) }
+        \]
+        \[
+            0.1 \neq 0.08
         \]
         \[
             P(X = 1, Y = 1) \neq P(X = 1)P(Y = 1)
@@ -698,53 +701,64 @@
         positive returns. Compare this to the theoretical correlation.
     \end{enumerate}
     \item (5 points) Let X be the size of a surgical claim and let Y denote the size of the associate hospital
-    claim. A risk analyst uses a model in which E(X) = 5, E(X2) = 27.4, E(Y ) = 7, E(Y 2) = 51.4
-    and Var(X+Y ) = 8. Let C1 = X+Y denote the size of the combined claims before the application
-    of a 20\% surcharge on the hospital claim and C2 denote the size of the combined claim after the
-    application of the surcharge. Calculate Cov(C1,C2).
+    claim. A risk analyst uses a model in which E(X) = 5, \(E(X^2)\) = 27.4, E(Y) = 7, \(E(Y^2)\) = 51.4
+    and Var(X+Y ) = 8. Let \(C_1\) = X+Y denote the size of the combined claims before the application
+    of a 20\% surcharge on the hospital claim and \(C_2\) denote the size of the combined claim after the
+    application of the surcharge. Calculate \(Cov(C_1, C_2)\)
+    \\ we need to find \(C_1\) and \(C_2\):
     \[
-        Cov(C1, C2) = E[C1C2] - E[C1]E[C2]
+        C_1 = X + Y
+    \]
+    \(C_1\):
+    \[
+        E(C_1) = E(X + Y) = E(X) + E(Y) = 5 + 7 = 12
+    \]
+    \(C_2\):
+    \[
+        E(C_2) = E(X + 1.2Y) = E(X) + 1.2E(Y) = 5 + 1.2 \times 7 = 5 + 8.4 = 13.4
     \]
     \[
-        Cov(C1, C2) = E[(X + Y)(X + 1.2Y)] - E[X + Y]E[X + 1.2Y]
+        Cov(C_1, C_2) = E(C_1C_2) - E(C_1)E(C_2)
+    \]
+    \(E(C_1, C_2)\)
+    \[
+        E(C_1C_2) = E((X + Y)(X + 1.2Y)) = E(X^2 + 1.2XY + XY + 1.2Y^2)
     \]
     \[
-        Cov(C1, C2) = E[X^2 + 1.2XY + XY + 1.44Y^2] - (E[X] + E[Y])(E[X] + 1.2E[Y])
-    \]
-    \end{enumerate}
-    \[
-        Cov(C1, C2) = E[X^2] + 2.2E[XY] + 1.44E[Y^2] - (E[X] + E[Y])(E[X] + 1.2E[Y])
+        E(C_1C_2) = E(X^2) + 1.2E(XY) + E(XY) + 1.2E(Y^2)
     \]
     \[
-        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 1.44 \times 51.4 - (5 + 7)(5 + 1.2 \times 7)
+        E(C_1C_2) = 27.4 + 1.2E(XY) + E(XY) + 1.2 \times 51.4
     \]
     \[
-        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 1.44 \times 51.4 - 12 \times 12.4
+        E(C_1C_2) = 27.4 + 2.2E(XY) + 61.68
     \]
     \[
-        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) + 74.016 - 148.8
+        E(C_1C_2) = 88.08 + 2.2E(XY)
     \]
     \[
-        Cov(C1, C2) = 27.4 + 2.2 \times Cov(X, Y) - 74.784
+        Var(X + Y) = E((X+Y)^2) - E(X+Y)^2 
     \]
     \[
-        Cov(C1, C2) = 2.2 \times Cov(X, Y) - 47.384
+        8 = E(X^2) + 2E(XY) + E(Y^2) - 12^2
     \]
     \[
-        8 = Var(X + Y) = Var(X) + Var(Y) + 2Cov(X, Y)
+        8 = 27.4 + 2E(XY) + 51.4 - 144
     \]
     \[
-        8 = 27.4 + 51.4 + 2Cov(X, Y)
+        2E(XY) = 8 - 27.4 - 51.4 + 144 = 73.2
     \]
     \[
-        8 = 78.8 + 2Cov(X, Y)
+        E(XY) = 36.6
     \]
     \[
-        2Cov(X, Y) = -70.8
+        E(C_1C_2) = 89.08 + 2.2 \times 36.6 = 89.08 + 80.52 = 169.6
     \]
     \[
-        Cov(X, Y) = \textbf{-35.4}
+        Cov(C_1, C_2) = 168.6 - 12 \times 13.4 = 168.6 - 160.8 = \textbf{8.8}
     \]
+
+\end{enumerate}
 \end{enumerate}
 
 \end{document}
