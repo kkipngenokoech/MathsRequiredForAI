@@ -74,56 +74,221 @@
     \begin{enumerate}
         \item Find the transformation matrix \(A_T\) of the linear transformation T
         \[
-            A_T = \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix}
+            \begin{pmatrix}
+                5  \\
+                1  \\
+                4 
+            \end{pmatrix} = a_1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + a_2 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + a_3 \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+        \]
+        \[
+            5 = a_1 + a_2
+        \]
+        \[
+                a_1 = 5 - a_2
+        \]
+        \[
+            1 = a_2 + a_3
+        \]
+        \[
+            a_3 = 1 - a_2
+        \]
+        \[
+            4 = a_1 + a_3
+        \]
+        but we know that \( a_1 = 5 - a_2 \), so:
+        \[
+            4 = 5 - a_2 + a_3 = -1 = -a_2 + a_3
+        \]
+        but we know that \( a_3 = 1 - a_2 \), so:
+        \[
+            -1 = -a_2 + 1 - a_2
+        \]
+        \[
+            -1 = 1 - 2a_2 = -2a_2 = -2 \Rightarrow a_2 = 1
+        \]
+        \[
+            a_1 = 5 - a_2 = 5 - 1 = 4 \Rightarrow a_1 = 4
+        \]
+        \[
+            a_3 = 1 - a_2 = 1 - 1 = 0 \Rightarrow a_3 = 0
+        \]
+        \[
+            \begin{pmatrix}
+                4  \\
+                1  \\
+                0
+            \end{pmatrix}
+        \]
+        \[
+            \begin{pmatrix}
+                3  \\
+                7  \\
+                0
+            \end{pmatrix} = b_1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + b_2 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + b_3 \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+        \]
+        \[
+            3 = b_1 + b_2 
+        \]
+        \[
+            0 = b_1 + b_3 \Rightarrow b_1 = -b_3
+        \]
+        \[
+            7 = b_2 + b_3 \Rightarrow b_2 = 7 - b_3
+        \]  
+        \[
+            3 = -b_3 + b_2 \Rightarrow 3 = -b_3 + 7 - b_3 \Rightarrow 3 = 7 - 2b_3 \Rightarrow 2b_3 = 4 \Rightarrow b_3 = 2
+        \]
+        \[
+            b_1 = -b_3 = -2 \Rightarrow b_1 = -2
+        \]
+        \[
+            b_2 = 7 - b_3 = 7 - 2 = 5 \Rightarrow b_2 = 5
+        \]
+        \[
+            \begin{pmatrix}
+                3  \\
+                7  \\
+                0
+            \end{pmatrix} =  -2 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 5 \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} + 2 \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix}
+        \]
+        so the transformation matrix \( A_T \) is:
+        \[
+            A_T = \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix}
         \]
         \item Consider a new basis \(\tilde{B} = \left\{ \begin{pmatrix} 1 \\ -1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \end{pmatrix} \right\}\) of \(\mathbb{R}^2\) and \(\tilde{C} = \left\{ \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix}, \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix} \right\}\) of \(\mathbb{R}^3\). Under the basis change, what is the transformation matrix \(\tilde{A}_T\)?
         \[
             \text{The transformation matrix } \tilde{A}_T \text{ is given by } \tilde{A}_T = P^{-1}A_TS
         \]
+        where:\\
+        \(S\) maps from the basis \(\tilde{B}\) to the basis \(B\)\\
+        \(A_T\) maps from the basis \(B\) to the basis \(C\)\\
+        \(P\) maps from the basis \(C\) to the basis \(\tilde{C}\)\\
         let us get the transformation matrix \( S \) from the basis \( \tilde{B} \) to the basis \( B \):
         \[
-            B_1 = \begin{pmatrix} 1 \\ 1 \end{pmatrix} = -1 \begin{pmatrix} 1 \\ -1 \end{pmatrix} + 2 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+           \tilde{B_1} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} = 0 \begin{pmatrix} 1 \\ 1 \end{pmatrix} - 1 \begin{pmatrix} -1 \\ 1 \end{pmatrix}
         \]
         \[
-            B_2 = \begin{pmatrix} -1 \\ 1 \end{pmatrix} = -1 \begin{pmatrix} 1 \\ -1 \end{pmatrix} + 0 \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+            \tilde{B_2} = \begin{pmatrix} 1 \\ 0 \end{pmatrix} = \frac{1}{2} \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \frac{1}{2} \begin{pmatrix} -1 \\ 1 \end{pmatrix}
         \]
         so:
         \[
-            S = \begin{pmatrix} -1 & 1 \\ 2 & 0 \end{pmatrix}
+            S(B_1, B_2) = \begin{pmatrix} 0 & \frac{1}{2} \\ -1 & -\frac{1}{2} \end{pmatrix}
         \]
+
         we have the transformation matrix \( A_T \) as:
         \[
-            A_T = \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix}
+            A_T = \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix}
         \]
          we need to find the transformation matrix \( P \) from the basis \( C \) to the basis \( \tilde{C} \):
         \[
             C_1 = \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} = 0 \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + 1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 0 \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}    
         \]
         \[
-            C_2 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = -\frac{2}{3} \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + \frac{1}{3} \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+            C_2 = \begin{pmatrix} 1 \\ 1 \\ 0 \end{pmatrix} = 0 \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + 1 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} + 1 \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+        \]
+        \[
+            C_3 = \begin{pmatrix} 0 \\ 1 \\ 1 \end{pmatrix} = -2 \begin{pmatrix} 1 \\ -1 \\ 1 \end{pmatrix} + 2 \begin{pmatrix} 1 \\ 0 \\ 1 \end{pmatrix} -1 \begin{pmatrix} 0 \\ 1 \\ -1 \end{pmatrix}
+        \]
+        \[
+            P = \begin{pmatrix} 0 & 1 & -2 \\ 1 & 0 & 2 \\ 1 & 1 & -1 \end{pmatrix}
+        \]
+        \[
+            \text{The transformation matrix } \tilde{A}_T \text{ is given by } \tilde{A}_T = P^{-1}A_TS = \begin{pmatrix} 0 & 1 & -2 \\ 1 & 0 & 2 \\ 1 & 1 & -1 \end{pmatrix}^{-1} \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 0 & \frac{1}{2} \\ -1 & -\frac{1}{2} \end{pmatrix}
+        \]
+        \[
+            \tilde{A}_T = \begin{pmatrix} 0 & 1 & -2 \\ 1 & 0 & 2 \\ 1 & 1 & -1 \end{pmatrix}^{-1} \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} 0 & \frac{1}{2} \\ -1 & -\frac{1}{2} \end{pmatrix}
+        \]
+        \[
+           \begin{pmatrix}
+                0 & 1 & -2 \\
+                1 & 0 & 2 \\
+                1 & 1 & -1
+            \end{pmatrix}^{-1} = \begin{pmatrix}
+                -2 & -1 & 2 \\
+                3 & 2 & -2 \\
+                1 & 1 & -1
+            \end{pmatrix}
+        \]
+        \[
+            \tilde{A}_T = \begin{pmatrix}
+                -2 & -1 & 2 \\
+                3 & 2 & -2 \\
+                1 & 1 & -1
+            \end{pmatrix} \begin{pmatrix}
+                4 & -2 \\
+                1 & 5 \\
+                0 & 2
+            \end{pmatrix} \begin{pmatrix}
+                0 & \frac{1}{2} \\
+                -1 & -\frac{1}{2}
+            \end{pmatrix}
+        \]
+        \[
+            \begin{pmatrix}
+                4 & -2 \\
+                1 & 5 \\
+                0 & 2
+            \end{pmatrix} \begin{pmatrix}
+                0 & \frac{1}{2} \\
+                -1 & -\frac{1}{2}
+            \end{pmatrix} = \begin{pmatrix}
+                4(0) + (-2)(-1) & 4(\frac{1}{2}) + (-2)(-\frac{1}{2}) \\
+                1(0) + 5(-1) & 1(\frac{1}{2}) + 5(-\frac{1}{2}) \\
+                0(0) + 2(-1) & 0(\frac{1}{2}) + 2(-\frac{1}{2})
+            \end{pmatrix} = \begin{pmatrix}
+                2 & 3 \\
+                -5 & -2 \\
+                -2 & -1
+            \end{pmatrix}
+        \]
+        \[
+            \tilde{A}_T = \begin{pmatrix}
+                -2 & -1 & 2 \\
+                3 & 2 & -2 \\
+                1 & 1 & -1
+            \end{pmatrix} \begin{pmatrix}
+                2 & 3 \\
+                -5 & -2 \\
+                -2 & -1
+            \end{pmatrix} = \begin{pmatrix}
+                -2(2) + (-1)(-5) + 2(-2) & -2(3) + (-1)(-2) + 2(-1) \\
+                3(2) + 2(-5) - 2(-2) & 3(3) + 2(-2) - 2(-1) \\
+                1(2) + 1(-5) - 1(-2) & 1(3) + 1(-2) - 1(-1)
+            \end{pmatrix} = \begin{pmatrix}
+                -4 + 5 - 4 & -6 + 2 - 2 \\
+                6 - 10 - 4 & 9 - 4 + 2 \\
+                2 - 5 + 2 & 3 - 2 + 1
+            \end{pmatrix} = \begin{pmatrix}
+                -5 & -6 \\
+                -8 & 7 \\
+                -1 & 2
+            \end{pmatrix}
+        \]
+        \[
+            \text{Therefore, the transformation matrix } \tilde{A}_T \text{ is } \tilde{A}_T = \begin{pmatrix} -5 & -6 \\ -8 & 7 \\ -1 & 2 \end{pmatrix}
         \]
         \item What is the image and kernel of T
         \[
-            \text{The image of } T \text{ is the span of the columns of } A_T \text{, and the kernel of } T \text{ is the nullspace of } A_T
+            \text{The image of } T \text{ is the span of the columns of the transformation matrix } A_T
         \]
         \[
-            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
+            \text{The image of } T \text{ is the span of the columns of the transformation matrix } A_T = \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix}
         \]
         \[
-            \text{The kernel of } T = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\}
+            \text{The image of } T \text{ is the span of the columns of the transformation matrix } A_T = \text{span}\left\{ \begin{pmatrix} 4 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} -2 \\ 5 \\ 2 \end{pmatrix} \right\}
         \]
         \[
-            \text{The kernel of } T = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\} = \text{nullspace}\left\{ \begin{pmatrix} 5 & 3 \\ 1 & 7 \\ 4 & 0 \end{pmatrix} \right\} = \text{nullspace}\left\{ \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} \right\} = \{ \mathbf{0} \}
+            \text{The kernel of } T \text{ is the set of all vectors that are mapped to the zero vector}
         \]
         \[
-            \text{The kernel of } T = \{ \mathbf{0} \}
+            \text{The kernel of } T \text{ is the set of all vectors that are mapped to the zero vector} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
         \]
         \[
-            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\} = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
+            \text{The kernel of } T \text{ is the set of all vectors that are mapped to the zero vector} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} = \begin{pmatrix} 4 & -2 \\ 1 & 5 \\ 0 & 2 \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} 4x - 2y \\ x + 5y \\ 2y \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
         \]
-        \[
-            \text{The image of } T = \text{span}\left\{ \begin{pmatrix} 5 \\ 1 \\ 4 \end{pmatrix}, \begin{pmatrix} 3 \\ 7 \\ 0 \end{pmatrix} \right\}
-        \]  
+        
+
+          
     \end{enumerate}
     \item A rotation in 3-D space (whose Cartesian coordinates we will call \(x\), \(y\), and \(z\) as usual) is characterized by three angles. We will characterize them as a rotation around the \(x\)-axis, a rotation around the \(y\)-axis, and a rotation around the \(z\)-axis.
 
@@ -389,6 +554,9 @@
         \]
         \[
             \begin{pmatrix} -\frac{1}{2} & 1 \\ 1 & 1 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} = \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix}
+        \]
+        \[
+            \text{ Therefore, the limit as } n \to \infty \text{ of the matrices } A^n \text{ is } \lim_{n \to \infty} A^n = \begin{pmatrix} 0 & 1 \\ 0 & 1 \end{pmatrix}
         \]
     \end{enumerate}
     \item You are given bases in \(\mathbb{R}^3\). Apply the Gram-Schmidt process on each of them to obtain the orthogonal bases. Transform the orthogonal bases to orthonormal bases.

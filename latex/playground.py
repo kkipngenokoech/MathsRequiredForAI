@@ -14,3 +14,11 @@ A_b = np.array([
 rank = np.linalg.matrix_rank(A_b)
 
 print("The rank of the augmented matrix [A|b] is:", rank)
+
+# to find inverse of a matrix
+A = np.array([[0, 1, -2], [1, 0, 2], [1, 1, -1]])  
+print(A)
+
+# inverse of A
+A_inv = np.linalg.inv(A)    
+print(A_inv)
