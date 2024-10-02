@@ -478,10 +478,10 @@
             P(X > 1.05) = 1 - P(X < 1.05)
         \]
         \[
-            Z = \frac{\ln(1.05) - 0.001}{0.02} = 2.236
+            Z = \Phi (\frac{\ln(1.05) - 0.001}{0.02}) = 2.236
         \]
         \[
-            P(X > 1.05) = 1 - P(Z < 2.236) = 1 - 0.9877 = \textbf{0.0123}
+            P(X > 1.05) = 1 - P(Z < 2.236) = 1- \Phi (2.36) = 1 - 0.9877 = \textbf{0.0123}
         \]
         \item (4 points) Simulate 1,000 days of stock returns using the lognormal distribution. Plot the histogram
         of daily returns and calculate the proportion of days where the return is positive. How
