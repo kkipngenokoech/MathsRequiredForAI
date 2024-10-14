@@ -1,0 +1,62 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{Applied Stochastic Processes Cheatsheet}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Probability}
+\subsection{Basic Concepts}
+\begin{itemize}
+    \item \textbf{Probability of an event} \( P(A) \)
+    \item \textbf{Conditional Probability} \( P(A|B) = \frac{P(A \cap B)}{P(B)} \)
+    \item \textbf{Bayes' Theorem} \( P(A|B) = \frac{P(B|A)P(A)}{P(B)} \)
+\end{itemize}
+
+\section{Random Variables}
+\subsection{Probability Density Function (PDF)}
+\begin{itemize}
+    \item \( f_X(x) \) such that \( P(a \leq X \leq b) = \int_a^b f_X(x) \, dx \)
+\end{itemize}
+
+\subsection{Cumulative Distribution Function (CDF)}
+\begin{itemize}
+    \item \( F_X(x) = P(X \leq x) = \int_{-\infty}^x f_X(t) \, dt \)
+\end{itemize}
+
+\subsection{Expected Value}
+\begin{itemize}
+    \item Discrete: \( E[X] = \sum_x x \cdot P(X = x) \)
+    \item Continuous: \( E[X] = \int_{-\infty}^{\infty} x \cdot f_X(x) \, dx \)
+\end{itemize}
+
+\subsection{Variance}
+\begin{itemize}
+    \item \( \text{Var}(X) = E[X^2] - (E[X])^2 \)
+\end{itemize}
+
+\section{Sum of Random Variables}
+\begin{itemize}
+    \item If \( X \) and \( Y \) are independent: \( f_{X+Y}(z) = \int_{-\infty}^{\infty} f_X(x) f_Y(z-x) \, dx \)
+    \item Expected Value: \( E[X + Y] = E[X] + E[Y] \)
+    \item Variance: \( \text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y) \) (if \( X \) and \( Y \) are independent)
+\end{itemize}
+
+\section{Estimations}
+\subsection{Point Estimation}
+\begin{itemize}
+    \item Sample Mean: \( \hat{\mu} = \frac{1}{n} \sum_{i=1}^n X_i \)
+    \item Sample Variance: \( \hat{\sigma}^2 = \frac{1}{n-1} \sum_{i=1}^n (X_i - \hat{\mu})^2 \)
+\end{itemize}
+
+\subsection{Confidence Intervals}
+\begin{itemize}
+    \item For mean (normal distribution): \( \hat{\mu} \pm z_{\alpha/2} \frac{\sigma}{\sqrt{n}} \)
+\end{itemize}
+
+\end{document}
