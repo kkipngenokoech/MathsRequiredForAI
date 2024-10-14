@@ -199,5 +199,25 @@ Consider the matrix $A = \begin{bmatrix} 9 & 1 & -1\\ -1 & 11 & 1 \\ -2 & 2 & 10
     30 = 8 + 10 + 12 = 30
     \]
 \end{enumerate}
-
+\newpage
+\begin{center}
+    \large \textbf{Question 2: Image Compression using SVD}
+\end{center}
+5. 5. Assuming 1 byte of memory is required for one element of the image matrix, determine the top k rank-1 matrices required to represent the image if a compression ratio of 13:1 is desired. What is the value of k? Add up the rank-1 matrices for the top K singular values and visaulize your results. Remember to show your workings
+\[
+\text{Compression ratio} = \frac{\text{Original size}}{\text{Compressed size}} = 13
+\]
+Original size:
+\[
+\text{Original size} = \text{Number of elements in the image} = 902 \times 602 = \textbf{543004} \text{ bytes}
+\]
+\[
+\text{Compressed size} = \text{Number of elements in the top k rank-1 matrices} = k \times 902 + k \times 602 = 1504k \text{ bytes}
+\]
+\[
+\frac{543004}{1504k} = 13 = \frac{543004}{13} = 1504k
+\]
+\[
+k = \frac{543004}{13 \times 1504} = \textbf{28}
+\]
 \end{document}
