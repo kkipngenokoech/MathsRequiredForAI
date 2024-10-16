@@ -1,0 +1,138 @@
+\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 3 - Applied Stochastic Processes}   
+\maketitle
+
+\medskip
+
+\maketitle
+\begin{center}
+    \large \textbf{Question 1: Random Vectors and Principal Component Analysis}
+\end{center}
+Reading: Random vectors are fundamental constructs in probability and statistics, allowing researchers
+and practitioners to analyze relationships among multiple variables simultaneously. Each component of a
+random vector can represent a different feature or measurement, and the joint distribution encapsulates
+the uncertainty inherent in those variables.
+
+For instance, consider a random vector \(X\) - \(X_1, X_2,...,X_n\) where each \(X_i\) is a random variable. The covariance matrix of \(X\) plays a crucial role in understanding the linear relationships among the
+components, guiding decisions in fields such as finance, machine learning, and signal processing.
+Sampling from random vectors introduces excitement in multivariate analyses, where one can explore
+properties like independence, marginal distributions, and conditional relationships. Moreover, techniques
+such as principal component analysis (PCA) leverage the variance structure of these vectors to reduce
+dimensionality while preserving essential information.
+\begin{enumerate}
+    \item \textbf{5 points} let \(X = \begin{pmatrix}X_1\\X_2 \\X_3\end{pmatrix}\), and \(Y = \begin{pmatrix}Y_1\\Y_2 \\Y_3\end{pmatrix}\)  are related by \(Y - AX\) where
+    \[A = \begin{bmatrix}1 & 0 & 0\\-1 & 1 & 0\\0 & -1 & 1\end{bmatrix}\]
+    The joint PMF of X is given by:
+    \[
+    P_X(X) = 
+    \begin{cases} 
+    (1-p)p^{x_3} & \text{if } X_1 < X_2 < X_3 \\
+    0 & \text{otherwise}
+    \end{cases}
+    \]
+    where \(x_1, x_2, x_3 \in \{0, 1, 2, \ldots\}\) and \(0 < p < 1\).
+    \\ Find the joint PMF \(P_Y(y)\) of the transformed random vector \(Y\).
+    \[
+    Y = AX = \begin{bmatrix}1 & 0 & 0\\-1 & 1 & 0\\0 & -1 & 1\end{bmatrix} \begin{pmatrix}X_1\\X_2 \\X_3\end{pmatrix} = \begin{pmatrix}X_1\\X_2 - X_1 \\X_3 - X_2\end{pmatrix}
+    \]
+    \[
+    X_1 = Y_1, X_2 = Y_1 + Y_2, X_3 = Y_1 + Y_2 + Y_3
+    \]
+    \[
+    P_Y(y) = P_X(A^{-1}y) = P_X\left(\begin{pmatrix}y_1\\y_2 \\y_3\end{pmatrix}\right) = P_X\left(\begin{pmatrix}y_1\\y_1 + y_2 \\y_1 + y_2 + y_3\end{pmatrix}\right)
+    \]
+    conditions for \(X_1 < X_2 < X_3\) to hold:
+    \[
+    y_1 < y_1 + y_2 < y_1 + y_2 + y_3
+    \]
+    \[
+    0 < y_2 < y_3
+    \]
+    \[
+    P_Y(y) = (1-p)p^{y_1 + y_2 + y_3} = (1-p)p^{y_1}p^{y_2}p^{y_3}
+    \]
+    \[
+    P_Y(y) = (1-p)p^{y_1}p^{y_2}p^{y_3}
+    \]
+    \item You are working as a data analyst for a startup that collects various statistics from users’ activities
+    on its platform. The startup wants to reduce the dimensionality of its collected data without
+    losing significant information. Your goal is to apply Principal Component Analysis (PCA) to the
+    dataset to retain as much variance (information) as possible while reducing the dimensionality.
+    This exercise will take you from the conceptual understanding of random vectors and covariance
+    matrices to the practical application of PCA using Python.
+    \subitem \textbf{Part 1: understanding the covariance Matrix of Random Vectors (12 points)}
+    \\ You are given a random vector \(X = [X_1, X_2, X_3, X_4]^{T}\), representing four features of platforms users. The covariance matrix of this random vector is:
+    \[
+    \Sigma_x = \begin{bmatrix}5 & 1.2 & 0.8 & 0.6\\1.2 & 4 & 0.5 & 0.3\\0.8 & 0.5 & 3 & 0.2\\0.6 & 0.3 & 0.2 & 2\end{bmatrix}
+    \]
+    \\ \subitem \textbf{Intepretation of the covariance matrix}
+    \begin{enumerate}
+        \item \textbf{(2 points)} What do the diagonal elements of the covariance matrix represent?
+        \[
+            \text{The diagonal elements of the covariance matrix represent the variance of the individual features.}
+        \]
+        \item \textbf{(2 points)} What do the off-diagonal elements signify in terms of the relationship between the features?
+        \[
+            \text{The off-diagonal elements signify the covariance between the features.}
+        \]
+    \end{enumerate}
+    \subitem \textbf{Random Vector and Variance}
+    \begin{enumerate}
+        \item \textbf{(2 points)} Calculate the total variance of the random vector \(X\).
+        \[
+        \text{Total Variance} = \text{Trace}(\Sigma_x) = 5 + 4 + 3 + 2 = \textbf{14}
+        \]
+        \item \textbf{(2 points)} How would you compute the variance captured by a single feature ( e.g, the first feature \(X_1\))?
+        \[
+        \text{Variance of } X_1 = \Sigma_{11} = \textbf{5}
+        \]
+    \end{enumerate}
+    \subitem \textbf{Eigenvalues and Eigenvectors of the Covariance Matrix}
+    \begin{enumerate}
+        \item \textbf{(2 points)} Calculate the eigenvalues and eigenvectors of the covariance matrix  \(\Sigma_x\) by hand
+        \\ method used to calculate eigenvalues and eigenvectors is eigen decomposition:
+        \\ The characteristic equation is given by:
+        \[
+        \text{det}(\Sigma_x - \lambda I) = 0
+        \]
+        \[
+        \begin{vmatrix}5-\lambda & 1.2 & 0.8 & 0.6\\1.2 & 4-\lambda & 0.5 & 0.3\\0.8 & 0.5 & 3-\lambda & 0.2\\0.6 & 0.3 & 0.2 & 2-\lambda\end{vmatrix} = 0
+        \]
+        \[
+            \lambda^4 - 14\lambda^3 + 68.18\lambda^2 - 139.254\lambda + 101.356 = 0
+        \]
+        \[
+            \lambda_1 = \textbf{6.20306}, \lambda_2 = \textbf{3.20619}, \lambda_3 = \textbf{2.71066}, \lambda_4 = \textbf{1.88009}
+        \]
+        To calculate the eigen vectors, we substitute the eigen values into the equation:
+        \\ The eigen vectors are:
+        \\ for eigen value \(\lambda_1 = 6.20306\)
+        \[
+        \begin{bmatrix}-1.20306 & 1.2 & 0.8 & 0.6\\1.2 & -2.20306 & 0.5 & 0.3\\0.8 & 0.5 & -3.20306 & 0.2\\0.6 & 0.3 & 0.2 & -4.20306\end{bmatrix} \begin{bmatrix}v_1\\v_2\\v_3\\v_4\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+        \]
+        The augmented matrix is:
+        \[
+        \begin{bmatrix}-1.20306 & 1.2 & 0.8 & 0.6 & | & 0\\1.2 & -2.20306 & 0.5 & 0.3 & | & 0\\0.8 & 0.5 & -3.20306 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & -4.20306 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_1 = \frac{1}{-1.20306}R_1 = \begin{bmatrix}1 & -0.997 & -0.66497 & -0.4987 & | & 0\\1.2 & -2.20306 & 0.5 & 0.3 & | & 0\\0.8 & 0.5 & -3.20306 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & -4.20306 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_2 = R_2 - 1.2R_1 = \begin{bmatrix}1 & -0.997 & -0.66497 & -0.4987 & | & 0\\0 & -1.00611 & 1.297965 & 0.89847 & | & 0\\0.8 & 0.5 & -3.20306 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & -4.20306 & | & 0\end{bmatrix}
+        \]
+        \item \textbf{(2 points)} List the eigenvalues in descending order and explain what they represent in terms of variance
+        \[
+        \lambda_1 = \textbf{6.20306}, \lambda_2 = \textbf{3.20619}, \lambda_3 = \textbf{2.71066}, \lambda_4 = \textbf{1.88009}
+        \]
+        The eigen values represent the variance of the data along the principal components. The first eigen value \(\lambda_1 = 6.20306\) represents the variance of the data along the first principal component, the second eigen value \(\lambda_2 = 3.20619\) represents the variance of the data along the second principal component, the third eigen value \(\lambda_3 = 2.71066\) represents the variance of the data along the third principal component, and the fourth eigen value \(\lambda_4 = 1.88009\) represents the variance of the data along the fourth principal component.
+    \end{enumerate} 
+    
+\end{enumerate}
+\end{document}
