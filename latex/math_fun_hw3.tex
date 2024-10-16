@@ -237,4 +237,62 @@ Complete the cells in the provided starter code and answer the following:
     \]
     \item How many singular values were obtained during the calculation of the co-efficients? Why is this number exact - neither more nor less?
 \end{enumerate}
+\newpage
+\begin{center}
+    \large \textbf{Question 4: PCA \& Eigenfaces}
+\end{center}
+capture the maximum variance in the data of high dimensional vectors.
+An image can be seen as a high dimensional vector. For example, a 100x100 image is a 10000 dimensional
+vector. PCA can be used to reduce this dimensionality by projecting images onto a lower dimensional
+subspace, given a dataset of images.
+2
+Eigenfaces is an application of PCA to obtain a lower dimensional subspace onto which face images can
+be projected, such that face images can be reconstructed by linearly combining the basis vectors of the
+lower dimensional subspace. The basis vectors of this lower dimensional subspace are called the eigenfaces.
+Eigenfaces can be applied in face recognition.
+[
+You can read more about PCA in chapter 10 of the textbook and study this Wikipedia article on Eigenface
+]
+In this exercise, you will go through the process of implementing a face recognition system using eigenfaces.
+You will use faces from the olivetti faces dataset. A starter notebook has been provided for you in the
+handout.
+
+\begin{enumerate}
+    \item In the starter code, the olivetti faces dataset has been loaded, using a scikit-learn function. A database
+    of faces, a list of test faces, and a list of faces of people not in the database have been created.
+    \begin{enumerate}
+        \item How many face images are in the database? 
+        \[
+        \text{Number of face images in the database} = \textbf{400}
+        \]
+        \item How many images are in the list of test faces?
+        \[
+        \text{Number of face images in the test faces} = \textbf{36}
+        \]
+        \item How many images are in the list of faces of people not in the database?
+        \[
+        \text{Number of face images in the faces of people not in the database} = \textbf{40}
+        \]
+        \item What are the dimensions of each face image?
+        \[
+        \text{Dimensions of each face image} = \textbf{64 x 64}
+        \]
+    \end{enumerate}    
+    \item Create a matrix T containing all faces in the database, such that each row corresponds to the pixels
+    of a person’s face. Note that the height of this matrix should be equal to the number of faces in the
+    database. What are the dimensions of T ?
+    \[
+    \text{Dimensions of matrix T} = \textbf{400 x 4096} N/B: which database to use? (64*64 = 4096)
+    \]
+    \item Obtain and visualize the mean face
+    \[
+    \text{Mean face} = \textbf{in the notebook}
+    \]
+    \item Obtain the covariance matrix, \(S\), of the matrix \(T\)
+    \[
+         \text{Covariance matrix, S} = \textbf{in the notebook}
+    \]
+    \item 
+\end{enumerate}
+
 \end{document}
