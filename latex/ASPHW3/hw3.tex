@@ -171,7 +171,8 @@ dimensionality while preserving essential information.
         \]
     \end{enumerate}
     \subitem \textbf{Covariance Matrix (2 points)}
-    \item Calculate the covariance matrix of the centered data
+    \begin{enumerate}
+        \item Calculate the covariance matrix of the centered data
     \[
     \text{Covariance Matrix} = \frac{1}{n-1} \text{Centered Data}^T \text{Centered Data}
     \]
@@ -187,5 +188,335 @@ dimensionality while preserving essential information.
     \[
     \text{Covariance Matrix} = \begin{bmatrix}0.1167  & 0.1117\\0.1117 & 0.1093\end{bmatrix}
     \]
+    \end{enumerate}
+    \subitem \textbf{Eigenvalue decomposition (2 points)}
+    \begin{enumerate}
+        \item Manually compute the eigenvalues and eigenvectors of the covariance matrix
+        \\ The Eigen values are obtained by solving the characteristic equation:
+        \[
+        \text{Characteristic Equation: } \text{det}(\Sigma - \lambda I) = 0
+        \]
+        \[
+        \begin{vmatrix}0.1167 - \lambda & 0.1117\\0.1117 & 0.1093 - \lambda\end{vmatrix} = 0
+        \]
+        \[
+        \lambda^2 - 0.226\lambda + 0.0003 = 0
+        \]
+        \[
+        \lambda_1 = 0.225, \lambda_2 = 0.0013
+        \]
+        The Eigen vectors are obtained by solving the equation:
+        \\ for eigen value \(\lambda_1 = 0.225\)
+        \[
+            \begin{bmatrix}0.1167 - 0.225 & 0.1117\\0.1117 & 0.1093 - 0.225\end{bmatrix} \begin{bmatrix}v_1\\v_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}
+        \]
+        \[
+            \begin{bmatrix}-0.1083 & 0.1117\\0.1117 & -0.1157\end{bmatrix} \begin{bmatrix}v_1\\v_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}
+        \]
+        \[
+            R_1 = \frac{1}{-0.1083}R_1 = \begin{bmatrix}1 & -1.031 & | & 0\\0.1117 & -0.1157 & | & 0\end{bmatrix}
+        \]
+        \[
+            R_2 = R_2 - 0.1117R_1 = \begin{bmatrix}1 & -1.031 & | & 0\\0 & -0.0005 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_2 = \frac{1}{-0.0005}R_2 = \begin{bmatrix}1 & -1.031 & | & 0\\0 & 1 & | & 0\end{bmatrix}
+        \]
+        \[
+        v_1 = 1.031v_2
+        \]
+        \[
+        v_1 = \begin{bmatrix}1.031\\1\end{bmatrix}
+        \]
+        for eigen value \(\lambda_2 = 0.0013\)
+        \[
+            \begin{bmatrix}0.1167 - 0.0013 & 0.1117\\0.1117 & 0.1093 - 0.0013\end{bmatrix} \begin{bmatrix}v_1\\v_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}
+        \]
+        \[
+            \begin{bmatrix}0.1154 & 0.1117\\0.1117 & 0.1080\end{bmatrix} \begin{bmatrix}v_1\\v_2\end{bmatrix} = \begin{bmatrix}0\\0\end{bmatrix}
+        \]
+        \[
+            R_1 = \frac{1}{0.1154}R_1 = \begin{bmatrix}1 & 0.968 & | & 0\\0.1117 & 0.1080 & | & 0\end{bmatrix}
+        \]
+        \[
+            R_2 = R_2 - 0.1117R_1 = \begin{bmatrix}1 & 0.968 & | & 0\\0 & -0.0001256 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_2 = \frac{1}{-0.0001256}R_2 = \begin{bmatrix}1 & 0.968 & | & 0\\0 & 1 & | & 0\end{bmatrix}
+        \]
+        \[
+        v_1 = -0.968v_2
+        \]
+        \[
+        v_1 = \begin{bmatrix}-0.968\\1\end{bmatrix}
+        \]
+        so the eigen vectors are as follows:
+        \[
+        \lambda_1 = 0.225, v_1 = \begin{bmatrix}1.031\\1\end{bmatrix}
+        \]
+        \[
+        \lambda_2 = 0.0013, v_2 = \begin{bmatrix}-0.968\\1\end{bmatrix}
+        \]
+    \end{enumerate}
+    \subitem \textbf{Project the data (2 points)}
+    \begin{enumerate}
+        \item Using the principal component corresponding to the largest eigenvalue, project the original data onto the principal component axis
+        \[
+        \text{Projection} = \text{Centered Data} \times v_1
+        \]
+        \[
+        \text{Projection} = \begin{bmatrix}-0.05 & -0.025\\-0.45 & -0.425\\0.35 & 0.375\\0.15 & 0.075\end{bmatrix} \begin{bmatrix}1.031\\1\end{bmatrix}
+        \]
+        \[
+        \text{Projection} = \begin{bmatrix}-0.05 \times 1.031 + -0.025 \times 1\\-0.45 \times 1.031 + -0.425 \times 1\\0.35 \times 1.031 + 0.375 \times 1\\0.15 \times 1.031 + 0.075 \times 1\end{bmatrix}
+        \]
+        \[
+        \text{Projection} = \begin{bmatrix}-0.07655\\-0.88895\\0.73585\\0.22965\end{bmatrix}
+        \]
+        \item Show the final transformed data in 1D (along the principal component axis)
+        \[
+        \text{Final Transformed Data} = \begin{bmatrix}-0.07655\\-0.88895\\0.73585\\0.22965\end{bmatrix}
+        \]
+    \end{enumerate}
+    \subitem \textbf{PCA in Practice with a Large Dataset (10 points)} 
+    \\ You are now provided with a dataset consisting of 500 users, where each user has four features: Usage time, Interactions, Activity type 1, Activity type 2. You will apply PCA using python to reduce the dimensionality
+    \[
+     \textbf{[ in the notebook ]}
+    \]
+    \subitem \textbf{Intepretation \& Business Insights (20 points)}
+    \\ \subitem \textbf{Part 1: Feature Intepretation in PCA:}
+    \begin{enumerate}
+        \item \textbf{(5 points)} Based on the principal components directions, explain which features (original dimensions) contribute most to the first and second principal components.
+        \[
+        \]
+        \item \textbf{(5 points)} How would you explain the reduced features to a non-technical team in terms of the user behavior patterns?
+    \end{enumerate}
 \end{enumerate}
+\newpage
+\begin{center}
+    \large \textbf{Question 2: SUM OF RANDOM VARIABLES, CENTRAL lIMIT THEOREM \& PROBABILITY BOUNDS (5O marks)}
+\end{center}
+    Reading: The sum of random variables is a fundamental concept in probability and statistics, shedding
+    light on the behavior of combined outcomes under uncertainty. When adding two random variables, \(X\)
+    and \(Y\) \((i.e., Z = X + Y )\), we analyze the distribution of Z. For independent variables, the distribution
+    of Z can be derived by convolving the individual distributions.
+    \\ For example, if both X and Y are normally distributed with means \(\mu_X\) and \(\mu_Y\) and variances \(\sigma^2_X\) and \(\sigma^2_Y\), then Z will also be normally distributed, with mean \(\mu_Z = \mu_X + \mu_Y\) and variance \(\sigma^2_Z = \sigma^2_X + \sigma^2_Y\)
+    which is beneficial for statistical modeling.
+    \\ When X and Y are not independent, we must include covariance, which accounts for how the variables
+    change together, in the variance of Z: \(\sigma^2_Z = \sigma^2_X + \sigma^2_Y + 2\text{Cov}(X, Y)\)
+    + 2Cov(X, Y ).
+    \\ This concept applies to any number of random variables. For independent variables \(X_1,X_2, . . . ,X_n\), the
+    sum \(Z = X_1 + X_2 + . . . + X_n\) is analyzed similarly. The Central Limit Theorem indicates that as the
+    number of independent variables increases, their standardized sum approaches a normal distribution.
+    Understanding the sum of random variables is essential in finance, insurance, and natural sciences for
+    risk assessment, forecasts, and decision-making, revealing insights into complex systems.
+    Probability bounds are crucial in statistics, quantifying the likelihood of events within specified limits,
+    particularly in finance and engineering.
+    \\ Markov’s inequality estimates the probability that a non-negative random variable X exceeds a certain
+    value a, stating that for any \(a > 0\), the probability that \(X \geq a\) is at most the expected value of X divided
+    by a. This demonstrates that limited information about X’s distribution can provide useful probability
+    estimates.
+    \\ Chebyshev’s inequality extends Markov’s by considering variance. It states that for any random variable
+    X with mean \(\mu\) and finite variance \(\sigma^2\), the probability that X deviates from its mean by more than k
+    standard deviations is at most 1
+    k2 . This finding is fundamental for statistical inference.
+    Hoeffding’s inequality offers bounds for sums of independent random variables, ensuring exponential
+    decay in tail probabilities, which is especially valuable in large sample scenarios to keep observed averages
+    close to expected values.
+    \\ Overall, these probability bounds enhance decision-making and deepen our understanding of stochastic
+    processes, facilitating robust conclusions across various fields.
+    \\ \subitem \textbf{Part 1: Mobile Network Data Analysis (10 points)}
+    \\ In a study conducted by a telecommunication company in Rwanda, mobile network Clls are classified as either voice (V) when someone is speaking or data (D) when there is a modem or fax transmission. Based on observed data, the probabilities are:
+    \[
+    P(V) = 0.6 \text{ (60\% voice calls)}
+    \]
+    \[
+    P(D) = 0.4 (40\% \text{ data calls })
+    \]
+    Assume data calls and voice calls occur independently of each other, and let the random variable \(K_n\) represent the number of data calls in a collection of \(n\) calls.
+    \begin{enumerate}
+        \item \textbf{(2 points)} What is the \(E[K_{100}]\), the expected number of voice calls in a set of 100 calls?
+        \[
+        E[K_{100}] = n \times P[D] = 100 \times 0.4 = \textbf{40}
+        \]
+        \item \textbf{(2 points)} What is \(\sigma_{k_{100}}\), the standard deviation of the number of voice calls in a set of 100 calls?
+        \[
+        \sigma_{k_{100}} = \sqrt{n \times P[D] \times P[V]} = \sqrt{100 \times 0.4 \times 0.6} = \textbf{4.9}
+        \]
+        \item \textbf{(2 points)} Using Central Limit  Theorem, estimate \(P[K_{100} \geq  18]\), the probability of at least 18 data calls in a set of 100 calls
+        \[
+        P[K_{100} \geq 18] = 1 - P[K_{100} < 18] = 1 - P[K_{100} \leq 17]
+        \]
+        \[
+        P[K_{100} \leq 17] = P\left[\frac{K_{100} - E[K_{100}]}{\sigma_{K_{100}}} \leq \frac{17 - 40}{4.9}\right] = P[Z \leq -4.69]
+        \]
+        \[
+        P[Z \leq -4.69] = 0
+        \]
+        \[
+        P[K_{100} \geq 18] = 1 - 0 = \textbf{1}
+        \]
+        \item \textbf{(2 points)} Using the CLT, estimate \(P[16 \leq K_{100} \leq  24]\), the probability of between 16 and 24 data calls in a set of 100 calls
+        \[
+        P[16 \leq K_{100} \leq 24] = P[K_{100} \leq 24] - P[K_{100} \leq 16]
+        \]
+        \[
+        P[K_{100} \leq 24] = P\left[\frac{K_{100} - E[K_{100}]}{\sigma_{K_{100}}} \leq \frac{24 - 40}{4.9}\right] = P[Z \leq -3.27]
+        \]
+        \[
+        P[Z \leq -3.27] = 0.0005
+        \]
+        \[
+        P[K_{100} \leq 16] = P\left[\frac{K_{100} - E[K_{100}]}{\sigma_{K_{100}}} \leq \frac{16 - 40}{4.9}\right] = P[Z \leq -4.9]
+        \]
+        \[
+        P[Z \leq -4.9] = 0
+        \]
+        \[
+        P[16 \leq K_{100} \leq 24] = 0.0005 - 0 = \textbf{0.0005}
+        \]
+        \item \textbf{(2 points)} Based on your calculations, what can you infer about the likelyhood of high data traffic during a given period? How might this information help a telecom optimize their resources for voice and data services?
+        \\\\ The likelihood of high data traffic during a given period is very low. This information can help a telecom optimize their resources for voice and data services by ensuring that they have enough capacity to handle voice calls, which are more likely to occur. They can also allocate resources to handle data calls, but they do not need to allocate as many resources since data calls are less likely to occur.
+    \end{enumerate}
+    \subitem \textbf{Part 2: Chernoff Bound \& Gaussian Random Variables (4 points)}
+    \\ Use the Chernoff bound to show that for a Gaussian (Normal) random variable \(X\) with mean \(\mu\) and
+    standard deviation \(\sigma\), the probability that X exceeds a certain threshold c can be bounded by:
+    \[
+    P[X \geq c] \leq e^{-\frac{(c-\mu)^2}{2\sigma^2}}
+    \]
+    proof:
+    \[
+    P[X \geq c] = P[e^{tX} \geq e^{tc}]
+    \]
+    \[
+    P[X \geq c] = P[e^{tX} \geq e^{tc}] \leq \frac{E[e^{tX}]}{e^{tc}}
+    \]
+    \[
+    E[e^{tX}] = \int_{-\infty}^{\infty} e^{tx} \frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x-\mu)^2}{2\sigma^2}} dx
+    \]
+    \[
+    E[e^{tX}] = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sigma} e^{tx - \frac{(x-\mu)^2}{2\sigma^2}} dx
+    \]
+    \[
+    E[e^{tX}] = \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sigma} e^{tx - \frac{x^2 - 2x\mu + \mu^2}{2\sigma^2}} dx
+    \]
+    but the integral is the Gaussian integral:
+    \[
+    \int_{-\infty}^{\infty} \frac{1}{\sqrt{2\pi}\sigma} e^{tx - \frac{x^2 - 2x\mu + \mu^2}{2\sigma^2}} dx = e^{\frac{t^2\sigma^2}{2} + t\mu}
+    \]
+    solving for \(t\):
+    \[
+    e^{\frac{t^2\sigma^2}{2} + t\mu} = e^{tc}
+    \]
+    \[
+    \frac{t^2\sigma^2}{2} + t\mu = tc
+    \]
+    \[
+    \frac{t\sigma^2}{2} + \mu = c
+    \]
+    \[
+    t = \frac{2(c-\mu)}{\sigma^2}
+    \]
+    substituting back into the Chernoff bound:
+    \[
+    P[X \geq c] \leq \frac{e^{\frac{2(c-\mu)}{\sigma^2}X}}{e^{tc}}
+    \]
+    \[
+    P[X \geq c] \leq e^{-\frac{(c-\mu)^2}{2\sigma^2}}
+    \]
+    Given this result, how would you use it to provide a worst-case scenario estimate in a real-world context, such as predicting an extreme event like an abnormally high network traffic spike or stock price surge?
+    \subitem\textbf{Part 3: Soccer Tournament Performance (11 points)}
+    \\ Manchester United is competing in a knockout-style tournament, where each game can result in a win,
+    loss, or tie. For every win, they earn 3 points, for every tie 1 point, and for a loss 0 points. The outcome
+    of each game is independent of the others, and each game result is equally likely (win, loss, or tie). Let
+    \(X_i\) be the number of points earned in game i, and Y represent the total number of points earned over
+    the course of the tournament.
+    \begin{enumerate}
+        \item \textbf{( 3 points )} Derive the moment generating function (MGF) of \(\phi_Y\)(s)
+        \\ random variables \(X_i\) are independent and identically distributed, so the MGF of the sum of the random variables is the product of the MGFs of the individual random variables
+        \\ A random variable \(X_i\) can take on the values 0, 1, 3 with probabilities \(\frac{1}{3}\) each
+        \[
+        \phi_{X_i}(s) = E[e^{sX_i}] = \frac{1}{3}e^{0} + \frac{1}{3}e^{s} + \frac{1}{3}e^{3s}
+        \]
+        \[
+        \phi_{X_i}(s) = \frac{1}{3} + \frac{1}{3}e^{s} + \frac{1}{3}e^{3s}
+        \]
+        \[
+        \phi_{X_i}(s) = \frac{1}{3}(1 + e^{s} + e^{3s})
+        \]
+        \[
+        \phi_{Y}(s) = \phi_{X_1}(s) \times \phi_{X_2}(s) \times \phi_{X_3}(s) \times \phi_{X_4}(s) \dots \times \phi_{X_n}(s)
+        \]
+        \[
+        \phi_{Y}(s) = \left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^n
+        \]
+        \item \textbf{( 5 points )} Find E[Y] and Var[Y], the expected total points and variance.
+        \\ Our moment generating function is:
+        \[
+        \phi_{Y}(s) = \left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^n
+        \]
+        to get the expected value, we differentiate the MGF with respect to s and evaluate at s = 0:
+        \[
+        E[Y] = \phi_{Y}'(s) = n\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^{n-1} \times \frac{d}{ds}\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)
+        \]
+        \[
+        E[Y] = n\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^{n-1} \times \frac{1}{3}(e^{s} + 3e^{3s})
+        \]
+        set s = 0:
+        \[
+        E[Y] = n\left(\frac{1}{3}(1 + 1 + 1)\right)^{n-1} \times \frac{1}{3}(1 + 3)
+        \]
+        \[
+        E[Y] = n\left(\frac{3}{3}\right)^{n-1} \times \frac{4}{3}
+        \]
+        so the expected value of Y is:
+        \[
+        E[Y] = \mathbf{\frac{4n}{3}}
+        \]
+        The variance is obtained by differentiating the MGF twice with respect to s and evaluating at s = 0:
+        \[
+        Var[Y] = \phi_{Y}''(s) = n(n-1)\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^{n-2} \times \frac{d^2}{ds^2}\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)
+        \]
+        \[
+        Var[Y] = n(n-1)\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^{n-2} \times \frac{d}{ds}\left(\frac{1}{3}(e^{s} + 3e^{3s})\right)
+        \]
+        \[
+        Var[Y] = n(n-1)\left(\frac{1}{3}(1 + e^{s} + e^{3s})\right)^{n-2} \times \frac{1}{3}(e^{s} + 9e^{3s})
+        \]
+        set s = 0:
+        \[
+        Var[Y] = n(n-1)\left(\frac{1}{3}(1 + 1 + 1)\right)^{n-2} \times \frac{1}{3}(1 + 9)
+        \]
+        \[
+        Var[Y] = n(n-1)\left(\frac{3}{3}\right)^{n-2} \times \frac{10}{3}
+        \]
+        so the variance of Y is:
+        \[
+        Var[Y] = \mathbf{\frac{10n(n-1)}{9}}
+        \]
+        \item \textbf{( 3 points )} Based on your calculations, what can you infer about the likely performance of Manchester United over the course of multiple tournaments? How might the expected points impact their overall ranking or their chances of advancing in the competition?
+        \\\\ Based on the calculations, we can infer that the expected performance of Manchester United over the course of multiple tournaments is to earn an average of \(\frac{4n}{3}\) points with a variance of \(\frac{10n(n-1)}{9}\). This information can help predict their overall ranking in the competition and their chances of advancing. Teams with higher expected points are more likely to rank higher and advance in the competition, while teams with lower expected points are less likely to do so.
+    \end{enumerate}
+    \subitem \textbf{Part 4: Course Enrollment and Resource Planning (6 points)}
+    \\ The number of students enrolling in a popular data science course is modelled as a poisson random variable with a mean of 100 students. The Professor has decided that if 120 students enroll, he will split the class into two sectioons, otherwise , he will teach all the students in a single Section
+    \begin{enumerate}
+        \item \textbf{( 3 points )} What is the probability that the professor will need to teach two sections?
+        \\ using Markov's inequality:
+        \[
+        P[X \geq 120] \leq \frac{E[X]}{120}
+        \]
+        \[
+        P[X \geq 120] \leq \frac{100}{120}
+        \]
+        \[
+        P[X \geq 120] \leq 0.833
+        \]
+        \[
+        P[X \geq 120] = \textbf{0.833}
+        \]
+        \item \textbf{( 3 points )} Based on Probability, what recommendations would you make regarding resource planning for future courses? Should the professor prepare for two sections or allocate resources differently based on expected enrollments?
+        \\\\ Based on the probability that the professor will need to teach two sections, it is recommended that the professor prepare for two sections. Since the probability is 0.833, which is greater than 0.5, it is more likely that 120 students will enroll. By preparing for two sections, the professor can ensure that there are enough resources to accommodate the students and provide a better learning experience.
+    \end{enumerate}
+    \subitem \textbf{Part 5: Comparison of Markov, Chebyshev and Chernoff Inequalities (19 points)}
+    
 \end{document}
