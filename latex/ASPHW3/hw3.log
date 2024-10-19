@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  18 OCT 2024 14:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  19 OCT 2024 21:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -236,7 +236,47 @@ Underfull \hbox (badness 10000) in paragraph at lines 517--519
 
  []
 
-[7] (./hw3.aux)
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 564--566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 564--566
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 612--615
+
+ []
+
+[9]
+Overfull \hbox (32.86931pt too wide) detected at line 637
+[] \OT1/cmr/m/n/12 = []((8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 9 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (9\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (7\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 8 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 6 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 4 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[]
+ []
+
+
+Overfull \hbox (70.25134pt too wide) detected at line 640
+\OT1/cmr/m/n/12 +(9\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 7 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (9\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 8 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (9\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 3 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 9 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 4 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[] + (8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 6 \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 8\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 585)[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 662--665
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 665--667
+
+ []
+
+
+Overfull \hbox (4.10594pt too wide) in paragraph at lines 701--702
+[]\OT1/cmr/bx/n/12 ( 8 points ) \OT1/cmr/m/n/12 Sim-u-late the con-struc-tion of con-fi-dence in-ter-vals for dif-fer-ent sam-ple sizes, and con-fi-dence lev-els, Vary $\OML/cmm/m/it/12 n \OMS/cmsy/m/n/12 2 \OT1/cmr/m/n/12 [10\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 500\OML/cmm/m/it/12 ; [] \OT1/cmr/m/n/12 =
+ []
+
+[10] [11] (./hw3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -251,10 +291,10 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,9n,65p,636b,288s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on hw3.pdf (7 pages, 173355 bytes).
+Output written on hw3.pdf (11 pages, 186802 bytes).
 PDF statistics:
- 88 PDF objects out of 1000 (max. 8388607)
- 54 compressed objects within 1 object stream
+ 100 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

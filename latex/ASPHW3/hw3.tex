@@ -518,5 +518,194 @@ dimensionality while preserving essential information.
         \\\\ Based on the probability that the professor will need to teach two sections, it is recommended that the professor prepare for two sections. Since the probability is 0.833, which is greater than 0.5, it is more likely that 120 students will enroll. By preparing for two sections, the professor can ensure that there are enough resources to accommodate the students and provide a better learning experience.
     \end{enumerate}
     \subitem \textbf{Part 5: Comparison of Markov, Chebyshev and Chernoff Inequalities (19 points)}
+    consider a Gaussian Random Variable X with mean \(\mu = 0\) and variance \(\sigma = 1\). We are interested in comparing how well three probability probability bounds - \textbf{Markov, Chebyshev and Chernoff} - estimate the probability that X exceeds a certain threshold c. i.e \(P[X \geq c]\)
+    \begin{enumerate}
+        \item \textbf{ Markov Inequality}
+        \\ For a non-negative random variable X, Markov's inequality states that for any \(c > 0\), the probability that \(X \geq a\) is at most the expected value of X divided by a. This provides a simple bound on the tail probability of a random variable.
+        \[
+        P[X \geq c] \leq \frac{E[X]}{c}
+        \]
+        For this comparison, we will apply Markov's inequality to the positive part of the Gaussian random variable \(X\), considering \(X^{+} = \max(X, 0)\).
+        \item \textbf{ Chebyshev Inequality}
+        \\ Chebyshev's inequality, applicable to any random variable with finite variance, states that for any random variable X with mean \(\mu\) and finite variance \(\sigma^2\), the probability that X deviates from its mean by more than k standard deviations is at most 1/k2. This provides a more refined bound on the tail probability of a random variable.
+        \[
+        P[|X - \mu| \geq c] \leq \frac{\sigma^2}{c^2}
+        \]
+        We will apply this inequality to the Gaussian random variable
+        \item \textbf{ Chernoff bound}
+        \\ For a Gaussian random Variable X, the Chernoff bound provides a tighter bound for tail probabilities
+        \[
+        P[X \geq c] \leq \exp(-\frac{(c-\mu)^2}{2\sigma^2})
+        \]
+        The bound is especially for normally distributed data.
+        \item \textbf{ Comparison}
+        \[
+        \textbf{[ in the notebook ]}
+        \]
+    \end{enumerate}
+    \newpage
+    \begin{center}
+        \large \textbf{Question 3: ESTIMATION \& HYPOTHESIS TESTING, CONFIDENCE INTERVALS (130 marks)}
+    \end{center}
+    Reading: Estimation and hypothesis Testing provide a framework for making inference about populations based on sample data. \textbf{Estimation} is the process of inferring population parameters (such as means or proportions) from sample statistics. There are two main types of estimations:
+    \subitem \textbf{Point Estimation} 
+    \\ Provides a single value as the estimate of a population parameter. 
+    \\ Example: The sample mean \(\bar{X}\) is a point estimate of the population mean \(\mu\).
+    \\ Formula:
+    \[
+    \bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
+    \]
+    \subitem \textbf{Interval Estimation}
+    \\ Offers a range of values within which the population parameter is likely to fall. These values are in arange called confidence interval, believed to contain the parameter based with a specific level of confindence:
+    \\ Example: A 95\% confidence interval for the population mean \(\mu\) is given by \(\bar{X} \pm 1.96\frac{\sigma}{\sqrt{n}}\)
+    \\ Formula:
+    \[
+    \text{Confidence Interval} = \bar{X} \pm z \times \frac{\sigma}{\sqrt{n}}
+    \]
+    where Z is the z-score corresponding to the desired confidence level.
+    \\ \\ \subitem \textbf{Hypothesis Testing}
+    \\ Hypothesis testing is a statistical method used to make inferences about population parameters based on sample data. You use it to make probabilistic decisions about the population based on sample data. The process involves:
+    \subitem \textbf{Step 1: Formulate Hypotheses}
+    \\ The null hypothesis (\(H_0\)) is the default assumption that there is no effect or no difference. 
+    \\ The alternative hypothesis (\(H_1\) or \(H_a\)) is the claim that there is an effect or difference. The claim to be tested
+    \subitem \textbf{Step 2: Set the Significance Level}
+    \\ The significance level (\(\alpha\)) is the probability of rejecting the null hypothesis when it is true. Common values are 0.05 or 0.01. This is the threshold of rejecting the null hypothesis.
+    \subitem \textbf{Step 3: Calculate the Test Statistic}
+    \\ The test statistic is a numerical summary of the data that measures the difference between the sample data and the null hypothesis. It is used to determine whether the null hypothesis should be rejected.
+    \[
+    \text{Test Statistic} = \frac{\text{Observed Value} - \text{Expected Value}}{\text{Standard Error}}
+    \]
+    \[
+    \text{Standard Error} = \frac{\text{Standard Deviation}}{\sqrt{n}}
+    \]
+    \[
+    \text{Observed Value} = \text{Sample Mean}
+    \]
+    \[
+    \text{Expected Value} = \text{Population Mean}
+    \]
+    \[
+    \text{Standard Deviation} = \text{Population Standard Deviation}
+    \]
+    \[
+    \text{n} = \text{Sample Size}
+    \]
+    the final formula is:
+    \[
+    \text{Test Statistic} = \frac{\bar{X} - \mu}{\frac{\sigma}{\sqrt{n}}}
+    \]
+    \subitem \textbf{Step 4: Make a Decision}
+    \\ Compare the test statistic to the critical value. If the test statistic falls in the rejection region, reject the null hypothesis. If it falls in the non-rejection region, do not reject the null hypothesis.
+    \[
+    \text{Rejection Region} = \text{Critical Value}
+    \]
+    \[
+    \text{ if } Z \geq \text{Critical Value} \text{, reject } H_0
+    \]
+    where the critical value is determined by the significance level and the type of test (one-tailed or two-tailed).
+    
+    \subitem \textbf{Step 5: outcome}:
+    \\ Based on the decision, you can either reject or fail to reject the null hypothesis. This decision provides insight into the population parameter and the relationship between the sample and the population.
+    \\ if the null hypothesis is rejected, it suggests strong evidence in favor of the alternative hypothesis
+    \\ if not rejected, there isn't sufficient evidence to support the alternative hypothesis
+
+    \subitem \textbf{Central Limit Theorem}
+    \\ It plays a crucial role in both estimation and hypothesis testing stating that the sample mean \(\bar(X)\) will approach a normal distribution as the sample size(n), increases, regardless of the population's distribution
+    \\ This Theorem provides normal approximation techniques in practice, facilitating easier calculations and Intepretation in estimation and hypothesis testing..
+    \\ \subitem \textbf{Part 1: Point Estimation: Estimating the Average Battery Life ( 20 marks )}
+    \\ A company is producing a new smartphone model and wants to estimate the average Battery life. From a sample of 20 smartphones, the following battery life data (in hours) is collected:
+    \[
+    \text{Battery Life} = [8.2, 8.5, 8.9, 9.0, 7.8, 8.6, 8.4, 8.1, 9.1, 8.7, 9.2, 8.8, 8.3, 9.3, 8.0, 8.9, 8.4, 8.6, 8.7, 8.2]
+    \]
+    \begin{enumerate}
+        \item \textbf{( 2 points )} Calculate the sample mean and sample variance.
+        \[
+        \text{Sample Mean} = \bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
+        \]
+        \[
+        \text{Sample Mean} = \frac{1}{20}(8.2 + 8.5 + 8.9 + 9.0 + 7.8 + 8.6 + 8.4 + 8.1 + 9.1 + 8.7 + 9.2 + 8.8 + 8.3 + 9.3 + 8.0 + 8.9 + 8.4 + 8.6 + 8.7 + 8.2)
+        \]
+        \[
+        \text{Sample Mean} = \frac{1}{20}(171.7) = \textbf{8.585}
+        \]
+        sample variance:
+        \[
+        \text{Sample Variance} = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2
+        \]
+        \[
+        \text{Sample Variance} = \frac{1}{19}((8.2 - 8.585)^2 + (8.5 - 8.585)^2 + (8.9 - 8.585)^2 + (9.0 - 8.585)^2 + (7.8 - 8.585)^2 + (8.6 - 8.585)^2 + (8.4 - 8.585)^2 + (8.1 - 8.585)^2 
+        \]
+        \[
+        + (9.1 - 8.585)^2 + (8.7 - 8.585)^2 + (9.2 - 8.585)^2 + (8.8 - 8.585)^2 + (8.3 - 8.585)^2 + (9.3 - 8.585)^2 + (8.0 - 8.585)^2 + (8.9 - 8.585)^2 + (8.4 - 8.585)^2 + (8.6 - 8.585)^2 
+        \]
+        \[
+        + (8.7 - 8.585)^2 + (8.2 - 8.585)^2)
+        \]
+        \[
+        \text{Sample Variance} = \frac{1}{19}(3.0725425) = \textbf{0.1617}
+        \]
+        \item \textbf{( 3 points )} What does the sample mean estimate in this case, and determine if the sample mean is unbiased estimator of the population \(\mu\). Explain your resonings.
+        \\ The sample mean estimates the average battery life of the smartphones in the sample. The sample mean is an unbiased estimator of the population mean \(\mu\) if the expected value of the sample mean is equal to the population mean. In this case, the sample mean is an unbiased estimator of the population mean \(\mu\) because the expected value of the sample mean is equal to the population mean.
+        \item \textbf{( 3 points )} Compute the mean square error (MSE) of the sample mean and variance.
+        \[
+        \text{MSE} = \text{Bias}(\bar{X})^2 + \text{Variance}(\bar{X})
+        \]
+        \[
+        \text{Bias}(\bar{X}) = E[\bar{X}] - \mu
+        \]
+        \[
+        \text{Variance}(\bar{X}) = 0.1617
+        \]
+        \[
+        \text{MSE} = (8.585 - 8.585)^2 + 0.1617 = \textbf{0.1617}
+        \]
+        \item (2 points)Explain how the error of the mean and the sample variance might change if the
+        sample size were smaller or larger.
+        \\ \\ If the sample size were smaller, the error of the mean and the sample variance would likely be larger because the sample mean and sample variance would be less representative of the population. If the sample size were larger, the error of the mean and the sample variance would likely be smaller because the sample mean and sample variance would be more representative of the population.
+        \item (2 points) What effect do outliers have on the sample mean and variance?
+        \\ \\ If there are outliers in the sample, they can skew the sample mean and variance, making them less representative of the population. Outliers can also increase the variance of the sample, making it less accurate as an estimate of the population variance.
+        \item (8 points) Dynamically simulate different sample sizes \(n \in [5, 1000, step=5]\) and generate samples
+        from a normal distribution with a known population mean \(\mu = 8.5\) and standard deviation \(\sigma\) = 0.5.
+        Vary n and compare how the sample mean and variance behave as the sample size changes
+    \end{enumerate}
+    \subitem \textbf{Part 2: Confidence Intervals; Estimating the True Mean Height ( 16  marks )}
+    \\ You are studying the average height of adult males in a city. A random sample of 30 men yields a sample mean height of \(\textbf{176 cm}\) and a standard deviation of \(\textbf{7 cm}\). 
+    \begin{enumerate}
+        \item  \textbf{( 2 points )} Calculate a 95\% confidence interval for the population mean height, assuming that the population standard deviation is unkown
+        \[
+        \text{Confidence Interval} = \bar{X} \pm z \times \frac{\sigma}{\sqrt{n}}
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times \frac{7}{\sqrt{30}}
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times \frac{7}{5.48}
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times 1.28
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 2.51
+        \]
+        \[
+        \text{Confidence Interval} = [173.49, 178.51]
+        \]
+        \item \textbf{( 2 points )} If the population standard deviation was known to be 7 cm, how would this change the confidence interval?
+        \[
+        \text{Confidence Interval} = \bar{X} \pm z \times \frac{\sigma}{\sqrt{n}}
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times \frac{7}{\sqrt{30}}
+        \]
+        \item \textbf{( 2 points )} What does the confidence interval mean in practical terms?
+        \item \textbf{( 8 points )} Simulate the construction of confidence intervals for different sample sizes, and confidence levels,  Vary \(n \in [10, 500, \text{step}=10]\) and \(\alpha \in [0.01, 0.2, \text{step}=0.01]\) dynamically and observe how the confidence interval width changes.
+        \[
+        \textbf{[ in the notebook ]}
+        \]
+    \end{enumerate}
+    \subitem \textbf{Part 3: Hypothesis Testing; Comparing Two Webpage Designs (A/B Testing) (19 points)}
+    \\ You are running an A/B test for two different webpage designs to see which one generates more clicks.
+    Out of 600 visitors, 240 clicked on Version A, and 290 clicked on Version B.
+
     
 \end{document}
