@@ -707,5 +707,70 @@ dimensionality while preserving essential information.
     \\ You are running an A/B test for two different webpage designs to see which one generates more clicks.
     Out of 600 visitors, 240 clicked on Version A, and 290 clicked on Version B.
 
-    
+    \begin{enumerate}
+        \item \textbf{( 2 points )} Calculate the proportions of clicks for each version 
+        \[
+        \text{Proportion of Clicks for Version A} = \frac{240}{600} = \textbf{0.4}
+        \]
+        \[
+        \text{Proportion of Clicks for Version B} = \frac{290}{600} = \textbf{0.4833}
+        \]
+        \item \textbf{( 2 points )} Perform a hypothesis test to determine whether there is a significant difference between the click-through rates (CTR) of the two versions. Assume \(\alpha\) = 0.05 and compute the z-statistic
+        by hand
+        \[
+        \text{Null Hypothesis} (H_0): \text{There is no significant difference between the click-through rates of the two versions}
+        \]
+        \[
+        \text{Alternative Hypothesis} (H_1): \text{There is a significant difference between the click-through rates of the two versions}
+        \]
+        \[
+        \text{Test Statistic} = \frac{p_1 - p_2}{\sqrt{p(1-p)(\frac{1}{n_1} + \frac{1}{n_2})}}
+        \]
+        \[
+        p = \frac{240 + 290}{600 + 600} = \frac{530}{1200} = 0.4417
+        \]
+        \[
+        \text{Standard Error} = \sqrt{0.4417(1-0.4417)(\frac{1}{600} + \frac{1}{600})} = 0.032
+        \]
+        \[
+        \text{Z-Statistic} = \frac{0.4 - 0.4833}{0.032} = -2.604
+        \]
+        \[
+        \text{Critical Value} = -1.96
+        \]
+        \[
+        \text{ if } Z \leq -1.96 \text{, reject } H_0
+        \]
+        \[
+        \text{ if } -2.604 \leq -1.96 \text{, reject } H_0
+        \]
+        \[
+        \text{Reject } H_0
+        \]
+        \item \textbf{( 2 points )} What does the p-value mean in the context of this A/B test?
+        \[
+        \text{P-Value} = 0.0049
+        \]
+        it represents the probability of observing a test statistic as extreme as the one calculated, assuming the null hypothesis is true. In this case, the p-value is less than the significance level of 0.05, indicating that the observed difference in click-through rates is statistically significant.
+        \item \textbf{( 3 points )} How would you interpret the results to your marketing team?
+        \item \textbf{( 6 points )} Use a dynamic simulation to vary the sample sizes \(n \in [100, 1000, \text{step}=50]\) and click-through rates \(c \in [50, 600, \text{step}=10]\) for Versions A and B. Observe how the p-value and hypothesis test decision change as you modify these parameters.
+    \end{enumerate}
+    \subitem \textbf{Part 4: True Positives and False Positives in Medical Testing (23 points)}
+    \\ A medical test for a rare disease is conducted on 1000 people. The test correctly identifies 80 true positives and 900 true negatives. However, it also produces 10 false positives and 10 false negatives.
+    \begin{enumerate}
+        \item (5 points) Construct a confusion matrix from the data provided.
+        \[
+        \begin{array}{|c|c|c|}
+        \hline
+        & \text{Actual Positive} & \text{Actual Negative} \\
+        \hline
+        \text{Predicted Positive} & 80 & 10 \\
+        \hline
+        \text{Predicted Negative} & 10 & 900 \\
+        \hline
+        \end{array}
+        \]
+        \item (2 points) Compute the sensitivity, specificity, positive predictive value (PPV), and negative
+        predictive value (NPV) of the test.
+    \end{enumerate}
 \end{document}
