@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1729413413.37491 "/home/kip/projects/MathsRequiredForAI/latex/ASPHW3/hw3.tex" "hw3.pdf" "hw3" 1729413413.94344 0
+["pdflatex"] 1729423543.61114 "/home/kip/projects/MathsRequiredForAI/latex/ASPHW3/hw3.tex" "hw3.pdf" "hw3" 1729423544.05892 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/ASPHW3/hw3.tex" 1729413413.04966 51741 24f8746df004c8fa3725537d6814f292 ""
+  "/home/kip/projects/MathsRequiredForAI/latex/ASPHW3/hw3.tex" 1729423543.43331 54723 17a1c0f650a8a77d7db3efcb1e49ada2 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -56,8 +56,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "hw3.aux" 1729413413.89217 230 54425eafc2026414b4f326c456a4636f "pdflatex"
-  "hw3.tex" 1729413413.04966 51741 24f8746df004c8fa3725537d6814f292 ""
+  "hw3.aux" 1729423544.01099 230 ca66486465632b378e35fe6464c74956 "pdflatex"
+  "hw3.tex" 1729423543.43331 54723 17a1c0f650a8a77d7db3efcb1e49ada2 ""
   (generated)
   "hw3.aux"
   "hw3.log"

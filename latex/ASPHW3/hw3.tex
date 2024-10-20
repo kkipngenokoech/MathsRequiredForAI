@@ -844,14 +844,59 @@ dimensionality while preserving essential information.
         \[
         \text{Likelihood} = p^{4} \times (1-p)^{1}
         \]
+        For H1:
+        \[
+        \text{Likelihood} = 0 \times (1-0)^{1} = \textbf{0}
+        \]
+        For H2:
+        \[
+        \text{Likelihood} = 0.15^{4} \times (1-0.15)^{1} = \textbf{0.00043}
+        \]
+        For H3:
+        \[
+        \text{Likelihood} = 0.3^{4} \times (1-0.3)^{1} = \textbf{0.000567}
+        \]
+        For H4:
+        \[
+        \text{Likelihood} = 0.45^{4} \times (1-0.45)^{1} = \textbf{0.02255}
+        \]
+        For H5:
+        \[
+        \text{Likelihood} = 0.6^{4} \times (1-0.6)^{1} = \textbf{0.05184}
+        \]
+        For H6:
+        \[
+        \text{Likelihood} = 0.75^{4} \times (1-0.75)^{1} = \textbf{0.07910}
+        \]
+        For H7:
+        \[
+        \text{Likelihood} = 0.9^{4} \times (1-0.9)^{1} = \textbf{0.06561}
+        \]
+        For H8:
+        \[
+        \text{Likelihood} = 1^{4} \times (1-1)^{1} = \textbf{0}
+        \]
         \item \textbf{(10 points)} Given the coin flip results: [1, 0, 1, 1, 1, 0, 0, 1, 1, 1], perform an MAP and MLE experiment
         to determine the probability of each hypothesis with respect to the number of coin flips
         \begin{enumerate}
             \item Generate a plot showing the posterior probability of each hypothesis with respect to the
             number of observations
+            \[
+            \text{Posterior Probability} = \frac{\text{Likelihood} \times \text{Prior}}{\text{Evidence}}
+            \]
+            \[
+            \text{Posterior Probability} = \frac{\text{Likelihood} \times \text{Prior}}{\sum_{i=1}^{8}\text{Likelihood}_i \times \text{Prior}_i}
+            \]
+            \[
+            \textbf{[ in the notebook ]}
+            \]
             \item Generate a plot showing the probability that the next coin flip is heads with respect to the
             number of observations
+            \[
+            \textbf{[ in the notebook ]}
+            \]
             \item What is the most likely hypothesis after all observations are made?
+            \\ The most likely hypothesis after all observations are made is the one with the highest posterior probability. In this case, the hypothesis with the highest posterior probability is H6 (75\% probability of heads).
         \end{enumerate}
     \end{enumerate}
     \subitem \textbf{Part 6: Students’ Exam Performance (23 points)}
@@ -864,12 +909,65 @@ assume the samples are normally distributed.
 \begin{enumerate}
     \item \textbf{(2 points)} Given the sample sizes, means, and standard deviations for both groups, calculate the
     pooled standard deviation (\(S_p\)) and the standard error (SE)
+    \\ Pooled Standard Deviation is the weighted average of the standard deviations of the two samples, taking into account the sample sizes and variances:
+    \[
+    S_p = \sqrt{\frac{(n_1 - 1)S_1^2 + (n_2 - 1)S_2^2}{n_1 + n_2 - 2}}
+    \]
+    where:
+    \[
+    S_1 = 3, S_2 = 2, n_1 = 45, n_2 = 55
+    \]
+    \[
+    S_p = \sqrt{\frac{(45 - 1)3^2 + (55 - 1)2^2}{45 + 55 - 2}}
+    \]
+    \[
+    S_p = \sqrt{\frac{44 \times 9 + 54 \times 4}{98}}
+    \]
+    \[
+    S_p = \sqrt{\frac{396 + 216}{98}}
+    \]
+    \[
+    S_p = \sqrt{\frac{612}{98}}
+    \]
+    \[
+    S_p = \sqrt{6.24} = \textbf{2.49898}
+    \]
+    Standard Error:
+    \[
+    SE = \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}
+    \]
+    \[
+    SE = \sqrt{\frac{3^2}{45} + \frac{2^2}{55}}
+    \]
+    \[
+    SE = \sqrt{\frac{9}{45} + \frac{4}{55}}
+    \]
+    \[
+    SE = \sqrt{0.2 + 0.0727}
+    \]
+    \[
+    SE = \sqrt{0.2727} = \textbf{0.522}
+    \]
     \item \textbf{(2 points)} Calculate the z-score for the difference in sample means and the critical score for a
     one-tailed z-test at a significance of 5\%
+    \[
+    \text{Z-Score} = \frac{\bar{X_1} - \bar{X_2}}{SE}
+    \]
+    \[
+    \text{Z-Score} = \frac{88 - 85}{0.522}
+    \]
+    \[
+    \text{Z-Score} = \frac{3}{0.522} = \textbf{5.74}
+    \]
     \item \textbf{(2 points)} Based on your calculated z-score and the critical value, do you reject or fail to reject
     the null hypothesis? What does this imply about the performance of students using cheat sheets?
+   \\\\ Since the calculated z-score of 5.74 is greater than the critical value of 1.645 at a significance level of 5\%, we reject the null hypothesis. This implies that students using cheat sheets perform significantly better on average compared to those who do not.
     \item \textbf{(2 points)} Calculate the p-value for your test statistic. What does the p-value indicate about the
     significance of your results?
+    \\ p-value:
+    \[
+    \text{P-Value} = 0
+    \]
     \item \textbf{(15 points)} Simulate an examination process to determine whether students using cheat sheets
     perform better on average compared to those who do not. Perform a z-score test to verify this
     claim, simulate the process, and represent the results using interactive plots.
