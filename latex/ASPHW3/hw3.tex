@@ -770,7 +770,122 @@ dimensionality while preserving essential information.
         \hline
         \end{array}
         \]
-        \item (2 points) Compute the sensitivity, specificity, positive predictive value (PPV), and negative
+        \item (4 points) Compute the sensitivity, specificity, positive predictive value (PPV), and negative
         predictive value (NPV) of the test.
+        \\ sensitivity - recall:
+        \[
+        \text{Sensitivity} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Negatives}} = \frac{80}{80 + 10} = \textbf{0.8889}
+        \]
+        specificity - precision:
+        \[
+        \text{Specificity} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Positives}} = \frac{900}{900 + 10} = \textbf{0.9889}
+        \]
+        positive predictive value:
+        \[
+        \text{PPV} = \frac{\text{True Positives}}{\text{True Positives} + \text{False Positives}} = \frac{80}{80 + 10} = \textbf{0.8889}
+        \]
+        negative predictive value:
+        \[
+        \text{NPV} = \frac{\text{True Negatives}}{\text{True Negatives} + \text{False Negatives}} = \frac{900}{900 + 10} = \textbf{0.9889}
+        \]
+        \item (4 points) What do these values indicate about the reliability of the medical test?
+        \\\\ The sensitivity, specificity, positive predictive value, and negative predictive value of the test are all high, indicating that the test is reliable in identifying both positive and negative cases of the disease. The high sensitivity and specificity values suggest that the test has a low rate of false positives and false negatives, making it an effective diagnostic tool.
+        \item (3 points) Suppose the population size increases to 5000, with the same sensitivity and specificity.
+        How would this affect the number of true and false positives?
+        \[
+        \text{True Positives} = 0.8889 \times 5000 = \textbf{4444.5}
+        \]
+        \[
+        \text{False Positives} = 0.1111 \times 5000 = \textbf{555.5}
+        \]
+        \item \textbf{(7 points)} Simulate different population sizes and rates of true positives and false positives using
+        sliders. Visualize how the sensitivity, specificity, PPV, and NPV change as the sample size and the
+        number of positive cases fluctuate.
+        \[
+        \textbf{[ in the notebook ]}
+        \]
     \end{enumerate}
+    \subitem \textbf{Part 5: MLE/MAP ( 14 marks )}
+    \\ In this problem, we have a coin for which we wish to determine the bias (i.e., is it a fair coin that shows
+    heads 50\% of the time, or is it biased with some other probability of showing heads?). We will consider
+    eight possible hypotheses (each representing the probability that heads is flipped):
+    \begin{table}[h!]
+        \centering
+        \begin{tabular}{|c|c|}
+            \hline
+            \textbf{Hypothesis} & \textbf{Probability of Heads} \\
+            \hline
+            H1 & 0\% \\
+            \hline
+            H2 & 15\% \\
+            \hline
+            H3 & 30\% \\
+            \hline
+            H4 & 45\% \\
+            \hline
+            H5 & 60\% \\
+            \hline
+            H6 & 75\% \\
+            \hline
+            H7 & 90\% \\
+            \hline
+            H8 & 100\% \\
+            \hline
+        \end{tabular}
+        \caption{Coin toss observed under various hypotheses}
+        \label{tab:coin_toss_hypotheses}
+    \end{table}
+    \begin{enumerate}
+        \item \textbf{(4 points)} Given the first five coin flips: [1, 0, 1, 1, 1], calculate the likelihood of these observation
+        under each hypothesis.
+        \[
+        \text{Likelihood} = p^{n_{\text{heads}}} \times (1-p)^{n_{\text{tails}}}
+        \]
+        \[
+        \text{Likelihood} = p^{4} \times (1-p)^{1}
+        \]
+        \item \textbf{(10 points)} Given the coin flip results: [1, 0, 1, 1, 1, 0, 0, 1, 1, 1], perform an MAP and MLE experiment
+        to determine the probability of each hypothesis with respect to the number of coin flips
+        \begin{enumerate}
+            \item Generate a plot showing the posterior probability of each hypothesis with respect to the
+            number of observations
+            \item Generate a plot showing the probability that the next coin flip is heads with respect to the
+            number of observations
+            \item What is the most likely hypothesis after all observations are made?
+        \end{enumerate}
+    \end{enumerate}
+    \subitem \textbf{Part 6: Students’ Exam Performance (23 points)}
+   \\ You want to determine whether students who use cheat sheets perform better on average relative to
+those who do not. To test this hypothesis, you have collected scores from two groups of students: one
+group that used cheat sheets and one that did not. Consider both sample sizes of 45 and 55 observations,
+respectively, for those that use cheat sheets and those who do not. If the mean scores of those who use
+cheat sheets in the exam is 88 and those who do not is 85 with standard deviations of 3 and 2 respectively,
+assume the samples are normally distributed.
+\begin{enumerate}
+    \item \textbf{(2 points)} Given the sample sizes, means, and standard deviations for both groups, calculate the
+    pooled standard deviation (\(S_p\)) and the standard error (SE)
+    \item \textbf{(2 points)} Calculate the z-score for the difference in sample means and the critical score for a
+    one-tailed z-test at a significance of 5\%
+    \item \textbf{(2 points)} Based on your calculated z-score and the critical value, do you reject or fail to reject
+    the null hypothesis? What does this imply about the performance of students using cheat sheets?
+    \item \textbf{(2 points)} Calculate the p-value for your test statistic. What does the p-value indicate about the
+    significance of your results?
+    \item \textbf{(15 points)} Simulate an examination process to determine whether students using cheat sheets
+    perform better on average compared to those who do not. Perform a z-score test to verify this
+    claim, simulate the process, and represent the results using interactive plots.
+    \begin{enumerate}
+        \item After running the simulation with default parameters, what are the z-statistic and p-value?
+        What do these values indicate about the performance difference between the two groups?
+        \item How do the results change when you increase the mean score of students using cheat sheets?
+        Explain the impact on the z-statistic and p-value.
+        \item How does changing the standard deviation of scores for students using cheat sheets affect the
+        results? What does this imply about the consistency of performance within the group?
+        \item Compare the impact of changing the standard deviation for both groups on the results. Which
+        group’s variability has a more significant impact on the z-test outcome?
+        \item How does increasing the total number of students impact the z-test results? Why does the
+        sample size matter in statistical tests?
+        \item Discuss the implications of having an unequal number of students in the two groups. How
+        does this affect the reliability of the test results?
+    \end{enumerate}
+\end{enumerate}
 \end{document}
