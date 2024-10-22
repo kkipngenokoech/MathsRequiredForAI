@@ -934,19 +934,22 @@ assume the samples are normally distributed.
     \]
     Standard Error:
     \[
-    SE = \sqrt{\frac{S_1^2}{n_1} + \frac{S_2^2}{n_2}}
+    SE = s_p \times \sqrt{\frac{1}{n_1} + \frac{1}{n_2}}
     \]
     \[
-    SE = \sqrt{\frac{3^2}{45} + \frac{2^2}{55}}
+    SE = 2.49898 \times \sqrt{\frac{1}{45} + \frac{1}{55}}
     \]
     \[
-    SE = \sqrt{\frac{9}{45} + \frac{4}{55}}
+    SE = 2.49898 \times \sqrt{0.02222 + 0.01818}
     \]
     \[
-    SE = \sqrt{0.2 + 0.0727}
+    SE = 2.49898 \times \sqrt{0.0404}
     \]
     \[
-    SE = \sqrt{0.2727} = \textbf{0.522}
+    SE = 2.49898 \times 0.201
+    \]
+    \[
+    SE = \textbf{0.522}
     \]
     \item \textbf{(2 points)} Calculate the z-score for the difference in sample means and the critical score for a
     one-tailed z-test at a significance of 5\%
@@ -965,25 +968,33 @@ assume the samples are normally distributed.
     \item \textbf{(2 points)} Calculate the p-value for your test statistic. What does the p-value indicate about the
     significance of your results?
     \\ p-value:
+    \\ You read the p-value from the z-table
     \[
-    \text{P-Value} = 0
+    \text{P-Value} = \textbf{0.0001}
     \]
+    \\ The p-value of 0.0001 indicates that the observed difference in performance between the two groups is highly statistically significant. The p-value is less than the significance level of 0.05, providing strong evidence to reject the null hypothesis.
     \item \textbf{(15 points)} Simulate an examination process to determine whether students using cheat sheets
     perform better on average compared to those who do not. Perform a z-score test to verify this
     claim, simulate the process, and represent the results using interactive plots.
     \begin{enumerate}
         \item After running the simulation with default parameters, what are the z-statistic and p-value?
         What do these values indicate about the performance difference between the two groups?
+        \\\\ The z-statistic is  5.97, and the p-value is 1. The z-statistic indicates a significant performance difference between the two groups, with students using cheat sheets performing better on average. The p-value of 1 indicates that the observed difference is highly statistically significant, so the performance difference is not due to random chance.
         \item How do the results change when you increase the mean score of students using cheat sheets?
         Explain the impact on the z-statistic and p-value.
+        \\\\ Increasing the mean score of students using cheat sheets will increase the z-statistic and decrease the p-value. This indicates a stronger performance difference between the two groups, making the results more statistically significant.
         \item How does changing the standard deviation of scores for students using cheat sheets affect the
         results? What does this imply about the consistency of performance within the group?
+        \\\\ Changing the standard deviation of scores for students using cheat sheets will impact the z-statistic and p-value. A higher standard deviation will result in a lower z-statistic and a higher p-value, indicating less consistency in performance within the group. This implies that students using cheat sheets have varying levels of performance, making it more challenging to detect a significant difference between the two groups.
         \item Compare the impact of changing the standard deviation for both groups on the results. Which
         group’s variability has a more significant impact on the z-test outcome?
+        \\\\ The standard deviation of the group with the smaller sample size will have a less significant impact on the z-test outcome. This is because the standard error is directly proportional to the pooled standard deviation, meaning that smaller sample sizes are less sensitive to changes in standard deviation.
         \item How does increasing the total number of students impact the z-test results? Why does the
         sample size matter in statistical tests?
+        \\\\ Increasing the total number of students will decrease the standard error and increase the z-statistic, making the results more statistically significant. Sample size matters in statistical tests because it affects the precision and reliability of the estimates. Larger sample sizes provide more accurate estimates of the population parameters and reduce the margin of error in the results.
         \item Discuss the implications of having an unequal number of students in the two groups. How
         does this affect the reliability of the test results?
+        \\\\ Having an unequal number of students in the two groups can introduce bias and affect the reliability of the test results. The group with the smaller sample size will have a larger standard error, making the results less reliable. It is essential to have equal sample sizes in both groups to ensure that the test results are valid and unbiased.
     \end{enumerate}
 \end{enumerate}
 \end{document}
