@@ -697,7 +697,21 @@ dimensionality while preserving essential information.
         \[
         \text{Confidence Interval} = 176 \pm 1.96 \times \frac{7}{\sqrt{30}}
         \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times \frac{7}{5.48}
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 1.96 \times 1.28
+        \]
+        \[
+        \text{Confidence Interval} = 176 \pm 2.51
+        \]
+        \[
+        \text{Confidence Interval} = [173.49, 178.51]
+        \]
+        The confidence interval would be the same because the population standard deviation does not affect the calculation of the confidence interval when it is known.
         \item \textbf{( 2 points )} What does the confidence interval mean in practical terms?
+        \\\\ The confidence interval means that we are 95\% confident that the true mean height of the men is between 173.49 cm and 178.51 cm. This interval provides a range of values within which the population mean height is likely to fall with a 95\% confidence level.
         \item \textbf{( 8 points )} Simulate the construction of confidence intervals for different sample sizes, and confidence levels,  Vary \(n \in [10, 500, \text{step}=10]\) and \(\alpha \in [0.01, 0.2, \text{step}=0.01]\) dynamically and observe how the confidence interval width changes.
         \[
         \textbf{[ in the notebook ]}
@@ -724,16 +738,13 @@ dimensionality while preserving essential information.
         \text{Alternative Hypothesis} (H_1): \text{There is a significant difference between the click-through rates of the two versions}
         \]
         \[
-        \text{Test Statistic} = \frac{p_1 - p_2}{\sqrt{p(1-p)(\frac{1}{n_1} + \frac{1}{n_2})}}
-        \]
-        \[
         p = \frac{240 + 290}{600 + 600} = \frac{530}{1200} = 0.4417
         \]
         \[
-        \text{Standard Error} = \sqrt{0.4417(1-0.4417)(\frac{1}{600} + \frac{1}{600})} = 0.032
+        \text{Standard Error} = \sqrt{0.4417(1-0.4417)(\frac{1}{600} + \frac{1}{600})} = 0.02867
         \]
         \[
-        \text{Z-Statistic} = \frac{0.4 - 0.4833}{0.032} = -2.604
+        \text{Z-Statistic} = \frac{0.4 - 0.4833}{0.02867} = -2.905
         \]
         \[
         \text{Critical Value} = -1.96
@@ -742,19 +753,23 @@ dimensionality while preserving essential information.
         \text{ if } Z \leq -1.96 \text{, reject } H_0
         \]
         \[
-        \text{ if } -2.604 \leq -1.96 \text{, reject } H_0
+         -2.905 \leq -1.96 \text{, reject } H_0
         \]
         \[
         \text{Reject } H_0
         \]
         \item \textbf{( 2 points )} What does the p-value mean in the context of this A/B test?
         \[
-        \text{P-Value} = 0.0049
+        \text{P-Value} = \textbf{0.0036}
         \]
-        it represents the probability of observing a test statistic as extreme as the one calculated, assuming the null hypothesis is true. In this case, the p-value is less than the significance level of 0.05, indicating that the observed difference in click-through rates is statistically significant.
+        In this case, the p-value is less than the significance level of 0.05, indicating that the observed difference in click-through rates is statistically significant.
         \item \textbf{( 3 points )} How would you interpret the results to your marketing team?
+        \\\\ The results of the A/B test indicate that there is a significant difference between the click-through rates of the two versions of the webpage. Version B has a higher click-through rate than Version A, suggesting that it may be more effective in generating clicks from visitors. This information can be used by the marketing team to make data-driven decisions about which webpage design to use in the future.
         \item \textbf{( 6 points )} Use a dynamic simulation to vary the sample sizes \(n \in [100, 1000, \text{step}=50]\) and click-through rates \(c \in [50, 600, \text{step}=10]\) for Versions A and B. Observe how the p-value and hypothesis test decision change as you modify these parameters.
     \end{enumerate}
+    \[
+    \textbf{[ in the notebook ]}
+    \]
     \subitem \textbf{Part 4: True Positives and False Positives in Medical Testing (23 points)}
     \\ A medical test for a rare disease is conducted on 1000 people. The test correctly identifies 80 true positives and 900 true negatives. However, it also produces 10 false positives and 10 false negatives.
     \begin{enumerate}
