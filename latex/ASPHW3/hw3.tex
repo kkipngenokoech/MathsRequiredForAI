@@ -326,7 +326,7 @@ dimensionality while preserving essential information.
     \\ Overall, these probability bounds enhance decision-making and deepen our understanding of stochastic
     processes, facilitating robust conclusions across various fields.
     \\ \subitem \textbf{Part 1: Mobile Network Data Analysis (10 points)}
-    \\ In a study conducted by a telecommunication company in Rwanda, mobile network Clls are classified as either voice (V) when someone is speaking or data (D) when there is a modem or fax transmission. Based on observed data, the probabilities are:
+    \\ In a study conducted by a telecommunication company in Rwanda, mobile network Calls are classified as either voice (V) when someone is speaking or data (D) when there is a modem or fax transmission. Based on observed data, the probabilities are:
     \[
     P(V) = 0.6 \text{ (60\% voice calls)}
     \]
@@ -335,7 +335,7 @@ dimensionality while preserving essential information.
     \]
     Assume data calls and voice calls occur independently of each other, and let the random variable \(K_n\) represent the number of data calls in a collection of \(n\) calls.
     \begin{enumerate}
-        \item \textbf{(2 points)} What is the \(E[K_{100}]\), the expected number of voice calls in a set of 100 calls?
+        \item \textbf{(2 points)} What is the \(E[K_{100}]\), the expected number of data calls in a set of 100 calls?
         \[
         E[K_{100}] = n \times P[D] = 100 \times 0.4 = \textbf{40}
         \]
@@ -344,17 +344,17 @@ dimensionality while preserving essential information.
         \sigma_{k_{100}} = \sqrt{n \times P[D] \times P[V]} = \sqrt{100 \times 0.4 \times 0.6} = \textbf{4.9}
         \]
         \item \textbf{(2 points)} Using Central Limit  Theorem, estimate \(P[K_{100} \geq  18]\), the probability of at least 18 data calls in a set of 100 calls
+        \\ Find the probability of at least 18 data calls in a set of 100 calls:
         \[
-        P[K_{100} \geq 18] = 1 - P[K_{100} < 18] = 1 - P[K_{100} \leq 17]
+        P[K_{100} \geq 18] = 1 - P[K_{100} \leq 17]
         \]
+        The Z-score for 17 data calls is:
         \[
-        P[K_{100} \leq 17] = P\left[\frac{K_{100} - E[K_{100}]}{\sigma_{K_{100}}} \leq \frac{17 - 40}{4.9}\right] = P[Z \leq -4.69]
+        Z = \frac{17 - 40}{4.9} = -4.69387755
         \]
+        This means that the probability of at least 18 data calls is:
         \[
-        P[Z \leq -4.69] = 0
-        \]
-        \[
-        P[K_{100} \geq 18] = 1 - 0 = \textbf{1}
+        P[K_{100} \geq 18] = 1 - P[Z \leq - 4.9] = 1 - 0 = \textbf{1}
         \]
         \item \textbf{(2 points)} Using the CLT, estimate \(P[16 \leq K_{100} \leq  24]\), the probability of between 16 and 24 data calls in a set of 100 calls
         \[
@@ -433,8 +433,12 @@ dimensionality while preserving essential information.
     the course of the tournament.
     \begin{enumerate}
         \item \textbf{( 3 points )} Derive the moment generating function (MGF) of \(\phi_Y\)(s)
+        \[
+        \phi_{Y}(s) = E[e^{sY}]
+        \]
+        where \(Y = X_1 + X_2 + X_3 + \dots + X_n\), the sum of the random variables and s is the parameter of the MGF
         \\ random variables \(X_i\) are independent and identically distributed, so the MGF of the sum of the random variables is the product of the MGFs of the individual random variables
-        \\ A random variable \(X_i\) can take on the values 0, 1, 3 with probabilities \(\frac{1}{3}\) each
+        \\ A random variable \(X_i\) can take on the values 0, 1, 3 with probabilities \(\frac{1}{3}\) each 
         \[
         \phi_{X_i}(s) = E[e^{sX_i}] = \frac{1}{3}e^{0} + \frac{1}{3}e^{s} + \frac{1}{3}e^{3s}
         \]
@@ -495,13 +499,18 @@ dimensionality while preserving essential information.
         Var[Y] = \mathbf{\frac{10n(n-1)}{9}}
         \]
         \item \textbf{( 3 points )} Based on your calculations, what can you infer about the likely performance of Manchester United over the course of multiple tournaments? How might the expected points impact their overall ranking or their chances of advancing in the competition?
-        \\\\ Based on the calculations, we can infer that the expected performance of Manchester United over the course of multiple tournaments is to earn an average of \(\frac{4n}{3}\) points with a variance of \(\frac{10n(n-1)}{9}\). This information can help predict their overall ranking in the competition and their chances of advancing. Teams with higher expected points are more likely to rank higher and advance in the competition, while teams with lower expected points are less likely to do so.
+        \\\\ Based on the calculations, we can infer that the expected performance of Manchester United over the course of multiple tournaments is to earn an average of \(\frac{4n}{3}\) points with a variance of \(\frac{10n(n-1)}{9}\). This information can help predict their overall ranking in the competition and their chances of advancing. Teams with higher expected points and low variance are more likely to rank higher and advance in the competition, while teams with lower expected points are less likely to do so.
     \end{enumerate}
     \subitem \textbf{Part 4: Course Enrollment and Resource Planning (6 points)}
     \\ The number of students enrolling in a popular data science course is modelled as a poisson random variable with a mean of 100 students. The Professor has decided that if 120 students enroll, he will split the class into two sectioons, otherwise , he will teach all the students in a single Section
     \begin{enumerate}
         \item \textbf{( 3 points )} What is the probability that the professor will need to teach two sections?
         \\ using Markov's inequality:
+        \\ The markov inequality is:
+        \[
+        P[X \geq a] \leq \frac{E[X]}{a}
+        \]
+        where a is the threshold value and E[X] is the expected value of Xg
         \[
         P[X \geq 120] \leq \frac{E[X]}{120}
         \]
