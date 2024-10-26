@@ -1,4 +1,4 @@
-\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\documentclass[12pt]{extarticle} % Use extarticle for 12pt font size
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
@@ -236,16 +236,37 @@ Complete the cells in the provided starter code and answer the following:
     \text{Size of the dataset} = \textbf{489}
     \]
     \item How many singular values were obtained during the calculation of the co-efficients? Why is this number exact - neither more nor less?
+    \item Given the SVD decomposition of a matrix, \(A = U \Sigma V^T\), show that \(A^{-1} = U\Sigma^{-1}V^T\)
+    \[
+    A^{-1} = (U \Sigma V^T)^{-1}
+    \]
+    \[
+    A^{-1} = (V^T)^{-1} \Sigma^{-1} U^{-1}
+    \]
+    \[
+    A^{-1} = V \Sigma^{-1} U^T
+    \]
+    \[
+    A^{-1} = U \Sigma^{-1} V^T
+    \]
+    \item After training the model, what coefficients did you obtain? Interpret the significance of this coefficients.
+    \[
+    \text{Coefficients} = \textbf{in the notebook}
+    \] 
+    \item What is the mean squared error of the train split and test split?
+    \item Visualization: complete the visualization tasks in the starter notebook and report your observation.
 \end{enumerate}
 \newpage
 \begin{center}
     \large \textbf{Question 4: PCA \& Eigenfaces}
 \end{center}
+PCA is used to project high dimensional vectors onto a lower dimensional subspace whose basis vectors
 capture the maximum variance in the data of high dimensional vectors.
+
 An image can be seen as a high dimensional vector. For example, a 100x100 image is a 10000 dimensional
 vector. PCA can be used to reduce this dimensionality by projecting images onto a lower dimensional
 subspace, given a dataset of images.
-2
+
 Eigenfaces is an application of PCA to obtain a lower dimensional subspace onto which face images can
 be projected, such that face images can be reconstructed by linearly combining the basis vectors of the
 lower dimensional subspace. The basis vectors of this lower dimensional subspace are called the eigenfaces.
@@ -282,7 +303,7 @@ handout.
     of a person’s face. Note that the height of this matrix should be equal to the number of faces in the
     database. What are the dimensions of T ?
     \[
-    \text{Dimensions of matrix T} = \textbf{400 x 4096} N/B: which database to use? (64*64 = 4096)
+    \text{Dimensions of matrix T} = \textbf{324 x 4096} 
     \]
     \item Obtain and visualize the mean face
     \[
@@ -290,9 +311,77 @@ handout.
     \]
     \item Obtain the covariance matrix, \(S\), of the matrix \(T\)
     \[
-         \text{Covariance matrix, S} = \textbf{in the notebook}
+        \text{Covariance matrix, S} = \textbf{in the notebook}
     \]
-    \item 
+    \item Obtain the eigenfaces of the covariance matrix \(S\). Report the time (in seconds) it took to compute the eigenfaces.
+   \[
+   \text{Time taken to compute the eigenfaces} = \textbf{0.4 seconds}
+   \]
+    \item  Why is the process of computing the eigenfaces as done above computationally expensive? Please
+    explain.
+    \\\\ The process of computing the eigenfaces as done above is computationally expensive because the covariance matrix is of size \(4096 \times 4096\). Computing the eigenfaces involves finding the eigenvectors of the covariance matrix. The eigenvectors are computed by solving the eigenvalue problem, which involves finding the roots of the characteristic equation of the covariance matrix. This process is computationally expensive because it involves finding the roots of a polynomial of degree \(4096\).
+    \item Given the mean face \(\bar{x}\), and the matrix \(V\) whose columns are the eigenvectors of \(S\), if \(M\) is a matrix whose rows are equal to the result of subtracting the mean face from the rows of \(T\), show that \(V = M^TU\), where \(U\) is the matrix whose columns are the eigenvectors of \(MM^T\).
+    \\\\ There are two ways we can get the covariance matrix: row wise and feature wise:
+    \\row wise: \(S = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})(x_i - \bar{x})^T\) = \(MM^T\)
+    \\feature wise: \(S = \frac{1}{n} \sum_{i=1}^{n} (x_i - \bar{x})^T(x_i - \bar{x})\) = \(M^TM\)
+    \[
+    V = \text{eigenvectors of } S = \text{eigenvectors of } M^TM
+    \]
+    \(MM^T\) is a covariance matrix, with eigenvectors \(U\)
+    \[
+    MM^TU = \lambda U
+    \]
+    multiply both sides by \(M^T\):
+    \[
+    M^TMM^TU = M^T\lambda U
+    \]
+    but, \(M^TM = S\), therefore:
+    \[
+    SM^TU = \lambda M^TU
+    \]
+    and we know that \(SV=\lambda V\):
+    \[
+    V = M^TU
+    \]
+    \item Compute the eigenfaces using \(M^TU\)
+    \[
+    \text{Eigenfaces using } M^TU = \textbf{in the notebook}
+    \]
+    \item  Why is obtaining the eigenfaces using \(M^TU\) more computationally efficient than the approach used in (5)? Please explain.
+    \\\\ Obtaining the eigenfaces using \(M^TU\) is more computationally efficient than the approach used in (5) because the matrix \(M\) is of size \(324 \times 4096\), which is smaller than the covariance matrix \(S\) of size \(4096 \times 4096\). Computing the eigenvectors of the covariance matrix \(S\) involves finding the roots of a polynomial of degree \(4096\), which is computationally expensive. On the other hand, computing the eigenvectors of the matrix \(MM^T\) involves finding the roots of a polynomial of degree \(400\), which is less computationally expensive. Therefore, obtaining the eigenfaces using \(M^TU\) is more computationally efficient than the approach used in (5).
+    \item Observe the numerical values of the eigenfaces obtain using both approaches. Are they the same? If they are the same, explain why? otherwise explain why they are different.
+    \\\\ They are not the same. This is because the eigenfaces obtained using the covariance matrix \(S\) are the eigenvectors of the covariance matrix, while the eigenfaces obtained using \(M^TU\) are the eigenvectors of the matrix \(MM^T\). The eigenvectors of the covariance matrix \(S\) and the matrix \(MM^T\) are different because the matrices are different. The eigenvectors of the covariance matrix \(S\) capture the directions of maximum variance in the data, while the eigenvectors of the matrix \(MM^T\) capture the directions of maximum variance in the mean-centered data. Therefore, the eigenfaces obtained using the covariance matrix \(S\) and \(M^TU\) are different.
+    \item Now visualize the first eigenface (the eigenface that captures the most variance in faces in the database) obtained using the approach in (5) and (8). Compare the images, they should be similar, why are they similar?
+    \[
+    \text{First eigenface} = \textbf{in the notebook}
+    \]
+    The first eigenface obtained using the approach in (5) and (8) are similar. This is because the first eigenface captures the direction of maximum variance in the data. The eigenvectors of the covariance matrix \(S\) and the matrix \(MM^T\) capture the directions of maximum variance in the data. Therefore, the first eigenface obtained using the approach in (5) and (8) are similar.
+    \item Using the eigenfaces obtain in (5), select the top eigenfaces that capture 90\% of the variance in the database. How many eigenfaces were selected?
+    \item Visualize the top 10 eigenfaces
+    \item  Given a matrix, \(A\), whose columns are the top eigenfaces selected in (12), show that the projection matrix unto the column space of \(A\) is the identity matrix.
+    \item Given a new face, \(x\), and the mean image \(\bar{x}\), show that the coordinate of \(x\) in the eigenfaces subspace is given by \(A{T}(x-\bar{x})\)
+    \item Given the coordinate of a new face, we can calculate the distance between this coordinate and the
+    coordinates of all faces in the database. The new face is recognized if the minimum distance is less
+    than a certain threshold. With the information you now have about eigenfaces, design a face
+    recognition system that recognizes faces similar to those in the face database. Identify a
+    threshold such that the accuracy of your system is greater than 80\%.
+    \item For the obtained threshold, Evaluate the face recognition system’s performance using the following
+    metrics
+    \begin{enumerate}
+        \item accuracy
+        \item Precision
+        \item Recall
+        \item F1-score
+    \end{enumerate}
+    \item For your face recognition system, since you already know the coordinates of all faces in the database
+    with respect to the eigenfaces, you can decide to discard the database of faces and only work with this
+    coordinates. This is also done when you decide to include faces of new people to the system, so that
+    they can be recognized. Using this information, calculate the compression ratio of your face recognition
+    system if you decide to store only the coordinates of faces. Show your workings.
+    \item Conduct experiments to assess the impact of different parameters and settings on your face recognition
+    system. Consider factors like the number of eigenfaces.
+    \item Analyze and interpret the results, discussing the strengths and limitations of the Eigenfaces method
+    in your context.
 \end{enumerate}
 
 \end{document}
