@@ -31,7 +31,7 @@ dimensionality while preserving essential information.
     \[A = \begin{bmatrix}1 & 0 & 0\\-1 & 1 & 0\\0 & -1 & 1\end{bmatrix}\]
     The joint PMF of X is given by:
     \[
-    P_X(X) = 
+    P_X(X) =  
     \begin{cases} 
     (1-p)p^{x_3} & \text{if } X_1 < X_2 < X_3 \\
     0 & \text{otherwise}
@@ -127,6 +127,82 @@ dimensionality while preserving essential information.
         \[
         R_2 = R_2 - 1.2R_1 = \begin{bmatrix}1 & -0.997 & -0.66497 & -0.4987 & | & 0\\0 & -1.00611 & 1.297965 & 0.89847 & | & 0\\0.8 & 0.5 & -3.20306 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & -4.20306 & | & 0\end{bmatrix}
         \]
+        \[
+        R_3 = R_3 - 0.8R_1 = \begin{bmatrix}1 & -0.997 & -0.66497 & -0.4987 & | & 0\\0 & -1.00611 & 1.297965 & 0.89847 & | & 0\\0 & 1.497965 & -2.57024 & 0.59896 & | & 0\\0.6 & 0.3 & 0.2 & -4.20306 & | & 0\end{bmatrix}
+        \]
+        \[
+        V_1 = \begin{bmatrix}0.78907948\\0.16466637\\0.52644338\\0.27036259\end{bmatrix}
+        \]
+        for eigen value \(\lambda_1 = 1.88009\)
+        \[
+        \begin{bmatrix}3.11991 & 1.2 & 0.8 & 0.6\\1.2 & 2.11991 & 0.5 & 0.3\\0.8 & 0.5 & 1.11991 & 0.2\\0.6 & 0.3 & 0.2 & 0.11991\end{bmatrix} \begin{bmatrix}v_1\\v_2\\v_3\\v_4\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+        \]
+        \[
+        R_1 = \frac{1}{3.11991}R_1 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\1.2 & 2.11991 & 0.5 & 0.3 & | & 0\\0.8 & 0.5 & 1.11991 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 0.11991 & | & 0\end{bmatrix}
+        R_2 = R_2 - 1.2R_1 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1.658 & 0.192 & 0.069 & | & 0\\0.8 & 0.5 & 1.11991 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 0.11991 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_3 = R_3 - 0.8R_1 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1.658 & 0.192 & 0.069 & | & 0\\0 & 0.192 & 0.915 & 0.046 & | & 0\\0.6 & 0.3 & 0.2 & 0.11991 & | & 0\end{bmatrix}
+        R_4 = R_4 - 0.6R_1 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1.658 & 0.192 & 0.069 & | & 0\\0 & 0.192 & 0.915 & 0.046 & | & 0\\0 & 0.069 & 0.046 & 0.005 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_2 = \frac{1}{1.658}R_2 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0.116 & 0.042 & | & 0\\0 & 0.192 & 0.915 & 0.046 & | & 0\\0 & 0.069 & 0.046 & 0.005 & | & 0\end{bmatrix}
+        R_3 = R_3 - 0.192R_2 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0.116 & 0.042 & | & 0\\0 & 0 & 0.892 & 0.038 & | & 0\\0 & 0.069 & 0.046 & 0.005 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_4 = R_4 - 0.069R_2 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0.116 & 0.042 & | & 0\\0 & 0 & 0.892 & 0.038 & | & 0\\0 & 0 & 0.038 & 0.002 & | & 0\end{bmatrix}
+        R_3 = \frac{1}{0.892}R_3 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0.116 & 0.042 & | & 0\\0 & 0 & 1 & 0.043 & | & 0\\0 & 0 & 0.038 & 0.002 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_4 = R_4 - 0.038R_3 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0.116 & 0.042 & | & 0\\0 & 0 & 1 & 0.043 & | & 0\\0 & 0 & 0 & 0.000366 & | & 0\end{bmatrix}
+        R_2 = R_2 - 0.116R_3 = \begin{bmatrix}1 & 0.384 & 0.256 & 0.192 & | & 0\\0 & 1 & 0 & 0.037012 & | & 0\\0 & 0 & 1 & 0.043 & | & 0\\0 & 0 & 0 & 0.000366 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_1 = R_1 - 0.384R_2 =  \begin{bmatrix}1 & 0 & 0.256 & 0.192 & | & 0\\0 & 1 & 0 & 0.037012 & | & 0\\0 & 0 & 1 & 0.043 & | & 0\\0 & 0 & 0 & 0.000366 & | & 0\end{bmatrix}
+        R_1 = R_1 - 0.256R_3 =  \begin{bmatrix}1 & 0 & 0 & 0.000366 & | & 0\\0 & 1 & 0 & 0.037012 & | & 0\\0 & 0 & 1 & 0.043 & | & 0\\0 & 0 & 0 & 0.000366 & | & 0\end{bmatrix}
+        \]
+        \[
+        v_2 = \begin{bmatrix}0.51741855\\0.037012\\-0.84693231\\0.11692356\end{bmatrix}
+        \]
+        for eigen value \(\lambda_2 = 2.71066\)
+        \[
+        \begin{bmatrix}2.28934 & 1.2 & 0.8 & 0.6\\1.2 & 1.28934 & 0.5 & 0.3\\0.8 & 0.5 & 0.289 & 0.2\\0.6 & 0.3 & 0.2 & 0.71066\end{bmatrix} \begin{bmatrix}v_1\\v_2\\v_3\\v_4\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+        \]
+        \[
+        R_1 = \frac{1}{2.28934}R_1 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\1.2 & 1.28934 & 0.5 & 0.3 & | & 0\\0.8 & 0.5 & 0.289 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 0.71066 & | & 0\end{bmatrix}
+        R_2 = R_2 - 1.2R_1 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 0.660 & 0.081 & -0.015 & | & 0\\0.8 & 0.5 & 0.289 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 0.71066 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_3 = R_3 - 0.8R_1 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 0.660 & 0.081 & -0.015 & | & 0\\0 & 0.081 & 0.010 & -0.010 & | & 0\\0.6 & 0.3 & 0.2 & 0.71066 & | & 0\end{bmatrix}
+        R_4 = R_4 - 0.6R_1 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 0.660 & 0.081 & -0.015 & | & 0\\0 & 0.081 & 0.010 & -0.010 & | & 0\\0 & -0.015 & -0.010 & -0.868 & | & 0\end{bmatrix}
+        \]
+
+        \[
+        R_2 = \frac{1}{0.660}R_2 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 1 & 0.123 & -0.023 & | & 0\\0 & 0.081 & 0.010 & -0.010 & | & 0\\0 & -0.015 & -0.010 & -0.868 & | & 0\end{bmatrix}
+        R_3 = R_3 - 0.081R_2 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 1 & 0.123 & -0.023 & | & 0\\0 & 0 & 0.001 & -0.001 & | & 0\\0 & -0.015 & -0.010 & -0.868 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_4 = R_4 + 0.015R_2 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 1 & 0.123 & -0.023 & | & 0\\0 & 0 & 0.001 & -0.001 & | & 0\\0 & 0 & -0.010 & -0.868 & | & 0\end{bmatrix}
+        R_3 = \frac{1}{0.001}R_3 = \begin{bmatrix}1 & 0.524 & 0.349 & 0.262 & | & 0\\0 & 1 & 0.123 & -0.023 & | & 0\\0 & 0 & 1 & -1 & | & 0\\0 & 0 & -0.010 & -0.868 & | & 0\end{bmatrix}
+        \]
+        \[
+        v_2 = \begin{bmatrix}0.16328172\\-0.98478572\\0.05882726\\0.00869061\end{bmatrix}
+        \]
+        for eigen value \(\lambda_3 = 3.20619\)
+        \[
+        \begin{bmatrix}1.79381 & 1.2 & 0.8 & 0.6\\1.2 & 2.79381 & 0.5 & 0.3\\0.8 & 0.5 & 2.20619 & 0.2\\0.6 & 0.3 & 0.2 & 1.20619\end{bmatrix} \begin{bmatrix}v_1\\v_2\\v_3\\v_4\end{bmatrix} = \begin{bmatrix}0\\0\\0\\0\end{bmatrix}
+        \]
+        \[
+        R_1 = \frac{1}{1.79381}R_1 = \begin{bmatrix}1 & 0.668 & 0.445 & 0.334 & | & 0\\1.2 & 2.79381 & 0.5 & 0.3 & | & 0\\0.8 & 0.5 & 2.20619 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 1.20619 & | & 0\end{bmatrix}
+        R_2 = R_2 - 1.2R_1 = \begin{bmatrix}1 & 0.668 & 0.445 & 0.334 & | & 0\\0 & 1.125 & 0.107 & -0.025 & | & 0\\0.8 & 0.5 & 2.20619 & 0.2 & | & 0\\0.6 & 0.3 & 0.2 & 1.20619 & | & 0\end{bmatrix}
+        \]
+        \[
+        R_3 = R_3 - 0.8R_1 = \begin{bmatrix}1 & 0.668 & 0.445 & 0.334 & | & 0\\0 & 1.125 & 0.107 & -0.025 & | & 0\\0 & -0.107 & 0.00038 & -0.00038 & | & 0\\0.6 & 0.3 & 0.2 & 1.20619 & | & 0\end{bmatrix}
+        R_4 = R_4 - 0.6R_1 = \begin{bmatrix}1 & 0.668 & 0.445 & 0.334 & | & 0\\0 & 1.125 & 0.107 & -0.025 & | & 0\\0 & -0.107 & 0.00038 & -0.00038 & | & 0\\0 & -0.025 & -0.00038 & 0.00038 & | & 0\end{bmatrix}
+        \]
+        \[
+        v_3 = \begin{bmatrix}0.28804636\\0.04206535\\0.04585165\\-0.95559271\end{bmatrix}
+        \]
         \item \textbf{(2 points)} List the eigenvalues in descending order and explain what they represent in terms of variance
         \[
         \lambda_1 = \textbf{6.20306}, \lambda_2 = \textbf{3.20619}, \lambda_3 = \textbf{2.71066}, \lambda_4 = \textbf{1.88009}
@@ -138,6 +214,13 @@ dimensionality while preserving essential information.
     \\ \subitem \textbf{Principal Component Directions}
     \begin{enumerate}
     \item \textbf{(2 points)} Using the eigenvectors, describe the principal component directions. What do these directions represent in terms of variance in the data?
+    \[
+    \text{Principal Component Directions} = \begin{bmatrix}v_1 & v_2 & v_3 & v_4\end{bmatrix}
+    \]
+    \[
+    \text{Principal Component Directions} = \begin{bmatrix}0.78907948 & 0.16328172 & 0.28804636 & 0.51741855\\0.16466637 & -0.98478572 & 0.04206535 &  0.03622962\\0.52644338 & 0.05882726 & 0.04585165 & -0.84693231\\0.27036259 & 0.00869061 & -0.95559271 & 0.11692356\end{bmatrix}
+    \]
+    The principal component directions represent the directions along which the variance of the data is maximized. The directions are perpendicular to each other, which means that the principal components are independent of each other.
     \item \textbf{(2 points)} Explain the concept of orthogonality in PCA and why is it important?
     \\\\ Orthogonality in PCA means that the principal components are perpendicular to each other. This is important because it ensures that the principal components are independent of each other. This means that the variance of the data is maximized along the principal components.
     \end{enumerate}
@@ -148,8 +231,14 @@ dimensionality while preserving essential information.
     \[
     \Sigma_Y = P^T\Sigma_xP
     \]
+    \[
+    \Sigma_Y = \begin{bmatrix}0.78907948 & 0.16466637 & 0.52644338 & 0.27036259\\0.16328172 & -0.98478572 & 0.05882726 & 0.00869061\\0.28804636 & 0.04206535 & 0.04585165 & -0.95559271\\0.51741855 & 0.03622962 & -0.84693231 & 0.11692356\end{bmatrix} \begin{bmatrix}5 & 1.2 & 0.8 & 0.6\\1.2 & 4 & 0.5 & 0.3\\0.8 & 0.5 & 3 & 0.2\\0.6 & 0.3 & 0.2 & 2\end{bmatrix} \begin{bmatrix}0.78907948 & 0.16328172 & 0.52644338 & 0.27036259\\0.16466637 & -0.98478572 & 0.05882726 & 0.00869061\\0.52644338 & 0.05882726 & 0.04585165 & -0.84693231\\0.27036259 & 0.00869061 & -0.95559271 & 0.11692356\end{bmatrix}
+    \]
+    \[
+    \Sigma_Y = \begin{bmatrix}6.20306 & 0 & 0 & 0\\0 & 3.20619 & 0 & 0\\0 & 0 & 2.71066 & 0\\0 & 0 & 0 & 1.88009\end{bmatrix}
+    \]
     \item \textbf{(2 points)} How does this Transformation affect the correlation between the transformed features?
-    \\ The transformation affects the correlation between the transformed features by making them uncorrelated. The covariance matrix of the transformed random vector \(Y\) is a diagonal matrix, which means that the transformed features are uncorrelated.c
+    \\ The transformation affects the correlation between the transformed features by making them uncorrelated. The covariance matrix of the transformed random vector \(Y\) is a diagonal matrix, which means that the transformed features are uncorrelated.
     \end{enumerate}
     \subitem \textbf{Part 3: Performing PCA by Hand on a Simple Dataset (8 points)}
     consider a simple dataset represented by the following 2-dimensional random vector \(Y = [Y_1, Y_2]^{T}\):
@@ -287,9 +376,16 @@ dimensionality while preserving essential information.
     \\ \subitem \textbf{Part 1: Feature Intepretation in PCA:}
     \begin{enumerate}
         \item \textbf{(5 points)} Based on the principal components directions, explain which features (original dimensions) contribute most to the first and second principal components.
-        \[
-        \]
+        \\ The first principal component is most influenced by the feature Usage time, while the second principal component is most influenced by Activity type 1. This means that Usage time has the most significant impact on the variance of the data along the first principal component, while Activity type 1 has the most significant impact on the variance of the data along the second principal component.
         \item \textbf{(5 points)} How would you explain the reduced features to a non-technical team in terms of the user behavior patterns?
+        \\ The reduced features represent the most important aspects of user behavior patterns. The first principal component captures the overall usage time of the users, while the second principal component captures the type of activities users engage in. By focusing on these two principal components, we can understand the key factors that drive user behavior and make informed decisions based on these patterns.
+    \end{enumerate}
+    \subitem \textbf{Part 2: Using PCA for Future Decision-Making:}
+    \begin{enumerate}
+    \item (5 points) How can the startup use the reduced-dimensional data for faster processing and improved decision-making?
+    \\ The startup can use the reduced-dimensional data to streamline its data processing and improve decision-making in several ways. By focusing on the most important features captured by the principal components, the startup can reduce the complexity of its data analysis and speed up processing times. This will allow the startup to make faster and more accurate decisions based on the key patterns in the data. Additionally, the reduced-dimensional data can help the startup identify trends and insights that may not be apparent in the original high-dimensional data, enabling more effective strategic planning and resource allocation.
+    \item (5 points) What are the potential risks of reducing the dimensionality in this manner? Could important information be lost, and how would you mitigate this?
+    \\ Reducing the dimensionality of the data using PCA can lead to the loss of important information that may be present in the original high-dimensional data. By focusing on the most significant features captured by the principal components, the startup may overlook subtle patterns or relationships that could be valuable for decision-making. To mitigate this risk, the startup should carefully evaluate the trade-offs between dimensionality reduction and information loss. It should also consider using other techniques, such as feature selection or feature engineering, to retain critical information while reducing the complexity of the data. Additionally, the startup should regularly validate the results of the dimensionality reduction process to ensure that important insights are not overlooked.
     \end{enumerate}
 \end{enumerate}
 \newpage
