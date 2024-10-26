@@ -203,23 +203,43 @@ Consider the matrix $A = \begin{bmatrix} 9 & 1 & -1\\ -1 & 11 & 1 \\ -2 & 2 & 10
 \begin{center}
     \large \textbf{Question 2: Image Compression using SVD}
 \end{center}
-5. 5. Assuming 1 byte of memory is required for one element of the image matrix, determine the top k rank-1 matrices required to represent the image if a compression ratio of 13:1 is desired. What is the value of k? Add up the rank-1 matrices for the top K singular values and visaulize your results. Remember to show your workings
-\[
-\text{Compression ratio} = \frac{\text{Original size}}{\text{Compressed size}} = 13
-\]
-Original size:
-\[
-\text{Original size} = \text{Number of elements in the image} = 902 \times 602 = \textbf{543004} \text{ bytes}
-\]
-\[
-\text{Compressed size} = \text{Number of elements in the top k rank-1 matrices} = k \times 902 + k \times 602 = 1504k \text{ bytes}
-\]
-\[
-\frac{543004}{1504k} = 13 = \frac{543004}{13} = 1504k
-\]
-\[
-k = \frac{543004}{13 \times 1504} = \textbf{28}
-\]
+In class we explored the concept of low rank approximation where we approximated a matrix as the product
+of two low rank matrices. With Singular Value Decomposition (SVD), you can approximate a matrix as the
+sum of several rank-1 matrices, and this was also demonstrated.
+\begin{enumerate}
+    \item What are the dimensions of the provided image?
+    \[
+    \text{Dimensions of the image} = \textbf{902 x 602}
+    \]
+    \item Obtain the SVD decomposition of the image and visualize the rank-1 matrix corresponding to the
+    largest singular value.
+    \[
+    \text{Largest singular value} = \textbf{in the notebook}
+    \]
+    \item Add up the rank-1 matrices for the top 3 singular values and visualize your result. What do you
+    observe?
+    \\ The more I add up the rank-1 matrices, our rank-3 approximated image approaches the original image, more features are covered
+    \item Add up the rank-1 matrices for the top 10 singular values and visualize your result. What do you
+    observe?
+    \\ The more I add up the rank-1 matrices, our rank-10 approximated image approaches the original image, more features are covered
+    \item Assuming 1 byte of memory is required for one element of the image matrix, determine the top k rank-1 matrices required to represent the image if a compression ratio of 13:1 is desired. What is the value of k? Add up the rank-1 matrices for the top K singular values and visaulize your results. Remember to show your workings
+    \[
+        \text{Compression ratio} = \frac{\text{Original size}}{\text{Compressed size}} = 13
+        \]
+        Original size:
+        \[
+            \text{Original size} = \text{Number of elements in the image} = 902 \times 602 = \textbf{543004} \text{ bytes}
+            \]
+            \[
+                \text{Compressed size} = \text{Number of elements in the top k rank-1 matrices} = k \times 902 + k \times 602 = 1504k \text{ bytes}
+                \]
+                \[
+                    \frac{543004}{1504k} = 13 = \frac{543004}{13} = 1504k
+                    \]
+                    \[
+                        k = \frac{543004}{13 \times 1504} = \textbf{28}
+                        \]
+    \end{enumerate}
 
 \newpage
 
@@ -315,7 +335,7 @@ handout.
     \]
     \item Obtain the eigenfaces of the covariance matrix \(S\). Report the time (in seconds) it took to compute the eigenfaces.
    \[
-   \text{Time taken to compute the eigenfaces} = \textbf{0.4 seconds}
+   \text{Time taken to compute the eigenfaces} = \textbf{39.2 seconds}
    \]
     \item  Why is the process of computing the eigenfaces as done above computationally expensive? Please
     explain.
@@ -357,27 +377,63 @@ handout.
     \]
     The first eigenface obtained using the approach in (5) and (8) are similar. This is because the first eigenface captures the direction of maximum variance in the data. The eigenvectors of the covariance matrix \(S\) and the matrix \(MM^T\) capture the directions of maximum variance in the data. Therefore, the first eigenface obtained using the approach in (5) and (8) are similar.
     \item Using the eigenfaces obtain in (5), select the top eigenfaces that capture 90\% of the variance in the database. How many eigenfaces were selected?
+    \[
+    \text{Number of eigenfaces selected} = \textbf{62 faces}
+    \]
     \item Visualize the top 10 eigenfaces
+    \[
+    \text{Top 10 eigenfaces} = \textbf{[in the notebook]}
+    \]
     \item  Given a matrix, \(A\), whose columns are the top eigenfaces selected in (12), show that the projection matrix unto the column space of \(A\) is the identity matrix.
-    \item Given a new face, \(x\), and the mean image \(\bar{x}\), show that the coordinate of \(x\) in the eigenfaces subspace is given by \(A{T}(x-\bar{x})\)
+    \[
+    A = \text{top eigenfaces} = \textbf{[in the notebook]}
+    \]
+    \item Given a new face, \(x\), and the mean image \(\bar{x}\), show that the coordinate of \(x\) in the eigenfaces subspace is given by \(A^T(x-\bar{x})\)
     \item Given the coordinate of a new face, we can calculate the distance between this coordinate and the
     coordinates of all faces in the database. The new face is recognized if the minimum distance is less
     than a certain threshold. With the information you now have about eigenfaces, design a face
     recognition system that recognizes faces similar to those in the face database. Identify a
     threshold such that the accuracy of your system is greater than 80\%.
+    \[
+    \text{Threshold} = \textbf{14.214214214214214}
+    \]
     \item For the obtained threshold, Evaluate the face recognition system’s performance using the following
     metrics
     \begin{enumerate}
         \item accuracy
+        \[
+            \textbf{0.8055555555555556}
+        \]
         \item Precision
+        \[
+            \textbf{1.0}
+        \]
         \item Recall
+        \[
+            \textbf{0.8055555555555556}
+        \]
         \item F1-score
+        \[
+        \textbf{0.8923076923076924}
+        \]
     \end{enumerate}
     \item For your face recognition system, since you already know the coordinates of all faces in the database
     with respect to the eigenfaces, you can decide to discard the database of faces and only work with this
     coordinates. This is also done when you decide to include faces of new people to the system, so that
     they can be recognized. Using this information, calculate the compression ratio of your face recognition
     system if you decide to store only the coordinates of faces. Show your workings.
+    \[
+    \text{Compression ratio} = \frac{\text{Original size}}{\text{Compressed size}}
+    \]
+    \[
+    \text{Original size} = \text{Number of elements in the database} \times \text{Number of eigenfaces}
+    \]
+    \[
+    \text{Compressed size} = \text{Number of elements in the database} \times \text{Number of faces}
+    \]
+    \[
+    \text{Compression ratio} = \frac{400 \times 62}{400 \times 4096} = \textbf{0.01513671875}
+    \]
     \item Conduct experiments to assess the impact of different parameters and settings on your face recognition
     system. Consider factors like the number of eigenfaces.
     \item Analyze and interpret the results, discussing the strengths and limitations of the Eigenfaces method
