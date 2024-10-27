@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  27 OCT 2024 01:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  27 OCT 2024 11:40
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -197,31 +197,56 @@ Overfull \hbox (4.47115pt too wide) detected at line 34
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5]
-Overfull \hbox (79.39781pt too wide) detected at line 235
+Overfull \hbox (79.39781pt too wide) detected at line 249
 [] \OT1/cmr/m/n/12 = [] = \OML/cmm/m/it/12 k \OMS/cmsy/m/n/12 ^^B \OT1/cmr/m/n/12 902 + \OML/cmm/m/it/12 k \OMS/cmsy/m/n/12 ^^B \OT1/cmr/m/n/12 602 = 1504\OML/cmm/m/it/12 k[]
  []
 
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 340--343
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 343--347
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 272--274
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 370--372
+Underfull \hbox (badness 10000) in paragraph at lines 296--299
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--304
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--304
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 300--304
+
+ []
+
+[7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 366--369
 
  []
 
 [9]
-Underfull \hbox (badness 10000) in paragraph at lines 372--374
+Underfull \hbox (badness 10000) in paragraph at lines 369--373
 
  []
 
-[10] [11] (./math_fun_hw3.aux)
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--398
+
+ []
+
+[10]
+Underfull \hbox (badness 10000) in paragraph at lines 398--400
+
+ []
+
+[11] [12] (./math_fun_hw3.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -234,12 +259,12 @@ Here is how much of TeX's memory you used:
  24616 multiletter control sequences out of 15000+600000
  566847 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,11n,65p,757b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,11n,65p,871b,237s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
-Output written on math_fun_hw3.pdf (11 pages, 137333 bytes).
+Output written on math_fun_hw3.pdf (12 pages, 140034 bytes).
 PDF statistics:
- 90 PDF objects out of 1000 (max. 8388607)
- 56 compressed objects within 1 object stream
+ 93 PDF objects out of 1000 (max. 8388607)
+ 58 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

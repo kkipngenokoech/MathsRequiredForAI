@@ -134,7 +134,21 @@ Consider the matrix $A = \begin{bmatrix} 9 & 1 & -1\\ -1 & 11 & 1 \\ -2 & 2 & 10
     x_1 = 0, x_2 = x_3
     \]
     Let $x_2 = 1$, then $x_1 = 0$ and $x_3 = 1$. Therefore, the eigenvector corresponding to $\lambda_3 = 12$ is $\begin{bmatrix} 0 \\ 1 \\ 1 \end{bmatrix}$.
-    \item (in the notebook)
+    \item Using np.linalg.eig, compute the eigenvalues and eigenvectors of A
+    eigen values:
+    \[
+    \begin{pmatrix}
+        12. & 8. & 10.
+    \end{pmatrix}
+    \]
+    eigen vectors:
+    \[
+        \begin{bmatrix}
+            9.00258517 \times 10^{-16} & -7.07106781 \times 10^{-1} & -7.07106781 \times 10^{-1} \\
+            -7.07106781 \times 10^{-1} & -3.36518470 \times 10^{-16} & -7.07106781 \times 10^{-1} \\
+            -7.07106781 \times 10^{-1} & -7.07106781 \times 10^{-1} & -5.62025848 \times 10^{-15}
+          \end{bmatrix}
+    \]
     \item Compare the eigen vectors computed using np.linalg.eig and that obtained using Gaussian elimination in (3) above. Are they the same? If they are the same, explain why this is the case. Otherwise, explain why they are different
     \\ eigen vectors using np.linalg.eig:
     \[
@@ -256,6 +270,7 @@ Complete the cells in the provided starter code and answer the following:
     \text{Size of the dataset} = \textbf{489}
     \]
     \item How many singular values were obtained during the calculation of the co-efficients? Why is this number exact - neither more nor less?
+    \\\\ The number of singular values obtained during the calculation of the coefficients is \(\textbf{3}\). This number is exact because it is equal to the number of features in the dataset. 
     \item Given the SVD decomposition of a matrix, \(A = U \Sigma V^T\), show that \(A^{-1} = U\Sigma^{-1}V^T\)
     \[
     A^{-1} = (U \Sigma V^T)^{-1}
@@ -271,10 +286,21 @@ Complete the cells in the provided starter code and answer the following:
     \]
     \item After training the model, what coefficients did you obtain? Interpret the significance of this coefficients.
     \[
-    \text{Coefficients} = \textbf{in the notebook}
+        \begin{bmatrix}
+            9.50068071 \\
+            -1.29862203 \\
+            -0.56460349
+        \end{bmatrix}
     \] 
+    \\ The coefficients obtained are the weights assigned to each feature in the linear regression model. The coefficient of the first feature is 9.50068071, the coefficient of the second feature is -1.29862203, and the coefficient of the third feature is -0.56460349. These coefficients indicate the impact of each feature on the target variable. A positive coefficient indicates that the feature has a positive impact on the target variable, while a negative coefficient indicates that the feature has a negative impact on the target variable. The magnitude of the coefficient indicates the strength of the impact of the feature on the target variable. Therefore, the coefficients obtained provide information on the relationship between the features and the target variable in the linear regression model.
     \item What is the mean squared error of the train split and test split?
+    \\\\ Mean squared error for training data:  \(\textbf{1.1849172161729788}\)
+    \\ Mean squared error for testing data:  \(\textbf{1.027395075540607}\)
+
     \item Visualization: complete the visualization tasks in the starter notebook and report your observation.
+    \\\\ There is a linear relationship between feature 1 and the true value. As feature 1 increases, the true value also increases. There are some outliers in the data, but the overall trend is linear. 
+    \\\\ There is a negative linear relationship between feature 2 and the true value. As feature 2 increases, the true value decreases. The data points are scattered and do not follow a clear linear trend. There are some outliers in the data.
+    \\\\ There is a weak linear relationship between feature 3 and the true value. The data points are scattered and do not follow a clear linear trend. There are some outliers in the data.
 \end{enumerate}
 \newpage
 \begin{center}
