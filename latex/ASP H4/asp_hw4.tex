@@ -1,0 +1,171 @@
+\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{hyperref} % Include this package for hyperlinks
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 4 - Applied Stochastic Processes}   
+\maketitle
+
+\medskip
+
+\maketitle
+\begin{center}
+    \large \textbf{Estimation, Mixture Models and Random Processes with Python Simulations}
+\end{center}
+
+\section{ MoM, MLE, Bias and Consistency (20 points)}
+Consider a normal distribution defined by the probability density function (PDF):
+\begin{equation}
+    f(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp\left(-\frac{(x-\mu)^2}{2\sigma^2}\right), \quad -\infty < x < \infty
+\end{equation}
+where $\mu$ is the mean and $\sigma^2$ is the variance. Given a random sample $Y         = \{y_1, y_2, \ldots, y_n\}$ drawn from
+this normal distribution, perform the following tasks:
+\begin{enumerate}
+    \item (\textbf{5 points}) Use the method of moments to derive the estimators for \(\mu\) and \(\sigma^2\).
+    \item (\textbf{5 points}) Derive the Maximum Likelihood Estimators (MLE) for \(\mu\) and \(\sigma^2\).
+    \item (\textbf{3 points})  Calculate the bias of the MoM estimators \(\mu_{MoM}\) and \(\sigma^2_{MoM}\)
+    \item (\textbf{3 points})  Calculate the bias of the MLE estimators \(\mu_{MLE}\) and \(\sigma^2_{MLE}\)
+    \item (\textbf{4 points})  Show that both the MoM and MLE estimators are consistent, meaning that  \(n \rightarrow \infty\), then \(\mu_{MoM} \rightarrow \mu\) and \(\sigma^2_{MoM} \rightarrow \sigma^2\) in probability.
+\end{enumerate}
+\newpage
+\section{Spam-Ham Detection Using MLE and MAP (30 points)}
+In digital communication, distinguishing spam from ham (non-spam) is crucial for email security. Sta-
+tistical techniques such as Maximum Likelihood Estimation (MLE) and Maximum A Posteriori (MAP)
+estimation are effective for classification. This section aims to build a spam-ham classifier using both
+MLE and MAP methods.
+\subsection{MLE/MAP on Toy Dataset (10 points)}
+You are provided with a mini dataset containing six SMS messages labeled as either spam or ham. A
+single feature, “offer,” indicates the presence (1) or absence (0) of the word “offer” in each message.
+The dataset is shown in Table 1.
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|}
+        \hline
+        \textbf{Message ID} & \textbf{Message content} & \textbf{Offer (X)} & \textbf{class (Y)} \\
+        \hline
+        1 & Special offer now! & 1 & 1 (Spam) \\
+        2 & Meeting at 10 AM & 0 & 0 (Ham) \\
+        3 & Claim your offer & 1 & 1 (Spam) \\
+        4 & Lunch tomorrow? & 0 & 0 (Ham) \\
+        5 & Free offer available & 1 & 1 (Spam) \\
+        6 & Hello, how are you? & 0 & 0 (Ham) \\
+        \hline
+    \end{tabular}
+    \caption{Mini Dataset for Spam-Ham Detection}
+\end{table}
+Calculate the following MLE estimates:
+\begin{enumerate}
+    \item (\textbf{1 point})  \(\pi = P(Y = 1)\). Probability that a message is spam.
+    \item (\textbf{1 points})  \(\theta_{spam} = P(X = 1|Y = 1)\).The probability of the word “offer” appearing in a spam message
+    \item (\textbf{1 points})  \(\theta_{ham} = P(X = 1|Y = 0)\). The probability of the word “offer” appearing in a ham message
+    \item (\textbf{2 points})  Derive the likelyhood function and maximize it to find the parameter estimates.
+    Assume Beta priors:
+    \begin{enumerate}
+        \item (\textbf{2 points})  \(\pi \thicksim  \beta(2,2)\)
+        \item (\textbf{2 points})  \(\theta_{spam} \thicksim  \beta(2,1)\)
+        \item (\textbf{2 points})  \(\theta_{ham} \thicksim  \beta(1,2)\)
+    \end{enumerate}
+    Calculate the MAP estimates for \(\pi\), \(\theta_{spam}\) and \(\theta_{ham}\) using prior information.
+\end{enumerate}
+\subsection{Practical Implications (4 points)}
+Discuss the following:
+\begin{enumerate}
+    \item (\textbf{2 points})  How do different prior distributions affect the MAP estimates?
+    \item (\textbf{1 points})  Why might MLE overfit with small datasets?
+    \item (\textbf{1 points})  In what scenarios would MLE or MAP perform better?
+    \item (\textbf{1 points})  What is the bias-variance trade-off between MLE and MAP?
+\end{enumerate}
+\subsection{Real-World Implementation (10 points)}
+In this exercise, you will classify messages as either ”spam” or ”ham” (not spam) using a Naive Bayes
+classifier. You will implement two different estimation methods. Use the “SMS Spam Collection” dataset,
+available at this \href{https://archive.ics.uci.edu/ml/datasets/SMS+Spam+Collection}{link}, to implement a spam-ham detection classifier using:
+\begin{itemize}
+    \item \textbf{Maximum Likelihood Estimation (MLE)}:  Estimates the parameters based solely on the training data without prior beliefs about the parameters.
+    \item \textbf{Maximum A Posteriori (MAP):}: Incorporates prior beliefs about the parameters into the estimation, using Laplace smoothing to handle zero probabilities. 
+\end{itemize}
+\textbf{Tasks:}
+\textbf{Data Loading and Preprocessing:}
+\begin{enumerate}
+    \item \textbf{Load the dataset:}
+    \begin{itemize}
+        \item Download the SMS Spam Collection dataset and load it into your environment using pandas.
+        \item Ensure the dataset is read correctly, with columns labeled ”label” for spam/ham and ”message” for the text content.
+    \end{itemize}
+    \item \textbf{Preprocess the Text Messages:}
+    \begin{itemize}
+    \item Convert all text to lowercase.
+    \item Remove punctuation and special characters.
+    \item Tokenize the messages (split the messages into words).
+    \end{itemize}
+    \item \textbf{Split the Dataset:}
+    \begin{itemize}
+        \item Divide the dataset into training and test sets (e.g., 80\% training, 20\% testing).
+        \item Ensure that both sets maintain the same class distribution.
+    \end{itemize}
+\end{enumerate}
+\textbf{Implement Maximum Likelihood Estimator (MLE):}
+\begin{enumerate}
+    \item \textbf{Calculate the  Probabilities:}
+    \begin{itemize}
+        \item For each class (spam and ham), calculate the probability of each word appearing in that class based on the training data.
+    \end{itemize}
+    \item  \textbf{Implement Prediction Function:}
+    \begin{itemize}
+        \item Create a function to classify messages using the calculated probabilities and the prior probabilities of each class.
+    \end{itemize}
+    \item \textbf{Evaluate the Classifier:}
+    \begin{itemize}
+        \item Use metrics such as accuracy, precision, recall, and F1 score to evaluate the performance of the MLE classifier on the test set.
+    \end{itemize}
+\end{enumerate}
+\textbf{Implement Maximum A Posteriori (MAP):}
+\begin{enumerate}
+    \item \textbf{Implement MAP Estimator:}
+    \begin{itemize}
+        \item Calculate the same probabilities as in MLE but include Laplace smoothing to avoid zero probabilities.
+    \end{itemize}
+    \item \textbf{Implement Prediction Function:}
+    \begin{itemize}
+        \item Create a prediction function similar to MLE but using the MAP probabilities.
+    \end{itemize}
+    \item \textbf{Evaluate the Classifier:}
+    \begin{itemize}
+        \item Again, use accuracy, precision, recall, and F1 score to evaluate the MAP classifier’s perfor-
+        mance on the test set.
+    \end{itemize}
+\end{enumerate}
+\textbf{Compare Results:}
+\begin{enumerate}
+    \item \textbf{Performance Comparison:}
+    \begin{itemize}
+        \item Create a comparison table that summarizes the accuracy, precision, recall, and F1 score for both classifiers.
+    \end{itemize}
+    \item \textbf{Discuss the Results:}
+    \begin{itemize}
+        \item Reflect on the differences in performance:
+        \begin{itemize}
+            \item How did incorporating prior knowledge in MAP affect the predictions?
+            \item Were there any significant changes in the classification of messages between MLE and MAP?
+            \item What factors might account for any differences in the performance metrics?
+        \end{itemize}
+    \end{itemize}
+\end{enumerate}
+\textbf{Vary the Prior (MAP):}
+\begin{enumerate}
+\item \textbf{Experiment with Different alpha values:}
+\begin{itemize}
+    \item Run the MAP classifier with varying values of the Laplace smoothing parameter (alpha) such as 0.1, 0.5, 1, and 5
+    \item Observe how these variations affect the results and the evaluation metrics.
+\end{itemize}
+\item \textbf{Discussion of Findings:}
+\begin{itemize}
+\item Summarize your observations regarding the impact of varying the prior on the classification performance.
+\end{itemize}
+\end{enumerate}
+\textbf{Deliverables:}
+
+\end{document}
