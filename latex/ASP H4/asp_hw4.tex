@@ -33,6 +33,9 @@ f(y; \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(y - \mu)^2}{2\sigma
 
 \begin{enumerate}
     \item[(a)] \textbf{(5 points)} Use the method of moments to derive the estimators for \(\mu\) and \(\sigma^2\).
+    \[
+    \hat{\mu}_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} y_i, \quad \hat{\sigma}^2_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{\mu}_{\text{MoM}})^2.
+    \]
 
      \item[(b)] \textbf{(5 points)} Derive the Maximum Likelihood Estimators (MLE) for \(\mu\) and \(\sigma^2\).
 
@@ -78,27 +81,71 @@ You are provided with a mini dataset containing six SMS messages labeled as eith
 \noindent Calculate the following MLE estimates:
 \begin{itemize}
     \item[(a)] \textbf{(1 point)} $\pi = P(Y = 1)$: Probability that a message is spam.
+    \[
+    \hat{\pi}_{\text{MLE}} = \frac{\text{Number of spam messages}}{\text{Total number of messages}} = \frac{3}{6} = \mathbf{\frac{1}{2}}
+    \]
     \item[(b)] \textbf{(1 point)} $\theta_{\text{spam}} = P(X = 1 \mid Y = 1)$: Probability that ``offer'' appears in a spam message.
+    \[
+    \hat{\theta}_{\text{spam}} = \frac{\text{Number of spam messages with ``offer''}}{\text{Total number of spam messages}} = \frac{3}{3} = \mathbf{1}
+    \]
     \item[(c)] \textbf{(1 point)} $\theta_{\text{ham}} = P(X = 1 \mid Y = 0)$: Probability that ``offer'' appears in a ham message.
+    \[
+    \hat{\theta}_{\text{ham}} = \frac{\text{Number of ham messages with ``offer''}}{\text{Total number of ham messages}} = \frac{0}{3} = \mathbf{0}
+    \]
     \item[(d)] \textbf{(2 points)} Derive the likelihood function and maximize it to find the parameter estimates. 
+    \[
+    \hat{\pi}_{\text{MLE}} = \frac{3}{6} = \mathbf{\frac{1}{2}}, \quad \hat{\theta}_{\text{spam}} = 1, \quad \hat{\theta}_{\text{ham}} = 0
+    \]
 \end{itemize}
 
 \noindent Assume Beta priors:
 \begin{itemize}
     \item[(e)] \textbf{(2 points)} $\pi \sim \text{Beta}(2, 2)$
+    \[
+    P(\pi) = \frac{1}{B(2, 2)} \pi^{2-1} (1 - \pi)^{2-1} = 6\pi(1 - \pi)
+    \]
+    \[
+    P(\pi \mid \text{data}) \propto P(\text{data} \mid \pi) P(\pi) = \pi^3 (1 - \pi)^3
+    \]
+    \[
+    \hat{\pi}_{\text{MAP}} = \frac{3}{6} = \mathbf{\frac{1}{2}}
+    \]
     \item[(f)] \textbf{(2 points)} $\theta_{\text{spam}} \sim \text{Beta}(2, 1)$
+    \[
+    P(\theta_{\text{spam}}) = \frac{1}{B(2, 1)} \theta_{\text{spam}}^{2-1} (1 - \theta_{\text{spam}})^{1-1} = 2\theta_{\text{spam}}
+    \]
+    \[
+    P(\theta_{\text{spam}} \mid \text{data}) \propto P(\text{data} \mid \theta_{\text{spam}}) P(\theta_{\text{spam}}) = \theta_{\text{spam}}^3 (1 - \theta_{\text{spam}})
+    \]
+    \[
+    \hat{\theta}_{\text{spam, MAP}} = \frac{3}{3} = \mathbf{1}
+    \]
     \item[(g)] \textbf{(2 points)} $\theta_{\text{ham}} \sim \text{Beta}(1, 2)$
+    \[
+    P(\theta_{\text{ham}}) = \frac{1}{B(1, 2)} \theta_{\text{ham}}^{1-1} (1 - \theta_{\text{ham}})^{2-1} = 2(1 - \theta_{\text{ham}})
+    \]
+    \[
+    P(\theta_{\text{ham}} \mid \text{data}) \propto P(\text{data} \mid \theta_{\text{ham}}) P(\theta_{\text{ham}}) = (1 - \theta_{\text{ham}})^3
+    \]
+    \[
+    \hat{\theta}_{\text{ham, MAP}} = \frac{0}{3} = \mathbf{0}
+    \]
 \end{itemize}
 
 \noindent Calculate the MAP estimates for $\pi$, $\theta_{\text{spam}}$, and $\theta_{\text{ham}}$ using prior information. 
+
 
 \subsection*{Part 2: Practical Implications (4 points)}
 Discuss the following:
 \begin{enumerate}
     \item[(a)] \textbf{(1 point)} How do different prior choices affect MAP estimates?
+    \\\\ A prior that aligns with the true underlying distribution can lead to more accurate estimates, while a less informative prior may introduce bias or uncertainty in the estimates.
     \item[(b)] \textbf{(1 point)} Why might MLE overfit with small datasets?
+    \\\\ MLE tends to overfit with small datasets because it maximizes the likelihood of the observed data, which can lead to high variance and poor generalization to new data.
     \item[(c)] \textbf{(1 point)} In what scenarios would MLE or MAP perform better?
+    \\\\ MLE is preferred when prior information is limited or unnecessary, while MAP is beneficial when incorporating prior knowledge can improve estimation accuracy.
     \item[(d)] \textbf{(1 point)} What is the bias-variance trade-off between MLE and MAP?
+    \\\\ MLE tends to have lower bias but higher variance, while MAP can introduce bias but reduce variance by incorporating prior information.
 \end{enumerate}
 
 \subsection*{Part 3: Real-World Implementation (10 points)}
