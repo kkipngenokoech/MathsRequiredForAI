@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1730667886.16166 "/home/kip/projects/MathsRequiredForAI/latex/HW4/hw4.tex" "hw4.pdf" "hw4" 1730667886.65184 2
+["pdflatex"] 1730724049.32979 "/home/kip/projects/MathsRequiredForAI/latex/HW4/hw4.tex" "hw4.pdf" "hw4" 1730724049.87605 2
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/HW4/hw4.tex" 1730667885.17114 11631 e62ba6b7d8b9e1afee0956636a5afba1 ""
+  "/home/kip/projects/MathsRequiredForAI/latex/HW4/hw4.tex" 1730724048.41938 11629 2591f549a57cb14c968676bff3375599 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -110,10 +110,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "hw4.aux" 1730667886.57296 1478 c133ef150bfb1275ee7e91eef9ff6f25 "pdflatex"
-  "hw4.out" 1730667886.57296 2098 5c92eb554ca15d5a57de3c8597d2cba9 "pdflatex"
-  "hw4.tex" 1730667885.17114 11631 e62ba6b7d8b9e1afee0956636a5afba1 ""
-  "nn.png" 0 -1 0 ""
+  "hw4.aux" 1730724049.80262 1478 62e4df352c0f1f3827212a0f5a1e936a "pdflatex"
+  "hw4.out" 1730724049.80262 2098 5c92eb554ca15d5a57de3c8597d2cba9 "pdflatex"
+  "hw4.tex" 1730724048.41938 11629 2591f549a57cb14c968676bff3375599 ""
+  "nn.png" 1730698195.20836 71799 2f8ef763eb91616b3974e5ab01a44e53 ""
   "nn1.png" 0 -1 0 ""
   (generated)
   "hw4.aux"
