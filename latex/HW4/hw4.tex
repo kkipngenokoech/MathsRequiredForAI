@@ -451,6 +451,23 @@ b_{\text{new}} = b_{\text{old}} - \alpha \cdot \nabla_b L,
 \text{where } w \text{ represents the weights and } b \text{ represents the biases.}
 \]
 
+For the $\mathbf{W}_h$ and $\mathbf{W}_o$ matrices, the update rules are:
+\[
+\mathbf{W}_{h_{\text{new}}} = \mathbf{W}_{h_{\text{old}}} - \alpha \cdot \nabla_{\mathbf{W}_h} L,
+\]
+\[
+\mathbf{W}_{o_{\text{new}}} = \mathbf{W}_{o_{\text{old}}} - \alpha \cdot \nabla_{\mathbf{W}_o} L,
+\]
+
+for the $\mathbf{b}_h$ and $\mathbf{b}_o$ vectors, the update rules are:
+
+\[
+\mathbf{b}_{h_{\text{new}}} = \mathbf{b}_{h_{\text{old}}} - \alpha \cdot \nabla_{\mathbf{b}_h} L,
+\]
+\[
+\mathbf{b}_{o_{\text{new}}} = \mathbf{b}_{o_{\text{old}}} - \alpha \cdot \nabla_{\mathbf{b}_o} L,
+\]
+
 Complete the MLP codes in the starter notebook (20 points).
 
 \textbf{Bonus (10 points):} Add Another layer hidden layer to MLP. and complete the codes in the 2 Layer MLP.
