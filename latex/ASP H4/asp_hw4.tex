@@ -424,13 +424,49 @@ In this implementation, consider the following questions to guide your discussio
 Imagine a scenario where a delivery robot moves along a straight path, starting from the origin (0 meters). At each time step, the robot has an equal chance of moving one meter to the left (backwards) or one meter to the right (forwards). This model can help us understand how the robot's position changes over time, which can be useful in logistics and supply chain management. Let \( X_n \) denote the position of the robot at time \( n \).
 \begin{itemize}
     \item[(a)] \textbf{(2 points)} Derive the first-order probability mass function for the position of the robot at time \( n \), i.e., \( P(X_n = x) \), where \( x \) is an integer representing the robot's position.
-
+    \[
+    P(X_n = x) = \begin{cases}
+    \frac{1}{2} P(X_{n-1} = x-1) + \frac{1}{2} P(X_{n-1} = x+1), & \text{if } x \neq 0, \\
+    \frac{1}{2} P(X_{n-1} = 1), & \text{if } x = 0.
+    \end{cases}
+    \]
+    so the first order probability mass function is given by:
+    \[
+    P(X_n = x) = \frac{1}{2} P(X_{n-1} = x-1) + \frac{1}{2} P(X_{n-1} = x+1), \quad \text{for } x \in \mathbb{Z}.
+    \]
     \item[(b)] \textbf{(2 points)} Calculate the probability that the robot, starting at the origin \( X_0 = 0 \), is located at \( X_4 = -2 \) after 4 steps. \textbf{\textit{Hint:}} Use the binomial distribution, considering the number of steps to the left and right.
-
+    \\ the binomial distribution formula is given by:
+    \[
+    P(X_n = x) = \binom{n}{k} p^k (1-p)^{n-k}
+    \]
+    where, according to this setup, \( n = 4, \text{total steps}\), \( k = \text{number of steps to the right} \), $n-k = $ number of steps to the left, and \( p = \frac{1}{2} \).
+    \\ to be at position $-2$ :
+    \[
+    k - (n-k) = -2 \Rightarrow 2k - n = -2 \Rightarrow 2k = n - 2 \Rightarrow k = \frac{n-2}{2} = \frac{4-2}{2} = 1
+    \]
+    so we need to find all the possible ways the robot can take 1 step to the right and 3 steps to the left, which is given by the binomial distribution formula
+    \\so the probability that the robot is located at \( X_4 = -2 \) after 4 steps is:
+    \[
+    P(X_4 = -2) = \binom{4}{3} \left(\frac{1}{2}\right)^3 \left(\frac{1}{2}\right)^1 = 4 \times \frac{1}{8} \times \frac{1}{2} = \mathbf{\frac{1}{4}}
+    \]
     \item[(c)] \textbf{(2 points)} Derive the expressions for the mean \( E[X_n] \) and variance \( \text{Var}(X_n) \) of the random walk at any time \( n \in \mathbb{N} \).
-
+    \\ At every step, the robot has an equal probability of moving one meter to the left or right. Therefore, the expected value of the position after \( n \) steps is:
+    \[
+    E[X_n] = 1 \cdot p + (-1) \cdot (1-p) = 1 \cdot \frac{1}{2} + (-1) \cdot \frac{1}{2} = 0
+    \]
+    \[
+    E[X_n] = \textbf{0}
+    \]
+    The variance of the position after \( n \) steps is:
+    \[
+    \text{Var}(X_n) = E[X_n^2] - (E[X_n])^2 = 1^2 \cdot p + (-1)^2 \cdot (1-p) - 0 = 1 \cdot \frac{1}{2} + 1 \cdot \frac{1}{2} = 1 \text{ per step}  
+    \]
+    so the variance after \( n \) steps is:
+    \[
+    \text{Var}(X_n) = n \cdot 1 = \mathbf{n}
+    \]
     \item[(d)] \textbf{(2 points)} Discuss whether the mean and variance depend on the initial position \( X_0 \).
-    
+    \\\\ The mean depends on the initial position, as the expected value of the position after \( n \) steps is 0 when starting from the origin. However, the variance does not depend on the initial position, as it is solely determined by the number of steps taken.
 \end{itemize}
 
 
