@@ -3,6 +3,8 @@
 \usepackage{amsfonts}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{positioning, automata}
 \usepackage{setspace}
 \usepackage{fancyhdr}
 \usepackage{float}
@@ -291,9 +293,67 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
 \subsection*{Part 1: Analytical Derivations (10 points)}
 \begin{enumerate}
     \item[(a)] \textbf{(2 points)} Derive the mean and variance of \(Y\).
+    \\ the mean of \(Y\) is given by:
+    \[
+    E[Y] = E[X + N] = E[X] + E[N] = E[X] + 0 = E[X]
+    \]
+    the variance of \(Y\) is given by:
+    \[
+    \text{Var}(Y) = \text{Var}(X + N) = \text{Var}(X) + \text{Var}(N) = \text{Var}(X) + \sigma^2
+    \]
 
     \item[(b)] \textbf{(3 points)} Derive the Best Linear Estimator of \( X \)
-
+    \[
+    \hat{X} = aY + b
+    \]
+    where \( a \) and \( b \) are constants to be determined.
+    \\ the best linear estimator is given by:
+    \[
+    \text{MSE}(\hat{X}) = E[(X - \hat{X})^2] = E[(X - aY - b)^2] 
+    \] 
+    \[
+    = E[X^2 - 2aXY - 2bX + a^2Y^2 + 2abY + b^2]
+    \]
+    \[
+    \text{MSE} = E[X^2] - 2E[X(aY + b)] + E[(aY + b^2)]
+    \]
+    for $2E[X(aY + b)]$:
+    \[
+    Y = X + N  = E[X(aX + b)] = E[X^2] + E[XN] = E[X^2] + E[X]E[N] = E[X^2]
+    \]
+    for $E[(aY + b)^2]$:
+    \[
+    E[(aY + b)^2] = a^2E[Y^2] + 2abE[Y] + b^2
+    \]
+    \[
+    E[Y^2] = \text{Var}(Y) + E[Y]^2 = \text{Var}(X) + \sigma^2 + E[X]^2 = E[X^2] + \sigma^2
+    \]
+    \[
+    \text{MSE} = E[X^2] - 2aE[X^2] - 2bE[X] + (a^2E[X^2] + \sigma^2 + 2abE[X] + b^2)
+    \]
+    to minimize the MSE, we find the partial derivatives of the MSE with respect to \( a \) and \( b \) and set them to zero:
+    \\ partial derivative with respect to \( a \):
+    \[
+    \frac{\partial \text{MSE}}{\partial a} = -2E[X^2] + a(2E[X^2] + \sigma^2) = 0
+    \]
+    \[
+    a = \frac{2E[X^2]}{E[X^2] + \sigma^2}
+    \]
+    partial derivative with respect to \( b \):
+    \[
+    \frac{\partial \text{MSE}}{\partial b} = -2E[X] + 2ab = 0
+    \]
+    \[
+    b = E[X](1 - a)
+    \]
+    substituting the values of \( a \) and \( b \) into the expression for \( \hat{X} \) gives:
+    \[
+    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[X](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
+    \]
+    but since \( E[X] = E[Y] \), the expression simplifies to:
+    \[
+    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
+    \]
     \item[(c)] \textbf{(2 points)} The orthogonality principle states that the error \( \epsilon = X - \hat{X} \) must be uncorrelated with \( Y \), i.e.:
     \[
     E[(X - \hat{X})Y] = 0.
@@ -305,8 +365,13 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     \[
     \text{Bias}(\hat{X}) = E[\hat{X}] - E[X].
     \]
+
     
     Show that the estimator \( \hat{X} \) derived above is unbiased.
+
+    \[
+    E[\hat{X}] = E\left[\frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})\right]
+    \]
 
     \item[(e)] \textbf{2 points} Define the Mean Squared Error (MSE) as:
     \[
@@ -477,9 +542,122 @@ Consider a discrete-time process \( \{X_n\} \) with mean \( \mu \) and autocovar
 
 \begin{itemize}
     \item[(a)] \textbf{(2 points)} Derive the mathematical conditions that must be satisfied for the process \( \{X_n\} \) to be classified as Wide Sense Stationary (WSS). Clearly define what it means for the mean and autocovariance function to be time-invariant.
+    \[
+    \text{WSS conditions:} \quad \mu = \text{constant},\quad  \sigma^2 = \text{constant} ,\quad \gamma(k) = \text{constant}, \quad \forall k
+    \]
+    mean must be time-invariant and  remains constant over time, i.e.,:
+    \[
+    \text{Time-invariant mean:} \quad E[X_n] = \mu, \quad \forall n
+    \]
+    variance must be time-invariant and remains constant over time, i.e.,:
+    \[
+    \text{Time-invariant variance:} \quad \text{Var}(X_n) = \sigma^2, \quad \forall n
+    \]
+    autocovariance function must be time-invariant if it only depends on the lag \( k \) and not on the time index \( n \), i.e.,:
+    \[
+    \text{Time-invariant autocovariance:} \quad \gamma(k) = \text{Cov}(X_n, X_{n+k}), \quad \forall k
+    \]
     \item[(b)] \textbf{(2 points)} Let \( X_n = a X_{n-1} + W_n \), where \( W_n \) is white noise with mean 0 and variance \( \sigma^2 \), and \( |a| < 1 \). Show that the process \( \{X_n\} \) is WSS by deriving its mean, variance, and autocovariance function, ensuring that the conditions of WSS are satisfied.
+    \\ let's start by calculating the mean:
+    \[
+    E[X_n] = E[aX_{n-1} + W_n] = aE[X_{n-1}] + E[W_n] 
+    \]
+    since \( W_n \) is white noise with mean 0
+    \[
+    E[X_n] = aE[X_{n-1}] + 0 = aE[X_{n-1}]
+    \]
+    let us take the expectation of \( X_{n-1} \) to be used in the next step, since fo WSS the mean must be time-invariant:
+    \[
+    E[X_{n-1}] = aE[X_{n-2}]
+    \]
+    \[
+    E[X_{n-2}] = aE[X_{n-3}]
+    \]
+    \[
+    \vdots
+    \]
+    \[
+    E[X_{n-1}] = a^n E[X_{0}]
+    \]
+    since $|a| < 1$, as \( n \) approaches infinity, \( a^n \) approaches 0, so the mean is time-invariant:
+    \[
+    E[X_n] = a^n E[X_{0}] = 0
+    \]
+    the variance formula is given by:
+    \[
+    \text{Var}(X_n) = E[X_n^2] - (E[X_n])^2
+    \]
+    the expectation of \( X_n^2 \) is:
+    \[
+    E[X_n^2] = E[(aX_{n-1} + W_n)^2] = E[a^2X_{n-1}^2 + 2aX_{n-1}W_n + W_n^2]
+    \]
+    \[
+    E[X_n^2] = a^2E[X_{n-1}^2] + 2aE[X_{n-1}W_n] + E[W_n^2]
+    \]
+    since \( W_n \) is white noise with mean 0 and variance \( \sigma^2 \), the expectation of \( W_n^2 \) is \( \sigma^2 \), and the expectation of \( X_{n-1}W_n \) is 0, so:
+    \[
+    E[X_n^2] = a^2E[X_{n-1}^2] + \sigma^2
+    \]
+    the expectation of \( X_{n-1}^2 \) is:
+    \[
+    E[X_{n-1}^2] = E[(aX_{n-2} + W_{n-1})^2] = E[a^2X_{n-2}^2 + 2aX_{n-2}W_{n-1} + W_{n-1}^2]
+    \]
+    \[
+    E[X_{n-1}^2] = a^2E[X_{n-2}^2] + \sigma^2
+    \]
+    \[
+    E[X_{n-2}^2] = a^2E[X_{n-3}^2] + \sigma^2
+    \]
+    \[
+    \vdots
+    \]
+    \[
+    E[X_{n-1}^2] = a^2E[X_{n-2}^2] + \sigma^2
+    \]
+    for WSS, the variance must be time-invariant, so the variance $E[X_n^2]$ must be equal to the variance $E[X_{n-1}^2]$, so we can represent this as a recursive formula with the variance as $y$:
+    \[
+    y = a^2y + \sigma^2 \Rightarrow y(1 - a^2) = \sigma^2 \Rightarrow y = \frac{\sigma^2}{1 - a^2}
+    \]
+    so the variance is:
+    \[
+    \text{Var}(X_n) = \mathbf{\frac{\sigma^2}{1 - a^2}}
+    \]
+    The autocovariance function is given by:
+    \[
+    \gamma(k) = \text{Cov}(X_n, X_{n+k}) = E[(X_n - E[X_n])(X_{n+k} - E[X_{n+k}])]
+    \]
+    we can substitute the values of \( X_n \) and \( X_{n+k} \) to get:
+    \[
+    \gamma(k) = E[(aX_{n-1} + W_n)(aX_{n+k-1} + W_{n+k})]
+    \]
+    we know that the expectation of \( W_nW_{n+k} \) is 0, so the autocovariance function is:
+    \[
+    \gamma(k) = E[a^2X_{n-1}X_{n+k-1}] = a^2E[X_{n-1}X_{n+k-1}]
+    \]
+    we can substitute the values of \( X_{n-1} \) and \( X_{n+k-1} \) to get:
+    \[
+    \gamma(k) = a^2E[X_{n-2}X_{n+k-2}] = a^2E[X_{n-3}X_{n+k-3}]
+    \]
+    \[
+    \vdots
+    \]
+    this can be generalized as:
+    \[
+    \gamma(k) = a^{k}E[X_{n}X_{n}]
+    \]
+    \[
+    \gamma(k) = a^{k}E[X_{n}^2]
+    \]
+    \[
+    \gamma(k) = a^{k}y
+    \]
+    \[
+    \gamma(k) = a^{k}\frac{\sigma^2}{1 - a^2}
+    \]
     \item[(c)] \textbf{(2 points)} Discuss how the parameter \( a \) influences the behavior of the process, particularly in terms of its stability and variance over time.
+    \\\\ The parameter \( a \) influences the stability of the process, as the process is WSS only when \( |a| < 1 \). If \( |a| \geq 1 \), the process is not WSS, and the variance may increase over time, leading to instability. The parameter \( a \) determines the impact of the previous value on the current value, by scaling the previous value by \( a \). If \( |a| \) is close to 1, the process may exhibit slow convergence or divergence, affecting the stability and variance over time.
     \item[(d)] \textbf{(2 points)} Consider the case where \( |a| \geq 1 \) and explain why the process may no longer be WSS under such conditions.
+    \\\\ When \( |a| \geq 1 \), the process may no longer be WSS because the process becomes unstable, with the variance increasing over time. The mean may not remain constant, violating the WSS conditions. The process may exhibit explosive behavior, diverging to infinity or oscillating without convergence, leading to non-stationarity.
 \end{itemize}
 
 
@@ -491,17 +669,86 @@ Consider a gambling game where, at each turn, a gambler either wins 1 dollar wit
 
 \begin{itemize}
     \item[(a)] \textbf{(2 points)} Show that the process \( X_n \) is a Markov chain, explaining how it satisfies the Markov property 
+    \\ the gambler begins with 1 dollar in state 1
+    \\ the next state can be either 0 or 2, with probabilities 0.6 and 0.4, respectively
+    \\ \begin{tikzpicture}[shorten >=1pt, node distance=2cm, auto, scale=1.5]
+
+        % Nodes representing the states
+        \node[state, fill=red!30] (A) {0};
+        \node[state, right of=A] (B) {1};
+        \node[state, right of=B] (C) {2};
+        \node[state, right of=C] (D) {3};
+        \node[state, right of=D] (E) {4};
+        \node[state, fill=green!30, right of=E] (F) {5};
+    
+          % Transitions between states with different arrow types
+    \path[->, thick] (B) edge [bend left=45, above] node {0.4} (C);
+    \path[->, thick] (B) edge [bend right=45, below] node {0.6} (A);
+    \path[->, thick] (C) edge [bend left=45, above] node {0.4} (D);
+    \path[->, thick] (C) edge [bend right=45, below] node {0.6} (B);
+    \path[->, thick] (D) edge [bend left=45, above] node {0.4} (E);
+    \path[->, thick] (D) edge [bend right=45, below] node {0.6} (C);
+    \path[->, thick] (E) edge [bend left=45, above] node {0.4} (F);
+    \path[->, thick] (E) edge [bend right=45, below] node {0.6} (D);
+    
+    
+        % Absorbing states
+        \node[draw, circle, below=0.5cm of A] (AbsA) {Absorbing};
+        \node[draw, circle, below=0.5cm of F] (AbsF) {Absorbing};
+        
+        % Final connections
+        \path[->] (A) edge [loop left, above] node {1.0} (A);
+        \path[->] (F) edge [loop right, above] node {1.0} (F);
+    \end{tikzpicture}
+    
+    The process \( X_n \) is a Markov chain because the probability of transitioning to the next state depends only on the amount of wealth at the current state, not on the history of previous states. The Markov property holds because the future state depends only on the current state, making it a memoryless process.
     
     \item[(b)] \textbf{(4 points)} Construct the transition probability matrix for the Markov chain, ensuring that it captures both the winning and losing probabilities. Explicitly show the entries corresponding to the absorbing states and transient states.
+\[
+P =
+\begin{array}{c|cccccc}
+\text{State} & 0   & 1   & 2   & 3   & 4   & 5   \\
+\hline
+0 & 1   & 0   & 0   & 0   & 0   & 0   \\
+1 & 0.6 & 0   & 0.4 & 0   & 0   & 0   \\
+2 & 0   & 0.6 & 0   & 0.4 & 0   & 0   \\
+3 & 0   & 0   & 0.6 & 0   & 0.4 & 0   \\
+4 & 0   & 0   & 0   & 0.6 & 0   & 0.4 \\
+5 & 0   & 0   & 0   & 0   & 0   & 1   \\
+\end{array}
+\]    
+\item[(c)] \textbf{(5 points)} Derive the probability that the gambler reaches the absorbing state at \( N = 5 \) dollars before reaching 0 dollars (ruin).
+    \\ let \( P \) be the probability of reaching the absorbing state at \( N = 5 \) dollars before reaching 0 dollars (ruin) given the current wealth of the gambler is \( i \), where \( i \) is the current state of the Markov chain. The probability \( P \) can be expressed as:
+    \[
+    P = \begin{cases}
+    1, & \text{if } i = 5, \\
+    0, & \text{if } i = 0, \\
+    0.6P_{i-1} + 0.4P_{i+1}, & \text{otherwise}.
+    \end{cases}
+    \]
+    The probability \( P \) can be solved using the system of linear equations:
+    \[
+    \begin{aligned}
+    P_0 & = 0, \\
+    P_5 & = 1, \\
+    P_1 & = 0.6P_0 + 0.4P_2, \\
+    P_2 & = 0.6P_1 + 0.4P_3, \\
+    P_3 & = 0.6P_2 + 0.4P_4, \\
+    P_4 & = 0.6P_3 + 0.4P_5.
+    \end{aligned}
+    \]
+    Solving the system of equations, we find that the probability \( P \) is:
+    \[
+    P = \begin{cases}
+    0, & \text{if } i = 0, \\
+    \frac{1}{5}, & \text{if } i = 1, 2, 3, 4, \\
+    1, & \text{if } i = 5.
+    \end{cases}
+    \]
+    Therefore, the probability that the gambler reaches the absorbing state at \( N = 5 \) dollars before reaching 0 dollars (ruin) is \( \frac{1}{5} \) for all states \( i = 1, 2, 3, 4 \).
 
-    \item[(c)] \textbf{(5 points)} Derive the probability that the gambler reaches the absorbing state at \( N = 5 \) dollars before reaching 0 dollars (ruin).
-    
-    % \item[(d)] Use the concept of first-step analysis to set up and solve the recurrence relation for the probability of reaching 5 dollars from state \( i \).
-
-    % \item[(e)] Generalize the results to a case where the probabilities of winning and losing are \( p \) and \( 1-p \), respectively, and derive the expected number of steps to reach either absorbing state.
-    
     \item[(d)] \textbf{(3 points)} Discuss how the probabilities change as \( p \) varies, particularly focusing on the expected duration of the game and the likelihood of reaching 5 dollars versus 0 dollars.
-
+    \\\\ The probability of reaching the absorbing state at \( N = 5 \) dollars before reaching 0 dollars (ruin) depends on the winning probability \( p \). As \( p \) increases, the gambler is more likely to reach 5 dollars before reaching 0 dollars. The expected duration of the game decreases as \( p \) increases, as the gambler is more likely to win and reach the target wealth of 5 dollars. Conversely, as \( p \) decreases, the gambler is more likely to lose and reach 0 dollars, leading to a longer duration of the game.
     \item[(e)] \textbf{(10 points)} Simulate a gambling game where you either win or lose money based on specific probabilities based on the above parameters. 
 
 
