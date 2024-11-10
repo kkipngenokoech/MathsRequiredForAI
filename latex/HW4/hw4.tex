@@ -28,6 +28,15 @@
 Compute the first and second derivatives of the following functions:
 \begin{enumerate}
     \item $f(x) = \mathbf{M}^\top \mathbf{M} \mathbf{x}$, where $\mathbf{x} \in \mathbb{R}^m$ and $\mathbf{M} \in \mathbb{R}^{m \times m}$. What happens if $\mathbf{M} = \mathbf{M}^\top$?
+    \\ first derivative:
+    \[
+    \frac{\partial f}{\partial x} = \mathbf{M}^\top \mathbf{M}
+    \]
+    second derivative:
+    \[
+    \frac{\partial^2 f}{\partial x^2} = 0
+    \]
+    if $M = M^\top$: then 
     \item $f(\mathbf{X}) = \text{tr}(\mathbf{M}\mathbf{X})$, where $\mathbf{M} \in \mathbb{R}^{m \times n}$ and $\mathbf{X} \in \mathbb{R}^{n \times m}$, and $\text{tr}$ is the trace of a square matrix.
     \item $f(\mathbf{X}) = \text{tr}(\mathbf{X} \mathbf{X}^\top)$, where $\mathbf{X} \in \mathbb{R}^{n \times n}$, and $\text{tr}$ is the trace of a square matrix.
     \item $f(\mathbf{X}) = \mathbf{a}^\top \mathbf{X} \mathbf{b}$, where $\mathbf{X} \in \mathbb{R}^{m \times n}$, $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$.
