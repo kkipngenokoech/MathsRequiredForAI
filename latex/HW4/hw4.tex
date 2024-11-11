@@ -28,19 +28,86 @@
 Compute the first and second derivatives of the following functions:
 \begin{enumerate}
     \item $f(x) = \mathbf{M}^\top \mathbf{M} \mathbf{x}$, where $\mathbf{x} \in \mathbb{R}^m$ and $\mathbf{M} \in \mathbb{R}^{m \times m}$. What happens if $\mathbf{M} = \mathbf{M}^\top$?
-    \\ first derivative:
+    the first derivative is:
     \[
-    \frac{\partial f}{\partial x} = \mathbf{M}^\top \mathbf{M}
+    \frac{\partial f(x)}{\partial x} = \mathbf{M}^\top \mathbf{M}
     \]
-    second derivative:
+    the second derivative is:
     \[
-    \frac{\partial^2 f}{\partial x^2} = 0
+    \frac{\partial^2 f(x)}{\partial x^2} = 0
     \]
-    if $M = M^\top$: then 
+    if $\mathbf{M} = \mathbf{M}^\top$:
+    \[
+    f(x) = \mathbf{M}^\top \mathbf{M} \mathbf{x} = \mathbf{M} \mathbf{M} \mathbf{x} = \mathbf{M}^2 \mathbf{x}
+    \]
+    then the first derivative is:
+    \[
+    \frac{\partial f(x)}{\partial x} = \mathbf{M}^2
+    \]
+    the second derivative is:
+    \[
+    \frac{\partial^2 f(x)}{\partial x^2} = 0
+    \]
     \item $f(\mathbf{X}) = \text{tr}(\mathbf{M}\mathbf{X})$, where $\mathbf{M} \in \mathbb{R}^{m \times n}$ and $\mathbf{X} \in \mathbb{R}^{n \times m}$, and $\text{tr}$ is the trace of a square matrix.
+    \[
+    f(\mathbf{X}) = \text{tr}(\mathbf{M}\mathbf{X}) = \text{tr}(\mathbf{X}\mathbf{M})
+    \]
+    \[
+    f(\mathbf{X}) = \text{tr}(\mathbf{X}\mathbf{M}) = \sum_{i=1}^{n} \sum_{j=1}^{m} \mathbf{X}_{ij} \mathbf{M}_{ji}
+    \]
+    the first derivative is:
+    \[
+    \frac{\partial f(\mathbf{X})}{\partial \mathbf{X}} = \mathbf{M}^\top
+    \]
+    the second derivative is:
+    \[
+    \frac{\partial^2 f(\mathbf{X})}{\partial \mathbf{X}^2} = 0
+    \]
     \item $f(\mathbf{X}) = \text{tr}(\mathbf{X} \mathbf{X}^\top)$, where $\mathbf{X} \in \mathbb{R}^{n \times n}$, and $\text{tr}$ is the trace of a square matrix.
+    \[
+    f(\mathbf{X}) = \text{tr}(\mathbf{X} \mathbf{X}^\top) = \text{tr}(\mathbf{X}^\top \mathbf{X})
+    \]
+    \[
+    f(\mathbf{X}) = \text{tr}(\mathbf{X}^\top \mathbf{X}) = \sum_{i=1}^{n} \sum_{j=1}^{n} \mathbf{X}_{ij}^2
+    \]
+    the first derivative is:
+    \[
+    \frac{\partial f(\mathbf{X})}{\partial \mathbf{X}} = 2 \mathbf{X}
+    \]
+    the second derivative is:
+    \[
+    \frac{\partial^2 f(\mathbf{X})}{\partial \mathbf{X}^2} = 2
+    \]
     \item $f(\mathbf{X}) = \mathbf{a}^\top \mathbf{X} \mathbf{b}$, where $\mathbf{X} \in \mathbb{R}^{m \times n}$, $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^n$.
+    \[
+    f(\mathbf{X}) = \mathbf{a}^\top \mathbf{X} \mathbf{b} = \mathbf{b}^\top \mathbf{X}^\top \mathbf{a}
+    \]
+    \[
+    f(\mathbf{X}) = \mathbf{b}^\top \mathbf{X}^\top \mathbf{a} = \sum_{i=1}^{n} \sum_{j=1}^{m} \mathbf{X}_{ij} \mathbf{a}_j \mathbf{b}_i
+    \]
+    the first derivative is:
+    \[
+    \frac{\partial f(\mathbf{X})}{\partial \mathbf{X}} = \mathbf{a} \mathbf{b}^\top
+    \]
+    the second derivative is:
+    \[
+    \frac{\partial^2 f(\mathbf{X})}{\partial \mathbf{X}^2} = 0
+    \]
     \item $f(\mathbf{X}) = \mathbf{a}^\top \mathbf{X}^\top \mathbf{X} \mathbf{b}$, where $\mathbf{X} \in \mathbb{R}^{n \times m}$, $\mathbf{a} \in \mathbb{R}^m$ and $\mathbf{b} \in \mathbb{R}^m$.
+    \[
+    f(\mathbf{X}) = \mathbf{a}^\top \mathbf{X}^\top \mathbf{X} \mathbf{b} = \mathbf{b}^\top \mathbf{X}^\top \mathbf{X}^\top \mathbf{a}
+    \]
+    \[
+    f(\mathbf{X}) = \mathbf{b}^\top \mathbf{X}^\top \mathbf{X}^\top \mathbf{a} = \sum_{i=1}^{m} \sum_{j=1}^{n} \mathbf{X}_{ji}^2 \mathbf{a}_j \mathbf{b}_i
+    \]
+    the first derivative is:
+    \[
+    \frac{\partial f(\mathbf{X})}{\partial \mathbf{X}} = 2 \mathbf{X} \mathbf{b} \mathbf{a}^\top
+    \]
+    the second derivative is:
+    \[
+    \frac{\partial^2 f(\mathbf{X})}{\partial \mathbf{X}^2} = 2 \mathbf{b} \mathbf{a}^\top
+    \]
 \end{enumerate}
 
 \section{Ridge Regression (20 Points)}
@@ -279,7 +346,7 @@ in table below
     \]
 updating $W_{14}$:
     \[
-    W_{14_{\text{new}}} = W_{14_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{14}} = -1 - 0.1 \cdot 0.20151660408 = \textbf{0.97984833959}
+    W_{14_{\text{new}}} = W_{14_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{14}} = -1 - 0.1 \cdot 0.20151660408 = \textbf{-1.02015166041}
     \]
 updating $W_{23}$:
     \[
@@ -301,7 +368,7 @@ updating $W_{45}$:
         \begin{tabular}{|c|c|c|c|c|c|}
         \hline
         $W_{13}$ & $W_{14}$ & $W_{23}$ & $W_{24}$ & $W_{35}$ & $W_{45}$ \\ \hline
-        1.11   & 0.98    & 1.88    & -2.98    & 2.08   &  0.73  \\ \hline
+        1.11   & -1.02    & 1.88    & -2.98    & 2.08   &  -0.73  \\ \hline
         \end{tabular}
     \end{center}
 \end{enumerate}
@@ -324,6 +391,14 @@ in the Introduction to deep learning and Introduction to machine learning course
 Run another iteration (5 points) Use the updated weights of previous section. However the inputs of
 node 1 and node 2 are 2.0 and -2.0 respectively, the desired output is 2. What is your predicted output, and
 what is your updated weights ?
+\\ weights to use:
+\[
+W_{13} = 1.11, \quad W_{14} = -1.02, \quad W_{23} = 1.88, \quad W_{24} = -2.98, \quad W_{35} = 2.08, \quad W_{45} = -0.73
+\]
+inputs:
+\[
+x_1 = 2.0, \quad x_2 = -2.0, \quad \hat{y} = 2.0
+\]
 
 \subsection{One Layer MLP (40 Points)}
 
@@ -366,7 +441,7 @@ the gradient of the loss w.r.t to the predicted output $\hat{Y}$ is:
 \frac{\partial MSE}{\partial \hat{Y}} = \frac{1}{N} \sum_{i=1}^{N} \frac{\partial}{\partial \hat{Y}} (Y_i - \hat{Y}_i)^2
 \]
 \[
-\frac{\partial MSE}{\partial \hat{Y}} = \frac{1}{N} \sum_{i=1}^{N} -2(Y_i - \hat{Y}_i) = -\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i)
+\frac{\partial MSE}{\partial \hat{Y}} = \frac{1}{N} \sum_{i=1}^{N} -2(Y_i - \hat{Y}_i) = -\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i)
 \]
 \begin{enumerate}
     \item Gradient with respect to $\mathbf{W}_o$: $$\frac{\partial MSE}{\partial \mathbf{W}_o}$$
@@ -379,10 +454,10 @@ the gradient of the loss w.r.t to the predicted output $\hat{Y}$ is:
     \frac{\partial MSE}{\partial \mathbf{W}_o} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \frac{\partial \hat{Y}}{\partial \mathbf{W}_o}
     \]
     \[
-    \frac{\partial MSE}{\partial \mathbf{W}_o} = -\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i) \cdot \frac{\partial}{\partial \mathbf{W}_o} (\mathbf{\hat{h}}_i \mathbf{W}_o + \mathbf{b}_o)
+    \frac{\partial MSE}{\partial \mathbf{W}_o} = -\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i) \cdot \frac{\partial}{\partial \mathbf{W}_o} (\mathbf{\hat{h}}_i \mathbf{W}_o + \mathbf{b}_o)
     \]
     \[
-    \frac{\partial MSE}{\partial \mathbf{W}_o} = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i) \cdot \mathbf{\hat{h}}_i}
+    \frac{\partial MSE}{\partial \mathbf{W}_o} = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i) \cdot \mathbf{\hat{h}}_i}
     \]
     
     \item Gradient with respect to $\mathbf{b}_o$: $$\frac{\partial MSE}{\partial \mathbf{b}_o}$$
@@ -390,10 +465,10 @@ the gradient of the loss w.r.t to the predicted output $\hat{Y}$ is:
         \frac{\partial MSE}{\partial \mathbf{b}_o} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \frac{\partial \hat{Y}}{\partial \mathbf{b}_o}
         \]
         \[
-            \frac{\partial MSE}{\partial \mathbf{b}_o} = -\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i) \cdot \frac{\partial}{\partial \mathbf{b}_o} (\mathbf{\hat{h}}_i \mathbf{W}_o + \mathbf{b}_o)
+            \frac{\partial MSE}{\partial \mathbf{b}_o} = -\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i) \cdot \frac{\partial}{\partial \mathbf{b}_o} (\mathbf{\hat{h}}_i \mathbf{W}_o + \mathbf{b}_o)
             \]
             \[
-                \frac{\partial MSE}{\partial \mathbf{b}_o} = -\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i) \cdot 1 = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (\hat{Y}_i - Y_i)}
+                \frac{\partial MSE}{\partial \mathbf{b}_o} = -\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i) \cdot 1 = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i)}
                 \]
     \item Gradient with respect to $\mathbf{W}_h$: $$\frac{\partial MSE}{\partial \mathbf{W}_h}$$
     the forward equation for the hidden layer is: $\mathbf{\hat{h}} = \sigma(h)$ where $h = \mathbf{X} \mathbf{W}_h + \mathbf{b}_h$ 
@@ -485,6 +560,18 @@ You should still use sigmoid activation on the new layer. What is the effect of 
 \section{Evaluations (10 Points)}
 In class, we discussed solving a linear regression using the pseudo-inverse, which gives the same result as minimizing the residual sum of squares. In the starter notebook, I have provided a solution to the linear regression problem using SVD and the pseudo-inverse. Compare the root mean square error (RMSE) of this method, the ridge regression method, and the one-layer MLP. Why do you think the errors are different ?
 Which one has the lowest error and why ?
+\[\]
+\textbf{Answer:}
+
+The RMSE of the linear regression using the pseudo-inverse is \(\textbf{7.387891796775459}\).
+The RMSE of the ridge regression is $\textbf{7.379693013437837}$.
+The RMSE of the one-layer MLP is $\textbf{13.113716195628152}$.
+\[
+\]
+The errors are different because the methods used to solve the regression problem are different. The linear regression using the pseudo-inverse and the ridge regression method uses L2 regularization to add a penalty to the loss, which helps to reduce overfitting, while the one-layer MLP is a neural network method which involves calculating weights. The one-layer MLP is a more complex model that can capture non-linear relationships in the data. The one-layer MLP has the highest error because it is a more complex model that can capture non-linear relationships in the data which cannot be captured in a one-layer mlp. The ridge regression method has the lowest error because it adds a regularization term to the loss function, which helps prevent overfitting.
+\[
+\]
+
 
 I have provided a keras implementation of a deeper neural network with 4 layers and it ouputs the lowers
 RMSE error. However, there are some techniques added here like dropout, weight initialization, different
