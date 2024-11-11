@@ -400,6 +400,146 @@ inputs:
 x_1 = 2.0, \quad x_2 = -2.0, \quad \hat{y} = 2.0
 \]
 
+\textbf{Forward Pass:}
+\[
+\text{Node 3: } a_3 = \sigma(W_{13} \cdot x_1 + W_{23} \cdot x_2) \quad \text{Node 4: } a_4 = \tanh(W_{14} \cdot x_1 + W_{24} \cdot x_2) \quad \text{Node 5: } a_5 = W_{35} \cdot a_3 + W_{45} \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \sigma(1.11 \cdot 2.0 + 1.88 \cdot -2.0) \quad \text{Node 4: } a_4 = \tanh(-1.02 \cdot 2.0 - 2.98 \cdot -2.0) \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \sigma(2.22 - 3.76) \quad \text{Node 4: } a_4 = \tanh(-2.04 + 5.96) \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \sigma(-1.54) \quad \text{Node 4: } a_4 = \tanh(3.92) \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \frac{1}{1 + e^{-1.54}} \quad \text{Node 4: } a_4 = \frac{e^{7.84} - 1}{e^{7.84} + 1} \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \frac{1}{1 + 4.65235195767} \quad \text{Node 4: } a_4 = \frac{2455.029 - 1}{2455.029 + 1} \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = \frac{1}{5.65235195767} \quad \text{Node 4: } a_4 = \frac{2454.029}{2456.029} \quad \text{Node 5: } a_5 = 2.08 \cdot a_3 + -0.73 \cdot a_4
+\]
+
+\[
+\text{Node 3: } a_3 = 0.1776535274 \quad \text{Node 4: } a_4 = 0.999212971 \quad \text{Node 5: } a_5 = 2.08 \cdot 0.1776535272 + -0.73 \cdot 0.999121971
+\]
+
+\[
+\text{Node 5: } a_5 = -0.3598839702 
+\]
+
+\textbf{Loss Calculation:}
+
+\[
+L = (\hat{y} - y)^2 = (2.0 - (-0.3598839702))^2 = (2.3598839702)^2 = 5.5698839702
+\]
+
+\textbf{Backpropagation:}
+
+\[
+\frac{\partial L}{\partial y} = -2 \cdot (\hat{y} - y) = -2 \cdot (2.0 - (-0.3598839702)) = -2 \cdot 2.3598839702 = \textbf{-4.719679405}
+\]
+
+\[
+\frac{\partial L}{\partial W_{35}} = \frac{\partial L}{\partial a_5} \cdot \frac{\partial a_5}{\partial W_{35}} = -4.719679405 \cdot a_3 = -4.719679405 \cdot 0.1776535274 = \textbf{-0.838422073}
+\]
+
+\[
+\frac{\partial L}{\partial W_{45}} = \frac{\partial L}{\partial a_5} \cdot \frac{\partial a_5}{\partial W_{45}} = -4.719679405 \cdot a_4 = -4.719679405 \cdot 0.999212971 = \textbf{-4.715996686}
+\]
+
+\[
+\frac{\partial L}{\partial a_4} = \frac{\partial L}{\partial a_5} \cdot \frac{\partial a_5}{\partial a_4} = -4.719679405 \cdot W_{45} = -4.719679405 \cdot -0.73 = \textbf{3.445365966}
+\]
+
+\[
+\frac{\partial L}{\partial tanh} = \frac{\partial L}{\partial a_4} \cdot \frac{\partial a_4}{\partial tanh} = 3.445365966 \cdot \tanh'(W_{14} \cdot x_1 + W_{24} \cdot x_2)
+\]
+
+\[
+= 3.445365966 \cdot (1 - 0.999212971^2) = 3.445365966 \cdot 0.0001573996059 = \textbf{0.000542394}
+\]
+
+\[
+\frac{\partial L}{\partial W_{14}} = \frac{\partial L}{\partial tanh} \cdot \frac{\partial a_4}{\partial W_{14}} = 0.000542394 \cdot x_1 = 0.000542394 \cdot 2 = \textbf{0.001084788}
+\]
+
+\[
+\frac{\partial L}{\partial W_{24}} = \frac{\partial L}{\partial tanh} \cdot \frac{\partial a_4}{\partial W_{24}} = 0.000542394 \cdot x_2 = 0.000542394 \cdot -2 = \textbf{-0.001084788}
+\]
+
+\[
+\frac{\partial L}{\partial a_3} = \frac{\partial L}{\partial a_5} \cdot \frac{\partial a_5}{\partial a_3} = -4.719679405 \cdot W_{35} = -4.719679405 \cdot 2.08 = \textbf{-9.816933162}
+\]
+
+\[
+\frac{\partial L}{\partial \sigma} = \frac{\partial L}{\partial a_3} \cdot \frac{\partial a_3}{\partial \sigma} = -9.816933162 \cdot \sigma'(W_{13} \cdot x_1 + W_{23} \cdot x_2)
+\]
+
+\[
+= -9.816933162 \cdot 0.1776535274 \cdot (1 - 0.1776535274) = -9.816933162 \cdot 0.1776535274 \cdot 0.8223464726 = \textbf{-1.441073}
+\]
+
+
+\[
+\frac{\partial L}{\partial W_{13}} = \frac{\partial L}{\partial \sigma} \cdot \frac{\partial a_3}{\partial W_{13}} = -1.441073 \cdot x_1 = -1.441073 \cdot 2 = \textbf{-2.882146}
+\]
+
+\[
+\frac{\partial L}{\partial W_{23}} = \frac{\partial L}{\partial \sigma} \cdot \frac{\partial a_3}{\partial W_{23}} = -1.441073 \cdot x_2 = -1.441073 \cdot -2 = \textbf{2.882146}
+\]
+
+\textbf{Gradient Descent and Parameter Update:}
+
+\[
+weight_{\text{new}} = weight_{\text{old}} - \alpha \cdot \nabla_w L
+\]
+
+\[
+\alpha = 0.1
+\]
+
+\[
+W_{13_{\text{new}}} = W_{13_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{13}} = 1.11 - 0.1 \cdot -2.882146 = \textbf{1.3982146}
+\]
+
+\[
+W_{14_{\text{new}}} = W_{14_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{14}} = -1.02 - 0.1 \cdot 0.001084788 = \textbf{-1.019891521}
+\]
+
+\[
+W_{23_{\text{new}}} = W_{23_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{23}} = 1.88 - 0.1 \cdot 2.882146 = \textbf{1.5917854}
+\]
+
+\[
+W_{24_{\text{new}}} = W_{24_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{24}} = -2.98 - 0.1 \cdot -0.001084788 = \textbf{-2.979891521}
+\]
+
+\[
+W_{35_{\text{new}}} = W_{35_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{35}} = 2.08 - 0.1 \cdot -0.838422073 = \textbf{2.1638422073}
+\]
+
+\[
+W_{45_{\text{new}}} = W_{45_{\text{old}}} - \alpha \cdot \frac{\partial L}{\partial W_{45}} = -0.73 - 0.1 \cdot -4.715996686 = \textbf{-0.2584003314}
+\]
+
+\[
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+$W_{13}$ & $W_{14}$ & $W_{23}$ & $W_{24}$ & $W_{35}$ & $W_{45}$ \\ \hline
+1.40   & -1.02    & 1.59    & -2.98    & 2.16   &  -0.26  \\ \hline
+\end{tabular}
+\]
+
 \subsection{One Layer MLP (40 Points)}
 
 \begin{center}
@@ -557,6 +697,60 @@ Complete the MLP codes in the starter notebook (20 points).
 \textbf{Bonus (10 points):} Add Another layer hidden layer to MLP. and complete the codes in the 2 Layer MLP.
 You should still use sigmoid activation on the new layer. What is the effect of adding another layer ?
 
+\textbf{Answer:}
+The effect of adding another layer is that the model can capture more complex relationships in the data. The additional layer allows the model to learn more complex features in the data, which can help improve the performance of the model. However, adding more layers can also lead to overfitting since it will learn data-specific features. It is important to carefully tune the hyperparameters of the model to prevent overfitting when adding more layers.
+
+\textbf{The gradients:}
+w.r.t to the output layer:
+
+\[
+\frac{\partial MSE}{\partial \hat{Y}} = -\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i)
+\]
+
+\[
+\frac{\partial MSE}{\partial \mathbf{W}_o} = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i) \cdot \mathbf{\hat{h}}_i}
+\]
+
+\[
+\frac{\partial MSE}{\partial \mathbf{b}_o} = \mathbf{-\frac{2}{N} \sum_{i=1}^{N} (Y_i - \hat{Y}_i)}
+\]
+
+\[
+\frac{\partial MSE}{\partial \mathbf{h}_2} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \frac{\partial \hat{Y}}{\partial \mathbf{h}_2} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \mathbf{W}_o
+\]
+derivatives w.r.t to the hidden layer 2:
+\[
+\frac{\partial MSE}{\partial \mathbf{h}_2} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \frac{\partial \hat{Y}}{\partial \mathbf{h}_2} = \frac{\partial MSE}{\partial \hat{Y}} \cdot \mathbf{W}_o
+\]
+it has a sigmoid activation function, so the derivative of the loss w.r.t to the sigmoid is:
+\[
+\frac{\partial MSE}{\partial \sigma} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \frac{\partial \mathbf{h}_2}{\partial \sigma} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \mathbf{h}_2 \cdot (1 - \mathbf{h}_2)
+\]
+derivative w.r.t to weight $\mathbf{W}_h2$:
+\[
+\frac{\partial MSE}{\partial \mathbf{W}_h2} = \frac{\partial MSE}{\partial \sigma} \cdot \frac{\partial \sigma}{\partial \mathbf{W}_h2} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \mathbf{h}_2 \cdot (1 - \mathbf{h}_2) \cdot \mathbf{h}_1
+\]
+derivative w.r.t to bias $\mathbf{b}_h2$:
+\[
+\frac{\partial MSE}{\partial \mathbf{b}_h2} = \frac{\partial MSE}{\partial \sigma} \cdot \frac{\partial \sigma}{\partial \mathbf{b}_h2} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \mathbf{h}_2 \cdot (1 - \mathbf{h}_2)
+\]
+derivative w.r.t to the hidden layer 1:
+\[
+\frac{\partial MSE}{\partial \mathbf{h}_1} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \frac{\partial \mathbf{h}_2}{\partial \mathbf{h}_1} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \frac{\partial \mathbf{h}_2}{\partial \mathbf{h}_1} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \mathbf{W}_{h_2}
+\]
+derivative w.r.t to hidden layer 1 weights:
+it has a sigmoid activation function, so the derivative of the loss w.r.t to the sigmoid is:
+\[
+\frac{\partial MSE}{\partial \sigma} = \frac{\partial MSE}{\partial \mathbf{h}_1} \cdot \frac{\partial \mathbf{h}_1}{\partial \sigma} = \frac{\partial MSE}{\partial \mathbf{h}_2} \cdot \mathbf{W}_{h_2} \cdot \mathbf{h}_1 \cdot (1 - \mathbf{h}_1) 
+\]
+derivative w.r.t to weight $\mathbf{W}_h1$:
+\[
+\frac{\partial MSE}{\partial \mathbf{W}_h1} = \frac{\partial MSE}{\partial \sigma} \cdot \frac{\partial \sigma}{\partial \mathbf{W}_h1} = \frac{\partial MSE}{\partial \mathbf{h}_1} \cdot \mathbf{h}_1 \cdot (1 - \mathbf{h}_1) \cdot \mathbf{X}
+\]
+derivative w.r.t to bias $\mathbf{b}_h1$:
+\[
+\frac{\partial MSE}{\partial \mathbf{b}_h1} = \frac{\partial MSE}{\partial \sigma} \cdot \frac{\partial \sigma}{\partial \mathbf{b}_h1} = \frac{\partial MSE}{\partial \mathbf{h}_1} \cdot \mathbf{h}_1 \cdot (1 - \mathbf{h}_1)
+\]
 \section{Evaluations (10 Points)}
 In class, we discussed solving a linear regression using the pseudo-inverse, which gives the same result as minimizing the residual sum of squares. In the starter notebook, I have provided a solution to the linear regression problem using SVD and the pseudo-inverse. Compare the root mean square error (RMSE) of this method, the ridge regression method, and the one-layer MLP. Why do you think the errors are different ?
 Which one has the lowest error and why ?
@@ -568,7 +762,7 @@ The RMSE of the ridge regression is $\textbf{7.379693013437837}$.
 The RMSE of the one-layer MLP is $\textbf{13.113716195628152}$.
 \[
 \]
-The errors are different because the methods used to solve the regression problem are different. The linear regression using the pseudo-inverse and the ridge regression method uses L2 regularization to add a penalty to the loss, which helps to reduce overfitting, while the one-layer MLP is a neural network method which involves calculating weights. The one-layer MLP is a more complex model that can capture non-linear relationships in the data. The one-layer MLP has the highest error because it is a more complex model that can capture non-linear relationships in the data which cannot be captured in a one-layer mlp. The ridge regression method has the lowest error because it adds a regularization term to the loss function, which helps prevent overfitting.
+The errors are different because the methods used to solve the regression problem are different. The linear regression using the pseudo-inverse  to solve the regression problem, and the ridge regression method uses L2 regularization to add a penalty to the loss, which helps to reduce overfitting, while the one-layer MLP is a neural network method which involves calculating weights. The one-layer MLP is a more complex model that can capture non-linear relationships in the data. The one-layer MLP has the highest error because it is a more complex model that can capture non-linear relationships in the data which cannot be captured in a one-layer mlp. The ridge regression method has the lowest error because it adds a regularization term to the loss function, which helps prevent overfitting.
 \[
 \]
 

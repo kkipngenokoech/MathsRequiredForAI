@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 NOV 2024 17:14
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 NOV 2024 21:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -366,12 +366,32 @@ Overfull \hbox (9.81102pt too wide) detected at line 319
  []
 
 [5]
-<nn1.png, id=104, 618.81187pt x 220.57407pt>
+Overfull \hbox (0.82661pt too wide) detected at line 406
+[]\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^[\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = [](\OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 x[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ) []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 + \OML/cmm/m/it/10 W[] \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 a[]
+ []
+
+
+Overfull \hbox (41.41026pt too wide) detected at line 410
+[]\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = \OML/cmm/m/it/10 ^^[\OT1/cmr/m/n/10 (1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 11 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0 + 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 88 \OMS/cmsy/m/n/10 ^^A ^^@\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0) []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = [](\OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 02 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 98 \OMS/cmsy/m/n/10 ^^A ^^@\OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 0) []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 08 \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 + \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 73 \OMS/cmsy/m/n/10 ^^A \OML/cmm/m/it/10 a[]
+ []
+
+[6]
+Overfull \hbox (29.1267pt too wide) detected at line 434
+[]\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1776535274 []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999212971 []\OML/cmm/m/it/10 a[] \OT1/cmr/m/n/10 = 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 08 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1776535272 + \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 73 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999121971
+ []
+
+
+Overfull \hbox (15.42165pt too wide) detected at line 490
+\OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 9\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 816933162 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1776535274 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1776535274) = \OMS/cmsy/m/n/10 ^^@\OT1/cmr/m/n/10 9\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 816933162 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 1776535274 \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 8223464726 = []
+ []
+
+[7]
+<nn1.png, id=118, 618.81187pt x 220.57407pt>
 File: nn1.png Graphic file (type png)
 <use nn1.png>
-Package pdftex.def Info: nn1.png  used on input line 406.
+Package pdftex.def Info: nn1.png  used on input line 546.
 (pdftex.def)             Requested size: 309.40518pt x 110.28676pt.
- [6] [7 <./nn1.png>] [8] [9] [10] (./hw4.aux)
+ [8 <./nn1.png>] [9] [10] [11] [12] (./hw4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -380,18 +400,18 @@ Package rerunfilecheck Info: File `hw4.out' has not changed.
 (rerunfilecheck)             Checksum: 5C92EB554CA15D5A57DE3C8597D2CBA9;2098.
  ) 
 Here is how much of TeX's memory you used:
- 10004 strings out of 474222
- 152597 string characters out of 5748733
- 1943975 words of memory out of 5000000
+ 10006 strings out of 474222
+ 152611 string characters out of 5748733
+ 1941975 words of memory out of 5000000
  32079 multiletter control sequences out of 15000+600000
  569069 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,13n,79p,821b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,13n,79p,855b,556s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on hw4.pdf (10 pages, 351772 bytes).
+Output written on hw4.pdf (12 pages, 360678 bytes).
 PDF statistics:
- 233 PDF objects out of 1000 (max. 8388607)
- 177 compressed objects within 2 object streams
- 49 named destinations out of 1000 (max. 500000)
+ 241 PDF objects out of 1000 (max. 8388607)
+ 183 compressed objects within 2 object streams
+ 51 named destinations out of 1000 (max. 500000)
  91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
