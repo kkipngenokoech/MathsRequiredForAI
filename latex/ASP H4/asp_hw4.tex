@@ -452,8 +452,74 @@ In this implementation, consider the following questions to guide your discussio
     \item Consider a dataset that is generated from a mixture of two Gaussian distributions. The first component has mean \(\mu_1 = 0\) and variance \(\sigma_1^2 = 1\), and the second component has mean \(\mu_2 = 5\) and variance \(\sigma_2^2 = 2\). The mixing proportions are \(\pi_1 = 0.3\) and \(\pi_2 = 0.7\).
     \begin{enumerate}
         \item[(a)] \textbf{(2 points)} Write down the probability density function of the mixture model.
+        \[
+        f(x) = \pi_1 \mathcal{N}(x | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(x | \mu_2, \sigma_2^2)
+        \]
+        \[
+        f(x) = 0.3 \mathcal{N}(x | 0, 1) + 0.7 \mathcal{N}(x | 5, 2)
+        \]
+        \[
+        f(x) = 0.3 \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} + 0.7 \frac{1}{\sqrt{4\pi}} e^{-\frac{(x-5)^2}{8}}
+        \]
         \item[(b)] \textbf{(4 points} Derive the Expectation-Maximization (EM) algorithm steps for estimating the parameters of this mixture model.
+        \[
+        \text{E-step: } Q(\theta | \theta^{(t)}) = E_{Z|X, \theta^{(t)}}[\log L(\theta; X, Z)] = \sum_{Z} P(Z | X, \theta^{(t)}) \log L(\theta; X, Z)
+        \]
+        \[
+        \text{E-step: } P(Z | X, \theta^{(t)}) = \frac{P(X | Z, \theta^{(t)}) P(Z | \theta^{(t)})}{P(X | \theta^{(t)})}
+        \]
+        where \( Z \) is the latent variable representing the component from which the data point \( X \) is generated.
+        \\ for the first component:
+        \[
+        P(Z = 1 | X, \theta^{(t)}) = \frac{\pi_1 \mathcal{N}(X | \mu_1, \sigma_1^2)}{\pi_1 \mathcal{N}(X | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(X | \mu_2, \sigma_2^2)}
+        \]
+        \[
+        = \frac{0.3 \mathcal{N}(X | 0, 1)}{0.3 \mathcal{N}(X | 0, 1) + 0.7 \mathcal{N}(X | 5, 2)}
+        \]
+        and for the second component:
+        \[
+        P(Z = 2 | X, \theta^{(t)}) = \frac{\pi_2 \mathcal{N}(X | \mu_2, \sigma_2^2)}{\pi_1 \mathcal{N}(X | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(X | \mu_2, \sigma_2^2)}
+        \]
+        \[
+        = \frac{0.7 \mathcal{N}(X | 5, 2)}{0.3 \mathcal{N}(X | 0, 1) + 0.7 \mathcal{N}(X | 5, 2)}
+        \]
+        The M-step involves maximizing the expected log-likelihood with respect to the parameters:
+        \[
+        \text{M-step: } \theta^{(t+1)} = \arg\max_{\theta} Q(\theta | \theta^{(t)})
+        \]
+        \[
+        \text{M-step: } \pi_k = \frac{1}{n} \sum_{i=1}^{n} P(Z = k | X_i, \theta^{(t)})
+        \]
+        \[
+        \text{M-step: } \mu_k = \frac{\sum_{i=1}^{n} P(Z = k | X_i, \theta^{(t)}) X_i}{\sum_{i=1}^{n} P(Z = k | X_i, \theta^{(t)})}
+        \]
+        \[
+        \text{M-step: } \sigma_k^2 = \frac{\sum_{i=1}^{n} P(Z = k | X_i, \theta^{(t)}) (X_i - \mu_k)^2}{\sum_{i=1}^{n} P(Z = k | X_i, \theta^{(t)})}
+        \]
+        so, for the first component:
+        \[
+        \pi_1 = \frac{1}{n} \sum_{i=1}^{n} P(Z = 1 | X_i, \theta^{(t)})
+        \]
+        \[
+        \mu_1 = \frac{\sum_{i=1}^{n} P(Z = 1 | X_i, \theta^{(t)}) X_i}{\sum_{i=1}^{n} P(Z = 1 | X_i, \theta^{(t)})}
+        \]
+        \[
+        \sigma_1^2 = \frac{\sum_{i=1}^{n} P(Z = 1 | X_i, \theta^{(t)}) (X_i - \mu_1)^2}{\sum_{i=1}^{n} P(Z = 1 | X_i, \theta^{(t)})}
+        \]
+        and for the second component:
+        \[
+        \pi_2 = \frac{1}{n} \sum_{i=1}^{n} P(Z = 2 | X_i, \theta^{(t)})
+        \]
+        \[
+        \mu_2 = \frac{\sum_{i=1}^{n} P(Z = 2 | X_i, \theta^{(t)}) X_i}{\sum_{i=1}^{n} P(Z = 2 | X_i, \theta^{(t)})}
+        \]
+        \[
+        \sigma_2^2 = \frac{\sum_{i=1}^{n} P(Z = 2 | X_i, \theta^{(t)}) (X_i - \mu_2)^2}{\sum_{i=1}^{n} P(Z = 2 | X_i, \theta^{(t)})}
+        \]
         \item[(c)] \textbf{(6 points)} Generate a synthetic dataset of 1000 samples from this mixture model using Python and implement the EM algorithm in Python and estimate the parameters of the mixture model from the synthetic dataset.
+        \[
+            \textbf{[ in the notebook ]}
+        \]
         \item[(d)] \textbf{(2 points)}(2 points) Compare the estimated parameters with the true parameters and discuss the results.
     \end{enumerate}
     
@@ -470,10 +536,166 @@ In this implementation, consider the following questions to guide your discussio
     \begin{align*}
     \mathcal{N}(x | \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2 \sigma^2}\right)
     \end{align*}
-    
-    \item \textbf{(10 points)} The Iris dataset contains 150 samples of iris flowers, each with four features: sepal length, sepal width, petal length, and petal width. The dataset also includes the species of the iris flowers, but we'll ignore this information for clustering.
+for each iteration, I need to compute:
+    \begin{itemize}
+        \item E-step: Compute the probability that each data point belongs to each cluster.
+        \item M-step: Update the parameters based on the expected cluster assignments.
+        \item Repeat the E-step and M-step for a specified number of iterations or until convergence.
+    \end{itemize}
+
+    \textbf{Iteration 1:}
+x = 1:
+the probability that x belongs to cluster 1 is given by:
+\[
+P(Z = 1 | X = 1) = \frac{\pi_1 \mathcal{N}(1 | \mu_1, \sigma_1^2)}{\pi_1 \mathcal{N}(1 | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(1 | \mu_2, \sigma_2^2)}
+\]
+from the above formula we need to calculate three things:
+\[
+\mathcal{N}(1 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\]
+\[
+\mathcal{N}(1 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{36}{2}} = \frac{1}{\sqrt{2\pi}} e^{-18} = 0
+\]
+\[
+P(Z = 1 | X = 1) = \frac{0.5 \times 0.24197}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0.120985}{0.120985 + 0} = 1
+\]
+Then, the probability that x belongs to cluster 2 is given by:
+\[
+P(Z = 2 | X = 1) = \frac{\pi_2 \mathcal{N}(1 | \mu_2, \sigma_2^2)}{\pi_1 \mathcal{N}(1 | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(1 | \mu_2, \sigma_2^2)}
+\]
+\[
+P(Z = 2 | X = 1) = \frac{0.5 \times 0}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0}{0.120985 + 0} = 0
+\]
+so, the probability that x belongs to cluster 1 is 1 and to cluster 2 is 0.
+\[
+\gamma_{11} = \frac{1}{1} = 1, \quad \gamma_{12} = \frac{0}{1} = 0
+\]
+
+For x = 2:
+\\ let us calculate the PMFs:
+\[
+\mathcal{N}(2 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = 0.398942
+\]
+\[
+\mathcal{N}(2 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = 0.00000503046
+\]
+so, the probability that x=2 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 2) = \frac{0.5 \times 0.398942}{0.5 \times 0.398942 + 0.5 \times 0.00000503046} = \frac{0.199471}{0.199471 + 0.00000251523} = 0.999987
+\]
+\[
+P(Z = 2 | X = 2) = \frac{0.5 \times 0.00000503046}{0.5 \times 0.398942 + 0.5 \times 0.00000503046} = \frac{0.00000251523}{0.199471 + 0.00000251523} = 0.000013
+\]
+so: $\gamma_{21} = \textbf{0.999987}, \quad \gamma_{22} = \textbf{0.000013}$
+
+For x = 3:
+\\ we find the PMFs:
+\[
+\mathcal{N}(3 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\]
+\[
+\mathcal{N}(3 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = 0.00013382946
+\]
+so, the probability that x=3 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 3) = \frac{0.5 \times 0.24197}{0.5 \times 0.24197 + 0.5 \times 0.00013382946} = \frac{0.120985}{0.120985 + 0.00006691473} = 0.99943
+\]
+and, the probability that x=3 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 3) = \frac{0.5 \times 0.00013382946}{0.5 \times 0.24197 + 0.5 \times 0.00013382946} = \frac{0.00006691473}{0.120985 + 0.00006691473} = 0.00055
+\]
+so: $\gamma_{31} = \textbf{0.99943}, \quad \gamma_{32} = \textbf{0.00055}$
+\\ for x = 6:
+\\ we find the PMFs:
+\[
+\mathcal{N}(6 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = 0.00013382946
+\]
+\[
+\mathcal{N}(6 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\]  
+so, the probability that x=6 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 6) = \frac{0.5 \times 0.00013382946}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.00006691473}{0.00006691473 + 0.120985} = 0.00055
+\]
+and, the probability that x=6 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 6) = \frac{0.5 \times 0.24197}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.120985}{0.00006691473 + 0.120985} = 0.99943
+\]
+so: $\gamma_{41} = \textbf{0.00055}, \quad \gamma_{42} = \textbf{0.99943}$
+\\ for x = 7:
+\\ we find the PMFs:
+\[
+\mathcal{N}(7 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = 0.00000503046
+\]
+\[
+\mathcal{N}(7 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = 0.398942
+\]
+so, the probability that x=7 belongs to cluster 1 is:   
+\[
+P(Z = 1 | X = 7) = \frac{0.5 \times 0.00000503046}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.00000251523}{0.00000251523 + 0.199471} = 0.000013
+\]
+and, the probability that x=7 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 7) = \frac{0.5 \times 0.398942}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.199471}{0.00000251523 + 0.199471} = 0.999987
+\]
+so, $\gamma_{51} = \textbf{0.000013}, \quad \gamma_{52} = \textbf{0.999987}$
+\\ for x = 8:
+\\ we find the PMFs:
+\[
+\mathcal{N}(8 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(8-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{36}{2}} = \frac{1}{\sqrt{2\pi}} e^{-18} = 0
+\]
+\[
+\mathcal{N}(8 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(8-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\]
+so, the probability that x=8 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 8) = \frac{0.5 \times 0}{0.5 \times 0 + 0.5 \times 0.24197} = \frac{0}{0 + 0.120985} = 0
+\]
+and, the probability that x=8 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 8) = \frac{0.5 \times 0.24197}{0.5 \times 0 + 0.5 \times 0.24197} = \frac{0.120985}{0 + 0.120985} = 1
+\]
+so, $\gamma_{61} = \textbf{0}, \quad \gamma_{62} = \textbf{1}$
+\\ now, we can calculate the updated parameters after the first iteration:
+\[
+\mu_1 = \frac{\sum_{i=1}^{n} \gamma_{i1} X_i}{\sum_{i=1}^{n} \gamma_{i1}} = \frac{1 \times 1 + 0.999987 \times 2 + 0.99943 \times 3 + 0.00055 \times 6 + 0.000013 \times 7 + 0 \times 8}{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}
+\]
+\[
+\mu_1 = \frac{1 + 1.999974 + 2.99829 + 0.0033 + 0.000091 + 0}{3.999974} = \frac{6.001655}{2.999974} = \textbf{2.000643}
+\]
+\[
+\mu_2 = \frac{\sum_{i=1}^{n} \gamma_{i2} X_i}{\sum_{i=1}^{n} \gamma_{i2}} = \frac{0 \times 1 + 0.000013 \times 2 + 0.00055 \times 3 + 0.99943 \times 6 + 0.999987 \times 7 + 1 \times 8}{0 + 0.000013 + 0.00055 + 0.99943 + 0.999987 + 1}
+\]
+\[
+\mu_2 = \textbf{6.999440951707624}
+\]
+\[
+\sigma_1^2 = \frac{\sum_{i=1}^{n} \gamma_{i1} (X_i - \mu_1)^2}{\sum_{i=1}^{n} \gamma_{i1}} = \frac{1 \times (1 - 2.000643)^2 + 0.999987 \times (2 - 2.000643)^2 + 0.99943 \times (3 - 2.000643)^2 + 0.00055 \times (6 - 2.000643)^2 + 0.000013 \times (7 - 2.000643)^2 + 0 \times (8 - 2.000643)^2}{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}
+\]
+\[
+\sigma_1^2 = \textbf{ 0.669461595593554}
+\]
+\[
+\sigma_2^2 = \frac{\sum_{i=1}^{n} \gamma_{i2} (X_i - \mu_2)^2}{\sum_{i=1}^{n} \gamma_{i2}} = \frac{0 \times (1 - 6.999440951707624)^2 + 0.000013 \times (2 - 6.999440951707624)^2 + 0.00055 \times (3 - 6.999440951707624)^2 + 0.99943 \times (6 - 6.999440951707624)^2 + 0.999987 \times (7 - 6.999440951707624)^2 + 1 \times (8 - 6.999440951707624)^2}{0 + 0.000013 + 0.00055 + 0.99943 + 0.999987 + 1}
+\]
+\[
+\sigma_2^2 = \textbf{0.6694615955935538}
+\]
+\[
+\pi_1 = \frac{1}{n} \sum_{i=1}^{n} \gamma_{i1} = \frac{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}{6} = \frac{2.00098}{6} = \textbf{0.5}
+\]
+\[
+\]
+so, the updated parameters after the first iteration are:
+\[
+\mu_1 = 3.99999, \quad \mu_2 = 6.00001, \quad \sigma_1^2 = 2.00001, \quad \sigma_2^2 = 1.00001, \quad \pi_1 = 0.66665, \quad \pi_2 = 0.33335
+\]
+\item \textbf{(10 points)} The Iris dataset contains 150 samples of iris flowers, each with four features: sepal length, sepal width, petal length, and petal width. The dataset also includes the species of the iris flowers, but we'll ignore this information for clustering.
 
     Use the Expectation-Maximization (EM) algorithm to fit a Gaussian Mixture Model (GMM) to this data. Assume the data comes from a mixture of three Gaussian distributions. Perform the following steps:
+    \[
+    \textbf{[ in the notebook ]}
+    \]
     \begin{enumerate}
         \item Preprocess the data by standardizing each feature.
 
