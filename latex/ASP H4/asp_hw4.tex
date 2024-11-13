@@ -459,7 +459,7 @@ In this implementation, consider the following questions to guide your discussio
         f(x) = 0.3 \mathcal{N}(x | 0, 1) + 0.7 \mathcal{N}(x | 5, 2)
         \]
         \[
-        f(x) = 0.3 \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} + 0.7 \frac{1}{\sqrt{4\pi}} e^{-\frac{(x-5)^2}{8}}
+        f(x) = 0.3 \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{x^2}{2}} + 0.7 \frac{1}{\sqrt{4\pi\sigma^2}} e^{-\frac{(x-5)^2}{8}}
         \]
         \item[(b)] \textbf{(4 points} Derive the Expectation-Maximization (EM) algorithm steps for estimating the parameters of this mixture model.
         \[
