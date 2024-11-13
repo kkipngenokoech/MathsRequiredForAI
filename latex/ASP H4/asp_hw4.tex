@@ -297,11 +297,13 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     \[
     E[Y] = E[X + N] = E[X] + E[N] = E[X] + 0 = E[X]
     \]
+    \[
+     = \textbf{E[X]}
+    \]
     the variance of \(Y\) is given by:
     \[
     \text{Var}(Y) = \text{Var}(X + N) = \text{Var}(X) + \text{Var}(N) = \text{Var}(X) + \sigma^2
     \]
-
     \item[(b)] \textbf{(3 points)} Derive the Best Linear Estimator of \( X \)
     \[
     \hat{X} = aY + b
@@ -310,7 +312,8 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     \\ the best linear estimator is given by:
     \[
     \text{MSE}(\hat{X}) = E[(X - \hat{X})^2] = E[(X - aY - b)^2] 
-    \] 
+    \]
+     
     \[
     = E[X^2 - 2aXY - 2bX + a^2Y^2 + 2abY + b^2]
     \]
@@ -354,6 +357,10 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     \[
     \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
     \]
+    so, the best linear estimator is given by:
+    \[
+    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
+    \]
     \item[(c)] \textbf{(2 points)} The orthogonality principle states that the error \( \epsilon = X - \hat{X} \) must be uncorrelated with \( Y \), i.e.:
     \[
     E[(X - \hat{X})Y] = 0.
@@ -361,10 +368,22 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     
     Substitute \( \hat{X} \) into the expression and derive equations for \( a \) and \( b \) that minimize the Mean Squared Error (MSE).
 
+    the \( \hat{x}\) is:
+
+    \[
+    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
+    \]
+
+    \[
+    E[(X - \hat{X})Y] = E[(X - \frac{2E[X^2]}{E[X^2] + \sigma^2}Y - E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2}))Y]
+    \]
+
+
     \item[(d)] \textbf{(1 point)} Define bias as:
     \[
     \text{Bias}(\hat{X}) = E[\hat{X}] - E[X].
     \]
+
 
     
     Show that the estimator \( \hat{X} \) derived above is unbiased.
