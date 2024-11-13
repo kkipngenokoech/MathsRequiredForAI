@@ -38,15 +38,90 @@ f(y; \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(y - \mu)^2}{2\sigma
     \[
     \hat{\mu}_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} y_i, \quad \hat{\sigma}^2_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{\mu}_{\text{MoM}})^2.
     \]
-
+    
      \item[(b)] \textbf{(5 points)} Derive the Maximum Likelihood Estimators (MLE) for \(\mu\) and \(\sigma^2\).
+    the likelihood function is given by:
+    \[
+    L(\mu, \sigma^2) = \prod_{i=1}^{n} \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(y_i - \mu)^2}{2\sigma^2}}
+    \]
+    expanding the likelihood function:
+    \[
+    \ell(\mu, \sigma^2) = \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^n e^{-\frac{1}{2\sigma^2} \sum_{i=1}^{n} (y_i - \mu)^2}
+    \]
+    \[
+    = \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^n e^{-\frac{1}{2\sigma^2} \left( \sum_{i=1}^{n} y_i^2 - 2\mu \sum_{i=1}^{n} y_i + n\mu^2 \right)}
+    \]
+    \[
+    \ell(\mu, \sigma^2) = -\frac{n}{2} \ln(2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^n (y_i - \mu)^2
+    \]
+    Derivative with respect to \( \mu \):
+    \[
+    \frac{\partial \ell}{\partial \mu} = -\frac{1}{2\sigma^2} \cdot 2 \sum_{i=1}^n (y_i - \mu) = -\frac{1}{\sigma^2} \sum_{i=1}^n (y_i - \mu) = 0
+    \]
+    \[
+    \sum_{i=1}^n y_i - n\mu = 0 \implies \mu = \frac{1}{n} \sum_{i=1}^n y_i = \bar{y}
+    \]
+    Derivative with respect to \( \sigma^2 \):
+    \[
+    \frac{\partial \ell}{\partial \sigma^2} = -\frac{n}{2\sigma^2} + \frac{1}{2(\sigma^2)^2} \sum_{i=1}^n (y_i - \mu)^2 = 0
+    \]
+    \[
+    \sigma^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \mu)^2 = \frac{1}{n} \sum_{i=1}^n (y_i - \bar{y})^2
+    \]
+    \[
+    \hat{\mu}_{\text{MLE}} = \bar{y}, \quad \hat{\sigma}^2_{\text{MLE}} = \frac{1}{n} \sum_{i=1}^n (y_i - \bar{y})^2
+    \]
 
      \item[(c)] \textbf{(3 points)} Calculate the bias of the MoM estimators \(\hat{\mu}_{\text{MoM}}\) and \(\hat{\sigma}^2_{\text{MoM}}\).
-     
-    \item[(d)] \textbf{(3 points)} Calculate the bias of the MLE estimators \(\hat{\mu}_{\text{MLE}}\) and \(\hat{\sigma}^2_{\text{MLE}}\).
+     The bias of \( \hat{\sigma}^2_{\text{MoM}} \) is:
 
+\[
+\text{Bias}(\hat{\sigma}^2_{\text{MoM}}) = \mathbb{E}[\hat{\sigma}^2_{\text{MoM}}] - \sigma^2
+\]
+
+
+\[
+\mathbb{E}[\hat{\sigma}^2_{\text{MoM}}] = \sigma^2 \cdot \frac{n-1}{n}
+\]
+
+Thus, the bias is:
+
+\[
+\text{Bias}(\hat{\sigma}^2_{\text{MoM}}) = \sigma^2 \cdot \frac{n-1}{n} - \sigma^2 = -\frac{\sigma^2}{n}
+\]
+
+Hence, \( \hat{\sigma}^2_{\text{MoM}} \) is biased and underestimates \( \sigma^2 \).
+
+\item[(d)] \textbf{(3 points)} Calculate the bias of the MLE estimators \(\hat{\mu}_{\text{MLE}}\) and \(\hat{\sigma}^2_{\text{MLE}}\).
+\[
+\text{Bias}(\hat{\mu}_{\text{MLE}}) = \mathbb{E}[\hat{\mu}_{\text{MLE}}] - \mu
+\]
+\[
+\text{Bias}(\hat{\sigma}^2_{\text{MLE}}) = \mathbb{E}[\hat{\sigma}^2_{\text{MLE}}] - \sigma^2
+\]
+\[
+\mathbb{E}[\hat{\mu}_{\text{MLE}}] = \mu, \quad \mathbb{E}[\hat{\sigma}^2_{\text{MLE}}] = \sigma^2
+\]
+\[
+\text{Bias}(\hat{\mu}_{\text{MLE}}) = 0, \quad \text{Bias}(\hat{\sigma}^2_{\text{MLE}}) = 0
+\]
     \item[(e)] \textbf{(4 points)} Show that both the MoM and MLE estimators are consistent, meaning that as \(n \to \infty\), \(\hat{\mu}_{\text{MoM}} \to \mu\), \(\hat{\sigma}^2_{\text{MoM}} \to \sigma^2\), \(\hat{\mu}_{\text{MLE}} \to \mu\), and \(\hat{\sigma}^2_{\text{MLE}} \to \sigma^2\) in probability.
 \end{enumerate}
+for the MoM estimators:
+\[
+\lim_{n \to \infty} \hat{\mu}_{\text{MoM}} = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n y_i = \mu
+\]
+\[
+\lim_{n \to \infty} \hat{\sigma}^2_{\text{MoM}} = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n (y_i - \hat{\mu}_{\text{MoM}})^2 = \sigma^2
+\]
+for the MLE estimators:
+\[
+\lim_{n \to \infty} \hat{\mu}_{\text{MLE}} = \lim_{n \to \infty} \bar{y} = \mu
+\]
+\[
+\lim_{n \to \infty} \hat{\sigma}^2_{\text{MLE}} = \lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n (y_i - \bar{y})^2 = \sigma^2
+\]
+Thus, both the MoM and MLE estimators are consistent.
     
   
 
@@ -313,72 +388,92 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
     \[
     \text{MSE}(\hat{X}) = E[(X - \hat{X})^2] = E[(X - aY - b)^2] 
     \]
-     
     \[
     = E[X^2 - 2aXY - 2bX + a^2Y^2 + 2abY + b^2]
     \]
+    
+    to determine the constants \( a \) and \( b \), we minimize the MSE by taking the derivative with respect to \( a \) and \( b \) and setting them to zero.
+    derivative with respect to \( a \):
     \[
-    \text{MSE} = E[X^2] - 2E[X(aY + b)] + E[(aY + b^2)]
+    \frac{\partial \text{MSE}}{\partial a} = -2E[XY] + 2aE[Y^2] + 2bE[Y] = 0
     \]
-    for $2E[X(aY + b)]$:
+    derivative with respect to \( b \):
     \[
-    Y = X + N  = E[X(aX + b)] = E[X^2] + E[XN] = E[X^2] + E[X]E[N] = E[X^2]
+    \frac{\partial \text{MSE}}{\partial b} = -2E[X] + 2aE[Y] + 2b = 0
     \]
-    for $E[(aY + b)^2]$:
+    solving the above equations, we get:
     \[
-    E[(aY + b)^2] = a^2E[Y^2] + 2abE[Y] + b^2
-    \]
-    \[
-    E[Y^2] = \text{Var}(Y) + E[Y]^2 = \text{Var}(X) + \sigma^2 + E[X]^2 = E[X^2] + \sigma^2
-    \]
-    \[
-    \text{MSE} = E[X^2] - 2aE[X^2] - 2bE[X] + (a^2E[X^2] + \sigma^2 + 2abE[X] + b^2)
-    \]
-    to minimize the MSE, we find the partial derivatives of the MSE with respect to \( a \) and \( b \) and set them to zero:
-    \\ partial derivative with respect to \( a \):
-    \[
-    \frac{\partial \text{MSE}}{\partial a} = -2E[X^2] + a(2E[X^2] + \sigma^2) = 0
+    a = \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2}, \quad b = E[X] - aE[Y]
     \]
     \[
-    a = \frac{2E[X^2]}{E[X^2] + \sigma^2}
+    \hat{X} = \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2}Y + E[X] - \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2}E[Y]
     \]
-    partial derivative with respect to \( b \):
-    \[
-    \frac{\partial \text{MSE}}{\partial b} = -2E[X] + 2ab = 0
-    \]
-    \[
-    b = E[X](1 - a)
-    \]
-    substituting the values of \( a \) and \( b \) into the expression for \( \hat{X} \) gives:
-    \[
-    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[X](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
-    \]
-    but since \( E[X] = E[Y] \), the expression simplifies to:
-    \[
-    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
-    \]
-    so, the best linear estimator is given by:
-    \[
-    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
-    \]
+
+    
     \item[(c)] \textbf{(2 points)} The orthogonality principle states that the error \( \epsilon = X - \hat{X} \) must be uncorrelated with \( Y \), i.e.:
-    \[
-    E[(X - \hat{X})Y] = 0.
-    \]
     
     Substitute \( \hat{X} \) into the expression and derive equations for \( a \) and \( b \) that minimize the Mean Squared Error (MSE).
+    The orthogonality principle states that the error $\epsilon = X - \hat{X}$ must be uncorrelated with $Y$:
 
-    the \( \hat{x}\) is:
-
-    \[
-    \hat{X} = \frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})
-    \]
-
-    \[
-    E[(X - \hat{X})Y] = E[(X - \frac{2E[X^2]}{E[X^2] + \sigma^2}Y - E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2}))Y]
-    \]
-
-
+    \[E[\epsilon Y] = 0\]
+    
+    Substituting $\hat{X} = aY + b$ into the error expression:
+    
+    \[\epsilon = X - (aY + b)\]
+    
+    Now, we can write the orthogonality condition:
+    
+    \[E[(X - (aY + b))Y] = 0\]
+    
+    Expanding this equation:
+    
+    \[E[XY - aY^2 - bY] = 0\]
+    
+    This can be rewritten as:
+    
+    \[E[XY] - aE[Y^2] - bE[Y] = 0 \quad \text{(Equation 1)}\]
+    
+    For minimizing MSE, we need another equation. We can use the fact that the expected value of the error should be zero:
+    
+    \[E[X - (aY + b)] = 0\]
+    
+    This simplifies to:
+    
+    \[E[X] - aE[Y] - b = 0 \quad \text{(Equation 2)}\]
+    
+    Now we have two equations to solve for $a$ and $b$:
+    
+    \begin{align*}
+    \text{Equation 1:} & \quad E[XY] - aE[Y^2] - bE[Y] = 0 \\
+    \text{Equation 2:} & \quad E[X] - aE[Y] - b = 0
+    \end{align*}
+    
+    From Equation 2:
+    \[b = E[X] - aE[Y]\]
+    
+    Substituting this into Equation 1:
+    
+    \[E[XY] - aE[Y^2] - (E[X] - aE[Y])E[Y] = 0\]
+    
+    \[E[XY] - aE[Y^2] - E[X]E[Y] + aE[Y]^2 = 0\]
+    
+    \[E[XY] - E[X]E[Y] = a(E[Y^2] - E[Y]^2)\]
+    
+    Solving for $a$:
+    
+    \[a = \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2}\]
+    
+    And then we can find $b$:
+    
+    \[b = E[X] - aE[Y]\]
+    
+    Therefore, the equations that minimize the MSE are:
+    
+    \begin{align*}
+    a &= \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2} \\
+    b &= E[X] - aE[Y]
+    \end{align*}
+    
     \item[(d)] \textbf{(1 point)} Define bias as:
     \[
     \text{Bias}(\hat{X}) = E[\hat{X}] - E[X].
@@ -387,17 +482,45 @@ where \( N \sim N(0, \sigma^2) \) is Gaussian noise with zero mean and variance 
 
     
     Show that the estimator \( \hat{X} \) derived above is unbiased.
+\[\text{Bias}(\hat{X}) = E[\hat{X}] - E[X]\]
 
-    \[
-    E[\hat{X}] = E\left[\frac{2E[X^2]}{E[X^2] + \sigma^2}Y + E[Y](1 - \frac{2E[X^2]}{E[X^2] + \sigma^2})\right]
-    \]
+To show $\hat{X} = aY + b$ is unbiased, we prove $\text{Bias}(\hat{X}) = 0$.
 
-    \item[(e)] \textbf{2 points} Define the Mean Squared Error (MSE) as:
-    \[
-    \text{MSE}(\hat{X}) = E[(X - \hat{X})^2].
-    \]
-    
-    Using the derived values of \( a \) and \( b \), calculate the MSE and verify that it is minimized for the derived linear estimator. 
+
+\begin{align*}
+E[\hat{X}] &= E[aY + b] \\
+&= aE[Y] + b \\
+&= \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2} E[Y] + E[X] - \frac{E[XY] - E[X]E[Y]}{E[Y^2] - E[Y]^2} E[Y] \\
+&= E[X]
+\end{align*}
+
+Therefore,
+\[\text{Bias}(\hat{X}) = E[\hat{X}] - E[X] = E[X] - E[X] = 0\]
+
+
+Thus, the estimator $\hat{X}$ is unbiased.    
+\item (2 points ) Define the Mean Squared Error (MSE) as:
+\[
+    MSE(\hat{X}) = E[(X - \hat{X})^2].
+\]
+Using the derived values of a and b, calculate the MSE and verify that it is minimized for the
+derived linear estimator
+
+\begin{align*}
+MSE(\hat{X}) &= E[(X - (aY + b))^2] \\
+&= E[X^2] - 2aE[XY] - 2bE[X] + a^2E[Y^2] + 2abE[Y] + b^2
+\end{align*}
+
+Minimizing MSE:
+\begin{align*}
+\frac{\partial MSE}{\partial a} &= -2E[XY] + 2aE[Y^2] + 2bE[Y] = 0 \\
+\frac{\partial MSE}{\partial b} &= -2E[X] + 2aE[Y] + 2b = 0
+\end{align*}
+
+These yield our previously derived optimal $a$ and $b$. Substituting back:
+
+\[MSE(\hat{X}) = Var(X) - \frac{Cov(X,Y)^2}{Var(Y)}\]
+
 \end{enumerate}
 
 \subsection*{Part 2: Practical Implementation with the California Housing Dataset (10 points)}
