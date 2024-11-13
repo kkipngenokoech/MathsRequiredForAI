@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  12 NOV 2024 22:42
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  13 NOV 2024 14:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -596,56 +596,66 @@ Underfull \hbox (badness 10000) in paragraph at lines 149--151
  []
 
 [2] [3{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4] [5] [6] [7] [8] [9]
-Overfull \hbox (1.80779pt too wide) detected at line 585
-\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999987
+Overfull \hbox (7.4741pt too wide) detected at line 585
+\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = []
  []
 
 
-Overfull \hbox (1.80779pt too wide) detected at line 588
-\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000013
+Overfull \hbox (18.97404pt too wide) detected at line 588
+\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = []
  []
 
 
-Overfull \hbox (1.80779pt too wide) detected at line 636
-\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000013
+Overfull \hbox (18.97404pt too wide) detected at line 636
+\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = []
  []
 
 
-Overfull \hbox (1.80779pt too wide) detected at line 640
-\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999987
+Overfull \hbox (7.4741pt too wide) detected at line 640
+\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = []
  []
 
 [10]
-Overfull \hbox (387.97751pt too wide) detected at line 674
-\OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] = []
+Overfull \hbox (61.82582pt too wide) detected at line 697
+\OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999996 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 99943 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00055 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[]
  []
 
 
-Overfull \hbox (657.97833pt too wide) detected at line 680
-\OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] = []
+Overfull \hbox (34.98792pt too wide) detected at line 703
+\OT1/cmr/m/n/10 = []
  []
 
-[11] [12]
-Underfull \hbox (badness 10000) in paragraph at lines 758--760
 
+Overfull \hbox (6.82565pt too wide) detected at line 709
+\OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (0 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00002439 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00055 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 99943 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[]
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 882--884
-
+[11] [12] [13] [14] [15]
+Overfull \hbox (36.86742pt too wide) detected at line 980
+\OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 983 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 1 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 877 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 005 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00016 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (7 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[])
  []
 
-[14]
-Underfull \hbox (badness 10000) in paragraph at lines 884--886
-
- []
-
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 975--977
+[16]
+Underfull \hbox (badness 10000) in paragraph at lines 1058--1060
 
  []
 
-[16] [17] (./asp_hw4.aux)
+[17] [18]
+Underfull \hbox (badness 10000) in paragraph at lines 1182--1184
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1184--1186
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 1275--1277
+
+ []
+
+[20] [21] (./asp_hw4.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -654,18 +664,18 @@ Package rerunfilecheck Info: File `asp_hw4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 21228 strings out of 474222
- 402827 string characters out of 5748733
+ 21232 strings out of 474222
+ 402855 string characters out of 5748733
  1946975 words of memory out of 5000000
  43060 multiletter control sequences out of 15000+600000
  567766 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,93p,595b,910s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on asp_hw4.pdf (17 pages, 276230 bytes).
+Output written on asp_hw4.pdf (21 pages, 291018 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 190 compressed objects within 2 object streams
- 72 named destinations out of 1000 (max. 500000)
+ 269 PDF objects out of 1000 (max. 8388607)
+ 205 compressed objects within 3 object streams
+ 76 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

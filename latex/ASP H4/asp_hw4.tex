@@ -551,94 +551,94 @@ P(Z = 1 | X = 1) = \frac{\pi_1 \mathcal{N}(1 | \mu_1, \sigma_1^2)}{\pi_1 \mathca
 \]
 from the above formula we need to calculate three things:
 \[
-\mathcal{N}(1 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\mathcal{N}(1 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = \textbf{0.24197}
 \]
 \[
-\mathcal{N}(1 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{36}{2}} = \frac{1}{\sqrt{2\pi}} e^{-18} = 0
+\mathcal{N}(1 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(1-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{36}{2}} = \frac{1}{\sqrt{2\pi}} e^{-18} = \textbf{0}
 \]
 \[
-P(Z = 1 | X = 1) = \frac{0.5 \times 0.24197}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0.120985}{0.120985 + 0} = 1
+P(Z = 1 | X = 1) = \frac{0.5 \times 0.24197}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0.120985}{0.120985 + 0} = \textbf{1}
 \]
 Then, the probability that x belongs to cluster 2 is given by:
 \[
 P(Z = 2 | X = 1) = \frac{\pi_2 \mathcal{N}(1 | \mu_2, \sigma_2^2)}{\pi_1 \mathcal{N}(1 | \mu_1, \sigma_1^2) + \pi_2 \mathcal{N}(1 | \mu_2, \sigma_2^2)}
 \]
 \[
-P(Z = 2 | X = 1) = \frac{0.5 \times 0}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0}{0.120985 + 0} = 0
+P(Z = 2 | X = 1) = \frac{0.5 \times 0}{0.5 \times 0.24197 + 0.5 \times 0} = \frac{0}{0.120985 + 0} = \textbf{0}
 \]
 so, the probability that x belongs to cluster 1 is 1 and to cluster 2 is 0.
 \[
-\gamma_{11} = \frac{1}{1} = 1, \quad \gamma_{12} = \frac{0}{1} = 0
+\gamma_{11}  = \textbf{1}, \quad \gamma_{12}  = \textbf{0}
 \]
 
 For x = 2:
 \\ let us calculate the PMFs:
 \[
-\mathcal{N}(2 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = 0.398942
+\mathcal{N}(2 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = \textbf{0.398942}
 \]
 \[
-\mathcal{N}(2 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = 0.00000503046
+\mathcal{N}(2 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(2-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = \textbf{0.00000148656}
 \]
 so, the probability that x=2 belongs to cluster 1 is:
 \[
-P(Z = 1 | X = 2) = \frac{0.5 \times 0.398942}{0.5 \times 0.398942 + 0.5 \times 0.00000503046} = \frac{0.199471}{0.199471 + 0.00000251523} = 0.999987
+P(Z = 1 | X = 2) = \frac{0.5 \times 0.398942}{0.5 \times 0.398942 + 0.5 \times 0.00000148656} = \frac{0.199471}{0.199471 + 0.00000074328} = \textbf{0.999996}
 \]
 \[
-P(Z = 2 | X = 2) = \frac{0.5 \times 0.00000503046}{0.5 \times 0.398942 + 0.5 \times 0.00000503046} = \frac{0.00000251523}{0.199471 + 0.00000251523} = 0.000013
+P(Z = 2 | X = 2) = \frac{0.5 \times 0.00000148656}{0.5 \times 0.398942 + 0.5 \times 0.00000148656} = \frac{0.00000148656}{0.199471 + 0.00000074328} = \textbf{0.00002439}
 \]
-so: $\gamma_{21} = \textbf{0.999987}, \quad \gamma_{22} = \textbf{0.000013}$
+so: $\gamma_{21} = \textbf{0.999996}, \quad \gamma_{22} = \textbf{0.00002439}$
 
 For x = 3:
 \\ we find the PMFs:
 \[
-\mathcal{N}(3 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\mathcal{N}(3 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = \textbf{0.241945}
 \]
 \[
-\mathcal{N}(3 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = 0.00013382946
+\mathcal{N}(3 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(3-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = \textbf{0.0001338}
 \]
 so, the probability that x=3 belongs to cluster 1 is:
 \[
-P(Z = 1 | X = 3) = \frac{0.5 \times 0.24197}{0.5 \times 0.24197 + 0.5 \times 0.00013382946} = \frac{0.120985}{0.120985 + 0.00006691473} = 0.99943
+P(Z = 1 | X = 3) = \frac{0.5 \times 0.241945}{0.5 \times 0.241945 + 0.5 \times 0.0001338} = \frac{0.120985}{0.120985 + 0.00006691473} = 0.99943
 \]
 and, the probability that x=3 belongs to cluster 2 is:
 \[
-P(Z = 2 | X = 3) = \frac{0.5 \times 0.00013382946}{0.5 \times 0.24197 + 0.5 \times 0.00013382946} = \frac{0.00006691473}{0.120985 + 0.00006691473} = 0.00055
+P(Z = 2 | X = 3) = \frac{0.5 \times 0.0001338}{0.5 \times 0.241945 + 0.5 \times 0.0001338} = \frac{0.00006691473}{0.120985 + 0.00006691473} = 0.00055
 \]
 so: $\gamma_{31} = \textbf{0.99943}, \quad \gamma_{32} = \textbf{0.00055}$
 \\ for x = 6:
 \\ we find the PMFs:
 \[
-\mathcal{N}(6 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = 0.00013382946
+\mathcal{N}(6 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{16}{2}} = \frac{1}{\sqrt{2\pi}} e^{-8} = \textbf{0.00013382946}
 \]
 \[
-\mathcal{N}(6 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = 0.24197
+\mathcal{N}(6 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(6-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}} = \textbf{0.24197}
 \]  
 so, the probability that x=6 belongs to cluster 1 is:
 \[
-P(Z = 1 | X = 6) = \frac{0.5 \times 0.00013382946}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.00006691473}{0.00006691473 + 0.120985} = 0.00055
+P(Z = 1 | X = 6) = \frac{0.5 \times 0.00013382946}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.00006691473}{0.00006691473 + 0.120985} = \textbf{0.00055}
 \]
 and, the probability that x=6 belongs to cluster 2 is:
 \[
-P(Z = 2 | X = 6) = \frac{0.5 \times 0.24197}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.120985}{0.00006691473 + 0.120985} = 0.99943
+P(Z = 2 | X = 6) = \frac{0.5 \times 0.24197}{0.5 \times 0.00013382946 + 0.5 \times 0.24197} = \frac{0.120985}{0.00006691473 + 0.120985} = \textbf{0.99943}
 \]
 so: $\gamma_{41} = \textbf{0.00055}, \quad \gamma_{42} = \textbf{0.99943}$
 \\ for x = 7:
 \\ we find the PMFs:
 \[
-\mathcal{N}(7 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = 0.00000503046
+\mathcal{N}(7 | 2, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-2)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{25}{2}} = \frac{1}{\sqrt{2\pi}} e^{-12.5} = \textbf{0.00000148656}
 \]
 \[
-\mathcal{N}(7 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = 0.398942
+\mathcal{N}(7 | 7, 1) = \frac{1}{\sqrt{2\pi}} e^{-\frac{(7-7)^2}{2}} = \frac{1}{\sqrt{2\pi}} e^{-\frac{0}{2}} = \frac{1}{\sqrt{2\pi}} e^{0} = \frac{1}{\sqrt{2\pi}} = \textbf{0.398942}
 \]
 so, the probability that x=7 belongs to cluster 1 is:   
 \[
-P(Z = 1 | X = 7) = \frac{0.5 \times 0.00000503046}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.00000251523}{0.00000251523 + 0.199471} = 0.000013
+P(Z = 1 | X = 7) = \frac{0.5 \times 0.00000503046}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.00000251523}{0.00000251523 + 0.199471} = \textbf{0.00002439}
 \]
 and, the probability that x=7 belongs to cluster 2 is:
 \[
-P(Z = 2 | X = 7) = \frac{0.5 \times 0.398942}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.199471}{0.00000251523 + 0.199471} = 0.999987
+P(Z = 2 | X = 7) = \frac{0.5 \times 0.398942}{0.5 \times 0.00000503046 + 0.5 \times 0.398942} = \frac{0.199471}{0.00000251523 + 0.199471} = \textbf{0.398942}
 \]
-so, $\gamma_{51} = \textbf{0.000013}, \quad \gamma_{52} = \textbf{0.999987}$
+so, $\gamma_{51} = \textbf{0.00002439}, \quad \gamma_{52} = \textbf{0.999996}$
 \\ for x = 8:
 \\ we find the PMFs:
 \[
@@ -656,39 +656,339 @@ and, the probability that x=8 belongs to cluster 2 is:
 P(Z = 2 | X = 8) = \frac{0.5 \times 0.24197}{0.5 \times 0 + 0.5 \times 0.24197} = \frac{0.120985}{0 + 0.120985} = 1
 \]
 so, $\gamma_{61} = \textbf{0}, \quad \gamma_{62} = \textbf{1}$
+\\ Here is a table of the probabilities (responsibilities) that each data point belongs to each cluster:
+\[
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Data Point} & \textbf{Cluster 1} & \textbf{Cluster 2} \\
+\hline
+1 & 1 & 0 \\
+
+2 & 0.999996 & 0.00002439 \\
+3 & 0.99943 & 0.00055 \\
+6 & 0.00055 & 0.99943 \\
+7 & 0.00002439 & 0.999996 \\
+8 & 0 & 1 \\
+sum & 3.00000 & 3.00000 \\
+\hline
+\end{tabular}
+\]
 \\ now, we can calculate the updated parameters after the first iteration:
 \[
-\mu_1 = \frac{\sum_{i=1}^{n} \gamma_{i1} X_i}{\sum_{i=1}^{n} \gamma_{i1}} = \frac{1 \times 1 + 0.999987 \times 2 + 0.99943 \times 3 + 0.00055 \times 6 + 0.000013 \times 7 + 0 \times 8}{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}
+\pi_1 = \frac{1}{6} \times (1 + 0.999996 + 0.99943 + 0.00055 + 0.00002439 + 0) = \frac{2.999426}{6} = \textbf{0.500004}
 \]
 \[
-\mu_1 = \frac{1 + 1.999974 + 2.99829 + 0.0033 + 0.000091 + 0}{3.999974} = \frac{6.001655}{2.999974} = \textbf{2.000643}
+\pi_2 = \frac{1}{6} \times (0 + 0.00002439 + 0.00055 + 0.99943 + 0.999996 + 1) = \frac{2.999996}{6} = \textbf{0.500004}
 \]
 \[
-\mu_2 = \frac{\sum_{i=1}^{n} \gamma_{i2} X_i}{\sum_{i=1}^{n} \gamma_{i2}} = \frac{0 \times 1 + 0.000013 \times 2 + 0.00055 \times 3 + 0.99943 \times 6 + 0.999987 \times 7 + 1 \times 8}{0 + 0.000013 + 0.00055 + 0.99943 + 0.999987 + 1}
+\mu_1 = \frac{1}{2.999426} \times (1 \times 1 + 0.999996 \times 2 + 0.99943 \times 3 + 0.00055 \times 6 + 0.00002439 \times 7 + 0 \times 8) 
 \]
 \[
-\mu_2 = \textbf{6.999440951707624}
+    = \frac{1 + 1.999992 + 2.99829 + 0.0033 + 0.00017517}{3.0000} = \frac{6.000175}{3.0000} = \textbf{2.000058}
 \]
 \[
-\sigma_1^2 = \frac{\sum_{i=1}^{n} \gamma_{i1} (X_i - \mu_1)^2}{\sum_{i=1}^{n} \gamma_{i1}} = \frac{1 \times (1 - 2.000643)^2 + 0.999987 \times (2 - 2.000643)^2 + 0.99943 \times (3 - 2.000643)^2 + 0.00055 \times (6 - 2.000643)^2 + 0.000013 \times (7 - 2.000643)^2 + 0 \times (8 - 2.000643)^2}{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}
+\mu_2 = \frac{1}{2.999996} \times (0 \times 1 + 0.00002439 \times 2 + 0.00055 \times 3 + 0.99943 \times 6 + 0.999996 \times 7 + 1 \times 8)
 \]
 \[
-\sigma_1^2 = \textbf{ 0.669461595593554}
+= \frac{0.00048 + 0.0000243900165 + 5.99658 + 6.999972 + 8}{3.0000} = \frac{20.997}{3.0000} = \textbf{6.999}
 \]
 \[
-\sigma_2^2 = \frac{\sum_{i=1}^{n} \gamma_{i2} (X_i - \mu_2)^2}{\sum_{i=1}^{n} \gamma_{i2}} = \frac{0 \times (1 - 6.999440951707624)^2 + 0.000013 \times (2 - 6.999440951707624)^2 + 0.00055 \times (3 - 6.999440951707624)^2 + 0.99943 \times (6 - 6.999440951707624)^2 + 0.999987 \times (7 - 6.999440951707624)^2 + 1 \times (8 - 6.999440951707624)^2}{0 + 0.000013 + 0.00055 + 0.99943 + 0.999987 + 1}
+\sigma_1^2 = \frac{1}{2.999426} \times (1 \times (1 - 2.000058)^2 + 0.999996 \times (2 - 2.000058)^2 + 0.99943 \times (3 - 2.000058)^2 + 0.00055 \times (6 - 2.000058)^2 
 \]
 \[
-\sigma_2^2 = \textbf{0.6694615955935538}
+    + 0.00002439 \times (7 - 2.000058)^2 + 0 \times (8 - 2.000058)^2)
 \]
 \[
-\pi_1 = \frac{1}{n} \sum_{i=1}^{n} \gamma_{i1} = \frac{1 + 0.999987 + 0.99943 + 0.00055 + 0.000013 + 0}{6} = \frac{2.00098}{6} = \textbf{0.5}
+= \frac{1 \times 1.00116 + 0.999996 \times 0.00000000 + 0.99943 \times 0.999884 + 0.00055 \times 15.9999 + 0.00002439 \times 24.9999}{3.0000} 
 \]
 \[
+    = \frac{1.00116 + 0.999314 + 0.008799945 + 0.000024341 + 0.0006097}{3.0000} = \textbf{0.669786}
 \]
-so, the updated parameters after the first iteration are:
 \[
-\mu_1 = 3.99999, \quad \mu_2 = 6.00001, \quad \sigma_1^2 = 2.00001, \quad \sigma_2^2 = 1.00001, \quad \pi_1 = 0.66665, \quad \pi_2 = 0.33335
+\sigma_2^2 = \frac{1}{3.00000} \times (0 \times (1 - 6.999)^2 + 0.00002439 \times (2 - 6.999)^2 + 0.00055 \times (3 - 6.999)^2 + 0.99943 \times (6 - 6.999)^2
+\]
+\[
+    + 0.999996 \times (7 - 6.999)^2 + 1 \times (8 - 6.999)^2)
+\]
+\[
+= \frac{0 + 0.00006097 + 0.0087956 + 0.997432 + 0.00000099999 + 1.002001}{3.000} = \textbf{0.6694}
+\]
+
+\textbf{Iteration 2:}
+\\ we repeat the same process as in iteration 1, but this time we use the updated parameters from iteration 1.
+\\ for x = 1:
+\[
+\mathcal{N}(1 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(1-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{1.000116}{1.339572}} = \textbf{0.2376}
+\]
+\[
+\mathcal{N}(1 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(1-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{36.996}{1.3388}} = \textbf{0}
+\]
+so, the probability that x=1 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 1) = \frac{0.500004 \times 0.2376}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0.1188}{0.1188 + 0} = \textbf{1}
+\]
+and, the probability that x=1 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 1) = \frac{0.500004 \times 0}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0}{0.1188 + 0} = \textbf{0}
+\]
+so, $\gamma_{11} = \textbf{1}, \quad \gamma_{12} = \textbf{0}$
+\\ for x = 2:
+\[
+\mathcal{N}(2 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(2-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{0.000116}{1.339572}} = \textbf{0.2376}
+\]
+\[
+\mathcal{N}(2 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(2-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{20.996}{1.3388}} = \textbf{0}
+\]
+so, the probability that x=2 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 2) = \frac{0.500004 \times 0.2376}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0.1188}{0.1188 + 0} = \textbf{1}
+\]
+and, the probability that x=2 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 2) = \frac{0.500004 \times 0}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0}{0.1188 + 0} = \textbf{0}
+\]
+so, $\gamma_{21} = \textbf{1}, \quad \gamma_{22} = \textbf{0}$
+\\ for x = 3:
+\[
+\mathcal{N}(3 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(3-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{1.000116}{1.339572}} = \textbf{0.2376}
+\]
+\[
+\mathcal{N}(3 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(3-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{9.996}{1.3388}} = \textbf{0}
+\]
+so, the probability that x=3 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 3) = \frac{0.500004 \times 0.2376}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0.1188}{0.1188 + 0} = \textbf{1}
+\]
+\[
+P(Z = 2 | X = 3) = \frac{0.500004 \times 0}{0.500004 \times 0.2376 + 0.500004 \times 0} = \frac{0}{0.1188 + 0} = \textbf{0}
+\]
+so, $\gamma_{31} = \textbf{1}, \quad \gamma_{32} = \textbf{0}$
+\\ for x = 6:
+\[
+\mathcal{N}(6 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(6-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{15.996}{1.339572}} = \textbf{0}
+\]
+\[
+\mathcal{N}(6 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(6-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{0.996}{1.3388}} = \textbf{0.2376}
+\]
+so, the probability that x=6 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 6) = \frac{0.500004 \times 0}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0}{0 + 0.1188} = \textbf{0}
+\]
+\[
+P(Z = 2 | X = 6) = \frac{0.500004 \times 0.2376}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0.1188}{0 + 0.1188} = \textbf{1}
+\]
+so, $\gamma_{41} = \textbf{0}, \quad \gamma_{42} = \textbf{1}$
+\\ for x = 7:
+\[
+\mathcal{N}(7 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(7-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{24.996}{1.339572}} = \textbf{0}
+\]
+\[
+\mathcal{N}(7 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(7-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{0.996}{1.3388}} = \textbf{0.2376}
+\]
+so, the probability that x=7 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 7) = \frac{0.500004 \times 0}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0}{0 + 0.1188} = \textbf{0}
+\]
+\[
+P(Z = 2 | X = 7) = \frac{0.500004 \times 0.2376}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0.1188}{0 + 0.1188} = \textbf{1}
+\]
+so, $\gamma_{51} = \textbf{0}, \quad \gamma_{52} = \textbf{1}$
+\\ for x = 8:
+\[
+\mathcal{N}(8 | 2.000058, 0.669786) = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{(8-2.000058)^2}{2 \times 0.669786}} = \frac{1}{\sqrt{2\pi \times 0.669786}} e^{-\frac{36.996}{1.339572}} = \textbf{0}
+\]
+\[
+\mathcal{N}(8 | 6.999, 0.6694) = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{(8-6.999)^2}{2 \times 0.6694}} = \frac{1}{\sqrt{2\pi \times 0.6694}} e^{-\frac{0.001}{1.3388}} = \textbf{0.2376}
+\]
+so, the probability that x=8 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 8) = \frac{0.500004 \times 0}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0}{0 + 0.1188} = \textbf{0}
+\]
+\[
+P(Z = 2 | X = 8) = \frac{0.500004 \times 0.2376}{0.500004 \times 0 + 0.500004 \times 0.2376} = \frac{0.1188}{0 + 0.1188} = \textbf{1}
+\]
+so, $\gamma_{61} = \textbf{0}, \quad \gamma_{62} = \textbf{1}$
+\\ Here is a table of the probabilities (responsibilities) that each data point belongs to each cluster:
+\[
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Data Point} & \textbf{Cluster 1} & \textbf{Cluster 2} \\
+\hline
+1 & 1 & 0 \\
+2 & 1 & 0 \\
+3 & 1 & 0 \\
+6 & 0 & 1 \\
+7 & 0 & 1 \\
+8 & 0 & 1 \\
+sum & 3 & 3 \\
+\hline
+\end{tabular}
+\]
+\\ now, we can calculate the updated parameters after the second iteration:
+\[
+\pi_1 = \frac{1}{6} \times (1 + 1 + 1 + 0 + 0 + 0) = \frac{3}{6} = \textbf{0.5}
+\]
+\[
+\pi_2 = \frac{1}{6} \times (0 + 0 + 0 + 1 + 1 + 1) = \frac{3}{6} = \textbf{0.5}
+\]
+
+\[
+\mu_1 = \frac{1}{3} \times (1 + 2 + 3) = \frac{6}{3} = \textbf{2}
+\]
+\[
+\mu_2 = \frac{1}{3} \times (6 + 7 + 8) = \frac{21}{3} = \textbf{7}
+\]
+\[
+\sigma_1^2 = \frac{1}{3} \times (1 \times (1 - 2)^2 + 2 \times (2 - 2)^2 + 3 \times (3 - 2)^2) = \frac{1 + 0 + 3}{3} = \textbf{1.3333}
+\]
+\[
+\sigma_2^2 = \frac{1}{3} \times (6 \times (6 - 7)^2 + 7 \times (7 - 7)^2 + 8 \times (8 - 7)^2) = \frac{6 + 0 + 8}{3} = \textbf{4.6667}
+\]
+so the updated parameters after the second iteration are:
+\[
+\pi_1 = \textbf{0.5}, \quad \pi_2 = \textbf{0.5}, \quad \mu_1 = \textbf{2}, \quad \mu_2 = \textbf{7}, \quad \sigma_1^2 = \textbf{1.3333}, \quad \sigma_2^2 = \textbf{4.6667}
+\]
+
+
+\textbf{Iteration 3:}
+\\ we repeat the same process as in iteration 2, but this time we use the updated parameters from iteration 2.
+\\ for x = 1:
+\[
+\mathcal{N}(1 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(1-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{1}{2.6666}} = \textbf{0.23748}
+\]
+\[
+\mathcal{N}(1 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(1-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{36}{9.3334}} = \textbf{0.0039019}
+\]
+so, the probability that x=1 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 1) = \frac{0.5 \times 0.23748}{0.5 \times 0.23748 + 0.5 \times 0.0039019} = \frac{0.11874}{0.11874 + 0.00195095} = \textbf{0.983}
+\]
+and, the probability that x=1 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 1) = \frac{0.5 \times 0.0039019}{0.5 \times 0.23748 + 0.5 \times 0.0039019} = \frac{0.00195095}{0.11874 + 0.00195095} = \textbf{0.016}
+\]
+so, $\gamma_{11} = \textbf{0.983}, \quad \gamma_{12} = \textbf{0.016}$
+\\ for x = 2:
+\[
+\mathcal{N}(2 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(2-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{0}{2.6666}} = \textbf{0.3455}
+\]
+\[
+\mathcal{N}(2 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(2-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{25}{9.3334}} = \textbf{0}
+\]
+so, the probability that x=2 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 2) = \frac{0.5 \times 0.3455}{0.5 \times 0.3455 + 0.5 \times 0} = \frac{0.17275}{0.17275 + 0} = \textbf{1}
+\]
+and, the probability that x=2 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 2) = \frac{0.5 \times 0}{0.5 \times 0.3455 + 0.5 \times 0} = \frac{0}{0.17275 + 0} = \textbf{0}
+\]
+so, $\gamma_{21} = \textbf{1}, \quad \gamma_{22} = \textbf{0}$
+\\ for x = 3:
+\[
+\mathcal{N}(3 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(3-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{1}{2.6666}} = \textbf{0.23748}
+\]
+\[
+\mathcal{N}(3 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(3-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{16}{9.3334}} = \textbf{0.03326}
+\]
+so, the probability that x=3 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 3) = \frac{0.5 \times 0.23748}{0.5 \times 0.23748 + 0.5 \times 0.03326} = \frac{0.11874}{0.11874 + 0.01663} = \textbf{0.877}
+\]
+and, the probability that x=3 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 3) = \frac{0.5 \times 0.03326}{0.5 \times 0.23748 + 0.5 \times 0.03326} = \frac{0.01663}{0.11874 + 0.01663} = \textbf{0.122}
+\]
+so, $\gamma_{31} = \textbf{0.877}, \quad \gamma_{32} = \textbf{0.122}$
+\\ for x = 6:
+\[
+\mathcal{N}(6 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(6-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{16}{2.6666}} = \textbf{0.00085628}
+\]
+\[
+\mathcal{N}(6 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(6-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{1}{9.3334}} = \textbf{0.165934112}
+\]
+so, the probability that x=6 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 6) = \frac{0.5 \times 0.00085628}{0.5 \times 0.00085628 + 0.5 \times 0.165934112} = \frac{0.00042814}{0.00042814 + 0.082967056} = \textbf{0.005}
+\]
+and, the probability that x=6 belongs to cluster 2 is:
+\[
+P(Z = 2 | X = 6) = \frac{0.5 \times 0.165934112}{0.5 \times 0.00085628 + 0.5 \times 0.165934112} = \frac{0.082967056}{0.00042814 + 0.082967056} = \textbf{0.995}
+\]
+so, $\gamma_{41} = \textbf{0.005}, \quad \gamma_{42} = \textbf{0.995}$
+\\ for x = 7:
+\[
+\mathcal{N}(7 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(7-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{25}{2.6666}} = \textbf{0.0000292978}
+\]
+\[
+\mathcal{N}(7 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(7-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{0}{9.3334}} = \textbf{0.1847}
+\]
+so, the probability that x=7 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 7) = \frac{0.5 \times 0.0000292978}{0.5 \times 0.0000292978 + 0.5 \times 0.1847} = \frac{0.0000146489}{0.0000146489 + 0.09235} = \textbf{0.00016}
+\]
+\[
+P(Z = 2 | X = 7) = \frac{0.5 \times 0.1847}{0.5 \times 0.0000292978 + 0.5 \times 0.1847} = \frac{0.09235}{0.0000146489 + 0.09235} = \textbf{0.9998}
+\]
+so, $\gamma_{51} = \textbf{0.00016}, \quad \gamma_{52} = \textbf{0.9998}$
+\\ for x = 8:
+\[
+\mathcal{N}(8 | 2, 1.3333) = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{(8-2)^2}{2 \times 1.3333}} = \frac{1}{\sqrt{2\pi \times 1.3333}} e^{-\frac{36}{2.6666}} = \textbf{0}
+\]
+\[
+\mathcal{N}(8 | 7, 4.6667) = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{(8-7)^2}{2 \times 4.6667}} = \frac{1}{\sqrt{2\pi \times 4.6667}} e^{-\frac{1}{9.3334}} = \textbf{0.165934112}
+\]
+so, the probability that x=8 belongs to cluster 1 is:
+\[
+P(Z = 1 | X = 8) = \frac{0.5 \times 0}{0.5 \times 0 + 0.5 \times 0.165934112} = \frac{0}{0 + 0.082967056} = \textbf{0}
+\]
+\[
+P(Z = 2 | X = 8) = \frac{0.5 \times 0.165934112}{0.5 \times 0 + 0.5 \times 0.165934112} = \frac{0.082967056}{0 + 0.082967056} = \textbf{1}
+\]
+so, $\gamma_{61} = \textbf{0}, \quad \gamma_{62} = \textbf{1}$
+\\ Here is a table of the probabilities (responsibilities) that each data point belongs to each cluster:
+\[
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\textbf{Data Point} & \textbf{Cluster 1} & \textbf{Cluster 2} \\
+\hline
+1 & 0.983 & 0.016 \\
+2 & 1 & 0 \\
+3 & 0.877 & 0.122 \\
+6 & 0.005 & 0.995 \\
+7 & 0.00016 & 0.9998 \\
+8 & 0 & 1 \\
+sum & 2.86516 & 3.1328 \\
+\hline
+\end{tabular}
+\]
+\\ now, we can calculate the updated parameters after the third iteration:
+\[
+\pi_1 = \frac{1}{6} \times (0.983 + 1 + 0.877 + 0.005 + 0.00016) = \frac{2.86516}{5.99896} = \textbf{0.4777}
+\]
+\[
+\pi_2 = \frac{1}{6} \times (0.016 + 0 + 0.122 + 0.995 + 0.9998) = \frac{3.1328}{5.99896} = \textbf{0.5223}
+\]
+\[
+\mu_1 = \frac{1}{2.86516} \times (0.983 \times 1 + 1 \times 2 + 0.877 \times 3 + 0.005 \times 6 + 0.00016 \times 7) = \frac{5.64512}{2.86516} = \textbf{1.97}
+\]
+\[
+\mu_2 = \frac{1}{3.1328} \times (0.016 \times 1 + 0 \times 2 + 0.122 \times 3 + 0.995 \times 6 + 0.9998 \times 7 + 8 \times 1) = \frac{14.352}{3.1328} = \textbf{6.81519}
+\]
+\[
+\sigma_1^2 = \frac{1}{2.86516} \times (0.983 \times (1 - 1.97)^2 + 1 \times (2 - 1.97)^2 + 0.877 \times (3 - 1.97)^2 + 0.005 \times (6 - 1.97)^2 + 0.00016 \times (7 - 1.97)^2)
+\]
+\[
+ = \frac{1}{2.86516} \times (0.9249 + 0.0009 + 0.9304093 + 0.0812045 + 0.0004048) = \frac{1.9370923}{2.86516} = \textbf{0.6776}
+\]
+\[
+\sigma_2^2 = \frac{1}{3.1328} \times (0.016 \times (1 - 6.81519)^2 + 0 \times (2 - 6.81519)^2 + 0.122 \times (3 - 6.81519)^2 + 0.995 \times (6 - 6.81519)^2 
+\]
+\[
+    + 0.9998 \times (7 - 6.81519)^2)
+\]
+\[
+    = \frac{1}{3.1328} \times (0.54106 + 0 + 1.77579 + 0.66121 + 0.0341 + 8) = \frac{11.0122}{3.1328} = \textbf{3.515}
 \]
 \item \textbf{(10 points)} The Iris dataset contains 150 samples of iris flowers, each with four features: sepal length, sepal width, petal length, and petal width. The dataset also includes the species of the iris flowers, but we'll ignore this information for clustering.
 
