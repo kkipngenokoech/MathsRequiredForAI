@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  13 NOV 2024 23:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  14 NOV 2024 10:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -570,92 +570,88 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 23.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 218--220
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 220--222
-
- []
-
-[3
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.222     \item[(c)]
-                     \textbf{(1 point)} In what scenarios would MLE or MAP p...]
-Underfull \hbox (badness 10000) in paragraph at lines 222--224
+l.231     \item[(a)]
+                     \textbf{(1 point)} How do different prior choices affec...]
+Underfull \hbox (badness 10000) in paragraph at lines 231--233
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--226
+Underfull \hbox (badness 10000) in paragraph at lines 233--235
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 235--237
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 237--239
 
  []
 
 [4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [5] [6] [7] [8] [9] [10] [11]
-Overfull \hbox (7.4741pt too wide) detected at line 727
+Overfull \hbox (7.4741pt too wide) detected at line 740
 \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = []
  []
 
 
-Overfull \hbox (18.97404pt too wide) detected at line 730
+Overfull \hbox (18.97404pt too wide) detected at line 743
 \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 2) = [] = [] = []
  []
 
 
-Overfull \hbox (18.97404pt too wide) detected at line 778
+Overfull \hbox (18.97404pt too wide) detected at line 791
 \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 1\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = []
  []
 
 
-Overfull \hbox (7.4741pt too wide) detected at line 782
+Overfull \hbox (7.4741pt too wide) detected at line 795
 \OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 Z \OT1/cmr/m/n/10 = 2\OMS/cmsy/m/n/10 j\OML/cmm/m/it/10 X \OT1/cmr/m/n/10 = 7) = [] = [] = []
  []
 
 [12]
-Overfull \hbox (61.82582pt too wide) detected at line 839
+Overfull \hbox (61.82582pt too wide) detected at line 852
 \OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999996 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 99943 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00055 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 000058)[]
  []
 
 
-Overfull \hbox (34.98792pt too wide) detected at line 845
+Overfull \hbox (34.98792pt too wide) detected at line 858
 \OT1/cmr/m/n/10 = []
  []
 
 
-Overfull \hbox (6.82565pt too wide) detected at line 851
+Overfull \hbox (6.82565pt too wide) detected at line 864
 \OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (0 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00002439 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00055 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 99943 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 6\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 999)[]
  []
 
 [13] [14] [15] [16] [17]
-Overfull \hbox (36.86742pt too wide) detected at line 1122
+Overfull \hbox (36.86742pt too wide) detected at line 1135
 \OML/cmm/m/it/10 ^^[[] \OT1/cmr/m/n/10 = [] \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 983 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (1 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 1 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (2 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 877 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (3 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 005 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (6 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[] + 0\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 00016 \OMS/cmsy/m/n/10 ^^B \OT1/cmr/m/n/10 (7 \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1\OML/cmm/m/it/10 :\OT1/cmr/m/n/10 97)[])
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 1200--1202
+Underfull \hbox (badness 10000) in paragraph at lines 1213--1215
 
  []
 
 [19] [20]
-Underfull \hbox (badness 10000) in paragraph at lines 1324--1326
+Underfull \hbox (badness 10000) in paragraph at lines 1337--1339
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1326--1328
+Underfull \hbox (badness 10000) in paragraph at lines 1339--1341
 
  []
 
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 1417--1419
+Underfull \hbox (badness 10000) in paragraph at lines 1430--1432
 
  []
 
@@ -670,13 +666,13 @@ Package rerunfilecheck Info: File `asp_hw4.out' has not changed.
 Here is how much of TeX's memory you used:
  21235 strings out of 474222
  402876 string characters out of 5748733
- 1945975 words of memory out of 5000000
+ 1944975 words of memory out of 5000000
  43060 multiletter control sequences out of 15000+600000
  567766 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,12n,93p,595b,910s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on asp_hw4.pdf (23 pages, 307573 bytes).
+Output written on asp_hw4.pdf (23 pages, 307668 bytes).
 PDF statistics:
  284 PDF objects out of 1000 (max. 8388607)
  216 compressed objects within 3 object streams

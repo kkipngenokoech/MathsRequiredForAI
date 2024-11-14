@@ -35,9 +35,22 @@ f(y; \mu, \sigma) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(y - \mu)^2}{2\sigma
 
 \begin{enumerate}
     \item[(a)] \textbf{(5 points)} Use the method of moments to derive the estimators for \(\mu\) and \(\sigma^2\).
+    \\ The mean and the variance of the normal distribution are given by:
     \[
-    \hat{\mu}_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} y_i, \quad \hat{\sigma}^2_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{\mu}_{\text{MoM}})^2.
+    \mu = E[Y], \quad \sigma^2 = \text{Var}(Y)
     \]
+    The method of moments estimates are obtained by setting the sample moments equal to the population moments:
+    \[
+    \bar{y} = \frac{1}{n} \sum_{i=1}^n y_i = \mu
+    \]
+    \[
+    \frac{1}{n} \sum_{i=1}^n (y_i - \bar{y})^2 = \sigma^2
+    \]
+    Thus, the method of moments estimators are:
+    \[
+    \hat{\mu}_{\text{MoM}} = \bar{y}, \quad \hat{\sigma}^2_{\text{MoM}} = \frac{1}{n} \sum_{i=1}^n (y_i - \bar{y})^2
+    \]
+    
     
      \item[(b)] \textbf{(5 points)} Derive the Maximum Likelihood Estimators (MLE) for \(\mu\) and \(\sigma^2\).
     the likelihood function is given by:

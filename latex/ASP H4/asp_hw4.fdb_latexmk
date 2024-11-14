@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1731534297.57451 "/home/kip/projects/MathsRequiredForAI/latex/ASP H4/asp_hw4.tex" "asp_hw4.pdf" "asp_hw4" 1731534298.82658 0
+["pdflatex"] 1731572256.29465 "/home/kip/projects/MathsRequiredForAI/latex/ASP H4/asp_hw4.tex" "asp_hw4.pdf" "asp_hw4" 1731572257.35002 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/ASP H4/asp_hw4.tex" 1731534297.21923 67135 0b294cdf25dffcae1cf825a9781f397f ""
+  "/home/kip/projects/MathsRequiredForAI/latex/ASP H4/asp_hw4.tex" 1731572255.93152 67529 7be52685566bdb485f112e0211e7e4e3 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -177,9 +177,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "asp_hw4.aux" 1731534298.72871 307 46428218c23a114dc5aaefe8b2adb237 "pdflatex"
-  "asp_hw4.out" 1731534298.35134 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "asp_hw4.tex" 1731534297.21923 67135 0b294cdf25dffcae1cf825a9781f397f ""
+  "asp_hw4.aux" 1731572257.2612 307 46428218c23a114dc5aaefe8b2adb237 "pdflatex"
+  "asp_hw4.out" 1731572256.91647 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "asp_hw4.tex" 1731572255.93152 67529 7be52685566bdb485f112e0211e7e4e3 ""
   (generated)
   "asp_hw4.aux"
   "asp_hw4.log"
