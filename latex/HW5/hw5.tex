@@ -1,3 +1,16 @@
+\documentclass[a3paper,12pt]{article} % Specify A3 paper size and font size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 5 - Mathetmatical Foundations of Machine Learning Engineers}
+\maketitle
+
+\medskip
+
 
 \section{Probability (70 points)}
 
@@ -22,12 +35,49 @@ where \( \alpha > 0 \) and \( \beta > 0 \) are fixed, given constants.
     (10 Points)
 
     \textit{Hint:} you can use Bayes' Rule.
-
+    \\ Baye's rule:
+    Baye's rule in this case is the posterior probability of \( p \) given \( b_1, \ldots, b_n \) is given by:
+    \[
+    Pr(A|B) = \frac{Pr(B|A)Pr(A)}{Pr(B)}
+    \]
+    where \( A \) and \( B \) in this case are the parameters \( p \) and \( b_1, \ldots, b_n \) respectively. Therefore, the posterior probability of \( p \) given \( b_1, \ldots, b_n \) is:
+    \[
+    Pr(p|b_1, \ldots, b_n) = \frac{Pr(b_1, \ldots, b_n|p)Pr(p)}{Pr(b_1, \ldots, b_n)}
+    \]
+    here \( Pr(b_1, \ldots, b_n) \) is the marginal probability of \( b_1, \ldots, b_n \) which can be calculated as:
+    \[
+    Pr(b_1, \ldots, b_n) = \int Pr(b_1, \ldots, b_n|p)Pr(p) dp
+    \]
+    where \( Pr(b_1, \ldots, b_n|p) \) is the likelihood of \( b_1, \ldots, b_n \) given \( p \) and \( Pr(p) \) is the prior probability of \( p \). Therefore, the log posterior probability of recording these numbers \( b_1, b_2, \ldots, b_n \) is:
+    \[
+    \log Pr(p|b_1, \ldots, b_n) = \log Pr(b_1, \ldots, b_n|p) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+    \]
+    \[
+    = \log \left( \prod_{i=1}^n Pr(b_i|p) \right) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+    \]
+    \[
+    = \sum_{i=1}^n \log Pr(b_i|p) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+    \]
+    \[
+    = \sum_{i=1}^n \log \left( (1 - p)^{b_i - 1} p \right) + \log \left( p^{\alpha - 1} (1 - p)^{\beta - 1} \right) - \log \left( \int p^{\alpha - 1} (1 - p)^{\beta - 1} dp \right)
+    \]
     \item Use your answer in part (1) to derive the maximum-a-posterior estimate (MAP) of the parameter:
     \[
     \hat{p} = \arg\max_{0 < p \leq 1} \log Pr(p|b_1, \ldots, b_n)
     \]
+    
     (10 Points)
+
+    \[
+    \hat{p} = \arg\max_{0 < p \leq 1} \sum_{i=1}^n \log \left( (1 - p)^{b_i - 1} p \right) + \log \left( p^{\alpha - 1} (1 - p)^{\beta - 1} \right) - \log \left( \int p^{\alpha - 1} (1 - p)^{\beta - 1} dp \right)
+    \]
+
+    \[
+    = \arg\max_{0 < p \leq 1} \sum_{i=1}^n \left( (b_i - 1) \log (1 - p) + \log p \right) + (\alpha - 1) \log p + (\beta - 1) \log (1 - p) - \log \left( \int p^{\alpha - 1} (1 - p)^{\beta - 1} dp \right)
+    \]
+    \[
+    = \arg\max_{0 < p \leq 1} \sum_{i=1}^n (b_i - 1) \log (1 - p) + \sum_{i=1}^n \log p + (\alpha - 1) \log p + (\beta - 1) \log (1 - p) - \log \left( \int p^{\alpha - 1} (1 - p)^{\beta - 1} dp \right)
+    \]
 
     \item Suppose that \( n = 5 \) and the values of \( b_1, b_2, \ldots, b_n \) are 10, 9, 5, 28, 7. Also, \( \alpha = 14 \) and \( \beta = 590 \). Using your answer in part (2), what is the MAP estimate of the \( p \) parameter for this data and prior? (10 Points)
 \end{enumerate}
@@ -54,19 +104,69 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
 
 \begin{enumerate}
     \item Using the Na\"ive Bayes model, find the prior probabilities \( P(H) \), \( P(I) \), and \( P(S) \) given the training data above. (4 points)
-
+    \[
+    P(H) = \mathbf{\frac{1}{5}}, \quad P(I) = \frac{2}{5}, \quad P(S) = \frac{2}{5}
+    \]
     \item Fill in Table \ref{tab:conditional_probs} below to finish building your Na\"ive Bayes classifier. Use Laplace smoothing with parameter \( \alpha = 2 \) for your conditional probability estimates. (8 points)
-
+    \[
+    P(X|Y) = \frac{N_{X,Y} + \alpha}{N_Y + \alpha \cdot |X|}
+    \]
+    where \( N_{X,Y} \) is the number of occurrences of \( X \) in class \( Y \), \( N_Y \) is the number of occurrences of class \( Y \), and \( |X| \) is the number of possible values of \( X \).
+    \[
+    P(X|Y) = \frac{N_{X,Y} + 2}{N_Y + 2 \cdot |X|}
+    \]
+    for \( X \) and \( Y \) in the table below.
+    \\ \(x\) = high fever:
+    \[
+    P(x|H) = \frac{0 + 2}{1 + 2 \cdot 3} = \mathbf{\frac{2}{7}}
+    \] 
+    \[
+    P(x|I) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
+    \]
+    \[
+    P(x|S) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
+    \]
+    \(x\) = average fever:
+    \[
+    P(x|H) = \frac{0 + 2}{1 + 2 \cdot 3} = \mathbf{\frac{2}{7}}
+    \]
+    \[
+    P(x|I) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
+    \]
+    \[
+    P(x|S) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
+    \]
+    \(x\) = vomiting:
+    \[
+    P(x|H) = \frac{0 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{2}{5}}
+    \]
+    \[
+    P(x|I) = \frac{0 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{2}{6}}
+    \]
+    \[
+    P(x|S) = \frac{1 + 2}{2 + 2 \cdot 2} = \mathbf{ \frac{3}{6}}
+    \]
+    \(x\) = diarrhea:
+    \[
+    P(x|H) = \frac{0 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{2}{5}}
+    \]
+    \[
+    P(x|I) = \frac{0 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{2}{6}}
+    \]
+    \[
+    P(x|S) = \frac{2 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{4}{6}}
+    \]
+    
     \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|c|c|}
     \hline
     \( P(X|Y) \) & \( Y = H \) & \( Y = I \) & \( Y = S \) \\
     \hline
-    \( X = \text{(high fever)} \) &  &  &  \\
-    \( X = \text{(average fever)} \) &  &  &  \\
-    \( X = V \) &  &  &  \\
-    \( X = D \) &  &  &  \\
+    \( X = \text{(high fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
+    \( X = \text{(average fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
+    \( X = V \) &  \(\frac{2}{5}\) & \(\frac{2}{6}\) & \(\frac{3}{6}\) \\
+    \( X = D \) & \(\frac{2}{5}\)  & \(\frac{2}{6}\) & \(\frac{4}{6}\) \\
     \hline
     \end{tabular}
     \caption{Conditional Probability Table for \( P(X|Y) \)}
@@ -74,6 +174,48 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \end{table}
 
     \item Apply your Na\"ive Bayes Classifier to a person who is vomiting but has no fever or diarrhea. Determine the probabilities of this person being healthy, suffering from influenza, and salmonella poisoning. (8 points)
+    \\ Let \( V \) be vomiting, \( F \) be fever, and \( D \) be diarrhea. The probabilities of this person being healthy, suffering from influenza, and salmonella poisoning are:
+    \\ probability that he is healthy:
+    \[
+    P(H|V) = \frac{P(V|H)P(H)}{P(V)} = \frac{P(V|H)P(H)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+    \]
+    probaility that he is healthy \& probability that he is healty given that person is vomiting:
+    \[
+    P(H) = \frac{1}{5}, \quad P(V|H) = \frac{2}{5}
+    \]
+    probability that this person is vomiting:
+    \[
+    P(V) = P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S) = \frac{2}{5} \cdot \frac{1}{5} + \frac{2}{6} \cdot \frac{2}{5} + \frac{3}{6} \cdot \frac{2}{5} = \frac{2}{25} + \frac{2}{15} + \frac{1}{5} = \frac{31}{75}
+    \]
+    so, the probability that this person is healthy if he is vomiting is:
+    \[
+    P(H|V) = \frac{P(V|H)P(H)}{P(V)} = \frac{\frac{2}{5} \cdot \frac{1}{5}}{\frac{31}{75}} = \frac{\frac{2}{25}}{\frac{31}{75}} = \frac{\frac{2}{25}}{\frac{31}{75}} = \mathbf{\frac{6}{31}}
+    \]
+    probability that he is suffering from influenza:
+    \[
+    P(I|V) = \frac{P(V|I)P(I)}{P(V)} = \frac{P(V|I)P(I)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+    \]
+    probaility that he is suffering from influenza \& probability that he is suffering from influenza given that the person vomiting:
+    \[
+    P(I) = \frac{2}{5}, \quad P(V|I) = \frac{2}{6}
+    \]
+    so, the probability that this person is suffering from influenza if he is vomiting is:
+    \[
+    P(I|V) = \frac{P(V|I)P(I)}{P(V)} = \frac{\frac{2}{6} \cdot \frac{2}{5}}{\frac{31}{75}} = \frac{\frac{4}{30}}{\frac{31}{75}} = \frac{\frac{4}{30}}{\frac{31}{75}} = \mathbf{\frac{10}{31}}
+    \]
+    probability that he is suffering from salmonella poisoning:
+    \[
+    P(S|V) = \frac{P(V|S)P(S)}{P(V)} = \frac{P(V|S)P(S)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+    \]
+    probaility that he is suffering from salmonella poisoning \& probability that he is suffering from salmonella poisoning given the person is vomiting:
+    \[
+    P(S) = \frac{2}{5}, \quad P(V|S) = \frac{3}{6}
+    \]
+    so, the probability that this person is suffering from salmonella poisoning if he is vomiting is:
+    \[
+    P(S|V) = \frac{P(V|S)P(S)}{P(V)} = \frac{\frac{3}{6} \cdot \frac{2}{5}}{\frac{31}{75}} = \frac{\frac{6}{30}}{\frac{31}{75}} = \frac{\frac{6}{30}}{\frac{31}{75}} = \mathbf{\frac{15}{31}}
+    \]
+
 \end{enumerate}
 
 \subsection{MLE (20 points)}
@@ -86,11 +228,60 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     
     Given independent identically distributed (iid) observations \( \{y_i\}_{i=1}^N \), \( y_i \in \{0, 1, 2, \ldots\} \), calculate the MLE estimate of \( \lambda \). (8 Points)
 
+    \[
+    L_Y(\lambda) = \prod_{i=1}^N \frac{e^{-\lambda} \lambda^{y_i}}{y_i!} = \frac{e^{-N\lambda} \lambda^{\sum_{i=1}^N y_i}}{\prod_{i=1}^N y_i!}
+    \]
+    \[
+    \log L_Y(\lambda) = -N\lambda + \sum_{i=1}^N y_i \log \lambda - \sum_{i=1}^N \log y_i!
+    \]
+
+    \[
+    \frac{d}{d\lambda} \log L_Y(\lambda) = -N + \frac{1}{\lambda} \sum_{i=1}^N y_i
+    \]
+
+    \[
+    \frac{d}{d\lambda} \log L_Y(\lambda) = 0 \implies \lambda = \frac{1}{N} \sum_{i=1}^N y_i
+    \]
+
+    \[
+    \hat{\lambda}_{\text{MLE}} = \frac{1}{N} \sum_{i=1}^N y_i
+    \]
+
     \item In this problem, you will examine the task of estimating the probability density of the maximum height obtained by waves in the ocean. Scientists have recorded the maximum wave height on \( n \) days, obtaining samples \( x_1, x_2, \ldots, x_n \in \mathbb{R} \). It is known that these are i.i.d. random variables following the Rayleigh distribution with parameter \( \theta \). Consider the following probability density function for the Rayleigh distribution:
     \[
     f_X(x; \theta) = \frac{x}{\theta^2} \exp\left(-\frac{x^2}{2\theta^2}\right)
     \]
     The likelihood function for your estimate is then \( L_X(\theta) = f_X(x_1, \ldots, x_n|\theta) \). Your task is to estimate \( \hat{\theta}_{\text{MLE}} \), the maximum likelihood estimate of \( \theta \). (12 Points)
+
+    The likelihood function is:
+    \[
+    L_X(\theta) = \prod_{i=1}^n \frac{x_i}{\theta^2} \exp\left(-\frac{x_i^2}{2\theta^2}\right) = \frac{1}{\theta^{2n}} \exp\left(-\frac{1}{2\theta^2} \sum_{i=1}^n x_i^2\right) \prod_{i=1}^n x_i
+    \]
+    \[
+    \log L_X(\theta) = -2n \log \theta - \frac{1}{2\theta^2} \sum_{i=1}^n x_i^2 + \sum_{i=1}^n \log x_i
+    \]
+    dropping the values that do not depend on \( \theta \) since their derivative will be zero:
+    \[
+    \log L_X(\theta) = -2n \log \theta - \frac{1}{2\theta^2} \sum_{i=1}^n x_i^2
+    \]
+    \[
+    \frac{d}{d\theta} \log L_X(\theta) = -\frac{2n}{\theta} + \frac{1}{\theta^3} \sum_{i=1}^n x_i^2
+    \]
+    we then set the derivative to zero to find the maximum likelihood estimate of \( \theta \):
+    \[
+        -\frac{2n}{\theta} + \frac{1}{\theta^3} \sum_{i=1}^n x_i^2 = 0
+    \]
+    \[
+        \frac{2n}{\theta} = \frac{1}{\theta^3} \sum_{i=1}^n x_i^2
+    \]
+    multiply both sides by \( \theta^3 \):
+    \[
+        2n\theta^2 = \sum_{i=1}^n x_i^2
+    \]
+    divide both sides by \( 2n \):
+    \[
+        \hat{\theta}_{\text{MLE}} = \sqrt{\frac{1}{2n} \sum_{i=1}^n x_i^2}
+    \]
 \end{itemize}
 
 \section{Text classification (30 Points)}
@@ -112,3 +303,5 @@ $V$ is the vocabulary of the dataset.
 
 
 \end{enumerate}
+
+\end{document}
