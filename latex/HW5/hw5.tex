@@ -37,6 +37,15 @@ where \( \alpha > 0 \) and \( \beta > 0 \) are fixed, given constants.
     \textit{Hint:} you can use Bayes' Rule.
     \\ Baye's rule:
     Baye's rule in this case is the posterior probability of \( p \) given \( b_1, \ldots, b_n \) is given by:
+    \\ geometric distribution:
+    \[
+    Pr(B = b) = (1 - p)^{b-1} p
+    \]
+    beta prior:
+    \[
+    Pr(p|\alpha, \beta) = p^{\alpha - 1} (1 - p)^{\beta - 1}
+    \]
+    Bayes theorem:
     \[
     Pr(A|B) = \frac{Pr(B|A)Pr(A)}{Pr(B)}
     \]
@@ -50,16 +59,28 @@ where \( \alpha > 0 \) and \( \beta > 0 \) are fixed, given constants.
     \]
     where \( Pr(b_1, \ldots, b_n|p) \) is the likelihood of \( b_1, \ldots, b_n \) given \( p \) and \( Pr(p) \) is the prior probability of \( p \). Therefore, the log posterior probability of recording these numbers \( b_1, b_2, \ldots, b_n \) is:
     \[
-    \log Pr(p|b_1, \ldots, b_n) = \log Pr(b_1, \ldots, b_n|p) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+    \log Pr(p|b_1, \ldots, b_n) = \log \left( \frac{Pr(b_1, \ldots, b_n|p)Pr(p)}{Pr(b_1, \ldots, b_n)} \right)
     \]
+    since the log of a fraction is the difference of the logs of the numerator and the denominator:
     \[
-    = \log \left( \prod_{i=1}^n Pr(b_i|p) \right) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+    = \log Pr(b_1, \ldots, b_n|p) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
     \]
+    but the \(Pr(b_1, \ldots, b_n)\) does not depend on \(p\) so we can ignore it:
     \[
-    = \sum_{i=1}^n \log Pr(b_i|p) + \log Pr(p) - \log Pr(b_1, \ldots, b_n)
+        = \log Pr(b_1, \ldots, b_n|p) + \log Pr(p) + C
     \]
+        where \( C \) is a constant (to represent what doesn't depend on p)
+        \\ we find the product of \(Pr(b_1, \ldots, b_n)\) because it is a product of independent events:
     \[
-    = \sum_{i=1}^n \log \left( (1 - p)^{b_i - 1} p \right) + \log \left( p^{\alpha - 1} (1 - p)^{\beta - 1} \right) - \log \left( \int p^{\alpha - 1} (1 - p)^{\beta - 1} dp \right)
+            = \log \left( \prod_{i=1}^n (1 - p)^{b_i - 1} p \right) + \log \left( p^{\alpha - 1} (1 - p)^{\beta - 1} \right) + C
+    \]
+    so our log posterior probability of recording these numbers \( b_1, b_2, \ldots, b_n \) is:
+    \[
+    = \sum_{i=1}^n \log \left( (1 - p)^{b_i - 1} p \right) + \log \left( p^{\alpha - 1} (1 - p)^{\beta - 1} \right) + C
+    \]
+    if we expand this further:
+    \[
+    = \sum_{i=1}^n \left( (b_i - 1) \log (1 - p) + \log p \right) + (\alpha - 1) \log p + (\beta - 1) \log (1 - p) + C
     \]
     \item Use your answer in part (1) to derive the maximum-a-posterior estimate (MAP) of the parameter:
     \[
