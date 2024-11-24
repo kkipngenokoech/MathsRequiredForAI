@@ -225,6 +225,16 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \[
     P(x|S) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
     \]
+    \(x\) = fever no:
+    \[
+    P(x|H) = \frac{1 + 2}{1 + 2 \cdot 3} = \mathbf{\frac{3}{7}}
+    \]
+    \[
+    P(x|I) = \frac{0 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{1}{4}}
+    \]
+    \[
+    P(x|S) = \frac{0 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{1}{4}}
+    \]
     \(x\) = vomiting yes:
     \[
     P(x|H) = \frac{0 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{2}{5}}
@@ -274,6 +284,7 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \hline
     \( X = \text{(high fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
     \( X = \text{(average fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
+    \( X = \text{(no fever)} \) & \(\frac{3}{7}\) & \(\frac{1}{4}\)  & \(\frac{1}{4}\) \\
     \( X = V = Yes \) &  \(\frac{2}{5}\) & \(\frac{2}{6}\) & \(\frac{3}{6}\) \\
     \( X = V = No \) &  \(\frac{3}{5}\) & \(\frac{4}{6}\) & \(\frac{3}{6}\) \\
     \( X = D = yes \) & \(\frac{2}{5}\)  & \(\frac{2}{6}\) & \(\frac{4}{6}\) \\
@@ -286,47 +297,51 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
 
     \item Apply your Na\"ive Bayes Classifier to a person who is vomiting but has no fever or diarrhea. Determine the probabilities of this person being healthy, suffering from influenza, and salmonella poisoning. (8 points)
     \\ Let \( V \) be vomiting, \( F \) be fever, and \( D \) be diarrhea. The probabilities of this person being healthy, suffering from influenza, and salmonella poisoning are:
-    \\ probability that he is healthy:
+    \\ Naive Bayes classifier:
     \[
-    P(H|V) = \frac{P(V|H)P(H)}{P(V)} = \frac{P(V|H)P(H)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+    P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}
     \]
-    probaility that he is healthy \& probability that he is healty given that person is vomiting:
+    where \( X \) is the evidence and \( Y \) is the class. We can ignore the denominator since it is constant for all classes:
     \[
-    P(H) = \frac{1}{5}, \quad P(V|H) = \frac{2}{5}
+    P(Y|X) \propto P(X|Y)P(Y)
     \]
-    probability that this person is vomiting:
+    probability that the person is healthy:
     \[
-    P(V) = P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S) = \frac{2}{5} \cdot \frac{1}{5} + \frac{2}{6} \cdot \frac{2}{5} + \frac{3}{6} \cdot \frac{2}{5} = \frac{2}{25} + \frac{2}{15} + \frac{1}{5} = \frac{31}{75}
+    P(H|V = \text{yes}, F = \text{no}, D = \text{no}) \propto P(V = \text{yes}|H)P(F = \text{no}|H)P(D = \text{no}|H)P(H)
+    \]  
+    \[
+    = \frac{2}{5} \cdot \frac{3}{7} \cdot \frac{3}{5} \cdot \frac{1}{5} = \frac{18}{875}
     \]
-    so, the probability that this person is healthy if he is vomiting is:
+    probability that the person is suffering from influenza:
     \[
-    P(H|V) = \frac{P(V|H)P(H)}{P(V)} = \frac{\frac{2}{5} \cdot \frac{1}{5}}{\frac{31}{75}} = \frac{\frac{2}{25}}{\frac{31}{75}} = \frac{\frac{2}{25}}{\frac{31}{75}} = \mathbf{\frac{6}{31}}
+    P(I|V = \text{yes}, F = \text{no}, D = \text{no}) \propto P(V = \text{yes}|I)P(F = \text{no}|I)P(D = \text{no}|I)P(I)
     \]
-    probability that he is suffering from influenza:
     \[
-    P(I|V) = \frac{P(V|I)P(I)}{P(V)} = \frac{P(V|I)P(I)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+    = \frac{2}{6} \cdot \frac{1}{4} \cdot \frac{4}{6} \cdot \frac{2}{5} = \frac{1}{45}
     \]
-    probaility that he is suffering from influenza \& probability that he is suffering from influenza given that the person vomiting:
+    probability that the person is suffering from salmonella poisoning:
     \[
-    P(I) = \frac{2}{5}, \quad P(V|I) = \frac{2}{6}
+    P(S|V = \text{yes}, F = \text{no}, D = \text{no}) \propto P(V = \text{yes}|S)P(F = \text{no}|S)P(D = \text{no}|S)P(S)
     \]
-    so, the probability that this person is suffering from influenza if he is vomiting is:
     \[
-    P(I|V) = \frac{P(V|I)P(I)}{P(V)} = \frac{\frac{2}{6} \cdot \frac{2}{5}}{\frac{31}{75}} = \frac{\frac{4}{30}}{\frac{31}{75}} = \frac{\frac{4}{30}}{\frac{31}{75}} = \mathbf{\frac{10}{31}}
+    = \frac{3}{6} \cdot \frac{1}{4} \cdot \frac{2}{6} \cdot \frac{2}{5} = \frac{1}{60}
     \]
-    probability that he is suffering from salmonella poisoning:
+    let us sum the probabilities:
     \[
-    P(S|V) = \frac{P(V|S)P(S)}{P(V)} = \frac{P(V|S)P(S)}{P(V|H)P(H) + P(V|I)P(I) + P(V|S)P(S)}
+        P(H|V = \text{yes}, F = \text{no}, D = \text{no}) + P(I|V = \text{yes}, F = \text{no}, D = \text{no}) + P(S|V = \text{yes}, F = \text{no}, D = \text{no}) = \frac{18}{875} + \frac{1}{45} + \frac{1}{60}  = \frac{1873}{31500}
     \]
-    probaility that he is suffering from salmonella poisoning \& probability that he is suffering from salmonella poisoning given the person is vomiting:
+    Normalizing the probabilities:
     \[
-    P(S) = \frac{2}{5}, \quad P(V|S) = \frac{3}{6}
+    P(H|V = \text{yes}, F = \text{no}, D = \text{no}) = \frac{18}{875} \cdot \frac{31500}{1873} = \frac{36}{1873} = \mathbf{0.345969}
     \]
-    so, the probability that this person is suffering from salmonella poisoning if he is vomiting is:
     \[
-    P(S|V) = \frac{P(V|S)P(S)}{P(V)} = \frac{\frac{3}{6} \cdot \frac{2}{5}}{\frac{31}{75}} = \frac{\frac{6}{30}}{\frac{31}{75}} = \frac{\frac{6}{30}}{\frac{31}{75}} = \mathbf{\frac{15}{31}}
+    P(I|V = \text{yes}, F = \text{no}, D = \text{no}) = \frac{1}{45} \cdot \frac{31500}{1873} = \frac{700}{1873} = \mathbf{0.373978}
+    \]
+    \[
+    P(S|V = \text{yes}, F = \text{no}, D = \text{no}) = \frac{1}{60} \cdot \frac{31500}{1873} = \frac{525}{1873} = \mathbf{0.280053}
     \]
 
+    The probabilities of this person being healthy, suffering from influenza, and salmonella poisoning are 0.345969, 0.373978, and 0.280053 respectively. This shows that this person is more likely to be suffering from influenza.
 \end{enumerate}
 
 \subsection{MLE (20 points)}
