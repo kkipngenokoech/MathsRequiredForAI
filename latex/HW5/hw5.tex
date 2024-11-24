@@ -157,6 +157,18 @@ so:
 \hat{p} = \frac{\alpha - 1 + n}{\alpha - 2 + n + \beta  + \sum_{i=1}^n (b_i - 1)}
 \]
 
+\[
+\hat{p} = \frac{14 - 1 + 5}{14 - 2 + 5 + 590 + 10 + 9 + 5 + 28 + 7 - 5}
+\]
+
+\[
+\hat{p} = \frac{18}{14 + 5 + 590 + 10 + 9 + 5 + 28 + 7 - 5}
+\]
+
+\[
+\hat{p} = \frac{18}{663} = \frac{6}{221} = \textbf{0.027149}
+\]
+
 \end{enumerate}
 
 \subsection{Naive Bayes (20 Points)}
@@ -213,7 +225,7 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \[
     P(x|S) = \frac{1 + 2}{2 + 2 \cdot 3} = \mathbf{\frac{3}{8}}
     \]
-    \(x\) = vomiting:
+    \(x\) = vomiting yes:
     \[
     P(x|H) = \frac{0 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{2}{5}}
     \]
@@ -223,7 +235,17 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \[
     P(x|S) = \frac{1 + 2}{2 + 2 \cdot 2} = \mathbf{ \frac{3}{6}}
     \]
-    \(x\) = diarrhea:
+    \(x\) = vomiting no:
+    \[
+    P(x|H) = \frac{1 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{3}{5}}
+    \]
+    \[
+    P(x|I) = \frac{2 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{4}{6}}
+    \]
+    \[
+    P(x|S) = \frac{1 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{3}{6}}
+    \]
+    \(x\) = diarrhea = yes:
     \[
     P(x|H) = \frac{0 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{2}{5}}
     \]
@@ -232,6 +254,16 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \]
     \[
     P(x|S) = \frac{2 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{4}{6}}
+    \]
+    \(x\) = diarrhea = no:
+    \[
+    P(x|H) = \frac{1 + 2}{1 + 2 \cdot 2} = \mathbf{\frac{3}{5}}
+    \]
+    \[
+    P(x|I) = \frac{2 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{4}{6}}
+    \]
+    \[
+    P(x|S) = \frac{0 + 2}{2 + 2 \cdot 2} = \mathbf{\frac{2}{6}}
     \]
     
     \begin{table}[h]
@@ -242,8 +274,10 @@ D5 & average & no & yes & Salmonella poisoning (S) \\
     \hline
     \( X = \text{(high fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
     \( X = \text{(average fever)} \) & \(\frac{2}{7}\) & \(\frac{3}{8}\)  & \(\frac{3}{8}\) \\
-    \( X = V \) &  \(\frac{2}{5}\) & \(\frac{2}{6}\) & \(\frac{3}{6}\) \\
-    \( X = D \) & \(\frac{2}{5}\)  & \(\frac{2}{6}\) & \(\frac{4}{6}\) \\
+    \( X = V = Yes \) &  \(\frac{2}{5}\) & \(\frac{2}{6}\) & \(\frac{3}{6}\) \\
+    \( X = V = No \) &  \(\frac{3}{5}\) & \(\frac{4}{6}\) & \(\frac{3}{6}\) \\
+    \( X = D = yes \) & \(\frac{2}{5}\)  & \(\frac{2}{6}\) & \(\frac{4}{6}\) \\
+    \( X = D = no \) & \(\frac{3}{5}\)  & \(\frac{4}{6}\) & \(\frac{2}{6}\) \\
     \hline
     \end{tabular}
     \caption{Conditional Probability Table for \( P(X|Y) \)}
