@@ -221,9 +221,55 @@ Using the following dataset in 1-D space, which consists of:
 
 \begin{enumerate}
     \item[(a)] Find a feature map $\phi : \mathbb{R}^1 \to \mathbb{R}^2$ that maps the data in the original 1-D input space $x$ to a 2-D feature space $\phi(x) = (y_1, y_2)$ so that the data becomes linearly separable. Plot the dataset after mapping in the 2-D space. \hfill (8 points)
+   
+    we are given the following dataset in 1-D space:
+    \[
+    \text{Positive data points: } \{0, 1, 2\}, \quad \text{Negative data points: } \{-2, -1, 3\}.
+    \]
+    to transform the data into a linearly separable form, we can use the kernel function: polynomial kernel of degree 2:
+    \[
+    \phi(x) = (y_1, y_2) = (x, x^2).
+    \]
+    to transform the Positive data points:
+    \\ the first positive data point is 0:
+    \[
+    \phi(0) = (0, 0^2) = \textbf{(0, 0)}
+    \]
+    the second positive data point is 1:
+    \[
+    \phi(1) = (1, 1^2) = \textbf{(1, 1)}
+    \]
+    the third positive data point is 2:
+    \[
+    \phi(2) = (2, 2^2) = \textbf{(2, 4)}
+    \]
+    to transform the Negative data points:
+    \\ the first negative data point is -2:
+    \[
+    \phi(-2) = (-2, (-2)^2) = \textbf{(-2, 4)}
+    \]
+    the second negative data point is -1:
+    \[
+    \phi(-1) = (-1, (-1)^2) = \textbf{(-1, 1)}
+    \]
+    the third negative data point is 3:
+    \[
+    \phi(3) = (3, 3^2) = \textbf{(3, 9)}
+    \]
+    the transformed dataset in 2-D space is:
+    \[
+    \text{Positive data points: } \{(0, 0), (1, 1), (2, 4)\}, \quad \text{Negative data points: } \{(-2, 4), (-1, 1), (3, 9)\}.
+    \]
+    the plot of the dataset after mapping in the 2-D space is shown below:
+   \(\textbf{Note: }\)  the figure might have floated to a different page.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\linewidth]{2D_space.png}
+    \label{fig:2D space}
+    \end{figure}
+    
 
-    
-    
+
     \item[(b)] Write down the equation for the separating hyperplane, 
     \(
     w_0 + w_1y_1 + w_2y_2 = 0
