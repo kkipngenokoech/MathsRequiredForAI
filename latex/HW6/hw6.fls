@@ -102,12 +102,12 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 OUTPUT hw6.pdf
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
-INPUT ./drawio.png
-INPUT ./drawio.png
-INPUT ./drawio.png
-INPUT ./drawio.png
-INPUT ./drawio.png
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
+INPUT ./drawio.png
+INPUT ./drawio.png
+INPUT ./drawio.png
+INPUT ./drawio.png
+INPUT ./drawio.png
 INPUT hw6.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb

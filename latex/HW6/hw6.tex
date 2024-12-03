@@ -8,7 +8,7 @@
 \begin{document}
 
 \author{kipngeno koech - bkoech}
-\title{Homework 5 - Mathetmatical Foundations of Machine Learning Engineers}
+\title{Homework 6 - Mathetmatical Foundations of Machine Learning Engineers}
 \maketitle
 
 \medskip
@@ -25,7 +25,52 @@ H(p) = \mathbb{E}[-\log(p(X))].
 \begin{enumerate}
     \item[(a)] Derive the second derivative $H''(p)$ of $H(p)$. If $H''(p) \leq 0$, $H(p)$ is called concave. Is $H(p)$ a concave function of $p$? \hfill (5 points)
     
+    The probability mass function of a Bernoulli random variable is given by:
+    \[
+    p(x) = \begin{cases}
+    p & \text{if } x = 1, \\
+    1 - p & \text{if } x = 0.
+    \end{cases}
+    \]
+    The expected value is given by:
+    \[
+    \mathbb{E}[X] = \sum_{x \in \{0, 1\}} x \cdot p(x).
+    \]
+    so the entropy of $X$ is:
+    \[
+    H(p) = -\sum_{x \in \{0, 1\}} p(x) \log(p(x)).
+    \]
+    this is equivalent to:
+    \[
+    H(p) = -p \log(p) - (1 - p) \log(1 - p).
+    \]
+    The first derivative of $H(p)$ with respect to $p$ is:
+    \[
+    H'(p) = -\log(p) - 1 + \log(1 - p).
+    \]
+    The second derivative of $H(p)$ with respect to $p$ is:
+    \[
+    H''(p) = -\frac{1}{p} - \frac{1}{1 - p}.
+    \]
+    The second derivative is always negative for $0 < p < 1$, so $H(p)$ is a concave function of $p$.
+    \\ This means that the entropy of a Bernoulli random variable is a concave function of the probability $p$.
     \item[(b)] Find the value of $p \in (0, 1)$ that maximizes $H(p)$. \hfill (5 points)
+    To maximize $H(p)$, we set the first derivative to zero:
+    \[
+    H'(p) = -\log(p) - 1 + \log(1 - p) = 0.
+    \]
+    \[
+    \log(1 - p) - \log(p) = 1.
+    \]
+    \[
+    \log\left(\frac{1 - p}{p}\right) = 1.
+    \]
+    \[
+    {1 - p} = p
+    \]
+    \[
+    p = \frac{1}{2}.
+    \]
 \end{enumerate}
 
 \vspace{30pt}

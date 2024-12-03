@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1733226493.00507 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733226493.5706 0
+["pdflatex"] 1733227779.71362 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733227780.23488 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733226492.59154 8068 6e093d5f7933a70cba30b8d432c24da7 ""
+  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733227778.8318 9278 48b30d0fec235dd88f18b279d6a878f2 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -69,8 +69,8 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
   "drawio.png" 1733226294.46825 6541 62dd1cf8bef03bf1e194765f8903b910 ""
-  "hw6.aux" 1733226493.51022 657 a5e3b37fba29206cac6a061cfe9f7378 "pdflatex"
-  "hw6.tex" 1733226492.59154 8068 6e093d5f7933a70cba30b8d432c24da7 ""
+  "hw6.aux" 1733227780.16562 657 343455ff818c6596dbd28a8e3f6adca1 "pdflatex"
+  "hw6.tex" 1733227778.8318 9278 48b30d0fec235dd88f18b279d6a878f2 ""
   (generated)
   "hw6.aux"
   "hw6.log"
