@@ -1,4 +1,18 @@
 
+\documentclass[a3paper,12pt]{article} % Specify A3 paper size and font size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{graphicx} % Include this package for \includegraphics
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 5 - Mathetmatical Foundations of Machine Learning Engineers}
+\maketitle
+
+\medskip
+
 
 \subsection*{1. Entropy of a Bernoulli Random Variable [10 points] } 
 
@@ -13,7 +27,6 @@ H(p) = \mathbb{E}[-\log(p(X))].
     
     \item[(b)] Find the value of $p \in (0, 1)$ that maximizes $H(p)$. \hfill (5 points)
 \end{enumerate}
-
 
 \vspace{30pt}
 \subsection*{2. Binary Classification with Logistic Regression [70 points]} 
@@ -154,9 +167,9 @@ Using the following dataset in 1-D space, which consists of:
 \text{Positive data points: } \{0, 1, 2\}, \quad \text{Negative data points: } \{-2, -1, 3\}.
 \]
 
-\begin{figure}[H]
+\begin{figure}[h!]
     \centering
-    \includegraphics[width=0.5\linewidth]{line1d.drawio (1).png}
+    \includegraphics[width=0.5\linewidth]{drawio.png}
     \label{fig:enter-label}
 \end{figure}
 
@@ -173,3 +186,4 @@ Using the following dataset in 1-D space, which consists of:
     given by a hard-margin linear SVM in the 2-D feature space. Draw this hyperplane on your plot and mark the corresponding support vector(s). \hfill (12 points)
 \end{enumerate}
 
+\end{document}
