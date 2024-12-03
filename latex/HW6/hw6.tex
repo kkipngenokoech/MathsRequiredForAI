@@ -91,6 +91,23 @@ p_{\text{model}}(y \mid \mathbf{x}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \m
 \]
 \hfill (5 points)
 
+The probability mass function of a Bernoulli random variable is given by:
+\[
+p(y \mid \mathbf{x}; \mathbf{w}) = \begin{cases}
+\sigma(\mathbf{w}^\top \mathbf{x}) & \text{if } y = 1, \\
+1 - \sigma(\mathbf{w}^\top \mathbf{x}) & \text{if } y = 0.
+\end{cases}
+\]
+This is equivalent to:
+
+\[
+p(y \mid \mathbf{x}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x})\big)^y \big(1 - \sigma(\mathbf{w}^\top \mathbf{x})\big)^{1-y}.
+\]
+This is because:
+\[
+\sigma(\mathbf{w}^\top \mathbf{x})^1 = \sigma(\mathbf{w}^\top \mathbf{x}), \quad \sigma(\mathbf{w}^\top \mathbf{x})^0 = 1 - \sigma(\mathbf{w}^\top \mathbf{x}).
+\]
+
 (b)
 Table 1 contains 10 samples, $(\mathbf{x}, y)$, obtained from the data-generating distribution $p_{\text{data}}$. The KL divergence between $p_{\text{data}}$ and $p_{\text{model}}$ is given as:
 \[
@@ -275,6 +292,32 @@ Using the following dataset in 1-D space, which consists of:
     w_0 + w_1y_1 + w_2y_2 = 0
     \),
     given by a hard-margin linear SVM in the 2-D feature space. Draw this hyperplane on your plot and mark the corresponding support vector(s). \hfill (12 points)
+    \\ the equation for the separating hyperplane is given by:
+    \[
+    w_0 + w_1y_1 + w_2y_2 = 0
+    \]
+    where the weights are given by:
+    \[
+    \mathbf{w} = \begin{bmatrix}
+    w_0 \\
+    w_1 \\
+    w_2
+    \end{bmatrix}
+    \]
+    the equation for the separating hyperplane is:
+    \[
+    w_0 + w_1y_1 + w_2y_2 = 0
+    \]
+    substituting the values of the weights:
+    \[
+    w_0 + w_1y_1 + w_2y_2 = 0
+    \]
+    \[
+    w_0 + w_1x + w_2x^2 = 0
+    \]
+    \[
+    w_0 + w_1x + w_2x^2 = 0
+    \]
 \end{enumerate}
 
 \end{document}
