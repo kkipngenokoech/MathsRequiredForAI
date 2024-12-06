@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  3 DEC 2024 15:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  6 DEC 2024 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -226,29 +226,23 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 12.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4] [5] [6] [7] [8]
+Overfull \hbox (27.7118pt too wide) detected at line 791
+\OT1/cmr/bx/n/12 v \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 ^^L\OT1/cmr/bx/n/12 v \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 r\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 w\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 9[\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 032555\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 16131] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1[\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 62565\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 02295] = [\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0292995\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 145179] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 062565\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 002295] = [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0332655\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 142884]\OML/cmm/m/it/12 :
+ []
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[2{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-<drawio.png, id=24, 323.70938pt x 67.0003pt>
+[9]
+<drawio.png, id=46, 323.70938pt x 67.0003pt>
 File: drawio.png Graphic file (type png)
 <use drawio.png>
-Package pdftex.def Info: drawio.png  used on input line 234.
+Package pdftex.def Info: drawio.png  used on input line 901.
 (pdftex.def)             Requested size: 350.25343pt x 72.49826pt.
-<2D_space.png, id=26, 489.9906pt x 395.3169pt>
+<2D_space.png, id=48, 489.9906pt x 395.3169pt>
 File: 2D_space.png Graphic file (type png)
 <use 2D_space.png>
-Package pdftex.def Info: 2D_space.png  used on input line 284.
+Package pdftex.def Info: 2D_space.png  used on input line 951.
 (pdftex.def)             Requested size: 350.25343pt x 282.58911pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[3 <./drawio.png>] [4 <./2D_space.png>] (./hw6.aux)
+ [10 <./drawio.png>] [11 <./2D_space.png>] (./hw6.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -261,16 +255,16 @@ LaTeX Warning: There were multiply-defined labels.
 Here is how much of TeX's memory you used:
  3128 strings out of 474222
  45468 string characters out of 5748733
- 1949975 words of memory out of 5000000
+ 1947975 words of memory out of 5000000
  25369 multiletter control sequences out of 15000+600000
  567184 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,509b,312s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,10n,65p,509b,310s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on hw6.pdf (4 pages, 196680 bytes).
+Output written on hw6.pdf (11 pages, 230679 bytes).
 PDF statistics:
- 98 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 121 PDF objects out of 1000 (max. 8388607)
+ 73 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
