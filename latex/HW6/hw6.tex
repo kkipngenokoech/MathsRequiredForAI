@@ -292,31 +292,23 @@ The loss is:
 \[
 L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the first data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.05, 0.05] \cdot [-1, 4]) = \sigma(0.05 - 0.2) = \sigma(-0.15) = 0.4625
-\]
-for the second data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.05, 0.05] \cdot [-3, 2]) = \sigma(0.15 - 0.1) = \sigma(0.05) = 0.5125
-\]
 The loss then is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.4625) + (1-1) \log(1-0.4625)\big] - \frac{1}{2} \big[0 \log(0.5125) + (1-0) \log(1-0.5125)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.5) + (1-1) \ln(1-0.5)\big] - \frac{1}{2} \big[0 \ln(0.5) + (1-0) \ln(1-0.5)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.4625) + 0 \log(0.5375)\big] - \frac{1}{2} \big[0 \log(0.5125) + 1 \log(0.4875)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.5) + 0 \ln(0.5)\big] - \frac{1}{2} \big[0 \ln(0.5) + 1 \ln(0.5)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.3348 + 0\big] - \frac{1}{2} \big[0 + -0.3120\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.693147 + 0\big] - \frac{1}{2} \big[0 + -0.693147\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.3348\big] - \frac{1}{2} \big[-0.3120\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.693147\big] - \frac{1}{2} \big[-0.693147\big].
 \]
 \[
-L(\mathbf{w}) = 0.3234.
+L(\mathbf{w}) = 0.693147.
 \]
-The updated parameters are \(\mathbf{w} = \mathbf{[0.05, 0.05]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.3234}\).
+The updated parameters are \(\mathbf{w} = \mathbf{[0.05, 0.05]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.693147}\).
 \\ \textbf{Minibatch 2:}
 \\ items in minibatch 2: \(\{3, 4\}\), \(\mathbf{x_3} = [-2, 1]\), \(y_3 = 0\), \(\mathbf{x_4} = [1, 2]\), \(y_4 = 1\)
 \\ Forward pass:
@@ -364,29 +356,22 @@ The loss is:
 \[
 L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the third data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.1219, 0.0719] \cdot [-2, 1]) = \sigma(-0.2438 + 0.0719) = \sigma(-0.1719) = 0.4571
-\]
-for the fourth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.1219, 0.0719] \cdot [1, 2]) = \sigma(0.1219 + 0.1438) = \sigma(0.2657) = 0.5665
-\]
+
 The loss then is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[0 \log(0.4571) + (1-0) \log(1-0.4571)\big] - \frac{1}{2} \big[1 \log(0.5665) + (1-1) \log(1-0.5665)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 \ln(0.4875) + (1-0) \ln(1-0.4875)\big] - \frac{1}{2} \big[1 \ln(0.5375) + (1-1) \ln(1-0.5375)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[0 \log(0.4571) + 1 \log(0.5429)\big] - \frac{1}{2} \big[1 \log(0.5665) + 0 \log(0.4335)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 \ln(0.4875) + 1 \ln(0.5125)\big] - \frac{1}{2} \big[1 \ln(0.5375) + 0 \ln(0.4625)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.6845\big] - \frac{1}{2} \big[-0.5665 + 0\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.66845\big] - \frac{1}{2} \big[-0.6208 + 0\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.6845\big] - \frac{1}{2} \big[-0.5665\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.6845\big] - \frac{1}{2} \big[-0.6208\big].
 \]
 \[
-L(\mathbf{w}) = 0.6255.
+L(\mathbf{w}) = 0.65265.
 \]
 The updated parameters are \(\mathbf{w} = \mathbf{[0.1219, 0.0719]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.6255}\).
 \\ \textbf{Minibatch 3:}
@@ -417,62 +402,55 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_5 - \sigma(\mathbf{w}^\top \mathbf{x_5})\big] \mathbf{x_5} - \frac{1}{2} \big[y_6 - \sigma(\mathbf{w}^\top \mathbf{x_6})\big] \mathbf{x_6}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[[1 - 0.5783] [2, 1] -  \big[0 - 0.4875\big] [-1, 1]\big]
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[[1 - 0.5783] [2, 1] -  \big[0 - 0.5125\big] [-1, 1]\big]
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.4217] [2, 1] - \frac{1}{2} \big[-0.4875] [-1, 1].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.4217] [2, 1] - \frac{1}{2} \big[-0.5125] [-1, 1].
 \]
 \[
-\nabla L(\mathbf{w}) = [-0.4217, -0.2108] - [0.2438, -0.2438]. = [-0.6655, -0.4546].
+\nabla L(\mathbf{w}) = [-0.4217, -0.2108] - [0.25625, -0.25625]. = [-0.67795, 0.04545].
 \]
 The updated parameters are:
 \[
-\mathbf{w} \gets \mathbf{w} - \alpha \nabla L(\mathbf{w}) = [0.1219, 0.0719] - 0.1 [-0.6655, -0.4546] = [0.1219, 0.0719] - [-0.0666, -0.0455] = [0.1885, 0.1174].
+\mathbf{w} \gets \mathbf{w} - \alpha \nabla L(\mathbf{w}) = [0.1219, 0.0719] - 0.1 [-0.67795, -0.4545] = [0.1219, 0.0719] - [-0.067795, -0.04545] = [0.1885, 0.064].
 \]
 The loss is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
+L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \ln(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \ln(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the fifth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.1885, 0.1174] \cdot [2, 1]) = \sigma(0.377 + 0.1174) = \sigma(0.4944) = 0.6211
-\]
-for the sixth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.1885, 0.1174] \cdot [-1, 1]) = \sigma(-0.1885 + 0.1174) = \sigma(-0.0711) = 0.4822
-\]
+
 The loss then is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.6211) + (1-1) \log(1-0.6211)\big] - \frac{1}{2} \big[0 \log(0.4822) + (1-0) \log(1-0.4822)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.5783) + (1-1) \ln(1-0.5783)\big] - \frac{1}{2} \big[0 \ln(0.4875) + (1-0) \ln(1-0.4822)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.6211) + 0 \log(0.3789)\big] - \frac{1}{2} \big[0 \log(0.4822) + 1 \log(0.5178)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.5783) + 0 \ln(0.4217)\big] - \frac{1}{2} \big[0 \ln(0.4822) + 1 \ln(0.5125)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.2068 + 0\big] - \frac{1}{2} \big[0 + -0.2858\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.54766 + 0\big] - \frac{1}{2} \big[0 + -0.66845\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.2068\big] - \frac{1}{2} \big[-0.2858\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.54766\big] - \frac{1}{2} \big[-0.2858\big].
 \]
 \[
-L(\mathbf{w}) = 0.2463.
+L(\mathbf{w}) = 0.608055.
 \]
-The updated parameters are \(\mathbf{w} = \mathbf{[0.1885, 0.1174]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.2463}\).
+The updated parameters are \(\mathbf{w} = \mathbf{[0.1885, 0.064]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.608055}\).
 \\ \textbf{Minibatch 4:}
 \\ items in minibatch 4: \(\{7, 8\}\), \(\mathbf{x_7} = [-2, -2]\), \(y_7 = 0\), \(\mathbf{x_8} = [1, -2]\), \(y_8 = 0\)
 \\ Forward pass:
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_7}) = \sigma([0.1885, 0.1174] \cdot [-2, -2]) = \sigma(-0.377 + -0.2348) = \sigma(-0.6118) = 0.3517
+\sigma(\mathbf{w}^\top \mathbf{x_7}) = \sigma([0.1885, 0.064] \cdot [-2, -2]) = \sigma(-0.377 + -0.128) = \sigma(-0.505) = 0.376366
 \]
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_8}) = \sigma([0.1885, 0.1174] \cdot [1, -2]) = \sigma(0.1885 - 0.2348) = \sigma(-0.0463) = 0.48851154
+\sigma(\mathbf{w}^\top \mathbf{x_8}) = \sigma([0.1885, 0.064] \cdot [1, -2]) = \sigma(0.1885 - 0.2348) = \sigma(0.0605) = 0.51512
 \]
 The p model is:
 \[
-p_{\text{model}}(y_7 \mid \mathbf{x_7}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{y_7} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{1-y_7} = (0.3517)^0 (0.6483)^1 = 0.6483
+p_{\text{model}}(y_7 \mid \mathbf{x_7}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{y_7} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{1-y_7} = (0.376366)^0 (0.623634)^1 = 0.623634
 \]
 \[
-p_{\text{model}}(y_8 \mid \mathbf{x_8}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{y_8} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{1-y_8} = (0.4885)^0 (0.5115)^1 = 0.5115
+p_{\text{model}}(y_8 \mid \mathbf{x_8}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{y_8} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{1-y_8} = (0.51512)^0 (0.4848796)^1 = 0.4848796
 \]
 The loss gradient function is:
 \[
@@ -486,17 +464,17 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_7 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big] \mathbf{x_7} - \frac{1}{2} \big[y_8 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big] \mathbf{x_8}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.3517\big] [-2, -2] - \frac{1}{2} \big[0 - 0.4885\big] [1, -2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.376366\big] [-2, -2] - \frac{1}{2} \big[0 - 0.51512\big] [1, -2].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[-0.3517] [-2, -2] - \frac{1}{2} \big[-0.4885] [1, -2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[-0.376366] [-2, -2] - \frac{1}{2} \big[-0.51512] [1, -2].
 \]
 \[
-\nabla L(\mathbf{w}) = [0.7034, 0.7034] - [-0.2443, 0.4885]. = [0.9477, 0.2149].
+\nabla L(\mathbf{w}) = [0.376366, 0.376366] - [-0.25756, 0.51512]. = [0.633926, -0.138754].
 \]
 The updated parameters are:
 \[
-\mathbf{w} \gets \mathbf{w} - \alpha \nabla L(\mathbf{w}) = [0.1885, 0.1174] - 0.1 [0.9477, 0.2149] = [0.1885, 0.1174] - [0.0948, 0.0215] = [0.0937, 0.0959].
+\mathbf{w} \gets \mathbf{w} - \alpha \nabla L(\mathbf{w}) = [0.1885, 0.1174] - 0.1 [0.633926, -0.138754] = [0.1885, -0.0138754] - [0.063339, 0.0215] = [0.20, 0.1514].
 \]
 The loss is:
 \[
@@ -611,20 +589,20 @@ where $\beta = 0.9$ is the momentum parameter. Report the values of the loss, pa
 \\ \textbf{Solution:}
 \\ \textbf{Minibatch 1:}
 \\ initial parameters: \(\mathbf{w} = [0, 0]\), \(\alpha = 0.1\), \(\beta = 0.9\)
-\\ items in minibatch 1: \(\{1, 2\}\), \(\mathbf{x_1} = [-1, 4]\), \(y_1 = 1\), \(\mathbf{x_2} = [-3, -2]\), \(y_2 = 0\)
+\\ items in minibatch 1: \(\{1, 2\}\), \(\mathbf{x_1} = [-1, 4]\), \(y_1 = 1\), \(\mathbf{x_2} = [-3, 2]\), \(y_2 = 0\)
 \\ Forward pass:
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_1}) = \sigma([0.05, -0.05] \cdot [-1, 4]) = \sigma(-0.05 - 0.2) = \sigma(-0.25) = 0.4375
+\sigma(\mathbf{w}^\top \mathbf{x_1}) = \sigma([0, 0] \cdot [-1, 4]) = \sigma(0 + 0) = \sigma(0) = 0.5
 \]
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_2}) = \sigma([0.05, -0.05] \cdot [-3, -2]) = \sigma(-0.15 + 0.1) = \sigma(-0.05) = 0.4875
+\sigma(\mathbf{w}^\top \mathbf{x_2}) = \sigma([0, 0] \cdot [-3, -2]) = \sigma(0 + 0) = \sigma(0) = 0.5
 \]
 The p model is:
 \[
-p_{\text{model}}(y_1 \mid \mathbf{x_1}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_1})\big)^{y_1} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_1})\big)^{1-y_1} = (0.4375)^1 (0.5625)^0 = 0.4375
+p_{\text{model}}(y_1 \mid \mathbf{x_1}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_1})\big)^{y_1} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_1})\big)^{1-y_1} = (0.5)^1 (0.5)^0 = 0.5
 \]
 \[
-p_{\text{model}}(y_2 \mid \mathbf{x_2}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_2})\big)^{y_2} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_2})\big)^{1-y_2} = (0.4875)^0 (0.5125)^1 = 0.5125
+p_{\text{model}}(y_2 \mid \mathbf{x_2}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_2})\big)^{y_2} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_2})\big)^{1-y_2} = (0.5)^0 (0.5)^1 = 0.5
 \]
 The loss gradient function is:
 \[
@@ -638,61 +616,53 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_1 - \sigma(\mathbf{w}^\top \mathbf{x_1})\big] \mathbf{x_1} - \frac{1}{2} \big[y_2 - \sigma(\mathbf{w}^\top \mathbf{x_2})\big] \mathbf{x_2}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.4375\big] [-1, 4] - \frac{1}{2} \big[0 - 0.4875\big] [-3, -2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.5\big] [-1, 4] - \frac{1}{2} \big[0 - 0.5\big] [-3, 2].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.5625] [-1, 4] - \frac{1}{2} \big[-0.4875] [-3, -2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.5] [-1, 4] - \frac{1}{2} \big[-0.5] [-3, 2].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2}\big[\big[-0.5625, 2.25\big] + \big[1.4625, 0.975\big]\big] = \frac{1}{2}\big[0.9, 3.225\big] = [-0.45, -1.6125].
+\nabla L(\mathbf{w}) = -\frac{1}{2} [-0.5, 2] - \frac{1}{2} [1.5, -1] = [0.25, -1] - [0.75, -0.5] = [-0.5, -0.5].
 \]
 The updated velocity is:
 \[
-\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0, 0] - 0.1 [-0.45, -1.6125] = [0, 0] - [-0.045, -0.16125] = [0.045, 0.16125].
+\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0, 0] - 0.1 [-0.5, -0.5] = [0, 0] - [-0.05, -0.05] = [0.05, 0.05].
 \]
 The updated parameters are:
 \[
-\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.05, -0.05] + [0.045, 0.16125] = [0.095, 0.11125].
+\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0, 0] + [0.05, 0.05] = [0.05, 0.05].
 \]
 The loss is:
 \[
 L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the first data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.095, 0.11125] \cdot [-1, 4]) = \sigma(-0.095 + 0.445) = \sigma(0.35) = 0.5866
-\]
-for the second data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.095, 0.11125] \cdot [-3, -2]) = \sigma(-0.285 + -0.2225) = \sigma(-0.5075) = 0.3755
-\]
 The loss function is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[0 \log(0.5866) + 1 \log(0.4134)\big] - \frac{1}{2} \big[1 \log(0.3755) + 0 \log(0.6245)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.5) + 0 \ln(0.5)\big] - \frac{1}{2} \big[0 \ln(0.5) + 1 \ln(0.5)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.3836\big] - \frac{1}{2} \big[-0.42539 + 0\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.6931\big] - \frac{1}{2} \big[-0.6931 + 0\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.3836\big] - \frac{1}{2} \big[-0.42539\big] = 0.1918 + 0.2127 = 0.404495
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.6931\big] - \frac{1}{2} \big[-0.6931\big] = 0.6931
 \]
-The updated parameters are \(\mathbf{w} = \mathbf{[0.095, 0.11125]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.404495}\).
+The updated parameters are \(\mathbf{w} = \mathbf{[0.05, 0.05]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.6931}\).
 \\ \textbf{Minibatch 2:}
-\\ initial parameters: \(\mathbf{w} = [0.095, 0.11125]\), \(\alpha = 0.1\), \(\beta = 0.9\)
+\\ initial parameters: \(\mathbf{w} = [0.05, 0.05]\), \(\alpha = 0.1\), \(\beta = 0.9\)
 \\ items in minibatch 2: \(\{3, 4\}\), \(\mathbf{x_3} = [-2, 1]\), \(y_3 = 1\), \(\mathbf{x_4} = [1, 2]\), \(y_4 = 0\)
 \\ Forward pass:
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_3}) = \sigma([0.095, 0.11125] \cdot [-2, 1]) = \sigma(-0.19 + 0.11125) = \sigma(-0.07875) = 0.4803
+\sigma(\mathbf{w}^\top \mathbf{x_3}) = \sigma([0.05, 0.05] \cdot [-2, 1]) = \sigma(-0.1 + 0.05) = \sigma(-0.05) = 0.4875
 \]
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_4}) = \sigma([0.095, 0.11125] \cdot [1, 2]) = \sigma(0.095 + 0.2225) = \sigma(0.3175) = 0.5783
+\sigma(\mathbf{w}^\top \mathbf{x_4}) = \sigma([0.05, 0.05] \cdot [1, 2]) = \sigma(0.05 + 0.1) = \sigma(0.15) = 0.5374
 \]
 The p model is:
 \[
-p_{\text{model}}(y_3 \mid \mathbf{x_3}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_3})\big)^{y_3} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_3})\big)^{1-y_3} = (0.4803)^1 (0.5197)^0 = 0.4803
+p_{\text{model}}(y_3 \mid \mathbf{x_3}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_3})\big)^{y_3} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_3})\big)^{1-y_3} = (0.5125)^1 (0.4875)^0 = 0.5125
 \]
 \[
-p_{\text{model}}(y_4 \mid \mathbf{x_4}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_4})\big)^{y_4} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_4})\big)^{1-y_4} = (0.5783)^0 (0.4217)^1 = 0.4217
+p_{\text{model}}(y_4 \mid \mathbf{x_4}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_4})\big)^{y_4} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_4})\big)^{1-y_4} = (0.5374)^1 (0.46257)^0 = 0.5374
 \]
 The loss gradient function is:
 \[
@@ -706,64 +676,57 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_3 - \sigma(\mathbf{w}^\top \mathbf{x_3})\big] \mathbf{x_3} - \frac{1}{2} \big[y_4 - \sigma(\mathbf{w}^\top \mathbf{x_4})\big] \mathbf{x_4}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.4803\big] [-2, 1] - \frac{1}{2} \big[0 - 0.4217\big] [1, 2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.5125\big] [-2, 1] - \frac{1}{2} \big[1 - 0.5374\big] [1, 2].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.5197] [-2, 1] - \frac{1}{2} \big[-0.4217] [1, 2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.5125] [-2, 1] - \frac{1}{2} \big[-0.4626] [1, 2].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2}\big[\big[-1.0394, 0.5197\big] + \big[-0.4217, -0.8434\big]\big] = -\frac{1}{2}\big[-1.4611, -0.3237\big] = [0.73055, -0.16185].
+\nabla L(\mathbf{w}) =  [0.5125, -0.25625] - [-0.2313, -0.4626]. = [-0.7438, -0.20635].
 \]
 The updated velocity is:
 \[
-\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0.045, 0.16125] - 0.1 [0.73055, -0.16185] = [0.0405, 0.145125] - [0.073055, -0.016185] = [-0.032555, 0.16131].
+\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0.05, 0.05] - 0.1 [-0.7438, -0.20635] = [0.045, 0.045] - [-0.07438, -0.020635] = [0.11938, 0.065635].
 \]
 The updated parameters are:
 \[
-\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.095, 0.11125] + [-0.032555, 0.16131] = [0.062445, 0.27256].
+\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.05, 0.05] + [0.11938, 0.065635] = [0.16938, 0.115635].
 \]
 The loss is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
+L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \ln(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \ln(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the third data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.062445, 0.27256] \cdot [-2, 1]) = \sigma(-0.12489 + 0.27256) = \sigma(0.14767) = 0.5368
-\]
-for the fourth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.062445, 0.27256] \cdot [1, 2]) = \sigma(0.062445 + 0.54512) = \sigma(0.607565) = 0.6475
-\]
+
 The loss function is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.5368) + (1-1) \log(1-0.5368)\big] - \frac{1}{2} \big[0 \log(0.6475) + (1-0) \log(1-0.6475)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 \ln(0.4875) + (1-0) \ln(1-0.4875)\big] - \frac{1}{2} \big[1 \ln(0.5374) + (1-1) \ln(1-0.5374)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.270187 + 0\big] - \frac{1}{2} \big[0 - 0.45284\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 \ln(0.4875) + 1 \ln(0.5125)\big] - \frac{1}{2} \big[1 \ln(0.5374) + 0 \ln(0.4626)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.270187\big] - \frac{1}{2} \big[-0.45284\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.6684\big] - \frac{1}{2} \big[-0.6195 + 0\big].
 \]
 \[
-L(\mathbf{w}) = 0.1350935 + 0.22642 = 0.3615135
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.6684\big] - \frac{1}{2} \big[-0.6195\big] = 0.64395
 \]
-The updated parameters are \(\mathbf{w} = \mathbf{[0.062445, 0.27256]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.3615135}\).
+The updated parameters are \(\mathbf{w} = \mathbf{[0.16938, 0.115635]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.64395}\).
 \\ \textbf{Minibatch 3:}
-\\ initial parameters: \(\mathbf{w} = [0.062445, 0.27256]\), \(\alpha = 0.1\), \(\beta = 0.9\)
+\\ initial parameters: \(\mathbf{w} = [0.16938, 0.115635]\), \(\alpha = 0.1\), \(\beta = 0.9\)
 \\ items in minibatch 3: \(\{5, 6\}\), \(\mathbf{x_5} = [2, 1]\), \(y_5 = 1\), \(\mathbf{x_6} = [-1, 1]\), \(y_6 = 0\)
 \\ Forward pass:
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_5}) = \sigma([0.062445, 0.27256] \cdot [2, 1]) = \sigma(0.12489 + 0.27256) = \sigma(0.39745) = 0.5982
+\sigma(\mathbf{w}^\top \mathbf{x_5}) = \sigma([0.16938, 0.115635] \cdot [2, 1]) = \sigma(0.33876 + 0.115635) = \sigma(0.454395) = 0.6117
 \]
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_6}) = \sigma([0.062445, 0.27256] \cdot [-1, 1]) = \sigma(-0.062445 + 0.27256) = \sigma(0.210115) = 0.5523
+\sigma(\mathbf{w}^\top \mathbf{x_6}) = \sigma([0.16938, 0.115635] \cdot [-1, 1]) = \sigma(-0.16938 + 0.115635) = \sigma(-0.053745) = 0.4863
 \]
 The p model is:
 \[
-p_{\text{model}}(y_5 \mid \mathbf{x_5}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_5})\big)^{y_5} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_5})\big)^{1-y_5} = (0.5982)^1 (0.4018)^0 = 0.5982
+p_{\text{model}}(y_5 \mid \mathbf{x_5}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_5})\big)^{y_5} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_5})\big)^{1-y_5} = (0.6117)^1 (0.3883)^0 = 0.6117
 \]
 \[
-p_{\text{model}}(y_6 \mid \mathbf{x_6}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_6})\big)^{y_6} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_6})\big)^{1-y_6} = (0.5523)^0 (0.4477)^1 = 0.4477
+p_{\text{model}}(y_6 \mid \mathbf{x_6}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_6})\big)^{y_6} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_6})\big)^{1-y_6} = (0.4863)^0 (0.5137)^1 = 0.5134
 \]
 The loss gradient function is:
 \[
@@ -777,64 +740,57 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_5 - \sigma(\mathbf{w}^\top \mathbf{x_5})\big] \mathbf{x_5} - \frac{1}{2} \big[y_6 - \sigma(\mathbf{w}^\top \mathbf{x_6})\big] \mathbf{x_6}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.5982\big] [2, 1] - \frac{1}{2} \big[0 - 0.4477\big] [-1, 1].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.6117\big] [2, 1] - \frac{1}{2} \big[0 - 0.5134\big] [-1, 1].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.4018] [2, 1] - \frac{1}{2} \big[-0.4477] [-1, 1].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.3883] [2, 1] - \frac{1}{2} \big[-0.5134] [-1, 1].
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2}\big[\big[0.8036, 0.4018\big] + \big[0.4477, -0.4477\big]\big] = -\frac{1}{2}\big[1.2513, -0.0459\big] = [-0.62565, 0.02295].
+\nabla L(\mathbf{w}) = [-0.3883, -0.19415] - [0.2567, -0.2567]. = [-0.645, 0.06255].
 \]
 The updated velocity is:
 \[
-\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [-0.032555, 0.16131] - 0.1 [-0.62565, 0.02295] = [-0.0292995, 0.145179] - [-0.062565, 0.002295] = [0.0332655, 0.142884].
+\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0.11938, 0.065635] - 0.1 [-0.645, 0.06255] = [0.107442, 0.0590715] - [-0.0645, 0.006255] = [0.171942, 0.0528165].
 \]
 The updated parameters are:
 \[
-\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.062445, 0.27256] + [0.0332655, 0.142884] = [0.0957105, 0.415444].
+\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.16938, 0.115635] + [0.171942, 0.0528165] = [0.341322, 0.1684515].
 \]
 The loss is:
 \[
 L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
 \]
-for the fifth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.0957105, 0.415444] \cdot [2, 1]) = \sigma(0.191421 + 0.415444) = \sigma(0.606865) = 0.6475
-\]
-for the sixth data point:
-\[
-    \sigma(\mathbf{w}^\top \mathbf{x_i}) = \sigma([0.0957105, 0.415444] \cdot [-1, 1]) = \sigma(-0.0957105 + 0.415444) = \sigma(0.3197335) = 0.5795
-\]
+
 The loss function is:
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[1 \log(0.6475) + (1-1) \log(1-0.6475)\big] - \frac{1}{2} \big[0 \log(0.5795) + (1-0) \log(1-0.5795)\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.6117) + 0 \ln(0.3883)\big] - \frac{1}{2} \big[0 \ln(0.5134) + 1 \ln(0.4866)\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.18876 + 0\big] - \frac{1}{2} \big[0 - 0.3762\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.4915 + 0\big] - \frac{1}{2} \big[0 -0.7203\big].
 \]
 \[
-L(\mathbf{w}) = -\frac{1}{2} \big[-0.18876\big] - \frac{1}{2} \big[-0.3762\big].
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.4915\big] - \frac{1}{2} \big[-0.7203\big] = 0.6059
 \]
 \[
-L(\mathbf{w}) = 0.09438 + 0.1881 = 0.28248
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.4915\big] - \frac{1}{2} \big[-0.7203\big] = 0.6059
 \]
-The updated parameters are \(\mathbf{w} = \mathbf{[0.0957105, 0.415444]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.28248}\).
+The updated parameters are \(\mathbf{w} = \mathbf{[0.341322, 0.1684515]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.6059}\).
 \\ \textbf{Minibatch 4:}
-\\ initial parameters: \(\mathbf{w} = [0.0957105, 0.415444]\), \(\alpha = 0.1\), \(\beta = 0.9\)
+\\ initial parameters: \(\mathbf{w} = [0.341322, 0.1684515]\), \(\alpha = 0.1\), \(\beta = 0.9\)
 \\ items in minibatch 4: \(\{7, 8\}\), \(\mathbf{x_7} = [-2, -2]\), \(y_7 = 0\), \(\mathbf{x_8} = [1, -2]\), \(y_8 = 0\)
 \\ Forward pass:
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_7}) = \sigma([0.0957105, 0.415444] \cdot [-2, -2]) = \sigma(-0.191421 - 0.830888) = \sigma(-1.022309) = 0.2645
+\sigma(\mathbf{w}^\top \mathbf{x_7}) = \sigma([0.341322, 0.1684515] \cdot [-2, -2]) = \sigma(-0.682644 - 0.336903) = \sigma(-1.019547) = 0.2655
 \]
 \[
-\sigma(\mathbf{w}^\top \mathbf{x_8}) = \sigma([0.0957105, 0.415444] \cdot [1, -2]) = \sigma(0.0957105 - 0.830888) = \sigma(-0.7351775) = 0.3245
+\sigma(\mathbf{w}^\top \mathbf{x_8}) = \sigma([0.341322, 0.1684515] \cdot [1, -2]) = \sigma(0.341322 - 0.336903) = \sigma(0.004419) = 0.5011
 \]
 The p model is:
 \[
-p_{\text{model}}(y_7 \mid \mathbf{x_7}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{y_7} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{1-y_7} = (0.2645)^0 (0.7355)^1 = 0.7355
+p_{\text{model}}(y_7 \mid \mathbf{x_7}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{y_7} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big)^{1-y_7} = (0.2655)^0 (0.7345)^1 = 0.7345
 \]
 \[
-p_{\text{model}}(y_8 \mid \mathbf{x_8}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{y_8} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{1-y_8} = (0.3245)^0 (0.6755)^1 = 0.6755
+p_{\text{model}}(y_8 \mid \mathbf{x_8}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{y_8} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big)^{1-y_8} = (0.5011)^0 (0.4989)^1 = 0.4989
 \]
 The loss gradient function is:
 \[
@@ -848,7 +804,7 @@ so the backward pass is:
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_7 - \sigma(\mathbf{w}^\top \mathbf{x_7})\big] \mathbf{x_7} - \frac{1}{2} \big[y_8 - \sigma(\mathbf{w}^\top \mathbf{x_8})\big] \mathbf{x_8}.
 \]
 \[
-\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.2645\big] [-2, -2] - \frac{1}{2} \big[0 - 0.3245\big] [1, -2].
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.7345\big] [-2, -2] - \frac{1}{2} \big[0 - 0.4989\big] [1, -2].
 \]
 
 (g)
@@ -860,10 +816,10 @@ Compare the results obtained in (e) and (f) above, and discuss your observations
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Update Step} & \textbf{Minibatch} & \textbf{Loss $L(\mathbf{w})$} & \textbf{Parameters $\mathbf{w}$} \\ \hline
-1 & $\{1, 2\}$ & 0.3234 & $[0.05, -0.05]$ \\ \hline
-2 & $\{3, 4\}$ & 0.6255 & $[0.1219, -0.079]$ \\ \hline
-3 & $\{5, 6\}$ & 0.2463 & $[0.1885, -0.1174]$ \\ \hline
-4 & $\{7, 8\}$ & 0.2535 & $[0.0937, -0.0959]$ \\ \hline
+1 & $\{1, 2\}$ & 0.693147 & $[0.05, 0.05]$ \\ \hline
+2 & $\{3, 4\}$ & 0.65265 & $[0.1219, 0.079]$ \\ \hline
+3 & $\{5, 6\}$ & 0.608055 & $[0.1885, 0.064]$ \\ \hline
+4 & $\{7, 8\}$ & 0.2535 & $[0.0937, 0.1235]$ \\ \hline
 5 & $\{9, 10\}$ & 0.2952 & $[0.0686, -0.121]$ \\ \hline
 \end{tabular}
 \caption{Progress of SGD over one epoch.}
@@ -875,9 +831,9 @@ Compare the results obtained in (e) and (f) above, and discuss your observations
 \begin{tabular}{|c|c|c|c|c|}
 \hline
 \textbf{Update Step} & \textbf{Minibatch} & \textbf{Loss $L(\mathbf{w})$} & \textbf{Parameters $\mathbf{w}$} & \textbf{Velocity $\mathbf{v}$ (Momentum)} \\ \hline
-1 & $\{1, 2\}$ & 0.543 & $[0.1, -0.2]$ & $[0.0, 0.0]$ \\ \hline
-2 & $\{3, 4\}$ & 0.523 & $[0.12, -0.18]$ & $[0.02, -0.02]$ \\ \hline
-3 & $\{5, 6\}$ & 0.508 & $[0.15, -0.15]$ & $[0.03, 0.03]$ \\ \hline
+1 & $\{1, 2\}$ & 0.6931 & $[0.05, 0.05]$ & $[0.05, 0.05]$ \\ \hline
+2 & $\{3, 4\}$ & 0.64395 & $[0.16938, 0.115635]$ & $[0.11938, 0.065635]$ \\ \hline
+3 & $\{5, 6\}$ & 0.6059 & $[0.341322, 0.1684515]$ & $[0.171942, 0.0528165]$ \\ \hline
 4 & $\{7, 8\}$ & 0.492 & $[0.18, -0.12]$ & $[0.04, -0.03]$ \\ \hline
 5 & $\{9, 10\}$ & 0.475 & $[0.2, -0.1]$ & $[0.05, 0.02]$ \\ \hline
 \end{tabular}
