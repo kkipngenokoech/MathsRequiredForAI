@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  7 DEC 2024 20:39
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  7 DEC 2024 22:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -227,7 +227,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4] [5] [6] [7] [8]
-Overfull \hbox (62.96144pt too wide) detected at line 818
+Overfull \hbox (62.96144pt too wide) detected at line 790
 \OT1/cmr/bx/n/12 v \OMS/cmsy/m/n/12   \OML/cmm/m/it/12 ^^L\OT1/cmr/bx/n/12 v \OMS/cmsy/m/n/12 ^^@ \OML/cmm/m/it/12 \OMS/cmsy/m/n/12 r\OML/cmm/m/it/12 L\OT1/cmr/m/n/12 (\OT1/cmr/bx/n/12 w\OT1/cmr/m/n/12 ) = 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 9[0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 171942\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0528165] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1[\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 48505\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 1\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 2334] = [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1547478\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 004753485] \OMS/cmsy/m/n/12 ^^@ \OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 0048505\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 12334] = [0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 1595983\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 13087485]\OML/cmm/m/it/12 :
  []
 
@@ -235,23 +235,19 @@ Overfull \hbox (62.96144pt too wide) detected at line 818
 <drawio.png, id=46, 323.70938pt x 67.0003pt>
 File: drawio.png Graphic file (type png)
 <use drawio.png>
-Package pdftex.def Info: drawio.png  used on input line 945.
+Package pdftex.def Info: drawio.png  used on input line 920.
 (pdftex.def)             Requested size: 350.25343pt x 72.49826pt.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[10]
-<2D_space.png, id=51, 489.9906pt x 395.3169pt>
+ [10 <./drawio.png>]
+<2D_space.png, id=52, 489.9906pt x 395.3169pt>
 File: 2D_space.png Graphic file (type png)
 <use 2D_space.png>
-Package pdftex.def Info: 2D_space.png  used on input line 995.
+Package pdftex.def Info: 2D_space.png  used on input line 970.
 (pdftex.def)             Requested size: 350.25343pt x 282.58911pt.
- [11 <./drawio.png> <./2D_space.png>] [12]
+ [11 <./2D_space.png>] [12]
 <HYPERLANE.png, id=60, 408.3255pt x 328.8285pt>
 File: HYPERLANE.png Graphic file (type png)
 <use HYPERLANE.png>
-Package pdftex.def Info: HYPERLANE.png  used on input line 1152.
+Package pdftex.def Info: HYPERLANE.png  used on input line 1127.
 (pdftex.def)             Requested size: 350.25343pt x 282.06949pt.
  [13 <./HYPERLANE.png>] (./hw6.aux)
  ***********
@@ -270,9 +266,9 @@ Here is how much of TeX's memory you used:
  25379 multiletter control sequences out of 15000+600000
  567184 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,10n,65p,509b,310s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,10n,65p,546b,310s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on hw6.pdf (13 pages, 273923 bytes).
+Output written on hw6.pdf (13 pages, 272814 bytes).
 PDF statistics:
  130 PDF objects out of 1000 (max. 8388607)
  78 compressed objects within 1 object stream
