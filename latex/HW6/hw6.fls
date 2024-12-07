@@ -113,6 +113,11 @@ INPUT ./2D_space.png
 INPUT ./2D_space.png
 INPUT ./2D_space.png
 INPUT ./2D_space.png
+INPUT ./HYPERLANE.png
+INPUT ./HYPERLANE.png
+INPUT ./HYPERLANE.png
+INPUT ./HYPERLANE.png
+INPUT ./HYPERLANE.png
 INPUT hw6.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb

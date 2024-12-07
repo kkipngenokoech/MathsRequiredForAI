@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1733506418.27447 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733506418.94497 0
+["pdflatex"] 1733579234.8425 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733579235.50265 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733506417.96145 42432 5ec1babcd23d966bae290128518e21a3 ""
+  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733579234.47725 49053 2022e60989d389d1baf14e54884388a8 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -69,9 +69,10 @@
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
   "2D_space.png" 1733231388.6683 25449 9ca07c10b3463fedcb977ef0741566f7 ""
+  "HYPERLANE.png" 1733579214.12291 50893 1ec4b0634dc0ebedbb65f09842cc5ff5 ""
   "drawio.png" 1733226294.46825 6541 62dd1cf8bef03bf1e194765f8903b910 ""
-  "hw6.aux" 1733506418.87043 701 ef0dbfbc6dccc20443cbc3f9c2ba54c2 "pdflatex"
-  "hw6.tex" 1733506417.96145 42432 5ec1babcd23d966bae290128518e21a3 ""
+  "hw6.aux" 1733579235.44072 752 c6d2a2589d1cdb81b7aa08f05f884e69 "pdflatex"
+  "hw6.tex" 1733579234.47725 49053 2022e60989d389d1baf14e54884388a8 ""
   (generated)
   "hw6.aux"
   "hw6.log"
