@@ -987,140 +987,261 @@ Using the following dataset in 1-D space, which consists of:
     \[
     w_0 + w_1y_1 + w_2y_2 = 0
     \]
-    The optimization problem we are trying to solve is:
-    \[
-    \min_{w, b} \frac{1}{2} ||w||^2
-    \]
-    this is subject to the constraints:
-    \[
-    y_i(w^\top \phi(x_i) + b) \geq 1, \quad \forall i
-    \]
-    where:
-    \(w\) is the weight vector \([w_1, w_2]\), \(b\) = bias, and \(\phi(x_i) = [y_1, y_2]\). are the transformed data points. Also, \(y_i\) is the class label for the data point \(x_i\). For the positive data points, \(y_i = 1\), and for the negative data points, \(y_i = -1\).
-    \\ The data points in the 2-D feature space are:
-    \[
-    \text{Positive data points: } \{(0, 0), (1, 1), (2, 4)\}, \quad \text{Negative data points: } \{(-2, 4), (-1, 1), (3, 9)\}.
-    \]
-    The labels as mentioned above are:
-    \[
-    \text{Positive data points: } \{1, 1, 1\}, \quad \text{Negative data points: } \{-1, -1, -1\}.
-    \]
-    now, the lagrangian function for the optimization problem is:
-    \\ \(\textbf{note:}\) why lagrangian? because we are solving a constrained optimization problem. so we need to incoporate the constraints into the objective function.
-    \[
-    L(w, b, \alpha) = \frac{1}{2} ||w||^2 - \sum^N_{i=1} \alpha_i \big[y_i(w^\top \phi(x_i) + b) - 1\big]
-    \]
-    where \(\alpha_i\) are the lagrange multipliers.
-    \\ the optimal weight vector \(w\) and bias \(b\) are obtained by minimizing the lagrangian function with respect to \(w\) and \(b\), and setting the derivatives to zero:
-    \[
-    \frac{\partial L}{\partial w} = w - \sum^N_{i=1} \alpha_i y_i \phi(x_i) = 0
-    \]
-    \[
-    \frac{\partial L}{\partial b} = -\sum^N_{i=1} \alpha_i y_i = 0
-    \]
-    substituting the values of \(w\) and \(b\) back into the lagrangian function, we get the dual optimization problem:
-    \[
-    \max_{\alpha} \sum^N_{i=1} \alpha_i - \frac{1}{2} \sum^N_{i=1} \sum^N_{j=1} \alpha_i \alpha_j y_i y_j \phi(x_i)^\top \phi(x_j)
-    \]
-    subject to the constraints:
-    \[
-    \alpha_i \geq 0, \quad \forall i
-    \]
-    \[
-    \sum^N_{i=1} \alpha_i y_i = 0
-    \]
-    the optimal weight vector \(w\) and bias \(b\) are obtained by:
-    \[
-    w = \sum^N_{i=1} \alpha_i y_i \phi(x_i)
-    \]
-    \[
-    b = y_i - w^\top \phi(x_i)
-    \]
-    computing the kernel matrix:
-    \[
-    K = \begin{bmatrix}
-    \phi(x_1)^\top \phi(x_1) & \phi(x_1)^\top \phi(x_2) & \phi(x_1)^\top \phi(x_3) & \phi(x_1)^\top \phi(x_4) & \phi(x_1)^\top \phi(x_5) & \phi(x_1)^\top \phi(x_6) \\
-    \phi(x_2)^\top \phi(x_1) & \phi(x_2)^\top \phi(x_2) & \phi(x_2)^\top \phi(x_3) & \phi(x_2)^\top \phi(x_4) & \phi(x_2)^\top \phi(x_5) & \phi(x_2)^\top \phi(x_6) \\
-    \phi(x_3)^\top \phi(x_1) & \phi(x_3)^\top \phi(x_2) & \phi(x_3)^\top \phi(x_3) & \phi(x_3)^\top \phi(x_4) & \phi(x_3)^\top \phi(x_5) & \phi(x_3)^\top \phi(x_6) \\
-    \phi(x_4)^\top \phi(x_1) & \phi(x_4)^\top \phi(x_2) & \phi(x_4)^\top \phi(x_3) & \phi(x_4)^\top \phi(x_4) & \phi(x_4)^\top \phi(x_5) & \phi(x_4)^\top \phi(x_6) \\
-    \phi(x_5)^\top \phi(x_1) & \phi(x_5)^\top \phi(x_2) & \phi(x_5)^\top \phi(x_3) & \phi(x_5)^\top \phi(x_4) & \phi(x_5)^\top \phi(x_5) & \phi(x_5)^\top \phi(x_6) \\
-    \phi(x_6)^\top \phi(x_1) & \phi(x_6)^\top \phi(x_2) & \phi(x_6)^\top \phi(x_3) & \phi(x_6)^\top \phi(x_4) & \phi(x_6)^\top \phi(x_5) & \phi(x_6)^\top \phi(x_6) \\
-    \end{bmatrix}
-    \]
-    where \(\phi(x_1) = (0, 0)\), \(\phi(x_2) = (1, 1)\), \(\phi(x_3) = (2, 4)\), \(\phi(x_4) = (-2, 4)\), \(\phi(x_5) = (-1, 1)\), and \(\phi(x_6) = (3, 9)\).
-    \[
-    K = \begin{bmatrix}
-        (0, 0)\dot (0,0) & (0, 0)\dot (1, 1) & (0, 0)\dot (2, 4) & (0, 0)\dot (-2, 4) & (0, 0)\dot (-1, 1) & (0, 0)\dot (3, 9) \\
-        (1, 1)\dot (0,0) & (1, 1)\dot (1, 1) & (1, 1)\dot (2, 4) & (1, 1)\dot (-2, 4) & (1, 1)\dot (-1, 1) & (1, 1)\dot (3, 9) \\
-        (2, 4)\dot (0,0) & (2, 4)\dot (1, 1) & (2, 4)\dot (2, 4) & (2, 4)\dot (-2, 4) & (2, 4)\dot (-1, 1) & (2, 4)\dot (3, 9) \\
-        (-2, 4)\dot (0,0) & (-2, 4)\dot (1, 1) & (-2, 4)\dot (2, 4) & (-2, 4)\dot (-2, 4) & (-2, 4)\dot (-1, 1) & (-2, 4)\dot (3, 9) \\
-        (-1, 1)\dot (0,0) & (-1, 1)\dot (1, 1) & (-1, 1)\dot (2, 4) & (-1, 1)\dot (-2, 4) & (-1, 1)\dot (-1, 1) & (-1, 1)\dot (3, 9) \\
-        (3, 9)\dot (0,0) & (3, 9)\dot (1, 1) & (3, 9)\dot (2, 4) & (3, 9)\dot (-2, 4) & (3, 9)\dot (-1, 1) & (3, 9)\dot (3, 9) \\
-    \end{bmatrix}
-    \]
-    \[
-    K = \begin{bmatrix}
-        0 & 0 & 0 & 0 & 0 & 0 \\
-        0 & 2 & 6 & 2 & 0 & 12 \\
-        0 & 6 & 20 & 12 & 2 & 42 \\
-        0 & 2 & 12 & 20 & 6 & 30 \\
-        0 & 0 & 2 & 6 & 2 & 6 \\
-        0 & 12 & 42 & 30 & 6 & 90 \\
-    \end{bmatrix}
-    \]
-    now we can solve the dual optimization problem to find the optimal lagrange multipliers \(\alpha_i\).
-    \[
-    \max_{\alpha} \sum^N_{i=1} \alpha_i - \frac{1}{2} \sum^N_{i=1} \sum^N_{j=1} \alpha_i \alpha_j y_i y_jK_{ij}
-    \]
-    K is the kernel matrix we computed above.
-    \\ labels y are: \(\{1, 1, 1, -1, -1, -1\}\)
-    \\ the optimal lagrange multipliers \(\alpha_i\) are:
-    \[
-    \alpha = [0.456394294 , 0.0.0000000285567450, 0.654716870, 0.0000000100924677, 0.839308304, 0.271802878]
-    \]
-    the optimal weight vector \(w\) is:
-    \[
-    w = \sum^N_{i=1} \alpha_i y_i \phi(x_i)
-    \]
-    \begin{align*}
-    w &= 0.456394294 (1)\times [0, 0] \\
-    &+ 0.0000000285567450 (1)\times [1, 1] \\
-    &+ 0.654716870 (1)\times [2, 4] \\
-    &+ 0.0000000100924677 (-1)\times [-2, 4] \\
-    &+ 0.839308304 (-1)\times [-1, 1] \\
-    &+ 0.271802878 (-1)\times [3, 9] \\
-    \end{align*}
+%     The optimization problem we are trying to solve is:
+%     \[
+%     \min_{w, b} \frac{1}{2} ||w||^2
+%     \]
+%     this is subject to the constraints:
+%     \[
+%     y_i(w^\top \phi(x_i) + b) \geq 1, \quad \forall i
+%     \]
+%     where:
+%     \(w\) is the weight vector \([w_1, w_2]\), \(b\) = bias, and \(\phi(x_i) = [y_1, y_2]\). are the transformed data points. Also, \(y_i\) is the class label for the data point \(x_i\). For the positive data points, \(y_i = 1\), and for the negative data points, \(y_i = -1\).
+%     \\ The data points in the 2-D feature space are:
+%     \[
+%     \text{Positive data points: } \{(0, 0), (1, 1), (2, 4)\}, \quad \text{Negative data points: } \{(-2, 4), (-1, 1), (3, 9)\}.
+%     \]
+%     The labels as mentioned above are:
+%     \[
+%     \text{Positive data points: } \{1, 1, 1\}, \quad \text{Negative data points: } \{-1, -1, -1\}.
+%     \]
+%     now, the lagrangian function for the optimization problem is:
+%     \\ \(\textbf{note:}\) why lagrangian? because we are solving a constrained optimization problem. so we need to incoporate the constraints into the objective function.
+%     \[
+%     L(w, b, \alpha) = \frac{1}{2} ||w||^2 - \sum^N_{i=1} \alpha_i \big[y_i(w^\top \phi(x_i) + b) - 1\big]
+%     \]
+%     where \(\alpha_i\) are the lagrange multipliers.
+%     \\ the optimal weight vector \(w\) and bias \(b\) are obtained by minimizing the lagrangian function with respect to \(w\) and \(b\), and setting the derivatives to zero:
+%     \[
+%     \frac{\partial L}{\partial w} = w - \sum^N_{i=1} \alpha_i y_i \phi(x_i) = 0
+%     \]
+%     \[
+%     \frac{\partial L}{\partial b} = -\sum^N_{i=1} \alpha_i y_i = 0
+%     \]
+%     substituting the values of \(w\) and \(b\) back into the lagrangian function, we get the dual optimization problem:
+%     \[
+%     \max_{\alpha} \sum^N_{i=1} \alpha_i - \frac{1}{2} \sum^N_{i=1} \sum^N_{j=1} \alpha_i \alpha_j y_i y_j \phi(x_i)^\top \phi(x_j)
+%     \]
+%     subject to the constraints:
+%     \[
+%     \alpha_i \geq 0, \quad \forall i
+%     \]
+%     \[
+%     \sum^N_{i=1} \alpha_i y_i = 0
+%     \]
+%     the optimal weight vector \(w\) and bias \(b\) are obtained by:
+%     \[
+%     w = \sum^N_{i=1} \alpha_i y_i \phi(x_i)
+%     \]
+%     \[
+%     b = y_i - w^\top \phi(x_i)
+%     \]
+%     computing the kernel matrix:
+%     \[
+%     K = \begin{bmatrix}
+%     \phi(x_1)^\top \phi(x_1) & \phi(x_1)^\top \phi(x_2) & \phi(x_1)^\top \phi(x_3) & \phi(x_1)^\top \phi(x_4) & \phi(x_1)^\top \phi(x_5) & \phi(x_1)^\top \phi(x_6) \\
+%     \phi(x_2)^\top \phi(x_1) & \phi(x_2)^\top \phi(x_2) & \phi(x_2)^\top \phi(x_3) & \phi(x_2)^\top \phi(x_4) & \phi(x_2)^\top \phi(x_5) & \phi(x_2)^\top \phi(x_6) \\
+%     \phi(x_3)^\top \phi(x_1) & \phi(x_3)^\top \phi(x_2) & \phi(x_3)^\top \phi(x_3) & \phi(x_3)^\top \phi(x_4) & \phi(x_3)^\top \phi(x_5) & \phi(x_3)^\top \phi(x_6) \\
+%     \phi(x_4)^\top \phi(x_1) & \phi(x_4)^\top \phi(x_2) & \phi(x_4)^\top \phi(x_3) & \phi(x_4)^\top \phi(x_4) & \phi(x_4)^\top \phi(x_5) & \phi(x_4)^\top \phi(x_6) \\
+%     \phi(x_5)^\top \phi(x_1) & \phi(x_5)^\top \phi(x_2) & \phi(x_5)^\top \phi(x_3) & \phi(x_5)^\top \phi(x_4) & \phi(x_5)^\top \phi(x_5) & \phi(x_5)^\top \phi(x_6) \\
+%     \phi(x_6)^\top \phi(x_1) & \phi(x_6)^\top \phi(x_2) & \phi(x_6)^\top \phi(x_3) & \phi(x_6)^\top \phi(x_4) & \phi(x_6)^\top \phi(x_5) & \phi(x_6)^\top \phi(x_6) \\
+%     \end{bmatrix}
+%     \]
+%     where \(\phi(x_1) = (0, 0)\), \(\phi(x_2) = (1, 1)\), \(\phi(x_3) = (2, 4)\), \(\phi(x_4) = (-2, 4)\), \(\phi(x_5) = (-1, 1)\), and \(\phi(x_6) = (3, 9)\).
+%     \[
+%     K = \begin{bmatrix}
+%         (0, 0)\dot (0,0) & (0, 0)\dot (1, 1) & (0, 0)\dot (2, 4) & (0, 0)\dot (-2, 4) & (0, 0)\dot (-1, 1) & (0, 0)\dot (3, 9) \\
+%         (1, 1)\dot (0,0) & (1, 1)\dot (1, 1) & (1, 1)\dot (2, 4) & (1, 1)\dot (-2, 4) & (1, 1)\dot (-1, 1) & (1, 1)\dot (3, 9) \\
+%         (2, 4)\dot (0,0) & (2, 4)\dot (1, 1) & (2, 4)\dot (2, 4) & (2, 4)\dot (-2, 4) & (2, 4)\dot (-1, 1) & (2, 4)\dot (3, 9) \\
+%         (-2, 4)\dot (0,0) & (-2, 4)\dot (1, 1) & (-2, 4)\dot (2, 4) & (-2, 4)\dot (-2, 4) & (-2, 4)\dot (-1, 1) & (-2, 4)\dot (3, 9) \\
+%         (-1, 1)\dot (0,0) & (-1, 1)\dot (1, 1) & (-1, 1)\dot (2, 4) & (-1, 1)\dot (-2, 4) & (-1, 1)\dot (-1, 1) & (-1, 1)\dot (3, 9) \\
+%         (3, 9)\dot (0,0) & (3, 9)\dot (1, 1) & (3, 9)\dot (2, 4) & (3, 9)\dot (-2, 4) & (3, 9)\dot (-1, 1) & (3, 9)\dot (3, 9) \\
+%     \end{bmatrix}
+%     \]
+%     \[
+%     K = \begin{bmatrix}
+%         0 & 0 & 0 & 0 & 0 & 0 \\
+%         0 & 2 & 6 & 2 & 0 & 12 \\
+%         0 & 6 & 20 & 12 & 2 & 42 \\
+%         0 & 2 & 12 & 20 & 6 & 30 \\
+%         0 & 0 & 2 & 6 & 2 & 6 \\
+%         0 & 12 & 42 & 30 & 6 & 90 \\
+%     \end{bmatrix}
+%     \]
+%     now we can solve the dual optimization problem to find the optimal lagrange multipliers \(\alpha_i\).
+%     \[
+%     \max_{\alpha} \sum^N_{i=1} \alpha_i - \frac{1}{2} \sum^N_{i=1} \sum^N_{j=1} \alpha_i \alpha_j y_i y_jK_{ij}
+%     \]
+%     K is the kernel matrix we computed above.
+%     \\ labels y are: \(\{1, 1, 1, -1, -1, -1\}\)
+%     \\ the optimal lagrange multipliers \(\alpha_i\) are:
+%     \[
+%     \alpha = [0.456394294 , 0.0.0000000285567450, 0.654716870, 0.0000000100924677, 0.839308304, 0.271802878]
+%     \]
+%     the optimal weight vector \(w\) is:
+%     \[
+%     w = \sum^N_{i=1} \alpha_i y_i \phi(x_i)
+%     \]
+%     \begin{align*}
+%     w &= 0.456394294 (1)\times [0, 0] \\
+%     &+ 0.0000000285567450 (1)\times [1, 1] \\
+%     &+ 0.654716870 (1)\times [2, 4] \\
+%     &+ 0.0000000100924677 (-1)\times [-2, 4] \\
+%     &+ 0.839308304 (-1)\times [-1, 1] \\
+%     &+ 0.271802878 (-1)\times [3, 9] \\
+%     \end{align*}
+
+% \[
+%  = [0,0] + [0.0000000285567450, 0.0000000285567450] + [1.309433740, 2.618867480] + [0.0000000201849354, -0.0000000403698708]
+% \]
+% \[
+%  + [0.839308304, -0.839308304] + [-0.271802878, -2.446225902] = [1.33333346, -0.66666674]
+% \]
+
+% The support vectors are the data points with non-zero Lagrange multipliers. Usually, \(\alpha > 10^{-5}\). The support vectors are:
+% \[
+% (0,0) = [0.456394294], \quad (2,4) = [0.839308304], \quad (-1,1) = [0.654716870], \quad (3,9) = [0.271802878]
+% \]
+
+% to choose the bias \(b\), we can use the support vectors:
+% \[
+% b = y_i - w^\top \phi(x_i)
+% \]
+% \[
+% b = 1 - [1.382914024, -1.358013882] \cdot [0, 0] = 1 - 0 = 1
+% \]
+% so the equation for the separating hyperplane is:
+% \[
+% 1 + 1.33333346y_1 - 0.66666674y_2 = 0
+% \]
+% \[
+% y_2 = \frac{1.33333346y_1 + 1}{0.66666674} = 2y_1 + 1.5
+% \]
+% \[
+% \mathbf{y_2 = 2y_1 + 1.5}
+% \]
+
+let us use this to form a system of linear equations, a hard margin linear SVM in the 2-D feature space is:
+\[
+y_i(w^\top \phi(x_i) + b) \geq 1, \quad \forall i
+\]
+where \(w = [w_1, w_2]\) is the weight vector, \(b\) is the bias, and \(\phi(x_i) = [y_1, y_2]\) are the transformed data points. For the positive data points, \(y_i = 1\), and for the negative data points, \(y_i = -1\).
+\\ the data points in the 2-D feature space are:
+\[
+\text{Positive data points: } \{(0, 0), (1, 1), (2, 4)\}, \quad \text{Negative data points: } \{(-2, 4), (-1, 1), (3, 9)\}.
+\]
+the labels as mentioned above are:
+\[
+\text{Positive data points: } \{1, 1, 1\}, \quad \text{Negative data points: } \{-1, -1, -1\}.
+\]
+let us pick support vectors closest to where we think the hyperplane will be. the support vectors are:
+\[
+(0, 0) = [1], \quad (2, 4) = [1], \quad (-1, 1) = [-1], \quad (3, 9) = [-1]
+\]
+let us use this to form a system of linear equations:
+\[
+w_1(0) + w_2(0) + b = 1
+\]
+\[
+w_1(2) + w_2(4) + b = 1
+\]
+\[
+w_1(-1) + w_2(1) + b = -1
+\]
+\[
+w_1(3) + w_2(9) + b = -1
+\]
+solving the system of linear equations, we get:
+\[
+\begin{bmatrix}
+0 & 0 & 1 \\
+2 & 4 & 1 \\
+-1 & 1 & 1 \\
+3 & 9 & 1 \\
+\end{bmatrix}
+\begin{bmatrix}
+w_1 \\
+w_2 \\
+b \\\
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\
+1 \\
+-1 \\
+-1 \\
+\end{bmatrix}
+\]
+let us augument the matrix and solve for the unknowns:
+\[
+\begin{bmatrix}
+0 & 0 & 1 & 1 \\
+2 & 4 & 1 & 1 \\
+-1 & 1 & 1 & -1 \\
+3 & 9 & 1 & -1 \\
+\end{bmatrix}
+\]
+swap row two with row 1
+\[
+\begin{bmatrix}
+2 & 4 & 1 & 1 \\
+0 & 0 & 1 & 1 \\
+-1 & 1 & 1 & -1 \\
+3 & 9 & 1 & -1 \\
+\end{bmatrix}
+\]
+divide row 1 by 2
+\[
+\begin{bmatrix}
+1 & 2 & 0.5 & 0.5 \\
+0 & 0 & 1 & 1 \\
+-1 & 1 & 1 & -1 \\
+3 & 9 & 1 & -1 \\
+\end{bmatrix}
+\]
+turn everything else in row 1 to zero: row 3 = row 3 + row 1, row 4 = row 4 - 3*row 1:
+\[
+\begin{bmatrix}
+1 & 2 & 0.5 & 0.5 \\
+0 & 0 & 1 & 1 \\
+0 & 3 & 1.5 & -0.5 \\
+0 & 3 & -0.5 & -2.5 \\
+\end{bmatrix}
+\]
+divide row 3 by 3
+\[
+\begin{bmatrix}
+1 & 2 & 0.5 & 0.5 \\
+0 & 0 & 1 & 1 \\
+0 & 1 & 0.5 & -0.16666666666666666 \\
+0 & 3 & -0.5 & -2.5 \\
+\end{bmatrix}
+\]
+turn everything else in column 2 to zero: row 1 = row 1 - 2*row 3, row 4 = row 4 - 3*row 3:
+\[
+\begin{bmatrix}
+1 & 0 & 0 & \frac{4}{3} \\
+0 & 0 & 1 & 1\\
+0 & 1 & 0 & -\frac{2}{3} \\
+0 & 0 & 0 & 0 \\
+\end{bmatrix}
+\]
+the solution to the system of linear equations is:
+\[
+w_1 = \frac{4}{3}, \quad w_2 = -\frac{2}{3}, \quad b = 1
+\]
+the equation for the separating hyperplane is:
+\[
+1 + \frac{4}{3}y_1 - \frac{2}{3}y_2 = 0
+\]
 
 \[
- = [0,0] + [0.0000000285567450, 0.0000000285567450] + [1.309433740, 2.618867480] + [0.0000000201849354, -0.0000000403698708]
-\]
-\[
- + [0.839308304, -0.839308304] + [-0.271802878, -2.446225902] = [1.33333346, -0.66666674]
-\]
-
-The support vectors are the data points with non-zero Lagrange multipliers. Usually, \(\alpha > 10^{-5}\). The support vectors are:
-\[
-(0,0) = [0.456394294], \quad (2,4) = [0.839308304], \quad (-1,1) = [0.654716870], \quad (3,9) = [0.271802878]
-\]
-
-to choose the bias \(b\), we can use the support vectors:
-\[
-b = y_i - w^\top \phi(x_i)
-\]
-\[
-b = 1 - [1.382914024, -1.358013882] \cdot [0, 0] = 1 - 0 = 1
-\]
-so the equation for the separating hyperplane is:
-\[
-1 + 1.33333346y_1 - 0.66666674y_2 = 0
-\]
-\[
-y_2 = \frac{1.33333346y_1 + 1}{0.66666674} = 2y_1 + 1.5
+\frac{4}{3}y_1 - \frac{2}{3}y_2 = -1
 \]
 \[
 \mathbf{y_2 = 2y_1 + 1.5}
 \]
-
+    
 the plot of the dataset after mapping in the 2-D space with the separating hyperplane is shown below:
     \begin{figure}[h!]
         \centering

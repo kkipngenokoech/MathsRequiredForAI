@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1733601652.76492 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733601653.27 0
+["pdflatex"] 1733603576.91106 "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" "hw6.pdf" "hw6" 1733603577.45094 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733601652.44962 50222 3fd1f1225da8b6ee7f4746434faab0e1 ""
+  "/home/kip/projects/MathsRequiredForAI/latex/HW6/hw6.tex" 1733603576.61654 53070 2496849ba0f372394363328583ddb9ab ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -71,8 +71,8 @@
   "2D_space.png" 1733231388.6683 25449 9ca07c10b3463fedcb977ef0741566f7 ""
   "HYPERLANE.png" 1733579214.12291 50893 1ec4b0634dc0ebedbb65f09842cc5ff5 ""
   "drawio.png" 1733226294.46825 6541 62dd1cf8bef03bf1e194765f8903b910 ""
-  "hw6.aux" 1733601653.22062 752 c6d2a2589d1cdb81b7aa08f05f884e69 "pdflatex"
-  "hw6.tex" 1733601652.44962 50222 3fd1f1225da8b6ee7f4746434faab0e1 ""
+  "hw6.aux" 1733603577.39875 752 e01212b95edc961355766f8c800fbc47 "pdflatex"
+  "hw6.tex" 1733603576.61654 53070 2496849ba0f372394363328583ddb9ab ""
   (generated)
   "hw6.aux"
   "hw6.log"
