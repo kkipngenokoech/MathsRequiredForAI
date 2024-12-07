@@ -806,7 +806,95 @@ so the backward pass is:
 \[
 \nabla L(\mathbf{w}) = -\frac{1}{2} \big[0 - 0.7345\big] [-2, -2] - \frac{1}{2} \big[0 - 0.4989\big] [1, -2].
 \]
-
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[-0.7345] [-2, -2] - \frac{1}{2} \big[-0.4989] [1, -2].
+\]
+\[
+\nabla L(\mathbf{w}) = [-0.7345, -0.7345] - [-0.24945, 0.4989] = [-0.48505, -1.2334].
+\]
+The updated velocity is:
+\[
+\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0.171942, 0.0528165] - 0.1 [-0.48505, -1.2334] = [0.1547478, 0.004753485] - [-0.0048505, -0.12334] = [0.1595983, 0.13087485].
+\]
+The updated parameters are:
+\[
+\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.341322, 0.1684515] + [0.1595983, 0.13087485] = [0.50092, 0.2993265].
+\]
+The loss is:
+\[
+L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[0 \ln(0.2655) + (1-0) \ln(1-0.2655)\big] - \frac{1}{2} \big[0 \ln(0.5011) + (1-0) \ln(1-0.5011)\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[0 + -0.30856\big] - \frac{1}{2} \big[0 + -0.6953\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.30856\big] - \frac{1}{2} \big[-0.6953\big] = 0.4987
+\]
+The updated parameters are \(\mathbf{w} = \mathbf{[0.50092, 0.2993265]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.4987}\).
+\\ \textbf{Minibatch 5:}
+\\ initial parameters: \(\mathbf{w} = [0.50092, 0.2993265]\), \(\alpha = 0.1\), \(\beta = 0.9\)
+\\ items in minibatch 5: \(\{9, 10\}\), \(\mathbf{x_9} = [3, -1]\), \(y_9 = 1\), \(\mathbf{x_{10}} = [2, 0]\), \(y_{10} = 1\)
+\[
+\sigma(\mathbf{w}^\top \mathbf{x_9}) = \sigma([0.50092, 0.2993265] \cdot [3, -1]) = \sigma(1.50276 - 0.2993265) = \sigma(1.2034335) = 0.7695
+\]
+\[
+\sigma(\mathbf{w}^\top \mathbf{x_{10}}) = \sigma([0.50092, 0.2993265] \cdot [2, 0]) = \sigma(1.00184 + 0) = \sigma(1.00184) = 0.7315
+\]
+The p model is:
+\[
+p_{\text{model}}(y_9 \mid \mathbf{x_9}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_9})\big)^{y_9} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_9})\big)^{1-y_9} = (0.7695)^1 (0.2305)^0 = 0.7695
+\]
+\[
+p_{\text{model}}(y_{10} \mid \mathbf{x_{10}}; \mathbf{w}) = \big(\sigma(\mathbf{w}^\top \mathbf{x_{10}})\big)^{y_{10}} \big(1 - \sigma(\mathbf{w}^\top \mathbf{x_{10}})\big)^{1-y_{10}} = (0.7315)^1 (0.2685)^0 = 0.7315
+\]
+The loss gradient function is:
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{N} \sum^N_{i=1} \big[y_i - \sigma(\mathbf{w}^\top \mathbf{x_i})\big] \mathbf{x_i}.
+\]
+so the backward pass is:
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i - \sigma(\mathbf{w}^\top \mathbf{x_i})\big] \mathbf{x_i}.
+\]
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[y_9 - \sigma(\mathbf{w}^\top \mathbf{x_9})\big] \mathbf{x_9} - \frac{1}{2} \big[y_{10} - \sigma(\mathbf{w}^\top \mathbf{x_{10}})\big] \mathbf{x_{10}}.
+\]
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[1 - 0.7695\big] [3, -1] - \frac{1}{2} \big[1 - 0.7315\big] [2, 0].
+\]
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2} \big[0.2305] [3, -1] - \frac{1}{2} \big[0.2685] [2, 0].
+\]
+\[
+\nabla L(\mathbf{w}) = -\frac{1}{2}[0.6915, -0.2305] - \frac{1}{2}[-0.537, 0] = [-0.34575, 0.11525] - [-0.2685, 0] = [-0.07725, 0.11525].
+\]
+The updated velocity is:
+\[
+\mathbf{v} \gets \beta \mathbf{v} - \alpha \nabla L(\mathbf{w}) = 0.9 [0.1595983, 0.13087485] - 0.1 [-0.07725, 0.11525] 
+\]
+\[
+    [0.14363847, 0.117787365] - [-0.007725, 0.011525] = [0.20136347, 0.106262365].
+\]
+The updated parameters are:
+\[
+\mathbf{w} \gets \mathbf{w} + \mathbf{v} = [0.50092, 0.2993265] + [0.20136347, 0.106262365] = [0.70228347, 0.405588865].
+\]
+The loss is:
+\[
+L(\mathbf{w}) = -\frac{1}{2} \sum^2_{i=1} \big[y_i \log(\sigma(\mathbf{w}^\top \mathbf{x_i})) + (1-y_i) \log(1-\sigma(\mathbf{w}^\top \mathbf{x_i}))\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[1 \ln(0.7695) + 0 \ln(0.2305)\big] - \frac{1}{2} \big[1 \ln(0.7315) + 0 \ln(0.2685)\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.2585 + 0\big] - \frac{1}{2} \big[-0.3135 + 0\big].
+\]
+\[
+L(\mathbf{w}) = -\frac{1}{2} \big[-0.2585\big] - \frac{1}{2} \big[-0.3135\big] = 0.28595
+\]
+The updated parameters are \(\mathbf{w} = \mathbf{[0.70228347, 0.405588865]}\) and the loss is \(L(\mathbf{w}) = \mathbf{0.28595}\).
 (g)
 Compare the results obtained in (e) and (f) above, and discuss your observations.
 \hfill (5 points)
@@ -834,8 +922,8 @@ Compare the results obtained in (e) and (f) above, and discuss your observations
 1 & $\{1, 2\}$ & 0.6931 & $[0.05, 0.05]$ & $[0.05, 0.05]$ \\ \hline
 2 & $\{3, 4\}$ & 0.64395 & $[0.16938, 0.115635]$ & $[0.11938, 0.065635]$ \\ \hline
 3 & $\{5, 6\}$ & 0.6059 & $[0.341322, 0.1684515]$ & $[0.171942, 0.0528165]$ \\ \hline
-4 & $\{7, 8\}$ & 0.492 & $[0.18, -0.12]$ & $[0.04, -0.03]$ \\ \hline
-5 & $\{9, 10\}$ & 0.475 & $[0.2, -0.1]$ & $[0.05, 0.02]$ \\ \hline
+4 & $\{7, 8\}$ & 0.492 & $[0.50092, 0.2993265]$ & $[0.1595983, 0.13087485]$ \\ \hline
+5 & $\{9, 10\}$ & 0.475 & $[0.70228347, 0.405588865]$ & $[0.20136347, 0.10626365]$ \\ \hline
 \end{tabular}
 \caption{Progress of SGD with Momentum over one epoch.}
 \label{tab:table2}
