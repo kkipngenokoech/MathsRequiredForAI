@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  8 DEC 2024 14:07
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  8 DEC 2024 16:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -242,25 +242,240 @@ Underfull \hbox (badness 10000) in paragraph at lines 16--27
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./asp.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<simple_moving_average.png, id=9, 611.4042pt x 395.3169pt>
+File: simple_moving_average.png Graphic file (type png)
+<use simple_moving_average.png>
+Package pdftex.def Info: simple_moving_average.png  used on input line 36.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+<window_5.png, id=11, 611.4042pt x 395.3169pt>
+File: window_5.png Graphic file (type png)
+<use window_5.png>
+Package pdftex.def Info: window_5.png  used on input line 42.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+<window_20.png, id=12, 611.4042pt x 395.3169pt>
+File: window_20.png Graphic file (type png)
+<use window_20.png>
+Package pdftex.def Info: window_20.png  used on input line 48.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[2 <./simple_moving_average.png>]
+<gaussian_1.png, id=17, 611.4042pt x 395.3169pt>
+File: gaussian_1.png Graphic file (type png)
+<use gaussian_1.png>
+Package pdftex.def Info: gaussian_1.png  used on input line 58.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+ [3 <./window_5.png> <./window_20.png>] [4 <./Gaussian_1.png>]
+<gaussian_2.png, id=27, 611.4042pt x 395.3169pt>
+File: gaussian_2.png Graphic file (type png)
+<use gaussian_2.png>
+Package pdftex.def Info: gaussian_2.png  used on input line 65.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+ [5
+
+ <./gaussian_2.png>]
+<gaussian_4.png, id=32, 611.4042pt x 395.3169pt>
+File: gaussian_4.png Graphic file (type png)
+<use gaussian_4.png>
+Package pdftex.def Info: gaussian_4.png  used on input line 72.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+ [6
+
+ <./gaussian_4.png>]
+<gaussian_0.5.png, id=37, 611.4042pt x 395.3169pt>
+File: gaussian_0.5.png Graphic file (type png)
+<use gaussian_0.5.png>
+Package pdftex.def Info: gaussian_0.5.png  used on input line 79.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+<butterworth_0.1_1.png, id=38, 611.4042pt x 395.3169pt>
+File: butterworth_0.1_1.png Graphic file (type png)
+<use butterworth_0.1_1.png>
+Package pdftex.def Info: butterworth_0.1_1.png  used on input line 87.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[7
+
+ <./gaussian_0.5.png>] [8 <./butterworth_0.1_1.png>]
+<2.png, id=48, 619.3539pt x 395.3169pt>
+File: 2.png Graphic file (type png)
+<use 2.png>
+Package pdftex.def Info: 2.png  used on input line 94.
+(pdftex.def)             Requested size: 362.37569pt x 231.29262pt.
+ [9
+
+ <./2.png>]
+<o.1.png, id=53, 611.4042pt x 395.3169pt>
+File: o.1.png Graphic file (type png)
+<use o.1.png>
+Package pdftex.def Info: o.1.png  used on input line 101.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+<exp_0.1.png, id=54, 611.4042pt x 395.3169pt>
+File: exp_0.1.png Graphic file (type png)
+<use exp_0.1.png>
+Package pdftex.def Info: exp_0.1.png  used on input line 110.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10
+
+ <./o.1.png>] [11 <./exp_0.1.png>]
+<exp_0..png, id=63, 611.4042pt x 395.3169pt>
+File: exp_0..png Graphic file (type png)
+<use exp_0..png>
+Package pdftex.def Info: exp_0..png  used on input line 117.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+ [12
+
+ <./exp_0..png>]
+<exp_0.01.png, id=68, 611.4042pt x 395.3169pt>
+File: exp_0.01.png Graphic file (type png)
+<use exp_0.01.png>
+Package pdftex.def Info: exp_0.01.png  used on input line 124.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+ [13
+
+ <./exp_0.01.png>]
+<exp_0.9.png, id=74, 611.4042pt x 395.3169pt>
+File: exp_0.9.png Graphic file (type png)
+<use exp_0.9.png>
+Package pdftex.def Info: exp_0.9.png  used on input line 131.
+(pdftex.def)             Requested size: 362.37569pt x 234.30864pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 138--144
+
+ []
+
+[14
+
+ <./exp_0.9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 146--151
+
+ []
+
+<Q2_SMA.png, id=79, 1076.1003pt x 426.393pt>
+File: Q2_SMA.png Graphic file (type png)
+<use Q2_SMA.png>
+Package pdftex.def Info: Q2_SMA.png  used on input line 159.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[15] [16 <./Q2_SMA.png>]
+<Q2_SMA_4.png, id=87, 1076.1003pt x 426.393pt>
+File: Q2_SMA_4.png Graphic file (type png)
+<use Q2_SMA_4.png>
+Package pdftex.def Info: Q2_SMA_4.png  used on input line 166.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [17
+
+ <./Q2_SMA_4.png>]
+<Q2_SMA_15.png, id=92, 1076.1003pt x 426.393pt>
+File: Q2_SMA_15.png Graphic file (type png)
+<use Q2_SMA_15.png>
+Package pdftex.def Info: Q2_SMA_15.png  used on input line 173.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [18
+
+ <./Q2_SMA_15.png>]
+<Q2_GK_1.png, id=97, 1076.1003pt x 426.393pt>
+File: Q2_GK_1.png Graphic file (type png)
+<use Q2_GK_1.png>
+Package pdftex.def Info: Q2_GK_1.png  used on input line 182.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [19
+
+ <./Q2_GK_1.png>]
+<Q2_GK_10.png, id=103, 1076.1003pt x 426.393pt>
+File: Q2_GK_10.png Graphic file (type png)
+<use Q2_GK_10.png>
+Package pdftex.def Info: Q2_GK_10.png  used on input line 190.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [20
+
+ <./Q2_GK_10.png>]
+<Q2_LPB_0.1_5.png, id=108, 1076.1003pt x 426.393pt>
+File: Q2_LPB_0.1_5.png Graphic file (type png)
+<use Q2_LPB_0.1_5.png>
+Package pdftex.def Info: Q2_LPB_0.1_5.png  used on input line 199.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [21
+
+ <./Q2_LPB_0.1_5.png>]
+<Q2_LPB_0.1_2.png, id=113, 1076.1003pt x 426.393pt>
+File: Q2_LPB_0.1_2.png Graphic file (type png)
+<use Q2_LPB_0.1_2.png>
+Package pdftex.def Info: Q2_LPB_0.1_2.png  used on input line 206.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [22
+
+ <./Q2_LPB_0.1_2.png>]
+<Q2_EMA_0.1.png, id=118, 1076.1003pt x 426.393pt>
+File: Q2_EMA_0.1.png Graphic file (type png)
+<use Q2_EMA_0.1.png>
+Package pdftex.def Info: Q2_EMA_0.1.png  used on input line 215.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [23
+
+ <./Q2_EMA_0.1.png>]
+<Q2_EMA_0.5.png, id=123, 1076.1003pt x 426.393pt>
+File: Q2_EMA_0.5.png Graphic file (type png)
+<use Q2_EMA_0.5.png>
+Package pdftex.def Info: Q2_EMA_0.5.png  used on input line 222.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [24
+
+ <./Q2_EMA_0.5.png>]
+<Q2_EMA_0.9.png, id=128, 1076.1003pt x 426.393pt>
+File: Q2_EMA_0.9.png Graphic file (type png)
+<use Q2_EMA_0.9.png>
+Package pdftex.def Info: Q2_EMA_0.9.png  used on input line 229.
+(pdftex.def)             Requested size: 362.37569pt x 143.58588pt.
+ [25
+
+ <./Q2_EMA_0.9.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 234--247
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--247
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 234--247
+
+ []
+
+[26
+
+] (./asp.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3065 strings out of 474222
- 44495 string characters out of 5748733
+ 3263 strings out of 474222
+ 48216 string characters out of 5748733
  1931975 words of memory out of 5000000
- 25317 multiletter control sequences out of 15000+600000
- 562485 words of font info for 53 fonts, out of 8000000 for 9000
+ 25506 multiletter control sequences out of 15000+600000
+ 567453 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,6n,65p,815b,213s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,7n,65p,1432b,239s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-Output written on asp.pdf (2 pages, 51378 bytes).
+Output written on asp.pdf (26 pages, 5375891 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 152 PDF objects out of 1000 (max. 8388607)
+ 69 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 121 words of extra memory for PDF output out of 10000 (max. 10000000)
 
