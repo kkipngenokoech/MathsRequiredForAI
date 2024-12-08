@@ -245,5 +245,143 @@ Autocorrelation is important for detecting patterns in temperature data or other
 \textbf{Discuss how the chosen denoising method affects the detection of seasonal patterns}
 The chosen denoising method is the Gaussian kernel. The Gaussian kernel assigns higher weights to more data points and the exponential moving average assigns higher weights to more recent data points. This makes these methods more accurate in recovering the original signal. The simple moving average and low pass butterworth filter did not work as well for this scenario. The denoised mean was further away from the true mean for these methods. This means that the simple moving average and low pass butterworth filter are not as accurate in recovering the original signal. Overall, I would recommend using the Gaussian kernel and exponential moving average for this scenario because they are more accurate in recovering the original signal.
 
+\subsection{Stationarity Analysis of an Audio Signal}
+\textbf{problem: } An audio signal is simulated with a sinusoidal waveform and added noise.
+The task is to analyze its stationarity by examining the mean and variance over time.
+\subsubsection{ Denoising with Simple Moving Average}
+with a window size of 5, the simple moving average denoising technique was applied to the data. The results are shown in figure 25.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_SMA_5.png}
+\caption{Denoising with Simple Moving Average}
+\end{figure}
+\clearpage
+with a window size of 10, the simple moving average denoising technique was applied to the data. The results are shown in figure 26.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_SMA_10.png}
+\caption{Denoising with Simple Moving Average}
+\end{figure}
+\clearpage
+with a window size of 20, the simple moving average denoising technique was applied to the data. The results are shown in figure 27.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_SMA_20.png}
+\caption{Denoising with Simple Moving Average}
+\end{figure}
+\clearpage
+\subsubsection{ Denoising with Gaussian Kernel}
+with a standard deviation of 1, the Gaussian kernel denoising technique was applied to the data. The results are shown in figure 28.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_GK_1.png}
+\caption{Denoising with Gaussian Kernel}
+\end{figure}
+\clearpage
+with a standard deviation of 5, the Gaussian kernel denoising technique was applied to the data. The results are shown in figure 29.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_GK_5.png}
+\caption{Denoising with Gaussian Kernel}
+\end{figure}
+\clearpage
+with a standard deviation of 10, the Gaussian kernel denoising technique was applied to the data. The results are shown in figure 30.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_GK_10.png}
+\caption{Denoising with Gaussian Kernel}
+\end{figure}
+
+\clearpage
+\subsubsection{ Denoising with Low Pass Butterworth Filter}
+with a cutoff frequency of 0.1 and order of 5, the low pass butterworth filter denoising technique was applied to the data. The results are shown in figure 31.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_LPB_0.1_1.png}
+\caption{Denoising with Low Pass Butterworth Filter}
+\end{figure}
+\clearpage
+with a cutoff frequency of 0.1 and order of 1, the low pass butterworth filter denoising technique was applied to the data. The results are shown in figure 32.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_LPB_0.1_2.png}
+\caption{Denoising with Low Pass Butterworth Filter}
+\end{figure}
+\clearpage
+with a cutoff frequency of 0.01 and order of 1, the low pass butterworth filter denoising technique was applied to the data. The results are shown in figure 33.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_LPB_0.01_1.png}
+\caption{Denoising with Low Pass Butterworth Filter}
+\end{figure}
+\clearpage
+with a cutoff frequency of 0.01 and order of 5, the low pass butterworth filter denoising technique was applied to the data. The results are shown in figure 34.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_LPB_0.01_5.png}
+\caption{Denoising with Low Pass Butterworth Filter}
+\end{figure}
+
+\clearpage
+\subsubsection{ Denoising with Exponential Moving Average}
+with a smoothing parameter of 0.1, the exponential moving average denoising technique was applied to the data. The results are shown in figure 35.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_EMA_0.1.png}
+\caption{Denoising with Exponential Moving Average}
+\end{figure}
+\clearpage
+with a smoothing parameter of 0.5, the exponential moving average denoising technique was applied to the data. The results are shown in figure 36.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_EMA_0.5.png}
+\caption{Denoising with Exponential Moving Average}
+\end{figure}
+\clearpage
+with a smoothing parameter of 0.9, the exponential moving average denoising technique was applied to the data. The results are shown in figure 37.
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{Q3_EMA_0.9.png}
+\caption{Denoising with Exponential Moving Average}
+\end{figure}
+
+\clearpage
+\subsubsection{Reflection points}
+\textbf{How does noise affect the stationarity of the audio signal (i.e., its mean and variance
+over time)?}
+Noise affects the stationarity of the audio signal by increasing the mean and variance over time. The mean and variance of the audio signal are higher when there is more noise in the data. This means that the audio signal is less stationary when there is more noise. The mean and variance of the audio signal are lower when there is less noise in the data. This means that the audio signal is more stationary when there is less noise. Overall, noise affects the stationarity of the audio signal by increasing the mean and variance over time.
+\newline\newline
+\textbf{How does smoothing restore stationarity? Which method is most effective?}
+Smoothing restores stationarity by removing the noise from the data. This makes the mean and variance of the audio signal more stable over time. The audio signal becomes more stationary when the noise is removed. The Gaussian kernel and exponential moving average are the most effective methods for restoring stationarity. The Gaussian kernel assigns higher weights to more data points and the exponential moving average assigns higher weights to more recent data points. This makes these methods more accurate in recovering the original signal. The simple moving average and low pass butterworth filter did not work as well for this scenario. The denoised mean was further away from the true mean for these methods. This means that the simple moving average and low pass butterworth filter are not as accurate in recovering the original signal. Overall, I would recommend using the Gaussian kernel and exponential moving average for this scenario because they are more accurate in recovering the original signal.
+\newline\newline
+\textbf{Why is stationarity important in signal processing and time-series analysis?}
+Stationarity is important in signal processing and time-series analysis because it helps identify underlying patterns in the data. Stationarity means that the mean and variance of the data are stable over time. This makes it easier to analyze the data and identify trends and patterns. For example, in time-series analysis, stationarity can help predict future trends and understand the underlying factors that influence the data. Stationarity is also important in signal processing because it helps remove noise from the data. This makes the data more reliable and accurate. Overall, stationarity is important in signal processing and time-series analysis because it helps identify underlying patterns in the data and make the data more reliable and accurate.
+\newline\newline
+\textbf{Explain the impact of smoothing on stationarity and discuss practical applications.}
+Smoothing has a positive impact on stationarity by removing noise from the data. This makes the mean and variance of the data more stable over time. The data becomes more stationary when the noise is removed. This can help identify underlying patterns in the data and make the data more reliable and accurate. In practical applications, smoothing can be used to improve the quality of measurements in various fields such as medical testing, manufacturing quality control, and audio signal processing. For example, in medical testing, smoothing can help remove noise from the measurements and make the data more reliable. In manufacturing quality control, smoothing can help improve the accuracy of the measurements and identify underlying patterns in the data. In audio signal processing, smoothing can help remove noise from the audio signal and make the data more reliable and accurate. Overall, smoothing has a positive impact on stationarity and can be used to improve the quality of measurements in various fields.
+\section{CONCLUSION}
+This homework explored the use of various denoising techniques such as the simple moving average, Gaussian kernel, low pass Butterworth filter, and exponential moving average. 
+
+\subsection*{Key Findings}
+\begin{itemize}
+    \item \textbf{Quality Control with Noisy Measurements:} The Gaussian kernel and exponential moving average were found to be the most effective denoising techniques. They provided denoised means closer to the true mean compared to the simple moving average and low pass Butterworth filter.
+    \item \textbf{Temperature Trends with Noisy Measurements:} Smoothing improved the visibility of seasonal trends in the autocorrelation plot. The Gaussian kernel and exponential moving average were again the most effective methods for this scenario.
+    \item \textbf{Stationarity Analysis of an Audio Signal:} Noise increased the mean and variance of the audio signal, making it less stationary. Smoothing restored stationarity, with the Gaussian kernel and exponential moving average being the most effective methods.
+\end{itemize}
+
+\subsection*{Broader Implications}
+Noise and denoising have significant implications in real-world scenarios. In fields such as medical testing, manufacturing quality control, and audio signal processing, noise can obscure important patterns and trends. Effective denoising techniques can improve the accuracy and reliability of measurements, leading to better decision-making and outcomes.
+
+\subsection*{Effectiveness of Denoising Techniques}
+The Gaussian kernel and exponential moving average consistently outperformed the simple moving average and low pass Butterworth filter across different tasks. These methods provided more accurate recovery of the original signal by assigning appropriate weights to data points.
+
+\subsection*{Recommendations}
+\begin{itemize}
+    \item \textbf{Gaussian Kernel:} Recommended for scenarios where it is important to assign weights to data points based on their distance from the center of the kernel. Suitable for applications in quality control and temperature trend analysis.
+    \item \textbf{Exponential Moving Average:} Recommended for scenarios where recent data points should be given higher weights. Suitable for applications in financial data analysis and real-time signal processing.
+    \item \textbf{Simple Moving Average and Low Pass Butterworth Filter:} These methods can be used for basic denoising tasks but may not be as effective in scenarios requiring high accuracy.
+\end{itemize}
+
+Overall, the choice of denoising method should be based on the specific requirements of the application and the nature of the data. The Gaussian kernel and exponential moving average are generally more effective for achieving accurate denoising results.
 
 \end{document}
