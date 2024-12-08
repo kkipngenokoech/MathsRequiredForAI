@@ -1,0 +1,34 @@
+\documentclass[a4paper,12pt]{article} % Specify A4 paper size and font size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{graphicx} % Include this package for \includegraphics
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 6 - Applied Stochastic Processes}
+\date{\today}
+\maketitle
+
+\medskip
+\section{INTRODUCTION}
+This document contains solutions to homework 6 of the course Applied Stochastic Processes. This homework focuses on exploring noisy data and denoising tecniques. Noisy data means data that is corrupted by random errors. The errors can be due to various reasons such as measurement errors, environmental factors, or even human errors. The goal of denoising is to remove the noise from the data and recover the original signal. 
+\newline\newline
+This homework explores the use of vairous denoising techniques such as the simple moving average, gaussian kernel \& gaussian weighted moving average, low pass butterworth filter and exponential moving average. Let us briefly discuss each of these techniques.
+\newline\newline
+\textbf{Simple Moving Average:} This technique involves taking the average of a fixed number of data points (a window size). The average is then used as the denoised value for the data point at the center of the window. The window size is a parameter that can be adjusted to control the amount of smoothing. You iterate through the data points and apply the moving average to each data point. The new values of your denoised data will be these averages over the windows. The larger the window size the more smoothing you will get because you are averaging over more data points.
+\newline\newline
+\textbf{Gaussian Kernel \& Gaussian Weighted Moving Average:} This technique involves using a Gaussian kernel to weight the data points. The Gaussian kernel is a bell-shaped curve that assigns weights to the data points. The weights are higher for the data points that are closer to the center of the kernel and lower for the data points that are further away. The weighted average is then used as the denoised value for the data point at the center of the kernel. The standard deviation of the Gaussian kernel is a parameter that can be adjusted to control the amount of smoothing. The larger the standard deviation the more smoothing you will get because you are assigning higher weights to more data points.
+\newline\newline
+\textbf{low pass butterworth filter:} it is a filter used to pass low-frequency components while attenuating high-frequency noise. It is a type of signal processing filter that is used to remove noise from a signal. The cutoff frequency is a parameter that can be adjusted to control the amount of smoothing. The larger the cutoff frequency the more smoothing you will get because you are removing more high-frequency noise. The order of the filter is another parameter that can be adjusted to control the amount of smoothing. The higher the order of the filter the more smoothing you will get because you are removing more high-frequency noise. 
+\newline\newline
+\textbf{exponential moving panel:} it assigns weights to more recent data points making it more responsive to recent changes in the data. The weights are assigned exponentially with the most recent data points having the highest weights. The smoothing parameter is a parameter that can be adjusted to control the amount of smoothing. The larger the smoothing parameter the more smoothing you will get because you are assigning higher weights to more recent data points.
+\section{Quality Control with Noisy Measurements}
+\subsection{Problem}
+A factory produces light bulbs, and each has a 60\% probability of passing
+quality control. However, noise in the measurements causes some pass/fail outcomes to
+be flipped.
+
+
+\end{document}
