@@ -1,4 +1,5 @@
 \documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\usepackage{graphicx} % Include this package for \includegraphics
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
@@ -131,9 +132,32 @@
     \]
     so:
     \[
-        P(C | T) = \frac{0.95 \times 0.001}{0.0509} = 0.0186
+        P(C | T) = \frac{0.95 \times 0.001}{0.0509} = \textbf{0.0186}
     \]
+    \item You will write a python program to simulate the Monthy Hall problem. It’s a famous problem, and you can read more about it online. Suppose you’re on a game show, and you’re given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door (but don’t open it)s, say No. 1, and the host, who knows what’s behind the doors, opens another door, say No. 3, which has a goat. He then says to you, ”Do
+    you want to pick door No. 2?” Is it to your advantage to switch your choice? In this simulation, the doors will be represented by an array of three elements. Each element of the
+    array is either a ”0” (for the goats) or a ”1” (for the car). A python file is provided with four functions to fill.
 \end{enumerate}
+
+\newpage
+\section{MLE-MAP (Warmup)}
+
+\newpage
+\section{Graph Theory}
+\begin{enumerate}
+    \item Degree of any Vertex of a graph is:
+    \[
+        \text{ (b) The number of edges incident with the vertex}
+    \]
+    \item In each of the following Graphs, find paths of lenght 9 and 11, and cycles of length 5, 6, 8 and 9 if possible.
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.8\textwidth]{PGM-graph.png}
+        \caption{Graph for finding paths and cycles}
+        \label{fig:pgm-graph}
+    \end{figure}
+\end{enumerate}
+
 
 
 \end{document}
