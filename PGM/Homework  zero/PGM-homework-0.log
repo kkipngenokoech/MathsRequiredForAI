@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  16 JAN 2025 19:46
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  16 JAN 2025 19:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -166,7 +166,7 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [a3paper].
 
-No file PGM-homework-0.aux.
+(./PGM-homework-0.aux)
 \openout1 = `PGM-homework-0.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -183,6 +183,7 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
+
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count277
@@ -282,7 +283,17 @@ File: PGM-graph.png Graphic file (type png)
 <use PGM-graph.png>
 Package pdftex.def Info: PGM-graph.png  used on input line 155.
 (pdftex.def)             Requested size: 560.40762pt x 220.08087pt.
- [4 <./PGM-graph.png>] (./PGM-homework-0.aux)
+
+Overfull \hbox (30.64687pt too wide) in paragraph at lines 161--163
+[]\OT1/cmr/m/n/12 Find the ad-ja-cency ma-trix and the in-ci-dence ma-trix of t
+he graph $\OML/cmm/m/it/12 G \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 V; E\OT1/cmr/m
+/n/12 )$ where $\OML/cmm/m/it/12 V \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm
+/m/it/12 a; b; c; d; e\OMS/cmsy/m/n/12 g$ \OT1/cmr/m/n/12 and $\OML/cmm/m/it/12
+ E \OT1/cmr/m/n/12 = \OMS/cmsy/m/n/12 f\OML/cmm/m/it/12 ab; ac; bc; bd; cd; ce;
+ de\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 . 
+ []
+
+[4 <./PGM-graph.png>] (./PGM-homework-0.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -293,10 +304,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 3175 strings out of 474222
- 48046 string characters out of 5748733
+ 3180 strings out of 474222
+ 48173 string characters out of 5748733
  1939975 words of memory out of 5000000
- 25412 multiletter control sequences out of 15000+600000
+ 25415 multiletter control sequences out of 15000+600000
  567483 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,9n,65p,494b,316s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -310,7 +321,7 @@ type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb
 >
-Output written on PGM-homework-0.pdf (4 pages, 130108 bytes).
+Output written on PGM-homework-0.pdf (4 pages, 133930 bytes).
 PDF statistics:
  71 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
