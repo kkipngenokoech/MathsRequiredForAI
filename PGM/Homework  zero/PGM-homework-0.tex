@@ -1,0 +1,40 @@
+\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 0 - Introduction to Probabilistic Graphical Models}   
+\maketitle
+
+\medskip
+
+\maketitle
+
+\section{Probability}
+\begin{enumerate}
+    \item A fair coin is tossed 10 times. The sample space for each trial is Head, Tail and the trials are independent. What is the probability of having:
+    \[
+        P(H) = \frac{1}{2}, \quad P(T) = \frac{1}{2}
+    \]
+    The probability of getting exactly \( k \) heads
+    is given by the binomial distribution:
+    \[
+        P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}
+    \]
+    where \( n = 10 \) and \( p = \frac{1}{2} \).
+    \begin{enumerate}
+        \item Zero Tail
+        \[
+            P(0T) = \binom{10}{0} \left(\frac{1}{2}\right)^0 \left(\frac{1}{2}\right)^{10} = \frac{1}{1024}
+        \]
+        \item 6 heads
+        \item At least three heads
+        \item At least three Heads given the first trail was a Head!
+    \end{enumerate}
+\end{enumerate}
+
+
+\end{document}
