@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  16 JAN 2025 21:22
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  16 JAN 2025 23:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -166,7 +166,7 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [a3paper].
 
-(./PGM-homework-0.aux)
+No file PGM-homework-0.aux.
 \openout1 = `PGM-homework-0.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -183,7 +183,6 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
-
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count277
@@ -293,7 +292,12 @@ he graph $\OML/cmm/m/it/12 G \OT1/cmr/m/n/12 = (\OML/cmm/m/it/12 V; E\OT1/cmr/m
  de\OMS/cmsy/m/n/12 g$\OT1/cmr/m/n/12 . 
  []
 
-[4 <./PGM-graph.png>] (./PGM-homework-0.aux)
+<graph.jpg, id=24, 1284.8pt x 963.6pt>
+File: graph.jpg Graphic file (type jpg)
+<use graph.jpg>
+Package pdftex.def Info: graph.jpg  used on input line 215.
+(pdftex.def)             Requested size: 560.40762pt x 420.30948pt.
+[4 <./PGM-graph.png>] [5 <./graph.jpg>] (./PGM-homework-0.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -304,13 +308,13 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 3180 strings out of 474222
- 48173 string characters out of 5748733
+ 3184 strings out of 474222
+ 48215 string characters out of 5748733
  1939975 words of memory out of 5000000
- 25415 multiletter control sequences out of 15000+600000
+ 25421 multiletter control sequences out of 15000+600000
  567483 words of font info for 72 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,9n,65p,494b,316s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,9n,65p,494b,327s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texl
@@ -321,10 +325,10 @@ type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
 blic/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
 msfonts/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb
 >
-Output written on PGM-homework-0.pdf (4 pages, 134356 bytes).
+Output written on PGM-homework-0.pdf (5 pages, 174923 bytes).
 PDF statistics:
- 71 PDF objects out of 1000 (max. 8388607)
- 42 compressed objects within 1 object stream
+ 75 PDF objects out of 1000 (max. 8388607)
+ 44 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 
