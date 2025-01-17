@@ -142,6 +142,116 @@
 \newpage
 \section{MLE-MAP (Warmup)}
 
+Suppose that \( x \in \mathbb{R}^d \) is fixed and given. Moreover, assume that \( \beta \in \mathbb{R}^d \) is a parameter vector and
+\[
+y = \langle x, \beta \rangle + \epsilon, \quad \text{where} \quad \epsilon \sim \mathcal{N}(0, \sigma^2),
+\]
+where \( \langle \cdot, \cdot \rangle \) denotes the inner (i.e., dot) product of two vectors, that is, if \( \beta = \begin{pmatrix} \beta_1 & \beta_2 & \cdots & \beta_d \end{pmatrix}^T \) and
+\( x = \begin{pmatrix} x_1 & x_2 & \cdots & x_d \end{pmatrix}^T \), then \( \langle x, \beta \rangle = \sum_{i=1}^d x_i \beta_i \).
+Therefore, \( y \) is a linear function of \( x \) with i.i.d. Gaussian noise.
+
+\begin{enumerate}
+    \item \textbf{Maximum likelihood estimation:}
+    \begin{enumerate}
+        \item Write down the probability density function (PDF) of the conditional distribution \( y | \beta \). Your answer can be in terms of the fixed \( x \in \mathbb{R}^d \).
+        \[
+            f(y | \beta) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y - \langle x, \beta \rangle)^2}{2 \sigma^2} \right)
+        \]
+
+        \item Assume that we (independently) draw \( N \) pairs \( (x_n, y_n) \in \mathbb{R}^d \times \mathbb{R} \) from the above model, where \( x_n \)'s are fixed and then \( y_n \) is defined according to:
+        \[
+            y_n = \langle x_n, \beta \rangle + \epsilon_n, \quad \text{where} \quad \epsilon_n \sim \mathcal{N}(0, \sigma^2)
+        \]
+        What is the PDF of \( (y_1, \ldots, y_N | \beta) \)?
+        \[
+            f(y_1, \ldots, y_N | \beta) = \prod_{n=1}^N \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right)
+        \]
+
+        \item Write down the associated log-likelihood function for the PDF you found in part (b).
+        \[
+            \log \mathcal{L}(\beta) = \log \left( \prod_{n=1}^N \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right) \right)
+        \]
+        \[
+            \log \mathcal{L}(\beta) = \sum_{n=1}^N \left( -\frac{1}{2} \log (2 \pi \sigma^2) - \frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right)
+        \]
+        \[
+            \log \mathcal{L}(\beta) = -\frac{N}{2} \log (2 \pi \sigma^2) - \frac{1}{2 \sigma^2} \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2
+        \]
+
+        \item Find \( \beta \) that maximizes the log-likelihood function from part (c).
+        \[
+            \hat{\beta} = \arg \max_{\beta} \log \mathcal{L}(\beta)
+        \]
+        \[
+            \hat{\beta} = \arg \min_{\beta} \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2
+        \]
+        \[
+            \hat{\beta} = (X^T X)^{-1} X^T y
+        \]
+        where \( X \) is the matrix with rows \( x_n^T \) and \( y \) is the vector with elements \( y_n \).
+    \end{enumerate}
+    \item \textbf{Maximum a posteriori estimation:}
+    \begin{enumerate}
+        \item \textbf{Maximum a posteriori estimation:}
+        \begin{enumerate}
+            \item Assume \( \beta \sim \mathcal{N}(0, \lambda^2 I_d) \) where \( I_d \) is the \( d \times d \) identity matrix.
+            After drawing \( N \) pairs as above, from Bayes' rule we know the distribution of \( \beta | (y_1, \ldots, y_N) \) is
+            \[
+                P(\beta | y_1, \ldots, y_N) = \frac{P(y_1, \ldots, y_N, \beta)}{P(y_1, \ldots, y_N)}
+            \]
+            Find the distribution \( P(y_1, \ldots, y_N, \beta) \).
+
+            The joint distribution \( P(y_1, \ldots, y_N, \beta) \) can be written as:
+            \[
+                P(y_1, \ldots, y_N, \beta) = P(y_1, \ldots, y_N | \beta) P(\beta)
+            \]
+            From the previous part, we have:
+            \[
+                P(y_1, \ldots, y_N | \beta) = \prod_{n=1}^N \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right)
+            \]
+            And since \( \beta \sim \mathcal{N}(0, \lambda^2 I_d) \), we have:
+            \[
+                P(\beta) = \frac{1}{(2 \pi \lambda^2)^{d/2}} \exp \left( -\frac{\|\beta\|^2}{2 \lambda^2} \right)
+            \]
+            Therefore,
+            \[
+                P(y_1, \ldots, y_N, \beta) = \left( \prod_{n=1}^N \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right) \right) \left( \frac{1}{(2 \pi \lambda^2)^{d/2}} \exp \left( -\frac{\|\beta\|^2}{2 \lambda^2} \right) \right)
+            \]
+
+            \item Note that from Bayes' rule, finding the MAP estimator of \( \beta \) is equivalent to maximizing the numerator \( P(y_1, \ldots, y_N, \beta) \) with respect to \( \beta \) since the denominator does not depend on \( \beta \). Use the expression from part (a) above to formulate a minimization problem whose solution will give the MAP estimator \( \hat{\beta} \).
+
+            To find the MAP estimator \( \hat{\beta} \), we need to maximize \( P(y_1, \ldots, y_N, \beta) \) with respect to \( \beta \). This is equivalent to minimizing the negative log of \( P(y_1, \ldots, y_N, \beta) \):
+            \[
+                \hat{\beta} = \arg \max_{\beta} P(y_1, \ldots, y_N, \beta)
+            \]
+            \[
+                \hat{\beta} = \arg \min_{\beta} -\log P(y_1, \ldots, y_N, \beta)
+            \]
+            \[
+                -\log P(y_1, \ldots, y_N, \beta) = -\log \left( \prod_{n=1}^N \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left( -\frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} \right) \right) - \log \left( \frac{1}{(2 \pi \lambda^2)^{d/2}} \exp \left( -\frac{\|\beta\|^2}{2 \lambda^2} \right) \right)
+            \]
+            \[
+                -\log P(y_1, \ldots, y_N, \beta) = \sum_{n=1}^N \left( \frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} + \frac{1}{2} \log (2 \pi \sigma^2) \right) + \frac{\|\beta\|^2}{2 \lambda^2} + \frac{d}{2} \log (2 \pi \lambda^2)
+            \]
+            Ignoring the constant terms that do not depend on \( \beta \), we get:
+            \[
+                \hat{\beta} = \arg \min_{\beta} \left( \sum_{n=1}^N \frac{(y_n - \langle x_n, \beta \rangle)^2}{2 \sigma^2} + \frac{\|\beta\|^2}{2 \lambda^2} \right)
+            \]
+            \[
+                \hat{\beta} = \arg \min_{\beta} \left( \frac{1}{2 \sigma^2} \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2 + \frac{1}{2 \lambda^2} \|\beta\|^2 \right)
+            \]
+            \[
+                \hat{\beta} = \arg \min_{\beta} \left( \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2 + \frac{\sigma^2}{\lambda^2} \|\beta\|^2 \right)
+            \]
+            Therefore, the MAP estimator \( \hat{\beta} \) is the solution to the following minimization problem:
+            \[
+                \hat{\beta} = \arg \min_{\beta} \left( \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2 + \frac{\sigma^2}{\lambda^2} \|\beta\|^2 \right)
+            \]
+        \end{enumerate}
+        
+    \end{enumerate}
+\end{enumerate}
+
 \newpage
 \section{Graph Theory}
 \begin{enumerate}
