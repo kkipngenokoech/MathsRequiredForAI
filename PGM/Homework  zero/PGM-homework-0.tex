@@ -60,55 +60,84 @@
     \end{enumerate}
     \item Let \(X\) denote the outcome of a random experiment with possible values \{-4, -3, -2, -1, 0, 1, 2, 3, 4\} according to the following probability law:
     \[
-        P(X = x) = 
+        P(X = k) = 
     \begin{cases}
-        ck^2 & \text{if } x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\} \\
+        ck^2 & \text{if } k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\} \\
         0 & \text{otherwise}
     \end{cases}
     \]
     \begin{enumerate}
         \item What is the value of \(c\)?
         \[
-            \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} P(X = x) = 1
+            \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} P(X = k) = 1
+        \]
+        Total proabability is 1:
+        \[
+            \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} ck^2 = 1
         \]
         \[
-            \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} ck^2 = 1
+            c \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^2 = 1
         \]
         \[
-            c \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^2 = 1
+            c \times( (-4)^2 + (-3)^2 + (-2)^2 + (-1)^2 + 0^2 + 1^2 + 2^2 + 3^2 + 4^2) = 1
         \]
         \[
-            c \sum_{k = -4}^{4} k^2 = 1
-        \]
-        To find the value of \(c\), we can use the formula for the sum of squares of the first \(n\) natural numbers:
-        \[
-            \sum_{k = 1}^{n} k^2 = \frac{n(n+1)(2n+1)}{6}
+            c \times( 16 + 9 + 4 + 1 + 0 + 1 + 4 + 9 + 16) = 1
         \]
         \[
-            \sum_{k = -4}^{4} k^2 = \sum_{k = 1}^{4} k^2 + \sum_{k = 1}^{4} k^2 = \frac{4(4+1)(2 \times 4 + 1)}{6} + \frac{4(4+1)(2 \times 4 + 1)}{6} = 30
+            c \times 60 = 1
         \]
         \[
-            c \times 30 = 1
+            c = \frac{1}{60}
         \]
-        \[
-            c = \frac{1}{30}
-        \]
+        
         \item Compute the expectation and variance of \(X\).
+        \\\textbf{Expectation:}
         \[
-            E[X] = \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} xP(X = x) = \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x \times \frac{1}{30}x^2 = \frac{1}{30} \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^3
+            E[X] = \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} kP(X = k)
         \]
         \[
-            E[X] = \frac{1}{30} \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^3 = \frac{1}{30} \times 0 = 0
+            E[X] = \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k \times \frac{k^2}{60}
         \]
         \[
-            E[X^2] = \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^2P(X = x) = \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^2 \times \frac{1}{30}x^2 = \frac{1}{30} \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^4
+            E[X] = \frac{1}{60} \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^3
         \]
         \[
-            E[X^2] = \frac{1}{30} \sum_{x \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} x^4 = \frac{1}{30} \times 0 = 0
+            E[X] = \frac{1}{60} \times (-4^3 - 3^3 - 2^3 - 1^3 + 0^3 + 1^3 + 2^3 + 3^3 + 4^3)
         \]
         \[
-            Var[X] = E[X^2] - E[X]^2 = 0 - 0 = 0
+            E[X] = \frac{1}{60} \times (-64 - 27 - 8 - 1 + 0 + 1 + 8 + 27 + 64)
         \]
+        \[
+            E[X] = \frac{1}{60} \times 0 = \textbf{0}
+        \]
+        \\\textbf{Variance:}
+        \[
+            Var(X) = E[X^2] - E[X]^2
+        \]
+        \[
+            E[X^2] = \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^2P(X = k)
+        \]
+        \[
+            E[X^2] = \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^2 \times \frac{k^2}{60}
+        \]
+        \[
+            E[X^2] = \frac{1}{60} \sum_{k \in \{-4, -3, -2, -1, 0, 1, 2, 3, 4\}} k^4
+        \]
+        \[
+            E[X^2] = \frac{1}{60} \times (-4^4 - 3^4 - 2^4 - 1^4 + 0^4 + 1^4 + 2^4 + 3^4 + 4^4)
+        \]
+        \[
+            E[X^2] = \frac{1}{60} \times (256 + 81 + 16 + 1 + 0 + 1 + 16 + 81 + 256)
+        \]
+        \[
+            E[X^2] = \frac{1}{60} \times 708 = 11.8
+        \]
+        \[
+            Var(X) = E[X^2] - E[X]^2 = 11.8 - 0 = \textbf{11.8}
+        \]
+
+        
     \end{enumerate}
     \item ou just built a new COVID test with the following properties:
     \begin{itemize}
@@ -248,7 +277,7 @@ Therefore, \( y \) is a linear function of \( x \) with i.i.d. Gaussian noise.
                 \hat{\beta} = \arg \min_{\beta} \left( \sum_{n=1}^N (y_n - \langle x_n, \beta \rangle)^2 + \frac{\sigma^2}{\lambda^2} \|\beta\|^2 \right)
             \]
         \end{enumerate}
-        
+
     \end{enumerate}
 \end{enumerate}
 

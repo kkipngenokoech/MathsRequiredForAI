@@ -6,7 +6,9 @@ def initialize() -> tuple:
     The position of the "1" in the list is random.
     e.g: return [0,0,1] 
     """
-    return None
+    doors = [0,0,1]
+    random.shuffle(doors)
+    return doors, doors.index(1)
 
 def player_choice() -> int:
     """
@@ -14,7 +16,7 @@ def player_choice() -> int:
     It will represent the choice of the player among the three doors.
     It is between 0 and 2 because it's an index that will used to access the choice in an array.
     """
-    return None
+    return random.randint(0,2)
 
 def host_choice(doors: list, prize_index:int, player_index:int) -> int:
     """
@@ -29,14 +31,14 @@ def host_choice(doors: list, prize_index:int, player_index:int) -> int:
     :param player_index: the index of the door chosen by the player. e.g. If the player chose the third door it's 2
     :return: the index of the door chose by the host. e.g. 1
     """
-    return None
+    return random.choice([i for i in range(3) if i != player_index and i != prize_index])
 
 def get_alt_index(doors: list, player_index:int, host_index:int) -> int:
     """
     Given the player's choice and the host's choice, this helper function returns the index of the remaining door.
     e.g. if the list is [0,1,0], the player's choice is 0 and the host's choice is 2, this function returns 1.
     """
-    return None
+    return [i for i in range(3) if i != player_index and i != host_index][0]
 
 def play_game(switching_prob=0):
     """
