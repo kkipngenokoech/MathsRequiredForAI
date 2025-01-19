@@ -100,6 +100,29 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
         \]
         
     \end{enumerate}
+    \item Let \( A \in \mathbb{R}^{m \times n} \), \( b \in \mathbb{R}^m \) be given, and \(\text{col}(A)\) be the column space of \( A \). For a given value of \( m \), under what conditions on \( b \), \(\text{col}(A)\), and \(\text{rank}(A)\) will the equation \( Ax = b \) have:
+    \\ The column space of a matrix \(A\) is the set of all possible linear combinations of the columns of \(A\).:
+    \[
+    \text{col}(A) = \{ A \mathbf{x} \mid \mathbf{x} \in \mathbb{R}^n \}
+    \]
+     The rank of a matrix is the dimension of the column space of the matrix.
+    \begin{enumerate}
+        \item \textbf{No solution:} 
+        \[
+        \text{The equation } Ax = b \text{ has no solution if } b \notin \text{col}(A). \text{ This means that } b \text{ is not a linear combination of the columns of } A.
+        \]
+        
+        \item \textbf{Exactly one solution:}
+        \[
+        \text{The equation } Ax = b \text{ has exactly one solution if } b \in \text{col}(A) \text{ and } \text{rank}(A) = n. \text{ This means that } b \text{ is a linear combination of the columns of } A \text{ and } A \text{ has full column rank.}
+        \]
+        
+        \item \textbf{Infinitely many solutions:}
+        \[
+        \text{The equation } Ax = b \text{ has infinitely many solutions if } b \in \text{col}(A) \text{ and } \text{rank}(A) < n. 
+        
+        \]
+    \end{enumerate}
 \end{enumerate}
 
 \end{document}
