@@ -75,5 +75,31 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
     \]
 \end{enumerate}
 \end{enumerate}
+\newpage
+\section{Linear Algebra}
+\begin{enumerate}
+    \item Let \( A_k \in \mathbb{R}^{n \times n} \) for \( k = 1, \ldots, K \) such that \( A_k = A_k^\top \), i.e., each \( A_k \) is a symmetric, \( n \)-dimensional square matrix. Suppose all \( A_k \) have the exact same set of eigenvectors \( u_1, u_2, \ldots, u_n \) with the corresponding eigenvalues \( \alpha_{k1}, \ldots, \alpha_{kn} \) for each \( A_k \). Write down the eigenvectors and their corresponding eigenvalues for the following matrices:
+    \begin{enumerate}
+        \item \( C = \sum_{k=1}^K A_k \)
+        \[
+        \text{Eigenvectors: } \mathbf{u_1, u_2, \ldots, u_n}
+        \]
+        \[
+        \text{Eigenvalues: } \mathbf{\sum_{k=1}^K \alpha_{k1}, \sum_{k=1}^K \alpha_{k2}, \ldots, \sum_{k=1}^K \alpha_{kn}}
+        \]
+
+        \item \( D = A_i^{-1} A_j A_i \), where \( i \neq j \) and \( i, j \in \{1, 2, \ldots, K\} \). Here we assume \( A_i \) is invertible.
+        A matrix \(A\) is similar to a matrix \(B\) if there exists an invertible matrix \(P\) such that \(A = P^{-1}BP\). Similar matrices have the same eigenvalues. Therefore, the eigenvalues of \(D\) are the same as the eigenvalues of \(A_j\).
+        \\ Since \(A_j\) has the same eigenvectors as \(A_i\), the eigenvectors of \(D\) are the same as the eigenvectors of \(A_i\).
+        \[
+        \text{Eigenvectors: } \mathbf{ u_1, u_2, \ldots, u_n}
+        \]
+        For the eigenvalues:
+        \[
+        \text{Eigenvalues: } \mathbf{ \alpha_{j1}, \alpha_{j2}, \ldots, \alpha_{jn}}
+        \]
+        
+    \end{enumerate}
+\end{enumerate}
 
 \end{document}
