@@ -38,6 +38,42 @@
     \text{Var}[Z] = 9\sigma^2 + 4\left(\frac{(b-a)^2}{12}\right) = 9\sigma^2 + \frac{(b-a)^2}{3}
     \]
 \end{itemize}
+\item Consider the following joint distribution between the random variable \( X \), which takes values \( T \) or \( F \), and the random variable \( Y \), which takes values \( a \), \( b \), \( c \), or \( d \).
+
+\[
+\begin{array}{c|cccc}
+P(X, Y) & Y=a & Y=b & Y=c & Y=d \\
+\hline
+X=T & 0.1 & 0.2 & 0.1 & 0.1 \\
+X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
+\end{array}
+\]
+
+\begin{enumerate}
+    \item \textbf{Marginal distribution \( P_Y \):}
+    \[
+    \begin{aligned}
+    \Pr(Y = a) &= \Pr(X = T, Y = a) + \Pr(X = F, Y = a) = 0.1 + 0.1 =\mathbf{ 0.2} \\
+    \Pr(Y = b) &= \Pr(X = T, Y = b) + \Pr(X = F, Y = b) = 0.2 + 0.1 = \mathbf{0.3} \\
+    \Pr(Y = c) &= \Pr(X = T, Y = c) + \Pr(X = F, Y = c) = 0.1 + 0.2 = \mathbf{0.3} \\
+    \Pr(Y = d) &= \Pr(X = T, Y = d) + \Pr(X = F, Y = d) = 0.1 + 0.1 = \mathbf{0.2} \\
+    \end{aligned}
+    \]
+
+    \item \textbf{Conditional probability \( \Pr(X = T \mid Y \in \{b, c, d\}) \):}
+    since we are conditioning on \( Y \) being in the set \(\{b, c, d\}\), we need to find the probability of \( X = T \) and \( Y \) being in the set \(\{b, c, d\}\) and divide it by the probability of \( Y \) being in the set \(\{b, c, d\}\):
+    \\ this is the bayes theorem:
+    \[
+    \Pr(A \mid B) = \frac{\Pr(B \mid A) \Pr(A)}{\Pr(B)} = \frac{\Pr(A \cap B)}{\Pr(B)}
+    \]
+    \[
+    \begin{aligned}
+    \Pr(Y \in \{b, c, d\}) &= \Pr(Y = b) + \Pr(Y = c) + \Pr(Y = d) = 0.3 + 0.3 + 0.2 = 0.8 \\
+    \Pr(X = T \cap Y \in \{b, c, d\}) &= \Pr(X = T, Y = b) + \Pr(X = T, Y = c) + \Pr(X = T, Y = d) = 0.2 + 0.1 + 0.1 = 0.4 \\
+    \Pr(X = T \mid Y \in \{b, c, d\}) &= \frac{\Pr(X = T \cap Y \in \{b, c, d\})}{\Pr(Y \in \{b, c, d\})} = \frac{0.4}{0.8} =\mathbf{ 0.5} \\
+    \end{aligned}
+    \]
+\end{enumerate}
 \end{enumerate}
 
 \end{document}
