@@ -1,0 +1,43 @@
+\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
+\usepackage{graphicx} % Include this package for \includegraphics
+\usepackage{amsmath}
+\usepackage{amssymb} % Include this package for \mathbb
+\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+
+\begin{document}
+
+\author{kipngeno koech - bkoech}
+\title{Homework 1 - Introduction to Machine Learning for Engineers}   
+\maketitle
+
+\medskip
+
+\maketitle
+
+\section{Probability}
+\begin{enumerate}
+    \item Suppose \( W \) is a Gaussian random variable with distribution \( N(\mu, \sigma^2) \) and \( U \) a uniform random variable over the interval \([a, b]\). Assuming that \( W \) and \( U \) are independent, what is the expected value \( \mathbb{E}[Z] \) and variance \( \text{Var}[Z] \) of \( Z = 3W + 2U \)?
+
+\begin{itemize}
+    \item \textbf{Expected value:}
+    \[
+    \mathbb{E}[Z] = \mathbb{E}[3W + 2U] = 3\mathbb{E}[W] + 2\mathbb{E}[U]
+    \]
+    Since \( W \) is Gaussian with mean \( \mu \) and \( U \) is uniform over \([a, b]\) with mean \( \frac{a+b}{2} \):
+    \[
+    \mathbb{E}[Z] = 3\mu + 2\left(\frac{a+b}{2}\right) =\mathbf{ 3\mu + (a + b)}
+    \]
+
+    \item \textbf{Variance:}
+    if a random variable \(X\), is scaled by a constant \(a\), then the variance of the scaled random variable is \(a^2\) times the variance of the original random variable. Therefore:
+    \[
+    \text{Var}[Z] = \text{Var}[3W + 2U] = 3^2\text{Var}[W] + 2^2\text{Var}[U]
+    \]
+    Since \( W \) is Gaussian with variance \( \sigma^2 \) and \( U \) is uniform over \([a, b]\) with variance \( \frac{(b-a)^2}{12} \):
+    \[
+    \text{Var}[Z] = 9\sigma^2 + 4\left(\frac{(b-a)^2}{12}\right) = 9\sigma^2 + \frac{(b-a)^2}{3}
+    \]
+\end{itemize}
+\end{enumerate}
+
+\end{document}
