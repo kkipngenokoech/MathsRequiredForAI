@@ -219,58 +219,111 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
 
     \begin{enumerate}
         \item Find \( D \in \mathbb{R}^{(d-2) \times d} \) such that \(\|Dw\|_2^2 = \sum_{i=2}^{d-1} (2w_i - w_{i-1} - w_{i+1})^2\). Write \( D \) explicitly. Note that \(\|\cdot\|_2\) denotes the usual \(\ell_2\), or Euclidean, norm.
+        \\ we are tasked with finding a matrix \(D\) such that \(\|Dw\|_2^2 = \sum_{i=2}^{d-1} (2w_i - w_{i-1} - w_{i+1})^2\). 
+        \\ if weight vector \(w = [w_1, w_2, \ldots, w_d]^T\), then :
         \[
-        D = \begin{pmatrix}
-        -1 & 2 & -1 & 0 & \cdots & 0 \\
-        0 & -1 & 2 & -1 & \cdots & 0 \\
+        Dw = \begin{bmatrix}
+        2w_2 - w_1 - w_3 \\
+        2w_3 - w_2 - w_4 \\
+        \vdots \\
+        2w_{d-1} - w_{d-2} - w_d
+        \end{bmatrix}
+        \]
+        From the above, we can see that:
+        \[
+        D = \begin{bmatrix}
+        0 & 2 & -1 & 0 & \ldots & 0 \\
+        0 & -1 & 2 & -1 & \ldots & 0 \\
+        0 & 0 & -1 & 2 & \ldots & 0 \\
         \vdots & \vdots & \vdots & \vdots & \ddots & \vdots \\
-        0 & \cdots & 0 & -1 & 2 & -1
-        \end{pmatrix}
+        0 & 0 & \ldots & -1 &2 & 1\\
+        0 & \ldots & 0 & 0 & -1 & 2
+        \end{bmatrix}_{(d-2) \times d}
         \]
-
+        In the first row, the first element is 0, the second element is 2, and the third element is -1. The rest of the elements are 0 because we only care about the relationship between adjancent weights \(w_i, w_{i-1}, w_{i+1}\). The same applies to the rest of the rows.
         \item Derive the closed-form solution for \( w^* \), the minimizer of \( L(w) \).
+        \\ this equation can be divided into three parts:
+        \\ Residual sum of errors:
         \[
-        L(w) = \|y - Xw\|_2^2 + \lambda \|w\|_2^2 + \mu \|Dw\|_2^2
+        \text{RSS loss} = \|y - Xw\|_2^2 = (y - Xw)^\top (y - Xw) = y^\top y - 2w^\top X^\top y + w^\top X^\top Xw
+        \]
+        \textbf{N/B:}scalars are symmetric, so \(w^\top X^\top y = y^\top Xw\).
+        \\ Let us find the derivative of the RSS loss w.r.t \(w\):
+        \[
+        \frac{\partial \text{RSS loss}}{\partial w} = -2X^\top y + 2X^\top Xw = 0
+        \]
+        L2 regularization:
+        \[
+        \text{L2 loss} = \lambda \|w\|_2^2 = \lambda w^\top w
+        \]
+        to find the derivative of the L2 loss w.r.t \(w\):
+        \[
+        \frac{\partial \text{L2 loss}}{\partial w} = 2\lambda w
+        \]
+        Smooth regularization:
+        \[
+        \text{Smooth loss} = \mu \|Dw\|_2^2 = \mu w^\top D^\top Dw = \mu w^\top D^\top Dw
+        \]
+        to find the derivative of the smooth loss w.r.t \(w\):
+        \[
+        \frac{\partial \text{Smooth loss}}{\partial w} = 2\mu D^\top Dw
+        \]
+        Combining the three derivatives:
+        \[
+        -2X^\top y + 2X^\top Xw + 2\lambda w + 2\mu D^\top Dw = 0
         \]
         \[
-        \nabla_w L(w) = -2X^\top (y - Xw) + 2\lambda w + 2\mu D^\top Dw = 0
+        X^\top Xw + \lambda w + \mu D^\top Dw = X^\top y
         \]
         \[
         (X^\top X + \lambda I + \mu D^\top D)w = X^\top y
         \]
         \[
-        w^* = (X^\top X + \lambda I + \mu D^\top D)^{-1} X^\top y
+        w^* =  \mathbf{(X^\top X + \lambda I + \mu D^\top D)^{-1} X^\top y}
         \]
+
 
         \item Denote the minimizer of problem (1) by \( w^* \). Consider the same problem without the “smooth” regularization:
         \[
         \min_w L_{\text{ridge}}(w) = \|y - Xw\|_2^2 + \lambda \|w\|_2^2.
         \]
-        Let the minimizer of \( L_{\text{ridge}} \) be \( w^*_{\text{ridge}} \). Show that the “smooth” regularization is effective by proving \(\|Dw^*\|_2^2 \leq \|Dw^*_{\text{ridge}}\|_2^2\).
+        Derive the closed-form solution for \( w_{\text{ridge}}^* \), the minimizer of \( L_{\text{ridge}}(w) \).
+        \\ The loss function is:
         \[
-        L(w^*) \leq L(w^*_{\text{ridge}})
+        L_{\text{ridge}}(w) = \|y - Xw\|_2^2 + \lambda \|w\|_2^2
+        \]
+        The derivative of the loss function w.r.t \(w\) is:
+        \[
+        \frac{\partial L_{\text{ridge}}(w)}{\partial w} = -2X^\top y + 2X^\top Xw + 2\lambda w = 0
         \]
         \[
-        \|y - Xw^*\|_2^2 + \lambda \|w^*\|_2^2 + \mu \|Dw^*\|_2^2 \leq \|y - Xw^*_{\text{ridge}}\|_2^2 + \lambda \|w^*_{\text{ridge}}\|_2^2 + \mu \|Dw^*_{\text{ridge}}\|_2^2
+        X^\top Xw + \lambda w = X^\top y
         \]
         \[
-        L_{\text{ridge}}(w^*_{\text{ridge}}) \leq L_{\text{ridge}}(w^*)
+        (X^\top X + \lambda I)w = X^\top y
         \]
         \[
-        \|y - Xw^*_{\text{ridge}}\|_2^2 + \lambda \|w^*_{\text{ridge}}\|_2^2 \leq \|y - Xw^*\|_2^2 + \lambda \|w^*\|_2^2
+        w_{\text{ridge}}^* = \mathbf{(X^\top X + \lambda I)^{-1} X^\top y}
         \]
-        Combining the inequalities, we get:
+        Let us compare the two solutions:   
         \[
-        \mu \|Dw^*\|_2^2 \leq \mu \|Dw^*_{\text{ridge}}\|_2^2
+        w^* =  \mathbf{(X^\top X + \lambda I + \mu D^\top D)^{-1} X^\top y}
         \]
-        Since \(\mu > 0\), it follows that:
         \[
-        \|Dw^*\|_2^2 \leq \|Dw^*_{\text{ridge}}\|_2^2
+        w_{\text{ridge}}^* = \mathbf{(X^\top X + \lambda I)^{-1} X^\top y}
         \]
-
+        We need to prove that \(w^* \leq  w_{\text{ridge}}^*\) by showing that \((X^\top X + \lambda I + \mu D^\top D)^{-1} \preceq (X^\top X + \lambda I)^{-1}\).:
+        \[
+        (X^\top X + \lambda I + \mu D^\top D)^{-1} - (X^\top X + \lambda I)^{-1} = (X^\top X + \lambda I)^{-1} \mu D^\top D (X^\top X + \lambda I)^{-1}
+        \]
+        Since \(D^\top D\) is positive semi-definite, then \((X^\top X + \lambda I + \mu D^\top D)^{-1} \preceq (X^\top X + \lambda I)^{-1}\).
+        \\ this shows that:
+        \[
+        w^* \leq  w_{\text{ridge}}^*
+        \]
         \item Briefly (in 1-3 sentences) explain how smooth regularization affects the bias and variance of the learned model \( w \).
         \\
-        Smooth regularization increases the bias of the learned model by penalizing large differences between adjacent weights, leading to smoother weight vectors. However, it reduces the variance by preventing overfitting to the noise in the data.
+       \\  Smooth regularization increases the bias of the learned model by penalizing large differences between adjacent weights, leading to smoother weight vectors. However, it reduces the variance by preventing overfitting to the noise in the data. This is the trade-off between bias and variance in machine learning models, where increasing smoothness reduces variance but increases bias.
     \end{enumerate}
 \end{enumerate}
 \newpage
