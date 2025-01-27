@@ -357,15 +357,15 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
             \]
             Expanding the equation:
             \[
-            \hat{w}_{\text{new}} = (X^\top X)^{-1} (X^\top y + \tilde{x} \tilde{y}) - \left(\frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right) (X^\top y + \tilde{x} \tilde{y})
+            \hat{w}_{\text{new}} = (X^\top X)^{-1} (X^\top y + \tilde{x} \tilde{y})  - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} (X^\top y + \tilde{x} \tilde{y})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
             \[
-            \hat{w}_{\text{new}} = \hat{w} - \left(\frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right) + \left(\frac{(X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right)
+            \hat{w}_{\text{new}} = (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
-            Expanding the equation further:
             \[
-            \hat{w}_{\text{new}} = \hat{w} - \left(\frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right) + \left(\frac{(X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right)
+            \hat{w}_{\text{new}} = \hat{w} + (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w}) - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w} + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
+            
            
             \begin{algorithm}
             \caption{Online update}
