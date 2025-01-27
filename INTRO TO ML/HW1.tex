@@ -352,9 +352,14 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
         \begin{enumerate}
             \item Derive the formula for \( \hat{w}_{\text{new}} \) using the Sherman–Morrison formula. Your formula should express \( \hat{w}_{\text{new}} \) explicitly in terms of \( \hat{w} \).
             \[
-            \hat{w}_{\text{new}} = \hat{w} + \frac{(X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}.
+            \begin{aligned}
+            \hat{w}_{\text{new}} &= \left( (X^\top X)^{-1} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right) (X^\top y + \tilde{x} \tilde{y}) \\
+            &= (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \\
+            &= \hat{w} + (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w}) - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w} + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \\
+            &= \hat{w} + (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w}) - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w} + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
+            \end{aligned}
             \]
-
+           
             \begin{algorithm}
             \caption{Online update}
             \begin{algorithmic}[1]
