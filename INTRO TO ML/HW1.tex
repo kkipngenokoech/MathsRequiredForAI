@@ -388,8 +388,15 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
                 \item Method (a):
                 \begin{itemize}
                     \item Initialization: \( \mathcal{O}(Nd^2 + d^3) \)
-                    \item Each update: \( \mathcal{O}(d^2) \)
-                    \item Total for \( n \) updates: \( \mathcal{O}(Nd^2 + d^3 + nd^2) \)
+                    initialization involves computing \( (X^\top X)^{-1} \) and \( X^\top y \).
+                    \\ where \( X \in \mathbb{R}^{N \times d} \) and \( y \in \mathbb{R}^N \). so:
+                    \[
+                    X^\top X = \mathcal{O}(Nd^2), \quad X^\top y = \mathcal{O}(Nd)
+                    \]
+                    You also need to invert \( X^\top X \) which is \( \mathcal{O}(d^3) \).
+                    \\ To multiply \( (X^\top X)^{-1} \) by \( X^\top y \) is \( \mathcal{O}(Nd^2) \).  
+                    \item Each update: \( \mathcal{O}(d^2 + d^3) \) for \( n \)-th update
+                    \item Total for \( n \) updates: \( \mathcal{O}(Nd^2 + d^3 + nd^2 + nd^3) = \mathcal{O}(Nd^2 + nd^2 + d^3 + nd^3) \)
                 \end{itemize}
                 \item Method (b):
                 \begin{itemize}
