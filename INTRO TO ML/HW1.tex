@@ -389,8 +389,7 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
             \[
             \hat{w}_{\text{new}} = \hat{w} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
-            
-           
+            \item We initialize \( K = (X^\top X)^{-1} \) and \( \alpha = \tilde{w} \). Use (3) and (4) to show that we can get \( K = (X_{\text{new}}^\top X_{\text{new}})^{-1} \) and \( \alpha = bw_{\text{new}} \) after running the following algorithm.
             \begin{algorithm}
             \caption{Online update}
             \begin{algorithmic}[1]
@@ -400,6 +399,63 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
                 \State Set \( K \leftarrow K - \xi \tilde{x}^\top K \).
             \end{algorithmic}
             \end{algorithm}
+            \\ Let's denote the current estimate of \( w \) as \( \alpha \). We want to show that after running the algorithm, \( \alpha \) and \( K \) are updated correctly.
+
+            1. \(\textbf{Update } \xi \):
+                \[
+                \xi \leftarrow K \tilde{x} / (1 + \tilde{x}^\top K \tilde{x})
+                \]
+                This step computes the adjustment factor \( \xi \) using the Sherman-Morrison formula.
+
+            2. \(\textbf{Update } \alpha \):
+                \[
+                \alpha \leftarrow \alpha + \xi (\tilde{y} - \tilde{x}^\top \alpha)
+                \]
+                This step updates the weight vector \( \alpha \) by incorporating the new observation \( (\tilde{x}, \tilde{y}) \).
+
+            3. \(\textbf{Update }  K \):
+                \[
+                K \leftarrow K - \xi \tilde{x}^\top K
+                \]
+                This step updates the inverse of the Gram matrix \( K \) using the Sherman-Morrison formula.
+
+            Now, let's verify that these updates give us the correct new estimates.Step-by-Step Verification
+
+            1. \(\textbf{Update }  K \):
+                \[
+                K_{\text{new}} = (X_{\text{new}}^\top X_{\text{new}})^{-1} = (X^\top X + \tilde{x} \tilde{x}^\top)^{-1}
+                \]
+                Using the Sherman-Morrison formula:
+                \[
+                K_{\text{new}} = K - \frac{K \tilde{x} \tilde{x}^\top K}{1 + \tilde{x}^\top K \tilde{x}}
+                \]
+                This matches the update step for \( K \) in the algorithm.
+
+            2. \(\textbf{Update } \alpha \):
+                \[
+                \alpha_{\text{new}} = K_{\text{new}} X_{\text{new}}^\top y_{\text{new}}
+                \]
+                Substitute \( K_{\text{new}} \) and \( X_{\text{new}}^\top y_{\text{new}} \):
+                \[
+                \alpha_{\text{new}} = \left( K - \frac{K \tilde{x} \tilde{x}^\top K}{1 + \tilde{x}^\top K \tilde{x}} \right) (X^\top y + \tilde{x} \tilde{y})
+                \]
+                Expand and simplify:
+                \[
+                \alpha_{\text{new}} = K X^\top y + K \tilde{x} \tilde{y} - \frac{K \tilde{x} \tilde{x}^\top K X^\top y}{1 + \tilde{x}^\top K \tilde{x}} - \frac{K \tilde{x} \tilde{x}^\top K \tilde{x} \tilde{y}}{1 + \tilde{x}^\top K \tilde{x}}
+                \]
+                Recognize that \( \alpha = K X^\top y \):
+                \[
+                \alpha_{\text{new}} = \alpha + K \tilde{x} \tilde{y} - \frac{K \tilde{x} \tilde{x}^\top \alpha}{1 + \tilde{x}^\top K \tilde{x}} - \frac{K \tilde{x} (\tilde{x}^\top K \tilde{x}) \tilde{y}}{1 + \tilde{x}^\top K \tilde{x}}
+                \]
+                Simplify further:
+                \[
+                \alpha_{\text{new}} = \alpha + \xi (\tilde{y} - \tilde{x}^\top \alpha)
+                \]
+                This matches the update step for \( \alpha \) in the algorithm.
+
+            Thus, the algorithm correctly updates \( K \) and \( \alpha \) to reflect the new observation.
+
+
             \item Assume that \( n \) new data points arrive in a sequential order and we would like to update \( \hat{w} \) every time a new data point arrives. Consider the following two methods:
             \begin{enumerate}
                 \item First, initialize \( \hat{w} \) using the original \( N \) data points. Then run Algorithm 1 once for each new data point.
@@ -428,7 +484,7 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
                     \item Total for \( n \) updates: \( \mathcal{O}(\sum_{k=1}^n ((N+k)d^2 + d^3)) = \mathcal{O}(nNd^2 + nd^3 + \frac{n(n+1)}{2}d^2) = \mathcal{O}(nNd^2 + nd^3 + n^2d^2) \)
                 \end{itemize}
             \end{itemize}
-            Method (a) is more efficient.
+            Method (a) is more efficient because it updates in \( \mathcal{O}(Nd^2 )\) time, while method (b) updates in \( \mathcal{O}(nNd^2) \) time.
         \end{enumerate}
 \end{enumerate}
 
