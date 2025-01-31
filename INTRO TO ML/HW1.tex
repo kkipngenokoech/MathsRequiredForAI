@@ -357,19 +357,37 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
 
         \begin{enumerate}
             \item Derive the formula for \( \hat{w}_{\text{new}} \) using the Sherman–Morrison formula. Your formula should express \( \hat{w}_{\text{new}} \) explicitly in terms of \( \hat{w} \).
-            The \(\hat{w_{new}}\) can be expressed as:
+            \\ This is what we have:
+            \\ The original \( \hat{w} \) is given by:
+            \[
+            \hat{w} = (X^\top X)^{-1} X^\top y
+            \]
+            Updated data is:
+            \[
+            X_{\text{new}} = \begin{bmatrix} X \\ \tilde{x}^\top \end{bmatrix}, \quad y_{\text{new}} = \begin{bmatrix} y \\ \tilde{y} \end{bmatrix}
+            \]
+            The Sherman-Morrison formula is:
+            \[
+            (A + uv^\top)^{-1} = A^{-1} - \frac{A^{-1}uv^\top A^{-1}}{1 + v^\top A^{-1}u}
+            \]
+            The updated \( \hat{w}_{\text{new}} \) is:
+            \[
+                \hat{w} = (X_{\text{new}}^\top X_{\text{new}})^{-1} X_{\text{new}}^\top y_{\text{new}} 
+            \]
+            We can apply the Sherman-Morrison formula to \( (X^\top X)^{-1} \) and \( \tilde{x} \tilde{x}^\top \):
+            \[
+            (X_{\text{new}}^\top X_{\text{new}})^{-1} = (X^\top X)^{-1} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
+            \]
+            Substituting this into the formula for \( \hat{w}_{\text{new}} \):
             \[
             \hat{w}_{\text{new}} = \left( (X^\top X)^{-1} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} \right) (X^\top y + \tilde{x} \tilde{y})
             \]
             Expanding the equation:
             \[
-            \hat{w}_{\text{new}} = (X^\top X)^{-1} (X^\top y + \tilde{x} \tilde{y})  - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} (X^\top y + \tilde{x} \tilde{y})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
+            \hat{w}_{\text{new}} = (X^\top X)^{-1} X^\top y - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} X^\top y}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
             \[
-            \hat{w}_{\text{new}} = (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} X^\top y + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
-            \]
-            \[
-            \hat{w}_{\text{new}} = \hat{w} + (X^\top X)^{-1} \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w}) - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w} + (X^\top X)^{-1} \tilde{x} \tilde{x}^\top \tilde{x} (\tilde{y} - \tilde{x}^\top \hat{w})}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
+            \hat{w}_{\text{new}} = \hat{w} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top \hat{w}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}} + (X^\top X)^{-1} \tilde{x} \tilde{y} - \frac{(X^\top X)^{-1} \tilde{x} \tilde{x}^\top (X^\top X)^{-1} \tilde{x} \tilde{y}}{1 + \tilde{x}^\top (X^\top X)^{-1} \tilde{x}}
             \]
             
            
