@@ -132,11 +132,13 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
     \item Find the first derivative of the following functions with respect to \( X \). Before you attempt the questions below, you are encouraged to review the  \href{https://en.wikipedia.org/wiki/Matrix_calculus}{Matrix Calculus Wikipedia page}. Note that in this problem, we follow the convention that the derivative of a scalar function \( f(X) \) with respect to \( X \) should have the same dimension as \( X \).
     \begin{enumerate}
         \item \( f(X) = \text{tr}(XX^\top) \), where \( X \in \mathbb{R}^{n \times n} \) and \(\text{tr}\) is the trace of a square matrix.
+        \\ The derivative of the trace of a matrix is the matrix itself:
         \[
         \frac{\partial f}{\partial X} = \mathbf{2X}
         \]
 
         \item \( f(X) = a^\top X b \), where \( X \in \mathbb{R}^{m \times n} \) and \( a \in \mathbb{R}^m \) and \( b \in \mathbb{R}^n \).
+        \\ when you multiply a row vector by a matrix, the derivative is the row vector itself, here we have two row vectors, so the derivative is the outer product of the two row vectors.
         \[
         \frac{\partial f}{\partial X} = \mathbf{ab^\top}
         \]
