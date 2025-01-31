@@ -138,12 +138,16 @@ X=F & 0.1 & 0.1 & 0.2 & 0.1 \\
         \]
 
         \item \( f(X) = a^\top X b \), where \( X \in \mathbb{R}^{m \times n} \) and \( a \in \mathbb{R}^m \) and \( b \in \mathbb{R}^n \).
-        \\ when you multiply a row vector by a matrix, the derivative is the row vector itself, here we have two row vectors, so the derivative is the outer product of the two row vectors.
+        \\ when you multiply a row vector by a matrix, the derivative is the row vector itself, here we have two row vectors, so the derivative is the outer product of the two row vectors. The first row vector is of dimension \(1 \times m\) and the second row vector is of dimension \(n \times 1\), so the derivative is of dimension \(m \times n\), to get the resulant matrix, we need to adjust dimensions of the row vectors:
         \[
         \frac{\partial f}{\partial X} = \mathbf{ab^\top}
         \]
-
         \item \( f(X) = \|Xb\|^2 \), where \( X \in \mathbb{R}^{m \times n} \) and \( b \in \mathbb{R}^n \).
+        \\ When we expand the Euclidean norm, we get:
+        \[
+        \|Xb\|^2 = (Xb)^\top (Xb) = b^\top X^\top X b
+        \]
+    
         \[
         \frac{\partial f}{\partial X} = \mathbf{2Xbb^\top}
         \]
