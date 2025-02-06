@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{hyperref} % Include this package for \url
 
 \begin{document}
 
@@ -131,7 +132,69 @@ I(P) = \{(X \perp Y \mid Z) : P(X, Y \mid Z) = P(X \mid Z)P(Y \mid Z)\} \tag{3}
 \item The P-map of a distribution, if it exists, is unique.
 \end{enumerate}
 \end{enumerate}
+\newpage
+\section{Markov Networks}
+Let \( \mathbf{X} = (X_1, \ldots, X_d) \) be a random vector with mean \( \boldsymbol{\mu} \) and covariance matrix \( \boldsymbol{\Sigma} \). The partial correlation matrix \( \mathbf{R} \) of \( \mathbf{X} \) is a \( d \times d \) matrix where each entry \( R_{ij} = \rho(X_i, X_j \mid \mathbf{X}_{-ij}) \) is the partial correlation between \( X_i \) and \( X_j \) given the \( d-2 \) remaining variables \( \mathbf{X}_{-ij} \). Let \( \boldsymbol{\Theta} = \boldsymbol{\Sigma}^{-1} \) be the inverse covariance matrix of \( \mathbf{X} \).
+
+We will prove the relation between \( \mathbf{R} \) and \( \boldsymbol{\Theta} \), and furthermore how \( \boldsymbol{\Theta} \) characterizes conditional independence in Gaussian graphical models.
+
+\begin{enumerate}
+    \item (10 points) Show that
+    \[
+    \begin{pmatrix}
+    \Theta_{ii} & \Theta_{ij} \\
+    \Theta_{ji} & \Theta_{jj}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+    \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+    \end{pmatrix}^{-1}
+    \]
+    for any \(i, j \in [d], i \neq j\). Here \(e_i\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_i\), and similarly \(e_j\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_j\).
+    
+    \item (10 points) Show that
+    \[
+    R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}
+    \]
+    
+    \item (15 points) From the above result and the relation between independence and correlation, we know
+    \[
+    \Theta_{ij} = 0 \iff R_{ij} = 0 \implies X_i \perp X_j \mid X_{-ij}
+    \]
+    Note the last implication only holds in one direction. Now suppose \(X \sim N(\mu, \Sigma)\) is jointly Gaussian. Show that \(R_{ij} = 0 \implies X_i \perp X_j \mid X_{-ij}\).
+\end{enumerate}
+\newpage
+
+\section{Exact Inference - Variable Elimination}
+
+Reference materials for this problem:
+\begin{itemize}
+    \item Jordan textbook Ch. 3, available at \url{https://people.eecs.berkeley.edu/~jordan/prelims/chapter3.pdf}
+    \item Koller and Friedman (2009, Ch. 9 and Ch. 10)
+\end{itemize}
+
+\subsection{Variable elimination on a grid [10 points]}
+Consider the following Markov network:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{bn4.png}
+    \caption{Markov Network}
+\end{figure}
+
+We are going to see how tree-width, a property of the graph, is related to the intrinsic complexity of
+variable elimination of a distribution
+
+\begin{enumerate}
+\item (5 points) Write down largest clique(s) for the elimination order \(E, D, H, F, B, A, G, I, C\).
 
 
+\item (5 points) Write down largest clique(s) for the elimination order \(A, G, I, C, D, H, F, B, E\).
+
+\item (5 points) Which of the above ordering is preferable? Explain briefly.
+
+\item (10 points) Using this intuition, give a reasonable (\(\ll n^2\)) upper bound on the tree-width of the \(n \times n\) grid.
+
+\end{enumerate}
 
 \end{document}
