@@ -152,7 +152,73 @@ We will prove the relation between \( \mathbf{R} \) and \( \boldsymbol{\Theta} \
     \end{pmatrix}^{-1}
     \]
     for any \(i, j \in [d], i \neq j\). Here \(e_i\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_i\), and similarly \(e_j\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_j\).
-    
+   \\  Schur complement of a block matrix is used to find the inverse of the matrix. For a block matrix of the form:
+
+    \[
+    \mathbf{M} = \begin{pmatrix}
+    \mathbf{A} & \mathbf{B} \\
+    \mathbf{C} & \mathbf{D}
+    \end{pmatrix}
+    \]
+
+    the inverse is given by:
+
+    \[
+    \mathbf{M}^{-1} = \begin{pmatrix}
+    \mathbf{A}^{-1} + \mathbf{A}^{-1} \mathbf{B} (\mathbf{D} - \mathbf{C} \mathbf{A}^{-1} \mathbf{B})^{-1} \mathbf{C} \mathbf{A}^{-1} & -\mathbf{A}^{-1} \mathbf{B} (\mathbf{D} - \mathbf{C} \mathbf{A}^{-1} \mathbf{B})^{-1} \\
+    -(\mathbf{D} - \mathbf{C} \mathbf{A}^{-1} \mathbf{B})^{-1} \mathbf{C} \mathbf{A}^{-1} & (\mathbf{D} - \mathbf{C} \mathbf{A}^{-1} \mathbf{B})^{-1}
+    \end{pmatrix}
+    \]
+
+    In our case, we have:
+
+    \[
+    \mathbf{\Theta} = \begin{pmatrix}
+    \Theta_{ii} & \Theta_{ij} \\
+    \Theta_{ji} & \Theta_{jj}
+    \end{pmatrix}
+    \]
+
+    and
+
+    \[
+    \mathbf{V} = \begin{pmatrix}
+    \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+    \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+    \end{pmatrix}
+    \]
+
+    We need to show that:
+
+    \[
+    \mathbf{\Theta} = \mathbf{V}^{-1}
+    \]
+
+    Using the Schur complement, we find the inverse of \(\mathbf{V}\):
+
+    \[
+    \mathbf{V}^{-1} = \frac{1}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} \begin{pmatrix}
+    \text{Var}[e_j] & -\text{Cov}[e_i, e_j] \\
+    -\text{Cov}[e_i, e_j] & \text{Var}[e_i]
+    \end{pmatrix}
+    \]
+
+    Thus, we have:
+
+    \[
+    \Theta_{ii} = \frac{\text{Var}[e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+
+    \[
+    \Theta_{jj} = \frac{\text{Var}[e_i]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+
+    \[
+    \Theta_{ij} = \Theta_{ji} = \frac{-\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+
+
+
     \item (10 points) Show that
     \[
     R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}
@@ -187,7 +253,10 @@ variable elimination of a distribution
 
 \begin{enumerate}
 \item (5 points) Write down largest clique(s) for the elimination order \(E, D, H, F, B, A, G, I, C\).
-
+\\ We start by eliminating \(E\), its neighbors are \(D, F, H, B\), so the clique here is :\(\{D, F, H, B\}\). size: \(\textbf{4}\)
+\\ We then eliminate \(D\), its neighbors are \(A, B, G, H\), so the clique here is: \(\{A, B, G, H\}\). size: \(\textbf{4}\)
+\\ We then eliminate \(H\), its neighbors are \(G, I, B, F\), so the clique here is: \(\{G, I, B, F\}\). size: \(\textbf{4}\)
+\\ We then eliminate \(F\), its neighbors are \(B, G, H, E\), so the clique here is: \(\{B, G, H, E\}\). size: \(\textbf{4}\)
 
 \item (5 points) Write down largest clique(s) for the elimination order \(A, G, I, C, D, H, F, B, E\).
 
