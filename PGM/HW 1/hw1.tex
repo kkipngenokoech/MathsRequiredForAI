@@ -277,13 +277,28 @@ variable elimination of a distribution
 \begin{enumerate}
 \item (5 points) Write down largest clique(s) for the elimination order \(E, D, H, F, B, A, G, I, C\).
 \\ We start by eliminating \(E\), its neighbors are \(D, F, H, B\), so the clique here is :\(\{D, F, H, B\}\). size: \(\textbf{4}\)
-\\ We then eliminate \(D\), its neighbors are \(A, B, G, H\), so the clique here is: \(\{A, B, G, H\}\). size: \(\textbf{4}\)
-\\ We then eliminate \(H\), its neighbors are \(G, I, B, F\), so the clique here is: \(\{G, I, B, F\}\). size: \(\textbf{4}\)
-\\ We then eliminate \(F\), its neighbors are \(B, G, H, E\), so the clique here is: \(\{B, G, H, E\}\). size: \(\textbf{4}\)
+\\ We then eliminate \(D\), its neighbors are \(A, B, F, G, H\), so the clique here is: \(\{A, B, f, G, H\}\). size: \(\textbf{5}\)
+\\ We then eliminate \(H\), its neighbors are \(G, A, I, B, F\), so the clique here is: \(\{G, A, I, B, F\}\). size: \(\textbf{5}\)
+\\ We then eliminate \(F\), its neighbors are \(A, B, c, G, I\), so the clique here is: \(\{A, B, C, G, I\}\). size: \(\textbf{5}\)
+\\ We then eliminate \(B\), its neighbors are \(A, C, G, I\), so the clique here is: \(\{A, C, G, I\}\). size: \(\textbf{4}\)
+\\ We then eliminate \(A\), its neighbors are \(C, G, I\), so the clique here is: \(\{C, G, I\}\). size: \(\textbf{3}\)
+\\ We then eliminate \(G\), its neighbors are \(C, I\), so the clique here is: \(\{C, I\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(I\), its neighbors are \(C\), so the clique here is: \(\{C\}\). size: \(\textbf{1}\)
+\\ The largest clique(s) for the elimination order \(E, D, H, F, B, A, G, I, C\) is \textbf{5}
 
 \item (5 points) Write down largest clique(s) for the elimination order \(A, G, I, C, D, H, F, B, E\).
+\\ We start by eliminating \(A\), its neighbors are \(D, B\), so the clique here is: \(\{D, B\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(G\), its neighbors are \(D, H\),     so the clique here is: \(\{D, H\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(I\), its neighbors are \(H, F\), so the clique here is: \(\{H, F\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(C\), its neighbors are \(F, B\), so the clique here is: \(\{F, B\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(D\), its neighbors are \(H, B, E\), so the clique here is: \(\{H, B, E\}\). size: \(\textbf{3}\)
+\\ We then eliminate \(H\), its neighbors are \(F, B, E\), so the clique here is: \(\{F, B, E\}\). size: \(\textbf{3}\)
+\\ We then eliminate \(F\), its neighbors are \(B, E\), so the clique here is: \(\{B, E\}\). size: \(\textbf{2}\)
+\\ We then eliminate \(B\), its neighbors are \(E\), so the clique here is: \(\{E\}\). size: \(\textbf{1}\)
+\\ The largest clique(s) for the elimination order \(A, G, I, C, D, H, F, B, E\) is \textbf{3}
 
 \item (5 points) Which of the above ordering is preferable? Explain briefly.
+\\ The second ordering is preferable because it results in a smaller largest clique size (3) compared to the first ordering (5). A smaller clique size generally leads to more efficient computations in variable elimination algorithms.
 
 \item (10 points) Using this intuition, give a reasonable (\(\ll n^2\)) upper bound on the tree-width of the \(n \times n\) grid.
 
