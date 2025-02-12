@@ -21,8 +21,59 @@ P(x_{i1}, x_{i2}, \cdots, x_{id}, y_i) = P(y_i) \prod_{j=1}^{d} P(x_{ij} \mid y_
 \]
 Suppose that we are given the data set $\mathbf{X} = [\mathbf{x}_1, \mathbf{x}_2, \cdots, \mathbf{x}_N]^\top$, where $\mathbf{X} \in \mathbb{R}^{N \times 4}$, consisting of $N$ data points and 4 features, and its label $\mathbf{y} = [y_1, y_2, \cdots, y_N]^\top$. Assume that the first feature has 2, the second has 3, the third has 4, and the fourth has 5 possible values: Let $X_1 \in \{1, 2\}$, $X_2 \in \{1, 2, 3\}$, $X_3 \in \{1, 2, 3, 4\}$, and $X_4 \in \{1, 2, 3, 4, 5\}$. Also, there are 4 possible labels, i.e., $Y \in \{1, 2, 3, 4\} \forall i$.
 
+This is what I have:
+\[
+\text{ Feature 1: } X_1 \in \{1, 2\}
+\]
+\[
+\text{ Feature 2: } X_2 \in \{1, 2, 3\}
+\]
+\[
+\text{ Feature 3: } X_3 \in \{1, 2, 3, 4\}
+\]
+\[
+\text{ Feature 4: } X_4 \in \{1, 2, 3, 4, 5\}
+\]
+\[
+\text{ Label: } Y \in \{1, 2, 3, 4\}
+\]
+Naive's bayes classifier follow Bayesian rule:
+\[
+P(Y|X) = \frac{P(X|Y)P(Y)}{P(X)}
+\]
+Every data point has 4 features and 1 label:
+\[
+    x_i = [x_{i1}, x_{i2}, x_{i3}, x_{i4}] \quad \text{and} \quad y_i
+\]
+
 \begin{enumerate}
     \item[a.] [5 points] Determine the number of free parameters $\theta$ and $\pi$ that one has to estimate using the na\"ive Bayes framework. (We use $\theta$ for the probabilities of a feature given a label (e.g., $\theta_{3,2,4} = P(X_3 = 2 \mid Y = 4)$) and $\pi$ for the class priors (e.g., $\pi_3 = P(Y = 3)$) similar to the lecture slides.)
+    \\ class priors:
+    \[
+        \pi_1 = P(Y = 1), \quad \pi_2 = P(Y = 2), \quad \pi_3 = P(Y = 3), \quad \pi_4 = P(Y = 4)
+    \]
+    We need to estimate only three of these probabilities, since probability always sum up to one. So for class priors we have:
+    \[
+         \textbf{3}\text{  parameters to estimate}
+    \]
+    We need to estimate how likely each feature is given a label
+    \\ Feature 1: it has 2 possible values, so we need to estimate 2 probabilities for each label
+    \[
+        \theta_{1,1} = P(X_1 = 1 \mid Y = 1), \quad \theta_{1,2} = P(X_1 = 2 \mid Y = 1)
+    \]
+    probability should sum up to one, so we only need to estimate one of the probabilities. So for feature 1 given 4 labels, we have:
+    \[
+        \textbf{4}\text{  parameters to estimate}
+    \]
+    \\ Feature 2: it has 3 possible values, so we need to estimate 3 probabilities for each label
+    \[
+        \theta_{2,1} = P(X_2 = 1 \mid Y = 1), \quad \theta_{2,2} = P(X_2 = 2 \mid Y = 1), \quad \theta_{2,3} = P(X_2 = 3 \mid Y = 1)
+    \]
+    probability should sum up to one, so we only need to estimate two of the probabilities. So for feature 2 given 4 labels, we have:
+    \[
+        4 \times 2 = \textbf{8}\text{  parameters to estimate}
+    \]
+
     \item[b.] [4 points] If the features are not independent conditioned on the label, one has to estimate the entire joint distribution $P(X_1, X_2, X_3, X_4 \mid Y = i)$, for all $i \in \{1, 2, 3, 4\}$. Determine the number of free parameters that one has to estimate in such a scenario.
     \item[c.] [1 point] Based on the numbers of parameters you found in parts (a) and (b), explain one advantage of assuming conditional independence.
 \end{enumerate}
@@ -198,6 +249,48 @@ To address this issue, we use the soft-SVM formulation by introducing slack vari
 \noindent \textbf{d.} [3 points] Find the number of variables to be optimized in the primal and dual forms of SVM. Then, suppose that we decide to use some other kernels (e.g., radial basis kernel, polynomial kernel) instead of the linear kernel \( k(\mathbf{x}_i, \mathbf{x}_j) = \mathbf{x}_i^\top \mathbf{x}_j \). Does this change the number of dual variables we need to use?
 
 \noindent \textbf{e.} [1 point] Why might you prefer to solve the SVM in the dual formulation as opposed to the primal formulation?
+
+\newpage
+\section {Implementing SVMs}
+
+In this problem, you will experiment with SVMs on a real-world dataset. You will implement a linear SVM (i.e., an SVM using the original features). You should implement it from scratch without using any libraries like scikit-learn, although you can use existing packages to solve quadratic programs. If you are not sure if the library you want to use is allowed, please ask the TAs or post a question on Piazza. We provide you with a guided Python Notebook (hw2\_svm\_imp.ipynb) on which you will find parts you need to fill in. You can use this notebook on JupyterLab / JupyterNotebook / GoogleColab.
+
+Please append your notebook file as a PDF at the end of your submission so that your code and cell outputs can be seen on the same submission PDF. If you use JupyterLab / JupyterNotebook / GoogleColab, you can save the notebook as PDF from File→Print. You can also use online ‘ipynb to pdf’ file converters. Please do not forget to append your notebook as a PDF to the end of your submission PDF for us to grade this question.
+
+Dataset: We have provided the Heart Disease dataset from UCI’s machine learning data repository. The provided binary classification dataset has 13 input features, and 303 samples.
+
+\begin{itemize}
+    \item By running the first cell of the given notebook, you download the ucimlrepo package. It will help us download the dataset. For this step, you should have an internet connection.
+    \item In the second cell, we provide all required libraries to complete the homework.
+    \item In the third cell, we download the dataset (again, you need an internet connection), one-hot encode some categorical features, and split it into train/test parts using a set seed.
+\end{itemize}
+
+You should run those three cells without any modification. After running the first three cells, you should have \texttt{X\_train} (shape of (216, 22)), \texttt{X\_test} (shape of (83, 22)), \texttt{y\_train} (shape of (216, )), and \texttt{y\_test} (shape of (83, )) variables.
+
+\begin{enumerate}
+    \item  Let $x^{(1)}_k, \cdots, x^{(N)}_k$ be the values of feature $k$ for all training set ($X_{\text{train}}$) points where $N$ is the number of samples in the training set. Preprocess the training ($X_{\text{train}}$) and test data ($X_{\text{test}}$) by:
+    \begin{enumerate}
+        \item Computing the mean $\bar{x}_k = \frac{1}{N} \sum_{i=1}^{N} x^{(i)}_k$ of each feature and subtracting it from all values of this feature.
+        \item Dividing each feature by its standard deviation, defined as
+        \[
+        s_k = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (x^{(i)}_k - \bar{x}_k)^2}
+        \]
+        for feature $k$. Here, $\bar{x}_k$ is the sample mean of this feature.
+    \end{enumerate}
+    Save the normalized data samples as variables named \texttt{X\_train\_normalized} for the training set and \texttt{X\_test\_normalized} for the test set. Note that the shape of these variables should be the same as the shapes of \texttt{X\_train} and \texttt{X\_test}, respectively.
+
+    This type of preprocessing is useful for SVMs, as SVMs attempt to maximize the distance between the separating hyperplane and the support vectors. If one feature (i.e., one dimension in this space) has very large values, it will dominate the other features when calculating this distance. Rescaling the features will ensure that they all have the same influence on the distance metric.
+
+    Note that the mean and standard deviation should be estimated from the training data (\texttt{X\_train}) and then applied to both datasets. This is because using the statistics from the training data ensures that the model is not biased by the test data, which should remain unseen during training.
+
+    Report the mean and the standard deviation of the first and the last features computed on the training data (\texttt{X\_train}):
+    \begin{itemize}
+        \item Mean of the first feature: $\bar{x}_1$
+        \item Standard deviation of the first feature: $s_1$
+        \item Mean of the last feature: $\bar{x}_{22}$
+        \item Standard deviation of the last feature: $s_{22}$
+    \end{itemize}
+\end{enumerate}
 
 
 \end{document}
