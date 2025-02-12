@@ -170,4 +170,34 @@ In other words, the average hinge loss on our dataset is an upper bound on the a
 \noindent \textbf{c.} [3 points] Assume that the training data is separable. However, it turns out that the minimizer \( \mathbf{w}^\star \) of the objective in Eq. (10) mis-classifies some training samples. How should we adjust \( \lambda \) (i.e., make it larger or smaller) to make the SVM work properly on training data? Why? Explain in 1-2 sentences.
 
 
+\newpage
+\section{Support Vector Machine - Slack Variables \& Duality Intuition}
+
+In hard SVM, our aim is to maximize the margin when samples are linearly separable. The margin is defined as the distance of the closest point to the classification boundary. In lecture, we showed that this is equivalent to solving the following hard-SVM optimization problem:
+
+\[
+\min_{w, b} \frac{1}{2} \|w\|_2^2 \quad \text{s.t.} \quad y_i(w^\top x_i + b) \geq 1, \quad \forall i \in [n] \quad (12)
+\]
+
+where \( w, x_i \in \mathbb{R}^d \), \( y_i \in \{-1, +1\} \), and \( n \) denotes the number of data points. Here, each \( (x_i, y_i) \) pair denotes a training data point.
+
+\noindent \textbf{a.} [1 point] Explain in one or two sentences why the hard-SVM formulation given above may fail when applied to real-world datasets.
+
+To address this issue, we use the soft-SVM formulation by introducing slack variables $\xi_i$ for each data point $i = 1, 2, \ldots, n$:
+\[
+\min_{w, b, \xi_1, \ldots, \xi_n} \left( \frac{1}{2} \|w\|_2^2 + C \sum_{i=1}^n \xi_i \right)
+\]
+\[
+\text{s.t.} \quad \forall i, \quad y_i(w^\top x_i + b) \geq 1 - \xi_i, \quad \xi_i \geq 0.
+\]
+
+\noindent \textbf{b.} [4 points] Discuss how the introduction of slack variables, $\xi_i$, resolves the impracticalities of the hard-SVM formulation that you identified in part (a). Why do we use “$\geq 1 - \xi_i$” instead of “$\geq 1$” in the constraints and why is it necessary to include “$C \sum_i \xi_i$” in the minimization objective? Your answer should be no more than three or four sentences long.
+
+\noindent \textbf{c.} [4 points] Further, as we see in the class, the dual formulation of the soft-SVM problem can be preferred.
+
+\noindent \textbf{d.} [3 points] Find the number of variables to be optimized in the primal and dual forms of SVM. Then, suppose that we decide to use some other kernels (e.g., radial basis kernel, polynomial kernel) instead of the linear kernel \( k(\mathbf{x}_i, \mathbf{x}_j) = \mathbf{x}_i^\top \mathbf{x}_j \). Does this change the number of dual variables we need to use?
+
+\noindent \textbf{e.} [1 point] Why might you prefer to solve the SVM in the dual formulation as opposed to the primal formulation?
+
+
 \end{document}
