@@ -123,6 +123,7 @@ Every data point has 4 features and 1 label:
     4 \times 119 = \textbf{476}\text{  parameters to estimate}
     \]
     \item[c.] [1 point] Based on the numbers of parameters you found in parts (a) and (b), explain one advantage of assuming conditional independence.
+    \\ The advantage of assuming conditional independence is that it reduces the number of parameters that we need to estimate. This makes the model less complex and easier to train. It also reduces the risk of overfitting the model.
 \end{enumerate}
 \newpage
 \section{Naive Bayes in Practice}
@@ -148,16 +149,140 @@ and two negative reviews:
 \end{itemize}
 
 Recall that the na\"ive Bayes classifier is a generative classifier, where the probability of an input $\mathbf{x} = [x_1, x_2, \cdots, x_n]^\top$ depends on its class $y$. In our case the input vector $\mathbf{x}$ corresponding to each movie review has $n = 10$ equal to the number of words in the vocabulary $V$, where each entry $x_i$ is equal to the number of times word $V_i$ occurs in $\mathbf{x}$.
+\[\]
+Understanding the problem at hand:
+
+We have three classes:
+
+1. Positive reviews: ``great movie amazing'', ``incredible movie'', ``great acting amazing plot'', ``amazing acting amazing plot''
+
+2. Neutral reviews: ``okay movie'', ``decent no amazing acting''
+
+3. Negative reviews: ``amazing waste'', ``no movie plot''
+\[ \\
+\]
+We have a vocabulary of 10 words:
+
+1. ``incredible''
+
+2. ``plot''
+
+3. ``great''
+
+4. ``amazing''
+
+5. ``okay''
+
+6. ``decent''
+
+7. ``movie''
+
+8. ``no''
+
+9. ``acting''
+
+10. ``waste''
+
+\[\]
+Encoding the reviews - We encode the reviews as feature vectors, where each entry in the vector corresponds to the number of times a word in the vocabulary appears in the review:
+\\ Positive reviews:
+\[
+\text{``great movie amazing''} \rightarrow [0, 0, 1, 1, 0, 0, 1, 0, 0, 0]
+\]
+\[
+\text{``incredible movie''} \rightarrow [1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+\]
+\[
+\text{``great acting amazing plot''} \rightarrow [0, 1, 1, 1, 0, 0, 0, 0, 1, 0]
+\]
+\[
+\text{``amazing acting amazing plot''} \rightarrow [0, 1, 0, 2, 0, 0, 0, 0, 1, 0]
+\]
+Neutral reviews:
+\[
+\text{``okay movie''} \rightarrow [0, 0, 0, 0, 1, 0, 1, 0, 0, 0]
+\]
+\[
+\text{``decent no amazing acting''} \rightarrow [0, 0, 0, 1, 0, 1, 0, 1, 1, 0]
+\]
+Negative reviews:
+\[
+\text{``amazing waste''} \rightarrow [0, 0, 0, 1, 0, 0, 0, 0, 0, 1]
+\]
+\[
+\text{``no movie plot''} \rightarrow [0, 1, 0, 0, 0, 0, 1, 1, 0, 0]
+\]
 
 \begin{enumerate}
     \item[a.] [2 points] Calculate the na\"ive Bayes estimates of $\Pr(y = 1)$, $\Pr(y = 2)$ and $\Pr(y = 3)$ from the training data, where $y = 1$ corresponds to positive reviews, $y = 2$ to neutral reviews and $y = 3$ to negative reviews.
+    \\ We have 4 positive reviews, 2 neutral reviews and 2 negative reviews. So the prior probabilities are:
+    \[
+        \Pr(y) = \frac{\text{number of reviews of class } y}{\text{total number of reviews}}
+    \]
+    \[
+    \Pr(y = 1) = \frac{4}{8} = \frac{1}{2}
+    \]
+    \[
+    \Pr(y = 2) = \frac{2}{8} = \frac{1}{4}
+    \]
+    \[
+    \Pr(y = 3) = \frac{2}{8} = \frac{1}{4}
+    \]
     \item[b.] [1 point] List the feature vector $\mathbf{x}$ for each positive review in the training set.
+    \[
+    \text{``great movie amazing''} \rightarrow [0, 0, 1, 1, 0, 0, 1, 0, 0, 0]
+    \]
+    \[
+    \text{``incredible movie''} \rightarrow [1, 0, 0, 0, 0, 0, 1, 0, 0, 0]
+    \]
+    \[
+    \text{``great acting amazing plot''} \rightarrow [0, 1, 1, 1, 0, 0, 0, 0, 1, 0]
+    \]
     \item[c.] [2 points] In the na\"ive Bayes model, the likelihood of a sentence with feature vector $\mathbf{x}$ given a class $c$ is
     \[
     \Pr(\mathbf{x} \mid y = c) = \prod_{k=1}^{n} (\theta_{c,k})^{x_k}
     \]
     where $\theta_{c,k}$ is the weight of word $k$ among all words of class $c$. Calculate the maximum likelihood estimate of $\theta_{1,4}$, $\theta_{1,7}$, $\theta_{2,4}$, $\theta_{2,7}$, $\theta_{3,4}$ and $\theta_{3,7}$.
+    \\ For each class, we need to estimate the probability of each word given the class. We can calculate the maximum likelihood estimate of $\theta_{c,k}$ as:
+    \[
+    \theta_{c,k} = \frac{\text{number of times word } k \text{ appears in class } c}{\text{total number of words in class } c}
+    \]
+    For class 1 (positive reviews):
+    \[
+    \theta_{1,4} = \theta_{\text{positive}, \text{amazing}} = \frac{4}{13} = \frac{4}{13}
+    \]
+    \[
+    \theta_{1,7} = \theta_{\text{positive}, \text{movie}} = \frac{2}{13} = \frac{2}{13}
+    \]
+    For class 2 (neutral reviews):
+    \[
+    \theta_{2,4} = \theta_{\text{neutral}, \text{amazing}} = \frac{1}{6} = \frac{1}{6}
+    \]
+    \[
+    \theta_{2,7} = \theta_{\text{neutral}, \text{movie}} = \frac{1}{6} = \frac{1}{6}
+    \]
+    For class 3 (negative reviews):
+    \[
+    \theta_{3,4} = \theta_{\text{negative}, \text{amazing}} = \frac{1}{5} = \frac{1}{5}
+    \]
+    \[
+    \theta_{3,7} = \theta_{\text{negative}, \text{movie}} = \frac{1}{5} = \frac{1}{5}
+    \]
     \item[d.] [3 points] Given a new review ``amazing movie'', decide whether it is positive, neutral or negative, based on the na\"ive Bayes classifier, learned from the above data.
+    \[
+    \Pr(y = c \mid \mathbf{x}) \propto \Pr(\mathbf{x} \mid y = c) \Pr(y = c)
+    \]
+    For the new review ``amazing movie'', the feature vector is:
+    \[
+    \mathbf{x} = [0, 0, 0, 1, 0, 0, 1, 0, 0, 0]
+    \]
+    We can calculate the probability of the review being positive, neutral or negative as:
+    \[
+        \Pr(\text{class} \mid \text{word} ) = \Pr(\text{word} \mid \text{class}) \Pr(\text{class})
+    \]
+    We can calculate the probabilities as:
+    \\ class 
+
     \item[e.] [4 points] Use Laplacian smoothing with $\alpha = 1$ to decide whether the review ``decent movie'' is positive, neutral or negative. In one sentence, describe the problem we would encounter if we had not used Laplacian smoothing.
 \end{enumerate}
 \newpage
