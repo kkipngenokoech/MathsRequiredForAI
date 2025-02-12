@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1739166808.68092 "/home/kip/projects/MathsRequiredForAI/PGM/HW 1/hw1.tex" "hw1.pdf" "hw1" 1739166809.38473 0
+["pdflatex"] 1739221499.2051 "/home/kip/projects/MathsRequiredForAI/PGM/HW 1/hw1.tex" "hw1.pdf" "hw1" 1739221500.06388 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/PGM/HW 1/hw1.tex" 1739166808.3098 14132 49fcec063bfe923f5f29390336c94454 ""
+  "/home/kip/projects/MathsRequiredForAI/PGM/HW 1/hw1.tex" 1739221498.57182 14669 ad1464a0d7385f6efc63a8fc95e24cc9 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -108,9 +108,9 @@
   "bn2.png" 1738832825.03466 9192 dbf18b47d23837f59f9f0ba72e58d558 ""
   "bn3.png" 1738833067.13766 17544 ba43b8b9ea1bce634bf35e9a8f72bdab ""
   "bn4.png" 1738834212.35059 8025 1f9d702f8743a2c291a7f24345294e91 ""
-  "hw1.aux" 1739166809.30846 1178 6bd9b0c41fa6dd332b4df56d21ac320e "pdflatex"
-  "hw1.out" 1739166809.30846 782 aaec548db3035b1ddf2873fece9899f6 "pdflatex"
-  "hw1.tex" 1739166808.3098 14132 49fcec063bfe923f5f29390336c94454 ""
+  "hw1.aux" 1739221499.96183 1178 6bd9b0c41fa6dd332b4df56d21ac320e "pdflatex"
+  "hw1.out" 1739221499.96183 782 aaec548db3035b1ddf2873fece9899f6 "pdflatex"
+  "hw1.tex" 1739221498.57182 14669 ad1464a0d7385f6efc63a8fc95e24cc9 ""
   (generated)
   "hw1.aux"
   "hw1.log"

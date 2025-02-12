@@ -99,7 +99,7 @@ follows, P is a distribution and G is a BN structure.
 \begin{enumerate}
     \item If \( A \perp B \mid C \) and \( A \perp C \mid B \), then \( A \perp B \) and \( A \perp C \). (Suppose the joint distribution of \( A, B, C \) is positive.) (This is a general probability question not related to BNs.)
     \begin{itemize}
-        \item \textbf{False}. Conditional independence does not imply marginal independence. For example, \( A \) and \( B \) can be dependent but become independent given \( C \).
+        \item \textbf{False}. Whilst local independence implies global independence, global independence does not imply local independence.
     \end{itemize}
     \begin{figure}[h]
         \centering
@@ -107,7 +107,9 @@ follows, P is a distribution and G is a BN structure.
         \caption{Bayesian Network}
     \end{figure}
     \item In Figure 2, \(E \perp C \mid B\)
+    \\ \textbf{True}. \(E\) is conditionally independent of \(C\) given \(B\) because we have conditioned on the node \(B\).
     \item in Figure 2, \(A \perp E \mid C\)
+    \\ \textbf{False}. \(A\) is not conditionally independent of \(E\) given \(C\) because there is a path from \(A\) to \(E\) that is not blocked by \(C\).
     \begin{figure}[h]
         \centering
         \includegraphics[width=0.5\textwidth]{bn3.png}
@@ -301,7 +303,7 @@ variable elimination of a distribution
 \\ The second ordering is preferable because it results in a smaller largest clique size (3) compared to the first ordering (5). A smaller clique size generally leads to more efficient computations in variable elimination algorithms.
 
 \item (10 points) Using this intuition, give a reasonable (\(\ll n^2\)) upper bound on the tree-width of the \(n \times n\) grid.
-
+\\ The tree-width of an \(n \times n\) grid is at most \(2n - 2\). This is because the grid can be decomposed into a tree structure where each node has at most \(2n - 2\) neighbors. This upper bound is reasonable and much smaller than \(n^2\), which would be the case for a fully connected graph.
 \end{enumerate}
 
 \end{document}
