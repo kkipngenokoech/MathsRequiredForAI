@@ -73,6 +73,14 @@ Every data point has 4 features and 1 label:
     \[
         4 \times 2 = \textbf{8}\text{  parameters to estimate}
     \]
+    \\ Feature 3: it has 4 possible values, so we need to estimate 4 probabilities for each label:
+    \[
+        \theta_{3,1} = P(X_3 = 1 \mid Y = 1), \quad \theta_{3,2} = P(X_3 = 2 \mid Y = 1), \quad \theta_{3,3} = P(X_3 = 3 \mid Y = 1), \quad \theta_{3,4} = P(X_3 = 4 \mid Y = 1)
+    \]
+    probability should sum up to one, so we only need to estimate three of the probabilities. So for feature 3 given 4 labels, we have:
+    \[
+        4 \times 3 = \textbf{12}\text{  parameters to estimate}
+    \]
 
     \item[b.] [4 points] If the features are not independent conditioned on the label, one has to estimate the entire joint distribution $P(X_1, X_2, X_3, X_4 \mid Y = i)$, for all $i \in \{1, 2, 3, 4\}$. Determine the number of free parameters that one has to estimate in such a scenario.
     \item[c.] [1 point] Based on the numbers of parameters you found in parts (a) and (b), explain one advantage of assuming conditional independence.
