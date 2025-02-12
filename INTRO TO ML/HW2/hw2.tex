@@ -144,6 +144,30 @@ Note: The name of the algorithm comes from the observation that the algorithm at
 \[
 \mathbf{w}_{k+1} = \arg\min_{\mathbf{w}_k} (\mathbf{z}_k - \mathbf{X} \mathbf{w}_k)^\top \mathbf{W}_k (\mathbf{z}_k - \mathbf{X} \mathbf{w}_k).
 \]
+\newpage
+
+\section{SVMs: Hinge loss and mistake bounds}
+Suppose we build a predictive model $\hat{y} = \operatorname{sgn}(\mathbf{w}^\top \mathbf{x})$, where $\operatorname{sgn}(z) = 1$ if $z$ is positive and $-1$ otherwise. Here we are dealing with binary predictions where each label is in $\{-1, 1\}$. The classification loss counts the number of mistakes (i.e., points where $y \neq \operatorname{sgn}(\mathbf{w}^\top \mathbf{x})$) that we make with $\mathbf{w}$ on a dataset. When we train the SVM model on $N$ data points $\{(\mathbf{x}_1, y_1), (\mathbf{x}_2, y_2), \ldots, (\mathbf{x}_N, y_N)\}$, the SVM loss function can be viewed as a relaxation to the classification loss.
+
+The hinge loss on a data point $(\mathbf{x}, y)$ is defined as:
+\[
+\ell((\mathbf{x}, y), \mathbf{w}) = \max(0, 1 - y \mathbf{w}^\top \mathbf{x}),
+\]
+where $\mathbf{x} \in \mathbb{R}^D$ and $y \in \{-1, 1\}$. The SVM attempts to minimize:
+\[
+L(\mathbf{w}) = \frac{1}{N} \sum_{i=1}^N \ell((\mathbf{x}_i, y_i), \mathbf{w}) + \lambda \|\mathbf{w}\|_2^2,
+\]
+where $\lambda > 0$ is the regularization parameter.
+
+\noindent \textbf{a.} [4 points] Suppose that for some \( \mathbf{w} \) we have a correct prediction of \( y_i \) with \( \mathbf{x}_i \), i.e., \( y_i = \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \). What range of values can the hinge loss, \( \ell((\mathbf{x}, y), \mathbf{w}) \), take on this correctly classified example? Points that are classified correctly and which have non-zero hinge loss are referred to as margin mistakes. Also, what is the possible range of the hinge loss for an incorrectly classified example?
+
+\noindent \textbf{b.} [5 points] Let \( M(\mathbf{w}) \) be the number of mistakes made when we use the weight vector \( \mathbf{w} \) to classify our dataset (i.e., the number of training data points for which \( y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \)). Note that \( \mathbf{w} \) can be an arbitrary weight vector (not necessarily the one that solves the SVM optimization problem). Show that:
+\[
+\frac{1}{N} M(\mathbf{w}) \leq \frac{1}{N} \sum_{i=1}^N \max \left( 0, 1 - y_i \mathbf{w}^\top \mathbf{x}_i \right). \quad (11)
+\]
+In other words, the average hinge loss on our dataset is an upper bound on the average number of mistakes we make on our dataset. By minimizing the average hinge loss with \( \mathbf{w} \), we can ensure that the SVM model makes few mistakes.
+
+\noindent \textbf{c.} [3 points] Assume that the training data is separable. However, it turns out that the minimizer \( \mathbf{w}^\star \) of the objective in Eq. (10) mis-classifies some training samples. How should we adjust \( \lambda \) (i.e., make it larger or smaller) to make the SVM work properly on training data? Why? Explain in 1-2 sentences.
 
 
 \end{document}
