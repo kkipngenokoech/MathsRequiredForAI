@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  12 FEB 2025 14:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  12 FEB 2025 15:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -228,18 +228,23 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-Overfull \hbox (12.16403pt too wide) in paragraph at lines 85--86
-[]\OT1/cmr/m/n/12 [4 points] If the fea-tures are not in-de-pen-dent con-di-tioned on the la-bel, one has to es-ti-mate the en-tire joint dis-tri-bu-tion $\OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; X[]; X[]; X[] \OMS/cmsy/m/n/12 j
+Overfull \hbox (38.30829pt too wide) detected at line 88
+\OML/cmm/m/it/12 ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = 1 \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = 1)\OML/cmm/m/it/12 ;  ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = 2 \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = 1)\OML/cmm/m/it/12 ;  ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = 3 \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = 1)\OML/cmm/m/it/12 ;  ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = 4 \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = 1)\OML/cmm/m/it/12 ;  ^^R[] \OT1/cmr/m/n/12 = \OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[] \OT1/cmr/m/n/12 = 5 \OMS/cmsy/m/n/12 j \OML/cmm/m/it/12 Y \OT1/cmr/m/n/12 = 1)
  []
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [3]
-Overfull \hbox (31.21216pt too wide) detected at line 159
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (12.16403pt too wide) in paragraph at lines 98--101
+[]\OT1/cmr/m/n/12 [4 points] If the fea-tures are not in-de-pen-dent con-di-tioned on the la-bel, one has to es-ti-mate the en-tire joint dis-tri-bu-tion $\OML/cmm/m/it/12 P\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 X[]; X[]; X[]; X[] \OMS/cmsy/m/n/12 j
+ []
+
+[2] [3{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [4]
+Overfull \hbox (31.21216pt too wide) detected at line 198
 [] \OT1/cmr/m/n/12 [3\OML/cmm/m/it/12 points\OT1/cmr/m/n/12 ] []
  []
 
-[4] [5] [6] [7] (./hw2.aux)
+[5] [6] [7] [8] (./hw2.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -248,16 +253,16 @@ L3 programming layer <2024-01-22>
 Here is how much of TeX's memory you used:
  3155 strings out of 474222
  47629 string characters out of 5748733
- 1938975 words of memory out of 5000000
+ 1937975 words of memory out of 5000000
  25390 multiletter control sequences out of 15000+600000
  568306 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,6n,65p,1044b,213s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on hw2.pdf (7 pages, 202839 bytes).
+Output written on hw2.pdf (8 pages, 204553 bytes).
 PDF statistics:
- 114 PDF objects out of 1000 (max. 8388607)
- 70 compressed objects within 1 object stream
+ 117 PDF objects out of 1000 (max. 8388607)
+ 72 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
