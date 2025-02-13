@@ -108,7 +108,7 @@ follows, P is a distribution and G is a BN structure.
         \caption{Bayesian Network}
     \end{figure}
     \item In Figure 2, \(E \perp C \mid B\)
-    \\ \textbf{True}. \(E\) is conditionally independent of \(C\) given \(B\) because we have conditioned on the node \(B\).
+    \\ \textbf{True}. The path from \(E\) to \(C\) is blocked by the node \(B\), so \(E\) is conditionally independent of \(C\) given \(B\).
     \item in Figure 2, \(A \perp E \mid C\)
     \\ \textbf{False}. \(A\) is not conditionally independent of \(E\) given \(C\) because there is a path from \(A\) to \(E\) that is not blocked by \(C\).
 %     \begin{figure}[h]
