@@ -331,21 +331,17 @@ We will prove the relation between \( \mathbf{R} \) and \( \boldsymbol{\Theta} \
     \]
     Note the last implication only holds in one direction. Now suppose \(X \sim N(\mu, \Sigma)\) is jointly Gaussian. Show that \(R_{ij} = 0 \implies X_i \perp X_j \mid X_{-ij}\).
 
-    \textbf{Partial Correlation and Conditional Independence:}
-From Problem 2, we know:
 \[
 R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}.
 \]
 If \( R_{ij} = 0 \), then \( \Theta_{ij} = 0 \).
 
-\textbf{Inverse Covariance and Conditional Independence:}
 For a jointly Gaussian distribution, the inverse covariance matrix \( \Theta = \Sigma^{-1} \) encodes conditional independence. Specifically:
 \[
 \Theta_{ij} = 0 \iff X_i \perp X_j | X_{-ij}.
 \]
 This is because the off-diagonal elements of \( \Theta \) represent the conditional dependence between variables after accounting for all other variables.
 
-\textbf{Conclusion:}
 Since \( R_{ij} = 0 \) implies \( \Theta_{ij} = 0 \), it follows that:
 \[
 X_i \perp X_j | X_{-ij}.
