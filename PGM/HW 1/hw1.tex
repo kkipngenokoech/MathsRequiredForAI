@@ -140,8 +140,80 @@ Let \( \mathbf{X} = (X_1, \ldots, X_d) \) be a random vector with mean \( \bolds
 
 We will prove the relation between \( \mathbf{R} \) and \( \boldsymbol{\Theta} \), and furthermore how \( \boldsymbol{\Theta} \) characterizes conditional independence in Gaussian graphical models.
 
+\[
+        \begin{pmatrix}
+        \Theta_{ii} & \Theta_{ij} \\
+        \Theta_{ji} & \Theta_{jj}
+        \end{pmatrix}
+        =
+        \begin{pmatrix}
+        \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+        \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+        \end{pmatrix}^{-1}
+\]
+    for any \(i, j \in [d], i \neq j\). Here \(e_i\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_i\), and similarly \(e_j\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_j\).
+
 \begin{enumerate}
+%     \item (10 points) Show that
+%     \[
+%     \begin{pmatrix}
+%     \Theta_{ii} & \Theta_{ij} \\
+%     \Theta_{ji} & \Theta_{jj}
+%     \end{pmatrix}
+%     =
+%     \begin{pmatrix}
+%     \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+%     \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+%     \end{pmatrix}^{-1}
+%     \]
+%     for any \(i, j \in [d], i \neq j\). Here \(e_i\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_i\), and similarly \(e_j\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_j\).
+%     \\ The residuals \( e_i \) and \( e_j \) are given by:
+%    \[
+%    e_i = X_i - \mathbb{E}[X_i | X_{-ij}], \quad e_j = X_j - \mathbb{E}[X_j | X_{-ij}].
+%    \]
+%    These residuals are uncorrelated with \( X_{-ij} \), meaning \( \text{Cov}(e_i, X_{-ij}) = 0 \) and \( \text{Cov}(e_j, X_{-ij}) = 0 \).
+
+% \textbf{Covariance of Residuals:}
+%    The covariance matrix of the residuals \( e_i \) and \( e_j \) is:
+%    \[
+%    \text{Cov}(e_i, e_j) = \text{Cov}(X_i, X_j | X_{-ij}).
+%    \]
+%    This is because the residuals capture the conditional covariance between \( X_i \) and \( X_j \) given \( X_{-ij} \).
+
+% \textbf{Inverse Covariance Matrix:}
+%    The inverse covariance matrix \( \Theta = \Sigma^{-1} \) satisfies:
+%    \[
+%    \Theta = \begin{pmatrix}
+%    \Theta_{ii} & \Theta_{ij} \\
+%    \Theta_{ji} & \Theta_{jj}
+%    \end{pmatrix}.
+%    \]
+%    By the properties of the inverse covariance matrix, the conditional covariance matrix of \( (X_i, X_j) \) given \( X_{-ij} \) is:
+%    \[
+%    \text{Cov}(X_i, X_j | X_{-ij}) = \begin{pmatrix}
+%    \Theta_{ii} & \Theta_{ij} \\
+%    \Theta_{ji} & \Theta_{jj}
+%    \end{pmatrix}^{-1}.
+%    \]
+
+% \textbf{Equating the Matrices:}
+%    Since \( \text{Cov}(e_i, e_j) = \text{Cov}(X_i, X_j | X_{-ij}) \), we have:
+%    \[
+%    \begin{pmatrix}
+%    \Theta_{ii} & \Theta_{ij} \\
+%    \Theta_{ji} & \Theta_{jj}
+%    \end{pmatrix}
+%    =
+%    \begin{pmatrix}
+%    \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+%    \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+%    \end{pmatrix}^{-1}.
+%    \]
     \item (10 points) Show that
+    \[
+    R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}
+    \]
+    We start from the given matrix equation:
     \[
     \begin{pmatrix}
     \Theta_{ii} & \Theta_{ij} \\
@@ -151,82 +223,107 @@ We will prove the relation between \( \mathbf{R} \) and \( \boldsymbol{\Theta} \
     \begin{pmatrix}
     \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
     \text{Cov}[e_i, e_j] & \text{Var}[e_j]
-    \end{pmatrix}^{-1}
+    \end{pmatrix}^{-1}.
     \]
-    for any \(i, j \in [d], i \neq j\). Here \(e_i\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_i\), and similarly \(e_j\) is the residual resulting from the linear regression of \(X_{-ij}\) to \(X_j\).
-    \\ The residuals \( e_i \) and \( e_j \) are given by:
-   \[
-   e_i = X_i - \mathbb{E}[X_i | X_{-ij}], \quad e_j = X_j - \mathbb{E}[X_j | X_{-ij}].
-   \]
-   These residuals are uncorrelated with \( X_{-ij} \), meaning \( \text{Cov}(e_i, X_{-ij}) = 0 \) and \( \text{Cov}(e_j, X_{-ij}) = 0 \).
-
-\textbf{Covariance of Residuals:}
-   The covariance matrix of the residuals \( e_i \) and \( e_j \) is:
-   \[
-   \text{Cov}(e_i, e_j) = \text{Cov}(X_i, X_j | X_{-ij}).
-   \]
-   This is because the residuals capture the conditional covariance between \( X_i \) and \( X_j \) given \( X_{-ij} \).
-
-\textbf{Inverse Covariance Matrix:}
-   The inverse covariance matrix \( \Theta = \Sigma^{-1} \) satisfies:
-   \[
-   \Theta = \begin{pmatrix}
-   \Theta_{ii} & \Theta_{ij} \\
-   \Theta_{ji} & \Theta_{jj}
-   \end{pmatrix}.
-   \]
-   By the properties of the inverse covariance matrix, the conditional covariance matrix of \( (X_i, X_j) \) given \( X_{-ij} \) is:
-   \[
-   \text{Cov}(X_i, X_j | X_{-ij}) = \begin{pmatrix}
-   \Theta_{ii} & \Theta_{ij} \\
-   \Theta_{ji} & \Theta_{jj}
-   \end{pmatrix}^{-1}.
-   \]
-
-\textbf{Equating the Matrices:}
-   Since \( \text{Cov}(e_i, e_j) = \text{Cov}(X_i, X_j | X_{-ij}) \), we have:
-   \[
-   \begin{pmatrix}
-   \Theta_{ii} & \Theta_{ij} \\
-   \Theta_{ji} & \Theta_{jj}
-   \end{pmatrix}
-   =
-   \begin{pmatrix}
-   \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
-   \text{Cov}[e_i, e_j] & \text{Var}[e_j]
-   \end{pmatrix}^{-1}.
-   \]
-    \item (10 points) Show that
+    let us find the determinant of th matrix on the right hand side:
+    \[
+    \text{det} \begin{pmatrix}
+    \text{Var}[e_i] & \text{Cov}[e_i, e_j] \\
+    \text{Cov}[e_i, e_j] & \text{Var}[e_j]
+    \end{pmatrix} = \text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2.
+    \]
+    Using the determinant, let us find the inverse of the matrix on the right hand side:
+    \[
+    \frac{1}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2.} \begin{pmatrix}
+    \text{Var}[e_j] & -\text{Cov}[e_i, e_j] \\
+    -\text{Cov}[e_i, e_j] & \text{Var}[e_i]
+    \end{pmatrix}
+    \]
+    Let us push the determinant into the matrix:
+    \[
+    \begin{pmatrix}
+    \frac{\text{Var}[e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} & -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} \\
+    -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} & \frac{\text{Var}[e_i]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \end{pmatrix}
+    \]
+    We can now equate the two matrices:
+    \[
+    \begin{pmatrix}
+    \Theta_{ii} & \Theta_{ij} \\
+    \Theta_{ji} & \Theta_{jj}
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+    \frac{\text{Var}[e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} & -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} \\
+    -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} & \frac{\text{Var}[e_i]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \end{pmatrix}
+    \]
+    To show that \( R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}} \), we need to show that:
     \[
     R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}
     \]
-    
-\textbf{Partial Correlation:}
-The partial correlation \( R_{ij} \) is defined as:
-\[
-R_{ij} = \rho(X_i, X_j | X_{-ij}) = \frac{\text{Cov}(X_i, X_j | X_{-ij})}{\sqrt{\text{Var}(X_i | X_{-ij}) \text{Var}(X_j | X_{-ij})}}.
-\]
-
-\textbf{Conditional Covariance and Variance:}
-From Problem 1, we know:
-\[
-\text{Cov}(X_i, X_j | X_{-ij}) = -\frac{\Theta_{ij}}{\Theta_{ii} \Theta_{jj} - \Theta_{ij}^2},
-\]
-and:
-\[
-\text{Var}(X_i | X_{-ij}) = \frac{1}{\Theta_{ii}}, \quad \text{Var}(X_j | X_{-ij}) = \frac{1}{\Theta_{jj}}.
-\]
-
-\textbf{Substitute into Partial Correlation:}
-Substituting these into the definition of \( R_{ij} \), we get:
-\[
-R_{ij} = \frac{-\frac{\Theta_{ij}}{\Theta_{ii} \Theta_{jj} - \Theta_{ij}^2}}{\sqrt{\frac{1}{\Theta_{ii}} \cdot \frac{1}{\Theta_{jj}}}}.
-\]
-Simplifying, we obtain:
-\[
-R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}}.
-\]
-
+    \[
+    R_{ij} = -\frac{-\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}}{\sqrt{\frac{\text{Var}[e_i]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2} \frac{\text{Var}[e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}}}
+    \]
+    \[
+    R_{ij} = -\frac{-\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}}{\sqrt{\frac{\text{Var}[e_i] \text{Var}[e_j]}{(\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2)^2}}}
+    \]
+    \[
+    R_{ij} = -\frac{-\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}}{\frac{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}}
+    \]
+    But we know that:
+    \[
+        \Theta_{ij} = -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    \[
+    R_{ij} = -\frac{-\text{Cov}[e_i, e_j]}{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}
+    \]
+    \[
+    R_{ij} = \frac{\text{Cov}[e_i, e_j]}{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}
+    \]
+    let us rearrange this equation:
+    \[
+    \text{Cov}[e_i, e_j] = R_{ij} \sqrt{\text{Var}[e_i] \text{Var}[e_j]}
+    \]
+    Then we know:
+    \[
+    \theta_{ij} = -\frac{\text{Cov}[e_i, e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    \[
+    \theta_{ij} = -\frac{R_{ij} \sqrt{\text{Var}[e_i] \text{Var}[e_j]}}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    let us have \(R_{ij}\) in the LHS:
+    \[
+    R_{ij} = -\frac{\theta_{ij} \text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}
+    \]
+    we know \(\theta_{ii} \text{ and } \Theta_{jj}\) as:
+    \[
+        \theta_{ii} = \frac{\text{Var}[e_i]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    \[
+        \theta_{jj} = \frac{\text{Var}[e_j]}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    let us multiply the two:
+    \[
+    \theta_{ii} \theta_{jj} = \frac{\text{Var}[e_i] \text{Var}[e_j]}{(\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2)^2}
+    \]
+    we the proceed to find the square root of the product:
+    \[
+    \sqrt{\theta_{ii} \theta_{jj}} = \frac{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}{\text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2}
+    \]
+    Let us rearrange the equation:
+    \[
+        \text{Var}[e_i] \text{Var}[e_j] - \text{Cov}[e_i, e_j]^2 = \frac{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}{\sqrt{\theta_{ii} \theta_{jj}}}
+    \]
+    We can then proceed and replace this in the equation for \(R_{ij}\):
+    \[
+    R_{ij} = -\frac{\theta_{ij} \frac{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}{\sqrt{\theta_{ii} \theta_{jj}}}}{\sqrt{\text{Var}[e_i] \text{Var}[e_j]}}
+    \]
+    This simplifies to:
+    \[
+    R_{ij} = -\frac{\theta_{ij}}{\sqrt{\theta_{ii} \theta_{jj}}}
+    \]
+    We have therefore shown that \( R_{ij} = -\frac{\Theta_{ij}}{\sqrt{\Theta_{ii} \Theta_{jj}}} \).
     
     \item (15 points) From the above result and the relation between independence and correlation, we know
     \[
