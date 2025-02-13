@@ -93,6 +93,7 @@
         X_I \perp \{X_A, X_B, X_C, X_D, X_E, X_F\} \mid \{X_G, X_H\}
     \]
 \end{enumerate}
+
 \item  State True or False, and briefly justify your answer within 3 lines. The statements are either
 direct consequences of theorems in Koller and Friedman (2009, Ch. 3), or have a short proof. In the
 follows, P is a distribution and G is a BN structure.
@@ -110,28 +111,28 @@ follows, P is a distribution and G is a BN structure.
     \\ \textbf{True}. \(E\) is conditionally independent of \(C\) given \(B\) because we have conditioned on the node \(B\).
     \item in Figure 2, \(A \perp E \mid C\)
     \\ \textbf{False}. \(A\) is not conditionally independent of \(E\) given \(C\) because there is a path from \(A\) to \(E\) that is not blocked by \(C\).
-    \begin{figure}[h]
-        \centering
-        \includegraphics[width=0.5\textwidth]{bn3.png}
-    \end{figure}
-    \\\\ In figure 3, 
-Recall the definitions of local and global independences of \( G \) and independences of \( P \).
-\[
-I_l(G) = \{(X \perp \text{NonDescendants}_G(X) \mid \text{Parents}_G(X))\} \tag{1}
-\]
-\[
-I(G) = \{(X \perp Y \mid Z) : \text{d-separated}_G(X, Y \mid Z)\} \tag{2}
-\]
-\[
-I(P) = \{(X \perp Y \mid Z) : P(X, Y \mid Z) = P(X \mid Z)P(Y \mid Z)\} \tag{3}
-\]
-\item In Figure 3, relation 1 is true.
-\item In Figure 3, relation 2 is true.
-\item In Figure 3, relation 3 is true.
-\item If \( G \) is an I-map for \( P \), then \( P \) may have extra conditional independencies than \( G \).
-\item Two BN structures \( G_1 \) and \( G_2 \) are I-equivalent if they have the same skeleton and the same set of v-structures.
-\item If \( G_1 \) is an I-map of distribution \( P \), and \( G_1 \) has fewer edges than \( G_2 \), then \( G_2 \) is not a minimal I-map of \( P \).
-\item The P-map of a distribution, if it exists, is unique.
+%     \begin{figure}[h]
+%         \centering
+%         \includegraphics[width=0.5\textwidth]{bn3.png}
+%     \end{figure}
+%     \\\\ In figure 3, 
+% Recall the definitions of local and global independences of \( G \) and independences of \( P \).
+% \[
+% I_l(G) = \{(X \perp \text{NonDescendants}_G(X) \mid \text{Parents}_G(X))\} \tag{1}
+% \]
+% \[
+% I(G) = \{(X \perp Y \mid Z) : \text{d-separated}_G(X, Y \mid Z)\} \tag{2}
+% \]
+% \[
+% I(P) = \{(X \perp Y \mid Z) : P(X, Y \mid Z) = P(X \mid Z)P(Y \mid Z)\} \tag{3}
+% \]
+% \item In Figure 3, relation 1 is true.
+% \item In Figure 3, relation 2 is true.
+% \item In Figure 3, relation 3 is true.
+% \item If \( G \) is an I-map for \( P \), then \( P \) may have extra conditional independencies than \( G \).
+% \item Two BN structures \( G_1 \) and \( G_2 \) are I-equivalent if they have the same skeleton and the same set of v-structures.
+% \item If \( G_1 \) is an I-map of distribution \( P \), and \( G_1 \) has fewer edges than \( G_2 \), then \( G_2 \) is not a minimal I-map of \( P \).
+% \item The P-map of a distribution, if it exists, is unique.
 \end{enumerate}
 \end{enumerate}
 \newpage

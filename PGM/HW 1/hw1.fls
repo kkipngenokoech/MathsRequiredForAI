@@ -182,11 +182,6 @@ INPUT ./bn2.png
 INPUT ./bn2.png
 INPUT ./bn2.png
 INPUT ./bn2.png
-INPUT ./bn3.png
-INPUT ./bn3.png
-INPUT ./bn3.png
-INPUT ./bn3.png
-INPUT ./bn3.png
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmib10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib8.tfm
