@@ -52,9 +52,9 @@
     \[
         X_B \text{ has no parents, so no independence condition applies here.} \\
     \]
-    \(X_C \text{ is conditionally independent of all other nodes given its parent } X_A: \)
+    \(X_C \text{ is conditionally independent of all other nodes given its parent } X_A  X_B: \)
     \[
-        X_C \perp \{X_B, X_D, X_E, X_F, X_G, X_H, X_I\} \mid X_A \\
+        X_C \perp \{ X_D, X_E, X_F, X_G, X_H, X_I\} \mid \{X_A. X_C\} \\
     \]
     \(
         X_D \text{ is conditionally independent of all other nodes given its parent } X_A: \\
@@ -66,7 +66,7 @@
         X_E \text{ is conditionally independent of all other nodes given its parents } X_C \text{ and } X_D: \\
     \)
     \[
-        X_E \perp \{X_A, X_B, X_F, X_G, X_H, X_I\} \mid \{X_C, X_D\} \\
+        X_E \perp \{ X_B, X_C, X_D,  X_F, X_G, X_H, X_I\} \mid X_A \\
     \]
     \(
         X_F \text{ is conditionally independent of all other nodes given its parent } X_B: \\
