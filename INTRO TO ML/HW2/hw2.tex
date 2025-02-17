@@ -434,16 +434,30 @@ To show that Eq. (4) is equivalent to Eq. (3), We need to expand the terms in Eq
 -\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
 \]
 \[
--\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
+-\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
 \]
 \[
--\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \log \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i}
+-\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i}
 \]
 \[
--\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)}\right)
 \]
 \[
--\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( \frac{1}{1 + \exp(\mathbf{w}^\top \mathbf{x}_i)} \right)
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)
+\]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)
+\]
+let:
+\[
+p(y_i \mid \mathbf{x}_i, \mathbf{w}) = \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)}
+\]
+so we have:
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log p(y_i \mid \mathbf{x}_i, \mathbf{w}) + (1 - y_i) \log (1 - p(y_i \mid \mathbf{x}_i, \mathbf{w}))
+\]
+\[
+-\ell(\mathbf{w}) = L(\mathbf{w})
 \]
 
 \textbf{b.} [4 points] Since it is difficult to directly optimize Eq. (3), gradient descent algorithms are usually used to find the optimum, as is discussed in the lecture. Show that the negative log-likelihood is a convex function. You may use the facts that the sum of convex functions is also convex, and that if $f$ and $g$ are both convex, twice differentiable and $g$ is non-decreasing, then $g(f)$ is convex.
