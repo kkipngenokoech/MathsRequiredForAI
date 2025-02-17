@@ -467,6 +467,33 @@ so we have:
 f(tx_1 + (1 - t)x_2) \leq t f(x_1) + (1 - t) f(x_2), \quad \forall t \in [0, 1] \quad (5)
 \]
 Also, a twice-differentiable function is convex if and only if the Hessian is positive semi-definite.
+\[
+\text{Hessian} = \begin{bmatrix}
+    \frac{\partial^2 f}{\partial x_1^2} & \frac{\partial^2 f}{\partial x_1 \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_1 \partial x_n} \\
+    \frac{\partial^2 f}{\partial x_2 \partial x_1} & \frac{\partial^2 f}{\partial x_2^2} & \cdots & \frac{\partial^2 f}{\partial x_2 \partial x_n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    \frac{\partial^2 f}{\partial x_n \partial x_1} & \frac{\partial^2 f}{\partial x_n \partial x_2} & \cdots & \frac{\partial^2 f}{\partial x_n^2}
+\end{bmatrix}
+\]
+We can show that the negative log-likelihood is a convex function by showing that the Hessian is positive semi-definite. The Hessian of the negative log-likelihood is given by:
+\\ The equation we want to find derivative of is:
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log p(y_i \mid \mathbf{x}_i, \mathbf{w}) + (1 - y_i) \log (1 - p(y_i \mid \mathbf{x}_i, \mathbf{w}))
+\]
+Let \(P(y_i \mid \mathbf{x}_i, \mathbf{w}) = p\), then the negative log-likelihood is:
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log p + (1 - y_i) \log (1 - p)
+\]
+The gradient of the negative log-likelihood is:
+\[
+\nabla \ell(\mathbf{w}) = \sum_{i=1}^n \left( p - y_i \right) \mathbf{x}_i
+\]
+This is because the derivative of \( \log p \) is \( \frac{1}{p} \) and the derivative of \( \log (1 - p) \) is \( \frac{-1}{1 - p} \). 
+\\ The Hessian of the negative log-likelihood is:
+\[
+\nabla^2 \ell(\mathbf{w}) = \sum_{i=1}^n p(1 - p) \mathbf{x}_i \mathbf{x}_i^T
+\]
+The Hessian is positive semi-definite because \( p(1 - p) \geq 0 \) and \( \mathbf{x}_i \mathbf{x}_i^T \) is positive semi-definite. Therefore, the negative log-likelihood is a convex function.\\
 
 We now turn our attention to another algorithm known as iterative weighted least squares, which is based on the Newton-Raphson algorithm. Let $\mathbf{w}^{(k)}$ denote the parameter vector $\mathbf{w}$ at the $k$th iteration. Then, the update rule of iterative weighted least-squares is as follows:
 \[
@@ -496,6 +523,46 @@ Note: The name of the algorithm comes from the observation that the algorithm at
 \[
 \mathbf{w}_{k+1} = \arg\min_{\mathbf{w}_k} (\mathbf{z}_k - \mathbf{X} \mathbf{w}_k)^\top \mathbf{W}_k (\mathbf{z}_k - \mathbf{X} \mathbf{w}_k).
 \]
+
+To prove the equation, we need to show that:
+\[
+\mathbf{w}_{k+1} = (\mathbf{X}^\top \mathbf{W}_k \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{z}_k
+\]
+We have:
+\[
+\mathbf{w}_{k+1} = \mathbf{w}_k - \left( \nabla^2\mathcal{L}\mathbf{w}_k \right)^{-1} \nabla L(\mathbf{w}_k)
+\]
+We know that:
+\[
+\nabla L(\mathbf{w}_k) = -\mathbf{X}^\top (\mathbf{y} - \mathbf{p}_k)
+\]
+\[
+\nabla^2 L(\mathbf{w}_k) = \mathbf{X}^\top \mathbf{W}_k \mathbf{X}
+\]
+Substituting the values of \( \nabla L(\mathbf{w}_k) \) and \( \nabla^2 L(\mathbf{w}_k) \) into the update rule, we get:
+\[
+\mathbf{w}_{k+1} = \mathbf{w}_k - \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \left( -\mathbf{X}^\top (\mathbf{y} - \mathbf{p}_k) \right)
+\]
+\[
+\mathbf{w}_{k+1} = \mathbf{w}_k + \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top (\mathbf{y} - \mathbf{p}_k)
+\]
+\[
+\mathbf{w}_{k+1} = \mathbf{w}_k + \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \mathbf{w}_k - \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{y}
+\]
+\[
+\mathbf{w}_{k+1} = \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \mathbf{w}_k + \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \mathbf{w}_k - \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{y}
+\]
+\[
+\mathbf{w}_{k+1} = \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{y}
+\]
+\[
+\mathbf{w}_{k+1} = \left( \mathbf{X}^\top \mathbf{W}_k \mathbf{X} \right)^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{z}_k
+\]
+Therefore:
+\[
+\mathbf{w}_{k+1} = (\mathbf{X}^\top \mathbf{W}_k \mathbf{X})^{-1} \mathbf{X}^\top \mathbf{W}_k \mathbf{z}_k = \nabla^2 L(\mathbf{w}_k) = \mathbf{X}^\top \mathbf{W}_k \mathbf{X}
+\]
+
 \newpage
 
 \section{SVMs: Hinge loss and mistake bounds}
