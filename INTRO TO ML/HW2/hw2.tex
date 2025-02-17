@@ -1,6 +1,7 @@
 \documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
 \usepackage{graphicx} % Include this package for \includegraphics
 \usepackage{amsmath}
+\usepackage{listings}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
 
@@ -352,15 +353,57 @@ and the gradient is
 \]
 
 \noindent \textbf{a.} [2 points] Is it possible to get a closed form for the parameters \( \hat{\mathbf{w}} \) that maximize the conditional log likelihood? If it is possible, give the closed-form solution. If not, how would you compute \( \hat{\mathbf{w}} \) in practice? Explain your method to find \( \hat{\mathbf{w}} \) in a few sentences or provide a short pseudo-code.
+\\\\ It is not possible to get a closed form for the parameters \( \hat{\mathbf{w}} \) that maximize the conditional log likelihood. We can use gradient descent to find the parameters \( \hat{\mathbf{w}} \). The gradient of the conditional log likelihood is given by Eq. (2). We can update the parameters \( \mathbf{w} \) using the update rule:
+\[
+\mathbf{w}_{(k+1)} = \mathbf{w}_{(k)} + \alpha \nabla L(\mathbf{w}_{(k)}),
+\]
+The  pseudo-code to find the parameters \( \hat{\mathbf{w}} \) is as follows:
+\begin{lstlisting}
+    Initialize w
+    while not converged:
+        for i in range(N):
+            w = w + alpha * gradL(w)
+\end{lstlisting}
+where \( \alpha \) is the learning rate, \( N \) is the number of data points, and \( \text{gradL}(\mathbf{w}) \) is the gradient of the conditional log likelihood.\\
+
 
 For a binary logistic regression model, we predict \( y = 1 \) when \( p(y = 1 \mid \mathbf{x}) \geq 0.5 \). Assume that the decision boundary occurs when \( P(y = 1 \mid \mathbf{x}, \mathbf{w}) = P(y = 0 \mid \mathbf{x}, \mathbf{w}) \).
 
 \noindent \textbf{b.} [4 points] Find the decision boundary, which is the set of $\mathbf{x}$ satisfying $P(y = 1 \mid \mathbf{x}, \mathbf{w}) = P(y = 0 \mid \mathbf{x}, \mathbf{w})$.
 
+we have:
+\[
+P(y = 1 \mid \mathbf{x}, \mathbf{w}) = P(y = 0 \mid \mathbf{x}, \mathbf{w})
+\]
+\[
+\frac{1}{1 + \exp(-\mathbf{w}^T \mathbf{x})} = 1 - \frac{1}{1 + \exp(-\mathbf{w}^T \mathbf{x})}
+\]
+\[
+\frac{1}{1 + \exp(-\mathbf{w}^T \mathbf{x})} = \frac{1 + \exp(-\mathbf{w}^T \mathbf{x}) - 1}{1 + \exp(-\mathbf{w}^T \mathbf{x})}
+\]
+\[
+\frac{1}{1 + \exp(-\mathbf{w}^T \mathbf{x})} = \frac{\exp(-\mathbf{w}^T \mathbf{x})}{1 + \exp(-\mathbf{w}^T \mathbf{x})}
+\]
+\[
+1 = \exp(-\mathbf{w}^T \mathbf{x})
+\]
+\[
+\log(1) = \log(\exp(-\mathbf{w}^T \mathbf{x}))
+\]
+\[
+0 = -\mathbf{w}^T \mathbf{x}
+\]
+\[
+\mathbf{w}^T \mathbf{x} = 0
+\]
+The decision boundary is given by the equation \( \mathbf{w}^T \mathbf{x} = 0 \).
+
 \noindent \textbf{c.} [1 point] Is this model a linear classifier?
+\\\\yes,this model is a linear classifier. The decision boundary is a linear function of the input features \( \mathbf{x} \) and the model predicts the class based on whether the input lies above or below this linear boundary.\\
 
 \noindent \textbf{d.} [2 points] Now, let us assume that in our application of this model, our tolerance of mis-classifying samples with the true label $y = 0$ is much lower than our tolerance to mis-classifying samples with true label $y = 1$ (i.e., we do not want to estimate a data point as belonging to class 0 if its true class is 1. However, we can tolerate the error of estimating a data point belong to class 1 if its true class is 0.) For example, in predicting the presence of a disease, we may be much more tolerant of mis-classifying a healthy person (true label $y = 0$) as having the disease ($y = 1$) compared to mis-classifying a person with the disease (true label $y = 1$) as not having it ($y = 0$). Now suppose you have trained a logistic regression model to obtain the model weights $\mathbf{w}$. How would you adjust the prediction with weights $\mathbf{w}$ to decrease the mis-classification of samples with true label $y = 1$?
-
+\\\\Wecan adjust the prediction threshold to decrease the mis-classification of samples with true label \( y = 1 \). We can increase the threshold to predict \( y = 1 \) only when the probability is higher than the threshold. This will decrease the number of false positives. We can adjust the threshold to increase the number of true positives and decrease the number of false positives.\\
+ 
 \newpage
 \section{Solving Logistic Regression}
 The cross-entropy loss function for a logistic regression task on a dataset \( \{(\mathbf{x}_1, y_1), (\mathbf{x}_2, y_2), \dots, (\mathbf{x}_n, y_n)\} \) can be written as
