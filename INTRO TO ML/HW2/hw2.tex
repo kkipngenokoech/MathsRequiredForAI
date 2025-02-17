@@ -416,15 +416,36 @@ In this question, we will show that finding the MLE (maximum likelihood estimato
 \textbf{a.} \quad [3 points] \quad \text{Starting from the definition of negative log-likelihood (Eq. (4) below), show that it is equal to the cross-entropy loss (Eq. (3)).}
 \]
 
-The negative log-likelihood is given by:
+% The negative log-likelihood is given by:
 \[
 -\ell(\mathbf{w}) = -\log \left( \prod_{i=1}^n \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right). \quad (4)
 \]
 
-Show that this is equivalent to the cross-entropy loss:
+% Show that this is equivalent to the cross-entropy loss:
+% \[
+% L(\mathbf{w}) = -\sum_{i=1}^n \left[ y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) \right]. \quad (3)
+% \]
+
+To show that Eq. (4) is equivalent to Eq. (3), We need to expand the terms in Eq. (4) and simplifying the expression:
 \[
-L(\mathbf{w}) = -\sum_{i=1}^n \left[ y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) \right]. \quad (3)
+-\ell(\mathbf{w}) = -\log \left( \prod_{i=1}^n \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
 \]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( 1 - \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
+\]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i} \right)
+\]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{y_i} \log \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)^{1 - y_i}
+\]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( \frac{\exp(-\mathbf{w}^\top \mathbf{x}_i)}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right)
+\]
+\[
+-\ell(\mathbf{w}) = -\sum_{i=1}^n y_i \log \left( \frac{1}{1 + \exp(-\mathbf{w}^\top \mathbf{x}_i)} \right) + (1 - y_i) \log \left( \frac{1}{1 + \exp(\mathbf{w}^\top \mathbf{x}_i)} \right)
+\]
+
 \textbf{b.} [4 points] Since it is difficult to directly optimize Eq. (3), gradient descent algorithms are usually used to find the optimum, as is discussed in the lecture. Show that the negative log-likelihood is a convex function. You may use the facts that the sum of convex functions is also convex, and that if $f$ and $g$ are both convex, twice differentiable and $g$ is non-decreasing, then $g(f)$ is convex.
 
 \textit{Hint}: A function $f$ is convex if for any $x_1, x_2 \in \text{Domain}(f)$,
