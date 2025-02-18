@@ -579,6 +579,19 @@ L(\mathbf{w}) = \frac{1}{N} \sum_{i=1}^N \ell((\mathbf{x}_i, y_i), \mathbf{w}) +
 where $\lambda > 0$ is the regularization parameter.
 
 \noindent \textbf{a.} [4 points] Suppose that for some \( \mathbf{w} \) we have a correct prediction of \( y_i \) with \( \mathbf{x}_i \), i.e., \( y_i = \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \). What range of values can the hinge loss, \( \ell((\mathbf{x}, y), \mathbf{w}) \), take on this correctly classified example? Points that are classified correctly and which have non-zero hinge loss are referred to as margin mistakes. Also, what is the possible range of the hinge loss for an incorrectly classified example?
+\[
+\ell((\mathbf{x}, y), \mathbf{w}) = \max(0, 1 - y \mathbf{w}^\top \mathbf{x})
+\]
+If \( y_i = \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \), then \( y_i \mathbf{w}^\top \mathbf{x}_i \) is positive. Therefore, the hinge loss is:
+\[
+\ell((\mathbf{x}, y), \mathbf{w}) = \max(0, 1 - y \mathbf{w}^\top \mathbf{x}) = \max(0, 1 - y_i \mathbf{w}^\top \mathbf{x}_i) = \max(0, 1 - \mathbf{w}^\top \mathbf{x}_i)
+\]
+The hinge loss for a correctly classified example can take values in the range \( [0, 1] \). If the example is incorrectly classified, then \( y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \), and the hinge loss is:
+\[
+\ell((\mathbf{x}, y), \mathbf{w}) = \max(0, 1 - y \mathbf{w}^\top \mathbf{x}) = \max(0, 1 - y_i \mathbf{w}^\top \mathbf{x}_i) = \max(0, 1 + \mathbf{w}^\top \mathbf{x}_i)
+\]
+The hinge loss for an incorrectly classified example can take values in the range \( [1, \infty) \).\\
+
 
 \noindent \textbf{b.} [5 points] Let \( M(\mathbf{w}) \) be the number of mistakes made when we use the weight vector \( \mathbf{w} \) to classify our dataset (i.e., the number of training data points for which \( y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \)). Note that \( \mathbf{w} \) can be an arbitrary weight vector (not necessarily the one that solves the SVM optimization problem). Show that:
 \[
