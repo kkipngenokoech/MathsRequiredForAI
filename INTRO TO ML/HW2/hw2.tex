@@ -4,6 +4,7 @@
 \usepackage{listings}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{hyperref} % Include this package for \url
 
 \begin{document}
 
@@ -718,7 +719,87 @@ You should run those three cells without any modification. After running the fir
         \item Mean of the last feature: $\bar{x}_{22}$
         \item Standard deviation of the last feature: $s_{22}$
     \end{itemize}
-    \item edc
+    \item Now, implement the \texttt{trainSVM} function. Follow the description given in the cell with the title \texttt{Train SVM}. The input of \texttt{trainSVM} contains normalized training data (\texttt{X\_train\_normalized}) and training labels (\texttt{y\_train}), as well as the parameter \(C\). The output of \texttt{trainSVM} contains the optimal weight vector (\(w\)), bias term (\(b\)) and slack variables (\(\xi\)). In your implementation, solve the SVM in its primal form:
+    \[
+    \min_{w, b, \xi} \frac{1}{2} \|w\|_2^2 + C \sum_{i=1}^N \xi_i
+    \]
+    \[
+    \text{s.t.} \quad y_i(w^\top x_i + b) \geq 1 - \xi_i, \quad \forall 1 \leq i \leq N
+    \]
+    \[
+    \xi_i \geq 0, \quad \forall 1 \leq i \leq N
+    \]
+    To solve the above quadratic problem, we encourage you to use the \texttt{CVXPY} Python package. You can also use any package of your choice. If you are not familiar with \texttt{CVXPY}, they have their own very extensive tutorial/user guide at: \url{https://www.cvxpy.org/tutorial/index.html}. After implementing the desired function,
+    \begin{itemize}
+            \item Solve the problem using \texttt{trainSVM} with normalized training set (\texttt{X\_train\_normalized}), training labels (\texttt{y\_train}) and \(C = 1\). What values do you find for the first 3 weights \(\{w_1, w_2, w_3\}\), \(b\), and first 3 slack variables \(\{\xi_1, \xi_2, \xi_3\}\)?
+            \item Solve the problem using \texttt{trainSVM} with normalized training set (\texttt{X\_train\_normalized}), training labels (\texttt{y\_train}) and \(C = 0\). What values do you find for the first 3 weights \(\{w_1, w_2, w_3\}\), \(b\), and first 3 slack variables \(\{\xi_1, \xi_2, \xi_3\}\)?
+            \item Do you see any difference between the slack variables you found with \(C = 0\) and \(C = 1\)? Does that explain why we are introducing \(C \sum_i \xi_i\) term into the objective for Soft-SVM? Explain your answer in 1-2 sentences.
+    \end{itemize}
+    \item Now, we will write a function for evaluation in the cell titled \texttt{Eval SVM}. Write a function \texttt{evalSVM} that takes four inputs: \texttt{X\_eval} - features for evaluation (we will use either normalized train set features (\texttt{X\_train\_normalized}) or normalized test set features (\texttt{X\_test\_normalized}) to calculate train/test set accuracy, respectively), \texttt{y\_eval} - true labels of the evaluation data (this will be again used to input train set labels (\texttt{y\_train}) or test set labels (\texttt{y\_test})), and the trained SVM parameters \texttt{w} and \texttt{b}. This function should estimate the classes of all samples in the given \texttt{X\_eval} for evaluation using an SVM model with parameters \texttt{w} and \texttt{b}. Then, the function should compare the estimated labels with \texttt{y\_eval} (the true labels), and return the accuracy of the SVM model on this data, which is the fraction of data points that are correctly classified.
+
+    Now, for all possible \(C = a \times 10^q\) values where \(a \in \{1, 3, 6\}\) and \(q \in \{-4, -3, -2, -1, 0, 1\}\), find the optimal values of \texttt{w} and \texttt{b} using \texttt{trainSVM} with training labels (\texttt{y\_train}) and normalized training set (\texttt{X\_train\_normalized}) and then, using your \texttt{evalSVM} function, calculate the accuracy over the normalized training set (\texttt{X\_train\_normalized}) and normalized test set (\texttt{X\_test\_normalized}).
+
+    Make two plots of your results, one showing the training accuracy vs. the value of \(C\) and one showing the test accuracy vs. the value of \(C\). Use a log-scale on the x-axis for both plots. Also, report the values of \(C\) that maximize the training and test accuracies, along with the accuracies that are reached with these values of \(C\).
+
+    \section*{Deliverables}
+
+    \subsection*{Normalisation of \texttt{X\_train} and \texttt{X\_test} [3 points]}
+    \begin{itemize}
+        \item Correct implementation of data normalisation on \texttt{X\_train} and \texttt{X\_test}.
+        \item Explanation of why the mean and standard deviation used for normalising both training and test datasets are estimated from the training data.
+        \item Report of the correct mean and standard deviation of the first and last features of the training data.
+    \end{itemize}
+
+    \subsection*{SVM training [7 points]}
+    \begin{itemize}
+        \item Correct implementation of the \texttt{trainSVM} function.
+        \item Report of the first three weights, bias, and first three slack variables for both \(C = 1\) and \(C = 0\).
+        \item Identification of the difference between the slack variables when \(C = 1\) and \(C = 0\). And, an explanation of the connection between this difference and the \(C \sum_i \xi_i\) term in the Soft-SVM objective.
+    \end{itemize}
+
+    \subsection*{SVM evaluation [5 points]}
+    \begin{itemize}
+        \item Correct implementation of the \texttt{evalSVM} function.
+        \item Plot of training accuracy against the instructed values of \(C\).
+        \item Plot of test accuracy against the instructed values of \(C\).
+        \item Report of the value of \(C\) that maximises training accuracy and the corresponding training accuracy.
+        \item Report of the value of \(C\) that maximises test accuracy and the corresponding test accuracy.
+    \end{itemize}
+\newpage
+\section{Non-linear Basis Functions [20 points]}
+
+\subsection{Derivation [6 points]}
+In class, we have learned that by using non-linear basis functions, we can fit a non-linear model (w.r.t. to the data) while preserving linearity w.r.t. the model parameters. In this problem, we are given a training data set $D$ that consists of $N$ points, $(x_i, y_i)$ for $i = 1, \cdots, N$, and we consider a regression problem as follows:
+\[
+y_i = w_0 + w_1 \sin(x_i) + w_2 \cos(x_i) + w_3 \sin(2x_i) + w_4 \cos(2x_i) + \cdots + w_{2k-1} \sin(kx_i) + w_{2k} \cos(kx_i)
+\]
+Here $x_i$ and $y_i$ are scalar real numbers.
+
+\begin{enumerate}
+    \item[1.] [2 points] What is the basis function $\phi(x)$ for this problem?
+    \item[2.] [2 points] Express the residual sum of squares error in terms of $\{\phi(x_i); i = 1, 2, \ldots, N\}$.
+    \item[3.] [2 points] What parameter values $\mathbf{w} = [w_0, w_1, \cdots, w_{2k}]^\top$ minimize the residual sum of squares error?
+\end{enumerate}
+
+\subsection{Implementation}
+Now we want to implement sinusoidal regression on the $N = 61$ data points given to you in \texttt{nonlinear-regression-data.csv}. In \texttt{nonlinear-regression.py}, implement the following functions:
+\begin{enumerate}
+    \item \texttt{phi(x)}: which returns the basis function you got in the derivation part.
+    \item \texttt{fit(X\_train, Y\_train, k)}: which fits the nonlinear model given the degree $k$.
+    \item \texttt{predict (X)}: which predicts the values of the dependent variable for a new set of covariates using the learned model.
+    \item \texttt{rmse (X\_val, Y\_val)}: which computes the RMSE error on the validation set using the learned model.
+\end{enumerate}
+
+\subsection{Evaluation [14 points]}
+Now, randomly divide the dataset into two parts: training set (45 points) and validation set (16 points). By varying $k$ from 1 to 10, obtain the RMSE error on the validation set and the training set.
+\begin{enumerate}
+    \item[1.] [4 points] Plot the training error (RMSE error on the training set) versus $k$. From the plot, which value of $k$ gives you the minimum training error?
+    \item[2.] [4 points] Plot the validation error versus $k$. Which value of $k$ gives you the minimum validation error?
+    \item[3.] [2 points] Compare the optimal $k$ values that you found for the training error and validation error. Explain why they are different or the same.
+    \item[4.] [4 points] For each $k = 1, 3, 5, 10$, create a scatter plot of the validation data points. On the same plot, for each $k$, draw a line for the fitted polynomial.
+\end{enumerate}
+
+Please do not forget to append your Python code and notebook to the end of your submission for us to grade this question.
 \end{enumerate}
 
 
