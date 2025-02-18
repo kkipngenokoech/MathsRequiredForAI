@@ -639,15 +639,29 @@ To address this issue, we use the soft-SVM formulation by introducing slack vari
 \[
 \text{s.t.} \quad \forall i, \quad y_i(w^\top x_i + b) \geq 1 - \xi_i, \quad \xi_i \geq 0.
 \]
+\\ The hard-SVM formulation may fail when applied to real-world datasets because the data may not be linearly separable. In such cases, the hard-SVM formulation will not find a solution that separates the classes without any errors.We use the soft-SVM formulation to allow for some mis-classifications in the training data.\\
 
 \noindent \textbf{b.} [4 points] Discuss how the introduction of slack variables, $\xi_i$, resolves the impracticalities of the hard-SVM formulation that you identified in part (a). Why do we use “$\geq 1 - \xi_i$” instead of “$\geq 1$” in the constraints and why is it necessary to include “$C \sum_i \xi_i$” in the minimization objective? Your answer should be no more than three or four sentences long.
+\\\\ The introduction of slack variables, \( \xi_i \), allows for some mis-classifications in the training data. The constraints are \( y_i(w^\top x_i + b) \geq 1 - \xi_i \) instead of \( y_i(w^\top x_i + b) \geq 1 \) to allow for some margin of error. The term \( C \sum_i \xi_i \) is included in the minimization objective to penalize the slack variables. The parameter \( C \) controls the trade-off between maximizing the margin and minimizing the number of mis-classifications.\\
 
 \noindent \textbf{c.} [4 points] Further, as we see in the class, the dual formulation of the soft-SVM problem can be preferred.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{primal.png}
+    \caption{Primal Formulation of SVM}
+    \label{fig:primal}
+\end{figure}
+\newline
+[3 points] Find the number of variables to be optimized in the primal and dual forms of SVM. Then, suppose that we decide to use some other kernels (e.g., radial basis kernel, polynomial kernel) instead of the linear kernel \( k(\mathbf{x}_i, \mathbf{x}_j) = \mathbf{x}_i^\top \mathbf{x}_j \). Does this change the number of dual variables we need to use?
+\\\\ The primal problem:
+\[
+\min_{w, b, \xi_1, \ldots, \xi_n} \left( \frac{1}{2} \|w\|_2^2 + C \sum_{i=1}^n \xi_i \right)
+\]
+Here, we directly optimize \( w \) and \( b \) and introduce slack variables \( \xi_i \) for each data point.
 
-\noindent \textbf{d.} [3 points] Find the number of variables to be optimized in the primal and dual forms of SVM. Then, suppose that we decide to use some other kernels (e.g., radial basis kernel, polynomial kernel) instead of the linear kernel \( k(\mathbf{x}_i, \mathbf{x}_j) = \mathbf{x}_i^\top \mathbf{x}_j \). Does this change the number of dual variables we need to use?
 
-\noindent \textbf{e.} [1 point] Why might you prefer to solve the SVM in the dual formulation as opposed to the primal formulation?
-
+\noindent \textbf{d.} [1 point] Why might you prefer to solve the SVM in the dual formulation as opposed to the primal formulation?
+\\\\ The number of variables to be optimized in the primal form of SVM is \( d + 1 \) where \( d \) is the number of features. The number of variables to be optimized in the dual form of SVM is \( n \) where \( n \) is the number of data points. The number of dual variables does not change when using other kernels. You might prefer to solve the SVM in the dual formulation because the dual formulation can be more computationally efficient when the number of data points is larger than the number of features.\\
 \newpage
 \section {Implementing SVMs}
 
