@@ -658,6 +658,12 @@ To address this issue, we use the soft-SVM formulation by introducing slack vari
 \min_{w, b, \xi_1, \ldots, \xi_n} \left( \frac{1}{2} \|w\|_2^2 + C \sum_{i=1}^n \xi_i \right)
 \]
 Here, we directly optimize \( w \) and \( b \) and introduce slack variables \( \xi_i \) for each data point.
+\\\\ The Dual problem:
+\[
+\max_{\alpha} \left( \sum_{i=1}^n \alpha_i - \frac{1}{2} \sum_{i=1}^n \sum_{j=1}^n \alpha_i \alpha_j y_i y_j \mathbf{x}_i^\top \mathbf{x}_j \right)
+\]
+Here, we optimize the dual variables \( \alpha \) instead of the primal variables \( w, b, \xi \).
+\\\\ The number of variables to be optimized in the primal form of SVM is \( d + 1 \) where \( d \) is the number of features. The number of variables to be optimized in the dual form of SVM is \( n \) where \( n \) is the number of data points. The number of dual variables does not change when using other kernels because the dual variables are the Lagrange multipliers associated with the constraints in the primal problem. The number of dual variables is determined by the number of data points, not the number of features or the kernel used.\\
 
 
 \noindent \textbf{d.} [1 point] Why might you prefer to solve the SVM in the dual formulation as opposed to the primal formulation?
