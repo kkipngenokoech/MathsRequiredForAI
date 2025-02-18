@@ -599,8 +599,25 @@ The hinge loss for an incorrectly classified example can take values in the rang
 \]
 In other words, the average hinge loss on our dataset is an upper bound on the average number of mistakes we make on our dataset. By minimizing the average hinge loss with \( \mathbf{w} \), we can ensure that the SVM model makes few mistakes.
 
-\noindent \textbf{c.} [3 points] Assume that the training data is separable. However, it turns out that the minimizer \( \mathbf{w}^\star \) of the objective in Eq. (10) mis-classifies some training samples. How should we adjust \( \lambda \) (i.e., make it larger or smaller) to make the SVM work properly on training data? Why? Explain in 1-2 sentences.
+\[
+\frac{1}{N} M(\mathbf{w}) = \frac{1}{N} \sum_{i=1}^N \mathbb{I}(y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i))
+\]
+where \( \mathbb{I}(y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i)) \) is the indicator function that is 1 if \( y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i) \) and 0 otherwise. The number of mistakes is the sum of the indicator functions. The hinge loss is:
+\[
+\ell((\mathbf{x}, y), \mathbf{w}) = \max(0, 1 - y \mathbf{w}^\top \mathbf{x})
+\]
+The hinge loss is non-negative, so the number of mistakes is less than or equal to the sum of the hinge losses:
+\[
+\mathbb{I}(y_i \neq \text{sgn}(\mathbf{w}^\top \mathbf{x}_i)) \leq \max(0, 1 - y_i \mathbf{w}^\top \mathbf{x}_i)
+\]
+Therefore, the average number of mistakes is less than or equal to the average hinge loss:
+\[
+\frac{1}{N} M(\mathbf{w}) \leq \frac{1}{N} \sum_{i=1}^N \max \left( 0, 1 - y_i \mathbf{w}^\top \mathbf{x}_i \right)
+\]
 
+
+\noindent \textbf{c.} [3 points] Assume that the training data is separable. However, it turns out that the minimizer \( \mathbf{w}^\star \) of the objective in Eq. (10) mis-classifies some training samples. How should we adjust \( \lambda \) (i.e., make it larger or smaller) to make the SVM work properly on training data? Why? Explain in 1-2 sentences.
+\\\\ We should adjust \( \lambda \) to make it smaller. A larger \( \lambda \) penalizes the norm of the weight vector more, which can lead to a simpler model. A smaller \( \lambda \) allows the model to fit the training data better, which can help reduce the number of mis-classified samples.\\
 
 \newpage
 \section{Support Vector Machine - Slack Variables \& Duality Intuition}
