@@ -777,8 +777,19 @@ Here $x_i$ and $y_i$ are scalar real numbers.
 
 \begin{enumerate}
     \item[1.] [2 points] What is the basis function $\phi(x)$ for this problem?
+    \[
+    \phi(x) = [1, \sin(x), \cos(x), \sin(2x), \cos(2x), \cdots, \sin(kx), \cos(kx)]^\top
+    \]
     \item[2.] [2 points] Express the residual sum of squares error in terms of $\{\phi(x_i); i = 1, 2, \ldots, N\}$.
+    \[
+    \text{RSS} = \sum_{i=1}^N (y_i - \phi(x_i)^\top \mathbf{w})^2
+    \]
     \item[3.] [2 points] What parameter values $\mathbf{w} = [w_0, w_1, \cdots, w_{2k}]^\top$ minimize the residual sum of squares error?
+    \\ The parameter values that minimize the residual sum of squares error are:
+    \[
+    \mathbf{w} = (\Phi^\top \Phi)^{-1} \Phi^\top \mathbf{y}
+    \]
+    where \( \Phi \) is the matrix whose \( i \)th row is \( \phi(x_i) \) and \( \mathbf{y} \) is the vector of target values.
 \end{enumerate}
 
 \subsection{Implementation}
