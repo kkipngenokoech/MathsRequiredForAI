@@ -288,22 +288,23 @@ Negative reviews:
     \Pr(\text{positive} \mid \text{word} ) = \theta_{1,4}^{1} \times \theta_{1,7}^{1} \times \Pr(\text{positive})
     \]
     \[
-    \Pr(\text{positive} \mid \text{word} ) = \left( \frac{4}{13} \right) \times \left( \frac{2}{13} \right) \times \frac{1}{2} = \frac{8}{338}
+    \Pr(\text{positive} \mid \text{word} ) = \left( \frac{4}{13} \right) \times \left( \frac{2}{13} \right) \times \frac{1}{2} = \frac{8}{338} = 0.0237
     \]
     \\ class neutral:
     \[
     \Pr(\text{neutral} \mid \text{word} ) = \theta_{2,4}^{1} \times \theta_{2,7}^{1} \times \Pr(\text{neutral})
     \]
     \[
-    \Pr(\text{neutral} \mid \text{word} ) = \left( \frac{1}{6} \right) \times \left( \frac{1}{6} \right) \times \frac{1}{4} = \frac{1}{144}
+    \Pr(\text{neutral} \mid \text{word} ) = \left( \frac{1}{6} \right) \times \left( \frac{1}{6} \right) \times \frac{1}{4} = \frac{1}{144} = 0.0069
     \]
     \\ class negative:
     \[
     \Pr(\text{negative} \mid \text{word} ) = \theta_{3,4}^{1} \times \theta_{3,7}^{1} \times \Pr(\text{negative})
     \]
     \[
-    \Pr(\text{negative} \mid \text{word} ) = \left( \frac{1}{5} \right) \times \left( \frac{1}{5} \right) \times \frac{1}{4} = \frac{1}{100}
+    \Pr(\text{negative} \mid \text{word} ) = \left( \frac{1}{5} \right) \times \left( \frac{1}{5} \right) \times \frac{1}{4} = \frac{1}{100} = 0.01
     \]
+    So the review ``amazing movie'' is \(\textbf{positive}\).
 
     \item[e.] [4 points] Use Laplacian smoothing with $\alpha = 1$ to decide whether the review ``decent movie'' is positive, neutral or negative. In one sentence, describe the problem we would encounter if we had not used Laplacian smoothing.
     \\ Laplacian smoothing is used to avoid zero probabilities. We add a small value to the numerator and denominator to avoid zero probabilities. The probability of a word given a class is calculated as:
@@ -320,22 +321,24 @@ Negative reviews:
     \Pr(\text{positive} \mid \text{word} ) = \theta_{1,6}^{1} \times \theta_{1,7}^{1} \times \Pr(\text{positive})
     \]
     \[
-    \Pr(\text{positive} \mid \text{word} ) = \left( \frac{1}{13} \right) \times \left( \frac{2}{13} \right) \times \frac{1}{2} = \frac{2}{338}
+    \Pr(\text{positive} \mid \text{word} ) = \left( \frac{1}{23} \right) \times \left( \frac{3}{23} \right) \times \frac{1}{2} = \frac{3}{1058}
     \]
     \\ class neutral:
     \[
     \Pr(\text{neutral} \mid \text{word} ) = \theta_{2,6}^{1} \times \theta_{2,7}^{1} \times \Pr(\text{neutral})
     \]
     \[
-    \Pr(\text{neutral} \mid \text{word} ) = \left( \frac{2}{6} \right) \times \left( \frac{1}{6} \right) \times \frac{1}{4} = \frac{1}{72}
+    \Pr(\text{neutral} \mid \text{word} ) = \left( \frac{2}{16} \right) \times \left( \frac{2}{16} \right) \times \frac{1}{4} = \frac{1}{256}
     \]
     \\ class negative:
     \[
     \Pr(\text{negative} \mid \text{word} ) = \theta_{3,6}^{1} \times \theta_{3,7}^{1} \times \Pr(\text{negative})
     \]
     \[
-    \Pr(\text{negative} \mid \text{word} ) = \left( \frac{1}{5} \right) \times \left( \frac{1}{5} \right) \times \frac{1}{4} = \frac{1}{100}
+    \Pr(\text{negative} \mid \text{word} ) = \left( \frac{1}{15} \right) \times \left( \frac{2}{15} \right) \times \frac{1}{4} = \frac{2}{900} 
     \]
+    So the review ``decent movie'' is \(\textbf{neutral}\).
+
     If we had not used Laplacian smoothing, we would have encountered zero probabilities, which would have made it impossible to calculate the probabilities.
 \end{enumerate}
 \newpage
