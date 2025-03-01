@@ -40,5 +40,25 @@
         \item[(g)] The P-map of a distribution, if it exists, is unique.
     \end{enumerate}
 \end{enumerate}
+\section{Exact Inference (Junction Tree a.k.a Clique Tree)}
+\begin{enumerate}
+    \item Consider the following Bayesian network G:
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{junction_tree.png}
+        \caption{Caption for the image}
+        \label{fig:example_image}
+    \end{figure}
+    \item We are going to construct a junction tree T from G. Please sketch the generated objects in each step.
+    \begin{enumerate}
+        \item (4 points) Moralize G to construct an undirected graph H.
+        \item (7 points) Triangulate H to construct a chordal graph H*.
+        (Although there are many ways to triangulate a graph, for the ease of grading, please try adding fewest
+        additional edges possible.)
+        \item (7 points) Construct a cluster graph U where each node is a maximal clique Ci from H* and each edge is the sepset \(S_{i,j} = C_i \cap C_j\) between adjacent cliques \(C_i\) and \(C_j\).
+        \item (7 points) The junction tree T is the maximum spanning tree of U.
+        (The cluster graph is small enough to calculate maximum spanning tree in one’s head.)
+    \end{enumerate}
+\end{enumerate}
 
 \end{document}
