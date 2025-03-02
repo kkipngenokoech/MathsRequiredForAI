@@ -22,7 +22,6 @@
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.5\textwidth]{"conditional_independence.png"}
-        \caption{Caption for the image}
         \label{fig:example_image}
     \end{figure}
     \item Recall the definitions of local and global independences of G and independences of P.
@@ -31,14 +30,22 @@
         I(G) &= \{(X \perp Y \mid Z) : \text{d-separated}_G(X, Y \mid Z)\} \\
         I(P) &= \{(X \perp Y \mid Z) : P(X, Y \mid Z) = P(X \mid Z)P(Y \mid Z)\}
     \end{align}
+    \(I_l(G)\) - is the local independence, where a node is independent of its non-descendants given its parents. \(I(G)\) - is the global independence, where two nodes are independent given a set of nodes if they are d-separated. \(I(P)\) - is the independence of a distribution, where two nodes are independent given a set of nodes if the joint distribution factorizes into the product of the marginals.
     \begin{enumerate}
-        \item[(a)] In Figure \ref{fig:example_image}, relation 1 is true.
-        \item[(b)] In Figure \ref{fig:example_image}, relation 2 is true.
-        \item[(c)] In Figure \ref{fig:example_image}, relation 3 is true.
+        \item[(a)] In Figure 2, relation 1 is true.
+        \\ \textbf{True:} d-separation is a necessary and sufficient condition for conditional independence in a BN. d-separation in G, implies conditional independence in any P that factorizes over G.
+        \item[(b)] In Figure 2, relation 2 is true.
+        \\ \textbf{True:}  Local independence describe a subset of the conditional independencies that hold in P. 
+        \item[(c)] In Figure 2, relation 3 is true.
+        \\ \textbf{False:} \(I(G)\) can be a strict subset of \(I(P)\), meaning \(P\) might have additional independencies that are not captured by \(G\), so relation 3 does not always hold.      
         \item[(d)] If G is an I-map for P, then P may have extra conditional independencies than G.
+        \\ \textbf{True:} as an I-map only guarantees \(I(G) \subseteq I(P)\), not equality.
         \item[(e)] Two BN structures $G_1$ and $G_2$ are I-equivalent if they have the same skeleton and the same set of v-structures.
+        \\ \textbf{True:} Two BN structures are I-equivalent if they have the same set of independencies, which is equivalent to having the same skeleton and the same set of v-structures.
         \item[(f)] If $G_1$ is an I-map of distribution P, and $G_1$ has fewer edges than $G_2$, then $G_2$ is not a minimal I-map of P.
+        \\ \textbf{True:} If \(G_1\) is an I-map for \(P\) and has fewer edges than \(G_2\), then \(G_2\) is not minimal, as a minimal I-map has no unnecessary edges.    
         \item[(g)] The P-map of a distribution, if it exists, is unique.
+        \\ \textbf{True:} If a perfect map (P-map) for a distribution exists, it is unique.
     \end{enumerate}
 \end{enumerate}
 \newpage

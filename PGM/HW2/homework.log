@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  2 MAR 2025 11:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  2 MAR 2025 12:11
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -266,49 +266,49 @@ Package pdftex.def Info: conditional_independence.png  used on input line 24.
 <junction_tree.png, id=16, 236.38312pt x 70.76437pt>
 File: junction_tree.png Graphic file (type png)
 <use junction_tree.png>
-Package pdftex.def Info: junction_tree.png  used on input line 50.
+Package pdftex.def Info: junction_tree.png  used on input line 57.
 (pdftex.def)             Requested size: 350.25343pt x 104.85594pt.
 <moralized.jpg, id=17, 386.19281pt x 228.855pt>
 File: moralized.jpg Graphic file (type jpg)
 <use moralized.jpg>
-Package pdftex.def Info: moralized.jpg  used on input line 59.
+Package pdftex.def Info: moralized.jpg  used on input line 66.
 (pdftex.def)             Requested size: 350.25343pt x 207.55646pt.
 <triangulated.jpg, id=18, 408.77719pt x 276.28218pt>
 File: triangulated.jpg Graphic file (type jpg)
 <use triangulated.jpg>
-Package pdftex.def Info: triangulated.jpg  used on input line 69.
+Package pdftex.def Info: triangulated.jpg  used on input line 76.
 (pdftex.def)             Requested size: 350.25343pt x 236.74223pt.
 <maximal_clique.jpg, id=19, 347.79938pt x 222.8325pt>
 File: maximal_clique.jpg Graphic file (type jpg)
 <use maximal_clique.jpg>
-Package pdftex.def Info: maximal_clique.jpg  used on input line 85.
+Package pdftex.def Info: maximal_clique.jpg  used on input line 92.
 (pdftex.def)             Requested size: 350.25343pt x 224.41301pt.
  [2{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./junction_tree.png> <./moralized.jpg> <./triangulated.jpg>]
 File: maximal_clique.jpg Graphic file (type jpg)
 <use maximal_clique.jpg>
-Package pdftex.def Info: maximal_clique.jpg  used on input line 98.
+Package pdftex.def Info: maximal_clique.jpg  used on input line 105.
 (pdftex.def)             Requested size: 350.25343pt x 224.41301pt.
  [3 <./maximal_clique.jpg>]
 <hmm.png, id=28, 270.25969pt x 111.41624pt>
 File: hmm.png Graphic file (type png)
 <use hmm.png>
-Package pdftex.def Info: hmm.png  used on input line 112.
+Package pdftex.def Info: hmm.png  used on input line 119.
 (pdftex.def)             Requested size: 350.25343pt x 144.39737pt.
  [4 <./HMM.png>] [5] [6]
 <dseperation_1.png, id=46, 280.04625pt x 276.28218pt>
 File: dseperation_1.png Graphic file (type png)
 <use dseperation_1.png>
-Package pdftex.def Info: dseperation_1.png  used on input line 276.
+Package pdftex.def Info: dseperation_1.png  used on input line 283.
 (pdftex.def)             Requested size: 336.2403pt x 331.73508pt.
 <dseperation_1_labelled.jpg, id=47, 393.72093pt x 462.22687pt>
 File: dseperation_1_labelled.jpg Graphic file (type jpg)
 <use dseperation_1_labelled.jpg>
-Package pdftex.def Info: dseperation_1_labelled.jpg  used on input line 283.
+Package pdftex.def Info: dseperation_1_labelled.jpg  used on input line 290.
 (pdftex.def)             Requested size: 336.2403pt x 394.74258pt.
 <dseperation_2.png, id=48, 246.1697pt x 298.11375pt>
 File: dseperation_2.png Graphic file (type png)
 <use dseperation_2.png>
-Package pdftex.def Info: dseperation_2.png  used on input line 300.
+Package pdftex.def Info: dseperation_2.png  used on input line 307.
 (pdftex.def)             Requested size: 350.25343pt x 424.17967pt.
 
 
@@ -318,7 +318,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <dseperation_3.png, id=54, 295.85532pt x 311.66437pt>
 File: dseperation_3.png Graphic file (type png)
 <use dseperation_3.png>
-Package pdftex.def Info: dseperation_3.png  used on input line 312.
+Package pdftex.def Info: dseperation_3.png  used on input line 319.
 (pdftex.def)             Requested size: 350.25343pt x 368.9782pt.
  [8 <./dseperation_2.png> <./dseperation_3.png>] (./homework.aux)
  ***********
@@ -339,7 +339,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  57i,11n,65p,513b,398s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on homework.pdf (8 pages, 369056 bytes).
+Output written on homework.pdf (8 pages, 370801 bytes).
 PDF statistics:
  124 PDF objects out of 1000 (max. 8388607)
  67 compressed objects within 1 object stream
