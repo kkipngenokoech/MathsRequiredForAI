@@ -54,12 +54,52 @@
     \item We are going to construct a junction tree T from G. Please sketch the generated objects in each step.
     \begin{enumerate}
         \item (4 points) Moralize G to construct an undirected graph H.
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.5\textwidth]{moralized.jpg}
+            \caption{moralized graph}
+            \label{fig:example_image}
+        \end{figure}
+        \\The original graph is moralized by adding edges between the parents who share a common child. For our case node E and C share a common child D, hence an edge is added between E and C.
         \item (7 points) Triangulate H to construct a chordal graph H*.
         (Although there are many ways to triangulate a graph, for the ease of grading, please try adding fewest
         additional edges possible.)
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.5\textwidth]{triangulated.jpg}
+            \caption{triangulated graph}
+            \label{fig:example_image}
+        \end{figure}
+        \\The graph is triangulated by adding edges between the nodes that form a triangle with a chord. For our case, the graph is triangulated by adding an edge between B and E, so as to break the chord  formed by the path A-B-C-D-E-A. When we are triangulating a graph, we are ensuring that no cycle of length four or more exists without a chord.
         \item (7 points) Construct a cluster graph U where each node is a maximal clique Ci from H* and each edge is the sepset \(S_{i,j} = C_i \cap C_j\) between adjacent cliques \(C_i\) and \(C_j\).
+        \\The maximal cliques are the maximal complete subgraphs of the triangulated graph. The cluster graph is constructed by making each maximal clique a node and adding an edge between two nodes if the corresponding cliques share a variable. The sepset is the intersection of the two cliques.
+        \\ The maximal cliques are:
+        \begin{itemize}
+            \item Clique 1: A, B, E
+            \item Clique 2: B, C, E
+            \item Clique 3: C, E, D
+        \end{itemize}
+        The cluster graph is shown in the figure above
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.5\textwidth]{maximal_clique.jpg}
+            \caption{cluster graph}
+            \label{fig:example_image}
+        \end{figure}
+        The edge between the nodes is the sepset between the two cliques. The sepsets are:
+        \begin{itemize}
+            \item Sepset 1: B, E
+            \item Sepset 2: C, E
+        \end{itemize}
         \item (7 points) The junction tree T is the maximum spanning tree of U.
         (The cluster graph is small enough to calculate maximum spanning tree in one’s head.)
+        \begin{figure}[h!]
+            \centering
+            \includegraphics[width=0.5\textwidth]{maximal_clique.jpg}
+            \caption{junction tree}
+            \label{fig:example_image}
+        \end{figure}
+        \\The maximum spanning tree is the tree that connects all the nodes in the graph with the minimum possible number of edges. The junction tree is shown in the figure above. It is the same as the cluster graph because the cluster graph is already a tree and each edge has a weight of 2.
     \end{enumerate}
 
 \end{enumerate}

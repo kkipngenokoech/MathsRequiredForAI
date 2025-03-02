@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1740902758.09415 "/home/kip/projects/MathsRequiredForAI/PGM/HW2/homework.tex" "homework.pdf" "homework" 1740902758.82192 0
+["pdflatex"] 1740907296.14074 "/home/kip/projects/MathsRequiredForAI/PGM/HW2/homework.tex" "homework.pdf" "homework" 1740907296.60601 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/PGM/HW2/homework.tex" 1740902757.79562 17306 c8a59720aa9103dafa0c19b4fdaef512 ""
+  "/home/kip/projects/MathsRequiredForAI/PGM/HW2/homework.tex" 1740907295.83608 19744 a99d871a767fd300d30d95f259630509 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -77,9 +77,12 @@
   "dseperation_1_labelled.jpg" 1740900933.24071 49452 c8274faf03901e78c2892833f70af4f7 ""
   "dseperation_2.png" 1740662236.71306 25981 4363e34041f8f414ef015842349bdf52 ""
   "dseperation_3.png" 1740662268.52946 25480 e068c9618946ab33b70f90f0538c6130 ""
-  "homework.aux" 1740902758.74795 1420 79a5f523a202e68a33348baf757a0e71 "pdflatex"
-  "homework.tex" 1740902757.79562 17306 c8a59720aa9103dafa0c19b4fdaef512 ""
+  "homework.aux" 1740907296.55586 2063 d3484e96fa6aee3c46656cbdc7c5e179 "pdflatex"
+  "homework.tex" 1740907295.83608 19744 a99d871a767fd300d30d95f259630509 ""
   "junction_tree.png" 1740662120.05096 3781 ddd50a3ad60bbcde527cae0fb7d4f708 ""
+  "maximal_clique.jpg" 1740906839.71777 12695 bbc418164ede2b6ec59f07bf3cb1a849 ""
+  "moralized.jpg" 1740905384.87167 14679 9e8526a3aa7207514f61ccde5e9e6216 ""
+  "triangulated.jpg" 1740905641.72976 16786 59f7d8fdbe30511d36447cae951caaaa ""
   (generated)
   "homework.aux"
   "homework.log"
