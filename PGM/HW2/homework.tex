@@ -260,12 +260,24 @@ An alternative is to use the EM algorithm as we saw in the class.
         \includegraphics[width=0.5\textwidth]{dseperation_2.png}
         \label{fig:example_image}
     \end{figure}
+    \begin{itemize}
+        \item path 1: \(2 \rightarrow 1 \rightarrow 3\) is blocked by 1 because 1 is observed. \(\textbf{(common cause property)}\)
+        \item path 2: \(2 \rightarrow 4 \rightarrow 3\) is active because 7 which is a child of 4  is observed. \(\textbf{(common effect property)}\)
+    \end{itemize}
+    Since there is an active path, the nodes 2 and 3 are not d-separated.
+    \vspace{22cm}
     \item (5 points) Given that the gray nodes are observed, are the nodes 5 and 6 d-separated?
     \begin{figure}[h!]
         \centering
         \includegraphics[width=0.5\textwidth]{dseperation_3.png}
         \label{fig:example_image}
     \end{figure} 
+    \begin{itemize}
+        \item path 1: \(5 \rightarrow 4 \rightarrow 3\) is blocked by 3 because 3 is observed. \(\textbf{(Markov property)}\)
+        \item path 2: \(5 \rightarrow 7 \rightarrow 6\) is blocked by 7 because 7 is not observed. \(\textbf{(common effect property)}\)
+        \item path 3: \(5 \rightarrow 2 \rightarrow 1 \rightarrow 3 \rightarrow 6\) is blocked by 1 because 1 is observed. \(\textbf{(common cause property)}\)
+    \end{itemize}
+    Since all paths are blocked, the nodes 5 and 6 are d-separated.
     \item (15 points) Write a python program to check d-separation. Three files have been provided. You have to modify only the \texttt{BN.py} file. The instructions on how to run the code are in the \texttt{check\_dsep.py} file. All the files are provided as a zip file named \texttt{code\_files.zip}.
 \end{enumerate}
 
