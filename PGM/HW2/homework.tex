@@ -231,10 +231,29 @@ An alternative is to use the EM algorithm as we saw in the class.
     \item (5 points) Given that the gray nodes are observed, are the variables in A independent to those in B?
     \begin{figure}[h!]
         \centering
-        \includegraphics[width=0.5\textwidth]{dseperation_1.png}
-        \label{fig:example_image}
+        \begin{minipage}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{dseperation_1.png}
+            \caption{Unlabeled image}
+            \label{fig:example_image1}
+        \end{minipage}
+        \hfill
+        \begin{minipage}{0.48\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{dseperation_1_labelled.jpg}
+            \caption{Labeled image}
+            \label{fig:example_image2}
+        \end{minipage}
     \end{figure}
-    \\\\\\\\\\\\\\\\\\
+    \\
+    To check if the variables in A are independent of those in B, we need to check if there is a path between the two sets of variables that is not blocked by any of the observed variables.
+    \begin{itemize}
+        \item path 1: \(1 \rightarrow 4 \rightarrow 5\) is blocked by 4 because 4 is observed. \(\textbf{(Markov property)}\)
+        \item path 2: \(1 \rightarrow 7 \rightarrow 9\) is blocked by 7 because 7 is observed. \(\textbf{(Markov property)}\)
+        \item path 3: \(1 \rightarrow 3 \rightarrow 2\) is blocked by 3 because 3 is not observed. \(\textbf{(common effect property)}\)
+        \item path 4: \(8 \rightarrow 9 \rightarrow 6\) is blocked by 9 because 9 is  observed. \(\textbf{(Markov property)}\)
+    \end{itemize}
+    Since all paths are blocked, the variables in A are independent of those in B.
     \item (5 points) Given that the gray nodes are observed, are the nodes 2 and 3 d-separated?
     \begin{figure}[h!]
         \centering
