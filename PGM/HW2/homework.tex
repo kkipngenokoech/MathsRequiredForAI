@@ -154,6 +154,30 @@ An alternative is to use the EM algorithm as we saw in the class.
         \gamma(z_{ti}) &:= \mathbb{E}_{z_{1:T} \sim p_{\hat{\theta}}(z_{1:T} \mid x_{1:T})} [z_{ti}] = p_{\hat{\theta}}(z_{ti} = 1 \mid x_{1:T}), \quad t = 1, \ldots, T \tag{12} \\
         \xi(z_{t-1,i}, z_{tj}) &:= \mathbb{E}_{z_{1:T} \sim p_{\hat{\theta}}(z_{1:T} \mid x_{1:T})} [z_{t-1,i} z_{tj}] = p_{\hat{\theta}}(z_{t-1,i} z_{tj} = 1 \mid x_{1:T}), \quad t = 2, \ldots, T \tag{13}
     \end{align}
+    \textbf{Solution:}
+    \\ The EM algorithm is used to maximize the expected complete data log-likelihood w.r.t. the parameters \(\theta\). The expected complete data log-likelihood is given by the sum of the expected values of the complete data log-likelihood w.r.t. the posterior distribution of the latent variables. The expected complete data log-likelihood is given by equation (1). The complete data log-likelihood is given by equation (2). The joint distribution of latent variables and observations is given by equation (3). The expectation of the complete data log-likelihood w.r.t. the posterior distribution of latent variables is given by equation (1). To maximize the expected complete data log-likelihood, we need to maximize the function \(F(x_{1:T}; \theta)\) w.r.t. the parameters \(\theta\).
+    The joint distribution of latent variables $z_{1:T}$ and observations $x_{1:T}$ is given by
+    \begin{align}
+        p_{\hat{\theta}}(z_{1:T}, x_{1:T}) = p_{\hat{\theta}}(z_1) \prod_{t=2}^{T} p_{\hat{\theta}}(z_t \mid z_{t-1}) \prod_{t=1}^{T} p_{\hat{\theta}}(x_t \mid z_t). \tag{3}
+    \end{align}
+    The complete data log-likelihood is
+    \begin{align}
+        \log p_{\hat{\theta}}(z_{1:T}, x_{1:T}) = \sum_{i=1}^{M} z_{1i} \log \pi_i + \sum_{t=2}^{T} \sum_{i=1}^{M} \sum_{j=1}^{M} z_{t-1,i} z_{tj} \log a_{ij} + \sum_{t=1}^{T} \sum_{i=1}^{M} z_{ti} \log f(x_t; \phi_i). \tag{2}
+    \end{align}
+    This is equals to the function \(F(x_{1:T}; \theta)\) given by equation (11). The expectation of the complete data log-likelihood w.r.t. the posterior distribution of latent variables is
+    The expectation of the complete data log-likelihood w.r.t. the posterior distribution of latent variables is
+    \begin{align}
+        \mathbb{E}_{z_{1:T} \sim p_{\hat{\theta}}(z_{1:T} \mid x_{1:T})} [\log p_{\hat{\theta}}(z_{1:T}, x_{1:T})] = \sum_{i=1}^{M} \gamma(z_{1i}) \log \pi_i + \sum_{t=2}^{T} \sum_{i=1}^{M} \sum_{j=1}^{M} \xi(z_{t-1,i}, z_{tj}) \log a_{ij} + \sum_{t=1}^{T} \sum_{i=1}^{M} \gamma(z_{ti}) \log f(x_t; \phi_i). \tag{1}
+    \end{align}
+    To maximize the expected complete data log-likelihood, we need to maximize the function \(F(x_{1:T}; \theta)\) w.r.t. the parameters \(\theta\).
+    \[
+    \theta^* = \arg\max_{\theta} \mathbb{E}_{x_{1:T} \sim \hat{p}} [F(x_{1:T}; \theta)]
+    \]
+    
+    
+
+
+
     \item (0 points) (No need to answer.) Suppose $\gamma$ and $\xi$ are given, and we use isotropic Gaussian $x_t \mid z_{ti} = 1 \sim \mathcal{N}(\mu_i, \sigma_i^2 I)$ as the emission distribution. Then the parameter updates have the following closed form:
     \begin{align}
         \pi_i^* &\propto \mathbb{E}_{x_{1:T} \sim \hat{p}} [\gamma(z_{1i})] \tag{14} \\
