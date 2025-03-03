@@ -1,4 +1,4 @@
-
+from collections import deque
 class Node(object):
     """
     Node in a directed graph
@@ -84,17 +84,77 @@ class BN(object):
 
     def is_dsep(self, start, end, observed):
         """
-        # TODO: Fill this function to check d-separation in a Bayesian Network
-        
-        Check whether start and end are d-separated given observed, by using the Bayes Ball algorithm.
+        Check whether start and end are d-separated given observed, using the Bayes Ball algorithm.
         Args:
             start: a string, name of the first query node
             end: a string, name of the second query node
-            observed: a list of strings, names of the observed nodes. 
+            observed: a list of strings, names of the observed nodes.
+        Returns:
+            True if start and end are d-separated given observed, False otherwise.
         """
+        if start not in self.nodes or end not in self.nodes:
+            raise ValueError("Start or end node not found in the graph.")
 
-        ## Try all active paths starting from the node "start".
-        ## If any of the paths reaches the node "end", 
-        ## then "start" and "end" are *not* d-separated.
-        
+        # Convert observed list to a set for faster lookup
+        observed_set = set(observed)
+
+        # Queue for BFS: (current_node, direction, is_blocked)
+        # direction: 'up' (from child to parent) or 'down' (from parent to child)
+        queue = deque()
+        queue.append((self.nodes[start], 'down', False))
+
+        # Visited set to avoid cycles: (node, direction)
+        visited = set()
+
+        while queue:
+            current_node, direction, is_blocked = queue.popleft()
+
+            # If we reach the end node and the path is not blocked, return False
+            if current_node.name == end and not is_blocked:
+                return False
+
+            # Skip if this (node, direction) has already been visited
+            if (current_node.name, direction) in visited:
+                continue
+            visited.add((current_node.name, direction))
+
+            # Handle observed nodes
+            if current_node.name in observed_set:
+                # If the node is observed, the ball is blocked when coming from a parent
+                if direction == 'down':
+                    continue  # Blocked
+                elif direction == 'up':
+                    # Can go to children
+                    for child in current_node.children.values():
+                        queue.append((child, 'down', False))
+            else:
+                # If the node is not observed
+                if direction == 'down':
+                    # Can go to children
+                    for child in current_node.children.values():
+                        queue.append((child, 'down', is_blocked))
+                    # Can go to parents (reverse direction)
+                    for parent in current_node.parents.values():
+                        queue.append((parent, 'up', is_blocked))
+                elif direction == 'up':
+                    # Can go to parents
+                    for parent in current_node.parents.values():
+                        queue.append((parent, 'up', is_blocked))
+                    # Can go to children if not a collider
+                    if not is_blocked:
+                        for child in current_node.children.values():
+                            queue.append((child, 'down', False))
+
+        # If no path reaches the end node, return True (d-separated)
         return True
+
+
+if __name__ == "__main__":
+    # Test the BN class
+    bn = BN()
+    bn.add_edge(('A', 'B'))
+    bn.add_edge(('B', 'C'))
+    bn.print_graph()
+
+    print(bn.is_dsep('A', 'C', ['B']))  # True (A and C are d-separated given B)
+    print(bn.is_dsep('C', 'A', []))     # False (C and A are not d-separated)

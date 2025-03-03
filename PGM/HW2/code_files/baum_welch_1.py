@@ -15,22 +15,65 @@ def e_step(X, pi, A, mu, sigma2):
 
     # Forward messages
     # TODO ...
+    for n in range(N):
+        for t in range(T):
+            if t == 0:
+                alpha[n,t,:] = pi * multivariate_normal.pdf(X[n,t,:], mu, sigma2)
+            else:
+                alpha[n,t,:] = np.einsum('m,ml->l', alpha[n,t-1,:], A) * multivariate_normal.pdf(X[n,t,:], mu, sigma2)
+            alpha_sum[n,t] = alpha[n,t,:].sum()
+            alpha[n,t,:] = alpha[n,t,:] / alpha_sum[n,t]
+            
+    
 
     # Backward messages
     # TODO ...
+    for n in range(N):
+        for t in range(T-1, -1, -1):
+            if t == T-1:
+                beta[n,t,:] = 1
+            else:
+                beta[n,t,:] = np.einsum('m,ml,l->m', beta[n,t+1,:], A, multivariate_normal.pdf(X[n,t+1,:], mu, sigma2))
+            beta[n,t,:] = beta[n,t,:] / alpha_sum[n,t]
+            
 
     # Sufficient statistics
     # TODO ...
-
+    for n in range(N):
+        for t in range(T):
+            gamma[n,t,:] = alpha[n,t,:] * beta[n,t,:]
+            gamma[n,t,:] = gamma[n,t,:] / gamma[n,t,:].sum()
+        for t in range(T-1):
+            xi[n,t,:,:] = np.outer(alpha[n,t,:], beta[n,t+1,:]) * A * multivariate_normal.pdf(X[n,t+1,:], mu, sigma2)
+            xi[n,t,:,:] = xi[n,t,:,:] / xi[n,t,:,:].sum()
     # Although some of them will not be used in the M-step, please still
     # return everything as they will be used in test cases
     return alpha, alpha_sum, beta, gamma, xi
 
 
+import numpy as np
+
 def m_step(X, gamma, xi):
     """M-step: MLE"""
-    # TODO ...
+    
+    N, T, M = gamma.shape
+    _, _, M, _ = xi.shape
+    
+    # 1. Update the initial state distribution (pi)
+    pi = gamma[:, 0, :].sum(axis=0) / N
+    
+    # 2. Update the transition matrix (A)
+    A = xi.sum(axis=0) / xi.sum(axis=(0, 1)).reshape(M, 1)  # Normalize
+    
+    # 3. Update the mean vectors (mu)
+    mu = np.einsum('ntk,ntm->mk', X, gamma) / gamma.sum(axis=0).sum(axis=0).reshape(M, 1)
+    
+    # 4. Update the covariance (sigma2)
+    diff = X - mu.reshape(1, M, -1)
+    sigma2 = np.einsum('ntk,ntm->m', (diff ** 2), gamma) / gamma.sum(axis=0).sum(axis=0)
+    
     return pi, A, mu, sigma2
+
 
 
 def hmm_train(X, pi, A, mu, sigma2, em_step=20):
