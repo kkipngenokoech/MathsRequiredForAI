@@ -208,6 +208,45 @@ An alternative is to use the EM algorithm as we saw in the class.
         \beta(z_{t-1}) &= \sum_{z_t} p(z_t \mid z_{t-1}) p(x_t \mid z_t) \beta(z_t), \quad t = 2, \ldots, T \tag{28} \\
         \beta(z_T) &= 1 \tag{29}
     \end{align}
+    \textbf{Solution:}
+    \\ To derive the belief propagation updates, we need to express the marginal queries in terms of the forward and backward messages. The marginal queries are given by
+    \begin{align}
+        \gamma(z_t) &= p(z_t \mid x_{1:T}), \quad t = 1, \ldots, T \tag{18} \\
+        \xi(z_{t-1}, z_t) &= p(z_{t-1}, z_t \mid x_{1:T}), \quad t = 2, \ldots, T \tag{19}
+    \end{align}
+   The posterior marginals can be expressed in terms of the forward and backward messages. The forward message is given by
+    \\ \(\alpha(z_t) = p(x_{1:t}, z_t)\)
+    \\ The backward message is given by
+    \\ \(\beta(z_t) = p(x_{t+1:T} \mid z_t)\)
+    Let us derive the posterior marginal \(\gamma(z_t)\) in terms of the forward and backward messages. The posterior marginal \(\gamma(z_t)\) is given by
+    \begin{align}
+        \gamma(z_t) &= p(z_t \mid x_{1:T}) \notag \\
+        &= \frac{p(x_{1:T}, z_t)}{p(x_{1:T})} \notag \\
+        &= \frac{p(x_{1:t}, z_t) p(x_{t+1:T} \mid z_t
+        )}{p(x_{1:T})} \notag \\
+        &= \frac{\alpha(z_t) \beta(z_t)}{p(x_{1:T})} \notag \\
+        &= \frac{\alpha(z_t) \beta(z_t)}{Z(x_{1:T})} \tag{22}
+    \end{align}
+    where \(Z(x_{1:T}) = \sum_{z_t} \alpha(z_t) \beta(z_t)\). The posterior marginal \(\xi(z_{t-1}, z_t)\) can be expressed in terms of the forward and backward messages as
+    \begin{align}
+        \xi(z_{t-1}, z_t) &= p(z_{t-1}, z_t \mid x_{1:T}) \notag \\
+        &= \frac{p(x_{1:T}, z_{t-1}, z_t)}{p(x_{1:T})} \notag \\
+        &= \frac{p(x_{1:t-1}, z_{t-1}) p(x_t \mid z_{t-1}) p(x_{t+1:T} \mid z_t)}{p(x_{1:T})} \notag \\
+        &= \frac{\alpha(z_{t-1}) p(z_t \mid z_{t-1}) p(x_t \mid z_t) \beta(z_t)}{p(x_{1:T})} \notag \\
+        &= \frac{\alpha(z_{t-1}) p(z_t \mid z_{t-1}) p(x_t \mid z_t) \beta(z_t)}{Z(x_{1:T})} \tag{23}
+    \end{align}
+    where \(Z(x_{1:T}) = \sum_{z_t} \alpha(z_t) \beta(z_t)\). The belief propagation updates are given by
+    \begin{align}
+        \gamma(z_t) &= \frac{1}{Z(x_{1:T})} \cdot s(z_t) \tag{20} \\
+        \xi(z_{t-1}, z_t) &= \frac{1}{Z(x_{1:T})} \cdot c(z_{t-1}, z_t) \tag{21}
+    \end{align}
+    where
+    \begin{align}
+        s(z_t) &= \alpha(z_t) \beta(z_t), \quad t = 1, \ldots, T \tag{23} \\
+        c(z_{t-1}, z_t) &= p(z_t \mid z_{t-1}) p(x_t \mid z_t) \alpha(z_{t-1}) \beta(z_t), \quad t = 2, \ldots, T \tag{24} \\
+        Z(x_{1:T}) &= \sum_{z_t} s(z_t) \tag{25}
+    \end{align}
+    The belief propagation updates are derived by expressing the posterior marginals in terms of the forward and backward messages. The posterior marginals are then expressed in terms of the forward and backward messages. The belief propagation updates are then derived by substituting the expressions for the posterior marginals in terms of the forward and backward messages into the belief propagation updates.
     \item (0 points) (No need to answer.) Implemented as above, the $(\alpha, \beta)$-recursion is likely to encounter numerical instability due to repeated multiplication of small values. One way to mitigate the numerical issue is to scale $(\alpha, \beta)$ messages at each step $t$, so that the scaled values are always in some appropriate range, while not affecting the inference result for $(\gamma, \xi)$.
 
     Recall that the forward message is in fact a joint distribution
