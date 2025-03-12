@@ -108,6 +108,11 @@ OUTPUT homework.pdf
 INPUT ./section1.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
+INPUT ./section2.png
+INPUT ./section2.png
+INPUT ./section2.png
+INPUT ./section2.png
+INPUT ./section2.png
 INPUT homework.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb

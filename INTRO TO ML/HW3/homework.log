@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  12 MAR 2025 15:35
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  12 MAR 2025 15:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -150,7 +150,11 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [a3paper].
 
-(./homework.aux)
+(./homework.aux
+
+LaTeX Warning: Label `fig:primal' multiply defined.
+
+)
 \openout1 = `homework.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
@@ -235,25 +239,35 @@ Package pdftex.def Info: section1.png  used on input line 25.
 (pdftex.def)             Requested size: 560.40762pt x 170.94987pt.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./section1.png>] [2] (./homework.aux)
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./section1.png>]
+<section2.png, id=16, 685.05937pt x 271.76532pt>
+File: section2.png Graphic file (type png)
+<use section2.png>
+Package pdftex.def Info: section2.png  used on input line 43.
+(pdftex.def)             Requested size: 560.40762pt x 222.33064pt.
+ [2 <./section2.png>] (./homework.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 3146 strings out of 474222
- 47587 string characters out of 5748733
+ 3153 strings out of 474222
+ 47719 string characters out of 5748733
  1934975 words of memory out of 5000000
- 25386 multiletter control sequences out of 15000+600000
+ 25393 multiletter control sequences out of 15000+600000
  566872 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,7n,65p,991b,316s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on homework.pdf (2 pages, 93371 bytes).
+Output written on homework.pdf (2 pages, 162142 bytes).
 PDF statistics:
- 49 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

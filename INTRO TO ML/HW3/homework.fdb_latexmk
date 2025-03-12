@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1741786534.43186 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1741786535.04081 0
+["pdflatex"] 1741787033.03781 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1741787033.76732 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1741786533.43953 4136 ebbf90f627e05a293bbd7112625dedef ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1741787032.73591 5392 f4679bd865d3e1ad3eec22547b35e492 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex8.tfm" 1246382020 988 bdf658c3bfc2d96d3c8b02cfc1c94c20 ""
@@ -58,9 +58,10 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "homework.aux" 1741786534.978 423 5a635db62a7ade21a1468942d25b1d61 "pdflatex"
-  "homework.tex" 1741786533.43953 4136 ebbf90f627e05a293bbd7112625dedef ""
+  "homework.aux" 1741787033.72159 587 688ee64aa1b72aaa7d7ad1e746c40f35 "pdflatex"
+  "homework.tex" 1741787032.73591 5392 f4679bd865d3e1ad3eec22547b35e492 ""
   "section1.png" 1741781614.414 10148 424d724390562599b53c85599852b778 ""
+  "section2.png" 1741786577.30664 103827 d1298e51db7279a559b2e6adb99a5d69 ""
   (generated)
   "homework.aux"
   "homework.log"
