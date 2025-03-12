@@ -319,5 +319,77 @@ f(x) = Wx + b.
     \item Since $W$ is two-dimensional, the Jacobian $\frac{\partial x_k}{\partial W}$ can only be expressed by matrix-vector multiplications if we flatten it to a vector. Instead, to preserve its dimension, find the gradient $\frac{\partial x_k[a]}{\partial W[b,c]}$ for indices $a$, $b$, $c$ (so that we can write $\frac{\partial x_k}{\partial W}$ as a 3-dimensional tensor). Here, $a$ is an index of $x_k$, $b$ indexes a row of $W$, and $c$ indexes a column of $W$.
 \end{enumerate}
 
+\subsection*{6.2 Module Implementation [11 points]}
+Implement the ELU and Dense modules based on your answers in the previous part. The correctness of your implementation for parts 6.2 and 6.3 along with your prediction accuracy for part 6.4a will be checked in unit tests, where we will compare your implementation against our implementation.
+
+\textbf{Note:} Do not use any Python libraries other than the ones provided in \texttt{requirements.txt}; otherwise, the autograder will not be able to run your code. In particular, you may not utilize any libraries performing automatic differentiation such as PyTorch, TensorFlow, and JAX in your submitted code, though you may use these libraries to test your implementation if you wish.
+
+\begin{enumerate}
+    \item 
+    Complete the initialization \texttt{\_\_init\_\_} of the dense layer in \texttt{npnn/modules.py}. You should initialize the bias $b$ to all zeros; $W$ should be initialized using the Glorot Uniform initialization. In the Glorot Uniform initialization, each element is drawn from a uniform distribution $\text{Unif}(-u, u)$, where $u = \sqrt{\frac{6}{\text{dim\_in} + \text{dim\_out}}}$.
+    \item 
+    In \texttt{npnn/modules.py}, implement forward passes for the ELU and Dense modules.
+    \item In \texttt{npnn/modules.py}, implement backward passes for the ELU and Dense modules based on your answer in Problem 6.1.
+\end{enumerate}
+
+\subsection*{6.3 Model Training Loop [8 points]}
+\begin{enumerate}
+    \item 
+    In \texttt{npnn/optimizer.py}, implement the \texttt{SGD.apply\_gradients} method.
+    \item
+    In \texttt{npnn/model.py}, implement forward and backward passes for the model in the \texttt{Sequential.forward} and \texttt{Sequential.backward} methods.
+    \item
+    In \texttt{npnn/model.py}, implement the training loop in \texttt{Sequential.train}, and the testing method in \texttt{Sequential.test}. To help you organize your implementation, we have provided the signature of categorical cross-entropy and categorical accuracy functions for you to use.
+\end{enumerate}
+
+
+\subsection*{6.4 Training and Evaluation [8 points]}
+In order to train your neural network, we have loaded the MNIST dataset included with the starter code (\texttt{mnist.npz}). We have randomly split the dataset into a training dataset with 50,000 elements and a validation dataset with 10,000 elements. Note, we are splitting the MNIST dataset into train and validation and leaving the test set explicitly for testing the model's predictions after completing training. Next, create a neural network with 3 Dense layers with 256, 64, and 10 units, respectively. The first two Dense layers should be followed by an ELU activation with $\alpha = 0.9$, and the last Dense layer should be followed by the \texttt{SoftmaxCrossEntropy} module. See Figure 3 for an illustration of the neural network structure.
+
+When correctly vectorized, your implementation should take fewer than 10 seconds to perform a single epoch during training; see the module docstring for more expected runtime details. While you will not be graded on runtime, excessive runtime may indicate the presence of errors in your code, and it may impact your ability to debug your code and complete experiments in a timely manner.
+
+\textbf{Note:} At this point, you should have implemented all functions or methods annotated with \texttt{\# TODO} or \texttt{raise NotImplementedError()} except for the extra credit implementation of the Adam optimizer.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{model.png}
+    \caption{Primal Formulation of SVM}
+    \label{fig:primal}
+\end{figure}
+
+
+\subsection*{6.4 Training and Evaluation [8 points]}
+\begin{enumerate}
+    \item \textbf{[2 points]} Train this network for 20 epochs with a learning rate of 0.1 and a batch size of 32, evaluating the network on your validation split after each epoch. Then, plot the train and validation accuracy after each epoch during training.
+    
+    You should submit two plots along with your answer: one showing a training loss curve and a validation loss curve with respect to the training epochs, and one showing a training accuracy curve and a validation accuracy curve with respect to the training epochs. Make sure to label both curves!
+
+    \item \textbf{[3 points]} Test your trained network on the test dataset (\texttt{mnist\_test.npz}), and submit your predictions to Gradescope. You will receive credit if your test accuracy is greater than 97\%. \textbf{Note:} The \texttt{mnist\_test.npz} dataset does not include the true labels. You can use your validation accuracy to estimate your test accuracy in advance (as long as you perform your train-val split in an unbiased manner).
+
+    \item \textbf{[3 points]} Repeat the training procedure using learning rates of $[0.05, 0.1, 0.2, 0.5, 1.0]$, and plot the lowest validation loss obtained for each learning rate. What is the effect of changing the learning rate? Your plot should be a line graph with the learning rate on the $x$-axis and the best validation loss on the $y$-axis. Since there is a large difference in magnitude for the learning rate, you should use the log-learning rate in your graph, and set the labels manually:
+    \begin{verbatim}
+    fig, ax = plt.subplots()
+    # ... draw plot here ...
+    ax.set_xticks([0.05, 0.1, 0.2, 0.5, 1.0])
+    ax.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1.0])
+    \end{verbatim}
+\end{enumerate}
+\subsection*{6.5 Bonus: Adam [+5 points]}
+The Adam (Adaptive Moment) optimizer is a popular SGD variant (third most popular after SGD and Momentum by citations, according to this paper) that adds “momentum” to the gradients and tries to normalize the gradients by their current magnitude. Adam defines two values for each parameter, $m$ and $v$, which are initialized by zero and updated by the relationship:
+\[
+m_{t+1} = \beta_1 m_t + (1 - \beta_1) g_t,
+\]
+\[
+v_{t+1} = \beta_2 v_t + (1 - \beta_2) g_t^2,
+\]
+where $g_t$ is the gradient at time step $t$. Then, the final parameter update is defined by:
+\[
+\theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}} + \epsilon} \hat{m},
+\]
+where $\hat{m} = \frac{m_t}{1 - \beta_1}$ and $\hat{v} = \frac{v_t}{1 - \beta_2}$. These updates are controlled by four hyperparameters: $\beta_1$, the momentum decay constant; $\beta_2$, the second moment decay constant; $\eta$, the learning rate; and $\epsilon$, a small constant added to the denominator.
+
+Implement the Adam optimizer in \texttt{npnn/optimizer.py}, and tune the learning rate, setting the other hyperparameters to $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-7}$. How does a properly-tuned Adam optimizer compare to SGD? How does the sensitivity of Adam to its learning rate compare to SGD?
+
+
 
 \end{document}

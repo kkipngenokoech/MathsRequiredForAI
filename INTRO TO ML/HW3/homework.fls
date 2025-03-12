@@ -137,6 +137,11 @@ INPUT ./msit.png
 INPUT ./msit.png
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
+INPUT ./model.png
+INPUT ./model.png
+INPUT ./model.png
+INPUT ./model.png
+INPUT ./model.png
 INPUT homework.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
