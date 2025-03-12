@@ -166,15 +166,158 @@ Consider the training dataset with $N = 10$ points and two-dimensional features 
 
 \newpage
 \section{Neural Networks}
+Below is a deep network with inputs $x_1, x_2$. The internal nodes and activation functions are as shown in the figure and equations below. All variables are scalar values, and $\exp(x)$ refers to the function $e^x$. The activation functions of the nodes $h_1, h_2, h_3$ are ReLU (i.e., $r_1 = \max(h_1, 0)$ etc.), for node $s_1$ we have $s_1 = \max(r_2, r_3)$, and for the other nodes:
+\[
+y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}, \quad y_2 = \frac{\exp(s_1)}{\exp(r_1) + \exp(s_1)}, \quad z = y_1 + y_2.
+\]
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Neural.png}
+    \caption{Primal Formulation of SVM}
+    \label{fig:primal}
+\end{figure}
+\begin{enumerate}
+    \item \textbf{Forward propagation}Now,  Given $x_1 = 1$, $x_2 = -2$, $w_{11} = 6$, $w_{12} = 2$, $w_{21} = 4$, $w_{22} = 7$, $w_{31} = 5$, $w_{32} = 1$, compute the values of the internal nodes (shown in the table below). You may leave $e$ in your answer.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+\hline
+$h_1$ & $h_2$ & $h_3$ & $r_1$ & $r_2$ & $r_3$ & $s_1$ & $y_1$ & $y_2$ & $z$ \\ \hline
+ & & & & & & & & & \\ \hline
+\end{tabular}
+\caption{Values of internal nodes after forward propagation.}
+\label{table:forward}
+\end{table}
+
+\item \textbf{Bounds on Variables}
+\begin{itemize}
+    \item Find the range of feasible values for $y_1$.
+    \item Find the range of feasible values for $z$.
+\end{itemize}
+
+\item \textbf{Backpropagation}
+Compute the gradient expressions shown in the table below analytically. The answer should be an expression that may include any of the nodes in the network ($x_1, x_2, h_1, h_2, h_3, r_1, r_2, r_3, s_1, y_1, y_2, z$) or weights ($w_{11}, w_{12}, w_{21}, w_{22}, w_{31}, w_{32}$).
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Gradient} & \textbf{Expression} \\ \hline
+$\frac{\partial h_1}{\partial w_{12}}$ & \\ \hline
+$\frac{\partial h_1}{\partial x_1}$ & \\ \hline
+$\frac{\partial r_1}{\partial h_1}$ & \\ \hline
+$\frac{\partial y_1}{\partial r_1}$ & \\ \hline
+$\frac{\partial y_1}{\partial s_1}$ & \\ \hline
+$\frac{\partial z}{\partial y_1}$ & \\ \hline
+$\frac{\partial z}{\partial x_1}$ & \\ \hline
+$\frac{\partial s_1}{\partial r_2}$ & \\ \hline
+\end{tabular}
+\caption{Gradient expressions for backpropagation.}
+\label{table:gradients}
+\end{table}
+
 \end{enumerate}
 
+\end{enumerate}
+\newpage
+\section{Neural Networks for MNIST Digit Recognition}
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{msit.png}
+    \caption{Primal Formulation of SVM}
+    \label{fig:primal}
+\end{figure}
+The classic MNIST dataset (Figure 2) consists of 28x28 pixel (784 features) grayscale images of handwritten
+digits 0-9 (10 classes).
+In this problem, you will implement a neural network to classify the MNIST dataset using raw pixels as
+features. Specifically, you will implement a type of architecture called a Multi-Layered Perceptron (MLP),
+which consists of several Dense layers (i.e. “Perceptrons”) connected sequentially, with nonlinear activation
+functions after each layer. You will then train this network using the Categorical Cross-Entropy loss function.
+
+Getting Started Download the hw3q6.zip file, which contains starter code for this question, as well as
+the MNIST train split (mnist.npz) and the MNIST test split with its labels removed (mnist test.npz).
+For this lab, you will need to install Python and Numpy. While our autograder will use Python 3.6.9, you
+should be able to use any recent version of Python 3 and Numpy, though you should avoid the newest Python
+features such as dataclasses and the walrus operator. We also recommend you install tqdm (progress bar)
+and Pandas (tabular data), which will be available on the autograder as well.
 
 
+\subsection*{6.1 Gradient Derivation [8 points]}
+We will begin by deriving the gradients we will need to implement backpropagation. You will derive backward passes for two types of layers: the Exponential Linear Unit (ELU) activation, and a Dense (Fully Connected) layer, then use these derivations to implement the backpropagation algorithm for your neural network.
+
+\subsubsection*{Backpropagation}
+Let our feed-forward (also referred to as “sequential”) neural network be described by a series of functions $f_1, \dots, f_n$ with input $x_0$, output $x_n$, loss $L = L(x_n, y^*)$ where $y^*$ is the true label, and the feed-forward relationship:
+\[
+x_k = f_k(w_k, x_{k-1}).
+\]
+In our model, these functions $f_1, f_2, \dots, f_n$ will represent our Dense layers and activation functions, and are referred to as modules in our code.
+
+In order to perform gradient descent, we need to compute the gradient for each parameter $\frac{\partial L}{\partial w_k}$, which we can express recursively using the chain rule as:
+\[
+\frac{\partial L}{\partial w_k} = \frac{\partial L}{\partial x_k} \cdot \frac{\partial x_k}{\partial w_k},
+\]
+\[
+\frac{\partial L}{\partial x_{k-1}} = \frac{\partial L}{\partial x_k} \cdot \frac{\partial x_k}{\partial x_{k-1}}.
+\]
+
+where $\frac{\partial L}{\partial x_k}$ are the gradients flowing to the previous layer, and $\frac{\partial x_k}{\partial x_{k-1}}$, $\frac{\partial x_k}{\partial w_k}$ are the Jacobians of layer $f_k$ with respect to $x_{k-1}$ and $w_k$, respectively. Note that since $\frac{\partial L}{\partial x_k}$ is the gradient of a scalar $L$ with respect to a column vector $x_k$, this gradient is a row vector. And $\frac{\partial x_k}{\partial w_k}$ is the gradient of a vector with respect to a vector, which is a matrix.
+
+\subsection*{Softmax Cross Entropy}
+This layer combines the Softmax function together with the Cross Entropy Function. The softmax function for the output layer $x_n = \begin{bmatrix} x^{(1)}_n & \dots & x^{(D)}_n \end{bmatrix}$ is described by:
+\[
+x^{(i)}_n = \frac{\exp(x^{(i)}_{n-1})}{\sum_{j=1}^D \exp(x^{(j)}_{n-1})},
+\]
+for input $x_{n-1}$, and the Cross Entropy loss function is given by:
+\[
+L(x_n, y^*) = -\sum_{i=1}^D y^{*(i)} \log x^{(i)}_n,
+\]
+where $x_n$ are the output weights and $y^*$ are the true labels. Backward propagation through the Softmax Cross Entropy layer can be found by computing the first-order derivatives:
+\[
+\frac{\partial L}{\partial x^{(i)}_{n-1}} = \frac{\partial}{\partial x^{(i)}_{n-1}} \left( -\sum_{i=1}^D y^{*(i)} \log \frac{\exp(x^{(i)}_{n-1})}{\sum_{j=1}^D \exp(x^{(j)}_{n-1})} \right)
+\]
+\[
+= \frac{\partial}{\partial x^{(i)}_{n-1}} \left( -\sum_{i=1}^D y^{*(i)} x^{(i)}_{n-1} + \sum_{i=1}^D y^{*(i)} \log \sum_{j=1}^D \exp(x^{(j)}_{n-1}) \right)
+\]
+\[
+= \frac{\partial}{\partial x^{(i)}_{n-1}} \left( -\sum_{i=1}^D y^{*(i)} x^{(i)}_{n-1} + \log \sum_{j=1}^D \exp(x^{(j)}_{n-1}) \right) \quad \text{(only one } y^{*(i)} \text{ is 1)}
+\]
+\[
+= -y^{*(i)} + \frac{\exp(x^{(i)}_{n-1})}{\sum_{j=1}^D \exp(x^{(j)}_{n-1})}
+\]
+\[
+= -y^{*(i)} + y_i.
+\]
+The implementation of this layer is provided to you in \texttt{npnn/layers.py}.
 
 
+\subsection*{Exponential Linear Unit (ELU)}
+The Exponential Linear Unit is a variant of the Rectified Linear Unit (ReLU) activation function that eliminates the zero gradient problem when the input is less than 0. Using ELU as an activation function tends to produce faster convergence with more accurate results than using ReLU. Unlike other activation functions, ELU has an extra $\alpha$ constant, which should be a positive number (a typical choice of $\alpha$ is 1 or 0.9).
 
+The expression of an ELU unit is as follows:
+\[
+\text{ELU}(x) = 
+\begin{cases} 
+x & \text{if } x > 0, \\
+\alpha(e^x - 1) & \text{otherwise}.
+\end{cases}
+\]
 
+\subsection*{Dense Layer}
+A Dense layer is fully connected with the input features. For a weight matrix $W$ and bias $b$, the output is:
+\[
+f(x) = Wx + b.
+\]
+\begin{enumerate}
+    \item 
+    Find the Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ for the exponential linear unit, $x_k = \text{ELU}(x_{k-1})$.
+    \item
+    Find the Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ for the Dense layer, $x_k = Wx_{k-1} + b$.
+    \item 
 
+    Find the Jacobian $\frac{\partial x_k}{\partial b}$ for the Dense layer, $x_k = Wx_{k-1} + b$.
+    \item Since $W$ is two-dimensional, the Jacobian $\frac{\partial x_k}{\partial W}$ can only be expressed by matrix-vector multiplications if we flatten it to a vector. Instead, to preserve its dimension, find the gradient $\frac{\partial x_k[a]}{\partial W[b,c]}$ for indices $a$, $b$, $c$ (so that we can write $\frac{\partial x_k}{\partial W}$ as a 3-dimensional tensor). Here, $a$ is an index of $x_k$, $b$ indexes a row of $W$, and $c$ indexes a column of $W$.
+\end{enumerate}
 
 
 \end{document}
