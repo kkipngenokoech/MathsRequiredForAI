@@ -14,22 +14,16 @@ def e_step(X, pi, A, mu, sigma2):
     xi = np.zeros([N, T-1, M, M])  # [N,T-1,M,M]
 
     # Forward messages
-    # Compute emission probabilities for all time steps and states
-    emission_probs = np.zeros([N, T, M])
-    for m in range(M):
-        emission_probs[:, :, m] = multivariate_normal.pdf(
-            X, mean=mu[m], cov=sigma2[m] * np.eye(K)
-        )
-
+    emission_probabilities = np.stack([multivariate_normal.pdf(X, mean=mu[m], cov=sigma2[m] * np.eye(K)) for m in range(M)], axis=2)
     # Initialize alpha at t=0
-    alpha[:, 0, :] = pi * emission_probs[:, 0, :]  # [N,M]
+    alpha[:, 0, :] = pi * emission_probabilities[:, 0, :]  # [N,M]
     alpha_sum[:, 0] = np.sum(alpha[:, 0, :], axis=1)  # [N,]
     alpha[:, 0, :] = alpha[:, 0, :] / alpha_sum[:, 0, np.newaxis]  # Normalize
 
     # Forward pass
     for t in range(1, T):
         for m in range(M):
-            alpha[:, t, m] = emission_probs[:, t, m] * \
+            alpha[:, t, m] = emission_probabilities[:, t, m] * \
                 np.sum(alpha[:, t-1, :] * A[:, m], axis=1)
 
         alpha_sum[:, t] = np.sum(alpha[:, t, :], axis=1)  # [N,]
@@ -45,13 +39,12 @@ def e_step(X, pi, A, mu, sigma2):
         for m in range(M):
             for n in range(N):
                 beta[n, t, m] = np.sum(
-                    A[m, :] * emission_probs[n, t+1, :] * beta[n, t+1, :])
+                    A[m, :] * emission_probabilities[n, t+1, :] * beta[n, t+1, :])
 
-        # Normalize beta (optional but helps with numerical stability)
+        
         beta[:, t, :] = beta[:, t, :] / \
             np.sum(beta[:, t, :], axis=1, keepdims=True)
 
-    # Sufficient statistics
     # Compute gamma (posterior state probabilities)
     for t in range(T):
         gamma[:, t, :] = alpha[:, t, :] * beta[:, t, :]
@@ -64,8 +57,7 @@ def e_step(X, pi, A, mu, sigma2):
         for n in range(N):
             for i in range(M):
                 for j in range(M):
-                    xi[n, t, i, j] = alpha[n, t, i] * A[i, j] * \
-                        emission_probs[n, t+1, j] * beta[n, t+1, j]
+                    xi[n, t, i, j] = alpha[n, t, i] * A[i, j] * emission_probabilities[n, t+1, j] * beta[n, t+1, j]
 
             # Normalize xi for each sequence and time step
             xi[n, t] = xi[n, t] / np.sum(xi[n, t])
@@ -80,42 +72,21 @@ def m_step(X, gamma, xi):
     N, T, K = X.shape
     M = gamma.shape[2]
 
-    # Update initial state distribution pi
+    # Updating initial state distribution pi
     pi = np.sum(gamma[:, 0, :], axis=0) / N
 
-    # Update transition matrix A
-    A = np.sum(xi, axis=(0, 1))
-    row_sums = np.sum(A, axis=1, keepdims=True)
-    A = A / row_sums
+    # Updating transition matrix A
+    A = np.sum(xi, axis=(0, 1))  # Sum over N and T
+    A /= np.sum(A, axis=1, keepdims=True)  # Normalize rows
 
-    # Update emission parameters mu and sigma2
-    mu = np.zeros((M, K))
-    sigma2 = np.zeros(M)
+    # Updating emission parameters mu and sigma2
+    state = np.sum(gamma, axis=(0, 1))  # Shape: (M,)
 
-    # Compute state occupancy counts
-    state_occupancy = np.sum(gamma, axis=(0, 1))
+    # Update mean vectors mu
+    mu = np.einsum('ntm,ntk->mk', gamma, X) / state[:, np.newaxis]
 
-    for m in range(M):
-        # Update mean vectors
-        weighted_sum = np.zeros(K)
-        for n in range(N):
-            for t in range(T):
-                weighted_sum += gamma[n, t, m] * X[n, t]
-
-        mu[m] = weighted_sum / state_occupancy[m]
-
-        # Update variances
-        weighted_variance = 0
-        for n in range(N):
-            for t in range(T):
-                diff = X[n, t] - mu[m]
-                weighted_variance += gamma[n, t, m] * np.sum(diff * diff)
-
-        # Divide by state occupancy and dimension K to get average variance
-        sigma2[m] = weighted_variance / (state_occupancy[m] * K)
-
+    sigma2 = np.einsum('ntm,ntmk->m', gamma, (X[:, :, np.newaxis, :] - mu[np.newaxis, np.newaxis, :, :]) ** 2) / (state * K)
     return pi, A, mu, sigma2
-
 
 def hmm_train(X, pi, A, mu, sigma2, em_step=20):
     """Run Baum-Welch algorithm."""
