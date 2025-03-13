@@ -12,7 +12,6 @@
 \maketitle
 
 \medskip
-
 \maketitle
 \section{Conditional Independence}
 \begin{enumerate}
@@ -37,7 +36,7 @@
         \item[(b)] In Figure 2, relation 2 is true.
         \\ \textbf{True:}  Local independence describe a subset of the conditional independencies that hold in P. 
         \item[(c)] In Figure 2, relation 3 is true.
-        \\ \textbf{False:} \(I(G)\) can be a strict subset of \(I(P)\), meaning \(P\) might have additional independencies that are not captured by \(G\), so relation 3 does not always hold.      
+        \\ \textbf{Trie:} Global independence is a subset of the conditional independencies that hold in P.
         \item[(d)] If G is an I-map for P, then P may have extra conditional independencies than G.
         \\ \textbf{True:} as an I-map only guarantees \(I(G) \subseteq I(P)\), not equality.
         \item[(e)] Two BN structures $G_1$ and $G_2$ are I-equivalent if they have the same skeleton and the same set of v-structures.
@@ -386,8 +385,9 @@ An alternative is to use the EM algorithm as we saw in the class.
         \item path 1: \(5 \rightarrow 4 \rightarrow 3\) is blocked by 3 because 3 is observed. \(\textbf{(Markov property)}\)
         \item path 2: \(5 \rightarrow 7 \rightarrow 6\) is blocked by 7 because 7 is not observed. \(\textbf{(common effect property)}\)
         \item path 3: \(5 \rightarrow 2 \rightarrow 1 \rightarrow 3 \rightarrow 6\) is blocked by 1 because 1 is observed. \(\textbf{(common cause property)}\)
+        \item path 4: \(5 \rightarrow 2 \rightarrow 4 \rightarrow 3 \rightarrow 6\) is an active path because 4 is observed. \(\textbf{(common effect property)}\)
     \end{itemize}
-    Since all paths are blocked, the nodes 5 and 6 are d-separated.
+    Since there is an active path, the nodes 5 and 6 are not d-separated.
     \item (15 points) Write a python program to check d-separation. Three files have been provided. You have to modify only the \texttt{BN.py} file. The instructions on how to run the code are in the \texttt{check\_dsep.py} file. All the files are provided as a zip file named \texttt{code\_files.zip}.
 \end{enumerate}
 

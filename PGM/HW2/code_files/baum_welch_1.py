@@ -7,79 +7,120 @@ def e_step(X, pi, A, mu, sigma2):
     # Messages and sufficient statistics
     N, T, K = X.shape
     M = A.shape[0]
-    alpha = np.zeros([N,T,M])  # [N,T,M]
-    alpha_sum = np.zeros([N,T])  # [N,T], normalizer for alpha
-    beta = np.zeros([N,T,M])  # [N,T,M]
-    gamma = np.zeros([N,T,M])  # [N,T,M]
-    xi = np.zeros([N,T-1,M,M])  # [N,T-1,M,M]
+    alpha = np.zeros([N, T, M])  # [N,T,M]
+    alpha_sum = np.zeros([N, T])  # [N,T], normalizer for alpha
+    beta = np.zeros([N, T, M])  # [N,T,M]
+    gamma = np.zeros([N, T, M])  # [N,T,M]
+    xi = np.zeros([N, T-1, M, M])  # [N,T-1,M,M]
 
     # Forward messages
-    # TODO ...
-    for n in range(N):
-        for t in range(T):
-            if t == 0:
-                alpha[n,t,:] = pi * multivariate_normal.pdf(X[n,t,:], mu, sigma2)
-            else:
-                alpha[n,t,:] = np.einsum('m,ml->l', alpha[n,t-1,:], A) * multivariate_normal.pdf(X[n,t,:], mu, sigma2)
-            alpha_sum[n,t] = alpha[n,t,:].sum()
-            alpha[n,t,:] = alpha[n,t,:] / alpha_sum[n,t]
-            
-    
+    # Compute emission probabilities for all time steps and states
+    emission_probs = np.zeros([N, T, M])
+    for m in range(M):
+        emission_probs[:, :, m] = multivariate_normal.pdf(
+            X, mean=mu[m], cov=sigma2[m] * np.eye(K)
+        )
+
+    # Initialize alpha at t=0
+    alpha[:, 0, :] = pi * emission_probs[:, 0, :]  # [N,M]
+    alpha_sum[:, 0] = np.sum(alpha[:, 0, :], axis=1)  # [N,]
+    alpha[:, 0, :] = alpha[:, 0, :] / alpha_sum[:, 0, np.newaxis]  # Normalize
+
+    # Forward pass
+    for t in range(1, T):
+        for m in range(M):
+            alpha[:, t, m] = emission_probs[:, t, m] * \
+                np.sum(alpha[:, t-1, :] * A[:, m], axis=1)
+
+        alpha_sum[:, t] = np.sum(alpha[:, t, :], axis=1)  # [N,]
+        alpha[:, t, :] = alpha[:, t, :] / \
+            alpha_sum[:, t, np.newaxis]  # Normalize
 
     # Backward messages
-    # TODO ...
-    for n in range(N):
-        for t in range(T-1, -1, -1):
-            if t == T-1:
-                beta[n,t,:] = 1
-            else:
-                beta[n,t,:] = np.einsum('m,ml,l->m', beta[n,t+1,:], A, multivariate_normal.pdf(X[n,t+1,:], mu, sigma2))
-            beta[n,t,:] = beta[n,t,:] / alpha_sum[n,t]
-            
+    # Initialize beta at t=T-1
+    beta[:, T-1, :] = 1.0
+
+    # Backward pass
+    for t in range(T-2, -1, -1):
+        for m in range(M):
+            for n in range(N):
+                beta[n, t, m] = np.sum(
+                    A[m, :] * emission_probs[n, t+1, :] * beta[n, t+1, :])
+
+        # Normalize beta (optional but helps with numerical stability)
+        beta[:, t, :] = beta[:, t, :] / \
+            np.sum(beta[:, t, :], axis=1, keepdims=True)
 
     # Sufficient statistics
-    # TODO ...
-    for n in range(N):
-        for t in range(T):
-            gamma[n,t,:] = alpha[n,t,:] * beta[n,t,:]
-            gamma[n,t,:] = gamma[n,t,:] / gamma[n,t,:].sum()
-        for t in range(T-1):
-            xi[n,t,:,:] = np.outer(alpha[n,t,:], beta[n,t+1,:]) * A * multivariate_normal.pdf(X[n,t+1,:], mu, sigma2)
-            xi[n,t,:,:] = xi[n,t,:,:] / xi[n,t,:,:].sum()
+    # Compute gamma (posterior state probabilities)
+    for t in range(T):
+        gamma[:, t, :] = alpha[:, t, :] * beta[:, t, :]
+        # Normalize gamma
+        gamma[:, t, :] = gamma[:, t, :] / \
+            np.sum(gamma[:, t, :], axis=1, keepdims=True)
+
+    # Compute xi (posterior transition probabilities)
+    for t in range(T-1):
+        for n in range(N):
+            for i in range(M):
+                for j in range(M):
+                    xi[n, t, i, j] = alpha[n, t, i] * A[i, j] * \
+                        emission_probs[n, t+1, j] * beta[n, t+1, j]
+
+            # Normalize xi for each sequence and time step
+            xi[n, t] = xi[n, t] / np.sum(xi[n, t])
+
     # Although some of them will not be used in the M-step, please still
     # return everything as they will be used in test cases
     return alpha, alpha_sum, beta, gamma, xi
 
 
-import numpy as np
-
 def m_step(X, gamma, xi):
     """M-step: MLE"""
-    
-    N, T, M = gamma.shape
-    _, _, M, _ = xi.shape
-    
-    # 1. Update the initial state distribution (pi)
-    pi = gamma[:, 0, :].sum(axis=0) / N
-    
-    # 2. Update the transition matrix (A)
-    A = xi.sum(axis=0) / xi.sum(axis=(0, 1)).reshape(M, 1)  # Normalize
-    
-    # 3. Update the mean vectors (mu)
-    mu = np.einsum('ntk,ntm->mk', X, gamma) / gamma.sum(axis=0).sum(axis=0).reshape(M, 1)
-    
-    # 4. Update the covariance (sigma2)
-    diff = X - mu.reshape(1, M, -1)
-    sigma2 = np.einsum('ntk,ntm->m', (diff ** 2), gamma) / gamma.sum(axis=0).sum(axis=0)
-    
-    return pi, A, mu, sigma2
+    N, T, K = X.shape
+    M = gamma.shape[2]
 
+    # Update initial state distribution pi
+    pi = np.sum(gamma[:, 0, :], axis=0) / N
+
+    # Update transition matrix A
+    A = np.sum(xi, axis=(0, 1))
+    row_sums = np.sum(A, axis=1, keepdims=True)
+    A = A / row_sums
+
+    # Update emission parameters mu and sigma2
+    mu = np.zeros((M, K))
+    sigma2 = np.zeros(M)
+
+    # Compute state occupancy counts
+    state_occupancy = np.sum(gamma, axis=(0, 1))
+
+    for m in range(M):
+        # Update mean vectors
+        weighted_sum = np.zeros(K)
+        for n in range(N):
+            for t in range(T):
+                weighted_sum += gamma[n, t, m] * X[n, t]
+
+        mu[m] = weighted_sum / state_occupancy[m]
+
+        # Update variances
+        weighted_variance = 0
+        for n in range(N):
+            for t in range(T):
+                diff = X[n, t] - mu[m]
+                weighted_variance += gamma[n, t, m] * np.sum(diff * diff)
+
+        # Divide by state occupancy and dimension K to get average variance
+        sigma2[m] = weighted_variance / (state_occupancy[m] * K)
+
+    return pi, A, mu, sigma2
 
 
 def hmm_train(X, pi, A, mu, sigma2, em_step=20):
     """Run Baum-Welch algorithm."""
     for step in range(em_step):
-        _, alpha_sum, _, gamma, xi = e_step(X, pi, A, mu, sigma2)
+        alpha, alpha_sum, beta, gamma, xi = e_step(X, pi, A, mu, sigma2)
         pi, A, mu, sigma2 = m_step(X, gamma, xi)
         print(f"step: {step}  ln p(x): {np.einsum('nt->', np.log(alpha_sum))}")
     return pi, A, mu, sigma2
@@ -88,15 +129,18 @@ def hmm_train(X, pi, A, mu, sigma2, em_step=20):
 def hmm_generate_samples(N, T, pi, A, mu, sigma2):
     """Given pi, A, mu, sigma2, generate [N,T,K] samples."""
     M, K = mu.shape
-    Y = np.zeros([N,T], dtype=int) 
-    X = np.zeros([N,T,K], dtype=float)
+    Y = np.zeros([N, T], dtype=int)
+    X = np.zeros([N, T, K], dtype=float)
     for n in range(N):
-        Y[n,0] = np.random.choice(M, p=pi)  # [1,]
-        X[n,0,:] = multivariate_normal.rvs(mu[Y[n,0],:], sigma2[Y[n,0]] * np.eye(K))  # [K,]
+        Y[n, 0] = np.random.choice(M, p=pi)  # [1,]
+        X[n, 0, :] = multivariate_normal.rvs(
+            mu[Y[n, 0], :], sigma2[Y[n, 0]] * np.eye(K))  # [K,]
     for t in range(T - 1):
         for n in range(N):
-            Y[n,t+1] = np.random.choice(M, p=A[Y[n,t],:])  # [1,]
-            X[n,t+1,:] = multivariate_normal.rvs(mu[Y[n,t+1],:], sigma2[Y[n,t+1]] * np.eye(K))  # [K,]
+            Y[n, t+1] = np.random.choice(M, p=A[Y[n, t], :])  # [1,]
+            # [K,]
+            X[n, t+1, :] = multivariate_normal.rvs(
+                mu[Y[n, t+1], :], sigma2[Y[n, t+1]] * np.eye(K))
     return X
 
 
@@ -124,7 +168,9 @@ def main():
     A_init = A_init / A_init.sum(axis=-1, keepdims=True)
     mu_init = 2 * np.random.rand(M, K) - 1
     sigma2_init = np.ones(M)
-    pi, A, mu, sigma2 = hmm_train(X, pi_init, A_init, mu_init, sigma2_init, em_step=20)
+
+    pi, A, mu, sigma2 = hmm_train(
+        X, pi_init, A_init, mu_init, sigma2_init, em_step=20)
     print(pi)
     print(A)
     print(mu)
@@ -133,4 +179,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
