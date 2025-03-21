@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  21 MAR 2025 22:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  21 MAR 2025 22:53
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -473,12 +473,12 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 <adaboost.png, id=46, 764.8575pt x 320.69812pt>
 File: adaboost.png Graphic file (type png)
 <use adaboost.png>
-Package pdftex.def Info: adaboost.png  used on input line 797.
+Package pdftex.def Info: adaboost.png  used on input line 802.
 (pdftex.def)             Requested size: 560.40762pt x 234.9836pt.
 <adaboost2.png, id=47, 764.8575pt x 312.41719pt>
 File: adaboost2.png Graphic file (type png)
 <use adaboost2.png>
-Package pdftex.def Info: adaboost2.png  used on input line 815.
+Package pdftex.def Info: adaboost2.png  used on input line 820.
 (pdftex.def)             Requested size: 560.40762pt x 228.91595pt.
 
 
@@ -491,10 +491,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <Neural.png, id=55, 769.37437pt x 198.7425pt>
 File: Neural.png Graphic file (type png)
 <use Neural.png>
-Package pdftex.def Info: Neural.png  used on input line 859.
+Package pdftex.def Info: Neural.png  used on input line 864.
 (pdftex.def)             Requested size: 560.40762pt x 144.77148pt.
 
-Overfull \hbox (14.59293pt too wide) in paragraph at lines 883--885
+Overfull \hbox (14.59293pt too wide) in paragraph at lines 888--890
 \OT1/cmr/m/n/12 sion that may in-clude any of the nodes in the net-work ($\OML/cmm/m/it/12 x[]; x[]; h[]; h[]; h[]; r[]; r[]; r[]; s[]; y[]; y[]; z$\OT1/cmr/m/n/12 ) or weights ($\OML/cmm/m/it/12 w[]; w[]; w[]; w[]; w[]; w[]$\OT1/cmr/m/n/12 ). 
  []
 
@@ -505,13 +505,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <msit.png, id=61, 705.38531pt x 303.38344pt>
 File: msit.png Graphic file (type png)
 <use msit.png>
-Package pdftex.def Info: msit.png  used on input line 911.
+Package pdftex.def Info: msit.png  used on input line 916.
 (pdftex.def)             Requested size: 560.40762pt x 241.03128pt.
  [11 <./msit.png>] [12]
 <model.png, id=72, 741.52031pt x 369.63094pt>
 File: model.png Graphic file (type png)
 <use model.png>
-Package pdftex.def Info: model.png  used on input line 1039.
+Package pdftex.def Info: model.png  used on input line 1044.
 (pdftex.def)             Requested size: 560.40762pt x 279.35446pt.
  [13 <./model.png>] [14] (./homework.aux)
  ***********
@@ -532,7 +532,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,17n,93p,991b,1713s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on homework.pdf (14 pages, 420102 bytes).
+Output written on homework.pdf (14 pages, 420457 bytes).
 PDF statistics:
  149 PDF objects out of 1000 (max. 8388607)
  86 compressed objects within 1 object stream

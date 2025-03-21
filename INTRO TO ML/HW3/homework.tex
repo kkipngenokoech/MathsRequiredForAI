@@ -760,7 +760,12 @@ Consider the data samples in Table 1, which record whether a person gets sick, t
         \end{tikzpicture}
         
         \item  Given a new data point with the features ($A = \text{old}$, $S = \text{yes}$, $H = \text{no}$), use the trees you learned from part (a) to predict whether this person will get sick.
+        \\ For the first tree, the person will get sick.
+        \\ For the second tree, the person will get sick.
+        \\ For the third tree, the person will not get sick.
+        The person will get sick according to two trees and will not get sick according to one tree. Therefore, the final prediction is that the person will get sick.
         \item  Briefly (in 1-2 sentences) comment on the advantage of random forests over decision trees from the perspective of bias-variance trade-off.
+        \\ Random forests reduce the variance of the model by training multiple decision trees on different subsets of the data and features. This ensemble method helps to reduce overfitting and improve the generalization of the model.
     \end{enumerate}
 
 \newpage
