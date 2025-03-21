@@ -15,10 +15,21 @@
 \maketitle
 \section{Dimensionality of K-Nearest Neighbors}
 
+
 When the number of features $d$ is large, the performance of $k$-nearest neighbors, which makes predictions using only observations that are near the test observation, tends to degrade. This phenomenon is known as the \textit{curse of dimensionality}, and it ties into the fact that non-parametric approaches often perform poorly when $d$ is large.
 
 \begin{enumerate}
     \item Suppose that we have a set of training observations, each corresponding to a one-dimensional ($d = 1$) feature, $X$. We assume that $X$ is uniformly (evenly) distributed on $[0, 1]$. Associated with each training observation is a response value.Suppose that we wish to predict a test observation $x$'s response using only training observations that are within $10\%$ of the range of $x$ closest to that test observation. In other words, if $x \in [0.05, 0.95]$ then we will use training observations in the range $[x - 0.05, x + 0.05]$, as shown in Figure 1 when $x = 0.6$. When $x \in [0, 0.05)$ we use the range $[0, 0.1]$, and when $x \in (0.95, 1]$ we use training observations in the range $[0.9, 1]$. Figure 1 shows this range for $x = 0.02$.On average (assuming $x$ is uniformly distributed on $[0, 1]$), what fraction of the available observations will we use to make the prediction?
+    \begin{itemize}
+        \item The fraction of the available observations will be the fraction of the range of $x$ that is within $10\%$ of the range of $x$.
+        \item The range of $x$ that is within $10\%$ of the range of $x$ is $[x - 0.1, x + 0.1]$. 
+        \item The fraction of the range of $x$ that is within $10\%$ of the range of $x$ is $0.1 + 0.1 = 0.2$.
+        \item Therefore, the fraction of the available observations that we will use to make the prediction is $0.2$.
+        \item This is equivalent to $20\%$ of the available observations.
+        \item Therefore, on average, we will use $20\%$ of the available observations to make the prediction.
+        \item This is because the range of $x$ that is within $10\%$ of the range of $x$ is $0.2$.
+        \item This is equivalent to $20\%$ of the available observations.
+    \end{itemize}
     \item Now suppose that we have a set of observations, each corresponding to two features, $X_1$ and $X_2$ (i.e., $d = 2$). We assume that $(X_1, X_2)$ are uniformly distributed on $[0, 1] \times [0, 1]$. We wish to predict the response of a test observation $(x_1, x_2)$ using only training observations that are within $10\%$ of the range of $x_1$ and within $10\%$ of the range of $x_2$ closest to that test observation. For instance, in order to predict the response for a test observation with $x_1 = 0.6$ and $x_2 = 0.04$, we will use training observations $(X_1, X_2)$ such that $X_1 \in [0.55, 0.65]$ and $X_2 \in [0, 0.1]$.
     \begin{figure}[h]
         \centering
