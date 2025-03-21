@@ -77,7 +77,103 @@ status, age, education level and income, you can now build a decision tree to pr
     \[
     \text{Entropy} = \textbf{1.5056969659775}
     \]
+    rounding to 4 decimal places:
+    \[
+    \text{Entropy} = \textbf{1.5057}
+    \]
     \item Find the information gain (IG) from each feature (relationship status, age, education levarianceel and income). Which feature should be chosen at the root of the tree? Show your calculations for the information gain (IG) and explain your choice in a sentence. (Calculate entropy in log2 base and round to 4 decimal places)
+    \\ \textbf{Information gain:}
+    \[
+    \text{IG}(\text{Feature}) = H(\text{Phone Usage}) - H(\text{Phone Usage} \mid \text{Feature}) = \text{ phone usage entropy} - \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{Feature} = j)
+    \]
+    where:
+    \begin{itemize}
+        \item $H(\text{Phone Usage})$ is the entropy of the phone usage.
+        \item $H(\text{Phone Usage} \mid \text{Feature})$ is the conditional entropy of the phone usage given the feature.
+        \item $N_j$ is the number of samples in the dataset with the feature value $j$.
+        \item $N$ is the total number of samples in the dataset.
+        \item $m$ is the number of unique values of the feature.
+        \item $\text{Entropy}(\text{Phone Usage} \mid \text{Feature} = j)$ is the entropy of the phone usage given the feature value $j$.
+    \end{itemize}
+    \textbf{relationship status}
+    \[
+    \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+    \]
+    relationship status = \{single, married, in a relationship\} = \{5, 4, 6\}
+    \\ single = \{low, medium, high\} = \{5, 0, 0\}
+    \\ married = \{low, medium, high\} = \{0, 1, 3\}
+    \\ in a relationship = \{low, medium, high\} = \{2, 4, 0\}
+    \\ \textbf{entropy of phone usage given relationship status:}
+    \[
+    \text{Entropy (Phone Usage} \mid \text{relationship status)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{relationship status} = j)
+    \]
+    Entropy (Phone Usage $\mid$ single):
+    \[
+    \text{Entropy} = -\left(\frac{5}{5} \log_2 \frac{5}{5} + \frac{0}{5} \log_2 \frac{0}{5} + \frac{0}{5} \log_2 \frac{0}{5}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(1 \times 0 + 0 \times -\infty + 0 \times -\infty\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0}
+    \]
+    Entropy (Phone Usage $\mid$ in a relationship):
+    \[
+    \text{Entropy} = -\left(\frac{2}{6} \log_2 \frac{2}{6} + \frac{4}{6} \log_2 \frac{4}{6} + \frac{0}{6} \log_2 \frac{0}{6}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.3333 \times -1.5849625021639 + 0.6666 \times -0.5849625 + 0 \times -\infty\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.528268002 - 0.389936002 + 0\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.918204004\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0.918204004}
+    \]
+    Entropy (Phone Usage $\mid$ married):
+    \[
+    \text{Entropy} = -\left(\frac{0}{4} \log_2 \frac{0}{4} + \frac{1}{4} \log_2 \frac{1}{4} + \frac{3}{4} \log_2 \frac{3}{4}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0 \times -\infty + 0.25 \times -2 + 0.75 \times -0.41503749927884\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0 + -0.5 + -0.31127762445913\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.81127762445913\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0.81127762445913}
+    \]
+    Entropy (Phone Usage $\mid$ relationship status):
+    \[
+    \text{Entropy (Phone Usage} \mid \text{relationship status)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{relationship status} = j)
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{relationship status)} = \frac{5}{15} \times 0 + \frac{6}{15} \times 0.918204004 + \frac{4}{15} \times 0.81127762445913
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{relationship status)} = 0 + 0.367282402 + 0.216340699
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{relationship status)} = 0.583623101
+    \]
+    information gain:
+    \[
+    \text{IG}(\text{relationship status}) = 1.5057 - 0.583623101
+    \]
+    \[
+    \text{IG}(\text{relationship status}) = \textbf{0.922076898}
+    \]
+    \textbf{age}
+
     \item  Use the root you found in part (b) to determine the rest of the nodes in the decision tree for the abovariancee data. Draw the full decision tree, i.e., keep splitting the nodes until further splits do not lead to any information gain (you may not need all the features for this). For each split, show your working on why you chose this feature based on information gain.
 \end{enumerate}
 \newpage
