@@ -24,15 +24,43 @@ When the number of features $d$ is large, the performance of $k$-nearest neighbo
 \begin{enumerate}
     \item Suppose that we have a set of training observations, each corresponding to a one-dimensional ($d = 1$) feature, $X$. We assume that $X$ is uniformly (evenly) distributed on $[0, 1]$. Associated with each training observation is a response value.Suppose that we wish to predict a test observation $x$'s response using only training observations that are within $10\%$ of the range of $x$ closest to that test observation. In other words, if $x \in [0.05, 0.95]$ then we will use training observations in the range $[x - 0.05, x + 0.05]$, as shown in Figure 1 when $x = 0.6$. When $x \in [0, 0.05)$ we use the range $[0, 0.1]$, and when $x \in (0.95, 1]$ we use training observations in the range $[0.9, 1]$. Figure 1 shows this range for $x = 0.02$.On average (assuming $x$ is uniformly distributed on $[0, 1]$), what fraction of the available observations will we use to make the prediction?
     \begin{itemize}
-        \item The fraction of the available observations will be the fraction of the range of $x$ that is within $10\%$ of the range of $x$.
-        \item The range of $x$ that is within $10\%$ of the range of $x$ is $[x - 0.1, x + 0.1]$. 
-        \item The fraction of the range of $x$ that is within $10\%$ of the range of $x$ is $0.1 + 0.1 = 0.2$.
-        \item Therefore, the fraction of the available observations that we will use to make the prediction is $0.2$.
-        \item This is equivalent to $20\%$ of the available observations.
-        \item Therefore, on average, we will use $20\%$ of the available observations to make the prediction.
-        \item This is because the range of $x$ that is within $10\%$ of the range of $x$ is $0.2$.
-        \item This is equivalent to $20\%$ of the available observations.
+        \item If \(x \in [0.05, 0.95]\), we use observations in \([x - 0.05, x + 0.05]\).
+        \item If \(x \in [0, 0.05)\), we use observations in \([0, 0.1]\).
+        \item If \(x \in (0.95, 1]\), we use observations in \([0.9, 1]\).
     \end{itemize}
+    
+    
+    Since \(x\) is uniformly distributed on \([0, 1]\), the probability density function (pdf) is 1 over this interval.
+    
+    \begin{enumerate}
+        \item \textbf{For \(x \in [0.05, 0.95]\):}
+        \begin{itemize}
+            \item The range used is 0.1 (from \(x - 0.05\) to \(x + 0.05\)).
+            \item The length of this interval is 0.1.
+            \item Since the total range is 1, the fraction of observations used is \(\frac{0.1}{1} = 0.1\).
+        \end{itemize}
+    
+        \item \textbf{For \(x \in [0, 0.05)\) and \(x \in (0.95, 1]\):}
+        \begin{itemize}
+            \item The range used is 0.1 in both cases.
+            \item The length of these intervals is 0.1.
+            \item The fraction of observations used is \(\frac{0.1}{1} = 0.1\).
+        \end{itemize}
+    \end{enumerate}
+    
+ 
+    Since \(x\) is uniformly distributed, the probability of \(x\) falling in any of these intervals is proportional to their lengths. However, the intervals \([0, 0.05)\) and \((0.95, 1]\) each have a length of 0.05, while \([0.05, 0.95]\) has a length of 0.9.
+    
+    \begin{itemize}
+       
+            \item For \([0.05, 0.95]\): \(0.9 \times 0.1 = 0.09\).
+            \item For \([0, 0.05)\) and \((0.95, 1]\): \(0.05 \times 0.1 + 0.05 \times 0.1 = 0.01\).
+            \item \textbf{Total Average Fraction:} \(0.09 + 0.01 = 0.10\).
+
+    \end{itemize}
+    On average, we use 10\% of the available observations to make the prediction in one dimension.
+    
+    
     \item Now suppose that we have a set of observations, each corresponding to two features, $X_1$ and $X_2$ (i.e., $d = 2$). We assume that $(X_1, X_2)$ are uniformly distributed on $[0, 1] \times [0, 1]$. We wish to predict the response of a test observation $(x_1, x_2)$ using only training observations that are within $10\%$ of the range of $x_1$ and within $10\%$ of the range of $x_2$ closest to that test observation. For instance, in order to predict the response for a test observation with $x_1 = 0.6$ and $x_2 = 0.04$, we will use training observations $(X_1, X_2)$ such that $X_1 \in [0.55, 0.65]$ and $X_2 \in [0, 0.1]$.
     \begin{figure}[h]
         \centering
@@ -40,12 +68,85 @@ When the number of features $d$ is large, the performance of $k$-nearest neighbo
         \caption{Primal Formulation of SVM}
         \label{fig:primal}
     \end{figure}
+    \begin{itemize}
+    \item  the range used for each feature is 10\% of the total range.
+            \item Therefore, for each feature, the fraction of observations used is 0.1.
+    
+            \item Since \(X_1\) and \(X_2\) are independent, the joint probability is the product of the individual probabilities.
+            \item Fraction used = \(0.1 \times 0.1 = 0.01\).
+    \end{itemize}
+
+    On average, we use 1\% of the available observations to make the prediction in two dimensions.
+    
+    
     \item On average, assuming $x_1$ and $x_2$ are each uniformly distributed on $[0, 1]$, what fraction of the available observations will we use to make the prediction?
+    For a test observation \((x_1, x_2)\), we use training observations where:
+\[
+X_1 \in [x_1 - 0.05, x_1 + 0.05] \quad \text{and} \quad X_2 \in [x_2 - 0.05, x_2 + 0.05].
+\]
+If \(x_1\) or \(x_2\) is near the boundaries (\([0, 0.05)\) or \((0.95, 1]\)), the ranges are adjusted to stay within \([0, 1]\).
+
+
+Since \(X_1\) and \(X_2\) are independent and uniformly distributed:
+\begin{itemize}
+    \item The fraction of observations used for \(X_1\) is \(0.1\) (10\% of the range).
+    \item The fraction of observations used for \(X_2\) is \(0.1\) (10\% of the range).
+\end{itemize}
+The joint fraction of observations used is the product of the individual fractions:
+\[
+\text{Fraction used} = 0.1 \times 0.1 = 0.01.
+\]
+
+
+On average, we use \(1\%\) of the available observations to make the prediction in two dimensions.
     \item Now suppose that we have a set of training observations on $d = 100$ features. Again, the observations are uniformly distributed on each feature, and again each feature ranges in value from $0$ to $1$. We wish to predict a test observation’s response using observations within the $10\%$ of each feature’s range that is closest to that test observation. What fraction of the available observations will we use to make the prediction?
+    \begin{itemize}
+            \item The range used is 10\% of the total range, so the fraction for each feature is 0.1.
+    
+            \item Since all features are independent, the joint probability is the product of the individual probabilities.
+            \item Fraction used = \(0.1^{100}\).
+       
+    \end{itemize}
+    On average, we use \(0.1^{100}\) of the available observations to make the prediction in 100 dimensions.
+    
     \item Using your answers to parts a–c, argue that a drawback of $k$-nearest neighbors when $d$ is large is that there are very few training observations “near” any given test observation.
+    \\ The fraction of available observations used to make the prediction decreases exponentially with the number of dimensions. For example:
+    \begin{itemize}
+        \item In one dimension, we use 10\% of the observations.
+        \item In two dimensions, we use 1\% of the observations.
+        \item In 100 dimensions, we use \(0.1^{100}\) of the observations.
+    \end{itemize}
+    As the number of dimensions increases, the fraction of observations used to make the prediction decreases rapidly. This implies that there are very few training observations "near" any given test observation when the number of dimensions is large. As a result, the prediction may be based on very few observations, which can lead to high variance and poor generalization to new data.
     \item Now suppose that we wish to make a prediction for a test observation by creating a $d$-dimensional hypercube centered around the test observation that contains, on average, $10\%$ of the training observations. For $d = 1$, $2$, and $100$, what is the length of each side of the hypercube? How does your answer change as $d$ increases, and what does this imply for the accuracy of $k$-nearest neighbors when $d$ is large?
     
     \textbf{Note:} A hypercube is a generalization of a cube to an arbitrary number of dimensions. When $d = 1$, a hypercube is simply a line segment; when $d = 2$, it is a square; and when $d = 100$, it is a $100$-dimensional cube.
+    
+The volume of the hypercube is \(s^d = 0.1\), where \(s\) is the side length and \(d\) is the number of dimensions. Solving for \(s\):
+\[
+s = 0.1^{1/d}.
+\]
+
+\begin{itemize}
+    \item \textbf{For \(d = 1\):} \(s = 0.1\).
+    \item \textbf{For \(d = 2\):} \(s = \sqrt{0.1} \approx 0.316\).
+    \item \textbf{For \(d = 100\):} \(s = 0.1^{1/100} \approx 0.977\).
+\end{itemize}
+
+
+As \(d\) increases, \(s\) grows and approaches 1. For example:
+- At \(d = 1\), \(s = 0.1\).
+- At \(d = 100\), \(s \approx 0.977\).
+
+
+\begin{itemize}
+    \item \textbf{Curse of Dimensionality:} In high dimensions, the hypercube must cover almost the entire feature space to capture 10\% of the data.
+    \item \textbf{Sparsity of Data:} Data points become sparse, and distances between points grow, making "nearness" less meaningful.
+    \item \textbf{Poor Performance:} k-NN struggles in high dimensions because it relies on finding meaningful neighbors, which becomes difficult due to data sparsity.
+\end{itemize}
+
+
+As \(d\) increases, the side length \(s\) approaches 1, illustrating the curse of dimensionality. This makes k-NN and other distance-based methods less effective in high-dimensional spaces.
+
 \end{enumerate}
 \newpage
 
