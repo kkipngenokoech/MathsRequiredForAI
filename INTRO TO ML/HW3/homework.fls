@@ -115,6 +115,11 @@ INPUT ./section2.png
 INPUT ./section2.png
 INPUT ./section2.png
 INPUT ./section2.png
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm
+INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm
 INPUT ./adaboost.png
 INPUT ./adaboost.png
 INPUT ./adaboost.png

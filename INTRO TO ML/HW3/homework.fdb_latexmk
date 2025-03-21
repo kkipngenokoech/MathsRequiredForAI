@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1741945818.51682 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1741945819.13742 0
+["pdflatex"] 1742540833.88168 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1742540834.72074 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1741945818.38424 27279 bb6846babaf9e04c57a13a5d06c3a8a4 ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1742540833.17634 27914 09c3d63d4d2fe0bfda002cd8f2c9cbda ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -11,6 +11,8 @@
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1246382020 908 2921f8a10601f252058503cc6570e581 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm7.tfm" 1246382020 940 228d6584342e91276bf566bcf9716b83 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm" 1136768653 1324 c910af8c371558dc20f2d7822f66fe64 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx6.tfm" 1136768653 1344 8a0be4fe4d376203000810ad4dc81558 ""
+  "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx8.tfm" 1136768653 1332 1fde11373e221473104d6cc5993f046e ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmex10.tfm" 1136768653 992 662f679a0b3d2d53c1b94050fdaa3f50 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi12.tfm" 1136768653 1524 4414a8315f39513458b80dfc63bff03a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmmi6.tfm" 1136768653 1512 f21f83efb36853c0b70002322c1ab3ad ""
@@ -52,6 +54,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty" 1686341992 4474 b811654f4bf125f11506d13d13647efb ""
   "/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty" 1686341992 2444 0d0c1ee65478277e8015d65b86983da2 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/exscale.sty" 1705352648 2581 8e0df574a0fdf7d67e300be743ad323e ""
+  "/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd" 1705352648 2469 74341109f164f230581718c66211c718 ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1705352648 8449 f07039d8e4e89f21078d9b5137579bfc ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls" 1137110130 20602 3112294ba237d94ce4a1502cfef3594f ""
@@ -73,8 +76,8 @@
   "Neural.png" 1741802498.29257 47201 1b9777fd8e4d49bd9c6dd6f5dde6cd43 ""
   "adaboost.png" 1741795599.42156 16651 a98c5811d929fa0671227209a60df586 ""
   "adaboost2.png" 1741799689.2884 29383 71285848df05399f0c14e3bf5a2d9419 ""
-  "homework.aux" 1741945819.08487 2494 d6b0f73ea77b66968f946e28faead731 "pdflatex"
-  "homework.tex" 1741945818.38424 27279 bb6846babaf9e04c57a13a5d06c3a8a4 ""
+  "homework.aux" 1742540834.64933 2494 d6b0f73ea77b66968f946e28faead731 "pdflatex"
+  "homework.tex" 1742540833.17634 27914 09c3d63d4d2fe0bfda002cd8f2c9cbda ""
   "model.png" 1741805286.70474 36689 57ae90147ff8334cd711530332bc1a06 ""
   "msit.png" 1741803661.1851 19301 86b309763e8a8c47f97f2b4d07bba7d3 ""
   "section1.png" 1741781614.414 10148 424d724390562599b53c85599852b778 ""

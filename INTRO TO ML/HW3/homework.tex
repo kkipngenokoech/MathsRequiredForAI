@@ -58,6 +58,25 @@ status, age, education level and income, you can now build a decision tree to pr
 
 \begin{enumerate}
     \item What is the entropy of Phone Usage? (Calculate entropy in log2 base and round to 4 decimal places)
+    \[
+    \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+    \]
+    phone usage = \{low, medium, high\} = \{7, 5, 3\}
+    \[
+    \text{Entropy} = -\left(\frac{7}{15} \log_2 \frac{7}{15} + \frac{5}{15} \log_2 \frac{5}{15} + \frac{3}{15} \log_2 \frac{3}{15}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.4666 \times -1.0995356735715 + 0.3333 \times -1.5849625021639 + 0.2 \times -2.3219280948874\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.513043345 + -0.528268002 + -0.4643856189775\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-1.5056969659775\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{1.5056969659775}
+    \]
     \item Find the information gain (IG) from each feature (relationship status, age, education levarianceel and income). Which feature should be chosen at the root of the tree? Show your calculations for the information gain (IG) and explain your choice in a sentence. (Calculate entropy in log2 base and round to 4 decimal places)
     \item  Use the root you found in part (b) to determine the rest of the nodes in the decision tree for the abovariancee data. Draw the full decision tree, i.e., keep splitting the nodes until further splits do not lead to any information gain (you may not need all the features for this). For each split, show your working on why you chose this feature based on information gain.
 \end{enumerate}
