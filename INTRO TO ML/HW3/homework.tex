@@ -3,6 +3,9 @@
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{tikz} % Include this package for drawing trees
+\usetikzlibrary{trees} % Include this library for drawing trees
+\usepackage{enumitem} % Include this package for customizing lists
 
 \begin{document}
 
@@ -173,8 +176,253 @@ status, age, education level and income, you can now build a decision tree to pr
     \text{IG}(\text{relationship status}) = \textbf{0.922076898}
     \]
     \textbf{age}
+    \[
+    \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+    \]
+    age = $\{>25, \leq 25\} = \{9, 6\}$
+    \\ $>25$ = \{low, medium, high\} = \{6, 1, 2\}
+    \\ $ \leq 25 = \{low, \text{medium}, \text{high}\} = \{1, 4, 1\} $
+    \\ \textbf{entropy of phone usage given age:}
+    \[
+    \text{Entropy (Phone Usage} \mid \text{age)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{age} = j)
+    \]
+    Entropy (Phone Usage $\mid$ $>25$):
+    \[
+    \text{Entropy} = -\left(\frac{6}{9} \log_2 \frac{6}{9} + \frac{1}{9} \log_2 \frac{1}{9} + \frac{2}{9} \log_2 \frac{2}{9}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.6666 \times -0.5849625 + 0.1111 \times -3.1699250014423 + 0.2222 \times -2.1699250014423\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.389936002 - 0.352182778 - 0.481983334\right)
+    \]
+    \[
+    \text{Entropy} = -\left(- 1.224319514\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{1.224319514}
+    \]
+    Entropy (Phone Usage $\mid$ $\leq 25$):
+    \[
+    \text{Entropy} = -\left(\frac{1}{6} \log_2 \frac{1}{6} + \frac{4}{6} \log_2 \frac{4}{6} + \frac{1}{6} \log_2 \frac{1}{6}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.1666 \times -2.5849625007212 + 0.6666 \times -0.5849625 + 0.1666 \times -2.5849625007212\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.430827083 - 0.389936002 - 0.430827083\right)
+    \]
+    \[
+    \text{Entropy} = -\left(- 1.251590168\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{1.251590168}
+    \]
+    Entropy (Phone Usage $\mid$ age):
+    \[
+    \text{Entropy (Phone Usage} \mid \text{age)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{age} = j)
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{age)} = \frac{9}{15} \times 1.224319514 + \frac{6}{15} \times 1.251590168
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{age)} = 0.734591708 + 0.500793445
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{age)} = 1.235385153
+    \]
+    information gain:
+    \[
+    \text{IG}(\text{age}) = 1.5057 - 1.235385153
+    \]
+    \[
+    \text{IG}(\text{age}) = \textbf{0.270314847}
+    \]
+    \textbf{education level}
+    \[
+    \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+    \]
+    education level = \{high school, college, University\} = \{4, 5, 6\}
+    \\ high school = \{low, medium, high\} = \{4, 0, 0\}
+    \\ college = \{low, medium, high\} = \{0, 5, 0\}
+    \\ university = \{low, medium, high\} = \{3, 0, 3\}
+    \\ \textbf{entropy of phone usage given education level:}
+    \[
+    \text{Entropy (Phone Usage} \mid \text{education level)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{education level} = j)
+    \]
+    Entropy (Phone Usage $\mid$ high school):
+    \[
+    \text{Entropy} = -\left(\frac{4}{4} \log_2 \frac{4}{4} + \frac{0}{4} \log_2 \frac{0}{4} + \frac{0}{4} \log_2 \frac{0}{4}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(1 \times 0 + 0 \times -\infty + 0 \times -\infty\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0}
+    \]
+    Entropy (Phone Usage $\mid$ university):
+    \[
+    \text{Entropy} = -\left(\frac{3}{6} \log_2 \frac{3}{6} + \frac{0}{6} \log_2 \frac{0}{6} + \frac{3}{6} \log_2 \frac{3}{6}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.5 \times -1 + 0 \times -\infty + 0.5 \times -1\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.5 + 0 + -0.5\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-1\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{1}
+    \]
+    Entropy (Phone Usage $\mid$ college):
+    \[
+    \text{Entropy} = -\left(\frac{0}{5} \log_2 \frac{0}{5} + \frac{5}{5} \log_2 \frac{5}{5} + \frac{0}{5} \log_2 \frac{0}{5}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0 \times -\infty + 1 \times 0 + 0 \times -\infty\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0 + 0 + 0\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0}
+    \]
+    Entropy (Phone Usage $\mid$ education level):
+    \[
+    \text{Entropy (Phone Usage} \mid \text{education level)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{education level} = j)
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{education level)} = \frac{4}{15} \times 0 + \frac{6}{15} \times 1 + \frac{5}{15} \times 0
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{education level)} = 0 + 0.4 + 0
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{education level)} = 0.4
+    \]
+    information gain:
+    \[
+    \text{IG}(\text{education level}) = 1.5057 - 0.4
+    \]
+    \[
+    \text{IG}(\text{education level}) = \textbf{1.1057}
+    \]
+    \textbf{income}
+    \[
+    \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+    \]
+    income = $\{\leq 50K, > 50K\}$ = $\{8, 7\}$
+    \\ $\leq 50K$ = \{low, medium, high\} = \{3, 2, 3\}
+    \\ $> 50K$ = \{low, medium, high\} = \{4, 3, 0\}
+    \\ \textbf{entropy of phone usage given income:}
+    \[
+    \text{Entropy (Phone Usage} \mid \text{income)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{income} = j)
+    \]
+    Entropy (Phone Usage $\mid$ $\leq 50K$):
+    \[
+    \text{Entropy} = -\left(\frac{3}{8} \log_2 \frac{3}{8} + \frac{2}{8} \log_2 \frac{2}{8} + \frac{3}{8} \log_2 \frac{3}{8}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.375 \times -1.415037499 + 0.25 \times -2 + 0.375 \times -1.415037499\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.530639062 + -0.5 + -0.530639062\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-1.561278124\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{1.561278124}
+    \]
+    Entropy (Phone Usage $\mid$ $> 50K$):
+    \[
+    \text{Entropy} = -\left(\frac{4}{7} \log_2 \frac{4}{7} + \frac{3}{7} \log_2 \frac{3}{7} + \frac{0}{7} \log_2 \frac{0}{7}\right)
+    \]
+    \[
+    \text{Entropy} = -\left(0.5714 \times -0.807354922 + 0.4286 \times -1.222392421 + 0 \times -\infty\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.461345669 - 0.523917391 + 0\right)
+    \]
+    \[
+    \text{Entropy} = -\left(-0.985239993\right)
+    \]
+    \[
+    \text{Entropy} = \textbf{0.985239993}
+    \]
+    Entropy (Phone Usage $\mid$ income):
+    \[
+    \text{Entropy (Phone Usage} \mid \text{income)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{income} = j)
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{income)} = \frac{8}{15} \times 1.561278124 + \frac{7}{15} \times 0.985239993
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{income)} = 0.832681666 + 0.459131995
+    \]
+    \[
+    \text{Entropy (Phone Usage} \mid \text{income)} = 1.291813661
+    \]
+    information gain:
+    \[
+    \text{IG}(\text{income}) = 1.5057 - 1.291813661
+    \]
+    \[
+    \text{IG}(\text{income}) = \textbf{0.213886339}
+    \]
+    Final information gains:
+    \[
+    \text{IG}(\text{relationship status}) = \textbf{0.9221}
+    \]
+    \[
+    \text{IG}(\text{age}) = \textbf{0.27031}
+    \]
+    \[
+    \text{IG}(\text{education level}) = \textbf{1.1057}
+    \]
+    \[
+    \text{IG}(\text{income}) = \textbf{0.2139 }
+    \]
+    The feature with the highest information gain is the \textbf{education level}. Therefore, the education level should be chosen at the root of the tree.
+
+
 
     \item  Use the root you found in part (b) to determine the rest of the nodes in the decision tree for the abovariancee data. Draw the full decision tree, i.e., keep splitting the nodes until further splits do not lead to any information gain (you may not need all the features for this). For each split, show your working on why you chose this feature based on information gain.
+    \begin{center}
+        \begin{tikzpicture}[
+          level distance=1.5cm,
+          level 1/.style={sibling distance=4cm},
+          level 2/.style={sibling distance=2cm},
+          edge from parent/.style={draw, thick, -latex}
+        ]
+        
+        \node {education level}
+            child { node {University } 
+                child { node {Class 1} }
+                child { node {Class 2} }
+            }
+            child { node {College}
+                child { node {Feature C} 
+                    child { node {Class 1} }
+                    child { node {Class 3} }
+                }
+                child { node {Class 2} }
+            }
+            child { node {High School}
+                child { node {Feature C} 
+                    child { node {Class 1} }
+                    child { node {Class 3} }
+                }
+                child { node {Class 2} }
+            };
+        
+        \end{tikzpicture}
+        \end{center}
 \end{enumerate}
 \newpage
 \section{Random Forests}
@@ -201,6 +449,316 @@ Consider the data samples in Table 1, which record whether a person gets sick, t
 
     \begin{enumerate}
         \item  Build 3 decision trees using two features out of the three for each tree. Use information gain to decide the feature to split on. Use majority voting if all the samples in a leaf node do not have the same label.
+        \\ Entropy of Getting Sick:
+        \[
+        \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+        \]
+        getting sick = \{yes, no\} = \{4, 4\}
+        \[
+        \text{Entropy} = -\left(\frac{4}{8} \log_2 \frac{4}{8} + \frac{4}{8} \log_2 \frac{4}{8}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0.5 \times -1 + 0.5 \times -1\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.5 + -0.5\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-1\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{1}
+        \]
+        Entropy of Getting Sick given Age:
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Age)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Age} = j)
+        \]
+        Age = \{old, young\} = \{6, 2\}
+        \\ old = \{yes, no\} = \{3, 3\}
+        \\ young = \{yes, no\} = \{1, 1\}
+        \\ \textbf{entropy of getting sick given age:}
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Age)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Age} = j)
+        \]
+        Entropy (Getting Sick $\mid$ old):
+        \[
+        \text{Entropy} = -\left(\frac{3}{6} \log_2 \frac{3}{6} + \frac{3}{6} \log_2 \frac{3}{6}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0.5 \times -1 + 0.5 \times -1\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.5 + -0.5\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-1\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{1}
+        \]
+        Entropy (Getting Sick $\mid$ young):
+        \[
+        \text{Entropy} = -\left(\frac{1}{2} \log_2 \frac{1}{2} + \frac{1}{2} \log_2 \frac{1}{2}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0.5 \times -1 + 0.5 \times -1\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.5 + -0.5\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-1\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{1}
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Age)} = \frac{6}{8} \times 1 + \frac{2}{8} \times 1
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Age)} = 0.75 + 0.25
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Age)} = 1
+        \]
+        information gain:
+        \[
+        \text{IG}(\text{Age}) = 1 - 1
+        \]
+        \[
+        \text{IG}(\text{Age}) = \textbf{0}
+        \]
+        Entropy of Getting Sick given Social Distancing:
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Social Distancing)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Social Distancing} = j)
+        \]
+        Social Distancing = \{yes, no\} = \{4, 4\}
+        \\ yes = \{yes, no\} = \{0, 4\}
+        \\ no = \{yes, no\} = \{4, 0\}
+        \\ \textbf{entropy of getting sick given social distancing:}
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Social Distancing)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Social Distancing} = j)
+        \]
+        Entropy (Getting Sick $\mid$ yes):
+        \[
+        \text{Entropy} = -\left(\frac{0}{4} \log_2 \frac{0}{4} + \frac{4}{4} \log_2 \frac{4}{4}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 \times -\infty + 1 \times 0\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 + 0\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0}
+        \]
+        Entropy (Getting Sick $\mid$ no):
+        \[
+        \text{Entropy} = -\left(\frac{4}{4} \log_2 \frac{4}{4} + \frac{0}{4} \log_2 \frac{0}{4}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(1 \times 0 + 0 \times -\infty\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 + 0\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0}
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Social Distancing)} = \frac{4}{8} \times 0 + \frac{4}{8} \times 0
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Social Distancing)} = 0 + 0
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Social Distancing)} = \textbf{0}
+        \]
+        information gain:
+        \[
+        \text{IG}(\text{Social Distancing}) = 1 - 0
+        \]
+        \[
+        \text{IG}(\text{Social Distancing}) = \textbf{1}
+        \]
+        Entropy of Getting Sick given Hand Washing:
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Hand Washing)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Hand Washing} = j)
+        \]
+        Hand Washing = \{yes, no\} = \{4, 4\}
+        \\ yes = \{yes, no\} = \{3, 1\}
+        \\ no = \{yes, no\} = \{1, 3\}
+        \\ \textbf{entropy of getting sick given hand washing:}
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Hand Washing)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Getting Sick} \mid \text{Hand Washing} = j)
+        \]
+        Entropy (Getting Sick $\mid$ yes):
+        \[
+        \text{Entropy} = -\left(\frac{3}{4} \log_2 \frac{3}{4} + \frac{1}{4} \log_2 \frac{1}{4}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0.75 \times -0.41503749927884 + 0.25 \times -2\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.31127762445913 - 0.5\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.81127762445913\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0.81127762445913}
+        \]
+        Entropy (Getting Sick $\mid$ no):
+        \[
+        \text{Entropy} = -\left(\frac{1}{4} \log_2 \frac{1}{4} + \frac{3}{4} \log_2 \frac{3}{4}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0.25 \times -2 + 0.75 \times -0.41503749927884\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.5 + -0.31127762445913\right)
+        \]
+        \[
+        \text{Entropy} = -\left(-0.81127762445913\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0.81127762445913}
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Hand Washing)} = \frac{4}{8} \times 0.81127762445913 + \frac{4}{8} \times 0.81127762445913
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Hand Washing)} = 0.40563881222957 + 0.40563881222957
+        \]
+        \[
+        \text{Entropy (Getting Sick} \mid \text{Hand Washing)} = 0.81127762445913
+        \]
+        information gain:
+        \[
+        \text{IG}(\text{Hand Washing}) = 1 - 0.81127762445913
+        \]
+        \[
+        \text{IG}(\text{Hand Washing}) = \textbf{0.18872237554087}
+        \]
+        Tree 1: Age and Social Distancing, social distance is chosen as the root node.\\
+        \begin{tikzpicture}[
+            level distance=1.5cm,
+            level 1/.style={sibling distance=10cm},
+            level 2/.style={sibling distance=7cm},
+            level 3/.style={sibling distance=5cm},
+            edge from parent/.style={draw, thick, -latex}
+        ]
+
+        \node {Social Distancing}
+                child { node {Yes}
+                        child { node {Age}
+                                child { node {Old}
+                                        child { node {Getting sick}
+                                        child { node {No (3)} }
+                                }
+                                }
+                                child { node {Young}
+                                        child { node {Getting sick}
+                                        child { node {Yes (1)} }
+                                }
+                                }
+                            }
+                }
+                child { node {No}
+                        child { node {Age}
+                                child { node {Old}
+                                        child { node {Getting sick}
+                                        child { node {Yes (3)} }
+                                }
+                                }
+                                child { node {Young}
+                                        child { node {Getting sick}
+                                        child { node {No (1)} }
+                                }
+                                }
+                        }
+                };
+
+        \end{tikzpicture}
+        \\ For the second tree, we will use the features age and hand washing.hand washing is chosen as the root node.\\
+        \begin{tikzpicture}[
+            level distance=1.5cm,
+            level 1/.style={sibling distance=10cm},
+            level 2/.style={sibling distance=7cm},
+            level 3/.style={sibling distance=5cm},
+            edge from parent/.style={draw, thick, -latex}
+        ]
+        \node {Hand Washing}
+            child { node {Yes}
+            child { node {Age}
+                child { node {Old}
+                child { node {Getting sick}
+                    child { node {Yes (1)} }
+                    child { node {No (2)} }
+                }
+                }
+                child { node {Young}
+                child { node {Getting sick}
+                    child { node {No (1)} }
+                }
+                }
+            }
+            }
+            child { node {No}
+            child { node {Age}
+                child { node {Old}
+                child { node {Getting sick}
+                    child { node {Yes (2)} }
+                    child { node {No (1)} }
+                }
+                }
+                child { node {Young}
+                child { node {Getting sick}
+                    child { node {No (1)} }
+                }
+                }
+            }
+            };
+        \end{tikzpicture}
+        \\ For the third tree, we will use the features social distancing and hand washing. social distancing is chosen as the root node.\\
+        \begin{tikzpicture}[
+            level distance=1.5cm,
+            level 1/.style={sibling distance=10cm},
+            level 2/.style={sibling distance=7cm},
+            level 3/.style={sibling distance=5cm},
+            edge from parent/.style={draw, thick, -latex}
+        ]
+        \node {Social Distancing}
+            child { node {Yes}
+            child { node {Hand Washing}
+                child { node {Yes}
+                child { node {Getting sick}
+                    child { node {No (3)} }
+                }
+                }
+                child { node {No}
+                child { node {Getting sick}
+                    child { node {No (1)} }
+                }
+                }
+            }
+            }
+            child { node {No}
+            child { node {Hand Washing}
+                child { node {Yes}
+                child { node {Getting sick}
+                    child { node {Yes (1)} }
+                }
+                }
+                child { node {No}
+                child { node {Getting sick}
+                    child { node {Yes (3)} }
+                }
+                }
+            }
+            };
+        \end{tikzpicture}
+        
         \item  Given a new data point with the features ($A = \text{old}$, $S = \text{yes}$, $H = \text{no}$), use the trees you learned from part (a) to predict whether this person will get sick.
         \item  Briefly (in 1-2 sentences) comment on the advantage of random forests over decision trees from the perspective of bias-variance trade-off.
     \end{enumerate}
