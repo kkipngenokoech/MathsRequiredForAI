@@ -1338,12 +1338,57 @@ f(x) = Wx + b.
 \begin{enumerate}
     \item 
     Find the Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ for the exponential linear unit, $x_k = \text{ELU}(x_{k-1})$.
+    \\ The ELU function is defined as:
+    \[
+    x_k = \text{ELU}(x_{k-1}) =
+    \begin{cases}
+    x_{k-1} & \text{if } x_{k-1} > 0, \\
+    \alpha(e^{x_{k-1}} - 1) & \text{otherwise}.
+    \end{cases}
+    \]
+    The Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ is:
+    \[
+    \frac{\partial x_k}{\partial x_{k-1}} =
+    \begin{cases}
+    1 & \text{if } x_{k-1} > 0, \\
+    \alpha e^{x_{k-1}} & \text{otherwise}.
+    \end{cases}
+    \]
     \item
     Find the Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ for the Dense layer, $x_k = Wx_{k-1} + b$.
+    \\ The Dense layer is defined as:
+    \[
+    x_k = Wx_{k-1} + b.
+    \]
+    The Jacobian $\frac{\partial x_k}{\partial x_{k-1}}$ is:
+    \[
+    \frac{\partial x_k}{\partial x_{k-1}} = W.
+    \]
     \item 
-
     Find the Jacobian $\frac{\partial x_k}{\partial b}$ for the Dense layer, $x_k = Wx_{k-1} + b$.
+    \\ The dense layer is defined as:
+    \[
+    x_k = Wx_{k-1} + b.
+    \]
+    The Jacobian $\frac{\partial x_k}{\partial b}$ is:
+    \[
+    \frac{\partial x_k}{\partial b} = 1.
+    \]
     \item Since $W$ is two-dimensional, the Jacobian $\frac{\partial x_k}{\partial W}$ can only be expressed by matrix-vector multiplications if we flatten it to a vector. Instead, to preserve its dimension, find the gradient $\frac{\partial x_k[a]}{\partial W[b,c]}$ for indices $a$, $b$, $c$ (so that we can write $\frac{\partial x_k}{\partial W}$ as a 3-dimensional tensor). Here, $a$ is an index of $x_k$, $b$ indexes a row of $W$, and $c$ indexes a column of $W$.
+    \[
+    \frac{\partial x_k[a]}{\partial W[b,c]} = \frac{\partial}{\partial W[b,c]} \left( Wx_{k-1} + b \right)[a]
+    \]
+    \[
+    = \frac{\partial}{\partial W[b,c]} \left( \sum_{i=1}^D W_{a,i} x_{k-1}[i] + b[a] \right)
+    \]
+    \[
+    = x_{k-1}[c] \cdot \delta_{a,b}
+    \]
+    \[
+    = x_{k-1}[c] \cdot \delta_{a,b}
+    \]
+    where $\delta_{a,b}$ is the Kronecker delta function.
+    
 \end{enumerate}
 
 \subsection*{6.2 Module Implementation [11 points]}
