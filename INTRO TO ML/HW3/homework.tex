@@ -1102,7 +1102,32 @@ The updated and normalized weights are shown in Table 3.
 \end{table}
 
 \item Combine the new classifier with the classifier that you obtained in part (a). Specify the label $y \in \{-1, 1\}$ predicted by this combined classifier for each data point. Do you observe any change in the prediction, compared to the prediction from only using part (a)'s classifier?
-
+\\ The combined classifier is:
+\[
+f_2(x) = \beta_1 h_1(x) + \beta_2 h_2(x)
+\]
+$\beta_1 = 1 \text{ and } \beta_2 = 0.2924812503605781$
+The predictions for each data point are as follows:
+\begin{table}[h!]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    \textbf{Point} & \textbf{Coordinates} & \textbf{$h_1(x)$} & \textbf{$h_2(x)$} & \textbf{Combined Classifier} \\ \hline
+    1 & $(-1, 1)$ & $-1$ & $\textbf{1}$ & $-1$ \\ \hline
+    2 & $(0, 1)$ & $-1$ & $-1$ & $-1$ \\ \hline
+    3 & $(1, 1)$ & $-1$ & $-1$ & $-1$ \\ \hline
+    4 & $(-1, 0)$ & $-1$ & $\textbf{1}$ & $-1$ \\ \hline
+    5 & $(0, 0)$ & $\textbf{-1}$ & $1$ & $\textbf{-1}$ \\ \hline
+    6 & $(1, 0)$ & $1$ & $\textbf{-1}$ & $1$ \\ \hline
+    7 & $(-1, -1)$ & $-1$ & $\textbf{1}$ & $-1$ \\ \hline
+    8 & $(0, -1)$ & $1$ & $1$ & $1$ \\ \hline
+    9 & $(1, -1)$ & $\textbf{1}$ & $-1$ & $\textbf{1}$ \\ \hline
+    10 & $(1, -2)$ & $1$ & $1$ & $1$ \\ \hline
+    \end{tabular}
+    \caption{Predictions from $h_1(x)$, $h_2(x)$, and the combined classifier.}
+    \label{table:combined_classifier}
+\end{table}
+\\ The predictions for the combined classifier are the same as the predictions from the first classifier. The second classifier did not change the predictions for the data points. This is because the second classifier did not improve the performance of the model, and the weights of the misclassified points were not updated significantly.
 \item  If we continue adding more classifiers, each with error less than $0.5$, how does the training error of the combined classifier $f_T(x)$ change? Briefly explain your answer in 1-2 sentences.
 \\\\ The training error of the combined classifier $f_T(x)$ will decrease as we add more classifiers with error less than 0.5. The AdaBoost algorithm assigns higher weights to the misclassified points, which helps to focus on the difficult examples and improve the overall performance of the model.
 \newpage
