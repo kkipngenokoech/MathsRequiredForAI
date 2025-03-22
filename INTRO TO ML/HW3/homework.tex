@@ -930,8 +930,27 @@ we count the contribution of each point to the error. The error is the sum of th
     \item Predict $y = 1$ if $-x_1 + x_2 \leq 0.5$:
     \\ There are three misclassified points: $(1, -1)$, $(-1, -1)$, and $(1, 1)$. = 0.3
 \end{enumerate}
-
+The decision boundary that gives the lowest error is the one that predicts $y = 1$ if $-x_1 + x_2 \leq -0.5$.
     \item Compute the error $\epsilon_1$ and the contribution $\beta_1$ of the decision boundary that you chose in part (a) above.
+    \\ The error is the sum of the weights of the misclassified points. The error is 0.2. The contribution is:
+    \[
+    \beta_1 = \frac{1}{2} \log_2\left(\frac{1 - \epsilon_1}{\epsilon_1}\right)
+    \]
+    \[
+    \beta_1 = \frac{1}{2} \log_2\left(\frac{1 - 0.2}{0.2}\right)
+    \]
+    \[
+    \beta_1 = \frac{1}{2} \log_2\left(\frac{0.8}{0.2}\right)
+    \]
+    \[
+    \beta_1 = \frac{1}{2} \log_2\left(4\right)
+    \]
+    \[
+    \beta_1 = \frac{1}{2} \times 2
+    \]
+    \[
+    \beta_1 = 1
+    \]
 
 \item  Compute the updated and normalized weights $w_2(n)$ of each of the data points as follows:
 
