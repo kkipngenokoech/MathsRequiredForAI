@@ -955,6 +955,7 @@ Consider the training dataset with $N = 10$ points and two-dimensional features 
 \item  If we continue adding more classifiers, each with error less than $0.5$, how does the training error of the combined classifier $f_T(x)$ change? Briefly explain your answer in 1-2 sentences.
 
 \newpage
+
 \section{Neural Networks}
 Below is a deep network with inputs $x_1, x_2$. The internal nodes and activation functions are as shown in the figure and equations below. All variables are scalar values, and $\exp(x)$ refers to the function $e^x$. The activation functions of the nodes $h_1, h_2, h_3$ are ReLU (i.e., $r_1 = \max(h_1, 0)$ etc.), for node $s_1$ we have $s_1 = \max(r_2, r_3)$, and for the other nodes:
 \[
@@ -968,13 +969,134 @@ y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}, \quad y_2 = \frac{\exp(s_1)}{\exp
 \end{figure}
 \begin{enumerate}
     \item \textbf{Forward propagation}Now,  Given $x_1 = 1$, $x_2 = -2$, $w_{11} = 6$, $w_{12} = 2$, $w_{21} = 4$, $w_{22} = 7$, $w_{31} = 5$, $w_{32} = 1$, compute the values of the internal nodes (shown in the table below). You may leave $e$ in your answer.
+    \\ $h_1:$
+    \[
+    h_1 = x_1 \cdot w_{11} + x_2 \cdot w_{12}
+    \]
+    \[
+    h_1 = 1 \cdot 6 + -2 \cdot 2 = 6 - 4 = 2
+    \]
+    \[
+    h_1 = \textbf{2}
+    \]
+    $h_2:$
+    \[
+    h_2 = x_1 \cdot w_{21} + x_2 \cdot w_{22}
+    \]
+    \[
+    h_2 = 1 \cdot 4 + -2 \cdot 7 = 4 - 14 = -10
+    \]
+    \[
+    h_2 = \textbf{-10}
+    \]
+    $h_3:$
+    \[
+    h_3 = x_1 \cdot w_{31} + x_2 \cdot w_{32}
+    \]
+    \[
+    h_3 = 1 \cdot 5 + -2 \cdot 1 = 5 - 2 = 3
+    \]
+    \[
+    h_3 = \textbf{3}
+    \]
+    $r_1:$
+    \[
+    r_1 = \max(h_1, 0)
+    \]
+    \[
+    r_1 = \max(2, 0) = 2
+    \]
+    \[
+    r_1 = \textbf{2}
+    \]
+    $r_2:$
+    \[
+    r_2 = \max(h_2, 0)
+    \]
+    \[
+    r_2 = \max(-10, 0) = 0
+    \]
+    \[
+    r_2 = \textbf{0}
+    \]
+    $r_3:$
+    \[
+    r_3 = \max(h_3, 0)
+    \]
+    \[
+    r_3 = \max(3, 0) = 3
+    \]
+    \[
+    r_3 = \textbf{3}
+    \]
+    $s_1:$
+    \[
+    s_1 = \max(r_2, r_3)
+    \]
+    \[
+    s_1 = \max(0, 3) = 3
+    \]
+    \[
+    s_1 = \textbf{3}
+    \]
+    $y_1:$
+    \[
+    y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}
+    \]
+    \[
+    y_1 = \frac{\exp(2)}{\exp(2) + \exp(3)}
+    \]
+    \[
+    y_1 = \frac{7.38905609893065}{7.38905609893065 + 20.0855369231877}
+    \]
+    \[
+    y_1 = \frac{7.38905609893065}{27.47459302211835}
+    \]
+    \[
+    y_1 = 0.2689414213699951
+    \]
+    \[
+    y_1 = \textbf{0.2689414213699951}
+    \]
+    $y_2:$
+    \[
+    y_2 = \frac{\exp(s_1)}{\exp(r_1) + \exp(s_1)}
+    \]
+    \[
+    y_2 = \frac{\exp(3)}{\exp(2) + \exp(3)}
+    \]
+    \[
+    y_2 = \frac{20.0855369231877}{7.38905609893065 + 20.0855369231877}
+    \]
+    \[
+    y_2 = \frac{20.0855369231877}{27.47459302211835}
+    \]
+    \[
+    y_2 = 0.7310585786300049
+    \]
+    \[
+    y_2 = \textbf{0.7310585786300049}
+    \]
+    $z:$
+    \[
+    z = y_1 + y_2
+    \]
+    \[
+    z = 0.2689414213699951 + 0.7310585786300049
+    \]
+    \[
+    z = 1
+    \]
+    \[
+    z = \textbf{1}
+    \]
 
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
 \hline
 $h_1$ & $h_2$ & $h_3$ & $r_1$ & $r_2$ & $r_3$ & $s_1$ & $y_1$ & $y_2$ & $z$ \\ \hline
- & & & & & & & & & \\ \hline
+2 & -10 & 3 & 2 & 0 & 3 & 3 & 0.2689414213699951 & 0.7310585786300049 & 1 \\ \hline
 \end{tabular}
 \caption{Values of internal nodes after forward propagation.}
 \label{table:forward}
