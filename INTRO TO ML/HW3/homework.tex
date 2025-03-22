@@ -1116,20 +1116,129 @@ $h_1$ & $h_2$ & $h_3$ & $r_1$ & $r_2$ & $r_3$ & $s_1$ & $y_1$ & $y_2$ & $z$ \\ \
 
 \item \textbf{Backpropagation}
 Compute the gradient expressions shown in the table below analytically. The answer should be an expression that may include any of the nodes in the network ($x_1, x_2, h_1, h_2, h_3, r_1, r_2, r_3, s_1, y_1, y_2, z$) or weights ($w_{11}, w_{12}, w_{21}, w_{22}, w_{31}, w_{32}$).
+\\ final forward expression:
+\[
+z = y_1 + y_2
+\]
+To find the gradient of $z$ with respect to $y_1$ and $y_2$, we need to find the partial derivatives of $z$ with respect to $y_1$ and $y_2$:
+\[
+\frac{\partial z}{\partial y_1} = \textbf{1}
+\]
+\[
+\frac{\partial z}{\partial y_2} = \textbf{1}
+\]
+The second step is to find the gradient of $y_1$ and $y_2$ with respect to $r_1$ and $s_1$:
+\\ The forward expressions for $y_1$ and $y_2$ are:
+\[
+y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}
+\]
+\[
+y_2 = \frac{\exp(s_1)}{\exp(r_1) + \exp(s_1)}
+\]
+To find the gradient of $y_1$ with respect to $r_1$ and $s_1$, we need to find the partial derivatives of $y_1$ with respect to $r_1$ and $s_1$:
+\[
+\frac{\partial y_1}{\partial r_1} = \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}
+\]
+\[
+\frac{\partial y_1}{\partial s_1} = \frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}
+\]
+The next step is to find the gradient of $h_1$ with respect to $w_{12}$:
+\\ The forward expression for $h_1$ is: 
+\[
+h_1 = x_1 \cdot w_{11} + x_2 \cdot w_{12}
+\]
+To find the gradient of $h_1$ with respect to $w_{12}$, we need to find the partial derivative of $h_1$ with respect to $w_{12}$:
+\[
+\frac{\partial h_1}{\partial w_{12}} = x_2
+\]
+The next step is to find the gradient of $h_1$ with respect to $x_1$:
+\\ The forward expression for $h_1$ is:
+\[
+h_1 = x_1 \cdot w_{11} + x_2 \cdot w_{12}
+\]
+To find the gradient of $h_1$ with respect to $x_1$, we need to find the partial derivative of $h_1$ with respect to $x_1$:
+\[
+\frac{\partial h_1}{\partial x_1} = w_{11}
+\]
+The next step is to find the gradient of $r_1$ with respect to $h_1$:
+\\ The forward expression for $r_1$ is:
+\[
+r_1 = \max(h_1, 0)
+\]
+To find the gradient of $r_1$ with respect to $h_1$, we need to find the partial derivative of $r_1$ with respect to $h_1$:
+\[
+\frac{\partial r_1}{\partial h_1} = \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases}
+\]
+The next step is to find the gradient of $y_1$ with respect to $r_1$:
+\\ The forward expression for $y_1$ is:
+\[
+y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}
+\]
+To find the gradient of $y_1$ with respect to $r_1$, we need to find the partial derivative of $y_1$ with respect to $r_1$:
+\[
+\frac{\partial y_1}{\partial r_1} = \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}
+\]
+The next step is to find the gradient of $y_1$ with respect to $s_1$:
+\\ The forward expression for $y_1$ is:
+\[
+y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}
+\]
+To find the gradient of $y_1$ with respect to $s_1$, we need to find the partial derivative of $y_1$ with respect to $s_1$:
+\[
+\frac{\partial y_1}{\partial s_1} = \frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}
+\]
+The next step is to find the gradient of $z$ with respect to $y_1$:
+\\ The forward expression for $z$ is:
+\[
+z = y_1 + y_2
+\]
+To find the gradient of $z$ with respect to $y_1$, we need to find the partial derivative of $z$ with respect to $y_1$:
+\[
+\frac{\partial z}{\partial y_1} = 1
+\]
+The next step is to find the gradient of $z$ with respect to $y_2$:
+\\ The forward expression for $z$ is:
+\[
+z = y_1 + y_2
+\]
+To find the gradient of $z$ with respect to $y_2$, we need to find the partial derivative of $z$ with respect to $y_2$:
+\[
+\frac{\partial z}{\partial y_2} = 1
+\]
+The next step is to find the gradient of $z$ with respect to $x_1$:
+\\ The forward expression for $z$ is:
+\[
+z = y_1 + y_2
+\]
+To find the gradient of $z$ with respect to $x_1$, we need to find the partial derivative of $z$ with respect to $x_1$:
+\[
+\frac{\partial z}{\partial x_1} = \frac{\partial z}{\partial y_1} \cdot \frac{\partial y_1}{\partial r_1} \cdot \frac{\partial r_1}{\partial h_1} \cdot \frac{\partial h_1}{\partial x_1} + \frac{\partial z}{\partial y_2} \cdot \frac{\partial y_2}{\partial s_1} \cdot \frac{\partial s_1}{\partial h_2} \cdot \frac{\partial h_2}{\partial x_1}
+\]
+\[
+\frac{\partial z}{\partial x_1} = 1 \cdot \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{11} + 1 \cdot \frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_2 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{21}
+\]
+To find the gradient of $z$ with respect to $r_2$, we need to find the partial derivative of $z$ with respect to $r_2$:
+\[
+\frac{\partial z}{\partial r_2} = \frac{\partial z}{\partial y_1} \cdot \frac{\partial y_1}{\partial r_1} \cdot \frac{\partial r_1}{\partial h_1} \cdot \frac{\partial h_1}{\partial x_2} + \frac{\partial z}{\partial y_2} \cdot \frac{\partial y_2}{\partial s_1} \cdot \frac{\partial s_1}{\partial h_2} \cdot \frac{\partial h_2}{\partial x_2}
+\]
+\[
+\frac{\partial z}{\partial r_2} = 1 \cdot \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{12} + 1 \cdot \frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_2 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{22}
+\]
+
 
 \begin{table}[h!]
 \centering
 \begin{tabular}{|c|c|}
 \hline
 \textbf{Gradient} & \textbf{Expression} \\ \hline
-$\frac{\partial h_1}{\partial w_{12}}$ & \\ \hline
-$\frac{\partial h_1}{\partial x_1}$ & \\ \hline
-$\frac{\partial r_1}{\partial h_1}$ & \\ \hline
-$\frac{\partial y_1}{\partial r_1}$ & \\ \hline
-$\frac{\partial y_1}{\partial s_1}$ & \\ \hline
-$\frac{\partial z}{\partial y_1}$ & \\ \hline
-$\frac{\partial z}{\partial x_1}$ & \\ \hline
-$\frac{\partial s_1}{\partial r_2}$ & \\ \hline
+$\frac{\partial h_1}{\partial w_{12}}$ & $x_2$ \\ \hline
+$\frac{\partial h_1}{\partial x_1}$ & $w_{11}$ \\ \hline
+$\frac{\partial r_1}{\partial h_1}$ & $\begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases}$ \\ \hline
+$\frac{\partial y_1}{\partial r_1}$ & $\frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}$ \\ \hline
+$\frac{\partial y_1}{\partial s_1}$ & $\frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}$ \\ \hline
+$\frac{\partial z}{\partial y_1}$ & $1$ \\ \hline
+$\frac{\partial z}{\partial x_1}$ & $1 \cdot \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{11}$ \\ \hline
+$\frac{\partial s_1}{\partial r_2}$ & $\begin{cases} 1 & \text{if } r_2 > r_3 \\ 0 & \text{otherwise} \end{cases}$ \\ \hline
 \end{tabular}
 \caption{Gradient expressions for backpropagation.}
 \label{table:gradients}
