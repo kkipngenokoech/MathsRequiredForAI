@@ -95,7 +95,9 @@ class Sequential:
         np.array
             Batch predictions; should have shape (batch, num_classes).
         """
-        raise NotImplementedError()
+        for module in self.modules:
+            X = module.forward(X, train)
+        return self.loss.forward(X, train)
 
     def backward(self, y):
         """Model backwards pass.
@@ -105,7 +107,11 @@ class Sequential:
         y : np.array
             True labels.
         """
-        raise NotImplementedError()
+        grad = self.loss.backward(y)
+        for module in reversed(self.modules):
+            grad = module.backward(grad)
+        self.optimizer.apply_gradients(self.params)
+        return grad
 
     def train(self, dataset):
         """Fit model on dataset for a single epoch.
@@ -127,7 +133,14 @@ class Sequential:
             [0] Mean train loss during this epoch.
             [1] Mean train accuracy during this epoch.
         """
-        raise NotImplementedError()
+        loss = 0
+        accuracy = 0
+        for X, y in dataset:
+            pred = self.forward(X)
+            loss += categorical_cross_entropy(pred, y)
+            accuracy += categorical_accuracy(pred, y)
+            self.backward(y)
+        return loss / len(dataset), accuracy / len(dataset)
 
     def test(self, dataset):
         """Compute test/validation loss for dataset.
@@ -143,4 +156,10 @@ class Sequential:
             [0] Mean test loss.
             [1] Test accuracy.
         """
-        raise NotImplementedError()
+        loss = 0
+        accuracy = 0
+        for X, y in dataset:
+            pred = self.forward(X, train=False)
+            loss += categorical_cross_entropy(pred, y)
+            accuracy += categorical_accuracy(pred, y)
+        return loss / len(dataset), accuracy / len(dataset)

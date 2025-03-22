@@ -83,7 +83,7 @@ class ELU(Module):
         np.array
             Output of this activation function x_k = f_k(., x_{k-1}).
         """
-        raise NotImplementedError()
+        return np.where(x > 0, x, self.alpha * (np.exp(x) - 1))
 
     def backward(self, grad):
         """Backward propogation for ELU.
@@ -108,7 +108,7 @@ class ELU(Module):
             = dL/dx_k diag(1 * 1_(x > 0) + alpha * e^x) 1_(x <= 0))
             = 1 * 1_(x > 0) + alpha * e^x) 1_(x <= 0) * dL/dx_k
         """
-        dLdx = None
+        dLdx = np.where(self.x > 0, 1, self.alpha * np.exp(self.x)) * grad
         assert(np.shape(dLdx) == np.shape(self.x))
         return dLdx
 
@@ -126,9 +126,10 @@ class Dense(Module):
 
     def __init__(self, dim_in, dim_out):
 
-        # TODO
-        W = None
-        b = None
+        limit = np.sqrt(6 / (dim_in + dim_out))
+        W = np.random.uniform(-limit, limit, (dim_in, dim_out))
+        b = np.zeros(dim_out)
+       
 
         self.trainable_weights = [Variable(W), Variable(b)]
 
@@ -157,7 +158,7 @@ class Dense(Module):
         """
         self.x = x
         W, b = self.trainable_weights
-        raise NotImplementedError()
+        return np.dot(x, W.value) + b.value
 
     def backward(self, grad):
         """Backward propagation for a Dense layer.
@@ -196,13 +197,11 @@ class Dense(Module):
         """
         W, b = self.trainable_weights
         batch = self.x.shape[0]
-        # TODO
-        # W.grad = dL/dW_k = ?
-        W.grad = None
-        # b.grad = dL/db_k = ?
-        b.grad = None
-        # dx = dL/dx_{k-1} = ?
-        dx = None
+        # !TODO
+        W.grad = np.dot(self.x.T, grad) / batch
+        b.grad = np.sum(grad, axis=0) / batch
+        dx = np.dot(grad, W.value.T)
+      
 
         assert(np.shape(self.x) == np.shape(dx))
         assert(np.shape(W.value) == np.shape(W.grad))

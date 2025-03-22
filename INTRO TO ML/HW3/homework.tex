@@ -872,7 +872,6 @@ Consider the data samples in Table 1, which record whether a person gets sick, t
 \newpage
 \section{Adaboost}
 Recall the AdaBoost algorithm for classification of a training dataset $(x_n, y_n)$ for $n = 1, \dots, N$ and $y \in \{-1, 1\}$. AdaBoost sequentially combines $T$ weak classifiers $h_1(x), h_2(x), \dots, h_T(x)$ to build one strong classifier $\text{sign}(f_T(x))$. The steps of the algorithm are as follows:
-
 \begin{itemize}
     \item \textbf{Initialize the weights:} $w_1(n) = \frac{1}{N}$, for all points $n = 1, 2, \dots, N$.
     \item \textbf{For $t = 1, \dots, T$:}
@@ -916,13 +915,21 @@ Consider the training dataset with $N = 10$ points and two-dimensional features 
     \item  Predict $y = 1$ if $-x_1 + x_2 \leq 0.5$.
 \end{enumerate}
 
-\begin{figure}[h!]
+\begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{adaboost2.png}
     \caption{Primal Formulation of SVM}
     \label{fig:primal}
 \end{figure}
-
+we count the contribution of each point to the error. The error is the sum of the weights of the misclassified points. The error for each decision boundary is as follows:
+\begin{enumerate}
+    \item Predict $y = 1$ if $x_2 \leq 0.5$:
+    \\ there are three points that are misclassified: $(1, -1)$, $(-1, -1)$, and $(0, -1)$. = 0.3
+    \item Predict $y = 1$ if $-x_1 + x_2 \leq -0.5$:
+    \\  Ther are two misclassified points: $(1, -1)$ and $(0, 0)$. = 0.2
+    \item Predict $y = 1$ if $-x_1 + x_2 \leq 0.5$:
+    \\ There are three misclassified points: $(1, -1)$, $(-1, -1)$, and $(1, 1)$. = 0.3
+\end{enumerate}
 
     \item Compute the error $\epsilon_1$ and the contribution $\beta_1$ of the decision boundary that you chose in part (a) above.
 
