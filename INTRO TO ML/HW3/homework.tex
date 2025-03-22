@@ -953,26 +953,68 @@ The decision boundary that gives the lowest error is the one that predicts $y = 
     \]
 
 \item  Compute the updated and normalized weights $w_2(n)$ of each of the data points as follows:
-
+\\ The weight update formula is:
+\[
+w_{t+1}(n) \propto w_t(n) \cdot 2^{-\beta_t y_n h_t(x_n)}
+\]
+where:
+\begin{itemize}
+    \item $w_t(n)$ is the weight of the data point $n$ at iteration $t$.
+    \item $\beta_t$ is the contribution of the weak classifier at iteration $t$.
+    \item $y_n$ is the true label of the data point $n$.
+    \item $h_t(x_n)$ is the prediction of the weak classifier at iteration $t$ for the data point $n$.
+\end{itemize}
 \begin{table}[h!]
-\centering
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{n} & \textbf{Coordinates} & \textbf{$w_2(n)$} \\ \hline
-1. & $(-1, 1)$ & \\ \hline
-2. & $(0, 1)$ & \\ \hline
-3. & $(1, 1)$ & \\ \hline
-4. & $(-1, 0)$ & \\ \hline
-5. & $(0, 0)$ & \\ \hline
-6. & $(1, 0)$ & \\ \hline
-7. & $(-1, -1)$ & \\ \hline
-8. & $(0, -1)$ & \\ \hline
-9. & $(1, -1)$ & \\ \hline
-10. & $(1, -2)$ & \\ \hline
-\end{tabular}
-\caption{}
-\label{table:weights}
+    \centering
+    \begin{tabular}{|c|c|c|}
+    \hline
+    \textbf{n} & \textbf{Coordinates} & \textbf{$w_2(n)$} \\ \hline
+    1. & $(-1, 1)$ & 0.0625 \\ \hline
+    2. & $(0, 1)$ & 0.0625\\ \hline
+    3. & $(1, 1)$ & 0.0625\\ \hline
+    4. & $(-1, 0)$ & 0.0625 \\ \hline
+    5. & $(0, 0)$ & 0.25 \\ \hline
+    6. & $(1, 0)$ & 0.0625 \\ \hline
+    7. & $(-1, -1)$ & 0.0625 \\ \hline
+    8. & $(0, -1)$ & 0.0625 \\ \hline
+    9. & $(1, -1)$ & 0.25 \\ \hline
+    10. & \((1, -2)\) & 0.0625 \\ \hline
+    \end{tabular}
+    \caption{Weights for updated data points.}
+    \label{table:weights}
 \end{table}
+To update the weights, we use the following formula:
+\[
+w_{t+1}(n) \propto w_t(n) \cdot 2^{-\beta_t y_n h_t(x_n)}
+\]
+For the correctly classified points, the weights are updated as:
+\[
+w_{t+1}(n) = w_t(n) \cdot 2^{-\beta_t}
+\]
+\[
+w_{t+1}(n) = \frac{1}{10} \cdot 2^{-1} = \frac{1}{10} \cdot \frac{1}{2} = \frac{1}{20} = 0.05
+\]
+For the misclassified points, the weights are updated as:
+\[
+w_{t+1}(n) = w_t(n) \cdot 2^{\beta_t}
+\]
+\[
+w_{t+1}(n) = \frac{1}{10} \cdot 2^{1} = \frac{1}{10} \cdot 2 = \frac{2}{10} = 0.2
+\]
+To normalize the weights, we divide each weight by the sum of all weights:
+\[
+\sum_{n=1}^{10} w_{t+1}(n) = 8 \times 0.05 + 2 \times 0.2 = 0.4 + 0.4 = 0.8
+\]
+For each weight, we divide by 0.8 to normalize, the correctly classified points:
+\[
+\frac{0.05}{0.8} = \frac{1}{20} = 0.0625
+\]
+The misclassified points:
+\[
+\frac{0.2}{0.8} = \frac{1}{4} = 0.25
+\]
+The updated and normalized weights are shown in Table 2.
+
 
 \item Suppose you are given one more weak classifier that predicts $y = 1$ if $1.5x_1 + x_2 \leq 0.5$, as shown in the figure below. Compute the contribution $\beta_2$ of this classifier for the updated set of weights $w_2(n)$. Use the approximation $\log_2 3 \approx 1.6$.
 
