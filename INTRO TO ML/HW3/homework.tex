@@ -918,7 +918,6 @@ Consider the training dataset with $N = 10$ points and two-dimensional features 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{adaboost2.png}
-    \caption{Primal Formulation of SVM}
     \label{fig:primal}
 \end{figure}
 we count the contribution of each point to the error. The error is the sum of the weights of the misclassified points. The error for each decision boundary is as follows:
@@ -1017,11 +1016,34 @@ The updated and normalized weights are shown in Table 2.
 
 
 \item Suppose you are given one more weak classifier that predicts $y = 1$ if $1.5x_1 + x_2 \leq 0.5$, as shown in the figure below. Compute the contribution $\beta_2$ of this classifier for the updated set of weights $w_2(n)$. Use the approximation $\log_2 3 \approx 1.6$.
+\\ The number of misclassified points is 4. The error is:
+\[
+\epsilon_2 = \frac{4}{10} = 0.4
+\]
+The contribution is:
+\[
+\beta_2 = \frac{1}{2} \log_2\left(\frac{1 - \epsilon_2}{\epsilon_2}\right)
+\]
+\[
+\beta_2 = \frac{1}{2} \log_2\left(\frac{1 - 0.4}{0.4}\right)
+\]
+\[
+\beta_2 = \frac{1}{2} \log_2\left(\frac{0.6}{0.4}\right)
+\]
+\[
+\beta_2 = \frac{1}{2} \log_2\left(1.5\right)
+\]
+\[
+\beta_2 = \frac{1}{2} \times 0.5849625007211562
+\]
+\[
+\beta_2 = 0.2924812503605781
+\]
 
 \item Combine the new classifier with the classifier that you obtained in part (a). Specify the label $y \in \{-1, 1\}$ predicted by this combined classifier for each data point. Do you observe any change in the prediction, compared to the prediction from only using part (a)'s classifier?
 
 \item  If we continue adding more classifiers, each with error less than $0.5$, how does the training error of the combined classifier $f_T(x)$ change? Briefly explain your answer in 1-2 sentences.
-
+\\\\ The training error of the combined classifier $f_T(x)$ will decrease as we add more classifiers with error less than 0.5. The AdaBoost algorithm assigns higher weights to the misclassified points, which helps to focus on the difficult examples and improve the overall performance of the model.
 \newpage
 
 \section{Neural Networks}
@@ -1032,7 +1054,7 @@ y_1 = \frac{\exp(r_1)}{\exp(r_1) + \exp(s_1)}, \quad y_2 = \frac{\exp(s_1)}{\exp
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{Neural.png}
-    \caption{Primal Formulation of SVM}
+
     \label{fig:primal}
 \end{figure}
 \begin{enumerate}
