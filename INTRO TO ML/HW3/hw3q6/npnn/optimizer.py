@@ -26,7 +26,9 @@ class SGD(Optimizer):
         params : Variable[]
             List of parameters that the gradients correspond to.
         """
-        return [param - self.learning_rate * param.grad for param in params]
+        # return [param - self.learning_rate * param.grad for param in params]
+        for param in params:
+            param.value -= self.learning_rate * param.grad
 
 
 class Adam(Optimizer):

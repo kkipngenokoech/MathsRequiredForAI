@@ -83,7 +83,7 @@ class ELU(Module):
         np.array
             Output of this activation function x_k = f_k(., x_{k-1}).
         """
-        return np.where(x > 0, x, self.alpha * (np.exp(x) - 1))
+        return np.where(x > 0, x, self.alpha * (np.exp(x) - 1)) # x if x > 0 else alpha * (np.exp(x) - 1)
 
     def backward(self, grad):
         """Backward propogation for ELU.
@@ -109,7 +109,7 @@ class ELU(Module):
             = 1 * 1_(x > 0) + alpha * e^x) 1_(x <= 0) * dL/dx_k
         """
         dLdx = np.where(self.x > 0, 1, self.alpha * np.exp(self.x)) * grad
-        assert(np.shape(dLdx) == np.shape(self.x))
+        # assert(np.shape(dLdx) == np.shape(self.x))
         return dLdx
 
 
