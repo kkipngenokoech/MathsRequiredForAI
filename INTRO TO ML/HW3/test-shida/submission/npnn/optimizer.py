@@ -6,28 +6,13 @@ from .base import Optimizer
 
 
 class SGD(Optimizer):
-    """Simple SGD optimizer.
-
-    Parameters
-    ----------
-    learning_rate : float
-        SGD learning rate.
-    """
-
     def __init__(self, learning_rate=0.01):
         self.learning_rate = learning_rate
 
     def apply_gradients(self, params):
-        """Apply gradients to parameters.
-
-        Parameters
-        ----------
-        params : Variable[]
-            List of parameters that the gradients correspond to.
-        """
         for param in params:
-            param.value -= self.learning_rate * param.grad
-
+            if param.grad is not None:
+                param.value -= self.learning_rate * param.grad
 
 class Adam(Optimizer):
     """Adam (Adaptive Moment) optimizer.

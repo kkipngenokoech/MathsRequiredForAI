@@ -48,75 +48,41 @@ def categorical_accuracy(pred, labels):
 
 
 class Sequential:
-    """Sequential neural network model.
-
-    Parameters
-    ----------
-    modules : Module[]
-        List of modules; used to grab trainable weights.
-    loss : Module
-        Final output activation and loss function.
-    optimizer : Optimizer
-        Optimization policy to use during training.
-    """
-
     def __init__(self, modules, loss=None, optimizer=None):
+        # Check types
         for module in modules:
-            assert(isinstance(module, Module))
-            
+            assert isinstance(module, Module)
+        
         if loss is not None:
-            assert(isinstance(loss, Module))
+            assert isinstance(loss, Module)
         if optimizer is not None:
-            assert(isinstance(optimizer, Optimizer))
-
+            assert isinstance(optimizer, Optimizer)
+            
         self.modules = modules
         self.loss = loss
-
+        
+        # Collect trainable parameters
         self.params = []
         for module in modules:
             self.params += module.trainable_weights
-
+            
         self.optimizer = optimizer
         if optimizer is not None:
             self.optimizer.initialize(self.params)
 
     def forward(self, X, train=True):
-        """Model forward pass.
-
-        Parameters
-        ----------
-        X : np.array
-            Input data
-
-        Keyword Args
-        ------------
-        train : bool
-            Indicates whether we are training or testing.
-
-        Returns
-        -------
-        np.array
-            Batch predictions; should have shape (batch, num_classes).
-        """
         # Forward pass through each module
         for module in self.modules:
             X = module.forward(X, train)
             
-        # Forward pass through loss function if provided
+        # Forward pass through loss if provided
         if self.loss is not None:
             X = self.loss.forward(X, train)
             
         return X
 
     def backward(self, y):
-        """Model backwards pass.
-
-        Parameters
-        ----------
-        y : np.array
-            True labels.
-        """
-        # Backward pass through loss function
+        # Backward pass through loss
         if self.loss is not None:
             grad = self.loss.backward(y)
         else:
@@ -126,68 +92,47 @@ class Sequential:
         for module in reversed(self.modules):
             grad = module.backward(grad)
             
-        # Apply gradients to parameters using optimizer
+        # Apply gradients if optimizer is provided
         if self.optimizer is not None:
             self.optimizer.apply_gradients(self.params)
             
         return grad
 
     def train(self, dataset):
-        """Fit model on dataset for a single epoch.
-
-        Parameters
-        ----------
-        dataset : Dataset
-            Training dataset with batches already split.
-
-        Returns
-        -------
-        (float, float)
-            [0] Mean train loss during this epoch.
-            [1] Mean train accuracy during this epoch.
-        """
-        loss = 0
-        accuracy = 0
-        num_batches = 0
+        total_loss = 0
+        total_acc = 0
+        count = 0
         
         for X, y in dataset:
             # Forward pass
             pred = self.forward(X)
             # Calculate loss and accuracy
-            loss += categorical_cross_entropy(pred, y)
-            accuracy += categorical_accuracy(pred, y)
+            loss = categorical_cross_entropy(pred, y)
+            acc = categorical_accuracy(pred, y)
             # Backward pass
             self.backward(y)
-            num_batches += 1
             
-        # Return average loss and accuracy
-        return loss / num_batches, accuracy / num_batches
+            total_loss += loss
+            total_acc += acc
+            count += 1
+            
+        return total_loss / count, total_acc / count
 
     def test(self, dataset):
-        """Compute test/validation loss for dataset.
-
-        Parameters
-        ----------
-        dataset : Dataset
-            Validation dataset with batches already split.
-
-        Returns
-        -------
-        (float, float)
-            [0] Mean test loss.
-            [1] Test accuracy.
-        """
-        loss = 0
-        accuracy = 0
-        num_batches = 0
+        total_loss = 0
+        total_acc = 0
+        count = 0
         
         for X, y in dataset:
             # Forward pass (with train=False)
             pred = self.forward(X, train=False)
             # Calculate loss and accuracy
-            loss += categorical_cross_entropy(pred, y)
-            accuracy += categorical_accuracy(pred, y)
-            num_batches += 1
+            loss = categorical_cross_entropy(pred, y)
+            acc = categorical_accuracy(pred, y)
             
-        # Return average loss and accuracy
-        return loss / num_batches, accuracy / num_batches
+            total_loss += loss
+            total_acc += acc
+            count += 1
+            
+        return total_loss / count, total_acc / count
+    
