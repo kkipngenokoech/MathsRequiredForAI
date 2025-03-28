@@ -1286,7 +1286,7 @@ $h_1$ & $h_2$ & $h_3$ & $r_1$ & $r_2$ & $r_3$ & $s_1$ & $y_1$ & $y_2$ & $z$ \\ \
     \]
     \item Find the range of feasible values for $z$.
     \[
-    0 \leq z \leq 2
+    z = 1
     \]
 \end{itemize}
 
@@ -1397,9 +1397,6 @@ To find the gradient of $z$ with respect to $r_2$, we need to find the partial d
 \[
 \frac{\partial z}{\partial r_2} = \frac{\partial z}{\partial y_1} \cdot \frac{\partial y_1}{\partial r_1} \cdot \frac{\partial r_1}{\partial h_1} \cdot \frac{\partial h_1}{\partial x_2} + \frac{\partial z}{\partial y_2} \cdot \frac{\partial y_2}{\partial s_1} \cdot \frac{\partial s_1}{\partial h_2} \cdot \frac{\partial h_2}{\partial x_2}
 \]
-\[
-\frac{\partial z}{\partial r_2} = 1 \cdot \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{12} + 1 \cdot \frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_2 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{22}
-\]
 
 
 \begin{table}[h!]
@@ -1413,7 +1410,7 @@ $\frac{\partial r_1}{\partial h_1}$ & $\begin{cases} 1 & \text{if } h_1 > 0 \\ 0
 $\frac{\partial y_1}{\partial r_1}$ & $\frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}$ \\ \hline
 $\frac{\partial y_1}{\partial s_1}$ & $\frac{-\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2}$ \\ \hline
 $\frac{\partial z}{\partial y_1}$ & $1$ \\ \hline
-$\frac{\partial z}{\partial x_1}$ & $1 \cdot \frac{\exp(r_1) \cdot \exp(s_1)}{(\exp(r_1) + \exp(s_1))^2} \cdot \begin{cases} 1 & \text{if } h_1 > 0 \\ 0 & \text{otherwise} \end{cases} \cdot w_{11}$ \\ \hline
+$\frac{\partial z}{\partial x_1}$ &  $\frac{\partial z}{\partial y_1} \cdot \frac{\partial y_1}{\partial r_1} \cdot \frac{\partial r_1}{\partial h_1} \cdot \frac{\partial h_1}{\partial x_1} + \frac{\partial z}{\partial y_2} \cdot \frac{\partial y_2}{\partial s_1} \cdot \frac{\partial s_1}{\partial h_2} \cdot \frac{\partial h_2}{\partial x_2}$\\ \hline
 $\frac{\partial s_1}{\partial r_2}$ & $\begin{cases} 1 & \text{if } r_2 > r_3 \\ 0 & \text{otherwise} \end{cases}$ \\ \hline
 \end{tabular}
 \caption{Gradient expressions for backpropagation.}

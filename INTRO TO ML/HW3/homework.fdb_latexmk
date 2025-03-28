@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1742658063.33109 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1742658065.52521 0
+["pdflatex"] 1743191826.86935 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1743191829.02747 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1742658062.92248 71657 e4845263f3a3b64ee53b17acfc1881f4 ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1743191826.3515 71430 fefb303e917457b024d463e8ffabffb2 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -144,8 +144,8 @@
   "adaboost.png" 1741795599.42156 16651 a98c5811d929fa0671227209a60df586 ""
   "adaboost2.png" 1741799689.2884 29383 71285848df05399f0c14e3bf5a2d9419 ""
   "adaboost3.png" 1741800237.10936 49619 5333e175813789cb973e04709b70f992 ""
-  "homework.aux" 1742658065.42753 2720 2351a10c34e543f24128f16574ad1e2a "pdflatex"
-  "homework.tex" 1742658062.92248 71657 e4845263f3a3b64ee53b17acfc1881f4 ""
+  "homework.aux" 1743191828.90096 2720 2351a10c34e543f24128f16574ad1e2a "pdflatex"
+  "homework.tex" 1743191826.3515 71430 fefb303e917457b024d463e8ffabffb2 ""
   "model.png" 1741805286.70474 36689 57ae90147ff8334cd711530332bc1a06 ""
   "msit.png" 1741803661.1851 19301 86b309763e8a8c47f97f2b4d07bba7d3 ""
   "section1.png" 1741781614.414 10148 424d724390562599b53c85599852b778 ""

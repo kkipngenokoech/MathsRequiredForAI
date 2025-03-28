@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  22 MAR 2025 17:41
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  28 MAR 2025 21:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -520,13 +520,13 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 <msit.png, id=82, 705.38531pt x 303.38344pt>
 File: msit.png Graphic file (type png)
 <use msit.png>
-Package pdftex.def Info: msit.png  used on input line 1430.
+Package pdftex.def Info: msit.png  used on input line 1427.
 (pdftex.def)             Requested size: 560.40762pt x 241.03128pt.
  [17 <./msit.png>] [18]
 <model.png, id=93, 741.52031pt x 369.63094pt>
 File: model.png Graphic file (type png)
 <use model.png>
-Package pdftex.def Info: model.png  used on input line 1603.
+Package pdftex.def Info: model.png  used on input line 1600.
 (pdftex.def)             Requested size: 560.40762pt x 279.35446pt.
 
 
@@ -551,7 +551,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  84i,18n,93p,991b,1713s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on homework.pdf (20 pages, 480386 bytes).
+Output written on homework.pdf (20 pages, 480375 bytes).
 PDF statistics:
  170 PDF objects out of 1000 (max. 8388607)
  99 compressed objects within 1 object stream
