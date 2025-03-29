@@ -238,7 +238,7 @@ status, age, education level and income, you can now build a decision tree to pr
     \text{Entropy} = -\left(-0.918204004\right)
     \]
     \[
-    \text{Entropy} = \textbf{0.918204004}
+    \text{Entropy} = \textbf{0.9182}
     \]
     Entropy (Phone Usage $\mid$ married):
     \[
@@ -1793,7 +1793,17 @@ where $g_t$ is the gradient at time step $t$. Then, the final parameter update i
 where $\hat{m} = \frac{m_t}{1 - \beta_1}$ and $\hat{v} = \frac{v_t}{1 - \beta_2}$. These updates are controlled by four hyperparameters: $\beta_1$, the momentum decay constant; $\beta_2$, the second moment decay constant; $\eta$, the learning rate; and $\epsilon$, a small constant added to the denominator.
 
 Implement the Adam optimizer in \texttt{npnn/optimizer.py}, and tune the learning rate, setting the other hyperparameters to $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-7}$. How does a properly-tuned Adam optimizer compare to SGD? How does the sensitivity of Adam to its learning rate compare to SGD?
+\newpage
+\section{Bonus}
 
-
+\begin{align}
+    m_{t+1} &= \beta_1 m_t + (1-\beta_1)g_t\\
+    v_{t+1} &= \beta_2 v_t + (1-\beta_2)g_t^2
+    \end{align}
+    where $g_t$ is the gradient at time step $t$. The final parameter update is defined by:
+    \begin{align}
+    \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}} + \epsilon}\hat{m}
+    \end{align}
+    where $\hat{m} = \frac{m_t}{1-\beta_1}$ and $\hat{v} = \frac{v_t}{1-\beta_2}$. These updates are controlled by four hyperparameters: $\beta_1$, the momentum decay constant; $\beta_2$, the second moment decay constant; $\eta$, the learning rate; and $\epsilon$, a small constant added to the denominator.
 
 \end{document}
