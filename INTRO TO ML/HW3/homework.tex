@@ -497,34 +497,192 @@ status, age, education level and income, you can now build a decision tree to pr
     \begin{center}
         \begin{tikzpicture}[
           level distance=1.5cm,
-          level 1/.style={sibling distance=4cm},
-          level 2/.style={sibling distance=2cm},
+          level 1/.style={sibling distance=8cm},
+          level 2/.style={sibling distance=6cm},
+          level 3/.style={sibling distance=4cm},
           edge from parent/.style={draw, thick, -latex}
         ]
         
         \node {education level}
             child { node {University } 
-                child { node {Class 1} }
-                child { node {Class 2} }
+                child { node {Relationship status}
+                    child{ node {single}
+                        child{node {phone usage - low - 3}}
+                    }
+                    child{node {Married}
+                        child{node {high - 3}}
+                    }
+                    child{node {In a Relationship}}
+                 }
             }
             child { node {College}
-                child { node {Feature C} 
-                    child { node {Class 1} }
-                    child { node {Class 3} }
-                }
-                child { node {Class 2} }
+                child { node {medium - 5}}
             }
             child { node {High School}
-                child { node {Feature C} 
-                    child { node {Class 1} }
-                    child { node {Class 3} }
+                child { node {low - 4}   
                 }
-                child { node {Class 2} }
             };
         
         \end{tikzpicture}
         \end{center}
+        The entropy of college and High school is 0, so we do not need to split further. The entropy of university is 1, so we need to split further. 
+        \\ \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            \textbf{Relationship Status} & \textbf{Age} & \textbf{Education} & \textbf{Income} & \textbf{Phone Usage} \\
+            \hline
+            Single & $>25$ & University & $\leq50$K & Low \\
+            \hline
+            Single & $>25$ & University & $>50$K & Low \\
+            \hline
+            Married & $\leq25$ & University & $\leq50$K & High \\
+            \hline
+            Single & $>25$ & University & $>50$K & Low \\
+            \hline
+            Married & $>25$ & University & $\leq50$K & High \\
+            \hline
+            Married & $>25$ & University & $\leq50$K & High \\
+            \hline
+        \end{tabular}
+        \\ splitting on relationship status:
+        \[
+        \text{Entropy} = -\sum_{i=1}^n p_i \log_2 p_i
+        \]
+        relationship status = \{single, married, in a relationship\} = \{3, 3, 0\}
+        \\ single = \{low, medium, high\} = \{3, 0, 0\}
+        \\ married = \{low, medium, high\} = \{0, 0, 3\}
+        \\ in a relationship = \{low, medium, high\} = \{0, 0, 0\}
+        \\ \textbf{entropy of phone usage given relationship status:}
+        \[
+        \text{Entropy (Phone Usage} \mid \text{relationship status)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{relationship status} = j)
+        \]
+        Entropy (Phone Usage $\mid$ single):
+        \[
+        \text{Entropy} = -\left(\frac{3}{3} \log_2 \frac{3}{3} + \frac{0}{3} \log_2 \frac{0}{3} + \frac{0}{3} \log_2 \frac{0}{3}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(1 \times 0 + 0 \times -\infty + 0 \times -\infty\right)
+        \]
+        \[
+            \text{Entropy} = -\left(0\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0}
+        \]
+        Entropy (Phone Usage $\mid$ in a relationship):
+        \[
+        \text{Entropy} = -\left(\frac{0}{0} \log_2 \frac{0}{0} + \frac{0}{0} \log_2 \frac{0}{0} + \frac{0}{0} \log_2 \frac{0}{0}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 \times -\infty + 0 \times -\infty + 0 \times -\infty\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 + 0 + 0\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0}
+        \]
+        Entropy (Phone Usage $\mid$ married):
+        \[
+        \text{Entropy} = -\left(\frac{0}{3} \log_2 \frac{0}{3} + \frac{0}{3} \log_2 \frac{0}{3} + \frac{3}{3} \log_2 \frac{3}{3}\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 \times -\infty + 0 \times -\infty + 1 \times 0\right)
+        \]
+        \[
+        \text{Entropy} = -\left(0 + 0 + 0\right)
+        \]
+        \[
+        \text{Entropy} = \textbf{0}
+        \]
+        Entropy (Phone Usage $\mid$ relationship status):
+        \[
+        \text{Entropy (Phone Usage} \mid \text{relationship status)} = \sum_{j=1}^m \frac{N_j}{N} \text{Entropy}(\text{Phone Usage} \mid \text{relationship status} = j)
+        \]
+        \[
+        \text{Entropy (Phone Usage} \mid \text{relationship status)} = \frac{3}{3} \times 0 + \frac{0}{3} \times 0 + \frac{3}{3} \times 0
+        \]
+        \[
+        \text{Entropy (Phone Usage} \mid \text{relationship status)} = 0 + 0 + 0
+        \]
+        \[
+        \text{Entropy (Phone Usage} \mid \text{relationship status)} = 0
+        \]
+        information gain:
+        \[
+        \text{IG}(\text{relationship status}) = 1 - 0
+        \]
+        \[
+        \text{IG}(\text{relationship status}) = \textbf{1}
+        \]
+        \textbf{Entropy of Phone Usage given age}
+        \[
+            \text{Entropy (Phone Usage $\mid <$ 25)}  
+        \]
+        \[
+            \text{Entropy} = -\left(\frac{0}{1} \log_2 \frac{0}{1} + \frac{0}{1} \log_2 \frac{0}{1} + \frac{1}{1} \log_2 \frac{1}{1}\right)
+        \]
+        \[
+            \text{Entropy} = 0
+        \]
+        $\text{Entropy (Phone Usage  $\mid \geq$ 25)}:$
+        \[
+            \text{Entropy} = -\left(\frac{3}{5} \log_2 \frac{3}{5} + \frac{0}{5} \log_2 \frac{0}{5} + \frac{2}{5} \log_2 \frac{2}{5}\right)  
+        \]
+        \[
+            = -\left(0.6 \log_2 0.6 + 0 + 0.4 \log_2 0.4\right)
+        \]
+        \[
+            = -\left(0.6 \times - 0.73697 + 0.4 \times -1.3219 \right) 
+            = -\left(-0.442 + -0.52877\right)
+            = 0.97077
+        \]
+        Weighted Entropy:
+        \[
+        \frac{1}{6} \times 0 + \frac{5}{6} \times 0.97077 = 0.808975
+        \]
+        information gain:
+        \[
+            1 - 0.808975 = \textbf{0.191025}
+        \]
+        \textbf{Entropy of phone usage given Income}:
+        \[
+            \text{Entropy (Phone Usage $\mid \leq$ 50k)}  
+        \]
+        \[
+            \text{Entropy } = - \left(\frac{1}{4} \log_2 \frac{1}{4} + \frac{0}{4} \log_2 \frac{0}{4} + \frac{3}{4} \log_2 \frac{3}{4}\right)
+        \]
+        \[
+            = -\left(0.25 \log_2 0.25 + 0 + 0.75 \log_2 0.75\right)
+        \]
+        \[
+            = -\left(-0.5 + -0.311278\right)
+        \]
+        \[
+            = 0.811278124
+        \]
+        \[
+            \text{Entropy (Phone Usage $\mid >$ 50k)}  
+        \]
+        \[
+            \text{Entropy} = -\left(\frac{2}{2} \log_2 \frac{2}{2} + 0 + 0\right)
+        \]
+        \[
+            entropy = 0
+        \]
+        weighted Entropy:
+        \[
+            \frac{4}{6} \times 0.27812 + \frac{2}{6} \times 0 = 0.185413333
+        \]
+        Information Gain:
+        \[
+        1 - 0.18541333 = 0.814586666
+        \]
+        Relationship status has the highest information gain so we are going to split against it.
+
+
+
 \end{enumerate}
+
 \newpage
 \section{Random Forests}
 Consider the data samples in Table 1, which record whether a person gets sick, together with features about their age ($A$), social distancing ($S$), and hand-washing frequency ($H$). Our goal is to learn a random forest to predict whether the person is prone to getting sick.
