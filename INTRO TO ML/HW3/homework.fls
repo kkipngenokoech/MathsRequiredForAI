@@ -263,6 +263,16 @@ INPUT ./model.png
 INPUT ./model.png
 INPUT ./model.png
 INPUT ./model.png
+INPUT ./test-shida/hw3q6/training_curves.png
+INPUT ./test-shida/hw3q6/training_curves.png
+INPUT ./test-shida/hw3q6/training_curves.png
+INPUT ./test-shida/hw3q6/training_curves.png
+INPUT ./test-shida/hw3q6/training_curves.png
+INPUT ./test-shida/hw3q6/learning_rate_comparison.png
+INPUT ./test-shida/hw3q6/learning_rate_comparison.png
+INPUT ./test-shida/hw3q6/learning_rate_comparison.png
+INPUT ./test-shida/hw3q6/learning_rate_comparison.png
+INPUT ./test-shida/hw3q6/learning_rate_comparison.png
 INPUT homework.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb

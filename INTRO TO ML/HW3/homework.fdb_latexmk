@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1743210619.43877 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1743210621.3654 0
+["pdflatex"] 1743223927.06262 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" "homework.pdf" "homework" 1743223928.0462 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1743210618.83634 77904 6612b1083d81b9ab47847119adedcf2b ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW3/homework.tex" 1743223925.65465 77966 8af714a2e1532a9f3ba5217eac1b21e9 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1246382020 1004 54797486969f23fa377b128694d548df ""
@@ -146,12 +146,14 @@
   "adaboost.png" 1741795599.42156 16651 a98c5811d929fa0671227209a60df586 ""
   "adaboost2.png" 1741799689.2884 29383 71285848df05399f0c14e3bf5a2d9419 ""
   "adaboost3.png" 1741800237.10936 49619 5333e175813789cb973e04709b70f992 ""
-  "homework.aux" 1743210621.24274 2814 3cd5021012051058eb541e7e3f27c6e7 "pdflatex"
-  "homework.tex" 1743210618.83634 77904 6612b1083d81b9ab47847119adedcf2b ""
+  "homework.aux" 1743223927.98358 3082 608434e7d61d614b602471502415905e "pdflatex"
+  "homework.tex" 1743223925.65465 77966 8af714a2e1532a9f3ba5217eac1b21e9 ""
   "model.png" 1741805286.70474 36689 57ae90147ff8334cd711530332bc1a06 ""
   "msit.png" 1741803661.1851 19301 86b309763e8a8c47f97f2b4d07bba7d3 ""
   "section1.png" 1741781614.414 10148 424d724390562599b53c85599852b778 ""
   "section2.png" 1741786577.30664 103827 d1298e51db7279a559b2e6adb99a5d69 ""
+  "test-shida/hw3q6/learning_rate_comparison.png" 1743150174.21471 28160 6689fa979cb49cb21c9bb95cec4a4069 ""
+  "test-shida/hw3q6/training_curves.png" 1743149315.45491 55964 a607269819e8b870b4ff5d78c4b682a2 ""
   (generated)
   "homework.aux"
   "homework.log"

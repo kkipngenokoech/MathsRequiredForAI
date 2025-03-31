@@ -1765,7 +1765,7 @@ When correctly vectorized, your implementation should take fewer than 10 seconds
 \subsection*{6.4 Training and Evaluation [8 points]}
 \begin{enumerate}
     \item \textbf{[2 points]} Train this network for 20 epochs with a learning rate of 0.1 and a batch size of 32, evaluating the network on your validation split after each epoch. Then, plot the train and validation accuracy after each epoch during training.
-    
+   
     You should submit two plots along with your answer: one showing a training loss curve and a validation loss curve with respect to the training epochs, and one showing a training accuracy curve and a validation accuracy curve with respect to the training epochs. Make sure to label both curves!
 
     \item \textbf{[3 points]} Test your trained network on the test dataset (\texttt{mnist\_test.npz}), and submit your predictions to Gradescope. You will receive credit if your test accuracy is greater than 97\%. \textbf{Note:} The \texttt{mnist\_test.npz} dataset does not include the true labels. You can use your validation accuracy to estimate your test accuracy in advance (as long as you perform your train-val split in an unbiased manner).
@@ -1778,6 +1778,20 @@ When correctly vectorized, your implementation should take fewer than 10 seconds
     ax.set_xticklabels([0.05, 0.1, 0.2, 0.5, 1.0])
     \end{verbatim}
 \end{enumerate}
+
+Here are the plots 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{test-shida/hw3q6/training_curves.png}
+    \caption{Training \& validation loss and accuracy}
+    \label{fig:primal}
+\end{figure}  
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{test-shida/hw3q6/learning_rate_comparison.png}
+    \caption{Training \& validation loss and accuracy}
+    \label{fig:primal}
+\end{figure}
 \subsection*{6.5 Bonus: Adam [+5 points]}
 The Adam (Adaptive Moment) optimizer is a popular SGD variant (third most popular after SGD and Momentum by citations, according to this paper) that adds “momentum” to the gradients and tries to normalize the gradients by their current magnitude. Adam defines two values for each parameter, $m$ and $v$, which are initialized by zero and updated by the relationship:
 \[
@@ -1793,17 +1807,8 @@ where $g_t$ is the gradient at time step $t$. Then, the final parameter update i
 where $\hat{m} = \frac{m_t}{1 - \beta_1}$ and $\hat{v} = \frac{v_t}{1 - \beta_2}$. These updates are controlled by four hyperparameters: $\beta_1$, the momentum decay constant; $\beta_2$, the second moment decay constant; $\eta$, the learning rate; and $\epsilon$, a small constant added to the denominator.
 
 Implement the Adam optimizer in \texttt{npnn/optimizer.py}, and tune the learning rate, setting the other hyperparameters to $\beta_1 = 0.9$, $\beta_2 = 0.999$, $\epsilon = 10^{-7}$. How does a properly-tuned Adam optimizer compare to SGD? How does the sensitivity of Adam to its learning rate compare to SGD?
-\newpage
-\section{Bonus}
 
-\begin{align}
-    m_{t+1} &= \beta_1 m_t + (1-\beta_1)g_t\\
-    v_{t+1} &= \beta_2 v_t + (1-\beta_2)g_t^2
-    \end{align}
-    where $g_t$ is the gradient at time step $t$. The final parameter update is defined by:
-    \begin{align}
-    \theta_{t+1} = \theta_t - \frac{\eta}{\sqrt{\hat{v}} + \epsilon}\hat{m}
-    \end{align}
-    where $\hat{m} = \frac{m_t}{1-\beta_1}$ and $\hat{v} = \frac{v_t}{1-\beta_2}$. These updates are controlled by four hyperparameters: $\beta_1$, the momentum decay constant; $\beta_2$, the second moment decay constant; $\eta$, the learning rate; and $\epsilon$, a small constant added to the denominator.
+\textbf{answer:}
 
+When properly tuned, Adam typically converges faster than SGD because it adapts learning rates individually for each parameter based on gradient history. Adam is less senstive to learning rate choices compared to SGD because it can adapt to the learning rates.
 \end{document}
