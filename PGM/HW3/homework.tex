@@ -151,7 +151,81 @@ In this question, we want to estimate the posterior mean of the attacking and de
 team, i.e. $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$, $\mathbb{E}_{p(\theta,\eta|y)}[\text{def}_i]$, and $\mathbb{E}_{p(\theta,\eta|y)}[\text{home}]$.
 
 \begin{enumerate}
-\item (10 points) Find the joint likelihood $p(y, \theta, \eta)$.
+    \item (10 points) Find the joint likelihood $p(y, \theta, \eta)$.
+    \\ The random variables are:
+    \begin{itemize}
+    \item $y = \{y_{gj}|g = 0, ..., 379, j = 1, 2\}$ are the observed goals
+    \item $\theta = (\text{home}, \text{att}_0, ..., \text{att}_{19}, \text{def}_0, ..., \text{def}_{19})$ are the unobserved variables
+    \item $\eta = (\mu_{\text{att}}, \mu_{\text{def}}, \tau_{\text{att}}, \tau_{\text{def}})$ are the hyper-parameters
+    \end{itemize}
+    The joint likelihood is given by
+    \[
+        p(y, \theta, \eta) = p(y|h(g), a(g), \theta)p(\theta|\eta)p(\eta)
+    \]
+    \[
+        = \prod_{g=0}^{379} p(y_{g1}|h(g), \theta)p(y_{g2}|a(g), \theta)p(\theta|\eta)p(\eta)
+    \]
+    
+    Now, let's expand each component of this joint likelihood:
+    
+    \begin{itemize}
+    \item The likelihood of observed goals follows the Poisson distribution:
+    \begin{align}
+    p(y_{g1}|h(g), \theta) &= \text{Poisson}(y_{g1}; \theta_{g1}) = \frac{e^{-\theta_{g1}}\theta_{g1}^{y_{g1}}}{y_{g1}!} \\
+    p(y_{g2}|a(g), \theta) &= \text{Poisson}(y_{g2}; \theta_{g2}) = \frac{e^{-\theta_{g2}}\theta_{g2}^{y_{g2}}}{y_{g2}!}
+    \end{align}
+    
+    Where $\theta_{g1}$ and $\theta_{g2}$ are deterministic functions of the team parameters:
+    \begin{align}
+    \log \theta_{g1} &= \text{home} + \text{att}_{h(g)} - \text{def}_{a(g)} \\
+    \log \theta_{g2} &= \text{att}_{a(g)} - \text{def}_{h(g)}
+    \end{align}
+    
+    \item The prior distribution for the team parameters is:
+    \begin{align}
+    p(\theta|\eta) &= p(\text{home}) \prod_{t=1}^{19} p(\text{att}_t|\mu_{\text{att}}, \tau_{\text{att}}) \prod_{t=1}^{19} p(\text{def}_t|\mu_{\text{def}}, \tau_{\text{def}}) \\
+    &= \mathcal{N}(\text{home}; 0, \tau_0^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{att}_t; \mu_{\text{att}}, \tau_{\text{att}}^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{def}_t; \mu_{\text{def}}, \tau_{\text{def}}^{-1})
+    \end{align}
+    
+    Where we've already incorporated the constraint that $\text{att}_0 = \text{def}_0 = 0$.
+    
+    \item The hyperprior distribution is:
+    \begin{align}
+    p(\eta) &= p(\mu_{\text{att}})p(\mu_{\text{def}})p(\tau_{\text{att}})p(\tau_{\text{def}}) \\
+    &= \mathcal{N}(\mu_{\text{att}}; 0, \tau_1^{-1}) \mathcal{N}(\mu_{\text{def}}; 0, \tau_1^{-1}) \text{Gamma}(\tau_{\text{att}}; \alpha, \beta) \text{Gamma}(\tau_{\text{def}}; \alpha, \beta)
+    \end{align}
+    \end{itemize}
+    
+    Substituting these expressions into the joint likelihood:
+    
+    \begin{align}
+    p(y, \theta, \eta) &= \prod_{g=0}^{379} \left[\frac{e^{-\theta_{g1}}\theta_{g1}^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta_{g2}}\theta_{g2}^{y_{g2}}}{y_{g2}!}\right] \\
+    &\times \mathcal{N}(\text{home}; 0, \tau_0^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{att}_t; \mu_{\text{att}}, \tau_{\text{att}}^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{def}_t; \mu_{\text{def}}, \tau_{\text{def}}^{-1}) \\
+    &\times \mathcal{N}(\mu_{\text{att}}; 0, \tau_1^{-1}) \mathcal{N}(\mu_{\text{def}}; 0, \tau_1^{-1}) \text{Gamma}(\tau_{\text{att}}; \alpha, \beta) \text{Gamma}(\tau_{\text{def}}; \alpha, \beta)
+    \end{align}
+    
+    Expanding the probability density functions:
+    
+    \begin{align}
+    p(y, \theta, \eta) &= \prod_{g=0}^{379} \left[\frac{e^{-\theta_{g1}}\theta_{g1}^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta_{g2}}\theta_{g2}^{y_{g2}}}{y_{g2}!}\right] \\
+    &\times \frac{1}{\sqrt{2\pi\tau_0^{-1}}}\exp\left(-\frac{\text{home}^2}{2\tau_0^{-1}}\right) \\
+    &\times \prod_{t=1}^{19} \frac{1}{\sqrt{2\pi\tau_{\text{att}}^{-1}}}\exp\left(-\frac{(\text{att}_t-\mu_{\text{att}})^2}{2\tau_{\text{att}}^{-1}}\right) \\
+    &\times \prod_{t=1}^{19} \frac{1}{\sqrt{2\pi\tau_{\text{def}}^{-1}}}\exp\left(-\frac{(\text{def}_t-\mu_{\text{def}})^2}{2\tau_{\text{def}}^{-1}}\right) \\
+    &\times \frac{1}{\sqrt{2\pi\tau_1^{-1}}}\exp\left(-\frac{\mu_{\text{att}}^2}{2\tau_1^{-1}}\right) \\
+    &\times \frac{1}{\sqrt{2\pi\tau_1^{-1}}}\exp\left(-\frac{\mu_{\text{def}}^2}{2\tau_1^{-1}}\right) \\
+    &\times \frac{\beta^\alpha}{\Gamma(\alpha)}\tau_{\text{att}}^{\alpha-1}e^{-\beta\tau_{\text{att}}} \\
+    &\times \frac{\beta^\alpha}{\Gamma(\alpha)}\tau_{\text{def}}^{\alpha-1}e^{-\beta\tau_{\text{def}}}
+    \end{align}
+    
+    where $\tau_0 = \tau_1 = 0.0001$ and $\alpha = \beta = 0.1$.
+    
+   so, our joint likelihood is:
+    \[
+    p(y, \theta, \eta) = \prod_{g=0}^{379} \left[\frac{e^{-\theta_{g1}}\theta_{g1}^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta_{g2}}\theta_{g2}^{y_{g2}}}{y_{g2}!}\right] \times \mathcal{N}(\text{home}; 0, \tau_0^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{att}_t; \mu_{\text{att}}, \tau_{\text{att}}^{-1}) \prod_{t=1}^{19} \mathcal{N}(\text{def}_t; \mu_{\text{def}}, \tau_{\text{def}}^{-1})\]
+    
+    where $\tau_0 = 0.0001$ and $\alpha = \beta = 0.1$.
+    
+
 \item (10 points) Write down the Metropolis-Hastings algorithm for sampling from posterior $p(\theta, \eta|y)$, and
 derive the acceptance function for a proposal distribution of your choice (e.g. isotropic Gaussian).
 \item (10 points) Implement the M-H algorithm to inference the posterior distribution. The data can be found
