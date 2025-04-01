@@ -27,9 +27,25 @@ where the (unnormalized) importance weights $u_i = \frac{p(x^{(i)})}{q(x^{(i)})}
 
 \begin{enumerate}
 \item (5 points) Find the mean and variance of the unnormalized importance weights $\mathbb{E}_{q(x)}[u_i]$ and $\mathrm{Var}_{q(x)}[u_i]$.
+\[
+\mathbb{E}_{q(x)}[u_i] = \int q(x) \frac{p(x)}{q(x)} dx = \int p(x) dx = 1
+\]
+\[
+\mathrm{Var}_{q(x)}[u_i] = \int q(x) \left(\frac{p(x)}{q(x)} - 1\right)^2 dx = \int q(x) \frac{p^2(x)}{q^2(x)} dx - 1
+\]
+
 \item (5 points) Prove the following lemma: $\mathbb{E}_{p(x)}\left[\frac{p(x)}{q(x)}\right] \geq 1$, and the equality holds only when $p = q$.
+\[
+\mathbb{E}_{p(x)}\left[\frac{p(x)}{q(x)}\right] = \int p(x) \frac{p(x)}{q(x)} dx = \int p^2(x) \frac{1}{q(x)} dx
+\]
+Using Cauchy-Schwarz inequality, we have
+\[
+\int p^2(x) \frac{1}{q(x)} dx \geq \left(\int p(x) dx\right)^2 = 1
+\]
+The equality holds only when $p(x) = q(x)$.
 \item (9 points) A measure of the variability of two components in vector $u = [u_1, ..., u_L]^T$ is given by
 $\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$. Assume that both $p$ and $q$ can be factorized, i.e. $p(x) = \prod_{i=1}^D p_i(x_i)$, and $q(x) = \prod_{i=1}^D q_i(x_i)$. Show that $\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$ has exponential growth with respect to $D$.
+\[\]
 \item (1 point) Use the conclusion in (c) to explain why the standard importance sampling does not scale well
 with dimensionality and would blow up in high-dimensional cases.
 \end{enumerate}
@@ -180,8 +196,115 @@ Evaluate $KL(p(x)||q(x))$ where $p(x)$ and $q(x)$ are:
 \begin{enumerate}
 \item Two scalar Gaussians
 $p(x) = \mathcal{N}(x; \mu, \sigma^2)$ and $q(x) = \mathcal{N}(x; m, s^2)$
+\\ The probability density function of each of the Gaussian distributions is given by
+\[
+p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)
+\]
+\[
+q(x) = \frac{1}{\sqrt{2\pi}s} \exp\left(-\frac{(x - m)^2}{2s^2}\right)
+\]
+Let us compute the ratio between the two distributions:
+\[
+\frac{p(x)}{q(x)} = \frac{\frac{1}{\sqrt{2\pi}\sigma} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)}{\frac{1}{\sqrt{2\pi}s} \exp\left(-\frac{(x - m)^2}{2s^2}\right)} = \frac{s}{\sigma} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2} + \frac{(x - m)^2}{2s^2}\right)
+\]
+
+Taking the logarithm:
+\[
+\ln \frac{p(x)}{q(x)} = \ln\frac{s}{\sigma} - \frac{(x - \mu)^2}{2\sigma^2} + \frac{(x - m)^2}{2s^2}
+\]
+
+The KL divergence is:
+\[
+KL(p||q) = \int p(x) \ln \frac{p(x)}{q(x)} dx = \int p(x) \left[\ln\frac{s}{\sigma} - \frac{(x - \mu)^2}{2\sigma^2} + \frac{(x - m)^2}{2s^2}\right] dx
+\]
+\[
+= \ln\frac{s}{\sigma} - \frac{1}{2\sigma^2}\int p(x)(x - \mu)^2 dx + \frac{1}{2s^2}\int p(x)(x - m)^2 dx
+\]
+
+Let us compute the integrals:
+\[
+\int p(x)(x - \mu)^2 dx = \mathbb{E}[(x - \mu)^2] = \text{Var}(x) = \sigma^2
+\]
+
+For the second integral:
+\[
+\int p(x)(x - m)^2 dx = \int p(x)[(x - \mu) + (\mu - m)]^2 dx
+\]
+\[
+= \int p(x)[(x - \mu)^2 + 2(x - \mu)(\mu - m) + (\mu - m)^2] dx
+\]
+\[
+= \int p(x)(x - \mu)^2 dx + 2(\mu - m)\int p(x)(x - \mu) dx + (\mu - m)^2\int p(x) dx
+\]
+\[
+= \sigma^2 + 2(\mu - m) \cdot 0 + (\mu - m)^2 \cdot 1 = \sigma^2 + (\mu - m)^2
+\]
+
+Substituting these integrals back into the KL divergence expression:
+\[
+KL(p||q) = \ln\frac{s}{\sigma} - \frac{1}{2\sigma^2}\sigma^2 + \frac{1}{2s^2}[\sigma^2 + (\mu - m)^2]
+\]
+\[
+= \ln\frac{s}{\sigma} - \frac{1}{2} + \frac{\sigma^2}{2s^2} + \frac{(\mu - m)^2}{2s^2}
+\]
+
+This can be rearranged as:
+\[
+KL(p||q) = \frac{1}{2}\left(\ln\frac{s^2}{\sigma^2} + \frac{\sigma^2}{s^2} + \frac{(\mu - m)^2}{s^2} - 1\right)
+\]
+
 \item two multivariate Gaussians
 $p(\mathbf{x}) = \mathcal{N}(\mathbf{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma})$ and $q(\mathbf{x}) = \mathcal{N}(\mathbf{x}; \mathbf{m}, \mathbf{s})$
+\\ The probability density function of each of the Gaussian distributions is given by
+\[
+p(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^D |\boldsymbol{\Sigma}|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)
+\]
+\[
+q(\mathbf{x}) = \frac{1}{\sqrt{(2\pi)^D |\mathbf{s}|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m})\right)
+\]
+Let us compute the ratio between the two distributions:
+\[
+\frac{p(\mathbf{x})}{q(\mathbf{x})} = \frac{\frac{1}{\sqrt{(2\pi)^D |\boldsymbol{\Sigma}|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu})\right)}{\frac{1}{\sqrt{(2\pi)^D |\mathbf{s}|}} \exp\left(-\frac{1}{2}(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m})\right)}
+\]
+Taking the logarithm:
+\[
+\ln \frac{p(\mathbf{x})}{q(\mathbf{x})} = \ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} - \frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) + \frac{1}{2}(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m})
+\]
+The KL divergence is:
+\[
+KL(p||q) = \int p(\mathbf{x}) \ln \frac{p(\mathbf{x})}{q(\mathbf{x})} d\mathbf{x} = \int p(\mathbf{x}) \left[\ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} - \frac{1}{2}(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) + \frac{1}{2}(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m})\right] d\mathbf{x}
+\]
+\[
+= \ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} - \frac{1}{2}\int p(\mathbf{x})(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) d\mathbf{x} + \frac{1}{2}\int p(\mathbf{x})(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m}) d\mathbf{x}
+\]
+Let us compute the integrals:
+\[
+\int p(\mathbf{x})(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu}) d\mathbf{x} = \mathbb{E}[(\mathbf{x} - \boldsymbol{\mu})^T \boldsymbol{\Sigma}^{-1} (\mathbf{x} - \boldsymbol{\mu})] = \text{Tr}(\boldsymbol{\Sigma}^{-1}\text{Cov}(\mathbf{x})) = \text{Tr}(I) = D
+\]
+\[
+\int p(\mathbf{x})(\mathbf{x} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \mathbf{m}) d\mathbf{x} = \int p(\mathbf{x})[(\mathbf{x} - \boldsymbol{\mu}) + (\boldsymbol{\mu} - \mathbf{m})]^T \mathbf{s}^{-1} [(\mathbf{x} - \boldsymbol{\mu}) + (\boldsymbol{\mu} - \mathbf{m})] d\mathbf{x}
+\]
+\[
+= \int p(\mathbf{x})[(\mathbf{x} - \boldsymbol{\mu})^T \mathbf{s}^{-1} (\mathbf{x} - \boldsymbol{\mu}) + 2(\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\mathbf{x} - \boldsymbol{\mu}) + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m})] d\mathbf{x}
+\]
+\[
+= \int p(\mathbf{x})(\mathbf{x} - \boldsymbol{\mu})^T \mathbf{s}^{-1} (\mathbf{x} - \boldsymbol{\mu}) d\mathbf{x} + 2(\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} \int p(\mathbf{x})(\mathbf{x} - \boldsymbol{\mu}) d\mathbf{x} + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m})\int p(\mathbf{x}) d\mathbf{x}
+\]
+\[
+= \int p(\mathbf{x})(\mathbf{x} - \boldsymbol{\mu})^T \mathbf{s}^{-1} (\mathbf{x} - \boldsymbol{\mu}) d\mathbf{x} + 2(\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} \cdot 0 + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m}) = D + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m})
+\]
+Substituting these integrals back into the KL divergence expression:
+\[
+KL(p||q) = \ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} - \frac{1}{2}D + \frac{1}{2}\left[D + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m})\right]
+\]
+\[
+= \ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} - \frac{1}{2}D + \frac{1}{2}D + \frac{1}{2}(\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m})
+\]
+This can be rearranged as:
+\[
+KL(p||q) = \frac{1}{2}\left(\ln\frac{|\mathbf{s}|}{|\boldsymbol{\Sigma}|} + \text{Tr}(\mathbf{s}^{-1}\boldsymbol{\Sigma}) + (\boldsymbol{\mu} - \mathbf{m})^T \mathbf{s}^{-1} (\boldsymbol{\mu} - \mathbf{m}) - D\right)
+\]
+
 \end{enumerate}
 
 \item (30 points) Consider two random variables $x$ and $y$ which are related as:
