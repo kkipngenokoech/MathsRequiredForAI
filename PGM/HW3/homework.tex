@@ -1,17 +1,359 @@
-\documentclass[a3paper,12pt]{extarticle} % Use extarticle for A3 paper size
-\usepackage{graphicx} % Include this package for \includegraphics
-\usepackage{amsmath}
-\usepackage{amssymb} % Include this package for \mathbb
-\usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{tikz}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{enumitem}
 
-\begin{document}
 
 \author{kipngeno koech - bkoech}
 \title{Homework 3 - Introduction to Probabilistic Graphical Models}   
+
+\date{}
+
+\begin{document}
+
 \maketitle
 
-\medskip
+\section{Sampling (Monte-Carlo), MCMC[50 points]}
 
-\maketitle
+\subsection{(Monte-Carlo) [20 points]}
+
+Given a random distribution $p(x)$ on $x = [x_1, ..., x_D]^T \in \mathbb{R}^D$. Suppose we want to perform inference
+$\mathbb{E}_{p(x)}[f(x)]$ using importance sampling, with $q(x)$ as the proposal distribution. According to importance
+sampling, we draw $L$ i.i.d. samples $x^{(1)}, ..., x^{(L)}$ from $q(x)$, and we have
+$$\mathbb{E}_{p(x)}[f(x)] \approx \frac{1}{\sum_{i=1}^L u_i} \sum_{i=1}^L f(x^{(i)})u_i$$
+where the (unnormalized) importance weights $u_i = \frac{p(x^{(i)})}{q(x^{(i)})}$.
+
+\begin{enumerate}
+\item (5 points) Find the mean and variance of the unnormalized importance weights $\mathbb{E}_{q(x)}[u_i]$ and $\mathrm{Var}_{q(x)}[u_i]$.
+\item (5 points) Prove the following lemma: $\mathbb{E}_{p(x)}\left[\frac{p(x)}{q(x)}\right] \geq 1$, and the equality holds only when $p = q$.
+\item (9 points) A measure of the variability of two components in vector $u = [u_1, ..., u_L]^T$ is given by
+$\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$. Assume that both $p$ and $q$ can be factorized, i.e. $p(x) = \prod_{i=1}^D p_i(x_i)$, and $q(x) = \prod_{i=1}^D q_i(x_i)$. Show that $\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$ has exponential growth with respect to $D$.
+\item (1 point) Use the conclusion in (c) to explain why the standard importance sampling does not scale well
+with dimensionality and would blow up in high-dimensional cases.
+\end{enumerate}
+
+\subsection{(MCMC)[40 points]}
+\subsubsection{Multiple Choice [10 points]}
+\begin{enumerate}
+\item (5 points) Which of the following statements is true for the acceptance probability
+$A(x'|x) = \min(1, \frac{P(x')Q(x|x')}{P(x)Q(x'|x)})$ of Metropolis-Hastings algorithm?
+\begin{enumerate}
+\item It satisfies detailed balance.
+\item We can just evaluate $P(x')$ and $P(x)$ up to a normalization constant.
+\item It ensures that the MH algorithm eventually converges to the true distribution.
+\item All of the above.
+\end{enumerate}
+
+\item (5 points) Which of the following statements is true for Hamiltonian Monte Carlo in comparison with
+vanilla MCMC?
+\begin{enumerate}
+\item It can improve acceptance rate and give better mixing.
+\item Stochastic variants can be used to improve performance in large dataset scenarios.
+\item It may not be used for discrete variable.
+\item All of the above.
+\end{enumerate}
+\end{enumerate}
+
+\subsubsection{Modeling with Markov Chain Monte Carlo [30 points]}
+
+We are going to use the data from the 2013-2014 Premier League PL1 to build a predictive model on the
+number of goals scored in a single game by the two opponents. Bayesian hierarchical model is a good
+candidate for this kind of modeling task. We model each team's strength (both attacking and defending) as
+latent variables. Then in each game, the goals scored by the home team is a random variable conditioned
+on the attacking strength of the home team and the defending strength of the away team. Similarly, the
+goals scored by the away team is a random variable conditioned on the attack strength of the away team
+and the defense strength of the home team. Therefore, the distribution of the scoreline of a specific game is
+dependent on the relative strength between the home team A and the away team B, which also depends on
+the relative strength between those teams with their other opponents.
+
+\begin{table}[h]
+\centering
+\caption{2013-2014 Premier League teams}
+\begin{tabular}{ccccc}
+\hline
+Index & 0 & 1 & 2 & 3 \\
+Team & Arsenal & Aston Villa & Cardiff City & Chelsea \\
+\hline
+Index & 4 & 5 & 6 & 7 \\
+Team & Crystal Palace & Everton & Fulham & Hull City \\
+\hline
+Index & 8 & 9 & 10 & 11 \\
+Team & Liverpool & Manchester City & Manchester United & Newcastle United \\
+\hline
+Index & 12 & 13 & 14 & 15 \\
+Team & Norwich City & Southampton & Stoke City & Sunderland \\
+\hline
+Index & 16 & 17 & 18 & 19 \\
+Team & Swansea City & Tottenham Hotspur & West Bromwich Albion & West Ham United \\
+\hline
+\end{tabular}
+\end{table}
+
+Here we consider using the same model as described by Baio and Blangiardo. The Premier League has
+20 teams, and we index them as in Table 1. Each team would play 38 matches every season (playing each of
+the other 19 teams home and away), which totals 380 games in the entire season. For the $g$-th game, assume
+that the index of home team is $h(g)$ and the index of the away team is $a(g)$. the observed number of goals
+is:
+
+$$y_{gj} | \theta_{gj} = \text{Poisson}(\theta_{gj})$$
+
+where the $\theta = (\theta_{g1}, \theta_{g2})$ represent the scoring intensity in the g-th game for the team playing at home
+($j = 1$) and away ($j = 2$), respectively. We put a log-linear model for the $\theta$s:
+
+$$\log \theta_{g1} = \text{home} + \text{att}_{h(g)} - \text{def}_{a(g)}$$
+$$\log \theta_{g2} = \text{att}_{a(g)} - \text{def}_{h(g)}$$
+
+Note that team strength is broken into attacking and defending strength. And home represents home-
+team advantage, and in this model is assumed to be constant across teams. The prior on the home is a
+normal distribution
+$$\text{home} \sim \mathcal{N}(0, \tau_0^{-1})$$
+where the precision $\tau_0 = 0.0001$.
+
+The team-specific attacking and defending effects are modeled as exchangeable:
+$$\text{att}_t \sim \mathcal{N}(\mu_{\text{att}}, \tau_{\text{att}}^{-1})$$
+$$\text{def}_t \sim \mathcal{N}(\mu_{\text{def}}, \tau_{\text{def}}^{-1})$$
+
+We use conjugate priors as the hyper-priors on the attack and defense means and precisions:
+$$\mu_{\text{att}} \sim \mathcal{N}(0, \tau_1^{-1})$$
+$$\mu_{\text{def}} \sim \mathcal{N}(0, \tau_1^{-1})$$
+$$\tau_{\text{att}} \sim \text{Gamma}(\alpha, \beta)$$
+$$\tau_{\text{def}} \sim \text{Gamma}(\alpha, \beta)$$
+
+where the precision $\tau_1 = 0.0001$, and we set parameters $\alpha = \beta = 0.1$.
+
+This hierarchical Bayesian model can be represented using a directed acyclic graph as shown in Figure 1.
+Where the goals of each game $y = \{y_{gj}|g = 0, ..., 379, j = 1, 2\}$ are 760 observed variables, and parameters
+$\theta = (\text{home}, \text{att}_0, ..., \text{att}_{19}, \text{def}_0, ..., \text{def}_{19})$ and hyper-parameters $\eta = (\mu_{\text{att}}, \mu_{\text{def}}, \tau_{\text{att}}, \tau_{\text{def}})$ are unobserved
+variables that we need to make inference. To ensure identifiability, we enforce a corner constraint on the
+parameters (pinning one team's parameters to 0,0). Here we use the first team as reference and assign its
+attacking and defending strength to be 0:
+$$\text{att}_0 = \text{def}_0 = 0$$
+
+In this question, we want to estimate the posterior mean of the attacking and defending strength for each
+team, i.e. $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$, $\mathbb{E}_{p(\theta,\eta|y)}[\text{def}_i]$, and $\mathbb{E}_{p(\theta,\eta|y)}[\text{home}]$.
+
+\begin{enumerate}
+\item (10 points) Find the joint likelihood $p(y, \theta, \eta)$.
+\item (10 points) Write down the Metropolis-Hastings algorithm for sampling from posterior $p(\theta, \eta|y)$, and
+derive the acceptance function for a proposal distribution of your choice (e.g. isotropic Gaussian).
+\item (10 points) Implement the M-H algorithm to inference the posterior distribution. The data can be found
+from \texttt{premier\_league\_2013\_2014.dat}, which contains a $380 \times 4$ matrix. The first column is the number
+of goals $y_{g1}$ scored by the home team, the second column is the number of goals $y_{g2}$ scored by the away
+team, the third column is the index for the home team $h(g)$, and the fourth column is the index for the
+away team $a(g)$. Use isotropic Gaussian proposal distribution, $\mathcal{N}(0, \sigma^2I)$ and 0 as the starting point.
+Run the MCMC chain for 5000 steps to burn in and then collect 5000 samples with $t$ steps in between
+(i.e., run M-H for $5000t$ steps and collect only each $t$-th sample). This is called thinning, which reduces
+the autocorrelation of the MCMC samples introduced by the Markovian process. The parameter sets
+are $\sigma = 0.05$, and $t = 5$. Plot the trace plot of the burning phase and the MCMC samples for the latent
+variable home using the proposed distribution.
+
+\item (Bonus, 20 points) Set the parameters as $\sigma = 0.005, 0.05, 0.5$ and $t = 1, 5, 20, 50$, and:
+\begin{itemize}
+\item Plot the trace plot of the burning phase and the MCMC samples for the latent variable home using
+proposal distributions with different $\sigma$ and $t$.
+\item Estimate the rejection ratio for each parameter setting, report your results in a table.
+\item Comment on the results. Which parameter setting worked the best for the algorithm?
+\item Use the results from the optimal parameter setting
+\begin{itemize}
+\item plot the posterior histogram of home from the MCMC samples
+\item plot the estimated attacking strength $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$ against the estimated defending strength
+$\mathbb{E}_{p(\theta,\eta|y)}[\text{def}_i]$ for each the team in one scatter plot. Please make sure to identify the team
+index of each point on your scatter plot.
+\end{itemize}
+\end{itemize}
+\end{enumerate}
+
+\noindent \textbf{You are NOT allowed to use any existing implementations of M-H in this problem. Please
+include all the required results (figures + tables) in your writeup PDF submission.}
+
+\section{Variational Inference [40 points]}
+
+\subsection{KL-Divergence}
+
+\begin{enumerate}
+\item (10 points) In this section we consider the Kullback-Leibler divergence
+$$KL(p||q) = -\int p(x) \ln \frac{q(x)}{p(x)} dx$$
+
+Evaluate $KL(p(x)||q(x))$ where $p(x)$ and $q(x)$ are:
+\begin{enumerate}
+\item Two scalar Gaussians
+$p(x) = \mathcal{N}(x; \mu, \sigma^2)$ and $q(x) = \mathcal{N}(x; m, s^2)$
+\item two multivariate Gaussians
+$p(\mathbf{x}) = \mathcal{N}(\mathbf{x}; \boldsymbol{\mu}, \boldsymbol{\Sigma})$ and $q(\mathbf{x}) = \mathcal{N}(\mathbf{x}; \mathbf{m}, \mathbf{s})$
+\end{enumerate}
+
+\item (30 points) Consider two random variables $x$ and $y$ which are related as:
+$$t = x + v, v \sim \mathcal{N}(0, 1)$$
+$$y = \begin{cases}
+1 & \text{if } t > 0, \\
+0 & \text{otherwise}
+\end{cases}$$
+
+We also have prior information that $x \sim \mathcal{N}(0, 1)$ and we receive one measurement $y = 1$.
+
+Using the factor of the model here:
+\begin{center}
+\begin{tikzpicture}
+\node[rectangle,fill=black] (fx) at (-1,0) {};
+\node[circle,draw] (x) at (0,0) {$x$};
+\node[rectangle,fill=black] (fxt) at (1,0) {};
+\node[circle,draw] (t) at (2,0) {$t$};
+\node[rectangle,fill=black] (fty) at (3,0) {};
+\node[circle,draw] (y) at (4,0) {$y$};
+
+\draw (fx) -- (x);
+\draw (x) -- (fxt);
+\draw (fxt) -- (t);
+\draw (t) -- (fty);
+\draw (fty) -- (y);
+\end{tikzpicture}
+\end{center}
+
+where
+\begin{align*}
+f_x(x) &= \mathcal{N}(x; 0, 1)\\
+f_{xt}(x, t) &= \mathcal{N}(t; x, 1)\\
+f_{ty}(t, y) &= \delta(y - \text{sign}(t))
+\end{align*}
+
+(Another equivalent factor graph is
+\begin{center}
+\begin{tikzpicture}
+\node[rectangle,fill=black] (fx) at (-1,0) {};
+\node[circle,draw] (x) at (0,0) {$x$};
+\node[rectangle,fill=black] (fvxt) at (1,0) {};
+\node[circle,draw] (t) at (2,0) {$t$};
+\node[rectangle,fill=black] (fty) at (3,0) {};
+\node[circle,draw] (y) at (4,0) {$y$};
+\node[circle,draw] (v) at (1,-1) {$v$};
+\node[rectangle,fill=black] (fv) at (1,-2) {};
+
+\draw (fx) -- (x);
+\draw (x) -- (fvxt);
+\draw (fvxt) -- (t);
+\draw (t) -- (fty);
+\draw (fty) -- (y);
+\draw (v) -- (fvxt);
+\draw (v) -- (fv);
+\end{tikzpicture}
+\end{center}
+
+\begin{align*}
+f_x(x) &= \mathcal{N}(x; 0, 1)\\
+f_v(v) &= \mathcal{N}(v; 0, 1)\\
+f_{vxt}(v, x, t) &= \delta(t - v - x)\\
+f_{ty}(t, y) &= \delta(y - \text{sign}(t))
+\end{align*}
+
+Since we are not interested in $v$ itself (we do not want to infer $p(v|y)$, for instance), we opt for the other
+formulation, since it is more compact and therefore requires fewer messages in the message passing. Both
+formulations will result in exactly the same expression for $p(x|y)$.)
+
+\begin{enumerate}
+\item Use message passing with moment matching with pen and paper to compute $p(x|y = 1)$.
+
+Hint: The mean and variance for the half-normal distribution
+$$\mathcal{HN}(x; \sigma^2) = 2\mathcal{N}(x; 0, \sigma^2) \text{, } x > 0$$
+are
+$$\mathbb{E}[x] = \frac{\sigma\sqrt{2}}{\sqrt{\pi}} \text{, } \mathrm{Var}[x] = \sigma^2\left(1 - \frac{2}{\pi}\right)$$
+
+\item Write a program to verify the calculated distribution using importance sampling.
+\end{enumerate}
+\end{enumerate}
+
+\section{Consistency of Lasso [20 points]}
+
+Before going into graphical lasso, let's first consider a linear regression problem, with covariates $X \in \mathbb{R}^{n\times p}$
+and response $y \in \mathbb{R}^n$. In the high-dimensional setting $n \ll p$, the ordinary least squares (OLS) regression will
+not generalize, so we need a regularized least squares as our model. We consider one of the most prominent
+regularized regression models, namely the Lasso, as our main tool in this homework problem. Lasso estimates
+the regression coefficients as
+\[\hat{\beta}^{\text{lasso}} = \underset{\beta\in\mathbb{R}^p}{\text{argmin}} \|y - X\beta\|_2^2 + \lambda\|\beta\|_1 \tag{1}\]
+where $\lambda$ is a hyperparameter that governs the strength of the regularization and controls the sparsity of the
+coefficients identified.
+
+The attachment contains the training data $(X_{\text{train}}, y_{\text{train}})$ and the test data $(X_{\text{test}}, y_{\text{test}})$. You can use
+your favorite Lasso implementation, such as \texttt{sklearn.linear\_model.Lasso} or \texttt{glmnet} in R. We will use
+mean squared error (MSE) as the main evaluation metric.
+
+\subsection{Warm-up (5 points)}
+
+Let's do some warm-ups.
+\begin{enumerate}[label=(\alph*)]
+\item First trial (2 points). Fit a Lasso model with $(X_{\text{train}}, y_{\text{train}})$ and test it with $(X_{\text{test}}, y_{\text{test}})$, report
+$\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$. You should observe a generalization gap.
+\item Hyperparameter tuning (3 points). Tuning hyperparameters to improve the performance has seemingly
+become a controversial strategy nowadays. Nonetheless, let's experiment with some choices of $\lambda$ and
+check the performance. Please repeat the basic experiment above with 10 choices of $\lambda$s evenly spaced
+on a log scale from $10^{-5}$ to $10^5$. Report one plot showing both the $\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$ as a function
+of $\lambda$.
+\end{enumerate}
+
+\subsection{Weak Irrepresentable Condition (5 points)}
+
+You should notice that there is always a generalization gap between training and testing, and the gap seems
+larger than what can be expected from the measurement errors. Is it some property of the data that has
+trapped us from closing the generalization gap? The answer is yes.
+
+The data is indeed generated from a linear Gaussian model as follows:
+\[y^{(i)} = X^{(i)}\beta^* + \epsilon^{(i)}, \epsilon^{(i)} \sim \mathcal{N}(0, 1), i = 1, \ldots, n \tag{2}\]
+However, with some caveats:
+\begin{itemize}
+\item Only $q$ covariates ($q < p$) are active, i.e., associated with the response. In other words, the true $\beta^* \in \mathbb{R}^p$
+has $q$ nonzeros.
+\item For each active covariate $j$, $\beta^*_j \sim \mathcal{U}(0, 5)$ and $X^{(i)}_j \sim \mathcal{N}(0, 1)$ for $i = 1, \ldots, n$.
+\item What about the rest of the $p - q$ features? In $X_{\text{train}}$, they are duplicates of the active covariates.
+However, $X_{\text{test}}$ is not constructed as so.
+\end{itemize}
+
+Let $X_a$ be the active covariates of $X_{\text{train}}$ and $X_b$ be the remaining. We now offer a theoretical tool: if
+Lasso can correctly identify the active covariates, then
+\[|C_{ba}C_{aa}^{-1} \mathbf{1}| < 1 \tag{3}\]
+where $C_{ba} = \frac{1}{n}X_b^T X_a$, $C_{aa} = \frac{1}{n}X_a^T X_a$, $\mathbf{1}$ denotes a vector of ones, and the inequality holds element-wise.
+
+Show that Lasso cannot correctly identify the active covariates with the data generated as above. It is
+not required, but please refer to (?) for further information.
+
+\subsection{Improving the Performance (10 points)}
+
+It looks like a vanilla Lasso will never solve our problem. Fortunately, we have more knowledge of data. In
+this section, we will design better methods that take advantage of the knowledge of the data and hopefully
+get better MSE.
+
+For all the following two questions, please emphasize the design rationale of the method. Regarding
+empirical performance, please report it in a single plot showing both $\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$ as a function
+of the hyperparameter. You do not have to stick with Lasso, but please limit yourself within, vaguely, the
+family of regularized least squares. The grading will significantly value the rationale of the methods than
+the actual empirical performance since random trial-and-error may also lead to good performance due to the
+simplicity of the data.
+
+\begin{enumerate}[label=(\alph*)]
+\item Heterogeneity of the samples (5 points). There are rarely truly iid data in the real world and the
+heterogeneity of the samples often create some spurious signals identified by the model. We offer an
+extra piece of knowledge of the data:
+\begin{itemize}
+\item For the remaining $p - q$ covariates of $X_{\text{train}}$, when we create them by duplicating the active
+covariates, we did not duplicate for every sample, but only 90\% of the samples.
+\end{itemize}
+Please take advantage of this message, design a method, test it, and report the performance. Please
+be creative, but if one needs some inspiration, (?) may offer some.
+
+\item Structure of the features (5 points). Another perspective is to take advantage of the knowledge of
+features, which can often be introduced by some intuitive understanding of the problem in reality. We
+offer another piece of knowledge of the data:
+\begin{itemize}
+\item If the $i$th covariate is active and the $j$th covariate is its duplicate, then $i < j$.
+\end{itemize}
+Please take advantage of this message, design a method, test it, and report the performance. Please
+be creative, but if one needs some inspiration, "stepwise selection" may offer some.
+\end{enumerate}
+
+\begin{thebibliography}{99}
+\bibitem{premier-league} 2013–14 Premier League. URL \url{https://en.wikipedia.org/w/index.php?title=2013%E2%80%9314_Premier_League&oldid=1239520943}. Page Version ID: 1239520943.
+
+\bibitem{baio-blangiardo} G. Baio and M. Blangiardo. Bayesian hierarchical model for the prediction of football results. 37(2):253–264. ISSN 0266-4763, 1360-0532. doi: 10.1080/02664760802684177. URL \url{https://www.tandfonline.com/doi/full/10.1080/02664760802684177}.
+\end{thebibliography}
 
 \end{document}
