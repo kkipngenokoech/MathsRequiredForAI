@@ -14,4 +14,102 @@
 
 \maketitle
 
+\section{ 3-Dimensional Principal Component Analysis [20 points]}
+
+In this problem, we will perform PCA on 3-dimensional data step by step. We are given three data points:
+\begin{align}
+\mathbf{x}_1 &= [0, -1, -2]\\
+\mathbf{x}_2 &= [1, 1, 1]\\
+\mathbf{x}_3 &= [2, 0, 1]
+\end{align}
+
+and we want to find 2 principal components of the given data.
+
+\begin{enumerate}
+\item First, find the covariance matrix $\mathbf{C}_X = \mathbf{X}^T \mathbf{X}$ where $\mathbf{X} = \begin{bmatrix} \mathbf{x}_1 - \bar{\mathbf{x}} \\ \mathbf{x}_2 - \bar{\mathbf{x}} \\ \mathbf{x}_3 - \bar{\mathbf{x}} \end{bmatrix}$, where $\bar{\mathbf{x}} = \frac{1}{3}(\mathbf{x}_1 + \mathbf{x}_2 + \mathbf{x}_3)$ is the mean of the data samples. Then, find the eigenvalues and the corresponding eigenvectors of $\mathbf{C}_X$. Feel free to use any numerical analysis program such as numpy, e.g., \texttt{numpy.linalg.eig} can be useful. However, you should explain what you inputted into this program.
+\\ Finding the mean $\bar{\mathbf{x}}$:
+\begin{align}
+\bar{\mathbf{x}} &= \frac{1}{3}(\mathbf{x}_1 + \mathbf{x}_2 + \mathbf{x}_3)\\
+&= \frac{1}{3}([0, -1, -2] + [1, 1, 1] + [2, 0, 1])\\
+&= \frac{1}{3}([3, 0, 0])\\
+&= [1, 0, 0]
+\end{align}
+let us find $\mathbf{X}$:
+\begin{align}
+\mathbf{X} &= \begin{bmatrix} \mathbf{x}_1 - \bar{\mathbf{x}} \\ \mathbf{x}_2 - \bar{\mathbf{x}} \\ \mathbf{x}_3 - \bar{\mathbf{x}} \end{bmatrix}\\
+&= \begin{bmatrix} [0, -1, -2] - [1, 0, 0] \\ [1, 1, 1] - [1, 0, 0] \\ [2, 0, 1] - [1, 0, 0] \end{bmatrix}\\
+&= \begin{bmatrix} [-1, -1, -2] \\ [0, 1, 1] \\ [1, 0, 1] \end{bmatrix}
+\end{align}
+Now, we can find the covariance matrix $\mathbf{C}_X$:
+\begin{align}
+\mathbf{C}_X &=  \mathbf{X}^T \mathbf{X}\\
+&=  \begin{bmatrix} [-1, 0, 1] \\ [-1, 1, 0] \\ [-2, 1, 1] \end{bmatrix} \begin{bmatrix} [-1, -1, -2] \\ [0, 1, 1] \\ [1, 0, 1] \end{bmatrix}\\
+&= \begin{bmatrix} 2 & 1 & 3 \\ 1 & 2 & 3 \\ 3 & 3 & 6 \end{bmatrix}
+\end{align}
+Now, we can find the eigenvalues and eigenvectors of $\mathbf{C}_X$ using numpy:
+\begin{verbatim}
+import numpy as np
+C_X = np.array([[2, 1, 3], [1, 2, 3], [3, 3, 6]])
+eigenvalues, eigenvectors = np.linalg.eig(C_X)
+print("Eigenvalues:", eigenvalues)
+print("Eigenvectors:", eigenvectors)
+\end{verbatim}
+The output will give us the eigenvalues and eigenvectors of the covariance matrix. The eigenvalues are:
+\begin{align}
+\lambda_1 &= 9.00\\
+\lambda_2 &= 1.00\\
+\lambda_3 &= 0.00
+\end{align}
+The corresponding eigenvectors are:
+\begin{align}
+    \mathbf{u}_1  &= \begin{pmatrix}
+    1\\
+    1\\
+    2
+    \end{pmatrix}
+    \mathbf{u}_2  &= \begin{pmatrix}
+    -1\\
+    1\\
+    0
+    \end{pmatrix}
+    \mathbf{u}_3  &= \begin{pmatrix}
+    -1\\
+    -1\\
+    1
+    \end{pmatrix}
+\end{align}
+I used the numpy function \texttt{numpy.linalg.eig} to compute the eigenvalues and eigenvectors of the covariance matrix. The input to this function was the covariance matrix $\mathbf{C}_X$ that we computed above.   
+\item 
+Using the result above, find the first two principal components of the given data.
+\\ The first two principal components are the eigenvectors corresponding to the two largest eigenvalues. In this case, the first two principal components are:
+\begin{align}
+\mathbf{u}_1 &= \begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} \quad \text{(corresponding to } \lambda_1 = 9.00\text{)}\\
+\mathbf{u}_2 &= \begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix} \quad \text{(corresponding to } \lambda_2 = 1.00\text{)}
+\end{align}
+
+\item
+Now we want to represent the data $\mathbf{x}_1, \cdots, \mathbf{x}_3$ using a 2-dimensional subspace instead of a 3-dimensional one. PCA gives us the 2-D plane which minimizes the difference between the original data and the data projected to the 2-dimensional plane. In other words, $\mathbf{x}_i$ can be approximated as:
+\begin{align}
+\tilde{\mathbf{x}}_i = a_{i1}\mathbf{u}_1 + a_{i2}\mathbf{u}_2 + \bar{\mathbf{x}},
+\end{align}
+
+where $\mathbf{u}_1$ and $\mathbf{u}_2$ are the principal components we found in 3.b. Figure 1 gives an example of what this might look like.
+
+\begin{figure}[h]
+\centering
+\caption{Example of 2-D plane spanned by the first two principal components.}
+\end{figure}
+
+Find $a_{i1}, a_{i2}$ for $i = 1, 2, 3$. Then, find the $\tilde{\mathbf{x}}_i$'s and the difference between $\tilde{\mathbf{x}}_i$ and $\mathbf{x}_i$, i.e., $||\tilde{\mathbf{x}}_i - \mathbf{x}_i||_2$ for $i = 1, 2, 3$. (Again, feel free to use any numerical analysis program to get the final answer. But, show your calculation process.)
+
+\end{enumerate}
+
 \end{document}
