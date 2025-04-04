@@ -109,6 +109,212 @@ where $\mathbf{u}_1$ and $\mathbf{u}_2$ are the principal components we found in
 \end{figure}
 
 Find $a_{i1}, a_{i2}$ for $i = 1, 2, 3$. Then, find the $\tilde{\mathbf{x}}_i$'s and the difference between $\tilde{\mathbf{x}}_i$ and $\mathbf{x}_i$, i.e., $||\tilde{\mathbf{x}}_i - \mathbf{x}_i||_2$ for $i = 1, 2, 3$. (Again, feel free to use any numerical analysis program to get the final answer. But, show your calculation process.)
+\\\\ To find $a_{i1}$ and $a_{i2}$, we can project the original data points onto the principal components:
+\\ Let us project $\mathbf{x}_1$ onto the first two principal components:
+\begin{align}
+\mathbf{x}_1 &= a_{11}\mathbf{u}_1 + a_{12}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+\mathbf{x}_1 - \bar{\mathbf{x}} &= a_{11}\mathbf{u}_1 + a_{12}\mathbf{u}_2\\
+[-1, -1, -2] &= a_{11}\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} + a_{12}\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}\\
+[-1, -1, -2] &= \begin{pmatrix}
+a_{11} - a_{12}\\
+a_{11} + a_{12}\\
+2a_{11}\\
+\end{pmatrix}
+\end{align}
+Now, we can set up a system of equations:
+\begin{align}
+-1 &= a_{11} - a_{12}\\
+-1 &= a_{11} + a_{12}\\
+-2 &= 2a_{11}
+\end{align}
+From the third equation, we can find $a_{11}$:
+\begin{align}
+2a_{11} &= -2\\
+a_{11} &= -1
+\end{align}
+Now, we can substitute $a_{11}$ into the first two equations to find $a_{12}$:
+\begin{align}
+-1 &= -1 - a_{12}\\
+-1 &= -1 + a_{12}\\
+a_{12} &= 0
+\end{align}
+So, for $\mathbf{x}_1$, we have:
+\begin{align}
+a_{11} &= -1\\
+a_{12} &= 0
+\end{align}
+Now, we can find $\tilde{\mathbf{x}}_1$:
+\begin{align}
+\tilde{\mathbf{x}}_1 &= a_{11}\mathbf{u}_1 + a_{12}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+&= -1\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} + 0\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix} + [1, 0, 0]\\
+&= [-1, -1, -2] + [1, 0, 0]\\
+&= [0, -1, -2]
+\end{align}
+Now, we can find the difference between $\tilde{\mathbf{x}}_1$ and $\mathbf{x}_1$:
+\begin{align}
+||\tilde{\mathbf{x}}_1 - \mathbf{x}_1||_2 &= ||[0, -1, -2] - [0, -1, -2]||_2\\
+&= ||[0, 0, 0]||_2\\
+&= 0
+\end{align}
+Now, we can repeat the process for $\mathbf{x}_2$:
+\begin{align}
+\mathbf{x}_2 &= a_{21}\mathbf{u}_1 + a_{22}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+\mathbf{x}_2 - \bar{\mathbf{x}} &= a_{21}\mathbf{u}_1 + a_{22}\mathbf{u}_2\\
+[0, 1, 1] &= a_{21}\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} + a_{22}\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}\\
+[0, 1, 1] &= \begin{pmatrix}
+a_{21} - a_{22}\\
+a_{21} + a_{22}\\
+2a_{21}\\
+\end{pmatrix}
+\end{align}
+Now, we can set up a system of equations:
+\begin{align}
+0 &= a_{21} - a_{22}\\
+1 &= a_{21} + a_{22}\\
+1 &= 2a_{21}
+\end{align}
+From the third equation, we can find $a_{21}$:
+\begin{align}
+2a_{21} &= 1\\
+a_{21} &= \frac{1}{2}
+\end{align}
+Now, we can substitute $a_{21}$ into the first two equations to find $a_{22}$:
+\begin{align}
+0 &= \frac{1}{2} - a_{22}\\
+0 &= \frac{1}{2} + a_{22}\\
+a_{22} &= \frac{1}{2}
+\end{align}
+So, for $\mathbf{x}_2$, we have:
+\begin{align}
+a_{21} &= \frac{1}{2}\\
+a_{22} &= \frac{1}{2}
+\end{align}
+Now, we can find $\tilde{\mathbf{x}}_2$:
+\begin{align}
+\tilde{\mathbf{x}}_2 &= a_{21}\mathbf{u}_1 + a_{22}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+&= \frac{1}{2}\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} + \frac{1}{2}\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix} + [1, 0, 0]\\
+&= \begin{pmatrix}
+\frac{1}{2} - \frac{1}{2}\\
+\frac{1}{2} + \frac{1}{2}\\
+\frac{1}{2}\\
+\end{pmatrix} + [1, 0, 0]\\
+&= [0, 1, 1] + [1, 0, 0]\\
+&= [1, 1, 1]
+\end{align}
+Now, we can find the difference between $\tilde{\mathbf{x}}_2$ and $\mathbf{x}_2$:
+\begin{align}
+||\tilde{\mathbf{x}}_2 - \mathbf{x}_2||_2 &= ||[1, 1, 1] - [1, 1, 1]||_2\\
+&= ||[0, 0, 0]||_2\\
+&= 0
+\end{align}
+Now, we can repeat the process for $\mathbf{x}_3$:
+\begin{align}
+\mathbf{x}_3 &= a_{31}\mathbf{u}_1 + a_{32}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+\mathbf{x}_3 - \bar{\mathbf{x}} &= a_{31}\mathbf{u}_1 + a_{32}\mathbf{u}_2\\
+[1, 0, 1] &= a_{31}\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} + a_{32}\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix}\\
+[1, 0, 1] &= \begin{pmatrix}
+a_{31} - a_{32}\\
+a_{31} + a_{32}\\
+2a_{31}\\
+\end{pmatrix}
+\end{align}
+Now, we can set up a system of equations:
+\begin{align}
+1 &= a_{31} - a_{32}\\
+0 &= a_{31} + a_{32}\\
+1 &= 2a_{31}
+\end{align}
+From the third equation, we can find $a_{31}$:
+\begin{align}
+2a_{31} &= 1\\
+a_{31} &= \frac{1}{2}
+\end{align}
+Now, we can substitute $a_{31}$ into the first two equations to find $a_{32}$:
+\begin{align}
+1 &= \frac{1}{2} - a_{32}\\
+0 &= \frac{1}{2} + a_{32}\\
+a_{32} &= -\frac{1}{2}
+\end{align}
+So, for $\mathbf{x}_3$, we have:
+\begin{align}
+a_{31} &= \frac{1}{2}\\
+a_{32} &= -\frac{1}{2}
+\end{align}
+Now, we can find $\tilde{\mathbf{x}}_3$:
+\begin{align}
+\tilde{\mathbf{x}}_3 &= a_{31}\mathbf{u}_1 + a_{32}\mathbf{u}_2 + \bar{\mathbf{x}}\\
+&= \frac{1}{2}\begin{pmatrix}
+1\\
+1\\
+2
+\end{pmatrix} - \frac{1}{2}\begin{pmatrix}
+-1\\
+1\\
+0
+\end{pmatrix} + [1, 0, 0]\\
+&= \begin{pmatrix}
+\frac{1}{2} + \frac{1}{2}\\
+\frac{1}{2} - \frac{1}{2}\\
+\frac{1}{2}\\
+\end{pmatrix} + [1, 0, 0]\\
+&= [1, 0, 1] + [1, 0, 0]\\
+&= [2, 0, 1]
+\end{align}
+Now, we can find the difference between $\tilde{\mathbf{x}}_3$ and $\mathbf{x}_3$:
+\begin{align}
+||\tilde{\mathbf{x}}_3 - \mathbf{x}_3||_2 &= ||[2, 0, 1] - [2, 0, 1]||_2\\
+&= ||[0, 0, 0]||_2\\
+&= 0
+\end{align}
+So, we have:
+\begin{align}
+\tilde{\mathbf{x}}_1 &= [0, -1, -2] \quad ||\tilde{\mathbf{x}}_1 - \mathbf{x}_1||_2 = 0\\
+\tilde{\mathbf{x}}_2 &= [1, 1, 1] \quad ||\tilde{\mathbf{x}}_2 - \mathbf{x}_2||_2 = 0\\
+\tilde{\mathbf{x}}_3 &= [2, 0, 1] \quad ||\tilde{\mathbf{x}}_3 - \mathbf{x}_3||_2 = 0
+\end{align}
+Thus, the differences between the projected data points and the original data points are all zero. This means that the PCA projection perfectly represents the original data in the 2-dimensional subspace spanned by the first two principal components.
+
+% \end{align}
 
 \end{enumerate}
 
