@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  5 APR 2025 07:04
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  5 APR 2025 07:22
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -258,9 +258,14 @@ File: asynchronousVsynchronous.png Graphic file (type png)
 <use asynchronousVsynchronous.png>
 Package pdftex.def Info: asynchronousVsynchronous.png  used on input line 108.
 (pdftex.def)             Requested size: 560.40762pt x 358.54459pt.
+<theoriticalVPlotted.png, id=19, 617.9085pt x 395.3169pt>
+File: theoriticalVPlotted.png Graphic file (type png)
+<use theoriticalVPlotted.png>
+Package pdftex.def Info: theoriticalVPlotted.png  used on input line 119.
+(pdftex.def)             Requested size: 560.40762pt x 358.54459pt.
  [2 <./asynchronousVsynchronous.png>]
-[3] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 279--282
+[3 <./theoriticalVPlotted.png>] [4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 291--294
 
  []
 
@@ -271,13 +276,13 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3196 strings out of 474222
- 48288 string characters out of 5748733
+ 3203 strings out of 474222
+ 48497 string characters out of 5748733
  1955975 words of memory out of 5000000
- 25420 multiletter control sequences out of 15000+600000
+ 25427 multiletter control sequences out of 15000+600000
  572865 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 57i,16n,65p,781b,322s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 57i,16n,65p,781b,324s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
 r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texl
@@ -296,10 +301,10 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/te
 xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-di
 st/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on homework.pdf (10 pages, 273541 bytes).
+Output written on homework.pdf (10 pages, 325970 bytes).
 PDF statistics:
- 135 PDF objects out of 1000 (max. 8388607)
+ 137 PDF objects out of 1000 (max. 8388607)
  82 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

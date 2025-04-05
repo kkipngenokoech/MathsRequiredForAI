@@ -114,7 +114,19 @@ The synchronous SGD takes the maximum time among all workers to finish their gra
 
 \item
 Write down the theoretical expressions for the expected runtimes per iteration of synchronous and asynchronous SGD in terms of $m$ and $\lambda$ (Hint: You can use the expressions derived in parts (b) and (c)). On the figure generated in part (d), also plot the theoretical expected runtimes versus $m$. Check whether the theoretical and simulated values align.
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{theoriticalVPlotted.png}
+\caption{Average runtimes per iteration of synchronous and asynchronous SGD versus $m$ with theoretical expected runtimes.}
+\end{figure}
 \end{enumerate}
+The theoretical expected runtimes per iteration of synchronous and asynchronous SGD are given by:
+\begin{align}
+E[T_{sync}] &= \frac{1}{\lambda} \sum_{k=1}^m \frac{1}{k}\\
+E[T_{async}] &= \frac{1}{m\lambda}
+\end{align}
+where $E[T_{sync}]$ is the expected runtime of synchronous SGD and $E[T_{async}]$ is the expected runtime of asynchronous SGD. The plot shows that the theoretical and simulated values align well, confirming the correctness of our theoretical expressions.
+
 \newpage
 \section{K-means [20 points]}
 
