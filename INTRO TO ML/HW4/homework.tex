@@ -14,6 +14,72 @@
 
 \maketitle
 
+\section*{2 K-means [20 points]}
+
+Given a set of data points $\{\mathbf{x}_n\}_{n=1}^N$, k-means clustering minimizes the following distortion measure (also called the ``objective'' or ``clustering cost''):
+\begin{align}
+D = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \|\mathbf{x}_n - \boldsymbol{\mu}_k\|^2_2
+\end{align}
+where $\boldsymbol{\mu}_k$ is the prototype of the $k$-th cluster and $r_{nk}$ is a binary indicator variable. If $\mathbf{x}_n$ is assigned to the cluster $k$, $r_{nk}$ is 1, and otherwise $r_{nk}$ is 0. For each cluster, $\boldsymbol{\mu}_k$ is the prototype representative for all the data points assigned to that cluster.
+
+\begin{enumerate}
+    \item In lecture, we stated but did not prove that $\boldsymbol{\mu}_k$ is the mean of all points associated with the $k$th cluster, thus motivating the name of the algorithm. You will now prove this statement. Assuming all $r_{nk}$ are known (i.e., assuming you know the cluster assignments of all $N$ data points), show that the objective $D$ is minimized when each $\boldsymbol{\mu}_k$ is chosen as the mean of all data points assigned to cluster $k$, for any $k$. This justifies the iterative procedure of k-means\footnote{More rigorously, one would also need to show that if all $\boldsymbol{\mu}_k$ are known, then $r_{nk}$ can be computed by assigning $\mathbf{x}_n$ to the nearest $\boldsymbol{\mu}_k$. You are not required to do so.}.
+\\
+Let us denote the set of data points assigned to cluster $k$ as $C_k = \{n: r_{nk} = 1\}$. The objective function can be rewritten as:
+\begin{align}
+D &= \sum_{k=1}^K \sum_{n \in C_k} \|\mathbf{x}_n - \boldsymbol{\mu}_k\|^2_2\\
+&= \sum_{k=1}^K \sum_{n \in C_k} \left( \|\mathbf{x}_n\|^2_2 - 2\mathbf{x}_n^T\boldsymbol{\mu}_k + \|\boldsymbol{\mu}_k\|^2_2 \right)\\
+&= \sum_{k=1}^K \left( \sum_{n \in C_k} \|\mathbf{x}_n\|^2_2 - 2\boldsymbol{\mu}_k^T \sum_{n \in C_k} \mathbf{x}_n + |C_k| \|\boldsymbol{\mu}_k\|^2_2 \right)
+\end{align}
+where $|C_k|$ is the number of data points assigned to cluster $k$.
+Now, we can differentiate $D$ with respect to $\boldsymbol{\mu}_k$ and set it to zero to find the optimal $\boldsymbol{\mu}_k$:
+\begin{align}
+\frac{\partial D}{\partial \boldsymbol{\mu}_k} &= -2 \sum_{n \in C_k} \mathbf{x}_n + 2|C_k|\boldsymbol{\mu}_k = 0\\
+\sum_{n \in C_k} \mathbf{x}_n &= |C_k|\boldsymbol{\mu}_k\\
+\boldsymbol{\mu}_k &= \frac{1}{|C_k|} \sum_{n \in C_k} \mathbf{x}_n
+\end{align}
+Thus, the optimal $\boldsymbol{\mu}_k$ is the mean of all data points assigned to cluster $k$.
+    \item As discussed in lecture, sometimes we wish to scale each feature in order to ensure that ``larger'' features do not dominate the clustering. Suppose that each data point $\mathbf{x}_n$ is a $d$-dimensional feature vector and that we scale the $j$th feature by a factor $w_j > 0$. Letting $\mathbf{W}$ denote a $d \times d$ diagonal matrix with the $j$'th diagonal entry being $w_j$, $j = 1, 2, \ldots, d$, we can write our transformed features as $\mathbf{x}' = \mathbf{W}\mathbf{x}$.
+
+Suppose we fix the $r_{nk}$, i.e., we take the assignment of data points $\mathbf{x}_n$ to clusters $k$ as given. Our goal is then to find the cluster centers $\boldsymbol{\mu}_k$ that minimize the distortion measure
+\begin{align}
+D = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \|\mathbf{W}\mathbf{x}_n - \boldsymbol{\mu}_k\|^2_2.
+\end{align}
+
+Show that the cluster centers $\{\boldsymbol{\mu}_k\}$ that do so are given by $\boldsymbol{\mu}_k = \frac{1}{\sum_{n=1}^N r_{nk}} \mathbf{W} \sum_{n=1}^N r_{nk}\mathbf{x}_n$.
+\\
+Let us denote the set of data points assigned to cluster $k$ as $C_k = \{n: r_{nk} = 1\}$. The objective function can be rewritten as:
+\begin{align}
+D &= \sum_{k=1}^K \sum_{n \in C_k} \|\mathbf{W}\mathbf{x}_n - \boldsymbol{\mu}_k\|^2_2\\
+&= \sum_{k=1}^K \sum_{n \in C_k} \left( \|\mathbf{W}\mathbf{x}_n\|^2_2 - 2(\mathbf{W}\mathbf{x}_n)^T\boldsymbol{\mu}_k + \|\boldsymbol{\mu}_k\|^2_2 \right)\\
+&= \sum_{k=1}^K \left( \sum_{n \in C_k} \|\mathbf{W}\mathbf{x}_n\|^2_2 - 2\boldsymbol{\mu}_k^T \sum_{n \in C_k} \mathbf{W}\mathbf{x}_n + |C_k| \|\boldsymbol{\mu}_k\|^2_2 \right)
+\end{align}
+where $|C_k|$ is the number of data points assigned to cluster $k$.
+Now, we can differentiate $D$ with respect to $\boldsymbol{\mu}_k$ and set it to zero to find the optimal $\boldsymbol{\mu}_k$:
+\begin{align}
+\frac{\partial D}{\partial \boldsymbol{\mu}_k} &= -2 \sum_{n \in C_k} \mathbf{W}\mathbf{x}_n + 2|C_k|\boldsymbol{\mu}_k = 0\\
+\sum_{n \in C_k} \mathbf{W}\mathbf{x}_n &= |C_k|\boldsymbol{\mu}_k\\
+\boldsymbol{\mu}_k &= \frac{1}{|C_k|} \sum_{n \in C_k} \mathbf{W}\mathbf{x}_n
+\end{align}
+
+We can rewrite the sum over $C_k$ as a sum over all points using the indicator variables $r_{nk}$, and note that $|C_k| = \sum_{n=1}^N r_{nk}$:
+\begin{align}
+\boldsymbol{\mu}_k &= \frac{1}{\sum_{n=1}^N r_{nk}} \sum_{n=1}^N r_{nk}\mathbf{W}\mathbf{x}_n
+\end{align}
+
+Since $\mathbf{W}$ is a diagonal matrix that doesn't depend on the summation index $n$, we can factor it out of the summation:
+\begin{align}
+\boldsymbol{\mu}_k &= \frac{1}{\sum_{n=1}^N r_{nk}}\mathbf{W}\sum_{n=1}^N r_{nk}\mathbf{x}_n
+\end{align}
+
+Thus, the cluster centers $\boldsymbol{\mu}_k$ that minimize the distortion measure are given by:
+\begin{align}
+\boldsymbol{\mu}_k = \frac{1}{\sum_{n=1}^N r_{nk}} \mathbf{W} \sum_{n=1}^N r_{nk}\mathbf{x}_n
+\end{align}
+
+\end{enumerate}
+\newpage
+
 \section{ 3-Dimensional Principal Component Analysis [20 points]}
 
 In this problem, we will perform PCA on 3-dimensional data step by step. We are given three data points:
