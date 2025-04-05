@@ -7,7 +7,7 @@
 \begin{document}
 
 \author{kipngeno koech - bkoech}
-\title{Homework 0 - Introduction to Probabilistic Graphical Models}   
+\title{Homework 0 - Introduction to Machine Learning for Engineers}   
 \maketitle
 
 \medskip
@@ -51,9 +51,53 @@ F_X(x) =
 
 \item
 Define $X_{m:m}$ as the maximum of $m$ i.i.d. (independently and identically distributed) instances $X_1, ..., X_m$ following the distribution $X$. What is the CDF of $X_{m:m}$, and what is the expected value $E[X_{m:m}]$?
+\\ The CDF of the maximum of $m$ i.i.d. random variables is given by:
+\begin{align}
+F_{X_{m:m}}(x) = P(X_{m:m} \leq x) = P(X_1 \leq x, X_2 \leq x, ..., X_m \leq x) = P(X \leq x)^m = (F_X(x))^m
+\end{align}
+Substituting the CDF we found in part (a):
+\begin{align}
+F_{X_{m:m}}(x) =
+\begin{cases}
+0 & \text{if } x < 0\\
+(1 - e^{-\lambda x})^m & \text{if } x \geq 0
+\end{cases}
+\end{align}
+To find the expected value $E[X_{m:m}]$, we can use the following formula:
+\begin{align}
+E[X_{m:m}] = \int_0^\infty (1 - F_{X_{m:m}}(x)) dx
+&= \int_0^\infty (1 - (1 - e^{-\lambda x})^m) dx\\
+\end{align}
+We need to evaluate this integral. We can use integration by parts or numerical methods to find the expected value. The result is:
+\begin{align}
+E[X_{m:m}] = \frac{1}{\lambda} \sum_{k=1}^m \frac{1}{k}
+\end{align}
+This is the expected value of the maximum of $m$ i.i.d. exponential random variables with rate $\lambda$.
+
 
 \item
 Define $X_{1:m}$ as the minimum of $m$ i.i.d instances $X_1, ..., X_m$ following the distribution $X$. What is the CDF of $X_{1:m}$, and what is the expected value $E[X_{1:m}]$?
+\\ The CDF of the minimum of $m$ i.i.d. random variables is given by:
+\begin{align}
+F_{X_{1:m}}(x) = P(X_{1:m} \leq x) = P(X_1 \leq x, X_2 \leq x, ..., X_m \leq x) = 1 - P(X > x)^m = 1 - (1 - F_X(x))^m
+\end{align}
+Substituting the CDF:
+\begin{align}
+F_{X_{1:m}}(x) =
+\begin{cases}
+0 & \text{if } x < 0\\
+1 - (e^{-\lambda x})^m & \text{if } x \geq 0
+\end{cases}
+\end{align}
+To find the expected value $E[X_{1:m}]$, we can use the following formula:
+\begin{align}
+E[X_{1:m}] = \int_0^\infty (1 - F_{X_{1:m}}(x)) dx
+&= \int_0^\infty (e^{-\lambda x})^m dx\\
+&= \int_0^\infty e^{-m\lambda x} dx\\
+&= \frac{1}{m\lambda}
+\end{align}
+This is the expected value of the minimum of $m$ i.i.d. exponential random variables with rate $\lambda$.
+
 
 \item
 In this sub-problem, we will simulate and compare the expected runtime per iteration of synchronous SGD and asynchronous SGD for different values of $m$. The time for each worker node to finish one gradient computation is exponentially distributed as given in part (a) with $\lambda = 2$, and it is i.i.d. across workers and iterations. Assume there is no communication delay.
@@ -430,7 +474,77 @@ So, we have:
 \end{align}
 Thus, the differences between the projected data points and the original data points are all zero. This means that the PCA projection perfectly represents the original data in the 2-dimensional subspace spanned by the first two principal components.
 
-% \end{align}
+\newpage
+\section{Clustering Human Activity using Inertial Sensors Data [40 points]}
+In this assignment, you will explore and apply clustering techniques to the Human Activity Recognition Using Smartphones dataset. This dataset (available at UCI archive) was created from recording data from 30 individuals performing six different activities (walking, walking upstairs, walking downstairs, sitting, standing, laying) while wearing a smartphone equipped with inertial sensors at their waist. We will be working with two primary forms of this data:
+
+\begin{itemize}
+\item[a.] Feature Extracted Data: This dataset contains pre-processed features derived from the raw sensor signals. Check the file ``features info.txt'' to learn more.
+\item[b.] Raw Sensor Data: This dataset contains the original, unprocessed time-series data from the smartphone's accelerometer and gyroscope sensors.
+\end{itemize}
+
+Note: for this question use the starter notebook (hw4\_4\_starter\_notebook.ipynb) to guide your answers.
+
+\subsection*{4.1 Import Data and Plotting [5 points]}
+\begin{itemize}
+\item[a.] Import the training and testing data from the feature extracted data files described in the README.txt. Compine the features and the labels into one dataframe. Display the first 5 rows of the training feature dataframe.
+\item[b.] Scale the data so that for each feature the mean is zero and the standard deviation is 1. Then perform PCA on the scaled data to find the first two principal components.
+\item[c.] Visualize the training data by creating a scatter plot of its first two principal components. Color the points in the scatter plot according to their respective activity labels. Include this scatter plot in your solution PDF.
+\end{itemize}
+
+\subsection*{4.2 Choosing The Optimal Number of Clusters [10 points]}
+Now we will use K-means clustering (as taught in class) and attempt to choose the optimal number of clusters (k) using two different methods and analyse the results.
+
+\begin{itemize}
+\item[a.] Elbow Method:
+
+The Elbow Method is a populer heuristic approach used in K-Means clustering to determine the optimal number of clusters. It provides a systematic way of identifying the best k by analyzing how the distortion (see Question 2) changes as k increases. The distortion is also referred to as inertia, which measures the compactness of clusters.
+
+To determine the optimal k, we plot distortion against k. The curve usually shows a steep drop initially, followed by a slower decline. The ``elbow'' is the point where this change in slope is most pronounced. This 'elbow' point is usually determent from the plot directly but it can also be define mathmatically as the value of k where the second derivative of the distortion is maximized.
+
+Plot the distortion versus k for k = 2 to k = 15. Choose the value of k where the curve sharply flattens (``elbow''), and then create a scatter plot that visualizes the clusters for the chosen k. Each point in the scatter plot should correspond to a data point, with different colors or shapes the different clusters. Use the two principal components you found in part 4.1 as the axes of your plot. In your comments, describe how the distortion changes with increasing k.
+
+\item[b.] Adjusted Rand Index (ARI)
+
+The Adjusted Rand Index (ARI) is a clustering evaluation metric that measures the alignment between a predicted clustering and a ground truth labels. In our case, the clustering obtained by K-means and the true activity labels.
+
+The ARI score is normalized so that ARI = 1 indicates perfect clustering (identical to the ground truth), ARI = 0 corresponds to random clustering (no better than chance), and ARI < 0 suggests clustering worse than random assignment\footnote{This suggests that the clustering systematically splits cohesive groups apart, causing ARI to be negative.}.
+
+Compute ARI for k = 2 to k = 15 using the true activity labels. (you can use sklearn adjusted\_rand\_score for this task) Pick the value of k with maximal ARI and describe how the ARI changes with increasing k. Create a scatter plot of the resulting clusters, as you did for the elbow method clusters above.
+\end{itemize}
+
+\subsection*{4.3 Prototype Selection using K-means Clustering [10 points]}
+Prototype selection refers to the process of choosing a subset of representative data points from a larger dataset to reduce storage, computational cost, and redundancy while preserving essential information for classification or clustering tasks. It can also help reduce labeling time, particularly in scenarios where manual annotation is costly and time-consuming, such as active learning and semi-supervised learning. k-means clustering can be used to select prototypes by selecting prototypes from each of the k identified clusters, thus ensuring a diversity of data in the selected prototypes.
+
+In this section, we will simulate this scenario by limiting the number of labeled samples used to train a logistic regression classifier.
+
+\begin{itemize}
+\item[a.] Random Selection: Begin by implementing a uniformly random selection strategy to choose 120 data points from the training data set. After selecting the prototypes, use the resulting dataset to train a logistic regression model, with the activity type as the label, and calculate the accuracy. Repeat this experiment 10 times and report the average accuracy.
+
+\item[b.] Using K-means Clustering by Class: Now perform k-means clustering on the training dataset using k = 20 for each label independently and identify the cluster centers. Based on these centers, you will then for each cluster centroids choose the closest points as representative training data (you will get 120 points). Use these points to train a logistic regression model. Compare the accuracy of the new model to the one trained in part (a) to assess how using clustering for prototype selection affects the performance.
+\end{itemize}
+
+\subsection*{4.4 Autoencoder for Feature Learning [15 points]}
+In this section, we will implement an autoencoder, a type of neural network used for unsupervised learning of efficient codings. Autoencoders work by encoding input data into a lower-dimensional representation and then decoding it back to the original input (see Fig. 2). This process forces the network to learn a compressed representation of the data.
+
+Autoencoders are particularly useful for dimensionality reduction, feature extraction, and denoising. In this part of the problem, we will leverage an autoencoder to create a more compact and more informative representation of the raw sensor data from the Human Activity Recognition dataset by training an autoencoder on the raw sensor readings.
+
+This question will provide you with hands-on experience using PyTorch to build and train and implementing a bidirectional GRU autoencoder neural network.
+
+\begin{figure}[h]
+\centering
+\caption{Image showing autoencoder structure [Source Wikipedia].}
+\end{figure}
+
+\begin{itemize}
+\item[a.] Create Dataset Class: Begin by loading the raw sensor data as described in the README.txt file. Ensure the data is correctly formatted for input into the autoencoder. Create a PyTorch Dataset class to efficiently load and batch the raw sensor data. Utilize a DataLoader to create batches for training the autoencoder.
+
+\item[b.] Autoencoder Implementation: Implement the TimeSeriesAE autoencoder model using PyTorch. This model should use GRU layers for both the encoder and decoder and an embedding of size 64. Instantiate the model, define an appropriate loss function, and choose an optimizer. Train the autoencoder for 10 epochs. Plot the training loss vs. epochs.
+
+\item[c.] Embedding Extraction and Visualization: Extract the encoded representations (embeddings) from the trained autoencoder for the training data. To do this, pass the training data through the encoder part of the autoencoder model. Use the first two embeddings to create a scatter plot of the embeddings, colored by the activity labels. Include this plot in your solution PDF.
+
+\item[d.] Clustering Evaluation and Comparison: Perform K-means clustering on the extracted 64D embeddings. Evaluate the clustering performance using the Adjusted Rand Index (ARI) by comparing the cluster labels with the true activity labels. Compare the ARI obtained by clustering the autoencoder embeddings with the clustering performance you obtained from the hand-engineered features in Part 4.2. Discuss which of the two provides the highest ARI and the potential reasons for that.
+\end{itemize}
 
 \end{enumerate}
 
