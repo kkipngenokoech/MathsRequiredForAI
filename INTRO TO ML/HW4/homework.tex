@@ -14,7 +14,57 @@
 
 \maketitle
 
-\section*{2 K-means [20 points]}
+\section{Distributed SGD [20 points]}
+Consider that we have a system of $m$ worker nodes and a parameter server performing distributed SGD (stochastic gradient descent). In each iteration, every worker node receives the model from the parameter server, computes one gradient step of the objective function locally using its local data, and sends the gradient to the parameter server. The parameter server does the aggregation of gradients using either synchronous SGD or asynchronous SGD.
+
+The gradient calculation time $X_i$ taken by each node $i$ follows the exponential distribution with rate $\lambda = 2$, which has the following probability density function (PDF):
+\begin{align}
+f_X(x) = 
+\begin{cases}
+\lambda e^{-\lambda x} & \text{if } x \geq 0\\
+0 & \text{else}
+\end{cases}
+\end{align}
+
+Answer the following questions and make sure to explain your answers:
+
+\begin{enumerate}
+\item
+What is the cumulative distribution function (CDF) of $f_X(x)$, i.e., $F_X(x)$?
+\\ We find the CDF by integrating the PDF:
+\begin{align}
+F_X(x) &= \int_{-\infty}^x f_X(t) dt\\
+&= \int_{0}^x \lambda e^{-\lambda t} dt\\
+&= \left[-e^{-\lambda t}\right]_{0}^x\\
+&= -e^{-\lambda x} + 1\\
+&= 1 - e^{-\lambda x}
+\end{align}
+integrating from $0$ to $x$ since the PDF is $0$ for $x < 0$.
+
+\begin{align}
+F_X(x) =
+\begin{cases}
+0 & \text{if } x < 0\\
+1 - e^{-\lambda x} & \text{if } x \geq 0
+\end{cases}
+\end{align}
+
+\item
+Define $X_{m:m}$ as the maximum of $m$ i.i.d. (independently and identically distributed) instances $X_1, ..., X_m$ following the distribution $X$. What is the CDF of $X_{m:m}$, and what is the expected value $E[X_{m:m}]$?
+
+\item
+Define $X_{1:m}$ as the minimum of $m$ i.i.d instances $X_1, ..., X_m$ following the distribution $X$. What is the CDF of $X_{1:m}$, and what is the expected value $E[X_{1:m}]$?
+
+\item
+In this sub-problem, we will simulate and compare the expected runtime per iteration of synchronous SGD and asynchronous SGD for different values of $m$. The time for each worker node to finish one gradient computation is exponentially distributed as given in part (a) with $\lambda = 2$, and it is i.i.d. across workers and iterations. Assume there is no communication delay.
+
+Simulate 5000 iterations of training using Python for different values of $m$ ranging from 1 to 20, and obtain the average runtime per iteration. Make a comparative plot of the average runtimes per iteration of synchronous and asynchronous SGD versus $m$. Explain the trends observed in the plot in 1-2 sentences. You may use packages inside \texttt{numpy.random} to draw random samples from the exponential distribution. Attach your plot and code in PDF format to the end of your homework.
+
+\item
+Write down the theoretical expressions for the expected runtimes per iteration of synchronous and asynchronous SGD in terms of $m$ and $\lambda$ (Hint: You can use the expressions derived in parts (b) and (c)). On the figure generated in part (d), also plot the theoretical expected runtimes versus $m$. Check whether the theoretical and simulated values align.
+\end{enumerate}
+\newpage
+\section{K-means [20 points]}
 
 Given a set of data points $\{\mathbf{x}_n\}_{n=1}^N$, k-means clustering minimizes the following distortion measure (also called the ``objective'' or ``clustering cost''):
 \begin{align}
