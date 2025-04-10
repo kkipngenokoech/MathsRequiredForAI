@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1744322513.61994 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744322514.32098 0
+["pdflatex"] 1744328944.19269 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744328945.423 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744322513.28706 32349 cf018d5517cf8b3d849950cedc990dbd ""
+  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744328943.81554 35671 9f95d8272e5541cfac2f93d370f4a779 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -134,9 +134,11 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty" 1705352648 3045 273c666a54e60b9f730964f431a56c1b ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty" 1705352648 2462 6bc53756156dbd71c1ad550d30a3b93f ""
   "/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo" 1705352648 8448 dbc0dbf4156c0bb9ba01a1c685d3bad0 ""
+  "/usr/share/texlive/texmf-dist/tex/latex/booktabs/booktabs.sty" 1579038678 6078 f1cb470c9199e7110a27851508ed7a5c ""
   "/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty" 1561238569 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty" 1601931149 46845 3b58f70c6e861a13d927bff09d35ecbc ""
+  "/usr/share/texlive/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg" 1459978653 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def" 1663965824 19448 1e988b341dda20961a6b931bcde55519 ""
@@ -175,9 +177,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "homework.aux" 1744322514.24706 1862 b7cbabd6950a6c7e01e688c92cbab52b "pdflatex"
-  "homework.out" 1744322514.24706 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
-  "homework.tex" 1744322513.28706 32349 cf018d5517cf8b3d849950cedc990dbd ""
+  "bonus_att_vs_def.png" 1744326710.48607 30718 04cf27a9731edd2c6554a9dda5177bcd ""
+  "bonus_home_hist.png" 1744326710.31607 22007 4c142dc009afc759c2c4c495337a876e ""
+  "bonus_trace_grid.png" 1744326709.57607 195547 081b6ef818cf02bb6bd41b8ba60f10cd ""
+  "home_trace_burnin_and_sampling.png" 1744326746.47605 113632 0e03f4fea6d04c87104d96dcb2f0410a ""
+  "homework.aux" 1744328945.35554 4022 cb0910d6ec155fed79ec63df3c12ffd8 "pdflatex"
+  "homework.out" 1744328945.35554 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
+  "homework.tex" 1744328943.81554 35671 9f95d8272e5541cfac2f93d370f4a779 ""
   (generated)
   "homework.aux"
   "homework.log"

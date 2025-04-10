@@ -1,9 +1,11 @@
 \documentclass{article}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{enumitem}
+\usepackage{float}
 
 
 \author{kipngeno koech - bkoech}
@@ -286,24 +288,108 @@ the autocorrelation of the MCMC samples introduced by the Markovian process. The
 are $\sigma = 0.05$, and $t = 5$. Plot the trace plot of the burning phase and the MCMC samples for the latent
 variable home using the proposed distribution.
 
+\paragraph{Trace Plot of the Latent Variable \texttt{home}.}
+We run the Metropolis--Hastings algorithm with a proposal standard deviation of $\sigma = 0.05$ and a thinning factor of $t = 5$. The algorithm is executed for 5000 burn-in steps, after which 5000 samples are collected, taking every $5$-th sample to reduce autocorrelation.
+
+The trace plot below shows the evolution of the latent variable \texttt{home} during:
+\begin{itemize}
+    \item The \textbf{burn-in phase} (left), where the chain stabilizes, and
+    \item The \textbf{post burn-in MCMC samples} (right), where we collect samples for posterior inference.
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{home_trace_burnin_and_sampling.png}
+    \caption{Trace plots of the latent variable \texttt{home} for burn-in (left) and post burn-in samples (right) using Metropolis--Hastings with $\sigma = 0.05$ and $t = 5$.}
+    \label{fig:home-trace}
+\end{figure}
+
+
 \item (Bonus, 20 points) Set the parameters as $\sigma = 0.005, 0.05, 0.5$ and $t = 1, 5, 20, 50$, and:
 \begin{itemize}
 \item Plot the trace plot of the burning phase and the MCMC samples for the latent variable home using
-proposal distributions with different $\sigma$ and $t$.
+proposal distributions with different $\sigma$ and $t$. \\ Please refer to Figure~\ref{fig:bonus-trace-grid} for the trace plots of the latent variable \texttt{home} under different $\sigma$ and $t$ settings. Each subplot corresponds to a unique $(\sigma, t)$ pair.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{bonus_trace_grid.png}
+    \caption{Trace plots of the latent variable \texttt{home} under different $\sigma$ and $t$ settings. Each subplot corresponds to a unique $(\sigma, t)$ pair.}
+    \label{fig:bonus-trace-grid}
+\end{figure}
+
 \item Estimate the rejection ratio for each parameter setting, report your results in a table.
+
+
+The table below reports the acceptance rates for each $(\sigma, t)$ configuration tested:
+
+please refer to Table~\ref{tab:acceptance-rates} for the acceptance rates of the Metropolis--Hastings algorithm under different $(\sigma, t)$ settings.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccc}
+\toprule
+$\sigma$ & $t$ & Acceptance Rate (\%) \\
+\midrule
+0.005 & 1  & 88.34 \\
+0.005 & 5  & 89.24 \\
+0.005 & 20 & 89.56 \\
+0.005 & 50 & 89.38 \\
+0.050 & 1  & 19.82 \\
+0.050 & 5  & 18.93 \\
+0.050 & 20 & 18.43 \\
+0.050 & 50 & 16.77 \\
+0.500 & 1  & 0.01  \\
+0.500 & 5  & 0.00  \\
+0.500 & 20 & 0.00  \\
+0.500 & 50 & 0.00  \\
+\bottomrule
+\end{tabular}
+\caption{Acceptance rates of the Metropolis--Hastings algorithm under different $(\sigma, t)$ settings.}
+\label{tab:acceptance-rates}
+\end{table}
+
+
 \item Comment on the results. Which parameter setting worked the best for the algorithm?
+
+We observe that:
+\begin{itemize}
+    \item Small $\sigma = 0.005$ results in very small steps, leading to high acceptance but slow exploration (high autocorrelation).
+    \item Large $\sigma = 0.5$ causes low acceptance rates and often poor mixing.
+    \item $\sigma = 0.05$ with $t = 5$ offers a good balance between exploration and acceptance, showing stable trace plots and reasonable variability.
+\end{itemize}
+
+Thus, we choose $(\sigma=0.05, t=5)$ as the \textbf{optimal setting}.
+
+
 \item Use the results from the optimal parameter setting
 \begin{itemize}
 \item plot the posterior histogram of home from the MCMC samples
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{bonus_home_hist.png}
+    \caption{Posterior distribution of the latent variable \texttt{home} under the optimal setting $(\sigma=0.05, t=5)$.}
+    \label{fig:posterior-home}
+\end{figure}
+
 \item plot the estimated attacking strength $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$ against the estimated defending strength
 $\mathbb{E}_{p(\theta,\eta|y)}[\text{def}_i]$ for each the team in one scatter plot. Please make sure to identify the team
 index of each point on your scatter plot.
 \end{itemize}
 \end{itemize}
 \end{enumerate}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{bonus_att_vs_def.png}
+    \caption{Posterior means of attack vs defense strength for each team. Team indices are labeled.}
+    \label{fig:att-def-scatter}
+\end{figure}
+
+
 
 \noindent \textbf{You are NOT allowed to use any existing implementations of M-H in this problem. Please
 include all the required results (figures + tables) in your writeup PDF submission.}
+
+\newpage
 
 \section{Variational Inference [40 points]}
 
