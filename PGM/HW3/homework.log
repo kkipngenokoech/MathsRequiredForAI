@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  10 APR 2025 23:54
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 APR 2025 00:01
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -512,72 +512,62 @@ Overfull \hbox (16.41402pt too wide) detected at line 209
 []
  []
 
-[5] [6]
-Overfull \hbox (56.12575pt too wide) in paragraph at lines 246--247
-[]\OT1/cmr/m/n/10 Propose a new state $(\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )$ from a pro-posal dis-tri-bu-tion $\OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 ))$ 
+[5]
+Overfull \hbox (67.18538pt too wide) in paragraph at lines 242--243
+[][] \OT1/cmr/m/n/10 Set ini-tial val-ues $\OML/cmm/m/it/10 ^^R[]; ^^Q[]$\OT1/cmr/m/n/10 , where $\OML/cmm/m/it/10 ^^R \OT1/cmr/m/n/10 = ([]\OML/cmm/m/it/10 ; [][]; [] ; [][]; [][]; [] ; [][]\OT1/cmr/m/n/10 )$
  []
 
-
-Overfull \hbox (24.2002pt too wide) detected at line 250
-\OML/cmm/m/it/10 A\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )) = [] []
- []
-
-
-Overfull \hbox (66.60555pt too wide) in paragraph at lines 278--279
-[]\OT1/cmr/m/n/10 Since the isotropic Gaus-sian is sym-met-ric ($\OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )) = \OML/cmm/m/it/10 Q\OT1/cmr/m/n/10 ((\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 )\OMS/cmsy/m/n/10 j\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 ^^R[]; ^^Q[]\OT1/cmr/m/n/10 ))$),
- []
-
-[7] [8]
-Overfull \hbox (19.49533pt too wide) detected at line 378
+[6] [7]
+Overfull \hbox (19.49533pt too wide) detected at line 340
 \OML/cmm/m/it/10 KL\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) [] []\OML/cmm/m/it/10 dx \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 dx
  []
 
-[9]
-Overfull \hbox (148.36044pt too wide) detected at line 435
+[8]
+Overfull \hbox (148.36044pt too wide) detected at line 397
 \OML/cmm/m/it/10 KL\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) [] []\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
-
-Overfull \hbox (22.8814pt too wide) detected at line 438
+[9]
+Overfull \hbox (22.8814pt too wide) detected at line 400
 \OT1/cmr/m/n/10 = [] [] \OMS/cmsy/m/n/10 ^^@ [] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + [] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (74.88727pt too wide) detected at line 442
+Overfull \hbox (74.88727pt too wide) detected at line 404
 [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = \U/msb/m/n/10 E\OT1/cmr/m/n/10 [(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )] = []([][][](\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )) = [](\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 D
  []
 
-[10]
-Overfull \hbox (53.0416pt too wide) detected at line 445
+
+Overfull \hbox (53.0416pt too wide) detected at line 407
 [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )[(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )][]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 [(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (27.96547pt too wide) detected at line 448
+Overfull \hbox (27.96547pt too wide) detected at line 410
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )[(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (109.38191pt too wide) detected at line 451
+Overfull \hbox (109.38191pt too wide) detected at line 413
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (117.15897pt too wide) detected at line 454
+Overfull \hbox (117.15897pt too wide) detected at line 416
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[] \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 D \OT1/cmr/m/n/10 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )
  []
 
-[11] [12]
-Overfull \hbox (91.04375pt too wide) in paragraph at lines 559--562
+[10] [11]
+Overfull \hbox (91.04375pt too wide) in paragraph at lines 521--524
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; y[]\OT1/cmr/m/n/10 )$. You can use your fa-vorite Lasso im-ple-men-ta-tion, such as \OT1/cmtt/m/n/10 sklearn.linear[]model.Lasso
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 636--637
+[12] [13]
+Underfull \hbox (badness 10000) in paragraph at lines 598--599
 \OT1/cmtt/m/n/10 php ? title = 2013 % E2 % 80 % 9314 _ Premier _ League & oldid = 1239520943$[]\OT1/cmr/m/n/10 .
  []
 
-[14] [15] (./homework.aux)
+[14] (./homework.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -586,18 +576,18 @@ Package rerunfilecheck Info: File `homework.out' has not changed.
 (rerunfilecheck)             Checksum: CD217DE9766EE87C0BDE51B5C1106D4C;2402.
  ) 
 Here is how much of TeX's memory you used:
- 20626 strings out of 474222
- 379475 string characters out of 5748733
+ 20619 strings out of 474222
+ 379414 string characters out of 5748733
  1944975 words of memory out of 5000000
  42453 multiletter control sequences out of 15000+600000
  568884 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,107p,591b,773s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on homework.pdf (15 pages, 275598 bytes).
+Output written on homework.pdf (14 pages, 269932 bytes).
 PDF statistics:
- 311 PDF objects out of 1000 (max. 8388607)
- 251 compressed objects within 3 object streams
- 92 named destinations out of 1000 (max. 500000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 241 compressed objects within 3 object streams
+ 85 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 

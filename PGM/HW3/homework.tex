@@ -238,81 +238,43 @@ team, i.e. $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$, $\mathbb{E}_{p(\theta,
 
 \item (10 points) Write down the Metropolis-Hastings algorithm for sampling from posterior $p(\theta, \eta|y)$, and derive the acceptance function for a proposal distribution of your choice (e.g. isotropic Gaussian).
 
-
 \begin{enumerate}
-    \item Initialize parameters $\theta^{(0)}, \eta^{(0)}$
-    \item For $i = 0$ to $N-1$:
+    \item \text{Initialize:} Set initial values $\theta^{(0)}, \eta^{(0)}$, where $\theta = (\text{home}, \text{att}_1, \ldots, \text{att}_{19}, \text{def}_1, \ldots, \text{def}_{19})$ and $\eta = (\mu_{\text{att}}, \mu_{\text{def}}, \tau_{\text{att}}, \tau_{\text{def}})$.
+    
+    \item \textbf{For $i = 0$ to $N - 1$:}
     \begin{enumerate}
-        \item Propose a new state $(\theta^*, \eta^*)$ from a proposal distribution $Q((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)}))$
-        \item Calculate the acceptance probability:
-        \[
-            A((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)})) = \min\left(1, \frac{p(\theta^*, \eta^* | y) \cdot Q((\theta^{(i)}, \eta^{(i)}) | (\theta^*, \eta^*))}{p(\theta^{(i)}, \eta^{(i)} | y) \cdot Q((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)}))}\right)
-        \]
-        \item Generate a random number $u \sim \text{Uniform}(0, 1)$
-        \item If $u < A((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)}))$
-        \begin{enumerate}
-            \item $\theta^{(i+1)} = \theta^*$, $\eta^{(i+1)} = \eta^*$ (accept)
-        \end{enumerate}
-        \item Else
-        \begin{enumerate}
-            \item $\theta^{(i+1)} = \theta^{(i)}$, $\eta^{(i+1)} = \eta^{(i)}$ (reject)
-        \end{enumerate}
+      \item \text{Proposal:} Sample a proposed state $(\theta^*, \eta^*)$ from the isotropic Gaussian proposal:
+      \[
+      (\theta^*, \eta^*) \sim \mathcal{N}((\theta^{(i)}, \eta^{(i)}), \sigma^2 I)
+      \]
+      For parameters $\tau_{\text{att}}, \tau_{\text{def}}$ (which must remain positive), propose in log space:
+      \[
+      \log \tau^* \sim \mathcal{N}(\log \tau^{(i)}, \sigma^2) \quad \Rightarrow \quad \tau^* = \exp(\log \tau^*)
+      \]
+      
+      \item \text{Acceptance Probability:}
+      Since the proposal is symmetric:
+      \[
+      A = \min\left(1, \frac{p(y, \theta^*, \eta^*)}{p(y, \theta^{(i)}, \eta^{(i)})} \right)
+      \]
+      or in log space:
+      \[
+      \log A = \min\left(0,\; \log p(y, \theta^*, \eta^*) - \log p(y, \theta^{(i)}, \eta^{(i)}) \right)
+      \]
+      
+      \item \text{Accept/Reject:} Draw $u \sim \text{Uniform}(0, 1)$
+      \[
+      \text{If } \log u < \log A \quad \text{then accept: } (\theta^{(i+1)}, \eta^{(i+1)}) = (\theta^*, \eta^*)
+      \]
+      \[
+      \text{Else reject: } (\theta^{(i+1)}, \eta^{(i+1)}) = (\theta^{(i)}, \eta^{(i)})
+      \]
     \end{enumerate}
-\end{enumerate}
+  \end{enumerate}
+  
 
-For this problem, I'll use an isotropic Gaussian proposal distribution:
-\[
-Q((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)})) = \mathcal{N}((\theta^*, \eta^*); (\theta^{(i)}, \eta^{(i)}), \sigma^2 I)
-\]
 
-This means we propose new values by adding Gaussian noise with standard deviation $\sigma$ to each component independently:
-\[
-\theta^* = \theta^{(i)} + \epsilon_{\theta}, \quad \epsilon_{\theta} \sim \mathcal{N}(0, \sigma^2 I)
-\]
-\[
-\eta^* = \eta^{(i)} + \epsilon_{\eta}, \quad \epsilon_{\eta} \sim \mathcal{N}(0, \sigma^2 I)
-\]
 
-For the Gamma-distributed parameters $\tau_{\text{att}}$ and $\tau_{\text{def}}$, we need to ensure they remain positive. We can handle this by proposing in the log space and then transforming back, or by rejecting negative proposals.
-
-Since the isotropic Gaussian is symmetric ($Q((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)})) = Q((\theta^{(i)}, \eta^{(i)}) | (\theta^*, \eta^*))$), the acceptance probability simplifies to:
-\[
-A((\theta^*, \eta^*) | (\theta^{(i)}, \eta^{(i)})) = \min\left(1, \frac{p(\theta^*, \eta^* | y)}{p(\theta^{(i)}, \eta^{(i)} | y)}\right) = \min\left(1, \frac{p(y, \theta^*, \eta^*)}{p(y, \theta^{(i)}, \eta^{(i)})}\right)
-\]
-
-The posterior ratio can be calculated using Bayes' rule:
-\[
-\frac{p(\theta^*, \eta^* | y)}{p(\theta^{(i)}, \eta^{(i)} | y)} = \frac{p(y | \theta^*, \eta^*) \cdot p(\theta^* | \eta^*) \cdot p(\eta^*)}{p(y | \theta^{(i)}, \eta^{(i)}) \cdot p(\theta^{(i)} | \eta^{(i)}) \cdot p(\eta^{(i)})}
-\]
-
-Using our joint likelihood derived earlier:
-\[
-\frac{p(\theta^*, \eta^* | y)}{p(\theta^{(i)}, \eta^{(i)} | y)} = \frac{
-\prod_{g=0}^{379} \left[\frac{e^{-\theta^*_{g1}}(\theta^*_{g1})^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta^*_{g2}}(\theta^*_{g2})^{y_{g2}}}{y_{g2}!}\right] \cdot p(\theta^* | \eta^*) \cdot p(\eta^*)}
-{\prod_{g=0}^{379} \left[\frac{e^{-\theta^{(i)}_{g1}}(\theta^{(i)}_{g1})^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta^{(i)}_{g2}}(\theta^{(i)}_{g2})^{y_{g2}}}{y_{g2}!}\right] \cdot p(\theta^{(i)} | \eta^{(i)}) \cdot p(\eta^{(i)})}
-\]
-
-The $y_{g1}!$ and $y_{g2}!$ terms cancel out in the numerator and denominator, simplifying to:
-\[
-\frac{p(\theta^*, \eta^* | y)}{p(\theta^{(i)}, \eta^{(i)} | y)} = \frac{
-\prod_{g=0}^{379} \left[e^{-\theta^*_{g1}}(\theta^*_{g1})^{y_{g1}} \cdot e^{-\theta^*_{g2}}(\theta^*_{g2})^{y_{g2}}\right] \cdot p(\theta^* | \eta^*) \cdot p(\eta^*)}
-{\prod_{g=0}^{379} \left[e^{-\theta^{(i)}_{g1}}(\theta^{(i)}_{g1})^{y_{g1}} \cdot e^{-\theta^{(i)}_{g2}}(\theta^{(i)}_{g2})^{y_{g2}}\right] \cdot p(\theta^{(i)} | \eta^{(i)}) \cdot p(\eta^{(i)})}
-\]
-
-Recall that:
-\begin{align}
-\theta_{g1} &= \exp(\text{home} + \text{att}_{h(g)} - \text{def}_{a(g)}) \\
-\theta_{g2} &= \exp(\text{att}_{a(g)} - \text{def}_{h(g)})
-\end{align}
-
-When implementing, we'll compute this ratio for each proposed state and accept or reject accordingly.
-
-In practice, we often work with the log of the acceptance ratio to avoid numerical underflow:
-\[
-\log A = \min\left(0, \log p(y, \theta^*, \eta^*) - \log p(y, \theta^{(i)}, \eta^{(i)})\right)
-\]
-
-Then we accept if $\log u < \log A$, where $u \sim \text{Uniform}(0, 1)$.
 \item (10 points) Implement the M-H algorithm to inference the posterior distribution. The data can be found
 from \texttt{premier\_league\_2013\_2014.dat}, which contains a $380 \times 4$ matrix. The first column is the number
 of goals $y_{g1}$ scored by the home team, the second column is the number of goals $y_{g2}$ scored by the away
