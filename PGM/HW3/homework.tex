@@ -224,18 +224,17 @@ team, i.e. $\mathbb{E}_{p(\theta,\eta|y)}[\text{att}_i]$, $\mathbb{E}_{p(\theta,
     where $\tau_0 = \tau_1 = 0.0001$ and $\alpha = \beta = 0.1$.
     
    so, our joint likelihood is:
-    \[
-        p(y, \theta, \eta) = 
-        \prod_{g=0}^{379} \left[\frac{e^{-\theta_{g1}}\theta_{g1}^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta_{g2}}\theta_{g2}^{y_{g2}}}{y_{g2}!}\right] 
-        \times \mathcal{N}(\text{home}; 0, \tau_0^{-1}) 
-        \times \prod_{t=1}^{19} \mathcal{N}(\text{att}_t; \mu_{\text{att}}, \tau_{\text{att}}^{-1}) 
-        \times \prod_{t=1}^{19} \mathcal{N}(\text{def}_t; \mu_{\text{def}}, \tau_{\text{def}}^{-1})
-        \times \mathcal{N}(\mu_{\text{att}}; 0, \tau_1^{-1}) 
-        \times \mathcal{N}(\mu_{\text{def}}; 0, \tau_1^{-1}) 
-        \times \text{Gamma}(\tau_{\text{att}}; \alpha, \beta)
-        \times \text{Gamma}(\tau_{\text{def}}; \alpha, \beta)
-    \]
-    where $\tau_0 = 0.0001$ and $\alpha = \beta = 0.1$.
+   \begin{align*}
+    p(y, \theta, \eta) =\ & 
+    \prod_{g=0}^{379} \left[ \frac{e^{-\theta_{g1}} \theta_{g1}^{y_{g1}}}{y_{g1}!} \cdot \frac{e^{-\theta_{g2}} \theta_{g2}^{y_{g2}}}{y_{g2}!} \right] \\
+    & \cdot\ \mathcal{N}(\text{home} \mid 0, \tau_0^{-1}) \\
+    & \cdot\ \prod_{t=1}^{19} \mathcal{N}(\text{att}_t \mid \mu_{\text{att}}, \tau_{\text{att}}^{-1}) \\
+    & \cdot\ \prod_{t=1}^{19} \mathcal{N}(\text{def}_t \mid \mu_{\text{def}}, \tau_{\text{def}}^{-1}) \\
+    & \cdot\ \mathcal{N}(\mu_{\text{att}} \mid 0, \tau_1^{-1}) \cdot \mathcal{N}(\mu_{\text{def}} \mid 0, \tau_1^{-1}) \\
+    & \cdot\ \text{Gamma}(\tau_{\text{att}} \mid \alpha, \beta) \cdot \text{Gamma}(\tau_{\text{def}} \mid \alpha, \beta)
+    \end{align*}
+    
+   where $\tau_0 = 0.0001$ and $\alpha = \beta = 0.1$.
 
 \item (10 points) Write down the Metropolis-Hastings algorithm for sampling from posterior $p(\theta, \eta|y)$, and derive the acceptance function for a proposal distribution of your choice (e.g. isotropic Gaussian).
 
