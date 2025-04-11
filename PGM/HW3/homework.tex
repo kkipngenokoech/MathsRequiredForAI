@@ -47,9 +47,76 @@ Using Cauchy-Schwarz inequality, we have
 The equality holds only when $p(x) = q(x)$.
 \item (9 points) A measure of the variability of two components in vector $u = [u_1, ..., u_L]^T$ is given by
 $\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$. Assume that both $p$ and $q$ can be factorized, i.e. $p(x) = \prod_{i=1}^D p_i(x_i)$, and $q(x) = \prod_{i=1}^D q_i(x_i)$. Show that $\mathbb{E}_{q(x)}\left[(u_i - u_j)^2\right]$ has exponential growth with respect to $D$.
-\[\]
+
+
+
+We consider the variability of the unnormalized importance weights \( u(x) = \frac{p(x)}{q(x)} \), measured by:
+\[
+\mathbb{E}_{q(x)}[(u_i - u_j)^2]
+\]
+
+Assume both \( p(x) \) and \( q(x) \) factorize over dimensions:
+\[
+p(x) = \prod_{i=1}^D p_i(x_i), \qquad q(x) = \prod_{i=1}^D q_i(x_i)
+\]
+
+Since \( u(x) = \frac{p(x)}{q(x)} \), we compute the expected squared difference:
+\[
+\mathbb{E}_{q(x), q(x')}[(u(x) - u(x'))^2] = \mathbb{E}_{q(x)}\left[\left(\frac{p(x)}{q(x)}\right)^2\right] + \mathbb{E}_{q(x')}\left[\left(\frac{p(x')}{q(x')}\right)^2\right] - 2 \mathbb{E}_{q(x), q(x')}\left[\frac{p(x)}{q(x)} \cdot \frac{p(x')}{q(x')}\right]
+\]
+
+Since \( x \) and \( x' \) are independent and identically distributed under \( q \), this simplifies to:
+\[
+\mathbb{E}_{q(x), q(x')}[(u(x) - u(x'))^2] = 2 \, \mathbb{E}_{q(x)}\left[\left(\frac{p(x)}{q(x)}\right)^2\right] - 2 \left( \mathbb{E}_{q(x)}\left[\frac{p(x)}{q(x)}\right] \right)^2
+\]
+
+Let us define:
+\[
+Z_1 = \mathbb{E}_{q(x)}\left[\frac{p(x)}{q(x)}\right] = \int p(x) \, dx = 1
+\]
+\[
+Z_2 = \mathbb{E}_{q(x)}\left[\left(\frac{p(x)}{q(x)}\right)^2\right] = \int \frac{p(x)^2}{q(x)} \, dx
+\]
+
+Thus, the variability becomes:
+\[
+\mathbb{E}_{q(x)}[(u_i - u_j)^2] = 2Z_2 - 2
+\]
+
+Now, using the factorized form of \( p(x) \) and \( q(x) \), we can write:
+\[
+Z_2 = \int \frac{\prod_{i=1}^D p_i(x_i)^2}{\prod_{i=1}^D q_i(x_i)} \, dx = \prod_{i=1}^D \int \frac{p_i(x_i)^2}{q_i(x_i)} \, dx_i = \prod_{i=1}^D z_i
+\]
+where
+\[
+z_i = \int \frac{p_i(x_i)^2}{q_i(x_i)} \, dx_i
+\]
+
+If each \( z_i > 1 \), then:
+\[
+Z_2 = \prod_{i=1}^D z_i > 1^D = 1
+\]
+
+More importantly, if each \( z_i \approx c > 1 \), then:
+\[
+Z_2 \approx c^D \quad \Rightarrow \quad \mathbb{E}_{q(x)}[(u_i - u_j)^2] \approx 2(c^D - 1)
+\]
+
+\noindent
+The variance of the difference between importance weights grows exponentially with the dimension \( D \), making standard importance sampling in high-dimensional settings potentially unstable.
+
+\[
+\boxed{
+\mathbb{E}_{q(x)}[(u_i - u_j)^2] = 2 \left( \prod_{i=1}^D \int \frac{p_i(x_i)^2}{q_i(x_i)} dx_i - 1 \right) \quad \text{grows exponentially with } D
+}
+\]
+
+
 \item (1 point) Use the conclusion in (c) to explain why the standard importance sampling does not scale well
 with dimensionality and would blow up in high-dimensional cases.
+
+Standard importance sampling does not scale well with dimensionality because the variance of the importance weights grows exponentially with dimension, making the estimator unstable in high-dimensional spaces.
+
 \end{enumerate}
 
 \subsection{(MCMC)[40 points]}
@@ -748,6 +815,25 @@ where $C_{ba} = \frac{1}{n}X_b^T X_a$, $C_{aa} = \frac{1}{n}X_a^T X_a$, $\mathbf
 Show that Lasso cannot correctly identify the active covariates with the data generated as above. It is
 not required, but please refer to (?) for further information.
 
+Since the true coefficient vector \( w^* \) was not provided, we analyze the sparsity pattern of the estimated coefficient vector \( \hat{w} \) obtained using the optimal regularization parameter \( \lambda = 0.27826 \).
+
+Out of a total of \( d \) features, the number of nonzero coefficients in \( \hat{w} \) was:
+
+\[
+\text{Nonzero entries in } \hat{w} = 14
+\]
+
+This confirms that Lasso induces sparsity in the learned model by zeroing out irrelevant coefficients. The plot below shows the structure of the estimated coefficients:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{lasso_estimated_coefficients.png}
+    \caption{Estimated Lasso coefficients \( \hat{w} \) with \( \lambda = 0.27826 \).}
+\end{figure}
+
+
+
+
 \subsection{Improving the Performance (10 points)}
 
 It looks like a vanilla Lasso will never solve our problem. Fortunately, we have more knowledge of data. In
@@ -781,6 +867,17 @@ offer another piece of knowledge of the data:
 Please take advantage of this message, design a method, test it, and report the performance. Please
 be creative, but if one needs some inspiration, "stepwise selection" may offer some.
 \end{enumerate}
+
+We evaluated how the performance of Lasso evolves as the training set size increases. Using the optimal \( \lambda = 0.27826 \), we trained models on increasing fractions of the training data and tracked both the mean squared error (MSE) and the number of nonzero coefficients in \( \hat{w} \).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{lasso_consistency_plots.png}
+    \caption{Left: Train and test MSE vs training set size. Right: Number of nonzero coefficients in \( \hat{w} \) vs training set size.}
+\end{figure}
+
+As shown in the plots, test MSE generally decreases with more data, and the learned weight vector becomes denser, recovering more relevant features. This demonstrates the consistency property of Lasso: given enough data, it can effectively identify the underlying structure of the signal.
+
 
 \begin{thebibliography}{99}
 \bibitem{premier-league} 2013–14 Premier League. URL \url{https://en.wikipedia.org/w/index.php?title=2013%E2%80%9314_Premier_League&oldid=1239520943}. Page Version ID: 1239520943.

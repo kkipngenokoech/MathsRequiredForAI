@@ -309,6 +309,16 @@ INPUT ./lasso_mse_vs_lambda.png
 INPUT ./lasso_mse_vs_lambda.png
 INPUT ./lasso_mse_vs_lambda.png
 INPUT ./lasso_mse_vs_lambda.png
+INPUT ./lasso_estimated_coefficients.png
+INPUT ./lasso_estimated_coefficients.png
+INPUT ./lasso_estimated_coefficients.png
+INPUT ./lasso_estimated_coefficients.png
+INPUT ./lasso_estimated_coefficients.png
+INPUT ./lasso_consistency_plots.png
+INPUT ./lasso_consistency_plots.png
+INPUT ./lasso_consistency_plots.png
+INPUT ./lasso_consistency_plots.png
+INPUT ./lasso_consistency_plots.png
 INPUT homework.aux
 INPUT ./homework.out
 INPUT ./homework.out

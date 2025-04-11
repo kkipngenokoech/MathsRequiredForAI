@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1744334478.89681 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744334480.21066 0
+["pdflatex"] 1744336699.84047 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744336701.07606 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744334478.43421 39922 c504b9c176ba58b6d6ac14c1c07e7afc ""
+  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744336699.5237 43832 c2e29611d6220586d0769f57e551b62b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -181,9 +181,11 @@
   "bonus_home_hist.png" 1744326710.31607 22007 4c142dc009afc759c2c4c495337a876e ""
   "bonus_trace_grid.png" 1744326709.57607 195547 081b6ef818cf02bb6bd41b8ba60f10cd ""
   "home_trace_burnin_and_sampling.png" 1744326746.47605 113632 0e03f4fea6d04c87104d96dcb2f0410a ""
-  "homework.aux" 1744334480.14421 4755 67511bc32a8538219b4b31da7578362f "pdflatex"
-  "homework.out" 1744334480.14421 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
-  "homework.tex" 1744334478.43421 39922 c504b9c176ba58b6d6ac14c1c07e7afc ""
+  "homework.aux" 1744336701.00369 5180 660fc1130611cc04c6fc9b9a76848c1e "pdflatex"
+  "homework.out" 1744336701.00369 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
+  "homework.tex" 1744336699.5237 43832 c2e29611d6220586d0769f57e551b62b ""
+  "lasso_consistency_plots.png" 1744335356.61401 44388 e858a8be88fc30f73df48662beccd176 ""
+  "lasso_estimated_coefficients.png" 1744335087.79407 18890 2b7e1fd8c4db0a8e46c92349b5c44c9a ""
   "lasso_mse_vs_lambda.png" 1744333963.89434 34407 cec47e87b4f2f0478800b4dceb9c2735 ""
   "posterior_importance_sampling.png" 1744331256.77498 19406 717e80adcfae8088d86c05820bee9e71 ""
   (generated)

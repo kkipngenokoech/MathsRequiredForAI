@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 APR 2025 03:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 APR 2025 03:58
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -518,170 +518,202 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 19.
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
-Overfull \hbox (70.02852pt too wide) in paragraph at lines 96--114
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (84.30125pt too wide) detected at line 66
+\U/msb/m/n/10 E[]\OT1/cmr/m/n/10 [(\OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ \OML/cmm/m/it/10 u\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x[]\OT1/cmr/m/n/10 ))[]] = \U/msb/m/n/10 E[] [] \OT1/cmr/m/n/10 + \U/msb/m/n/10 E[] [] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 2\U/msb/m/n/10 E[] []
+ []
+
+[2]
+Overfull \hbox (16.17001pt too wide) detected at line 112
+[]
+ []
+
+[3]
+Overfull \hbox (70.02852pt too wide) in paragraph at lines 163--181
  [][] 
  []
 
-[3
+[4
 pdfTeX warning (ext4): destination with the same identifier (name{table.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.133 ...{home} \sim \mathcal{N}(0, \tau_0^{-1})$$
+l.189 ...heta_{gj} = \text{Poisson}(\theta_{gj})$$
                                                   ]
-Overfull \hbox (91.94078pt too wide) in paragraph at lines 148--154
+Overfull \hbox (91.94078pt too wide) in paragraph at lines 215--221
 \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; :::; \OT1/cmr/m/n/10 379\OML/cmm/m/it/10 ; j \OT1/cmr/m/n/10 = 1\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 2\OMS/cmsy/m/n/10 g$ \OT1/cmr/m/n/10 are 760 ob-served vari-ables, and pa-ram-e-ters $\OML/cmm/m/it/10 ^^R \OT1/cmr/m/n/10 = ([]\OML/cmm/m/it/10 ; [][]; :::; [][]; [][]; :::; [][]\OT1/cmr/m/n/10 )$
  []
 
-[4{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
-Overfull \hbox (20.40245pt too wide) detected at line 202
-[]
- []
-
-
-Overfull \hbox (16.41402pt too wide) detected at line 211
-[]
- []
-
 [5]
-Overfull \hbox (67.18538pt too wide) in paragraph at lines 244--245
+Overfull \hbox (20.40245pt too wide) detected at line 269
+[]
+ []
+
+
+Overfull \hbox (16.41402pt too wide) detected at line 278
+[]
+ []
+
+[6{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}] [7]
+Overfull \hbox (67.18538pt too wide) in paragraph at lines 311--312
 [][] \OT1/cmr/m/n/10 Set ini-tial val-ues $\OML/cmm/m/it/10 ^^R[]; ^^Q[]$\OT1/cmr/m/n/10 , where $\OML/cmm/m/it/10 ^^R \OT1/cmr/m/n/10 = ([]\OML/cmm/m/it/10 ; [][]; [] ; [][]; [][]; [] ; [][]\OT1/cmr/m/n/10 )$
  []
 
-[6]
+[8]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 292.
- [7]
-<home_trace_burnin_and_sampling.png, id=141, 867.24pt x 433.62pt>
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 359.
+<home_trace_burnin_and_sampling.png, id=142, 867.24pt x 433.62pt>
 File: home_trace_burnin_and_sampling.png Graphic file (type png)
 <use home_trace_burnin_and_sampling.png>
-Package pdftex.def Info: home_trace_burnin_and_sampling.png  used on input line 302.
+Package pdftex.def Info: home_trace_burnin_and_sampling.png  used on input line 369.
 (pdftex.def)             Requested size: 310.4979pt x 155.24954pt.
-<bonus_trace_grid.png, id=144, 1156.32pt x 722.7pt>
-File: bonus_trace_grid.png Graphic file (type png)
-<use bonus_trace_grid.png>
-Package pdftex.def Info: bonus_trace_grid.png  used on input line 314.
-(pdftex.def)             Requested size: 345.0pt x 215.6207pt.
- [8
+ [9
 pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.318 
-       <./home_trace_burnin_and_sampling.png>] [9
+l.377 \item P
+             lot the trace plot of the burning phase and the MCMC samples fo... <./home_trace_burnin_and_sampling.png>]
+<bonus_trace_grid.png, id=155, 1156.32pt x 722.7pt>
+File: bonus_trace_grid.png Graphic file (type png)
+<use bonus_trace_grid.png>
+Package pdftex.def Info: bonus_trace_grid.png  used on input line 381.
+(pdftex.def)             Requested size: 345.0pt x 215.6207pt.
+ [10
 pdfTeX warning (ext4): destination with the same identifier (name{figure.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.349 
+l.416 
        <./bonus_trace_grid.png>]
-<bonus_home_hist.png, id=161, 578.16pt x 289.08pt>
+<bonus_home_hist.png, id=165, 578.16pt x 289.08pt>
 File: bonus_home_hist.png Graphic file (type png)
 <use bonus_home_hist.png>
-Package pdftex.def Info: bonus_home_hist.png  used on input line 369.
+Package pdftex.def Info: bonus_home_hist.png  used on input line 436.
 (pdftex.def)             Requested size: 241.49895pt x 120.7467pt.
- [10
+ [11
 pdfTeX warning (ext4): destination with the same identifier (name{table.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{itemize}
+l.444 \end{itemize}
                    
 pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.377 \end{itemize}
+l.444 \end{itemize}
                     <./bonus_home_hist.png>]
-<bonus_att_vs_def.png, id=168, 578.16pt x 433.62pt>
+<bonus_att_vs_def.png, id=172, 578.16pt x 433.62pt>
 File: bonus_att_vs_def.png Graphic file (type png)
 <use bonus_att_vs_def.png>
-Package pdftex.def Info: bonus_att_vs_def.png  used on input line 382.
+Package pdftex.def Info: bonus_att_vs_def.png  used on input line 449.
 (pdftex.def)             Requested size: 241.49895pt x 181.12006pt.
- [11
+ [12
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.392 \newpage
+l.459 \newpage
                <./bonus_att_vs_def.png>]
-Overfull \hbox (19.49533pt too wide) detected at line 426
+Overfull \hbox (19.49533pt too wide) detected at line 493
 \OML/cmm/m/it/10 KL\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) [] []\OML/cmm/m/it/10 dx \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 dx
  []
 
-[12]
-Overfull \hbox (148.36044pt too wide) detected at line 483
+[13]
+Overfull \hbox (148.36044pt too wide) detected at line 550
 \OML/cmm/m/it/10 KL\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 p\OMS/cmsy/m/n/10 jj\OML/cmm/m/it/10 q\OT1/cmr/m/n/10 ) = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) [] []\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (22.8814pt too wide) detected at line 486
+Overfull \hbox (22.8814pt too wide) detected at line 553
 \OT1/cmr/m/n/10 = [] [] \OMS/cmsy/m/n/10 ^^@ [] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + [] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (74.88727pt too wide) detected at line 490
+Overfull \hbox (74.88727pt too wide) detected at line 557
 [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = \U/msb/m/n/10 E\OT1/cmr/m/n/10 [(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[][][](\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )] = []([][][](\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )) = [](\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 D
  []
 
 
-Overfull \hbox (53.0416pt too wide) detected at line 493
+Overfull \hbox (53.0416pt too wide) detected at line 560
 [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )[(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )][]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 [(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (27.96547pt too wide) detected at line 496
+Overfull \hbox (27.96547pt too wide) detected at line 563
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )[(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 ) + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )]\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (109.38191pt too wide) detected at line 499
+Overfull \hbox (109.38191pt too wide) detected at line 566
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[] [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 ) [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x
  []
 
 
-Overfull \hbox (117.15897pt too wide) detected at line 502
+Overfull \hbox (117.15897pt too wide) detected at line 569
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[] \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 D \OT1/cmr/m/n/10 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )
  []
 
-[13] [14] [15]
-<posterior_importance_sampling.png, id=199, 462.528pt x 346.896pt>
+[14] [15] [16]
+<posterior_importance_sampling.png, id=203, 462.528pt x 346.896pt>
 File: posterior_importance_sampling.png Graphic file (type png)
 <use posterior_importance_sampling.png>
-Package pdftex.def Info: posterior_importance_sampling.png  used on input line 659.
+Package pdftex.def Info: posterior_importance_sampling.png  used on input line 726.
 (pdftex.def)             Requested size: 258.75pt x 194.06987pt.
- [16
+ [17
 pdfTeX warning (ext4): destination with the same identifier (name{table.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.663 
+l.730 
       ]
-Overfull \hbox (91.04375pt too wide) in paragraph at lines 678--681
+Overfull \hbox (91.04375pt too wide) in paragraph at lines 745--748
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; y[]\OT1/cmr/m/n/10 )$. You can use your fa-vorite Lasso im-ple-men-ta-tion, such as \OT1/cmtt/m/n/10 sklearn.linear[]model.Lasso
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 686--688
+Underfull \hbox (badness 10000) in paragraph at lines 753--755
 
  []
 
-[17
+[18
 pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.690     \item T
+l.757     \item T
                  rain MSE: 0.0724 <./posterior_importance_sampling.png>]
-<lasso_mse_vs_lambda.png, id=215, 578.16pt x 361.35pt>
+<lasso_mse_vs_lambda.png, id=219, 578.16pt x 361.35pt>
 File: lasso_mse_vs_lambda.png Graphic file (type png)
 <use lasso_mse_vs_lambda.png>
-Package pdftex.def Info: lasso_mse_vs_lambda.png  used on input line 708.
+Package pdftex.def Info: lasso_mse_vs_lambda.png  used on input line 775.
 (pdftex.def)             Requested size: 258.75pt x 161.71828pt.
- [18
+ [19
 pdfTeX warning (ext4): destination with the same identifier (name{figure.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.720     \item T
-                 rain MSE: 1.6636 <./lasso_mse_vs_lambda.png>] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 786--787
+l.787     \item T
+                 rain MSE: 1.6636 <./lasso_mse_vs_lambda.png>]
+<lasso_estimated_coefficients.png, id=228, 722.7pt x 289.08pt>
+File: lasso_estimated_coefficients.png Graphic file (type png)
+<use lasso_estimated_coefficients.png>
+Package pdftex.def Info: lasso_estimated_coefficients.png  used on input line 830.
+(pdftex.def)             Requested size: 258.75pt x 103.4997pt.
+ [20] [21
+pdfTeX warning (ext4): destination with the same identifier (name{figure.7}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.869 \end{enumerate}
+                      <./lasso_estimated_coefficients.png>]
+<lasso_consistency_plots.png, id=243, 722.7pt x 289.08pt>
+File: lasso_consistency_plots.png Graphic file (type png)
+<use lasso_consistency_plots.png>
+Package pdftex.def Info: lasso_consistency_plots.png  used on input line 875.
+(pdftex.def)             Requested size: 345.0pt x 137.99812pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 883--884
 \OT1/cmtt/m/n/10 php ? title = 2013 % E2 % 80 % 9314 _ Premier _ League & oldid = 1239520943$[]\OT1/cmr/m/n/10 .
  []
 
-[20] (./homework.aux)
+[22
+pdfTeX warning (ext4): destination with the same identifier (name{figure.8}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.888 \end{document}
+                     <./lasso_consistency_plots.png>] (./homework.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -690,18 +722,18 @@ Package rerunfilecheck Info: File `homework.out' has not changed.
 (rerunfilecheck)             Checksum: CD217DE9766EE87C0BDE51B5C1106D4C;2402.
  ) 
 Here is how much of TeX's memory you used:
- 20827 strings out of 474222
- 383280 string characters out of 5748733
- 1945975 words of memory out of 5000000
- 42638 multiletter control sequences out of 15000+600000
+ 20845 strings out of 474222
+ 383819 string characters out of 5748733
+ 1942975 words of memory out of 5000000
+ 42652 multiletter control sequences out of 15000+600000
  568884 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,107p,591b,821s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on homework.pdf (20 pages, 705946 bytes).
+Output written on homework.pdf (22 pages, 761049 bytes).
 PDF statistics:
- 351 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
- 100 named destinations out of 1000 (max. 500000)
- 131 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 366 PDF objects out of 1000 (max. 8388607)
+ 283 compressed objects within 3 object streams
+ 104 named destinations out of 1000 (max. 500000)
+ 141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
