@@ -700,6 +700,7 @@ check the performance. Please repeat the basic experiment above with 10 choices 
 on a log scale from $10^{-5}$ to $10^5$. Report one plot showing both the $\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$ as a function
 of $\lambda$.
 
+
 We evaluated the performance of Lasso regression across 10 logarithmically spaced values of the regularization parameter \( \lambda \) in the range \([10^{-5}, 10^5]\). For each value, we trained a Lasso model and computed the mean squared error (MSE) on both the training and test sets.
 
 \begin{figure}[H]
@@ -708,15 +709,19 @@ We evaluated the performance of Lasso regression across 10 logarithmically space
     \caption{Train and test MSE of Lasso as a function of regularization strength \( \lambda \).}
 \end{figure}
 
-As shown in the plot, we observe the typical U-shaped curve for the test error. For small values of \( \lambda \), the model overfits the training data, resulting in low training error but high test error. For large values of \( \lambda \), the model is overly constrained, leading to underfitting. The optimal \( \lambda \) balances the trade-off, minimizing test error and achieving good generalization.
+As shown in the plot, the model initially overfits for small values of \( \lambda \), with a low training error and high test error. As \( \lambda \) increases, the model generalizes better up to a point. Very large values of \( \lambda \) cause underfitting due to excessive regularization.
 
-The best test MSE was achieved at \( \lambda = \ldots \), with corresponding values:
+The optimal regularization strength was found to be:
+\[
+\lambda = 0.27826
+\]
+with corresponding MSEs:
 \begin{itemize}
-    \item Train MSE: \ldots
-    \item Test MSE: \ldots
+    \item Train MSE: 1.6636
+    \item Test MSE: 1.7958
 \end{itemize}
-
 \end{enumerate}
+This value of \( \lambda \) strikes a good balance between bias and variance, minimizing the test error and closing the generalization gap.
 
 \subsection{Weak Irrepresentable Condition (5 points)}
 
