@@ -299,6 +299,11 @@ INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmmib5.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
+INPUT ./posterior_importance_sampling.png
+INPUT ./posterior_importance_sampling.png
+INPUT ./posterior_importance_sampling.png
+INPUT ./posterior_importance_sampling.png
+INPUT ./posterior_importance_sampling.png
 INPUT homework.aux
 INPUT ./homework.out
 INPUT ./homework.out

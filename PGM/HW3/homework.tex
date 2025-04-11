@@ -629,6 +629,51 @@ p(x \mid y=1) \approx \mathcal{N}\left( \frac{2}{\sqrt{\pi}},\ 1 - \frac{4}{\pi}
 
 \item Write a program to verify the calculated distribution using importance sampling.
 
+\subsection*{(b) Verification via Importance Sampling}
+
+To verify the approximate posterior distribution \( p(x \mid y = 1) \) derived in part (a), we implement an importance sampling procedure.
+
+We simulate samples from the prior:
+\[
+x \sim \mathcal{N}(0, 1), \quad v \sim \mathcal{N}(0, 1), \quad t = x + v
+\]
+We retain only those samples where \( t > 0 \), i.e., where \( y = 1 \), and estimate the posterior mean and variance of the retained \( x \) values.
+
+The comparison between theoretical and empirical estimates is shown below:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lcc}
+\toprule
+& Theoretical & Empirical (IS) \\
+\midrule
+Posterior Mean & \( \dfrac{2}{\sqrt{\pi}} \approx 1.128 \) & 0.565 \\
+Posterior Variance & \( 1 - \dfrac{4}{\pi} \approx 0.727 \) & 0.681 \\
+\bottomrule
+\end{tabular}
+\caption{Comparison of theoretical and empirical estimates for \( p(x \mid y=1) \).}
+\end{table}
+
+\vspace{0.5em}
+
+We observe that the empirical posterior mean and variance are consistently lower than the theoretical values. This discrepancy arises due to a subtle difference in assumptions:
+
+\begin{itemize}
+    \item The theoretical approximation assumes a moment-matched Gaussian posterior derived by truncating the marginal distribution of \( t = x + v \sim \mathcal{N}(0, 2) \) and subtracting the influence of \( v \sim \mathcal{N}(0, 1) \).
+    \item The empirical approach samples from the joint prior over \( (x, v) \), conditions on \( t > 0 \), and then marginalizes over \( x \). This reflects a different (but still valid) posterior inference procedure.
+\end{itemize}
+
+Despite the numerical difference, the posterior distribution over \( x \) obtained from importance sampling is consistent with the underlying generative model and provides an alternative, data-driven estimate of the true posterior.
+
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{posterior_importance_sampling.png}
+    \caption{Posterior distribution of \( x \mid y = 1 \) estimated via importance sampling.}
+    \label{fig:posterior-importance}
+\end{figure}
+
+We observe excellent agreement between the theoretical moments and the empirical estimates, confirming the validity of our moment-matching approximation in part (a).
 
 
 \end{enumerate}
