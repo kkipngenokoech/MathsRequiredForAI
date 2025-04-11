@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 APR 2025 01:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  11 APR 2025 02:19
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -639,17 +639,22 @@ Overfull \hbox (117.15897pt too wide) detected at line 502
 \OT1/cmr/m/n/10 = [] \OML/cmm/m/it/10 p\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x\OT1/cmr/m/n/10 )(\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 (\OT1/cmr/bx/n/10 x \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 d\OT1/cmr/bx/n/10 x \OT1/cmr/m/n/10 + 2([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[] \OMS/cmsy/m/n/10 ^^A \OT1/cmr/m/n/10 0 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 ) = \OML/cmm/m/it/10 D \OT1/cmr/m/n/10 + ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )[]\OT1/cmr/bx/n/10 s[]\OT1/cmr/m/n/10 ([] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/bx/n/10 m\OT1/cmr/m/n/10 )
  []
 
-[13] [14]
-Overfull \hbox (91.04375pt too wide) in paragraph at lines 607--610
+[13] [14] [15]
+Overfull \hbox (96.21451pt too wide) detected at line 620
+\U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 j \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = 1] = \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ] \OMS/cmsy/m/n/10 ^^@ \U/msb/m/n/10 E\OT1/cmr/m/n/10 [\OML/cmm/m/it/10 v\OT1/cmr/m/n/10 ] = []\OML/cmm/m/it/10 ;  []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 j \OML/cmm/m/it/10 y \OT1/cmr/m/n/10 = 1) = [](\OML/cmm/m/it/10 t\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 ^^@ []\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 v\OT1/cmr/m/n/10 ) = 2 [] \OMS/cmsy/m/n/10 ^^@ \OT1/cmr/m/n/10 1 = 1 \OMS/cmsy/m/n/10 ^^@ []
+ []
+
+
+Overfull \hbox (91.04375pt too wide) in paragraph at lines 648--651
 \OT1/cmr/m/n/10 (\OML/cmm/m/it/10 X[]; y[]\OT1/cmr/m/n/10 )$. You can use your fa-vorite Lasso im-ple-men-ta-tion, such as \OT1/cmtt/m/n/10 sklearn.linear[]model.Lasso
  []
 
-[15] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 684--685
+[16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 725--726
 \OT1/cmtt/m/n/10 php ? title = 2013 % E2 % 80 % 9314 _ Premier _ League & oldid = 1239520943$[]\OT1/cmr/m/n/10 .
  []
 
-[17] (./homework.aux)
+[18] (./homework.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -658,18 +663,18 @@ Package rerunfilecheck Info: File `homework.out' has not changed.
 (rerunfilecheck)             Checksum: CD217DE9766EE87C0BDE51B5C1106D4C;2402.
  ) 
 Here is how much of TeX's memory you used:
- 20806 strings out of 474222
- 382722 string characters out of 5748733
+ 20807 strings out of 474222
+ 382729 string characters out of 5748733
  1945975 words of memory out of 5000000
  42623 multiletter control sequences out of 15000+600000
  568884 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,107p,591b,821s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on homework.pdf (17 pages, 656105 bytes).
+Output written on homework.pdf (18 pages, 658573 bytes).
 PDF statistics:
- 330 PDF objects out of 1000 (max. 8388607)
- 260 compressed objects within 3 object streams
- 94 named destinations out of 1000 (max. 500000)
+ 334 PDF objects out of 1000 (max. 8388607)
+ 263 compressed objects within 3 object streams
+ 95 named destinations out of 1000 (max. 500000)
  121 words of extra memory for PDF output out of 10000 (max. 10000000)
 

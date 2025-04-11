@@ -589,7 +589,48 @@ $$\mathcal{HN}(x; \sigma^2) = 2\mathcal{N}(x; 0, \sigma^2) \text{, } x > 0$$
 are
 $$\mathbb{E}[x] = \frac{\sigma\sqrt{2}}{\sqrt{\pi}} \text{, } \mathrm{Var}[x] = \sigma^2\left(1 - \frac{2}{\pi}\right)$$
 
+We are given the model:
+\[
+x \sim \mathcal{N}(0, 1), \quad t = x + v,\ v \sim \mathcal{N}(0, 1), \quad y = \mathbb{I}[t > 0]
+\]
+and we observe \( y = 1 \). Our goal is to compute the posterior \( p(x \mid y = 1) \) using message passing and moment matching.
+
+We factor the joint distribution as:
+\[
+p(x, t, y) = f_x(x) \cdot f_{xt}(x, t) \cdot f_{ty}(t, y)
+\]
+where:
+\[
+f_x(x) = \mathcal{N}(x; 0, 1), \quad f_{xt}(x, t) = \mathcal{N}(t; x, 1), \quad f_{ty}(t, y) = \delta(y - \text{sign}(t))
+\]
+
+Given \( y = 1 \), this implies \( t > 0 \). Since \( t = x + v \) with \( x, v \sim \mathcal{N}(0, 1) \), it follows that \( t \sim \mathcal{N}(0, 2) \). The conditional \( p(t \mid y=1) \) is thus a half-normal distribution:
+\[
+t \mid y = 1 \sim \text{HN}(0, 2)
+\]
+Using the known moments of the half-normal distribution:
+\[
+\mathbb{E}[t] = \frac{2}{\sqrt{\pi}}, \quad \text{Var}(t) = 2\left(1 - \frac{2}{\pi}\right)
+\]
+
+Since \( t = x + v \), where \( v \sim \mathcal{N}(0, 1) \) is independent, we can compute the posterior moments of \( x \mid y = 1 \) by subtracting the contribution of \( v \):
+\[
+\mathbb{E}[x \mid y=1] = \mathbb{E}[t] - \mathbb{E}[v] = \frac{2}{\sqrt{\pi}}, \quad
+\text{Var}(x \mid y=1) = \text{Var}(t) - \text{Var}(v) = 2\left(1 - \frac{2}{\pi} \right) - 1 = 1 - \frac{4}{\pi}
+\]
+
+Thus, the posterior is approximated by a Gaussian with matched moments:
+\[
+\boxed{
+p(x \mid y=1) \approx \mathcal{N}\left( \frac{2}{\sqrt{\pi}},\ 1 - \frac{4}{\pi} \right)
+}
+\]
+
+
 \item Write a program to verify the calculated distribution using importance sampling.
+
+
+
 \end{enumerate}
 \end{enumerate}
 
