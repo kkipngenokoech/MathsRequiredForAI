@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1744331431.81522 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744331433.19269 0
+["pdflatex"] 1744332212.67487 "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" "homework.pdf" "homework" 1744332213.85353 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744331431.58494 39401 293d2f240583652797af54773307d900 ""
+  "/home/kip/projects/MathsRequiredForAI/PGM/HW3/homework.tex" 1744332211.18475 38398 9e2f51846eb6e64b924cc76de75b8d93 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1000.tfm" 1136768653 1536 e07581a4bb3136ece9eeb4c3ffab8233 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
@@ -181,9 +181,9 @@
   "bonus_home_hist.png" 1744326710.31607 22007 4c142dc009afc759c2c4c495337a876e ""
   "bonus_trace_grid.png" 1744326709.57607 195547 081b6ef818cf02bb6bd41b8ba60f10cd ""
   "home_trace_burnin_and_sampling.png" 1744326746.47605 113632 0e03f4fea6d04c87104d96dcb2f0410a ""
-  "homework.aux" 1744331433.12494 4534 7c73982a2b0b447d9425fd473bce99e5 "pdflatex"
-  "homework.out" 1744331433.12494 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
-  "homework.tex" 1744331431.58494 39401 293d2f240583652797af54773307d900 ""
+  "homework.aux" 1744332213.78475 4560 6e646341be127b1b986b9b61d7b85b63 "pdflatex"
+  "homework.out" 1744332213.78475 2402 cd217de9766ee87c0bde51b5c1106d4c "pdflatex"
+  "homework.tex" 1744332211.18475 38398 9e2f51846eb6e64b924cc76de75b8d93 ""
   "posterior_importance_sampling.png" 1744331256.77498 19406 717e80adcfae8088d86c05820bee9e71 ""
   (generated)
   "homework.aux"

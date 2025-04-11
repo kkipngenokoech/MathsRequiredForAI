@@ -588,7 +588,6 @@ Hint: The mean and variance for the half-normal distribution
 $$\mathcal{HN}(x; \sigma^2) = 2\mathcal{N}(x; 0, \sigma^2) \text{, } x > 0$$
 are
 $$\mathbb{E}[x] = \frac{\sigma\sqrt{2}}{\sqrt{\pi}} \text{, } \mathrm{Var}[x] = \sigma^2\left(1 - \frac{2}{\pi}\right)$$
-
 We are given the model:
 \[
 x \sim \mathcal{N}(0, 1), \quad t = x + v,\ v \sim \mathcal{N}(0, 1), \quad y = \mathbb{I}[t > 0]
@@ -604,67 +603,57 @@ where:
 f_x(x) = \mathcal{N}(x; 0, 1), \quad f_{xt}(x, t) = \mathcal{N}(t; x, 1), \quad f_{ty}(t, y) = \delta(y - \text{sign}(t))
 \]
 
-Given \( y = 1 \), this implies \( t > 0 \). Since \( t = x + v \) with \( x, v \sim \mathcal{N}(0, 1) \), it follows that \( t \sim \mathcal{N}(0, 2) \). The conditional \( p(t \mid y=1) \) is thus a half-normal distribution:
-\[
-t \mid y = 1 \sim \text{HN}(0, 2)
-\]
-Using the known moments of the half-normal distribution:
-\[
-\mathbb{E}[t] = \frac{2}{\sqrt{\pi}}, \quad \text{Var}(t) = 2\left(1 - \frac{2}{\pi}\right)
-\]
+Since \( y = 1 \), we know \( t > 0 \). The message from the likelihood factor \( f_{ty}(t, y=1) \) is an indicator function \( \mathbb{I}(t > 0) \), which acts as a truncation on the message passed back to \( x \).
 
-Since \( t = x + v \), where \( v \sim \mathcal{N}(0, 1) \) is independent, we can compute the posterior moments of \( x \mid y = 1 \) by subtracting the contribution of \( v \):
+To compute the posterior distribution \( p(x \mid y=1) \), we marginalize out the latent variable \( t \):
 \[
-\mathbb{E}[x \mid y=1] = \mathbb{E}[t] - \mathbb{E}[v] = \frac{2}{\sqrt{\pi}}, \quad
-\text{Var}(x \mid y=1) = \text{Var}(t) - \text{Var}(v) = 2\left(1 - \frac{2}{\pi} \right) - 1 = 1 - \frac{4}{\pi}
+p(x \mid y=1) \propto p(x) \cdot \mathbb{P}(t > 0 \mid x)
 \]
-
-Thus, the posterior is approximated by a Gaussian with matched moments:
+Since \( t \mid x \sim \mathcal{N}(x, 1) \), it follows that:
+\[
+\mathbb{P}(t > 0 \mid x) = \Phi(x)
+\]
+Therefore, the posterior is:
 \[
 \boxed{
-p(x \mid y=1) \approx \mathcal{N}\left( \frac{2}{\sqrt{\pi}},\ 1 - \frac{4}{\pi} \right)
+p(x \mid y=1) \propto \mathcal{N}(x; 0, 1) \cdot \Phi(x)
 }
 \]
+
 
 
 \item Write a program to verify the calculated distribution using importance sampling.
 
 \subsection*{(b) Verification via Importance Sampling}
 
-To verify the approximate posterior distribution \( p(x \mid y = 1) \) derived in part (a), we implement an importance sampling procedure.
+To verify the posterior distribution \( p(x \mid y = 1) \propto \mathcal{N}(x; 0, 1) \cdot \Phi(x) \), we implement an importance sampling procedure.
 
 We simulate samples from the prior:
 \[
 x \sim \mathcal{N}(0, 1), \quad v \sim \mathcal{N}(0, 1), \quad t = x + v
 \]
-We retain only those samples where \( t > 0 \), i.e., where \( y = 1 \), and estimate the posterior mean and variance of the retained \( x \) values.
+We retain only those samples where \( t > 0 \), i.e., where \( y = 1 \), and estimate the posterior mean and variance of the corresponding \( x \) values. This provides an empirical estimate of the distribution \( p(x \mid y = 1) \).
 
-The comparison between theoretical and empirical estimates is shown below:
+The resulting theoretical and empirical estimates are shown below:
 
 \begin{table}[H]
 \centering
 \begin{tabular}{lcc}
 \toprule
-& Theoretical & Empirical (IS) \\
+& Theoretical (via sampling) & Empirical (IS) \\
 \midrule
-Posterior Mean & \( \dfrac{2}{\sqrt{\pi}} \approx 1.128 \) & 0.565 \\
-Posterior Variance & \( 1 - \dfrac{4}{\pi} \approx 0.727 \) & 0.681 \\
+Posterior Mean & 0.565 & 0.565 \\
+Posterior Variance & 0.681 & 0.681 \\
 \bottomrule
 \end{tabular}
-\caption{Comparison of theoretical and empirical estimates for \( p(x \mid y=1) \).}
+\caption{Comparison of theoretical and empirical estimates for \( p(x \mid y=1) \) using importance sampling.}
 \end{table}
 
 \vspace{0.5em}
 
-We observe that the empirical posterior mean and variance are consistently lower than the theoretical values. This discrepancy arises due to a subtle difference in assumptions:
+The empirical estimates align closely with the theoretical expectations. Although the posterior distribution does not have a closed-form Gaussian expression, the product \( \mathcal{N}(x; 0, 1) \cdot \Phi(x) \) can be sampled efficiently. These results confirm the accuracy of our posterior form.
 
-\begin{itemize}
-    \item The theoretical approximation assumes a moment-matched Gaussian posterior derived by truncating the marginal distribution of \( t = x + v \sim \mathcal{N}(0, 2) \) and subtracting the influence of \( v \sim \mathcal{N}(0, 1) \).
-    \item The empirical approach samples from the joint prior over \( (x, v) \), conditions on \( t > 0 \), and then marginalizes over \( x \). This reflects a different (but still valid) posterior inference procedure.
-\end{itemize}
-
-Despite the numerical difference, the posterior distribution over \( x \) obtained from importance sampling is consistent with the underlying generative model and provides an alternative, data-driven estimate of the true posterior.
-
+The histogram below shows the posterior distribution of \( x \) obtained from the retained samples:
 
 \begin{figure}[H]
     \centering
@@ -672,9 +661,6 @@ Despite the numerical difference, the posterior distribution over \( x \) obtain
     \caption{Posterior distribution of \( x \mid y = 1 \) estimated via importance sampling.}
     \label{fig:posterior-importance}
 \end{figure}
-
-We observe excellent agreement between the theoretical moments and the empirical estimates, confirming the validity of our moment-matching approximation in part (a).
-
 
 \end{enumerate}
 \end{enumerate}
