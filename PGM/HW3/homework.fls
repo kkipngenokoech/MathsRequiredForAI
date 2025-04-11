@@ -304,6 +304,11 @@ INPUT ./posterior_importance_sampling.png
 INPUT ./posterior_importance_sampling.png
 INPUT ./posterior_importance_sampling.png
 INPUT ./posterior_importance_sampling.png
+INPUT ./lasso_mse_vs_lambda.png
+INPUT ./lasso_mse_vs_lambda.png
+INPUT ./lasso_mse_vs_lambda.png
+INPUT ./lasso_mse_vs_lambda.png
+INPUT ./lasso_mse_vs_lambda.png
 INPUT homework.aux
 INPUT ./homework.out
 INPUT ./homework.out

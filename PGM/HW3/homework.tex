@@ -624,7 +624,6 @@ p(x \mid y=1) \propto \mathcal{N}(x; 0, 1) \cdot \Phi(x)
 
 \item Write a program to verify the calculated distribution using importance sampling.
 
-\subsection*{(b) Verification via Importance Sampling}
 
 To verify the posterior distribution \( p(x \mid y = 1) \propto \mathcal{N}(x; 0, 1) \cdot \Phi(x) \), we implement an importance sampling procedure.
 
@@ -685,12 +684,38 @@ mean squared error (MSE) as the main evaluation metric.
 Let's do some warm-ups.
 \begin{enumerate}[label=(\alph*)]
 \item First trial (2 points). Fit a Lasso model with $(X_{\text{train}}, y_{\text{train}})$ and test it with $(X_{\text{test}}, y_{\text{test}})$, report
-$\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$. You should observe a generalization gap.
+$\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$. You should observe a generalization gap.\\\\We trained a Lasso regression model with \( \alpha = 0.01 \) on the provided dataset. The results were:
+
+\begin{itemize}
+    \item Train MSE: 0.0724
+    \item Test MSE: 4.2454
+\end{itemize}
+
+These results show a significant generalization gap. The model performs very well on the training data but fails to generalize to the test set, indicating overfitting. This motivates the need for appropriate regularization, which we explore next in part (b).
+
+
 \item Hyperparameter tuning (3 points). Tuning hyperparameters to improve the performance has seemingly
 become a controversial strategy nowadays. Nonetheless, let's experiment with some choices of $\lambda$ and
 check the performance. Please repeat the basic experiment above with 10 choices of $\lambda$s evenly spaced
 on a log scale from $10^{-5}$ to $10^5$. Report one plot showing both the $\text{MSE}_{\text{train}}$ and $\text{MSE}_{\text{test}}$ as a function
 of $\lambda$.
+
+We evaluated the performance of Lasso regression across 10 logarithmically spaced values of the regularization parameter \( \lambda \) in the range \([10^{-5}, 10^5]\). For each value, we trained a Lasso model and computed the mean squared error (MSE) on both the training and test sets.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{lasso_mse_vs_lambda.png}
+    \caption{Train and test MSE of Lasso as a function of regularization strength \( \lambda \).}
+\end{figure}
+
+As shown in the plot, we observe the typical U-shaped curve for the test error. For small values of \( \lambda \), the model overfits the training data, resulting in low training error but high test error. For large values of \( \lambda \), the model is overly constrained, leading to underfitting. The optimal \( \lambda \) balances the trade-off, minimizing test error and achieving good generalization.
+
+The best test MSE was achieved at \( \lambda = \ldots \), with corresponding values:
+\begin{itemize}
+    \item Train MSE: \ldots
+    \item Test MSE: \ldots
+\end{itemize}
+
 \end{enumerate}
 
 \subsection{Weak Irrepresentable Condition (5 points)}
