@@ -241,7 +241,22 @@ The output will give us the eigenvalues and eigenvectors of the covariance matri
 \lambda_2 &= 1.00\\
 \lambda_3 &= 0.00
 \end{align}
-The corresponding eigenvectors are:
+
+While NumPy returns the following normalized eigenvectors for the matrix $C_X$: 
+\[
+\begin{bmatrix}
+-0.4082 & -0.7071 & -0.5774 \\
+-0.4082 & 0.7071 & -0.5774 \\
+-0.8165 & 0.0000 & 0.5774 \\
+\end{bmatrix},
+\]
+I chose to use the unnormalized eigenvectors 
+$\mathbf{u}_1 = [1, 1, 2]^T$, 
+$\mathbf{u}_2 = [-1, 1, 0]^T$, and 
+$\mathbf{u}_3 = [-1, -1, 1]^T$ 
+because they are easier to interpret and manipulate symbolically. Since eigenvectors are defined up to a scalar multiple, both sets span the same eigenspaces and are mathematically equivalent.
+
+so the eigenvectors are:
 \begin{align}
     \mathbf{u}_1  &= \begin{pmatrix}
     1\\

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  18 APR 2025 13:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2024.9.10)  18 APR 2025 13:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -248,7 +248,7 @@ File: theoriticalVPlotted.png Graphic file (type png)
 Package pdftex.def Info: theoriticalVPlotted.png  used on input line 120.
 (pdftex.def)             Requested size: 560.40762pt x 358.54459pt.
  [2 <./asynchronousVsynchronous.png>] [3 <./theoriticalVPlotted.png>] [4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 292--295
+Underfull \hbox (badness 10000) in paragraph at lines 307--310
 
  []
 
@@ -256,21 +256,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 292--295
 <PCA_activities.png, id=52, 510.2262pt x 394.5942pt>
 File: PCA_activities.png Graphic file (type png)
 <use PCA_activities.png>
-Package pdftex.def Info: PCA_activities.png  used on input line 516.
+Package pdftex.def Info: PCA_activities.png  used on input line 531.
 (pdftex.def)             Requested size: 595.4351pt x 460.52332pt.
 <elbow4.2.jpg, id=53, 594.72188pt x 255.95625pt>
 File: elbow4.2.jpg Graphic file (type jpg)
 <use elbow4.2.jpg>
-Package pdftex.def Info: elbow4.2.jpg  used on input line 536.
+Package pdftex.def Info: elbow4.2.jpg  used on input line 551.
 (pdftex.def)             Requested size: 595.4351pt x 256.27586pt.
  [9 <./PCA_activities.png>]
 <kmeans4.2.jpg, id=58, 571.38469pt x 444.15938pt>
 File: kmeans4.2.jpg Graphic file (type jpg)
 <use kmeans4.2.jpg>
-Package pdftex.def Info: kmeans4.2.jpg  used on input line 542.
+Package pdftex.def Info: kmeans4.2.jpg  used on input line 557.
 (pdftex.def)             Requested size: 595.4351pt x 462.85689pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--547
+Underfull \hbox (badness 10000) in paragraph at lines 561--562
 
  []
 
@@ -278,30 +278,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 546--547
 <ari4.2.jpg, id=62, 594.72188pt x 444.15938pt>
 File: ari4.2.jpg Graphic file (type jpg)
 <use ari4.2.jpg>
-Package pdftex.def Info: ari4.2.jpg  used on input line 557.
+Package pdftex.def Info: ari4.2.jpg  used on input line 572.
 (pdftex.def)             Requested size: 595.4351pt x 444.714pt.
 <aricluster4.2.jpg, id=63, 561.59813pt x 444.15938pt>
 File: aricluster4.2.jpg Graphic file (type jpg)
 <use aricluster4.2.jpg>
-Package pdftex.def Info: aricluster4.2.jpg  used on input line 563.
+Package pdftex.def Info: aricluster4.2.jpg  used on input line 578.
 (pdftex.def)             Requested size: 595.4351pt x 470.949pt.
  [11 <./ari4.2.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 576--579
+Underfull \hbox (badness 10000) in paragraph at lines 591--594
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 576--579
+Underfull \hbox (badness 10000) in paragraph at lines 591--594
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--582
+Underfull \hbox (badness 10000) in paragraph at lines 595--597
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 580--582
+Underfull \hbox (badness 10000) in paragraph at lines 595--597
 
  []
 
@@ -309,15 +309,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 580--582
 <autoencoderloss.jpg, id=70, 532.99126pt x 411.78844pt>
 File: autoencoderloss.jpg Graphic file (type jpg)
 <use autoencoderloss.jpg>
-Package pdftex.def Info: autoencoderloss.jpg  used on input line 603.
+Package pdftex.def Info: autoencoderloss.jpg  used on input line 618.
 (pdftex.def)             Requested size: 595.4351pt x 460.07516pt.
 <embeddings.jpg, id=71, 645.16031pt x 527.72156pt>
 File: embeddings.jpg Graphic file (type jpg)
 <use embeddings.jpg>
-Package pdftex.def Info: embeddings.jpg  used on input line 611.
+Package pdftex.def Info: embeddings.jpg  used on input line 626.
 (pdftex.def)             Requested size: 595.4351pt x 487.0719pt.
  [13 <./autoencoderloss.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 616--618
+Underfull \hbox (badness 10000) in paragraph at lines 631--633
 
  []
 
@@ -328,15 +328,15 @@ L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 3332 strings out of 474222
- 50940 string characters out of 5748733
- 1955975 words of memory out of 5000000
- 25551 multiletter control sequences out of 15000+600000
+ 3334 strings out of 474222
+ 51002 string characters out of 5748733
+ 1954975 words of memory out of 5000000
+ 25553 multiletter control sequences out of 15000+600000
  572865 words of font info for 91 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  57i,16n,65p,837b,404s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on homework.pdf (14 pages, 1189587 bytes).
+Output written on homework.pdf (14 pages, 1190168 bytes).
 PDF statistics:
  158 PDF objects out of 1000 (max. 8388607)
  91 compressed objects within 1 object stream

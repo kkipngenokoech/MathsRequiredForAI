@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1744974941.4357 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" "homework.pdf" "homework" 1744974942.23451 0
+["pdflatex"] 1744975799.61095 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" "homework.pdf" "homework" 1744975800.4502 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" 1744974941.14733 34383 bd7b0589bf1a9f785f67fb385f1434b7 ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" 1744975799.2873 34920 a2048b4d89d0d587a5157eaf24e76098 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -95,8 +95,8 @@
   "autoencoderloss.jpg" 1744970051.59622 40892 08b083e9a002cf2f1166902e330d0ec4 ""
   "elbow4.2.jpg" 1744974704.55095 52608 6b295f75bd784a5812bc7835d6e2c67d ""
   "embeddings.jpg" 1744970320.67595 145140 31f7864510f31aea52f4d196dce4a852 ""
-  "homework.aux" 1744974942.16733 3059 88b9efbc394ff953025cc63198940ff2 "pdflatex"
-  "homework.tex" 1744974941.14733 34383 bd7b0589bf1a9f785f67fb385f1434b7 ""
+  "homework.aux" 1744975800.3973 3059 88b9efbc394ff953025cc63198940ff2 "pdflatex"
+  "homework.tex" 1744975799.2873 34920 a2048b4d89d0d587a5157eaf24e76098 ""
   "kmeans4.2.jpg" 1744974573.19204 77568 71d716e753d56969b20d45fccfc170fe ""
   "theoriticalVPlotted.png" 1743830014.48401 66365 2eb2128fd320b9ab1d870051c9ca03b2 ""
   (generated)
