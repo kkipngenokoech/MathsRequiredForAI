@@ -104,7 +104,7 @@ This is the expected value of the minimum of $m$ i.i.d. exponential random varia
 In this sub-problem, we will simulate and compare the expected runtime per iteration of synchronous SGD and asynchronous SGD for different values of $m$. The time for each worker node to finish one gradient computation is exponentially distributed as given in part (a) with $\lambda = 2$, and it is i.i.d. across workers and iterations. Assume there is no communication delay.
 
 Simulate 5000 iterations of training using Python for different values of $m$ ranging from 1 to 20, and obtain the average runtime per iteration. Make a comparative plot of the average runtimes per iteration of synchronous and asynchronous SGD versus $m$. Explain the trends observed in the plot in 1-2 sentences. You may use packages inside \texttt{numpy.random} to draw random samples from the exponential distribution. Attach your plot and code in PDF format to the end of your homework.
-\begin{figure}[h]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{asynchronousVsynchronous.png}
 \caption{Average runtimes per iteration of synchronous and asynchronous SGD versus $m$.}
@@ -115,7 +115,7 @@ The synchronous SGD takes the maximum time among all workers to finish their gra
 
 \item
 Write down the theoretical expressions for the expected runtimes per iteration of synchronous and asynchronous SGD in terms of $m$ and $\lambda$ (Hint: You can use the expressions derived in parts (b) and (c)). On the figure generated in part (d), also plot the theoretical expected runtimes versus $m$. Check whether the theoretical and simulated values align.
-\begin{figure}
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{theoriticalVPlotted.png}
 \caption{Average runtimes per iteration of synchronous and asynchronous SGD versus $m$ with theoretical expected runtimes.}
