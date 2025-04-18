@@ -3,6 +3,8 @@
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{algorithm} % Include this package for the algorithm environment
+\usepackage{algpseudocode} % Include this package for algorithmic pseudocode
 
 \begin{document}
 
@@ -47,5 +49,73 @@ We would like to derive the model parameters $(\omega_k, \mu_k)$ for all $k$ usi
     r_{nk} = \frac{P(x_n, z_n = k)}{P(x_n)} = \frac{\omega_k \mu_k \exp(-x_n \mu_k)}{\sum_{k'} \omega_{k'} \mu_{k'} \exp(-x_n \mu_{k'})}.
     \]
 \end{enumerate}
+
+\newpage
+\section{Eigen Faces}
+Face recognition is an important task in computer vision and machine learning. In this question, you will
+implement a classical approach called Eigenfaces. You will use face images from the Yale Face Database
+B, which contains face images from 10 people under 64 lighting conditions. Please include your code in
+the final PDF you turn in for full credit.
+
+\begin{enumerate}
+    \item \textbf{Dataset.} Download the data file \texttt{face\_data.mat}. It contains three sets of variables:
+    \begin{itemize}
+        \item \texttt{image}: each element is a face image (50 × 50 matrix). You can use \texttt{matplotlib.pyplot.imshow}
+        to visualize the image. The data is stored in a cell array.
+        \item \texttt{personID}: each element is the ID of the person, which takes values from 1 to 10.
+        \item \texttt{subsetID}: each element is the ID of the subset which takes values from 1 to 5. Here the face
+        images are divided into 5 subsets. Each subset contains face images from all people, but with
+        different lighting conditions.
+    \end{itemize}
+    
+    \item \textbf{[10 points]} Implement PCA. Fill in the function \texttt{pca\_fun} in the \texttt{pca.py} file. The function takes the
+    data matrix (each row being a sample) and target dimensionality $d$ (lower than or equal to the original
+    dimensionality) as the input, and outputs the selected eigenvectors.
+    
+    \item \textbf{[25 points]} Compute Eigenfaces. Take each 50 × 50 training image and vectorize it into a 2500-
+    dimensional vector. Use your PCA implementation from part (b) to perform PCA on all vectorized
+    face images, and retain the first $d = 200$ eigenvectors. These eigenvectors are called eigenfaces (when
+    displayed as images). Please display the top 5 eigenfaces (use \texttt{imshow}) in your report.
+\end{enumerate}
+
+\newpage 
+
+\section{Thompson Sampling}
+Consider the Thompson Sampling (TS) algorithm, a Bayesian approach to the multi-armed bandit problem. Consider a Bernoulli bandit with $n$ arms, where each arm $i$ at time-step $1 \leq t \leq T$ has Bernoulli i.i.d. rewards $r_{i,t} \in \{0, 1\}$ with $\mathbb{E}[r_{i,t}] = \mu_i$. 
+
+The TS algorithm starts with a prior distribution of $\mu_i$ for each arm $i$ using the $P_{i,0} \sim \text{Beta}(1, 1)$ distribution and proceeds by selecting an arm based on the posterior distribution as follows. Note the prior distribution of $\mu_i$ at time $t$ is denoted as $P_{i,t-1}$ and the posterior as $P_{i,t}$. Further, the posterior of the current time-step becomes the prior for the next time-step.
+
+\begin{algorithm}
+\caption{Thompson Sampling}
+\begin{algorithmic}[1]
+\For{$t = 1, 2, \ldots, T$}
+    \State Sample $\hat{\mu}_{i,t} \sim P_{i,t-1}$ for each arm $i \in \{1, \ldots, n\}$
+    \State Play arm $i_t = \arg \max_i \hat{\mu}_{i,t}$
+    \State Observe reward $r_{i_t,t}$ and update posterior $P_{i,t}$
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+Recall the probability density function of the Beta distribution, $\text{Beta}(\alpha, \beta)$, for any $x \in [0, 1]$ is
+\[
+p(x) = \frac{(\alpha + \beta - 1)!}{(\alpha - 1)!(\beta - 1)!} x^{\alpha - 1} (1 - x)^{\beta - 1}.
+\]
+We also know, for any $p, q \geq 1$,
+\[
+\int_0^1 x^p (1 - x)^q \, dx = \frac{(p + q + 1)!}{(p - 1)!(q - 1)!}.
+\]
+\begin{enumerate}
+    \item \textbf{[15 points]} Until time-step $t$, suppose arm $i \in \{1, \ldots, n\}$ is pulled $N_{i,t}$ times and its total observed reward is 
+    \[
+    S_{i,t} := \sum_{u \leq t : i_u = i} r_{i,u},
+    \]
+    where $i_u$ represents the arm chosen at time-step $u$. Find $P_{i,t}$, the posterior distribution of $\mu_i$, given the Beta prior as described above and observations on the rewards until time-step $t$. 
+    (Hint: Compute the posterior for the first time-step. Use this recursively for the following time-steps.)
+
+    \item \textbf{[5 points]} Compute the mean and variance of the posterior distribution of $\mu_i$ found in part (a).
+
+    \item \textbf{[5 points]} Using the computations in part (b), explain how TS balances exploration and exploitation.
+\end{enumerate}
+
+
 
 \end{document}
