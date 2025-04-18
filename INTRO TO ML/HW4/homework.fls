@@ -48,6 +48,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 INPUT /usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/float/float.sty
+INPUT /usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 INPUT ./homework.aux
@@ -139,6 +141,16 @@ INPUT ./PCA_activities.png
 INPUT ./PCA_activities.png
 INPUT ./PCA_activities.png
 INPUT ./PCA_activities.png
+INPUT ./autoencoderloss.jpg
+INPUT ./autoencoderloss.jpg
+INPUT ./autoencoderloss.jpg
+INPUT ./autoencoderloss.jpg
+INPUT ./autoencoderloss.jpg
+INPUT ./embeddings.jpg
+INPUT ./embeddings.jpg
+INPUT ./embeddings.jpg
+INPUT ./embeddings.jpg
+INPUT ./embeddings.jpg
 INPUT homework.aux
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb

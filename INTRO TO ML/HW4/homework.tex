@@ -3,6 +3,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb} % Include this package for \mathbb
 \usepackage[margin=1in]{geometry} % Adjust the margin as needed
+\usepackage{float} % Include this package for the H float option
 
 \begin{document}
 
@@ -547,9 +548,13 @@ In this section, we will simulate this scenario by limiting the number of labele
 
 \begin{itemize}
 \item[a.] Random Selection: Begin by implementing a uniformly random selection strategy to choose 120 data points from the training data set. After selecting the prototypes, use the resulting dataset to train a logistic regression model, with the activity type as the label, and calculate the accuracy. Repeat this experiment 10 times and report the average accuracy.
+\\\\ Average Accuracy with Random Selection over 10 repetitions:\textbf{ 0.9219}
+\\
 
 \item[b.] Using K-means Clustering by Class: Now perform k-means clustering on the training dataset using k = 20 for each label independently and identify the cluster centers. Based on these centers, you will then for each cluster centroids choose the closest points as representative training data (you will get 120 points). Use these points to train a logistic regression model. Compare the accuracy of the new model to the one trained in part (a) to assess how using clustering for prototype selection affects the performance.
+\\\\ Accuracy with K-means Selection: \textbf{0.8931}\\
 \end{itemize}
+Using clustering for prototype selection slightly reduces the model's performance compared to random selection. This could be due to the loss of diversity in the selected prototypes, as clustering focuses on centroids rather than capturing the full variability of the data.
 
 \subsection*{4.4 Autoencoder for Feature Learning [15 points]}
 In this section, we will implement an autoencoder, a type of neural network used for unsupervised learning of efficient codings. Autoencoders work by encoding input data into a lower-dimensional representation and then decoding it back to the original input (see Fig. 2). This process forces the network to learn a compressed representation of the data.
@@ -567,10 +572,25 @@ This question will provide you with hands-on experience using PyTorch to build a
 \item[a.] Create Dataset Class: Begin by loading the raw sensor data as described in the README.txt file. Ensure the data is correctly formatted for input into the autoencoder. Create a PyTorch Dataset class to efficiently load and batch the raw sensor data. Utilize a DataLoader to create batches for training the autoencoder.
 
 \item[b.] Autoencoder Implementation: Implement the TimeSeriesAE autoencoder model using PyTorch. This model should use GRU layers for both the encoder and decoder and an embedding of size 64. Instantiate the model, define an appropriate loss function, and choose an optimizer. Train the autoencoder for 10 epochs. Plot the training loss vs. epochs.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{autoencoderloss.jpg}
+    \caption{Training loss vs. epochs for the autoencoder model.}
+    \label{fig:autoencoder-loss}
+\end{figure}
 
 \item[c.] Embedding Extraction and Visualization: Extract the encoded representations (embeddings) from the trained autoencoder for the training data. To do this, pass the training data through the encoder part of the autoencoder model. Use the first two embeddings to create a scatter plot of the embeddings, colored by the activity labels. Include this plot in your solution PDF.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{embeddings.jpg}
+    \caption{Scatter plot of the first two embeddings extracted from the autoencoder, colored by activity labels.}
+    \label{fig:autoencoder-embeddings}
+\end{figure}
 
 \item[d.] Clustering Evaluation and Comparison: Perform K-means clustering on the extracted 64D embeddings. Evaluate the clustering performance using the Adjusted Rand Index (ARI) by comparing the cluster labels with the true activity labels. Compare the ARI obtained by clustering the autoencoder embeddings with the clustering performance you obtained from the hand-engineered features in Part 4.2. Discuss which of the two provides the highest ARI and the potential reasons for that.
+\\\\ The ARI obtained by clustering the autoencoder embeddings is 0.4046, while the ARI obtained from the hand-engineered features is 0.4533. The hand-engineered features provide a slightly higher ARI compared to the autoencoder embeddings. 
+
+This difference could be attributed to the fact that the hand-engineered features are specifically designed to capture domain-specific characteristics of the data, which may align better with the ground truth labels. On the other hand, the autoencoder learns a representation in an unsupervised manner, which might not perfectly align with the clustering structure defined by the labels. However, the autoencoder embeddings still perform reasonably well, demonstrating their ability to capture meaningful patterns in the data.
 \end{itemize}
 
 \end{enumerate}

@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1744401150.34786 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" "homework.pdf" "homework" 1744401151.16273 0
+["pdflatex"] 1744973956.27125 "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" "homework.pdf" "homework" 1744973957.02838 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" 1744401150.06901 30552 46de3a4a024b678158b55e8a2b92882d ""
+  "/home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW4/homework.tex" 1744973955.99735 32269 13de1b97e92d128c9a2024bf920f5dc4 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm" 1246382020 1120 1e8878807317373affa7f7bba4cf2f6a ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -74,6 +74,7 @@
   "/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo" 1705352648 8449 f07039d8e4e89f21078d9b5137579bfc ""
   "/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1579991033 13886 d1306dcf79a944f6988e688c1785f9ce ""
   "/usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls" 1137110130 20602 3112294ba237d94ce4a1502cfef3594f ""
+  "/usr/share/texlive/texmf-dist/tex/latex/float/float.sty" 1137110151 6749 16d2656a1984957e674b149555f1ea1d ""
   "/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty" 1578002852 41601 9cf6c5257b1bc7af01a58859749dd37a ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg" 1465944070 1224 978390e9c2234eab29404bc21b268d1e ""
   "/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def" 1663965824 19448 1e988b341dda20961a6b931bcde55519 ""
@@ -87,10 +88,12 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "PCA_activities.png" 1744401039.45904 487475 e9b2f059e6163c8054de163dc85d42c4 ""
+  "PCA_activities.png" 1744401830.69885 487475 e9b2f059e6163c8054de163dc85d42c4 ""
   "asynchronousVsynchronous.png" 1743829259.61235 49190 ce19bc8bc7b6701dda95be414680c99c ""
-  "homework.aux" 1744401151.09901 1541 bc3ddf9d2aa6df8971bd74fc2ad4d844 "pdflatex"
-  "homework.tex" 1744401150.06901 30552 46de3a4a024b678158b55e8a2b92882d ""
+  "autoencoderloss.jpg" 1744970051.59622 40892 08b083e9a002cf2f1166902e330d0ec4 ""
+  "embeddings.jpg" 1744970320.67595 145140 31f7864510f31aea52f4d196dce4a852 ""
+  "homework.aux" 1744973956.97736 2000 0dc7853609b499c2cb378bbcdb418ab5 "pdflatex"
+  "homework.tex" 1744973955.99735 32269 13de1b97e92d128c9a2024bf920f5dc4 ""
   "theoriticalVPlotted.png" 1743830014.48401 66365 2eb2128fd320b9ab1d870051c9ca03b2 ""
   (generated)
   "homework.aux"
