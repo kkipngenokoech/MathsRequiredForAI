@@ -116,6 +116,87 @@ We also know, for any $p, q \geq 1$,
     \item \textbf{[5 points]} Using the computations in part (b), explain how TS balances exploration and exploitation.
 \end{enumerate}
 
+\newpage
+\section{Gridworld}
+Consider the following grid environment. Starting from any unshaded square, you can move up, down, left, or right. Actions are deterministic and always succeed (e.g., going left from state 16 goes to state 15) unless they will cause the agent to run into a wall. The thicker edges indicate walls, and attempting to move in the direction of a wall results in staying in the same square (e.g., going in any direction other than left from state 16 stays in 16).
 
+Taking any action from the target square with cheese (no. 11) earns a reward of $r_g$ (so $r(11, a) = r_g \, \forall a$) and ends the episode. Taking any action from the square of the cat (no. 6) earns a reward of $r_r$ (so $r(6, a) = r_r \, \forall a$) and ends the episode. Otherwise, from every other square, taking any action is associated with a reward $r_s \in \{-1, 0, +1\}$ (even if the action results in the agent staying in the same square). 
+
+Assume the discount factor $\gamma = 1$, $r_g = +10$, and $r_r = -1000$ unless otherwise specified.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{grid.jpg}
+\caption{Gridworld Environment}
+\label{fig:gridworld}
+\end{figure}
+
+\begin{enumerate}
+   \item  Let $r_s = 0$. In the policy below, the arrow in each box denotes the (deterministic) action
+    that should be taken in each state. Evaluate the following policy and show the corresponding value
+    (i.e., cumulative reward) for every state (square).
+
+    \[
+    \begin{array}{|c|c|c|c|}
+    \hline
+    \rightarrow & \rightarrow & \downarrow & \downarrow \\
+    \hline
+    \rightarrow & \rightarrow & \downarrow & \downarrow \\
+    \hline
+    \uparrow & \uparrow & \downarrow & \leftarrow \\
+    \hline
+    \uparrow & \uparrow & \leftarrow & \leftarrow \\
+    \hline
+    \end{array}
+    \]
+    
+    \item Define the value of $r_s$ that would cause the optimal policy to return the shortest path to the
+    cheese square (no. 11); note that your value for $r_s$ should lie in $\{-1, 0, +1\}$. Using this $r_s$, find the
+    optimal value for each square and the optimal policy.
+
+    \item Let’s refer to the value function derived in (b) as $V^{\pi_g}_{\text{old}}$ and the policy as $\pi_g$. Suppose we are
+    now in a new gridworld where all the rewards ($r_s$, $r_g$, and $r_r$) have $+2$ added to them. Consider still
+    following the policy $\pi_g$, which is optimal for the original gridworld. What will the new values $V^{\pi_g}_{\text{new}}$ be
+    in this second gridworld?
+\end{enumerate}
+
+\newpage
+\section{Markov Decesion Process as Linear Program}
+Consider a Markov Decision Process (MDP) $M = \{S, A, P, r, \gamma\}$ where $S$ is the state space, $A$ is the action space, $P$ is the transition kernel representing the probability of transition to state $s'$ from state $s$ when action $a$ is taken as $P(s'|s, a)$, $r$ is the reward function, and $\gamma$ is the discount factor. Consider the linear program:
+\[
+\min_{V \in \mathbb{R}^{|S|}} \sum_{s \in S} \rho(s)V(s)
+\]
+subject to
+\[
+V(s) \geq r(s, a) + \gamma \sum_{s' \in S} P(s'|s, a)V(s') \quad \forall s \in S, \, a \in A,
+\]
+where $\rho(s) \in \mathbb{R}_+ \, \forall s \in S$ and denote its solution as $V^\star \in \mathbb{R}^{|S|}$.
+
+\begin{enumerate}
+    \item Show that the dual formulation of the above linear program can be written as
+    \[
+    \max_{x \in \mathbb{R}^{|S| \times |A|}} \sum_{s \in S} \sum_{a \in A} r(s, a)x(s, a)
+    \]
+    subject to
+    \[
+    \sum_{a \in A} x(s, a) - \gamma \sum_{s' \in S} \sum_{a' \in A} P(s|s', a')x(s', a') = \rho(s) \quad \forall s \in S,
+    \]
+    \[
+    x(s, a) \geq 0 \quad \forall s \in S, \, a \in A.
+    \]
+   \item Denote the optimal solution to the dual problem as $x^\star \in \mathbb{R}^{|S \times A|}$. Due to strong duality
+    and complementary slackness, we have
+    \[
+    x^\star(s, a) \left(V^\star(s) - \gamma \sum_{s' \in S} P(s'|s, a)V^\star(s') - r(s, a)\right) = 0 \quad \forall s \in S, \, a \in A.
+    \]
+    Now, show that the optimal policy $\pi^\star(\cdot|s), \, \forall s \in S$, can be derived as
+    \[
+    \pi^\star(a|s) =
+    \begin{cases}
+    1 & \text{if } a = \arg \max_{a \in A} x^\star(s, a), \\
+    0 & \text{else}.
+    \end{cases}
+    \]
+\end{enumerate}
 
 \end{document}
