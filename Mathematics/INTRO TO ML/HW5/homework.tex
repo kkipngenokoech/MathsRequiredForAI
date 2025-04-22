@@ -117,9 +117,83 @@ We also know, for any $p, q \geq 1$,
     where $i_u$ represents the arm chosen at time-step $u$. Find $P_{i,t}$, the posterior distribution of $\mu_i$, given the Beta prior as described above and observations on the rewards until time-step $t$. 
     (Hint: Compute the posterior for the first time-step. Use this recursively for the following time-steps.)
 
+    To find the posterior distribution $P_{i,t}$ of the unknown mean reward $\mu_i$ of arm $i$ at time-step $t$, we begin with the prior and apply Bayesian updates.
+
+Initially, the prior distribution of $\mu_i$ is:
+\[
+P_{i,0} = \text{Beta}(1, 1)
+\]
+
+Suppose arm $i$ has been pulled $N_{i,t}$ times by time $t$, and the total observed reward is:
+\[
+S_{i,t} := \sum_{u \leq t:\ i_u = i} r_{i,u}
+\]
+
+Each reward $r_{i,u} \sim \text{Bernoulli}(\mu_i)$, and since the Beta distribution is a conjugate prior for the Bernoulli likelihood, the posterior distribution after observing $S_{i,t}$ successes and $N_{i,t} - S_{i,t}$ failures becomes:
+
+\[
+P_{i,t} = \text{Beta}(1 + S_{i,t},\ 1 + N_{i,t} - S_{i,t})
+\]
+
+This result can be obtained recursively. After each new observation of reward $r_{i,t}$ at time-step $t$, the posterior is updated as:
+\[
+P_{i,t} = \text{Beta}(\alpha_{i,t},\ \beta_{i,t})
+\]
+where
+\[
+\alpha_{i,t} = 1 + \sum_{u \leq t:\ i_u = i} r_{i,u} = 1 + S_{i,t}, \quad
+\beta_{i,t} = 1 + \sum_{u \leq t:\ i_u = i} (1 - r_{i,u}) = 1 + N_{i,t} - S_{i,t}
+\]
+
+Hence, the posterior distribution $P_{i,t}$ at time-step $t$ is:
+\[
+\boxed{
+P_{i,t} = \text{Beta}(1 + S_{i,t},\ 1 + N_{i,t} - S_{i,t})
+}
+\]
+
+
     \item \textbf{[5 points]} Compute the mean and variance of the posterior distribution of $\mu_i$ found in part (a).
 
+Let $P_{i,t} = \text{Beta}(\alpha, \beta)$ where
+\[
+\alpha = 1 + S_{i,t}, \quad \beta = 1 + N_{i,t} - S_{i,t}
+\]
+
+Then the \textbf{mean} of $\mu_i$ is:
+\[
+\mathbb{E}[\mu_i] = \frac{1 + S_{i,t}}{2 + N_{i,t}}
+\]
+
+And the \textbf{variance} of $\mu_i$ is:
+\[
+\text{Var}[\mu_i] = \frac{(1 + S_{i,t})(1 + N_{i,t} - S_{i,t})}{(2 + N_{i,t})^2 (3 + N_{i,t})}
+\]
+
+
     \item \textbf{[5 points]} Using the computations in part (b), explain how TS balances exploration and exploitation.
+
+Thompson Sampling (TS) naturally balances exploration and exploitation by using random samples drawn from the posterior distribution of each arm's expected reward.
+
+From part (b), we know that the posterior distribution of the mean reward $\mu_i$ for arm $i$ at time $t$ is:
+\[
+P_{i,t} = \text{Beta}(1 + S_{i,t},\ 1 + N_{i,t} - S_{i,t})
+\]
+with mean:
+\[
+\mathbb{E}[\mu_i] = \frac{1 + S_{i,t}}{2 + N_{i,t}}
+\]
+and variance:
+\[
+\text{Var}[\mu_i] = \frac{(1 + S_{i,t})(1 + N_{i,t} - S_{i,t})}{(2 + N_{i,t})^2 (3 + N_{i,t})}
+\]
+
+\textbf{Exploitation:} When an arm is pulled frequently (i.e., $N_{i,t}$ is large), the variance of its posterior distribution becomes small. As a result, the samples $\hat{\mu}_{i,t}$ drawn from this posterior concentrate near the true mean $\mu_i$, leading TS to consistently select arms with higher estimated reward.
+
+\textbf{Exploration:} For arms that have been pulled fewer times (i.e., small $N_{i,t}$), the variance of their posterior remains large. This increases the probability of drawing a high sample $\hat{\mu}_{i,t}$ by chance, which may temporarily make that arm appear better than others. This leads TS to occasionally explore uncertain arms, even if their empirical average is lower.
+
+\textbf{Conclusion:} TS balances exploration and exploitation by sampling from the full posterior distribution rather than relying only on the mean. Arms with uncertain estimates (high variance) are more likely to be explored, while arms with high and confident estimates (high mean, low variance) are more likely to be exploited.
+
 \end{enumerate}
 
 \newpage
