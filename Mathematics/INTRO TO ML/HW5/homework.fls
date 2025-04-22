@@ -1,9 +1,9 @@
-PWD /home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW5
+PWD /home/kip/projects/MathsRequiredForAI/Mathematics/INTRO TO ML/HW5
 INPUT /etc/texmf/web2c/texmf.cnf
 INPUT /usr/share/texmf/web2c/texmf.cnf
 INPUT /usr/share/texlive/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT /home/kip/projects/MathsRequiredForAI/INTRO TO ML/HW5/homework.tex
+INPUT /home/kip/projects/MathsRequiredForAI/Mathematics/INTRO TO ML/HW5/homework.tex
 OUTPUT homework.log
 INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls
 INPUT /usr/share/texlive/texmf-dist/tex/latex/extsizes/extarticle.cls
@@ -114,6 +114,11 @@ INPUT /var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/public/cm/cmtt12.tfm
 INPUT /usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm
+INPUT ./top_5_eigenfaces.png
+INPUT ./top_5_eigenfaces.png
+INPUT ./top_5_eigenfaces.png
+INPUT ./top_5_eigenfaces.png
+INPUT ./top_5_eigenfaces.png
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT ./grid.jpg
 INPUT ./grid.jpg
