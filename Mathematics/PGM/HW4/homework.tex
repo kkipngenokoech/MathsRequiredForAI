@@ -108,6 +108,59 @@ Note here that we’re using the precision matrix \( \Lambda = \Sigma^{-1} \). A
             \item[(d)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_2) \)?
             \item[(e)] (5 points) \textbf{Plot:} Provide a computer-generated contour plot to show the result of our approximation \( q^*(X) \) and the true underlying Gaussian \( p(X; \mu, \Lambda) \) for the parameters given above.
         \end{enumerate}
+    \item Suppose the parameters of the true distribution are 
+    \[
+    \mu = 
+    \begin{bmatrix}
+    1 \\
+    2
+    \end{bmatrix}
+    \quad \text{and} \quad
+    \Lambda = 
+    \begin{bmatrix}
+    \frac{2}{3} & -\frac{1}{3} \\
+    -\frac{1}{3} & \frac{2}{3}
+    \end{bmatrix}.
+    \]
+    
+        \begin{enumerate}
+            \item[(a)] (2 points) \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_1) \)?
+            \item[(b)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_1) \)?
+            \item[(c)] (2 points) \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_2) \)?
+            \item[(d)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_2) \)?
+            \item[(e)] (5 points) \textbf{Plot:} Provide a computer-generated contour plot to show the result of our approximation \( q^*(X) \) and the true underlying Gaussian \( p(X; \mu, \Lambda) \) for the parameters given above.
+        \end{enumerate}
+    \item (2 points) Describe in words how the plots you generated provide insight into the behavior of minimization of
+    KL(q||p) with regards to the low probability and high probability regions of the true vs. approximate distributions.
+
+    The contour plots illustrate the differences between the true distribution \( p(X; \mu, \Lambda) \) and the approximate distribution \( q^*(X) \). In high-probability regions, where the true distribution has significant density, the approximation \( q^*(X) \) closely aligns with \( p(X) \). This is because minimizing \( \text{KL}(q \| p) \) prioritizes matching the high-probability regions of \( p(X) \), as discrepancies in these regions contribute more to the KL divergence. Conversely, in low-probability regions, the approximation \( q^*(X) \) may deviate more significantly from \( p(X) \), as these regions have less influence on the overall KL divergence. This behavior reflects the trade-off inherent in the mean-field approximation, where the focus is on capturing the most probable regions of the true distribution while potentially sacrificing accuracy in less probable areas.
+\end{enumerate}
+
+\subsection{Variational Inference vs. Monte Carlo Methods}
+
+\subsection{Variational Inference vs. Monte Carlo Methods}
+
+Let’s end with a brief comparison between variational methods and MCMC methods. We have seen that both
+classes of methods can be used for learning in scenarios involving latent variables, but both have their own sets of
+advantages and disadvantages. For each of the following statements, specify whether they apply more suitably to
+VI or MCMC methods:
+
+\begin{enumerate}
+    \item (2 points) Transforms inference into optimization problems.\\
+    \(\bigcirc\) Variational Inference \\
+    \(\bigcirc\) MCMC
+    \item (2 points) Is easier to integrate with back-propagation.\\
+    \(\bigcirc\) Variational Inference \\
+    \(\bigcirc\) MCMC
+    \item (2 points) Involves more stochasticity.\\
+    \(\bigcirc\) Variational Inference \\
+    \(\bigcirc\) MCMC
+    \item (2 points) Converges to the true distribution.\\
+    \(\bigcirc\) Variational Inference \\
+    \(\bigcirc\) MCMC
+    \item (2 points) Is higher variance under limited computational resources.\\
+    \(\bigcirc\) Variational Inference \\
+    \(\bigcirc\) MCMC
 \end{enumerate}
 
 \end{document}
