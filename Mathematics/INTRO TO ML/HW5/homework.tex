@@ -192,7 +192,7 @@ and variance:
 
 \textbf{Exploration:} For arms that have been pulled fewer times (i.e., small $N_{i,t}$), the variance of their posterior remains large. This increases the probability of drawing a high sample $\hat{\mu}_{i,t}$ by chance, which may temporarily make that arm appear better than others. This leads TS to occasionally explore uncertain arms, even if their empirical average is lower.
 
-\textbf{Conclusion:} TS balances exploration and exploitation by sampling from the full posterior distribution rather than relying only on the mean. Arms with uncertain estimates (high variance) are more likely to be explored, while arms with high and confident estimates (high mean, low variance) are more likely to be exploited.
+
 
 \end{enumerate}
 
