@@ -728,8 +728,6 @@ The Bayesian network is defined by:
 \end{itemize}
 
 
-
-
 \end{enumerate}
 
 \subsection{Scoring Function}
@@ -751,6 +749,265 @@ S_{\text{max}}(G, D) = \max_{\theta} \big(S(G, \theta; D)\big)
 \caption{The data used to compute the BIC score.}
 \label{fig:data}
 \end{figure}
+
+
+We compute the Bayesian network (graph and parameters) that maximizes the BIC score for the given dataset with 9 samples and 3 binary variables (\(X_1, X_2, X_3\)). The BIC score is:
+
+\[
+S(G, \theta; D) = LL(\theta; D) - \frac{\log(9)}{2} \cdot \|G\|
+\]
+
+where \(LL(\theta; D)\) is the log-likelihood, \(\|G\|\) is the number of independent parameters, and \(\log(9) \approx 2.197\), so \(\frac{\log(9)}{2} \approx 1.099\). We evaluate five representative directed acyclic graphs (DAGs), compute their parameters, log-likelihood, and BIC scores, and select the graph with the highest score.
+
+\textbf{Graphs Considered}:
+\begin{itemize}
+    \item \(G_1\): No edges (\(X_1, X_2, X_3\)).
+    \item \(G_2\): \(X_1 \to X_2\).
+    \item \(G_3\): \(X_1 \to X_2 \to X_3\).
+    \item \(G_4\): \(X_1 \to X_2, X_1 \to X_3\).
+    \item \(G_5\): \(X_1 \to X_2, X_1 \to X_3, X_2 \to X_3\).
+\end{itemize}
+
+\textbf{Graph \(G_1\): No Edges}
+
+Joint distribution: \(P(X_1, X_2, X_3) = P(X_1)P(X_2)P(X_3)\).
+
+Parameters:
+\begin{itemize}
+    \item \(X_1 = 0\): 4 samples (rows 2, 5, 8, 9).
+    \[
+    P(X_1 = 0) = \frac{4}{9}, \quad P(X_1 = 1) = \frac{5}{9}
+    \]
+    \item \(X_2 = 0\): 3 samples (rows 1, 6, 8).
+    \[
+    P(X_2 = 0) = \frac{1}{3}, \quad P(X_2 = 1) = \frac{2}{3}
+    \]
+    \item \(X_3 = 0\): 7 samples (rows 1, 2, 3, 5, 6, 7, 9).
+    \[
+    P(X_3 = 0) = \frac{7}{9}, \quad P(X_3 = 1) = \frac{2}{9}
+    \]
+\end{itemize}
+
+Log-likelihood: \(LL(\theta; D) = \sum_{i=1}^9 \log P(x_i)\), where \(P(x_i) = P(X_1 = x_{i,1}) P(X_2 = x_{i,2}) P(X_3 = x_{i,3})\).
+
+For each sample:
+\begin{itemize}
+    \item Row 1: \((1,0,0)\): \(P = \frac{5}{9} \cdot \frac{1}{3} \cdot \frac{7}{9} = \frac{35}{243}\), \(\log \frac{35}{243} \approx -1.936\)
+    \item Row 2: \((0,1,0)\): \(P = \frac{4}{9} \cdot \frac{2}{3} \cdot \frac{7}{9} = \frac{56}{243}\), \(\log \frac{56}{243} \approx -1.467\)
+    \item Row 3: \((1,1,0)\): \(P = \frac{5}{9} \cdot \frac{2}{3} \cdot \frac{7}{9} = \frac{70}{243}\), \(\log \frac{70}{243} \approx -1.246\)
+    \item Row 4: \((1,1,1)\): \(P = \frac{5}{9} \cdot \frac{2}{3} \cdot \frac{2}{9} = \frac{20}{243}\), \(\log \frac{20}{243} \approx -2.497\)
+    \item Row 5: \((0,1,0)\): Same as Row 2, \(\log \frac{56}{243} \approx -1.467\)
+    \item Row 6: \((1,0,0)\): Same as Row 1, \(\log \frac{35}{243} \approx -1.936\)
+    \item Row 7: \((1,1,0)\): Same as Row 3, \(\log \frac{70}{243} \approx -1.246\)
+    \item Row 8: \((0,0,1)\): \(P = \frac{4}{9} \cdot \frac{1}{3} \cdot \frac{2}{9} = \frac{8}{243}\), \(\log \frac{8}{243} \approx -3.406\)
+    \item Row 9: \((0,1,0)\): Same as Row 2, \(\log \frac{56}{243} \approx -1.467\)
+\end{itemize}
+Sum: \(LL(\theta; D) \approx -1.936 + (-1.467) + (-1.246) + (-2.497) + (-1.467) + (-1.936) + (-1.246) + (-3.406) + (-1.467) \approx -16.668\).
+
+Parameters: \(\|G_1\| = 1 + 1 + 1 = 3\).
+
+BIC Score:
+\[
+S(G_1, \theta; D) \approx -16.668 - 1.099 \cdot 3 \approx -16.668 - 3.297 \approx -19.965
+\]
+
+\textbf{Graph \(G_2\): \(X_1 \to X_2\)}
+
+Joint distribution: \(P(X_1, X_2, X_3) = P(X_1)P(X_2 | X_1)P(X_3)\).
+
+Parameters:
+\begin{itemize}
+    \item \(P(X_1)\): Same as \(G_1\), \(P(X_1 = 0) = \frac{4}{9}\), \(P(X_1 = 1) = \frac{5}{9}\).
+    \item \(X_1 = 0\) (4 samples: rows 2, 5, 8, 9): \(X_2 = 0\): 1 (row 8), \(X_2 = 1\): 3 (rows 2, 5, 9).
+    \[
+    P(X_2 = 0 | X_1 = 0) = \frac{1}{4}, \quad P(X_2 = 1 | X_1 = 0) = \frac{3}{4}
+    \]
+    \item \(X_1 = 1\) (5 samples: rows 1, 3, 4, 6, 7): \(X_2 = 0\): 2 (rows 1, 6), \(X_2 = 1\): 3 (rows 3, 4, 7).
+    \[
+    P(X_2 = 0 | X_1 = 1) = \frac{2}{5}, \quad P(X_2 = 1 | X_1 = 1) = \frac{3}{5}
+    \]
+    \item \(P(X_3)\): Same as \(G_1\), \(P(X_3 = 0) = \frac{7}{9}\), \(P(X_3 = 1) = \frac{2}{9}\).
+\end{itemize}
+
+Log-likelihood: \(P(x_i) = P(X_1 = x_{i,1}) P(X_2 = x_{i,2} | X_1 = x_{i,1}) P(X_3 = x_{i,3})\).
+\begin{itemize}
+    \item Row 1: \((1,0,0)\): \(P = \frac{5}{9} \cdot \frac{2}{5} \cdot \frac{7}{9} = \frac{70}{405}\), \(\log \frac{70}{405} \approx -1.753\)
+    \item Row 2: \((0,1,0)\): \(P = \frac{4}{9} \cdot \frac{3}{4} \cdot \frac{7}{9} = \frac{84}{324}\), \(\log \frac{84}{324} \approx -1.350\)
+    \item Row 3: \((1,1,0)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{7}{9} = \frac{105}{405}\), \(\log \frac{105}{405} \approx -1.350\)
+    \item Row 4: \((1,1,1)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{2}{9} = \frac{30}{405}\), \(\log \frac{30}{405} \approx -2.601\)
+    \item Row 5: \((0,1,0)\): Same as Row 2, \(\log \frac{84}{324} \approx -1.350\)
+    \item Row 6: \((1,0,0)\): Same as Row 1, \(\log \frac{70}{405} \approx -1.753\)
+    \item Row 7: \((1,1,0)\): Same as Row 3, \(\log \frac{105}{405} \approx -1.350\)
+    \item Row 8: \((0,0,1)\): \(P = \frac{4}{9} \cdot \frac{1}{4} \cdot \frac{2}{9} = \frac{8}{324}\), \(\log \frac{8}{324} \approx -3.689\)
+    \item Row 9: \((0,1,0)\): Same as Row 2, \(\log \frac{84}{324} \approx -1.350\)
+\end{itemize}
+Sum: \(LL(\theta; D) \approx -1.753 + (-1.350) + (-1.350) + (-2.601) + (-1.350) + (-1.753) + (-1.350) + (-3.689) + (-1.350) \approx -16.546\).
+
+Parameters: \(\|G_2\| = 1 + 2 + 1 = 4\).
+
+BIC Score:
+\[
+S(G_2, \theta; D) \approx -16.546 - 1.099 \cdot 4 \approx -16.546 - 4.396 \approx -20.942
+\]
+
+\textbf{Graph \(G_3\): \(X_1 \to X_2 \to X_3\)}
+
+Joint distribution: \(P(X_1, X_2, X_3) = P(X_1)P(X_2 | X_1)P(X_3 | X_2)\).
+
+Parameters:
+\begin{itemize}
+    \item \(P(X_1)\): Same as \(G_1\).
+    \item \(P(X_2 | X_1)\): Same as \(G_2\).
+    \item \(X_2 = 0\) (3 samples: rows 1, 6, 8): \(X_3 = 0\): 2 (rows 1, 6), \(X_3 = 1\): 1 (row 8).
+    \[
+    P(X_3 = 0 | X_2 = 0) = \frac{2}{3}, \quad P(X_3 = 1 | X_2 = 0) = \frac{1}{3}
+    \]
+    \item \(X_2 = 1\) (6 samples: rows 2, 3, 4, 5, 7, 9): \(X_3 = 0\): 5 (rows 2, 3, 5, 7, 9), \(X_3 = 1\): 1 (row 4).
+    \[
+    P(X_3 = 0 | X_2 = 1) = \frac{5}{6}, \quad P(X_3 = 1 | X_2 = 1) = \frac{1}{6}
+    \]
+\end{itemize}
+
+Log-likelihood: \(P(x_i) = P(X_1 = x_{i,1}) P(X_2 = x_{i,2} | X_1 = x_{i,1}) P(X_3 = x_{i,3} | X_2 = x_{i,2})\).
+\begin{itemize}
+    \item Row 1: \((1,0,0)\): \(P = \frac{5}{9} \cdot \frac{2}{5} \cdot \frac{2}{3} = \frac{20}{135}\), \(\log \frac{20}{135} \approx -1.911\)
+    \item Row 2: \((0,1,0)\): \(P = \frac{4}{9} \cdot \frac{3}{4} \cdot \frac{5}{6} = \frac{60}{216}\), \(\log \frac{60}{216} \approx -1.279\)
+    \item Row 3: \((1,1,0)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{5}{6} = \frac{75}{270}\), \(\log \frac{75}{270} \approx -1.279\)
+    \item Row 4: \((1,1,1)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{1}{6} = \frac{15}{270}\), \(\log \frac{15}{270} \approx -2.890\)
+    \item Row 5: \((0,1,0)\): Same as Row 2, \(\log \frac{60}{216} \approx -1.279\)
+    \item Row 6: \((1,0,0)\): Same as Row 1, \(\log \frac{20}{135} \approx -1.911\)
+    \item Row 7: \((1,1,0)\): Same as Row 3, \(\log \frac{75}{270} \approx -1.279\)
+    \item Row 8: \((0,0,1)\): \(P = \frac{4}{9} \cdot \frac{1}{4} \cdot \frac{1}{3} = \frac{4}{108}\), \(\log \frac{4}{108} \approx -3.300\)
+    \item Row 9: \((0,1,0)\): Same as Row 2, \(\log \frac{60}{216} \approx -1.279\)
+\end{itemize}
+Sum: \(LL(\theta; D) \approx -1.911 + (-1.279) + (-1.279) + (-2.890) + (-1.279) + (-1.911) + (-1.279) + (-3.300) + (-1.279) \approx -16.407\).
+
+Parameters: \(\|G_3\| = 1 + 2 + 2 = 5\).
+
+BIC Score:
+\[
+S(G_3, \theta; D) \approx -16.407 - 1.099 \cdot 5 \approx -16.407 - 5.495 \approx -21.902
+\]
+
+\textbf{Graph \(G_4\): \(X_1 \to X_2, X_1 \to X_3\)}
+
+Joint distribution: \(P(X_1, X_2, X_3) = P(X_1)P(X_2 | X_1)P(X_3 | X_1)\).
+
+Parameters:
+\begin{itemize}
+    \item \(P(X_1)\), \(P(X_2 | X_1)\): Same as \(G_2\).
+    \item \(X_1 = 0\) (4 samples): \(X_3 = 0\): 3 (rows 2, 5, 9), \(X_3 = 1\): 1 (row 8).
+    \[
+    P(X_3 = 0 | X_1 = 0) = \frac{3}{4}, \quad P(X_3 = 1 | X_1 = 0) = \frac{1}{4}
+    \]
+    \item \(X_1 = 1\) (5 samples): \(X_3 = 0\): 4 (rows 1, 3, 6, 7), \(X_3 = 1\): 1 (row 4).
+    \[
+    P(X_3 = 0 | X_1 = 1) = \frac{4}{5}, \quad P(X_3 = 1 | X_1 = 1) = \frac{1}{5}
+    \]
+\end{itemize}
+
+Log-likelihood: \(P(x_i) = P(X_1 = x_{i,1}) P(X_2 = x_{i,2} | X_1 = x_{i,1}) P(X_3 = x_{i,3} | X_1 = x_{i,1})\).
+\begin{itemize}
+    \item Row 1: \((1,0,0)\): \(P = \frac{5}{9} \cdot \frac{2}{5} \cdot \frac{4}{5} = \frac{40}{225}\), \(\log \frac{40}{225} \approx -1.723\)
+    \item Row 2: \((0,1,0)\): \(P = \frac{4}{9} \cdot \frac{3}{4} \cdot \frac{3}{4} = \frac{36}{144}\), \(\log \frac{36}{144} \approx -1.386\)
+    \item Row 3: \((1,1,0)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{4}{5} = \frac{60}{225}\), \(\log \frac{60}{225} \approx -1.320\)
+    \item Row 4: \((1,1,1)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{1}{5} = \frac{15}{225}\), \(\log \frac{15}{225} \approx -2.708\)
+    \item Row 5: \((0,1,0)\): Same as Row 2, \(\log \frac{36}{144} \approx -1.386\)
+    \item Row 6: \((1,0,0)\): Same as Row 1, \(\log \frac{40}{225} \approx -1.723\)
+    \item Row 7: \((1,1,0)\): Same as Row 3, \(\log \frac{60}{225} \approx -1.320\)
+    \item Row 8: \((0,0,1)\): \(P = \frac{4}{9} \cdot \frac{1}{4} \cdot \frac{1}{4} = \frac{4}{144}\), \(\log \frac{4}{144} \approx -3.584\)
+    \item Row 9: \((0,1,0)\): Same as Row 2, \(\log \frac{36}{144} \approx -1.386\)
+\end{itemize}
+Sum: \(LL(\theta; D) \approx -1.723 + (-1.386) + (-1.320) + (-2.708) + (-1.386) + (-1.723) + (-1.320) + (-3.584) + (-1.386) \approx -16.536\).
+
+Parameters: \(\|G_4\| = 1 + 2 + 2 = 5\).
+
+BIC Score:
+\[
+S(G_4, \theta; D) \approx -16.536 - 1.099 \cdot 5 \approx -16.536 - 5.495 \approx -22.031
+\]
+
+\textbf{Graph \(G_5\): \(X_1 \to X_2, X_1 \to X_3, X_2 \to X_3\)}
+
+Joint distribution: \(P(X_1, X_2, X_3) = P(X_1)P(X_2 | X_1)P(X_3 | X_1, X_2)\).
+
+Parameters:
+\begin{itemize}
+    \item \(P(X_1)\), \(P(X_2 | X_1)\): Same as \(G_2\).
+    \item \(X_1 = 0, X_2 = 0\) (1 sample: row 8): \(X_3 = 1\).
+    \[
+    P(X_3 = 0 | X_1 = 0, X_2 = 0) = 0, \quad P(X_3 = 1 | X_1 = 0, X_2 = 0) = 1
+    \]
+    \item \(X_1 = 0, X_2 = 1\) (3 samples: rows 2, 5, 9): \(X_3 = 0\): 3.
+    \[
+    P(X_3 = 0 | X_1 = 0, X_2 = 1) = 1, \quad P(X_3 = 1 | X_1 = 0, X_2 = 1) = 0
+    \]
+    \item \(X_1 = 1, X_2 = 0\) (2 samples: rows 1, 6): \(X_3 = 0\): 2.
+    \[
+    P(X_3 = 0 | X_1 = 1, X_2 = 0) = 1, \quad P(X_3 = 1 | X_1 = 1, X_2 = 0) = 0
+    \]
+    \item \(X_1 = 1, X_2 = 1\) (3 samples: rows 3, 4, 7): \(X_3 = 0\): 2 (rows 3, 7), \(X_3 = 1\): 1 (row 4).
+    \[
+    P(X_3 = 0 | X_1 = 1, X_2 = 1) = \frac{2}{3}, \quad P(X_3 = 1 | X_1 = 1, X_2 = 1) = \frac{1}{3}
+    \]
+\end{itemize}
+
+Log-likelihood: \(P(x_i) = P(X_1 = x_{i,1}) P(X_2 = x_{i,2} | X_1 = x_{i,1}) P(X_3 = x_{i,3} | X_1 = x_{i,1}, X_2 = x_{i,2})\).
+\begin{itemize}
+    \item Row 1: \((1,0,0)\): \(P = \frac{5}{9} \cdot \frac{2}{5} \cdot 1 = \frac{10}{45}\), \(\log \frac{10}{45} \approx -1.504\)
+    \item Row 2: \((0,1,0)\): \(P = \frac{4}{9} \cdot \frac{3}{4} \cdot 1 = \frac{12}{36}\), \(\log \frac{12}{36} \approx -1.099\)
+    \item Row 3: \((1,1,0)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{2}{3} = \frac{30}{135}\), \(\log \frac{30}{135} \approx -1.504\)
+    \item Row 4: \((1,1,1)\): \(P = \frac{5}{9} \cdot \frac{3}{5} \cdot \frac{1}{3} = \frac{15}{135}\), \(\log \frac{15}{135} \approx -2.197\)
+    \item Row 5: \((0,1,0)\): Same as Row 2, \(\log \frac{12}{36} \approx -1.099\)
+    \item Row 6: \((1,0,0)\): Same as Row 1, \(\log \frac{10}{45} \approx -1.504\)
+    \item Row 7: \((1,1,0)\): Same as Row 3, \(\log \frac{30}{135} \approx -1.504\)
+    \item Row 8: \((0,0,1)\): \(P = \frac{4}{9} \cdot \frac{1}{4} \cdot 1 = \frac{4}{36}\), \(\log \frac{4}{36} \approx -2.197\)
+    \item Row 9: \((0,1,0)\): Same as Row 2, \(\log \frac{12}{36} \approx -1.099\)
+\end{itemize}
+Sum: \(LL(\theta; D) \approx -1.504 + (-1.099) + (-1.504) + (-2.197) + (-1.099) + (-1.504) + (-1.504) + (-2.197) + (-1.099) \approx -13.707\).
+
+Parameters: \(\|G_5\| = 1 + 2 + 4 = 7\).
+
+BIC Score:
+\[
+S(G_5, \theta; D) \approx -13.707 - 1.099 \cdot 7 \approx -13.707 - 7.693 \approx -21.400
+\]
+
+\textbf{Model Selection}:
+BIC scores:
+\begin{itemize}
+    \item \(G_1\): \(-19.965\)
+    \item \(G_2\): \(-20.942\)
+    \item \(G_3\): \(-21.902\)
+    \item \(G_4\): \(-22.031\)
+    \item \(G_5\): \(-21.400\)
+\end{itemize}
+
+The highest score is for \(G_1\) (\(-19.965\)), indicating the disconnected graph is the best model.
+
+\textbf{Best Model: \(G_1\)}:
+\begin{itemize}
+    \item Structure: No edges (\(X_1, X_2, X_3\)).
+    \item Parameters:
+    \[
+    P(X_1 = 0) = \frac{4}{9}, \quad P(X_1 = 1) = \frac{5}{9}
+    \]
+    \[
+    P(X_2 = 0) = \frac{1}{3}, \quad P(X_2 = 1) = \frac{2}{3}
+    \]
+    \[
+    P(X_3 = 0) = \frac{7}{9}, \quad P(X_3 = 1) = \frac{2}{9}
+    \]
+\end{itemize}
+
+\textbf{Visualization of \(G_1\)}:
+\[
+\begin{tikzpicture}
+    \node[circle, draw] (X1) at (0,0) {$X_1$};
+    \node[circle, draw] (X2) at (2,0) {$X_2$};
+    \node[circle, draw] (X3) at (4,0) {$X_3$};
+\end{tikzpicture}
+\]
 
 \newpage
 \section{Variational Inference}
@@ -781,6 +1038,23 @@ Note here that we’re using the precision matrix \( \Lambda = \Sigma^{-1} \). A
 
 \begin{enumerate}
     \item \textbf{Short Answer:} Write down the equation for \( \log p(X) \). (For this question, you can leave all of the parameters in terms of vectors and matrices, not their subcomponents.)
+    We approximate a 2D Gaussian distribution \(p(\mathbf{x}; \boldsymbol{\mu}, \boldsymbol{\Lambda})\) with a mean-field distribution \(q(\mathbf{x}) = q(x_1) q(x_2)\), where \(\mathbf{x} = [x_1, x_2]^T\), and answer questions about the log-probability, KL divergence, and numerical results.
+
+\textbf{1. Log-Probability \(\log p(\mathbf{X})\)}:
+
+For \(\mathbf{X} = [\mathbf{x}^{(1)}, \dots, \mathbf{x}^{(n)}]\), each \(\mathbf{x}^{(i)} \sim \mathcal{N}(\boldsymbol{\mu}, \boldsymbol{\Lambda}^{-1})\), the joint probability is:
+
+\[
+p(\mathbf{X}) = \prod_{i=1}^n \frac{|\boldsymbol{\Lambda}|^{1/2}}{(2\pi)} \exp\left( -\frac{1}{2} (\mathbf{x}^{(i)} - \boldsymbol{\mu})^T \boldsymbol{\Lambda} (\mathbf{x}^{(i)} - \boldsymbol{\mu}) \right)
+\]
+
+\[
+\log p(\mathbf{X}) = \frac{n}{2} \log |\boldsymbol{\Lambda}| - n \log (2\pi) - \frac{1}{2} \sum_{i=1}^n (\mathbf{x}^{(i)} - \boldsymbol{\mu})^T \boldsymbol{\Lambda} (\mathbf{x}^{(i)} - \boldsymbol{\mu})
+\]
+
+\[
+m_1 = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} (\mathbb{E}[x_2] - \mu_2) = 0 - 1 \cdot 0 \cdot (\mathbb{E}[x_2] - 0) = 0
+\]
     \item \textbf{Short Answer:} Group together everything that involves \( X_1 \) and remove anything involving \( X_2 \). We claim that there exists some distribution \( q^*(X) = q^*(X_1)q^*(X_2) \) that minimizes the KL divergence \( q^* = \arg\min_q \text{KL}(q \| p) \). Furthermore, said distribution will have a component \( q^*(X_1) \) that will be proportional to the quantity you find below. Write that term that is proportional to \( q^*(X_1) \).
     \\\\ It can be shown that this implies that \( q(X_1) \) (and therefore \( q(X_2) \)) is a Gaussian distribution:
     \[
@@ -791,6 +1065,28 @@ Note here that we’re using the precision matrix \( \Lambda = \Sigma^{-1} \). A
     m_1 = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} \big(E[x_2] - \mu_2\big)
     \]
     Using these facts, we’d like to explore how well our approximation can model the underlying distribution.
+    For a single sample, expand \(\log p(\mathbf{x})\):
+
+\[
+\log p(\mathbf{x}) = \frac{1}{2} \log |\boldsymbol{\Lambda}| - \log (2\pi) - \frac{1}{2} \begin{bmatrix} x_1 - \mu_1 \\ x_2 - \mu_2 \end{bmatrix}^T \begin{bmatrix} \Lambda_{11} & \Lambda_{12} \\ \Lambda_{12} & \Lambda_{22} \end{bmatrix} \begin{bmatrix} x_1 - \mu_1 \\ x_2 - \mu_2 \end{bmatrix}
+\]
+
+\[
+= \frac{1}{2} \log |\boldsymbol{\Lambda}| - \log (2\pi) - \frac{1}{2} \left[ \Lambda_{11} (x_1 - \mu_1)^2 + 2 \Lambda_{12} (x_1 - \mu_1)(x_2 - \mu_2) + \Lambda_{22} (x_2 - \mu_2)^2 \right]
+\]
+
+Terms involving \(x_1\):
+
+\[
+-\frac{1}{2} \left[ \Lambda_{11} (x_1 - \mu_1)^2 + 2 \Lambda_{12} (x_1 - \mu_1)(x_2 - \mu_2) \right]
+\]
+
+The term proportional to \(q^*(x_1)\) is:
+
+\[
+\exp\left( -\frac{1}{2} \left[ \Lambda_{11} (x_1 - \mu_1)^2 + 2 \Lambda_{12} (x_1 - \mu_1)(x_2 - \mu_2) \right] \right)
+\]
+
     \item Suppose the parameters of the true distribution are 
     \[
     \mu = 
@@ -805,15 +1101,35 @@ Note here that we’re using the precision matrix \( \Lambda = \Sigma^{-1} \). A
     0 & \frac{1}{4}
     \end{bmatrix}.
     \]
-    
         \begin{enumerate}
             \item[(a)] \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_1) \)?
+\[
+m_1 = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} (\mathbb{E}[x_2] - \mu_2) = 0 - 1 \cdot 0 \cdot (\mathbb{E}[x_2] - 0) = 0
+\]
             \item[(b)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_1) \)?
+\[
+\Lambda_{11}^{-1} = 1^{-1} = 1
+\]
             \item[(c)] (2 points) \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_2) \)?
+            \[
+m_2 = \mu_2 - \Lambda_{22}^{-1} \Lambda_{12} (\mathbb{E}[x_1] - \mu_1) = 0 - 4 \cdot 0 \cdot (\mathbb{E}[x_1] - 0) = 0
+\]
             \item[(d)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_2) \)?
+\[
+\Lambda_{22}^{-1} = (1/4)^{-1} = 4
+\]
             \item[(e)] (5 points) \textbf{Plot:} Provide a computer-generated contour plot to show the result of our approximation \( q^*(X) \) and the true underlying Gaussian \( p(X; \mu, \Lambda) \) for the parameters given above.
+            Since \(\Lambda_{12} = 0\), \(p(\mathbf{x}) = \mathcal{N}(\mathbf{x}; [0,0]^T, \begin{bmatrix} 1 & 0 \\ 0 & 4 \end{bmatrix})\) has no correlation, and \(q^*(\mathbf{x}) = \mathcal{N}(x_1; 0, 1) \mathcal{N}(x_2; 0, 4) = p(\mathbf{x})\). The contours are identical, showing axis-aligned ellipses (variance 1 in \(x_1\), 4 in \(x_2\)).
+
+            \[
+            \begin{tikzpicture}
+                \draw[->] (-3,0) -- (3,0) node[right] {$x_1$};
+                \draw[->] (0,-5) -- (0,5) node[above] {$x_2$};
+                \draw[blue, thick] (0,0) ellipse (1 and 4) node[above right, blue] {$p(\mathbf{x}), q^*(\mathbf{x})$};
+            \end{tikzpicture}
+            \]
         \end{enumerate}
-    \item Suppose the parameters of the true distribution are 
+    \item  Suppose the parameters of the true distribution are 
     \[
     \mu = 
     \begin{bmatrix}
@@ -830,15 +1146,64 @@ Note here that we’re using the precision matrix \( \Lambda = \Sigma^{-1} \). A
     
         \begin{enumerate}
             \item[(a)] (2 points) \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_1) \)?
+  \[
+m_1 = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} (\mathbb{E}[x_2] - \mu_2), \quad \Lambda_{11}^{-1} = \frac{3}{2}
+\]
+Assume \(\mathbb{E}[x_2] = m_2\). Iteratively:
+
+\[
+m_1 = 1 - \frac{3}{2} \cdot \left(-\frac{1}{3}\right) (m_2 - 2) = 1 + \frac{1}{2} (m_2 - 2)
+\]
             \item[(b)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_1) \)?
+            \[
+\Lambda_{11}^{-1} = \frac{3}{2}
+\]
             \item[(c)] (2 points) \textbf{Numerical Answer:} What is the value of the mean of the Gaussian for \( q^*(X_2) \)?
+           \[
+m_2 = \mu_2 - \Lambda_{22}^{-1} \Lambda_{12} (\mathbb{E}[x_1] - \mu_1), \quad \Lambda_{22}^{-1} = \frac{3}{2}
+\]
+
+\[
+m_2 = 2 - \frac{3}{2} \cdot \left(-\frac{1}{3}\right) (m_1 - 1) = 2 + \frac{1}{2} (m_1 - 1)
+\]
+
+Solve: \(m_1 = 1 + \frac{1}{2} (m_2 - 2)\), \(m_2 = 2 + \frac{1}{2} (m_1 - 1)\).
+
+\[
+m_2 = 2 + \frac{1}{2} \left( 1 + \frac{1}{2} (m_2 - 2) - 1 \right) = 2 + \frac{1}{4} (m_2 - 2)
+\]
+
+\[
+m_2 = 2 + \frac{1}{4} m_2 - \frac{1}{2}, \quad \frac{3}{4} m_2 = \frac{3}{2}, \quad m_2 = 2
+\]
+
+\[
+m_1 = 1 + \frac{1}{2} (2 - 2) = 1
+\]
             \item[(d)] (2 points) \textbf{Numerical Answer:} What is the value of the variance of the Gaussian for \( q^*(X_2) \)?
+\[
+\Lambda_{22}^{-1} = \frac{3}{2}
+\]
             \item[(e)] (5 points) \textbf{Plot:} Provide a computer-generated contour plot to show the result of our approximation \( q^*(X) \) and the true underlying Gaussian \( p(X; \mu, \Lambda) \) for the parameters given above.
+            \(p(\mathbf{x})\): \(\mathcal{N}(\mathbf{x}; [1,2]^T, \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix})\), with correlation.
+
+\(q^*(\mathbf{x})\): \(\mathcal{N}(x_1; 1, \frac{3}{2}) \mathcal{N}(x_2; 2, \frac{3}{2})\), axis-aligned.
+
+\[
+\begin{tikzpicture}
+    \draw[->] (-2,0) -- (4,0) node[right] {$x_1$};
+    \draw[->] (1,-2) -- (1,4) node[above] {$x_2$};
+    \draw[blue, thick, rotate around={45:(1,2)}] (1,2) ellipse (1.414 and 2.828) node[above right, blue] {$p(\mathbf{x})$};
+    \draw[red, thick] (1,2) ellipse (1.225 and 1.225) node[below left, red] {$q^*(\mathbf{x})$};
+\end{tikzpicture}
+\]
         \end{enumerate}
     \item (2 points) Describe in words how the plots you generated provide insight into the behavior of minimization of
     KL(q||p) with regards to the low probability and high probability regions of the true vs. approximate distributions.
 
-    The contour plots illustrate the differences between the true distribution \( p(X; \mu, \Lambda) \) and the approximate distribution \( q^*(X) \). In high-probability regions, where the true distribution has significant density, the approximation \( q^*(X) \) closely aligns with \( p(X) \). This is because minimizing \( \text{KL}(q \| p) \) prioritizes matching the high-probability regions of \( p(X) \), as discrepancies in these regions contribute more to the KL divergence. Conversely, in low-probability regions, the approximation \( q^*(X) \) may deviate more significantly from \( p(X) \), as these regions have less influence on the overall KL divergence. This behavior reflects the trade-off inherent in the mean-field approximation, where the focus is on capturing the most probable regions of the true distribution while potentially sacrificing accuracy in less probable areas.
+    In Case 1 (\(\Lambda_{12} = 0\)), \(p(\mathbf{x})\) has no correlation, so \(q^*(\mathbf{x}) = p(\mathbf{x})\), and contours match perfectly (\(\text{KL}(q \| p) = 0\)). High- and low-probability regions align.
+
+In Case 2 (\(\Lambda_{12} \neq 0\)), \(p(\mathbf{x})\) has correlation (tilted ellipses), but \(q^*(\mathbf{x})\) assumes independence (axis-aligned). Minimizing \(\text{KL}(q \| p)\) matches high-probability regions well, but \(q^*\) overestimates low-probability tails, as seen in the broader, misaligned contours of \(q^*\).
 \end{enumerate}
 
 \subsection{Variational Inference vs. Monte Carlo Methods}
