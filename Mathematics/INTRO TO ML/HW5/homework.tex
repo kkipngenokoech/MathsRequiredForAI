@@ -32,22 +32,81 @@ We would like to derive the model parameters $(\omega_k, \mu_k)$ for all $k$ usi
 
 \begin{enumerate}
     \item Write down and simplify the expression for the complete log-likelihood for the exponential
-    mixture model described above. Plugging the definition of the exponential distribution here immediately gives
+    mixture model described above.Write and simplify the complete log-likelihood for the exponential mixture model.
+
+    The joint probability is:
     \[
-    \sum_n \log p(x_n, z_n) = \sum_k \sum_n r_{nk} \left[\log \omega_k + \log \text{Exp}(x_n|\mu_k)\right]
-    = \sum_k \sum_n r_{nk} \left[\log \omega_k + \log \mu_k - x_n \mu_k\right].
+    p(x_n, z_n = k) = p(z_n = k) p(x_n \mid z_n = k) = \omega_k \operatorname{Exp}(x_n \mid \mu_k) = \omega_k \mu_k \exp(-\mu_k x_n).
+    \]
+    
+    The log-likelihood for a single data point is:
+    \[
+    \log p(x_n, z_n = k) = \log \omega_k + \log (\mu_k \exp(-\mu_k x_n)) = \log \omega_k + \log \mu_k - \mu_k x_n.
+    \]
+    
+    Using indicator variables $r_{nk}$, the complete log-likelihood over all data points is:
+    \[
+    \ell = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \log p(x_n, z_n = k) = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \left[ \log \omega_k + \log \mu_k - \mu_k x_n \right].
     \]
    \item  Solve the M step of the EM algorithm and find $\mu_k$ for $k = 1, \ldots, K$ that maximizes the complete log-likelihood. Taking the derivative of the log-likelihood with respect to $\mu_k$ and setting it to zero, we have:
-    \[
-    \frac{1}{\mu_k} \sum_n r_{nk} - \sum_n r_{nk} x_n = 0. \tag{2}
-    \]
-    \[
-    \mu_k = \frac{\sum_n r_{nk}}{\sum_n r_{nk} x_n}. \tag{3}
-    \]
+   Maximize the complete log-likelihood with respect to $\mu_k$ in the M-step, subject to $\sum_{k=1}^K \omega_k = 1$.
+
+   The complete log-likelihood is:
+   \[
+   \ell = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \left[ \log \omega_k + \log \mu_k - \mu_k x_n \right].
+   \]
+   
+   Differentiate with respect to $\mu_k$:
+   \[
+   \frac{\partial \ell}{\partial \mu_k} = \sum_{n=1}^N r_{nk} \left[ \frac{1}{\mu_k} - x_n \right].
+   \]
+   
+   Set the derivative to zero:
+   \[
+   \sum_{n=1}^N r_{nk} \frac{1}{\mu_k} = \sum_{n=1}^N r_{nk} x_n.
+   \]
+   
+   Solve for $\mu_k$:
+   \[
+   \mu_k = \frac{\sum_{n=1}^N r_{nk}}{\sum_{n=1}^N r_{nk} x_n}.
+   \]
+   
+   For $\omega_k$, maximize $\ell$ subject to $\sum_{k=1}^K \omega_k = 1$ using a Lagrange multiplier:
+   \[
+   \mathcal{L} = \sum_{n=1}^N \sum_{k=1}^K r_{nk} \log \omega_k + \lambda \left( 1 - \sum_{k=1}^K \omega_k \right).
+   \]
+   
+   Differentiate with respect to $\omega_k$:
+   \[
+   \frac{\partial \mathcal{L}}{\partial \omega_k} = \sum_{n=1}^N \frac{r_{nk}}{\omega_k} - \lambda = 0 \implies \sum_{n=1}^N r_{nk} = \lambda \omega_k.
+   \]
+   
+   Sum over $k$:
+   \[
+   \sum_{k=1}^K \sum_{n=1}^N r_{nk} = \lambda \sum_{k=1}^K \omega_k = \lambda.
+   \]
+   
+   Since $\sum_{n=1}^N \sum_{k=1}^K r_{nk} = N$ and $\sum_{k=1}^K \omega_k = 1$, we get $\lambda = N$. Thus:
+   \[
+   \omega_k = \frac{\sum_{n=1}^N r_{nk}}{N}.
+   \]
     \item Perform the E step of the EM algorithm and write the equation to update the soft labels $r_{nk} = P(z_n = k|x_n)$. Using Bayes' rule, we have:
-    \[
-    r_{nk} = \frac{P(x_n, z_n = k)}{P(x_n)} = \frac{\omega_k \mu_k \exp(-x_n \mu_k)}{\sum_{k'} \omega_{k'} \mu_{k'} \exp(-x_n \mu_{k'})}.
-    \]
+    Compute the soft labels $r_{nk} = P(z_n = k \mid x_n)$ in the E-step.
+
+Using Bayes' rule:
+\[
+r_{nk} = P(z_n = k \mid x_n) = \frac{P(x_n, z_n = k)}{P(x_n)} = \frac{p(z_n = k) p(x_n \mid z_n = k)}{\sum_{j=1}^K p(z_n = j) p(x_n \mid z_n = j)}.
+\]
+
+Substitute:
+\[
+p(z_n = k) = \omega_k, \quad p(x_n \mid z_n = k) = \mu_k \exp(-\mu_k x_n).
+\]
+
+Thus:
+\[
+r_{nk} = \frac{\omega_k \mu_k \exp(-\mu_k x_n)}{\sum_{j=1}^K \omega_j \mu_j \exp(-\mu_j x_n)}.
+\]
 \end{enumerate}
 
 \newpage
@@ -239,6 +298,9 @@ Assume the discount factor $\gamma = 1$, $r_g = +10$, and $r_r = -1000$ unless o
     following the policy $\pi_g$, which is optimal for the original gridworld. What will the new values $V^{\pi_g}_{\text{new}}$ be
     in this second gridworld?
 \end{enumerate}
+
+\newpage
+
 
 \newpage
 \section{Markov Decesion Process as Linear Program}
