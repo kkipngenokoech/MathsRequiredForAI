@@ -632,6 +632,100 @@ Total weight: \(0.203 + 0.081 + 0.026 \approx 0.310\).
     \draw (X2) -- (X3) node[midway, right] {0.026};
 \end{tikzpicture}
 \]
+\item \textbf{Step 4: Direct the Edges}
+
+We direct the edges of the maximum spanning tree to form a Bayesian network by choosing a root node and orienting edges away from it. We select \(X_4\) as the root.
+
+The MST edges \(X_1 - X_4\), \(X_3 - X_4\), \(X_2 - X_3\) are directed as:
+\begin{itemize}
+    \item \(X_4 \to X_1\)
+    \item \(X_4 \to X_3\)
+    \item \(X_3 \to X_2\)
+\end{itemize}
+
+\textbf{Directed Tree Visualization}:
+\[
+\begin{tikzpicture}
+    % Nodes
+    \node[circle, draw] (X4) at (0,0) {$X_4$};
+    \node[circle, draw] (X1) at (-2,2) {$X_1$};
+    \node[circle, draw] (X3) at (2,2) {$X_3$};
+    \node[circle, draw] (X2) at (4,0) {$X_2$};
+    % Directed edges
+    \draw[->] (X4) -- (X1);
+    \draw[->] (X4) -- (X3);
+    \draw[->] (X3) -- (X2);
+\end{tikzpicture}
+\]
+
+The joint distribution is:
+\[
+P(X_1, X_2, X_3, X_4) = P(X_4) P(X_1 | X_4) P(X_3 | X_4) P(X_2 | X_3)
+\]
+
+\item \textbf{Step 5: Parameter Estimation}
+
+We estimate the conditional probabilities from the data (9 samples) by counting occurrences.
+
+\textbf{1. \(P(X_4)\)} (root, no parent):
+\begin{itemize}
+    \item \(X_4 = 0\): 2 samples (rows 2, 8).
+    \[
+    P(X_4 = 0) = \frac{2}{9}
+    \]
+    \item \(X_4 = 1\): 7 samples (rows 1, 3, 4, 5, 6, 7, 9).
+    \[
+    P(X_4 = 1) = \frac{7}{9}
+    \]
+\end{itemize}
+
+\textbf{2. \(P(X_1 | X_4)\)} (parent: \(X_4\)):
+\begin{itemize}
+    \item For \(X_4 = 0\) (2 samples: rows 2, 8):
+    \[
+    P(X_1 = 0 | X_4 = 0) = \frac{\text{2 samples (rows 2, 8)}}{2} = 1, \quad P(X_1 = 1 | X_4 = 0) = \frac{0}{2} = 0
+    \]
+    \item For \(X_4 = 1\) (7 samples: rows 1, 3, 4, 5, 6, 7, 9):
+    \[
+    P(X_1 = 0 | X_4 = 1) = \frac{\text{2 samples (rows 5, 9)}}{7} = \frac{2}{7}, \quad P(X_1 = 1 | X_4 = 1) = \frac{\text{5 samples (rows 1, 3, 4, 6, 7)}}{7} = \frac{5}{7}
+    \]
+\end{itemize}
+
+\textbf{3. \(P(X_3 | X_4)\)} (parent: \(X_4\)):
+\begin{itemize}
+    \item For \(X_4 = 0\) (2 samples: rows 2, 8):
+    \[
+    P(X_3 = 0 | X_4 = 0) = \frac{\text{1 sample (row 2)}}{2} = \frac{1}{2}, \quad P(X_3 = 1 | X_4 = 0) = \frac{\text{1 sample (row 8)}}{2} = \frac{1}{2}
+    \]
+    \item For \(X_4 = 1\) (7 samples: rows 1, 3, 4, 5, 6, 7, 9):
+    \[
+    P(X_3 = 0 | X_4 = 1) = \frac{\text{6 samples (rows 1, 3, 5, 6, 7, 9)}}{7} = \frac{6}{7}, \quad P(X_3 = 1 | X_4 = 1) = \frac{\text{1 sample (row 4)}}{7} = \frac{1}{7}
+    \]
+\end{itemize}
+
+\textbf{4. \(P(X_2 | X_3)\)} (parent: \(X_3\)):
+\begin{itemize}
+    \item For \(X_3 = 0\) (7 samples: rows 1, 2, 3, 5, 6, 7, 9):
+    \[
+    P(X_2 = 0 | X_3 = 0) = \frac{\text{2 samples (rows 1, 6)}}{7} = \frac{2}{7}, \quad P(X_2 = 1 | X_3 = 0) = \frac{\text{5 samples (rows 2, 3, 5, 7, 9)}}{7} = \frac{5}{7}
+    \]
+    \item For \(X_3 = 1\) (2 samples: rows 4, 8):
+    \[
+    P(X_2 = 0 | X_3 = 1) = \frac{\text{1 sample (row 8)}}{2} = \frac{1}{2}, \quad P(X_2 = 1 | X_3 = 1) = \frac{\text{1 sample (row 4)}}{2} = \frac{1}{2}
+    \]
+\end{itemize}
+
+\textbf{Model Parameters}:
+The Bayesian network is defined by:
+\begin{itemize}
+    \item \(P(X_4 = 0) = \frac{2}{9}\), \(P(X_4 = 1) = \frac{7}{9}\)
+    \item \(P(X_1 = 0 | X_4 = 0) = 1\), \(P(X_1 = 1 | X_4 = 0) = 0\)
+    \item \(P(X_1 = 0 | X_4 = 1) = \frac{2}{7}\), \(P(X_1 = 1 | X_4 = 1) = \frac{5}{7}\)
+    \item \(P(X_3 = 0 | X_4 = 0) = \frac{1}{2}\), \(P(X_3 = 1 | X_4 = 0) = \frac{1}{2}\)
+    \item \(P(X_3 = 0 | X_4 = 1) = \frac{6}{7}\), \(P(X_3 = 1 | X_4 = 1) = \frac{1}{7}\)
+    \item \(P(X_2 = 0 | X_3 = 0) = \frac{2}{7}\), \(P(X_2 = 1 | X_3 = 0) = \frac{5}{7}\)
+    \item \(P(X_2 = 0 | X_3 = 1) = \frac{1}{2}\), \(P(X_2 = 1 | X_3 = 1) = \frac{1}{2}\)
+\end{itemize}
 
 
 
