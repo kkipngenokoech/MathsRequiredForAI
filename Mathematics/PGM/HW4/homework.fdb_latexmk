@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1745433142.76423 "/home/kip/projects/MathsRequiredForAI/Mathematics/PGM/HW4/homework.tex" "homework.pdf" "homework" 1745433144.31925 0
+["pdflatex"] 1745435319.06309 "/home/kip/projects/MathsRequiredForAI/Mathematics/PGM/HW4/homework.tex" "homework.pdf" "homework" 1745435320.78304 0
   "/etc/texmf/web2c/texmf.cnf" 1725990870.89537 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/kip/projects/MathsRequiredForAI/Mathematics/PGM/HW4/homework.tex" 1745433142.25526 52220 8f7bdd3338259221b676023c66018f12 ""
+  "/home/kip/projects/MathsRequiredForAI/Mathematics/PGM/HW4/homework.tex" 1745435318.47439 52094 0214216baa6ea4a4c49773a168004712 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/tcrm1200.tfm" 1136768653 1536 74b7293ec3713bb7fdca8dd1bd1f469c ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy6.tfm" 1246382020 1124 14ccf5552bc7f77ca02a8a402bea8bfb ""
@@ -143,8 +143,8 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1725992271.00687 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1725992330 8213276 b2e5a4cf82624810a98983a79400803f ""
-  "homework.aux" 1745433144.21522 1120 978e9e3c12760c1f6e7a0754f04e6040 "pdflatex"
-  "homework.tex" 1745433142.25526 52220 8f7bdd3338259221b676023c66018f12 ""
+  "homework.aux" 1745435320.63441 1120 978e9e3c12760c1f6e7a0754f04e6040 "pdflatex"
+  "homework.tex" 1745435318.47439 52094 0214216baa6ea4a4c49773a168004712 ""
   "q1.png" 1745309503.12487 12381 79ad69d1e8337333b216ea2d21175732 ""
   "q2.png" 1745309938.45672 22550 9b581baa34fa7bc9c8fc5e3ff0cc7aec ""
   (generated)

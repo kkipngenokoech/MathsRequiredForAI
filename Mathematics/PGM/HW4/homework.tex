@@ -1051,10 +1051,6 @@ p(\mathbf{X}) = \prod_{i=1}^n \frac{|\boldsymbol{\Lambda}|^{1/2}}{(2\pi)} \exp\l
 \[
 \log p(\mathbf{X}) = \frac{n}{2} \log |\boldsymbol{\Lambda}| - n \log (2\pi) - \frac{1}{2} \sum_{i=1}^n (\mathbf{x}^{(i)} - \boldsymbol{\mu})^T \boldsymbol{\Lambda} (\mathbf{x}^{(i)} - \boldsymbol{\mu})
 \]
-
-\[
-m_1 = \mu_1 - \Lambda_{11}^{-1} \Lambda_{12} (\mathbb{E}[x_2] - \mu_2) = 0 - 1 \cdot 0 \cdot (\mathbb{E}[x_2] - 0) = 0
-\]
     \item \textbf{Short Answer:} Group together everything that involves \( X_1 \) and remove anything involving \( X_2 \). We claim that there exists some distribution \( q^*(X) = q^*(X_1)q^*(X_2) \) that minimizes the KL divergence \( q^* = \arg\min_q \text{KL}(q \| p) \). Furthermore, said distribution will have a component \( q^*(X_1) \) that will be proportional to the quantity you find below. Write that term that is proportional to \( q^*(X_1) \).
     \\\\ It can be shown that this implies that \( q(X_1) \) (and therefore \( q(X_2) \)) is a Gaussian distribution:
     \[
