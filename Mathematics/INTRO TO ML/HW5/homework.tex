@@ -264,6 +264,44 @@ where $\rho(s) \in \mathbb{R}_+ \, \forall s \in S$ and denote its solution as $
     \[
     x(s, a) \geq 0 \quad \forall s \in S, \, a \in A.
     \]
+    To derive the dual, rewrite the constraint in standard form:
+\[
+V(s) - \gamma \sum_{s' \in \mathcal{S}} P(s' \mid s, a) V(s') \geq r(s, a).
+\]
+
+Associate a dual variable $x(s, a) \geq 0$ with each constraint. The Lagrangian is:
+\[
+L(V, x) = \sum_{s \in \mathcal{S}} \rho(s) V(s) + \sum_{s \in \mathcal{S}} \sum_{a \in \mathcal{A}} x(s, a) \left[ r(s, a) - V(s) + \gamma \sum_{s' \in \mathcal{S}} P(s' \mid s, a) V(s') \right].
+\]
+
+Collect terms involving $V(s)$:
+\[
+L(V, x) = \sum_{s \in \mathcal{S}} V(s) \left[ \rho(s) - \sum_{a \in \mathcal{A}} x(s, a) + \gamma \sum_{s' \in \mathcal{S}} \sum_{a' \in \mathcal{A}} P(s \mid s', a') x(s', a') \right] + \sum_{s \in \mathcal{S}} \sum_{a \in \mathcal{A}} x(s, a) r(s, a).
+\]
+
+For the dual, set the coefficient of $V(s)$ to zero:
+\[
+\rho(s) - \sum_{a \in \mathcal{A}} x(s, a) + \gamma \sum_{s' \in \mathcal{S}} \sum_{a' \in \mathcal{A}} P(s \mid s', a') x(s', a') = 0 \quad \forall s \in \mathcal{S}.
+\]
+
+Thus, the dual constraint is:
+\[
+\sum_{a \in \mathcal{A}} x(s, a) - \gamma \sum_{s' \in \mathcal{S}, a' \in \mathcal{A}} P(s \mid s', a') x(s', a') = \rho(s) \quad \forall s \in \mathcal{S}.
+\]
+
+The dual objective is to maximize the constant term:
+\[
+\max \sum_{s \in \mathcal{S}} \sum_{a \in \mathcal{A}} x(s, a) r(s, a).
+\]
+
+Therefore, the dual linear program is:
+\[
+\begin{aligned}
+& \max_{x \in \mathbb{R}^{|\mathcal{S} \times \mathcal{A}|}} \sum_{s \in \mathcal{S}, a \in \mathcal{A}} r(s, a) x(s, a) \\
+& \text{s.t.} \quad \sum_{a \in \mathcal{A}} x(s, a) - \gamma \sum_{s' \in \mathcal{S}, a' \in \mathcal{A}} P(s \mid s', a') x(s', a') = \rho(s) \quad \forall s \in \mathcal{S}, \\
+& x(s, a) \geq 0 \quad \forall s \in \mathcal{S}, a \in \mathcal{A}.
+\end{aligned}
+\]
    \item Denote the optimal solution to the dual problem as $x^\star \in \mathbb{R}^{|S \times A|}$. Due to strong duality
     and complementary slackness, we have
     \[
@@ -277,6 +315,38 @@ where $\rho(s) \in \mathbb{R}_+ \, \forall s \in S$ and denote its solution as $
     0 & \text{else}.
     \end{cases}
     \]
+    Given the optimal dual solution $x^*(s, a)$ and primal solution $V^*(s)$, complementary slackness gives:
+\[
+x^*(s, a) \left( V^*(s) - \gamma \sum_{s' \in \mathcal{S}} P(s' \mid s, a) V^*(s') - r(s, a) \right) = 0 \quad \forall s \in \mathcal{S}, a \in \mathcal{A}.
+\]
+
+If $x^*(s, a) > 0$, the constraint is tight:
+\[
+V^*(s) = r(s, a) + \gamma \sum_{s' \in \mathcal{S}} P(s' \mid s, a) V^*(s').
+\]
+
+Since $V^*(s)$ is the optimal value function, it satisfies:
+\[
+V^*(s) = \max_{a' \in \mathcal{A}} \left\{ r(s, a') + \gamma \sum_{s' \in \mathcal{S}} P(s' \mid s, a') V^*(s') \right\}.
+\]
+
+Thus, $x^*(s, a) > 0$ implies action $a$ achieves the maximum, so it is optimal. Define the policy:
+\[
+\pi^*(a \mid s) = \begin{cases} 
+1 & \text{if } a = \arg \max_{a' \in \mathcal{A}} x^*(s, a'), \\
+0 & \text{else}.
+\end{cases}
+\]
+
+If $a^* = \arg \max_{a'} x^*(s, a')$ and $x^*(s, a^*) > 0$, then $a^*$ is optimal, satisfying the Bellman equation. If $x^*(s, a) = 0$, action $a$ is suboptimal or not selected. Since an optimal policy can be deterministic, choosing $a^* = \arg \max x^*(s, a)$ ensures optimality.
+
+Thus, the optimal policy is:
+\[
+\pi^*(a \mid s) = \begin{cases} 
+1 & \text{if } a = \arg \max_{a' \in \mathcal{A}} x^*(s, a'), \\
+0 & \text{else}.
+\end{cases}
+\]
 \end{enumerate}
 
 \end{document}
