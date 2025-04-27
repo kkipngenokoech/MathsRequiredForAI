@@ -88,7 +88,7 @@ We would like to derive the model parameters $(\omega_k, \mu_k)$ for all $k$ usi
    
    Since $\sum_{n=1}^N \sum_{k=1}^K r_{nk} = N$ and $\sum_{k=1}^K \omega_k = 1$, we get $\lambda = N$. Thus:
    \[
-   \omega_k = \frac{\sum_{n=1}^N r_{nk}}{N}.
+   \omega_k = \frac{\sum_{n=1}^N r_{nk}}{\sum_{n=1}^N r_{nk}x_n}
    \]
     \item Perform the E step of the EM algorithm and write the equation to update the soft labels $r_{nk} = P(z_n = k|x_n)$. Using Bayes' rule, we have:
     Compute the soft labels $r_{nk} = P(z_n = k \mid x_n)$ in the E-step.
@@ -288,15 +288,224 @@ Assume the discount factor $\gamma = 1$, $r_g = +10$, and $r_r = -1000$ unless o
     \hline
     \end{array}
     \]
+
+\begin{itemize}
+    \item 
+    \begin{itemize}
+        \item State 11 is the cheese (terminal, reward \( r_g = 10 \)).
+        \item State 6 is the cat (terminal, reward \( r_r = -1000 \)).
+        \item Non-terminal states have reward \( r_s = 0 \).
+        \item Discount factor \( \gamma = 1 \).
+        \item Actions are deterministic: up, down, left, right, unless blocked by walls (e.g., from state 16, only left to 15 is possible; other moves stay in 16).
+        \item The policy specifies actions as given.
+    \end{itemize}
+    \item  We need to compute the value function \( V^\pi(s) \), the expected cumulative reward starting from state \( s \) under policy \( \pi \). Since \( \gamma = 1 \), \( r_s = 0 \), and actions are deterministic, \( V^\pi(s) \) is the terminal reward (10 or -1000) reached by following the policy.
+    \item \textbf{Policy Actions}:
+    \begin{itemize}
+        \item Row 1: \( 1 \rightarrow 2 \), \( 2 \rightarrow 3 \), \( 3 \downarrow 7 \), \( 4 \downarrow 8 \)
+        \item Row 2: \( 5 \rightarrow 6 \), \( 6 \rightarrow 7 \), \( 7 \downarrow 11 \), \( 8 \downarrow 12 \)
+        \item Row 3: \( 9 \uparrow 5 \), \( 10 \uparrow 6 \), \( 11 \downarrow 15 \), \( 12 \leftarrow 11 \)
+        \item Row 4: \( 13 \uparrow 9 \), \( 14 \uparrow 10 \), \( 15 \leftarrow 14 \), \( 16 \leftarrow 15 \)
+    \end{itemize}
+    \item \textbf{Evaluate Paths}:
+    \begin{itemize}
+        \item \textbf{State 1}: Path: \( 1 \rightarrow 2 \rightarrow 3 \downarrow 7 \downarrow 11 \). Rewards: \( 0 + 0 + 0 + 0 + 10 = 10 \). Thus, \( V^\pi(1) = 10 \).
+        \item \textbf{State 2}: Path: \( 2 \rightarrow 3 \downarrow 7 \downarrow 11 \). Rewards: \( 0 + 0 + 0 + 10 = 10 \). Thus, \( V^\pi(2) = 10 \).
+        \item \textbf{State 3}: Path: \( 3 \downarrow 7 \downarrow 11 \). Rewards: \( 0 + 0 + 10 = 10 \). Thus, \( V^\pi(3) = 10 \).
+        \item \textbf{State 4}: Path: \( 4 \downarrow 8 \downarrow 12 \leftarrow 11 \). Rewards: \( 0 + 0 + 0 + 10 = 10 \). Thus, \( V^\pi(4) = 10 \).
+        \item \textbf{State 5}: Path: \( 5 \rightarrow 6 \). Rewards: \( 0 - 1000 = -1000 \). Thus, \( V^\pi(5) = -1000 \).
+        \item \textbf{State 6}: Terminal (cat). Reward: \( -1000 \). Thus, \( V^\pi(6) = -1000 \).
+        \item \textbf{State 7}: Path: \( 7 \downarrow 11 \). Rewards: \( 0 + 10 = 10 \). Thus, \( V^\pi(7) = 10 \).
+        \item \textbf{State 8}: Path: \( 8 \downarrow 12 \leftarrow 11 \). Rewards: \( 0 + 0 + 10 = 10 \). Thus, \( V^\pi(8) = 10 \).
+        \item \textbf{State 9}: Path: \( 9 \uparrow 5 \rightarrow 6 \). Rewards: \( 0 + 0 - 1000 = -1000 \). Thus, \( V^\pi(9) = -1000 \).
+        \item \textbf{State 10}: Path: \( 10 \uparrow 6 \). Rewards: \( 0 - 1000 = -1000 \). Thus, \( V^\pi(10) = -1000 \).
+        \item \textbf{State 11}: Terminal (cheese). Reward: \( 10 \). Thus, \( V^\pi(11) = 10 \).
+        \item \textbf{State 12}: Path: \( 12 \leftarrow 11 \). Rewards: \( 0 + 10 = 10 \). Thus, \( V^\pi(12) = 10 \).
+        \item \textbf{State 13}: Path: \( 13 \uparrow 9 \uparrow 5 \rightarrow 6 \). Rewards: \( 0 + 0 + 0 - 1000 = -1000 \). Thus, \( V^\pi(13) = -1000 \).
+        \item \textbf{State 14}: Path: \( 14 \uparrow 10 \uparrow 6 \). Rewards: \( 0 + 0 - 1000 = -1000 \). Thus, \( V^\pi(14) = -1000 \).
+        \item \textbf{State 15}: Path: \( 15 \leftarrow 14 \uparrow 10 \uparrow 6 \). Rewards: \( 0 + 0 + 0 - 1000 = -1000 \). Thus, \( V^\pi(15) = -1000 \).
+        \item \textbf{State 16}: Path: \( 16 \leftarrow 15 \leftarrow 14 \uparrow 10 \uparrow 6 \). Rewards: \( 0 + 0 + 0 + 0 - 1000 = -1000 \). Thus, \( V^\pi(16) = -1000 \).
+    \end{itemize}
+    \item \textbf{Values}:
+    \[
+    \begin{array}{|c|c|c|c|}
+    \hline
+    10 & 10 & 10 & 10 \\
+    \hline
+    -1000 & -1000 & 10 & 10 \\
+    \hline
+    -1000 & -1000 & 10 & 10 \\
+    \hline
+    -1000 & -1000 & -1000 & -1000 \\
+    \hline
+    \end{array}
+    \]
+\end{itemize}
+
+The values under the policy are:
+\begin{itemize}
+    \item States 1, 2, 3, 4, 7, 8, 11, 12: \( V^\pi = 10 \)
+    \item States 5, 6, 9, 10, 13, 14, 15, 16: \( V^\pi = -1000 \)
+\end{itemize}
     
     \item Define the value of $r_s$ that would cause the optimal policy to return the shortest path to the
     cheese square (no. 11); note that your value for $r_s$ should lie in $\{-1, 0, +1\}$. Using this $r_s$, find the
     optimal value for each square and the optimal policy.
+\begin{itemize}
+    \item 
+    \begin{itemize}
+        \item State 11: Cheese (terminal, reward \( r_g = 10 \)).
+        \item State 6: Cat (terminal, reward \( r_r = -1000 \)).
+        \item Non-terminal states: Reward \( r_s \in \{-1, 0, +1\} \).
+        \item Discount factor \( \gamma = 1 \).
+        \item Actions: Up, down, left, right; deterministic unless blocked by walls (e.g., from state 16, only left to 15 is possible).
+        \item Walls: Between 10 and 11, 11 and 15, 12 and 16, 3 and 4, 7 and 8; boundaries.
+    \end{itemize}
+    \item \textbf{Choosing \( r_s \)}: To ensure the optimal policy takes the shortest path to state 11:
+    \begin{itemize}
+        \item \( r_s = -1 \): Penalizes each step, encouraging the shortest path.
+        \item \( r_s = 0 \): No penalty, so all paths to state 11 yield 10, not necessarily the shortest.
+        \item \( r_s = +1 \): Rewards steps, encouraging longer paths.
+    \end{itemize}
+    Thus, \( r_s = -1 \).
+    \item \textbf{Optimal Value Function}: With \( r_s = -1 \), \( \gamma = 1 \), for non-terminal states:
+    \[
+    V^*(s) = \max_a \left[ -1 + V^*(s') \right]
+    \]
+    Terminal: \( V^*(11) = 10 \), \( V^*(6) = -1000 \).
+    \item \textbf{Shortest Paths}:
+    \begin{itemize}
+        \item State 1: \( 1 \rightarrow 2 \downarrow 6 \) (2 steps). \( V^*(1) = -1 - 1 - 1000 = -1002 \). Action: \( \rightarrow \).
+        \item State 2: \( 2 \downarrow 6 \) (1 step). \( V^*(2) = -1 - 1000 = -1001 \). Action: \( \downarrow \).
+        \item State 3: \( 3 \downarrow 7 \downarrow 11 \) (2 steps). \( V^*(3) = -1 - 1 + 10 = 8 \). Action: \( \downarrow \).
+        \item State 4: \( 4 \downarrow 8 \downarrow 12 \leftarrow 11 \) (3 steps). \( V^*(4) = -1 - 1 - 1 + 10 = 7 \). Action: \( \downarrow \).
+        \item State 5: \( 5 \leftarrow 6 \) (1 step). \( V^*(5) = -1 - 1000 = -1001 \). Action: \( \leftarrow \).
+        \item State 6: Terminal. \( V^*(6) = -1000 \).
+        \item State 7: \( 7 \downarrow 11 \) (1 step). \( V^*(7) = -1 + 10 = 9 \). Action: \( \downarrow \).
+        \item State 8: \( 8 \downarrow 12 \leftarrow 11 \) (2 steps). \( V^*(8) = -1 - 1 + 10 = 8 \). Action: \( \downarrow \).
+        \item State 9: \( 9 \rightarrow 10 \uparrow 6 \) (2 steps). \( V^*(9) = -1 - 1 - 1000 = -1002 \). Action: \( \rightarrow \).
+        \item State 10: \( 10 \uparrow 6 \) (1 step). \( V^*(10) = -1 - 1000 = -1001 \). Action: \( \uparrow \).
+        \item State 11: Terminal. \( V^*(11) = 10 \).
+        \item State 12: \( 12 \leftarrow 11 \) (1 step). \( V^*(12) = -1 + 10 = 9 \). Action: \( \leftarrow \).
+        \item State 13: \( 13 \rightarrow 14 \uparrow 10 \uparrow 6 \) (3 steps). \( V^*(13) = -1 - 1 - 1 - 1000 = -1003 \). Action: \( \rightarrow \).
+        \item State 14: \( 14 \uparrow 10 \uparrow 6 \) (2 steps). \( V^*(14) = -1 - 1 - 1000 = -1002 \). Action: \( \uparrow \).
+        \item State 15: \( 15 \leftarrow 14 \uparrow 10 \uparrow 6 \) (3 steps). \( V^*(15) = -1 - 1 - 1 - 1000 = -1003 \). Action: \( \leftarrow \).
+        \item State 16: \( 16 \leftarrow 15 \leftarrow 14 \uparrow 10 \uparrow 6 \) (4 steps). \( V^*(16) = -1 - 1 - 1 - 1 - 1000 = -1004 \). Action: \( \leftarrow \).
+    \end{itemize}
+    \item \textbf{Optimal Policy}:
+    \[
+    \begin{array}{|c|c|c|c|}
+    \hline
+    \rightarrow & \downarrow & \downarrow & \downarrow \\
+    \hline
+    \leftarrow & \text{X} & \downarrow & \downarrow \\
+    \hline
+    \rightarrow & \uparrow & \text{X} & \leftarrow \\
+    \hline
+    \rightarrow & \uparrow & \leftarrow & \leftarrow \\
+    \hline
+    \end{array}
+    \]
+    where X denotes terminal states.
+    \item \textbf{Values}:
+    \[
+    \begin{array}{|c|c|c|c|}
+    \hline
+    -1002 & -1001 & 8 & 7 \\
+    \hline
+    -1001 & -1000 & 9 & 8 \\
+    \hline
+    -1002 & -1001 & 10 & 9 \\
+    \hline
+    -1003 & -1002 & -1003 & -1004 \\
+    \hline
+    \end{array}
+    \]
+\end{itemize}
 
+\textbf{Answer}:
+\begin{itemize}
+    \item \( r_s = -1 \).
+    \item Optimal values:
+    \begin{itemize}
+        \item State 1: -1002, State 2: -1001, State 3: 8, State 4: 7, State 5: -1001, State 6: -1000,
+        \item State 7: 9, State 8: 8, State 9: -1002, State 10: -1001, State 11: 10, State 12: 9,
+        \item State 13: -1003, State 14: -1002, State 15: -1003, State 16: -1004
+    \end{itemize}
+    \item Optimal policy: As shown in the table above.
+\end{itemize}
     \item Let’s refer to the value function derived in (b) as $V^{\pi_g}_{\text{old}}$ and the policy as $\pi_g$. Suppose we are
+
     now in a new gridworld where all the rewards ($r_s$, $r_g$, and $r_r$) have $+2$ added to them. Consider still
     following the policy $\pi_g$, which is optimal for the original gridworld. What will the new values $V^{\pi_g}_{\text{new}}$ be
     in this second gridworld?
+
+    \begin{itemize}
+        \item 
+        \begin{itemize}
+            \item Original rewards (from part (b)): \( r_s = -1 \), \( r_g = 10 \) (state 11), \( r_r = -1000 \) (state 6).
+            \item New rewards: \( r_s = -1 + 2 = 1 \), \( r_g = 10 + 2 = 12 \), \( r_r = -1000 + 2 = -998 \).
+            \item Discount factor \( \gamma = 1 \).
+            \item Walls: Between 10 and 11, 11 and 15, 12 and 16, 3 and 4, 7 and 8; boundaries.
+            \item Policy \( \pi_g \) (from part (b)):
+            \[
+            \begin{array}{|c|c|c|c|}
+            \hline
+            \rightarrow & \downarrow & \downarrow & \downarrow \\
+            \hline
+            \leftarrow & \text{X} & \downarrow & \downarrow \\
+            \hline
+            \rightarrow & \uparrow & \text{X} & \leftarrow \\
+            \hline
+            \rightarrow & \uparrow & \leftarrow & \leftarrow \\
+            \hline
+            \end{array}
+            \]
+        \end{itemize}
+        \item \textbf{Objective}: Compute \( V_{\text{new}}(s) \) under policy \( \pi_g \) with new rewards.
+        \item \textbf{Compute \( V_{\text{new}}(s) \)}: Follow \( \pi_g \) to a terminal state, summing rewards (\( r_s = 1 \), \( r_g = 12 \), \( r_r = -998 \)).
+        \begin{itemize}
+            \item State 1: \( 1 \rightarrow 2 \downarrow 6 \) (2 steps). Rewards: \( 1 + 1 - 998 = -996 \). \( V_{\text{new}}(1) = -996 \).
+            \item State 2: \( 2 \downarrow 6 \) (1 step). Rewards: \( 1 - 998 = -997 \). \( V_{\text{new}}(2) = -997 \).
+            \item State 3: \( 3 \downarrow 7 \downarrow 11 \) (2 steps). Rewards: \( 1 + 1 + 12 = 14 \). \( V_{\text{new}}(3) = 14 \).
+            \item State 4: \( 4 \downarrow 8 \downarrow 12 \leftarrow 11 \) (3 steps). Rewards: \( 1 + 1 + 1 + 12 = 15 \). \( V_{\text{new}}(4) = 15 \).
+            \item State 5: \( 5 \leftarrow 6 \) (1 step). Rewards: \( 1 - 998 = -997 \). \( V_{\text{new}}(5) = -997 \).
+            \item State 6: Terminal. \( V_{\text{new}}(6) = -998 \).
+            \item State 7: \( 7 \downarrow 11 \) (1 step). Rewards: \( 1 + 12 = 13 \). \( V_{\text{new}}(7) = 13 \).
+            \item State 8: \( 8 \downarrow 12 \leftarrow 11 \) (2 steps). Rewards: \( 1 + 1 + 12 = 14 \). \( V_{\text{new}}(8) = 14 \).
+            \item State 9: \( 9 \rightarrow 10 \uparrow 6 \) (2 steps). Rewards: \( 1 + 1 - 998 = -996 \). \( V_{\text{new}}(9) = -996 \).
+            \item State 10: \( 10 \uparrow 6 \) (1 step). Rewards: \( 1 - 998 = -997 \). \( V_{\text{new}}(10) = -997 \).
+            \item State 11: Terminal. \( V_{\text{new}}(11) = 12 \).
+            \item State 12: \( 12 \leftarrow 11 \) (1 step). Rewards: \( 1 + 12 = 13 \). \( V_{\text{new}}(12) = 13 \).
+            \item State 13: \( 13 \rightarrow 14 \uparrow 10 \uparrow 6 \) (3 steps). Rewards: \( 1 + 1 + 1 - 998 = -995 \). \( V_{\text{new}}(13) = -995 \).
+            \item State 14: \( 14 \uparrow 10 \uparrow 6 \) (2 steps). Rewards: \( 1 + 1 - 998 = -996 \). \( V_{\text{new}}(14) = -996 \).
+            \item State 15: \( 15 \leftarrow 14 \uparrow 10 \uparrow 6 \) (3 steps). Rewards: \( 1 + 1 + 1 - 998 = -995 \). \( V_{\text{new}}(15) = -995 \).
+            \item State 16: \( 16 \leftarrow 15 \leftarrow 14 \uparrow 10 \uparrow 6 \) (4 steps). Rewards: \( 1 + 1 + 1 + 1 - 998 = -994 \). \( V_{\text{new}}(16) = -994 \).
+        \end{itemize}
+        \item \textbf{Values}:
+        \[
+        \begin{array}{|c|c|c|c|}
+        \hline
+        -996 & -997 & 14 & 15 \\
+        \hline
+        -997 & -998 & 13 & 14 \\
+        \hline
+        -996 & -997 & 12 & 13 \\
+        \hline
+        -995 & -996 & -995 & -994 \\
+        \hline
+        \end{array}
+        \]
+    \end{itemize}
+    
+    \textbf{Answer}: The new values under policy \( \pi_g \) are:
+    \begin{itemize}
+        \item State 1: -996, State 2: -997, State 3: 14, State 4: 15, State 5: -997, State 6: -998,
+        \item State 7: 13, State 8: 14, State 9: -996, State 10: -997, State 11: 12, State 12: 13,
+        \item State 13: -995, State 14: -996, State 15: -995, State 16: -994
+    \end{itemize}
+
+
 \end{enumerate}
 
 \newpage
